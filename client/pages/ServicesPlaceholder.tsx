@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { DarkHeroSection } from "@/components/DarkHeroSection";
 
 export default function ServicesPlaceholder() {
   const { id } = useParams<{ id: string }>();
@@ -13,26 +14,10 @@ export default function ServicesPlaceholder() {
 
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] bg-gradient-to-br from-white via-white to-muted flex items-center">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gold bg-opacity-5 rounded-full blur-3xl -mr-48 -mt-48"></div>
-        </div>
-
-        <div className="section-container relative z-10 w-full">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-montserrat font-bold text-dark mb-6">
-              {serviceName}
-            </h1>
-            <p className="text-xl font-inter text-gray-600 mb-8">
-              Premium {serviceName.toLowerCase()} service tailored to your needs.
-            </p>
-            <button className="luxury-button-gold">
-              Book Now
-            </button>
-          </div>
-        </div>
-      </section>
+      <DarkHeroSection
+        title={serviceName}
+        subtitle={`Premium ${serviceName.toLowerCase()} service tailored to your needs.`}
+      />
 
       {/* Content Section */}
       <section className="section-spacing bg-white">
