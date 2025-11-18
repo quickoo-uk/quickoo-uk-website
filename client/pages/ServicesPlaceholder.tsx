@@ -19,6 +19,13 @@ export default function ServicesPlaceholder() {
         subtitle={`Premium ${serviceName.toLowerCase()} service tailored to your needs.`}
       />
 
+      {/* Book Now Button Overlay */}
+      <div className="relative -mt-20 mb-12 section-container z-20">
+        <button className="px-8 py-3 bg-gold text-dark font-montserrat font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-300 hover:shadow-luxury">
+          Book Now
+        </button>
+      </div>
+
       {/* Content Section */}
       <section className="section-spacing bg-white">
         <div className="section-container max-w-3xl">
