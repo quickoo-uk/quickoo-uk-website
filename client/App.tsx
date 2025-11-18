@@ -15,14 +15,21 @@ import FleetPlaceholder from "./pages/FleetPlaceholder";
 import PricingPage from "./pages/Pricing";
 import AboutPage from "./pages/About";
 import ContactPage from "./pages/Contact";
+import BookNowPage from "./pages/BookNow";
 
 const queryClient = new QueryClient();
 
-const Layout = ({ children }: { children: React.ReactNode }) => (
+const Layout = ({
+  children,
+  isFooter,
+}: {
+  children: React.ReactNode;
+  isFooter?: boolean;
+}) => (
   <div className="flex flex-col min-h-screen">
     <Navbar />
     <main className="flex-grow pt-20">{children}</main>
-    <Footer />
+    {isFooter !== false && <Footer />}
   </div>
 );
 
@@ -78,6 +85,14 @@ const App = () => (
             element={
               <Layout>
                 <ContactPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/book-now"
+            element={
+              <Layout isFooter={false}>
+                <BookNowPage />
               </Layout>
             }
           />

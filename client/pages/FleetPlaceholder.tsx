@@ -7,153 +7,157 @@ export default function FleetPlaceholder() {
   const vehicleName = id
     ? id
         .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
         .join(" ")
     : "Vehicle";
 
+  // Luxury chauffeur-style real images
+  const IMAGES: Record<string, string> = {
+    "mercedes-s-class":
+      "https://images.unsplash.com/photo-1617469767053-adf3ef61e6d1?auto=format&fit=crop&w=2000&q=80",
+    "bmw-i7":
+      "https://images.unsplash.com/photo-1668875515314-8a79808bf6f8?auto=format&fit=crop&w=2000&q=80",
+    "range-rover":
+      "https://images.unsplash.com/photo-1617814078590-0e98c024aaa0?auto=format&fit=crop&w=2000&q=80",
+    "mercedes-v-class":
+      "https://images.unsplash.com/photo-1605511876319-7f4ef3221c71?auto=format&fit=crop&w=2000&q=80",
+  };
+
+  const heroImage = IMAGES[id ?? ""] ?? IMAGES["mercedes-s-class"];
+
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] bg-gradient-to-br from-white via-white to-muted flex items-center">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gold bg-opacity-5 rounded-full blur-3xl -mr-48 -mt-48"></div>
-        </div>
+      {/* ============================== */}
+      {/* HERO SECTION */}
+      {/* ============================== */}
+      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+        <img
+          src={heroImage}
+          alt={vehicleName}
+          className="absolute inset-0 w-full h-full object-cover filter grayscale brightness-[0.55]"
+        />
 
-        <div className="section-container relative z-10 w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl font-montserrat font-bold text-dark">
-                {vehicleName}
-              </h1>
-              <p className="text-xl font-inter text-gray-600">
-                Experience luxury and comfort in one of our premium{" "}
-                {vehicleName.toLowerCase()} vehicles.
-              </p>
-              <button className="luxury-button-gold">Book Now</button>
-            </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent"></div>
 
-            <div className="relative h-96 hidden md:block">
-              <div className="absolute inset-0 bg-gradient-to-br from-gold to-gold via-gold bg-opacity-10 rounded-3xl overflow-hidden shadow-luxury-lg">
-                <img
-                  src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=600&fit=crop"
-                  alt={vehicleName}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
+        <div className="relative z-10 section-container text-white max-w-4xl">
+          <h1 className="text-5xl md:text-6xl font-montserrat font-bold mb-4">
+            {vehicleName}
+          </h1>
+          <p className="text-lg md:text-xl font-inter text-gray-200 mb-6">
+            Luxury, comfort, and class — experience a world-class ride with our{" "}
+            {vehicleName}.
+          </p>
+          <button className="luxury-button-gold">Book {vehicleName}</button>
         </div>
       </section>
 
-      {/* Specifications */}
+      {/* ============================== */}
+      {/* SPECIFICATIONS */}
+      {/* ============================== */}
       <section className="section-spacing bg-white">
         <div className="section-container">
-          <h2 className="text-3xl font-montserrat font-bold text-dark mb-12">
+          {/* SECTION TITLE */}
+          <h2 className="text-4xl font-montserrat font-bold text-dark mb-16">
             Specifications
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
-            <div className="bg-muted rounded-2xl p-8 text-center">
-              <Users className="w-8 h-8 text-gold mx-auto mb-4" />
-              <p className="font-montserrat font-semibold text-dark mb-2">
-                Passengers
-              </p>
-              <p className="text-3xl font-montserrat font-bold text-gold">4</p>
-            </div>
-
-            <div className="bg-muted rounded-2xl p-8 text-center">
-              <Luggage className="w-8 h-8 text-gold mx-auto mb-4" />
-              <p className="font-montserrat font-semibold text-dark mb-2">
-                Luggage Space
-              </p>
-              <p className="text-3xl font-montserrat font-bold text-gold">3</p>
-            </div>
-
-            <div className="bg-muted rounded-2xl p-8 text-center">
-              <Zap className="w-8 h-8 text-gold mx-auto mb-4" />
-              <p className="font-montserrat font-semibold text-dark mb-2">
-                Engine Power
-              </p>
-              <p className="text-3xl font-montserrat font-bold text-gold">
-                500+
-              </p>
-            </div>
-
-            <div className="bg-muted rounded-2xl p-8 text-center">
-              <Wind className="w-8 h-8 text-gold mx-auto mb-4" />
-              <p className="font-montserrat font-semibold text-dark mb-2">
-                Air Suspension
-              </p>
-              <p className="font-montserrat font-bold text-dark">Yes</p>
-            </div>
-
-            <div className="bg-muted rounded-2xl p-8 text-center">
-              <Music className="w-8 h-8 text-gold mx-auto mb-4" />
-              <p className="font-montserrat font-semibold text-dark mb-2">
-                Premium Sound
-              </p>
-              <p className="font-montserrat font-bold text-dark">Surround</p>
-            </div>
+          {/* SPECS GRID */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-20">
+            {[
+              { icon: Users, label: "Passengers", value: "4" },
+              { icon: Luggage, label: "Luggage", value: "3" },
+              { icon: Zap, label: "Power", value: "500+ HP" },
+              { icon: Wind, label: "Air Suspension", value: "Yes" },
+              { icon: Music, label: "Sound System", value: "Premium Surround" },
+            ].map((spec, idx) => {
+              const Icon = spec.icon;
+              return (
+                <div
+                  key={idx}
+                  className="
+                    group bg-muted rounded-2xl p-10 text-center
+                    border border-transparent
+                    hover:border-gold hover:shadow-[0_12px_40px_rgba(212,168,83,0.25)]
+                    transition-all duration-300
+                  "
+                >
+                  <Icon className="w-10 h-10 text-gold mx-auto mb-4" />
+                  <p className="font-montserrat font-semibold text-dark mb-1">
+                    {spec.label}
+                  </p>
+                  <p className="text-2xl font-montserrat font-bold text-gold">
+                    {spec.value}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h3 className="text-2xl font-montserrat font-bold text-dark">
+          {/* ============================== */}
+          {/* PREMIUM FEATURES + PRICING */}
+          {/* ============================== */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* FEATURES */}
+            <div>
+              <h3 className="text-3xl font-montserrat font-bold text-dark mb-6">
                 Premium Features
               </h3>
-              <ul className="space-y-3">
+
+              <ul className="space-y-4">
                 {[
-                  "Leather interior seating",
-                  "Climate control",
-                  "Premium sound system",
-                  "USB charging ports",
-                  "WiFi connectivity",
+                  "Hand-stitched leather interior",
+                  "Advanced climate control system",
+                  "Executive seating configuration",
+                  "Premium surround-sound audio",
+                  "Onboard WiFi + USB-C charging",
+                  "Ambient LED lighting",
                   "Panoramic sunroof",
-                ].map((feature) => (
-                  <li key={feature} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-gold rounded-full"></div>
-                    <span className="font-inter text-gray-600">{feature}</span>
+                  "Silent cabin insulation",
+                ].map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-gold"></div>
+                    <span className="font-inter text-gray-700">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-muted rounded-2xl p-8">
-              <h3 className="text-2xl font-montserrat font-bold text-dark mb-6">
+            {/* PRICING CARD */}
+            <div className="bg-gradient-to-br from-white to-muted p-10 rounded-3xl border border-gold/20 shadow-lg">
+              <h3 className="text-3xl font-montserrat font-bold text-dark mb-8">
                 Pricing Options
               </h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center pb-4 border-b border-border">
-                  <span className="font-inter text-gray-600">Hourly Rate</span>
-                  <span className="font-montserrat font-bold text-dark">
-                    $85/hr
-                  </span>
-                </div>
-                <div className="flex justify-between items-center pb-4 border-b border-border">
-                  <span className="font-inter text-gray-600">
-                    Airport Transfer
-                  </span>
-                  <span className="font-montserrat font-bold text-dark">
-                    $120
-                  </span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="font-inter text-gray-600">
-                    City-to-City (100 km)
-                  </span>
-                  <span className="font-montserrat font-bold text-dark">
-                    $250
-                  </span>
-                </div>
+
+              <div className="space-y-5">
+                {[
+                  { label: "Hourly Rate", price: "$85/hr" },
+                  { label: "Airport Transfer", price: "$120" },
+                  { label: "City-to-City (100 km)", price: "$250" },
+                ].map((row, idx) => (
+                  <div
+                    key={idx}
+                    className="flex justify-between pb-4 border-b border-border"
+                  >
+                    <span className="text-gray-600 font-inter">
+                      {row.label}
+                    </span>
+                    <span className="text-dark font-montserrat font-bold">
+                      {row.price}
+                    </span>
+                  </div>
+                ))}
               </div>
 
-              <button className="w-full luxury-button-gold mt-8">
+              <button className="luxury-button-gold w-full mt-8 text-lg py-4">
                 Book {vehicleName}
               </button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* BOTTOM SPACING */}
+      <div className="h-10"></div>
     </div>
   );
 }

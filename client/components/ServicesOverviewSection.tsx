@@ -83,42 +83,51 @@ export const ServicesOverviewSection = () => {
   return (
     <section className="section-spacing bg-white">
       <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark mb-4">
-            Our Services
+        <div className="text-center mb-20">
+          <span className="inline-block px-4 py-2 bg-gold bg-opacity-10 text-gold rounded-full text-sm font-semibold mb-4">
+            OUR SERVICES
+          </span>
+          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark mb-6">
+            Comprehensive Chauffeur Solutions
           </h2>
-          <p className="text-lg font-inter text-gray-600 max-w-2xl mx-auto">
-            Comprehensive chauffeur solutions tailored to your needs.
+          <p className="text-lg font-inter text-gray-600 max-w-3xl mx-auto">
+            From airport transfers to special events, we provide tailored
+            transportation services for every need.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map((service) => {
             const Icon = service.icon;
             return (
               <Link
                 key={service.name}
                 to={`/services/${service.name.toLowerCase().replace(/ /g, "-")}`}
-                className="group bg-white border border-border rounded-2xl overflow-hidden hover:shadow-luxury-lg transition-all duration-300"
+                className="group bg-white border border-border rounded-2xl overflow-hidden hover:border-gold hover:shadow-luxury-lg transition-all duration-300"
               >
-                <div className="relative h-48 overflow-hidden bg-gray-200">
+                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300">
                   <img
                     src={service.image}
                     alt={service.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
-                    <Icon className="w-12 h-12 text-gold" />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
+                    <div className="bg-gold rounded-full p-3 group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="w-8 h-8 text-dark" />
+                    </div>
                   </div>
                 </div>
+
                 <div className="p-6">
                   <h3 className="text-xl font-montserrat font-bold text-dark mb-2 group-hover:text-gold transition-colors">
                     {service.name}
                   </h3>
-                  <p className="font-inter text-gray-600 text-sm mb-4 leading-relaxed">
+
+                  <p className="font-inter text-gray-600 text-sm mb-4 leading-relaxed min-h-[40px]">
                     {service.description}
                   </p>
-                  <div className="flex items-center text-gold font-semibold font-montserrat">
+
+                  <div className="flex items-center text-gold font-semibold font-montserrat text-sm group-hover:text-dark transition-colors">
                     Learn More{" "}
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </div>

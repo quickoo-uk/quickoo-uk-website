@@ -6,6 +6,7 @@
 @tailwind utilities;
 
 @layer base {
+
   /**
    * XChauffur Theme
    * Light luxury theme with gold accents
@@ -98,6 +99,45 @@
 
   html {
     scroll-behavior: smooth;
+    /* Custom scrollbar - webkit browsers (Chrome, Safari, Edge) */
+    scrollbar-width: thin;
+    /* Firefox: thumb then track */
+    scrollbar-color: hsl(0 0% 0%) hsl(var(--input));
+    /* Keep layout stable when scrollbars appear */
+    scrollbar-gutter: stable both-edges;
+    background: hsl(0 0% 0%);
+  }
+
+  /* Webkit browsers scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--input));
+    /* ensure the corner and track match and avoid light seams */
+    -webkit-border-radius: 0;
+    border-radius: 0;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(0 0% 0%);
+    border-radius: 9999px;
+    /* remove the thumb border so there are no light seams at top/bottom */
+    border: none;
+    min-height: 24px;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(0 0% 0%);
+  }
+
+  /* Make sure the scrollbar corner matches the track (prevents a light square) */
+  ::-webkit-scrollbar-corner {
+    background: hsl(var(--input));
   }
 
   body {
@@ -136,6 +176,14 @@
 
   .luxury-button-outline {
     @apply luxury-button border-2 border-dark text-dark hover:bg-dark hover:text-white;
+  }
+
+  .rectangle-button {
+    @apply px-8 py-4 rounded-none font-montserrat font-semibold transition-all duration-300;
+  }
+
+  .rectangle-button-white {
+    @apply rectangle-button bg-white text-black hover:bg-gray-100 shadow-lg;
   }
 
   .section-container {

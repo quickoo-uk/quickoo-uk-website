@@ -10,16 +10,12 @@ export default function ContactPage() {
     message: "",
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
@@ -27,77 +23,92 @@ export default function ContactPage() {
 
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] bg-gradient-to-br from-white via-white to-muted flex items-center">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gold bg-opacity-5 rounded-full blur-3xl -mr-48 -mt-48"></div>
-        </div>
+      {/* ============================ */}
+      {/*      HERO SECTION            */}
+      {/* ============================ */}
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=2000&q=80"
+          className="absolute inset-0 w-full h-full object-cover filter grayscale opacity-90"
+        />
 
-        <div className="section-container relative z-10 w-full">
-          <h1 className="text-5xl md:text-6xl font-montserrat font-bold text-dark mb-6">
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 text-center max-w-3xl px-6">
+          <h1 className="text-5xl md:text-6xl font-montserrat font-bold text-white">
             Get in Touch
           </h1>
-          <p className="text-xl font-inter text-gray-600 max-w-2xl">
-            We're here to help. Contact us anytime for booking or inquiries.
+          <p className="text-lg md:text-xl text-gray-200 mt-4 font-inter">
+            Contact us anytime for bookings, inquiries, or premium chauffeur
+            support.
           </p>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="section-spacing bg-white">
+      {/* ============================ */}
+      {/*      CONTACT CARDS           */}
+      {/* ============================ */}
+      <section className="py-20 bg-white">
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {/* Contact Info Cards */}
             {[
               {
                 icon: Phone,
                 title: "Phone",
-                content: "+1 (234) 567-890",
-                action: "tel:+1234567890",
+                content: "+44 207 078 8993",
+                action: "tel:+442070788993",
               },
               {
                 icon: Mail,
                 title: "Email",
-                content: "hello@xchauffur.com",
-                action: "mailto:hello@xchauffur.com",
+                content: "support@xchauffur.com",
+                action: "mailto:support@xchauffur.com",
               },
               {
                 icon: MapPin,
                 title: "Address",
-                content: "123 Luxury Lane, Premium City, PC 12345",
+                content: "London, United Kingdom",
                 action: "#",
               },
-            ].map((info) => {
+            ].map((info, idx) => {
               const Icon = info.icon;
               return (
                 <a
-                  key={info.title}
+                  key={idx}
                   href={info.action}
-                  className="bg-muted rounded-2xl p-8 hover:shadow-luxury transition-all text-center group"
+                  className="
+                    group bg-dark text-white rounded-2xl p-8 
+                    hover:bg-black transition-all shadow-xl
+                  "
                 >
-                  <div className="w-16 h-16 bg-gold bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gold group-hover:bg-opacity-30 transition-colors">
+                  <div className="w-16 h-16 bg-white/10 group-hover:bg-gold/30 transition rounded-xl flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-gold" />
                   </div>
-                  <h3 className="font-montserrat font-bold text-dark text-lg mb-2">
+                  <h3 className="text-xl font-montserrat font-bold text-white mb-1 text-center">
                     {info.title}
                   </h3>
-                  <p className="font-inter text-gray-600">{info.content}</p>
+                  <p className="text-gray-300 font-inter text-center">
+                    {info.content}
+                  </p>
                 </a>
               );
             })}
           </div>
 
-          {/* Contact Form */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Form */}
+          {/* ============================ */}
+          {/* CONTACT FORM + SIDE PANEL   */}
+          {/* ============================ */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* FORM */}
             <div>
               <h2 className="text-3xl font-montserrat font-bold text-dark mb-8">
                 Send us a Message
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Full Name */}
                 <div>
-                  <label className="block font-inter text-dark font-semibold mb-2">
+                  <label className="font-inter font-semibold text-dark mb-1 block">
                     Full Name
                   </label>
                   <input
@@ -105,50 +116,58 @@ export default function ContactPage() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-border rounded-lg font-inter focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold focus:ring-opacity-20"
                     required
+                    className="
+                      w-full px-4 py-3 border border-gray-300 rounded-lg 
+                      focus:outline-none focus:ring-2 focus:ring-gold/40
+                    "
                   />
                 </div>
 
+                {/* Email + Phone */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block font-inter text-dark font-semibold mb-2">
+                    <label className="font-inter font-semibold mb-1 block">
                       Email
                     </label>
                     <input
                       type="email"
                       name="email"
+                      required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-border rounded-lg font-inter focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold focus:ring-opacity-20"
-                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold/40"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-inter text-dark font-semibold mb-2">
+                    <label className="font-inter font-semibold mb-1 block">
                       Phone
                     </label>
                     <input
-                      type="tel"
+                      type="text"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-border rounded-lg font-inter focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold focus:ring-opacity-20"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold/40"
                     />
                   </div>
                 </div>
 
+                {/* Subject */}
                 <div>
-                  <label className="block font-inter text-dark font-semibold mb-2">
+                  <label className="font-inter font-semibold mb-1 block">
                     Subject
                   </label>
                   <select
                     name="subject"
+                    required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-border rounded-lg font-inter focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold focus:ring-opacity-20"
-                    required
+                    className="
+                      w-full px-4 py-3 border border-gray-300 rounded-lg 
+                      focus:ring-2 focus:ring-gold/40
+                    "
                   >
                     <option value="">Select a subject</option>
                     <option value="booking">Booking Inquiry</option>
@@ -158,28 +177,32 @@ export default function ContactPage() {
                   </select>
                 </div>
 
+                {/* Message */}
                 <div>
-                  <label className="block font-inter text-dark font-semibold mb-2">
+                  <label className="font-inter font-semibold mb-1 block">
                     Message
                   </label>
                   <textarea
                     name="message"
+                    rows={5}
+                    required
                     value={formData.message}
                     onChange={handleChange}
-                    rows={5}
-                    className="w-full px-4 py-3 border border-border rounded-lg font-inter focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold focus:ring-opacity-20 resize-none"
-                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold/40 resize-none"
                   ></textarea>
                 </div>
 
-                <button type="submit" className="w-full luxury-button-gold">
+                <button
+                  type="submit"
+                  className="luxury-button-gold w-full text-lg py-4"
+                >
                   Send Message
                 </button>
               </form>
             </div>
 
-            {/* Alternative Contact Methods */}
-            <div className="space-y-8">
+            {/* RIGHT SIDE CONTACT OPTIONS */}
+            <div className="space-y-10">
               <div>
                 <h3 className="text-2xl font-montserrat font-bold text-dark mb-6">
                   Other Ways to Reach Us
@@ -190,67 +213,67 @@ export default function ContactPage() {
                 {
                   icon: MessageSquare,
                   title: "WhatsApp",
-                  description: "Chat with us directly",
-                  action: "https://wa.me/1234567890",
+                  description: "Chat with our support team",
+                  action: "https://wa.me/442070788993",
                 },
                 {
                   icon: Phone,
                   title: "Call Support",
-                  description: "24/7 customer support available",
-                  action: "tel:+1234567890",
+                  description: "24/7 chauffeur assistance",
+                  action: "tel:+442070788993",
                 },
-              ].map((method) => {
-                const Icon = method.icon;
+              ].map((item, idx) => {
+                const Icon = item.icon;
                 return (
                   <a
-                    key={method.title}
-                    href={method.action}
-                    className="bg-muted rounded-2xl p-8 hover:shadow-luxury transition-all group"
+                    key={idx}
+                    href={item.action}
+                    className="
+                      flex bg-dark rounded-2xl p-6 gap-5 items-center 
+                      hover:bg-black transition-all shadow-lg
+                    "
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 bg-gold bg-opacity-20 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-gold group-hover:bg-opacity-30 transition-colors">
-                        <Icon className="w-7 h-7 text-gold" />
-                      </div>
-                      <div>
-                        <h4 className="font-montserrat font-bold text-dark mb-1">
-                          {method.title}
-                        </h4>
-                        <p className="font-inter text-sm text-gray-600">
-                          {method.description}
-                        </p>
-                      </div>
+                    <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center">
+                      <Icon className="w-7 h-7 text-gold" />
+                    </div>
+
+                    <div>
+                      <h4 className="text-white text-lg font-montserrat font-bold">
+                        {item.title}
+                      </h4>
+                      <p className="text-gray-300 text-sm font-inter">
+                        {item.description}
+                      </p>
                     </div>
                   </a>
                 );
               })}
 
-              <div className="bg-gold bg-opacity-10 rounded-2xl p-8">
-                <h4 className="font-montserrat font-bold text-dark mb-4">
+              <div className="bg-gold/10 rounded-2xl p-8">
+                <h4 className="font-montserrat text-dark font-bold text-xl mb-4">
                   Business Hours
                 </h4>
-                <div className="space-y-2 font-inter text-gray-600">
-                  <p>Monday - Friday: 7:00 AM - 11:00 PM</p>
-                  <p>Saturday - Sunday: 8:00 AM - 10:00 PM</p>
-                  <p className="pt-4 text-gold font-semibold">
+                <p className="font-inter text-gray-700 leading-relaxed">
+                  Monday – Friday: 7:00 AM – 11:00 PM <br />
+                  Saturday – Sunday: 8:00 AM – 10:00 PM <br />
+                  <span className="text-gold font-bold block mt-3">
                     24/7 Emergency Support Available
-                  </p>
-                </div>
+                  </span>
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="h-96 bg-muted">
+      {/* MAP */}
+      <section className="h-96 bg-muted overflow-hidden rounded-t-3xl shadow-inner">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.1040658581304!2d-74.00601692346193!3d40.71282033490849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3855555%3A0xe81e5de2a8124ed6!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1234567890"
+          src="https://www.google.com/maps/embed?pb=!1m18..."
           width="100%"
           height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
           loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
+          className="w-full h-full"
         ></iframe>
       </section>
     </div>

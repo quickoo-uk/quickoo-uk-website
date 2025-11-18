@@ -3,215 +3,242 @@ import { Check } from "lucide-react";
 export default function PricingPage() {
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] bg-gradient-to-br from-white via-white to-muted flex items-center">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gold bg-opacity-5 rounded-full blur-3xl -mr-48 -mt-48"></div>
-        </div>
+      {/* ===================================== */}
+      {/* HERO SECTION */}
+      {/* ===================================== */}
+      <section className="relative h-[55vh] flex items-center justify-center overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1597003536775-d335d5a70e21?auto=format&fit=crop&w=2000&q=80"
+          className="absolute w-full h-full object-cover filter grayscale brightness-[0.55]"
+          alt="Luxury Chauffeur Car"
+        />
 
-        <div className="section-container relative z-10 w-full">
-          <h1 className="text-5xl md:text-6xl font-montserrat font-bold text-dark mb-6">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+        <div className="relative z-10 section-container text-center">
+          <h1 className="text-5xl md:text-6xl font-montserrat font-bold text-white mb-4">
             Transparent Pricing
           </h1>
-          <p className="text-xl font-inter text-gray-600 max-w-2xl">
+          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-inter">
             No hidden fees. Know exactly what you'll pay before you book.
           </p>
         </div>
       </section>
 
-      {/* Pricing Tables */}
-      <section className="section-spacing bg-white">
-        <div className="section-container">
-          <div className="space-y-16">
-            {/* Hourly Rates */}
-            <div>
-              <h2 className="text-3xl font-montserrat font-bold text-dark mb-8">
-                Hourly Rates
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  {
-                    vehicle: "Economy Class",
-                    rate: "$45",
-                    features: ["Sedan", "4 Passengers", "Standard Amenities"],
-                  },
-                  {
-                    vehicle: "Premium Class",
-                    rate: "$75",
-                    features: [
-                      "Luxury Sedan",
-                      "4 Passengers",
-                      "Premium Features",
-                    ],
-                  },
-                  {
-                    vehicle: "Elite Class",
-                    rate: "$110",
-                    features: ["S-Class/BMW", "4 Passengers", "Full Amenities"],
-                  },
-                  {
-                    vehicle: "Van Service",
-                    rate: "$95",
-                    features: ["7 Passengers", "Extra Luggage", "Group Travel"],
-                  },
-                  {
-                    vehicle: "Executive Class",
-                    rate: "$150",
-                    features: [
-                      "Range Rover",
-                      "4 Passengers",
-                      "White Glove Service",
-                    ],
-                  },
-                  {
-                    vehicle: "Group Transport",
-                    rate: "$120",
-                    features: [
-                      "Minibus",
-                      "12+ Passengers",
-                      "Professional Driver",
-                    ],
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.vehicle}
-                    className="bg-muted rounded-2xl p-8 border border-border hover:border-gold transition-colors"
-                  >
-                    <h3 className="font-montserrat font-bold text-dark mb-4">
-                      {item.vehicle}
-                    </h3>
-                    <p className="text-4xl font-montserrat font-bold text-gold mb-6">
-                      {item.rate}
-                      <span className="text-lg text-gray-600">/hr</span>
-                    </p>
-                    <ul className="space-y-2">
-                      {item.features.map((feature) => (
-                        <li
-                          key={feature}
-                          className="flex items-center gap-2 font-inter text-sm text-gray-600"
-                        >
-                          <Check className="w-4 h-4 text-gold" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
+      {/* ===================================== */}
+      {/* PRICING SECTIONS */}
+      {/* ===================================== */}
+      <section className="py-24 bg-white">
+        <div className="section-container space-y-24">
+          {/* HOURLY RATES */}
+          <div>
+            <h2 className="text-4xl font-montserrat font-bold text-dark mb-10">
+              Hourly Rates
+            </h2>
 
-            {/* Airport Transfers */}
-            <div>
-              <h2 className="text-3xl font-montserrat font-bold text-dark mb-8">
-                Airport Transfers
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
-                  { route: "City Airport", sedan: "$65", van: "$95" },
-                  { route: "International Hub", sedan: "$85", van: "$125" },
-                  { route: "Regional Airport", sedan: "$45", van: "$65" },
-                ].map((item) => (
-                  <div
-                    key={item.route}
-                    className="bg-white border border-border rounded-2xl p-8 hover:shadow-luxury transition-all"
-                  >
-                    <h3 className="font-montserrat font-bold text-dark mb-6">
-                      {item.route}
-                    </h3>
-                    <div className="space-y-4">
-                      <div className="flex justify-between items-center pb-4 border-b border-border">
-                        <span className="font-inter text-gray-600">Sedan</span>
-                        <span className="font-montserrat font-bold text-gold">
-                          {item.sedan}
-                        </span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="font-inter text-gray-600">Van</span>
-                        <span className="font-montserrat font-bold text-gold">
-                          {item.van}
-                        </span>
-                      </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  vehicle: "Economy Class",
+                  rate: "$45",
+                  features: ["Sedan", "4 Passengers", "Standard Amenities"],
+                },
+                {
+                  vehicle: "Premium Class",
+                  rate: "$75",
+                  features: [
+                    "Luxury Sedan",
+                    "4 Passengers",
+                    "Premium Features",
+                  ],
+                },
+                {
+                  vehicle: "Elite Class",
+                  rate: "$110",
+                  features: [
+                    "S-Class / BMW 7",
+                    "4 Passengers",
+                    "Full Amenities",
+                  ],
+                },
+                {
+                  vehicle: "Van Service",
+                  rate: "$95",
+                  features: ["7 Passengers", "Large Luggage", "Group Travel"],
+                },
+                {
+                  vehicle: "Executive Class",
+                  rate: "$150",
+                  features: [
+                    "Range Rover",
+                    "4 Passengers",
+                    "White Glove Service",
+                  ],
+                },
+                {
+                  vehicle: "Group Transport",
+                  rate: "$120",
+                  features: [
+                    "Minibus",
+                    "12+ Passengers",
+                    "Professional Driver",
+                  ],
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="
+                    bg-white rounded-2xl border shadow-[0_8px_30px_rgba(0,0,0,0.05)]
+                    hover:shadow-[0_15px_60px_rgba(212,168,83,0.28)]
+                    p-8 transition-all duration-300 hover:border-gold
+                  "
+                >
+                  <h3 className="font-montserrat font-bold text-dark text-xl mb-4">
+                    {item.vehicle}
+                  </h3>
+
+                  <p className="text-4xl font-montserrat font-bold text-gold mb-6">
+                    {item.rate}
+                    <span className="text-base text-gray-600 font-inter">
+                      /hr
+                    </span>
+                  </p>
+
+                  <ul className="space-y-2">
+                    {item.features.map((f, index) => (
+                      <li
+                        key={index}
+                        className="flex items-center gap-2 text-gray-600 font-inter"
+                      >
+                        <Check className="text-gold w-4 h-4" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* AIRPORT TRANSFERS */}
+          <div>
+            <h2 className="text-4xl font-montserrat font-bold text-dark mb-10">
+              Airport Transfers
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[
+                { route: "City Airport", sedan: "$65", van: "$95" },
+                { route: "International Hub", sedan: "$85", van: "$125" },
+                { route: "Regional Airport", sedan: "$45", van: "$65" },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="
+                    bg-white p-8 rounded-2xl border shadow-sm
+                    hover:shadow-[0_10px_40px_rgba(212,168,83,0.25)]
+                    hover:border-gold transition-all duration-300
+                  "
+                >
+                  <h3 className="font-montserrat font-bold text-dark text-xl mb-6">
+                    {item.route}
+                  </h3>
+
+                  <div className="space-y-4">
+                    <div className="flex justify-between pb-4 border-b">
+                      <span className="text-gray-600 font-inter">Sedan</span>
+                      <span className="text-gold font-montserrat font-bold">
+                        {item.sedan}
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 font-inter">Van</span>
+                      <span className="text-gold font-montserrat font-bold">
+                        {item.van}
+                      </span>
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
+          </div>
 
-            {/* City-to-City */}
-            <div>
-              <h2 className="text-3xl font-montserrat font-bold text-dark mb-8">
-                City-to-City Pricing
-              </h2>
-              <div className="bg-muted rounded-2xl overflow-hidden">
-                <table className="w-full">
-                  <thead>
-                    <tr className="bg-dark text-white">
-                      <th className="px-6 py-4 text-left font-montserrat font-bold">
-                        Route
-                      </th>
-                      <th className="px-6 py-4 text-left font-montserrat font-bold">
-                        Distance
-                      </th>
-                      <th className="px-6 py-4 text-left font-montserrat font-bold">
-                        Price
-                      </th>
-                      <th className="px-6 py-4 text-left font-montserrat font-bold">
-                        Duration
-                      </th>
+          {/* CITY TO CITY */}
+          <div>
+            <h2 className="text-4xl font-montserrat font-bold text-dark mb-10">
+              City-to-City Pricing
+            </h2>
+
+            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.05)]">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-dark text-white">
+                    {["Route", "Distance", "Price", "Duration"].map(
+                      (h, idx) => (
+                        <th
+                          key={idx}
+                          className="px-6 py-5 text-left font-montserrat text-lg"
+                        >
+                          {h}
+                        </th>
+                      ),
+                    )}
+                  </tr>
+                </thead>
+
+                <tbody className="divide-y divide-border bg-white">
+                  {[
+                    {
+                      route: "City Center → Downtown",
+                      distance: "25 km",
+                      price: "$85",
+                      duration: "45 min",
+                    },
+                    {
+                      route: "City → Neighboring City",
+                      distance: "80 km",
+                      price: "$180",
+                      duration: "1.5 hrs",
+                    },
+                    {
+                      route: "Regional Hub",
+                      distance: "150 km",
+                      price: "$350",
+                      duration: "2.5 hrs",
+                    },
+                  ].map((item, idx) => (
+                    <tr key={idx} className="hover:bg-muted/40 transition-all">
+                      <td className="px-6 py-5 font-inter text-dark">
+                        {item.route}
+                      </td>
+                      <td className="px-6 py-5 font-inter text-gray-600">
+                        {item.distance}
+                      </td>
+                      <td className="px-6 py-5 text-gold font-montserrat font-bold">
+                        {item.price}
+                      </td>
+                      <td className="px-6 py-5 font-inter text-gray-600">
+                        {item.duration}
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border">
-                    {[
-                      {
-                        route: "City Center to Downtown",
-                        distance: "25 km",
-                        price: "$85",
-                        duration: "45 min",
-                      },
-                      {
-                        route: "City to Neighboring City",
-                        distance: "80 km",
-                        price: "$180",
-                        duration: "1.5 hrs",
-                      },
-                      {
-                        route: "Regional Hub",
-                        distance: "150 km",
-                        price: "$350",
-                        duration: "2.5 hrs",
-                      },
-                    ].map((item) => (
-                      <tr key={item.route} className="bg-white">
-                        <td className="px-6 py-4 font-inter text-dark">
-                          {item.route}
-                        </td>
-                        <td className="px-6 py-4 font-inter text-gray-600">
-                          {item.distance}
-                        </td>
-                        <td className="px-6 py-4 font-montserrat font-bold text-gold">
-                          {item.price}
-                        </td>
-                        <td className="px-6 py-4 font-inter text-gray-600">
-                          {item.duration}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
 
           {/* CTA */}
-          <div className="mt-16 bg-gold bg-opacity-10 rounded-2xl p-12 text-center">
+          <div className="bg-gold/10 rounded-2xl p-12 text-center shadow-md border border-gold/20">
             <h3 className="text-3xl font-montserrat font-bold text-dark mb-4">
               Need a Custom Quote?
             </h3>
-            <p className="font-inter text-gray-600 mb-8">
-              Have special requirements or need a custom package? Contact our
-              team.
+            <p className="text-gray-600 font-inter mb-8">
+              Have special requirements? Our team can create a tailored pricing
+              plan.
             </p>
-            <button className="luxury-button-gold">Request Custom Quote</button>
+            <button className="luxury-button-gold text-lg px-10 py-4">
+              Request Custom Quote
+            </button>
           </div>
         </div>
       </section>

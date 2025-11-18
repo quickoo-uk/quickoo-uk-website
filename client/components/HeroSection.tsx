@@ -1,68 +1,64 @@
+import { useEffect, useState } from "react";
+
 export const HeroSection = () => {
+  // Add as many background images as you want
+  const images = [
+    "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1920&q=80",
+    "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1920&q=80",
+    "https://images.unsplash.com/photo-1529429617124-95b109e86bb8?auto=format&fit=crop&w=1920&q=80",
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 5000); // 5 second fade cycle
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative min-h-[90vh] bg-dark flex items-center overflow-hidden">
-      {/* Background Image with Dark Overlay */}
+    <section className="relative h-[95vh] w-full overflow-hidden flex items-center">
+      {/* Background Slider */}
       <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&h=900&fit=crop"
-          alt="Luxury Car"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        {images.map((img, i) => (
+          <div
+            key={i}
+            className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out
+              ${i === index ? "opacity-100" : "opacity-0"}
+            `}
+          >
+            <img
+              src={img}
+              alt="Luxury Chauffeur"
+              className="w-full h-full object-cover filter grayscale contrast-110"
+            />
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+          </div>
+        ))}
       </div>
 
-      <div className="section-container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-7xl font-montserrat font-bold text-white leading-tight">
-                Premium Chauffeur Services,
-                <span className="text-gold"> Reinvented.</span>
-              </h1>
-              <p className="text-lg md:text-xl font-inter text-gray-300">
-                Experience comfort, safety, and luxury with XChauffur. Your
-                journey, perfected.
-              </p>
-            </div>
+      {/* Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <div className="w-full md:w-[60%] space-y-6">
+          <h1 className="text-white font-montserrat font-bold text-4xl md:text-6xl leading-tight">
+            PRIVATE CHAUFFEUR HIRE
+            <br /> SERVICES LONDON
+          </h1>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-3 bg-gold text-dark font-montserrat font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-300 hover:shadow-luxury">
-                Book Now
-              </button>
-              <button className="px-8 py-3 border-2 border-white text-white font-montserrat font-semibold rounded-lg hover:bg-white hover:text-dark transition-all duration-300">
-                Get Instant Quote
-              </button>
-            </div>
+          <p className="text-gray-300 text-lg md:text-xl font-inter leading-relaxed">
+            London's premier chauffeur hire service, delivering you to your
+            destination with elegance and style. Our private transfer services
+            offer the best prices in town without compromising on quality or
+            convenience.
+          </p>
 
-            <div className="grid grid-cols-3 gap-6 pt-8">
-              <div>
-                <p className="text-3xl font-montserrat font-bold text-white">
-                  500+
-                </p>
-                <p className="text-sm font-inter text-gray-400">
-                  Happy Clients
-                </p>
-              </div>
-              <div>
-                <p className="text-3xl font-montserrat font-bold text-white">
-                  24/7
-                </p>
-                <p className="text-sm font-inter text-gray-400">
-                  Available Service
-                </p>
-              </div>
-              <div>
-                <p className="text-3xl font-montserrat font-bold text-white">
-                  15+
-                </p>
-                <p className="text-sm font-inter text-gray-400">
-                  Premium Vehicles
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="hidden md:block"></div>
+          {/* CTA Button (same style as screenshot) */}
+          <button className="rectangle-button-white flex items-center gap-2 w-fit">
+            Book Now
+            <span className="text-xl">↗</span>
+          </button>
         </div>
       </div>
     </section>

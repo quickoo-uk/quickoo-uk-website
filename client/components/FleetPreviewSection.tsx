@@ -1,32 +1,28 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Users, Luggage } from "lucide-react";
 
 const FLEET_VEHICLES = [
   {
     name: "Mercedes S-Class",
-    image:
-      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=400&fit=crop",
+    image: "/fleet/Mercedes-S-Class.png",
     passengers: "4",
     luggage: "3",
   },
   {
     name: "BMW i7",
-    image:
-      "https://images.unsplash.com/photo-1533473359331-35acde7260c9?w=600&h=400&fit=crop",
+    image: "/fleet/BMW-i7.png",
     passengers: "4",
     luggage: "3",
   },
   {
     name: "Range Rover",
-    image:
-      "https://images.unsplash.com/photo-1552819254-0fcb922c2c63?w=600&h=400&fit=crop",
+    image: "/fleet/Range-Rover.png",
     passengers: "6",
     luggage: "5",
   },
   {
     name: "Mercedes V-Class",
-    image:
-      "https://images.unsplash.com/photo-1490618645426-1f5c0ec7b649?w=600&h=400&fit=crop",
+    image: "/fleet/Mercedes-V-Class.png",
     passengers: "7",
     luggage: "8",
   },
@@ -34,63 +30,117 @@ const FLEET_VEHICLES = [
 
 export const FleetPreviewSection = () => {
   return (
-    <section className="section-spacing bg-muted">
+    <section className="section-spacing bg-gradient-to-b from-background via-background to-muted">
       <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark mb-4">
-            Our Premium Fleet
+        {/* HEADER */}
+        <div className="text-center mb-20">
+          <span className="inline-block px-4 py-2 bg-gold/10 text-gold rounded-full text-sm font-semibold mb-4">
+            OUR FLEET
+          </span>
+
+          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark mb-6">
+            Premium Vehicles for Every Journey
           </h2>
-          <p className="text-lg font-inter text-gray-600 max-w-2xl mx-auto">
-            Curated selection of luxury vehicles for every occasion.
+
+          <p className="text-lg font-inter text-gray-600 max-w-3xl mx-auto">
+            Experience unmatched elegance, comfort, and safety with our premium
+            selection of chauffeur-driven luxury vehicles.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {/* FLEET GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {FLEET_VEHICLES.map((vehicle) => (
             <Link
               key={vehicle.name}
               to={`/fleet/${vehicle.name.toLowerCase().replace(/ /g, "-")}`}
-              className="group bg-white rounded-2xl overflow-hidden shadow-luxury hover:shadow-luxury-lg transition-all duration-300"
+              className="
+                group bg-white rounded-2xl overflow-hidden 
+                shadow-[0_10px_40px_rgba(0,0,0,0.08)]
+                hover:shadow-[0_18px_50px_rgba(212,168,83,0.35)]
+                transition-all duration-500 border border-transparent
+                hover:border-gold
+              "
             >
-              <div className="relative h-56 overflow-hidden bg-gray-200">
+              {/* IMAGE */}
+              <div className="relative h-56 overflow-hidden">
                 <img
                   src={vehicle.image}
                   alt={vehicle.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="
+                    w-full h-full object-cover 
+                    group-hover:scale-110
+                    transition-transform duration-700
+                  "
+                />
+
+                {/* GOLD GRADIENT OVERLAY */}
+                <div
+                  className="
+                    absolute inset-0 bg-gradient-to-t 
+                    from-black/70 via-black/20 to-transparent 
+                    opacity-50 group-hover:opacity-80 
+                    transition-opacity duration-500
+                  "
                 />
               </div>
+
+              {/* BODY */}
               <div className="p-6">
-                <h3 className="text-xl font-montserrat font-bold text-dark mb-3 group-hover:text-gold transition-colors">
+                <h3 className="text-xl font-montserrat font-bold text-dark mb-4 group-hover:text-gold transition-colors">
                   {vehicle.name}
                 </h3>
-                <div className="flex gap-6 mb-4">
-                  <div>
-                    <p className="text-sm font-inter text-gray-600">
-                      Passengers
-                    </p>
-                    <p className="text-lg font-montserrat font-bold text-dark">
-                      {vehicle.passengers}
-                    </p>
+
+                {/* SPECS */}
+                <div className="flex gap-6 mb-6 pb-6 border-b border-border">
+                  <div className="flex items-center gap-2">
+                    <Users className="w-4 h-4 text-gold" />
+                    <div>
+                      <p className="text-xs font-inter text-gray-600">
+                        Passengers
+                      </p>
+                      <p className="font-montserrat font-bold text-dark">
+                        {vehicle.passengers}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-inter text-gray-600">Luggage</p>
-                    <p className="text-lg font-montserrat font-bold text-dark">
-                      {vehicle.luggage}
-                    </p>
+
+                  <div className="flex items-center gap-2">
+                    <Luggage className="w-4 h-4 text-gold" />
+                    <div>
+                      <p className="text-xs font-inter text-gray-600">
+                        Luggage
+                      </p>
+                      <p className="font-montserrat font-bold text-dark">
+                        {vehicle.luggage}
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center text-gold font-semibold font-montserrat">
-                  Learn More{" "}
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+
+                {/* LEARN MORE */}
+                <div className="flex items-center text-gold font-semibold font-montserrat group-hover:text-dark transition-colors">
+                  Learn More
+                  <ArrowRight
+                    className="
+                      w-4 h-4 ml-2 
+                      group-hover:translate-x-1 
+                      transition-transform
+                    "
+                  />
                 </div>
               </div>
             </Link>
           ))}
         </div>
 
+        {/* CTA */}
         <div className="text-center">
-          <Link to="/fleet/all" className="luxury-button-outline">
-            View Full Fleet
+          <Link
+            to="/fleet/all"
+            className="luxury-button-gold inline-block text-lg"
+          >
+            Explore Full Fleet
           </Link>
         </div>
       </div>
