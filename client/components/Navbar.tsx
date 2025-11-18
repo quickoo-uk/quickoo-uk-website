@@ -86,7 +86,7 @@ export const Navbar = () => {
                 Services
                 <ChevronDown className="w-4 h-4" />
               </button>
-              <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-luxury-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute left-0 mt-0 w-56 bg-white rounded-lg shadow-luxury-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 {SERVICES.map((service) => (
                   <Link
                     key={service}
