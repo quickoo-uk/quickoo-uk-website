@@ -107,11 +107,14 @@ export const Navbar = () => {
 
             {/* Fleet Dropdown */}
             <div className="relative group">
-              <button className="px-3 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors flex items-center gap-1 whitespace-nowrap">
+              <button className={cn(
+                "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors flex items-center gap-1 whitespace-nowrap",
+                isScrolled ? "text-dark" : "text-white"
+              )}>
                 Fleet
                 <ChevronDown className="w-4 h-4" />
               </button>
-              <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-luxury-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-luxury-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 {FLEET.map((vehicle) => (
                   <Link
                     key={vehicle}
