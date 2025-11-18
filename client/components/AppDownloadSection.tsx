@@ -11,7 +11,8 @@ export const AppDownloadSection = () => {
             </h2>
 
             <p className="text-lg font-inter text-gray-600 leading-relaxed">
-              Download the XChauffur app for seamless booking, real-time tracking, and exclusive app-only offers.
+              Download the XChauffur app for seamless booking, real-time
+              tracking, and exclusive app-only offers.
             </p>
 
             <div className="space-y-4">
@@ -39,18 +40,14 @@ export const AppDownloadSection = () => {
             </div>
 
             <div className="space-y-3 text-sm font-inter text-gray-600">
-              <p className="flex items-center gap-2">
-                ✓ Real-time tracking
-              </p>
+              <p className="flex items-center gap-2">✓ Real-time tracking</p>
               <p className="flex items-center gap-2">
                 ✓ Schedule rides in advance
               </p>
               <p className="flex items-center gap-2">
                 ✓ Multiple payment methods
               </p>
-              <p className="flex items-center gap-2">
-                ✓ Instant support
-              </p>
+              <p className="flex items-center gap-2">✓ Instant support</p>
             </div>
           </div>
 

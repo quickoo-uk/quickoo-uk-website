@@ -21,29 +21,50 @@ export const AboutSection = () => {
             </h2>
 
             <p className="text-lg font-inter text-gray-600 leading-relaxed">
-              Founded in 2015, XChauffur has redefined premium chauffeur services for the discerning traveler. With a commitment to excellence and attention to detail, we've served thousands of clients across major cities.
+              Founded in 2015, XChauffur has redefined premium chauffeur
+              services for the discerning traveler. With a commitment to
+              excellence and attention to detail, we've served thousands of
+              clients across major cities.
             </p>
 
             <p className="text-lg font-inter text-gray-600 leading-relaxed">
-              Our mission is simple: provide unparalleled comfort, safety, and professionalism. Every journey with XChauffur is an experience—a perfect blend of luxury, technology, and human touch.
+              Our mission is simple: provide unparalleled comfort, safety, and
+              professionalism. Every journey with XChauffur is an experience—a
+              perfect blend of luxury, technology, and human touch.
             </p>
 
             <div className="grid grid-cols-2 gap-8 py-4">
               <div>
-                <p className="text-4xl font-montserrat font-bold text-dark">500+</p>
-                <p className="text-sm font-inter text-gray-600 mt-1">Vehicles in Fleet</p>
+                <p className="text-4xl font-montserrat font-bold text-dark">
+                  500+
+                </p>
+                <p className="text-sm font-inter text-gray-600 mt-1">
+                  Vehicles in Fleet
+                </p>
               </div>
               <div>
-                <p className="text-4xl font-montserrat font-bold text-dark">50K+</p>
-                <p className="text-sm font-inter text-gray-600 mt-1">Happy Customers</p>
+                <p className="text-4xl font-montserrat font-bold text-dark">
+                  50K+
+                </p>
+                <p className="text-sm font-inter text-gray-600 mt-1">
+                  Happy Customers
+                </p>
               </div>
               <div>
-                <p className="text-4xl font-montserrat font-bold text-dark">24/7</p>
-                <p className="text-sm font-inter text-gray-600 mt-1">Availability</p>
+                <p className="text-4xl font-montserrat font-bold text-dark">
+                  24/7
+                </p>
+                <p className="text-sm font-inter text-gray-600 mt-1">
+                  Availability
+                </p>
               </div>
               <div>
-                <p className="text-4xl font-montserrat font-bold text-dark">15+</p>
-                <p className="text-sm font-inter text-gray-600 mt-1">Years of Excellence</p>
+                <p className="text-4xl font-montserrat font-bold text-dark">
+                  15+
+                </p>
+                <p className="text-sm font-inter text-gray-600 mt-1">
+                  Years of Excellence
+                </p>
               </div>
             </div>
 

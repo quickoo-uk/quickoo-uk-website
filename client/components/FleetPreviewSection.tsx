@@ -4,25 +4,29 @@ import { ArrowRight } from "lucide-react";
 const FLEET_VEHICLES = [
   {
     name: "Mercedes S-Class",
-    image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=400&fit=crop",
     passengers: "4",
     luggage: "3",
   },
   {
     name: "BMW i7",
-    image: "https://images.unsplash.com/photo-1533473359331-35acde7260c9?w=600&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1533473359331-35acde7260c9?w=600&h=400&fit=crop",
     passengers: "4",
     luggage: "3",
   },
   {
     name: "Range Rover",
-    image: "https://images.unsplash.com/photo-1552819254-0fcb922c2c63?w=600&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1552819254-0fcb922c2c63?w=600&h=400&fit=crop",
     passengers: "6",
     luggage: "5",
   },
   {
     name: "Mercedes V-Class",
-    image: "https://images.unsplash.com/photo-1490618645426-1f5c0ec7b649?w=600&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1490618645426-1f5c0ec7b649?w=600&h=400&fit=crop",
     passengers: "7",
     luggage: "8",
   },
@@ -61,7 +65,9 @@ export const FleetPreviewSection = () => {
                 </h3>
                 <div className="flex gap-6 mb-4">
                   <div>
-                    <p className="text-sm font-inter text-gray-600">Passengers</p>
+                    <p className="text-sm font-inter text-gray-600">
+                      Passengers
+                    </p>
                     <p className="text-lg font-montserrat font-bold text-dark">
                       {vehicle.passengers}
                     </p>
@@ -74,7 +80,8 @@ export const FleetPreviewSection = () => {
                   </div>
                 </div>
                 <div className="flex items-center text-gold font-semibold font-montserrat">
-                  Learn More <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  Learn More{" "}
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </Link>

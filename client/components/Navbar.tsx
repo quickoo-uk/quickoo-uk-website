@@ -52,21 +52,31 @@ export const Navbar = () => {
     <nav
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-white shadow-luxury"
-          : "bg-transparent"
+        isScrolled ? "bg-white shadow-luxury" : "bg-transparent",
       )}
     >
       <div className="section-container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center gap-2">
-            <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center transition-colors", isScrolled ? "bg-dark" : "bg-white bg-opacity-20 backdrop-blur-sm")}>
+            <div
+              className={cn(
+                "w-10 h-10 rounded-lg flex items-center justify-center transition-colors",
+                isScrolled
+                  ? "bg-dark"
+                  : "bg-white bg-opacity-20 backdrop-blur-sm",
+              )}
+            >
               <span className="text-gold font-montserrat font-bold text-sm">
                 XC
               </span>
             </div>
-            <span className={cn("text-xl font-montserrat font-bold hidden sm:inline transition-colors", isScrolled ? "text-dark" : "text-white")}>
+            <span
+              className={cn(
+                "text-xl font-montserrat font-bold hidden sm:inline transition-colors",
+                isScrolled ? "text-dark" : "text-white",
+              )}
+            >
               XChauffur
             </span>
           </Link>
@@ -77,7 +87,7 @@ export const Navbar = () => {
               to="/"
               className={cn(
                 "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors whitespace-nowrap",
-                isScrolled ? "text-dark" : "text-white"
+                isScrolled ? "text-dark" : "text-white",
               )}
             >
               Home
@@ -85,10 +95,12 @@ export const Navbar = () => {
 
             {/* Services Dropdown */}
             <div className="relative group">
-              <button className={cn(
-                "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors flex items-center gap-1 whitespace-nowrap",
-                isScrolled ? "text-dark" : "text-white"
-              )}>
+              <button
+                className={cn(
+                  "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors flex items-center gap-1 whitespace-nowrap",
+                  isScrolled ? "text-dark" : "text-white",
+                )}
+              >
                 Services
                 <ChevronDown className="w-4 h-4" />
               </button>
@@ -107,10 +119,12 @@ export const Navbar = () => {
 
             {/* Fleet Dropdown */}
             <div className="relative group">
-              <button className={cn(
-                "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors flex items-center gap-1 whitespace-nowrap",
-                isScrolled ? "text-dark" : "text-white"
-              )}>
+              <button
+                className={cn(
+                  "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors flex items-center gap-1 whitespace-nowrap",
+                  isScrolled ? "text-dark" : "text-white",
+                )}
+              >
                 Fleet
                 <ChevronDown className="w-4 h-4" />
               </button>
@@ -131,7 +145,7 @@ export const Navbar = () => {
               to="/pricing"
               className={cn(
                 "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors whitespace-nowrap",
-                isScrolled ? "text-dark" : "text-white"
+                isScrolled ? "text-dark" : "text-white",
               )}
             >
               Pricing
@@ -141,7 +155,7 @@ export const Navbar = () => {
               to="/about"
               className={cn(
                 "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors whitespace-nowrap",
-                isScrolled ? "text-dark" : "text-white"
+                isScrolled ? "text-dark" : "text-white",
               )}
             >
               About Us
@@ -151,7 +165,7 @@ export const Navbar = () => {
               to="/contact"
               className={cn(
                 "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors whitespace-nowrap",
-                isScrolled ? "text-dark" : "text-white"
+                isScrolled ? "text-dark" : "text-white",
               )}
             >
               Contact
@@ -197,7 +211,7 @@ export const Navbar = () => {
                 <ChevronDown
                   className={cn(
                     "w-4 h-4 transition-transform",
-                    mobileServicesOpen ? "rotate-180" : ""
+                    mobileServicesOpen ? "rotate-180" : "",
                   )}
                 />
               </button>
@@ -227,7 +241,7 @@ export const Navbar = () => {
                 <ChevronDown
                   className={cn(
                     "w-4 h-4 transition-transform",
-                    mobileFleetOpen ? "rotate-180" : ""
+                    mobileFleetOpen ? "rotate-180" : "",
                   )}
                 />
               </button>
@@ -271,9 +285,7 @@ export const Navbar = () => {
               Contact
             </Link>
 
-            <button className="w-full luxury-button-gold mt-2">
-              Book Now
-            </button>
+            <button className="w-full luxury-button-gold mt-2">Book Now</button>
           </div>
         )}
       </div>

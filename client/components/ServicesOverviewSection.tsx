@@ -1,5 +1,15 @@
 import { Link } from "react-router-dom";
-import { Plane, Navigation2, Clock, Heart, Briefcase, Sparkles, Anchor, Zap, MapPin } from "lucide-react";
+import {
+  Plane,
+  Navigation2,
+  Clock,
+  Heart,
+  Briefcase,
+  Sparkles,
+  Anchor,
+  Zap,
+  MapPin,
+} from "lucide-react";
 import { ArrowRight } from "lucide-react";
 
 const SERVICES = [
@@ -7,55 +17,65 @@ const SERVICES = [
     icon: Plane,
     name: "Airport Transfers",
     description: "Seamless airport pickups and drop-offs with flight tracking.",
-    image: "https://images.unsplash.com/photo-1533473359331-35acde7260c9?w=500&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1533473359331-35acde7260c9?w=500&h=300&fit=crop",
   },
   {
     icon: Navigation2,
     name: "City-to-City",
     description: "Comfortable long-distance travel between major cities.",
-    image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=500&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=500&h=300&fit=crop",
   },
   {
     icon: Clock,
     name: "Hourly Hire",
     description: "Book a chauffeur by the hour for maximum flexibility.",
-    image: "https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=500&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=500&h=300&fit=crop",
   },
   {
     icon: Heart,
     name: "Wedding",
     description: "Make your special day even more memorable with our service.",
-    image: "https://images.unsplash.com/photo-1567095761054-7ce5d113600f?w=500&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1567095761054-7ce5d113600f?w=500&h=300&fit=crop",
   },
   {
     icon: Briefcase,
     name: "Business",
     description: "Professional chauffeur service for corporate needs.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop",
   },
   {
     icon: Sparkles,
     name: "Events",
-    description: "Transportation solutions for all types of events and celebrations.",
-    image: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=500&h=300&fit=crop",
+    description:
+      "Transportation solutions for all types of events and celebrations.",
+    image:
+      "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=500&h=300&fit=crop",
   },
   {
     icon: Anchor,
     name: "Seaport",
     description: "Convenient transfers to and from seaport terminals.",
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&h=300&fit=crop",
   },
   {
     icon: Zap,
     name: "Private Jet",
     description: "Coordination with private jet services for seamless travel.",
-    image: "https://images.unsplash.com/photo-1540962351272-cd4440d87458?w=500&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1540962351272-cd4440d87458?w=500&h=300&fit=crop",
   },
   {
     icon: MapPin,
     name: "City Tours",
     description: "Guided city tours with a knowledgeable, professional driver.",
-    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=300&fit=crop",
   },
 ];
 
@@ -99,7 +119,8 @@ export const ServicesOverviewSection = () => {
                     {service.description}
                   </p>
                   <div className="flex items-center text-gold font-semibold font-montserrat">
-                    Learn More <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    Learn More{" "}
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </Link>

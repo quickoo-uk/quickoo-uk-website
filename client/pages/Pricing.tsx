@@ -38,7 +38,11 @@ export default function PricingPage() {
                   {
                     vehicle: "Premium Class",
                     rate: "$75",
-                    features: ["Luxury Sedan", "4 Passengers", "Premium Features"],
+                    features: [
+                      "Luxury Sedan",
+                      "4 Passengers",
+                      "Premium Features",
+                    ],
                   },
                   {
                     vehicle: "Elite Class",
@@ -53,12 +57,20 @@ export default function PricingPage() {
                   {
                     vehicle: "Executive Class",
                     rate: "$150",
-                    features: ["Range Rover", "4 Passengers", "White Glove Service"],
+                    features: [
+                      "Range Rover",
+                      "4 Passengers",
+                      "White Glove Service",
+                    ],
                   },
                   {
                     vehicle: "Group Transport",
                     rate: "$120",
-                    features: ["Minibus", "12+ Passengers", "Professional Driver"],
+                    features: [
+                      "Minibus",
+                      "12+ Passengers",
+                      "Professional Driver",
+                    ],
                   },
                 ].map((item) => (
                   <div
@@ -196,11 +208,10 @@ export default function PricingPage() {
               Need a Custom Quote?
             </h3>
             <p className="font-inter text-gray-600 mb-8">
-              Have special requirements or need a custom package? Contact our team.
+              Have special requirements or need a custom package? Contact our
+              team.
             </p>
-            <button className="luxury-button-gold">
-              Request Custom Quote
-            </button>
+            <button className="luxury-button-gold">Request Custom Quote</button>
           </div>
         </div>
       </section>

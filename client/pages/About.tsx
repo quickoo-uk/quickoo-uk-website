@@ -28,13 +28,21 @@ export default function AboutPage() {
                 Our Story
               </h2>
               <p className="font-inter text-gray-600 leading-relaxed">
-                XChauffur was founded in 2015 with a simple vision: to revolutionize premium chauffeur services. We noticed a gap in the market—clients deserved more than just transportation; they deserved an experience.
+                XChauffur was founded in 2015 with a simple vision: to
+                revolutionize premium chauffeur services. We noticed a gap in
+                the market—clients deserved more than just transportation; they
+                deserved an experience.
               </p>
               <p className="font-inter text-gray-600 leading-relaxed">
-                Starting with just 10 vehicles and a team of passionate professionals, we grew organically by delivering exceptional service, one journey at a time. Today, we operate a fleet of over 500 premium vehicles across multiple cities.
+                Starting with just 10 vehicles and a team of passionate
+                professionals, we grew organically by delivering exceptional
+                service, one journey at a time. Today, we operate a fleet of
+                over 500 premium vehicles across multiple cities.
               </p>
               <p className="font-inter text-gray-600 leading-relaxed">
-                Our success is built on trust, transparency, and an unwavering commitment to excellence. Every team member shares our values of professionalism, safety, and customer satisfaction.
+                Our success is built on trust, transparency, and an unwavering
+                commitment to excellence. Every team member shares our values of
+                professionalism, safety, and customer satisfaction.
               </p>
             </div>
 
@@ -81,8 +89,7 @@ export default function AboutPage() {
               {
                 icon: Users,
                 title: "Integrity",
-                description:
-                  "Transparency and honesty guide everything we do.",
+                description: "Transparency and honesty guide everything we do.",
               },
             ].map((value) => {
               const Icon = value.icon;
@@ -134,23 +141,28 @@ export default function AboutPage() {
           </h2>
 
           <p className="text-center font-inter text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Our diverse team includes experienced chauffeurs, fleet managers, customer service professionals, and technology experts. Each team member is dedicated to delivering exceptional service.
+            Our diverse team includes experienced chauffeurs, fleet managers,
+            customer service professionals, and technology experts. Each team
+            member is dedicated to delivering exceptional service.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop",
+                image:
+                  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop",
                 name: "James Mitchell",
                 role: "Founder & CEO",
               },
               {
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop",
+                image:
+                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop",
                 name: "Sarah Chen",
                 role: "Head of Operations",
               },
               {
-                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop",
+                image:
+                  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop",
                 name: "Marcus Williams",
                 role: "Fleet Manager",
               },
@@ -185,11 +197,10 @@ export default function AboutPage() {
             Experience the XChauffur Difference
           </h3>
           <p className="font-inter text-gray-600 max-w-2xl mx-auto mb-8">
-            Ready to experience premium chauffeur service? Book your first journey today.
+            Ready to experience premium chauffeur service? Book your first
+            journey today.
           </p>
-          <button className="luxury-button-gold">
-            Book Now
-          </button>
+          <button className="luxury-button-gold">Book Now</button>
         </div>
       </section>
     </div>

@@ -27,9 +27,7 @@ export const DarkHeroSection = ({
             {title}
           </h1>
           {subtitle && (
-            <p className="text-xl font-inter text-gray-300">
-              {subtitle}
-            </p>
+            <p className="text-xl font-inter text-gray-300">{subtitle}</p>
           )}
         </div>
       </div>

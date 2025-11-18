@@ -9,7 +9,8 @@ const TESTIMONIALS = [
     content:
       "XChauffur has been our go-to service for executive transportation. The professionalism and attention to detail is unmatched.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
   },
   {
     name: "Michael Chen",
@@ -17,7 +18,8 @@ const TESTIMONIALS = [
     content:
       "I've used many premium services globally, but XChauffur stands out for their reliability and comfort. Highly recommended.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
   },
   {
     name: "Emma Williams",
@@ -25,7 +27,8 @@ const TESTIMONIALS = [
     content:
       "XChauffur provided exceptional service for our bride's transportation. Professional, punctual, and absolutely perfect.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
   },
   {
     name: "David Martinez",
@@ -33,7 +36,8 @@ const TESTIMONIALS = [
     content:
       "Outstanding service for our corporate events. The drivers are professional and the vehicles are immaculate. Five stars.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
   },
 ];
 
@@ -45,7 +49,9 @@ export const TestimonialsSection = () => {
   };
 
   const prev = () => {
-    setCurrent((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+    setCurrent(
+      (prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length,
+    );
   };
 
   const getVisibleTestimonials = () => {
@@ -95,10 +101,7 @@ export const TestimonialsSection = () => {
 
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 fill-gold text-gold"
-                    />
+                    <Star key={i} className="w-4 h-4 fill-gold text-gold" />
                   ))}
                 </div>
 
@@ -117,7 +120,7 @@ export const TestimonialsSection = () => {
                   onClick={() => setCurrent(index)}
                   className={cn(
                     "w-3 h-3 rounded-full transition-colors",
-                    index === current ? "bg-gold" : "bg-border"
+                    index === current ? "bg-gold" : "bg-border",
                   )}
                 />
               ))}

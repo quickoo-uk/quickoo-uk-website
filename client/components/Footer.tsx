@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Twitter, Linkedin, Phone, Mail, MapPin } from "lucide-react";
+import {
+  Instagram,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Phone,
+  Mail,
+  MapPin,
+} from "lucide-react";
 
 const SERVICES = [
   "Airport Transfers",
@@ -9,12 +17,7 @@ const SERVICES = [
   "Business",
 ];
 
-const FLEET = [
-  "Mercedes S-Class",
-  "BMW i7",
-  "Range Rover",
-  "Electric Fleet",
-];
+const FLEET = ["Mercedes S-Class", "BMW i7", "Range Rover", "Electric Fleet"];
 
 const PAGES = [
   { label: "About", href: "/about" },
@@ -155,7 +158,8 @@ export const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                 <span className="font-inter text-sm text-gray-300">
-                  123 Luxury Lane<br />
+                  123 Luxury Lane
+                  <br />
                   Premium City, PC 12345
                 </span>
               </li>

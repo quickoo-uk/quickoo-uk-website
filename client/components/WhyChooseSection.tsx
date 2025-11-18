@@ -4,7 +4,8 @@ const FEATURES = [
   {
     icon: Shield,
     title: "Safety First",
-    description: "Vetted drivers with pristine records and comprehensive insurance coverage.",
+    description:
+      "Vetted drivers with pristine records and comprehensive insurance coverage.",
   },
   {
     icon: DollarSign,
@@ -14,12 +15,14 @@ const FEATURES = [
   {
     icon: Crown,
     title: "Luxury Fleet",
-    description: "Hand-picked premium vehicles maintained to the highest standards.",
+    description:
+      "Hand-picked premium vehicles maintained to the highest standards.",
   },
   {
     icon: Users,
     title: "Professional Chauffeurs",
-    description: "Experienced, courteous drivers trained in luxury service standards.",
+    description:
+      "Experienced, courteous drivers trained in luxury service standards.",
   },
 ];
 
@@ -32,7 +35,8 @@ export const WhyChooseSection = () => {
             Why Choose XChauffur
           </h2>
           <p className="text-lg font-inter text-gray-600 max-w-2xl mx-auto">
-            We've revolutionized premium transportation with uncompromising attention to every detail.
+            We've revolutionized premium transportation with uncompromising
+            attention to every detail.
           </p>
         </div>
 

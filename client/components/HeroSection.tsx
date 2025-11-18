@@ -20,7 +20,8 @@ export const HeroSection = () => {
                 <span className="text-gold"> Reinvented.</span>
               </h1>
               <p className="text-lg md:text-xl font-inter text-gray-300">
-                Experience comfort, safety, and luxury with XChauffur. Your journey, perfected.
+                Experience comfort, safety, and luxury with XChauffur. Your
+                journey, perfected.
               </p>
             </div>
 
@@ -35,16 +36,28 @@ export const HeroSection = () => {
 
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div>
-                <p className="text-3xl font-montserrat font-bold text-white">500+</p>
-                <p className="text-sm font-inter text-gray-400">Happy Clients</p>
+                <p className="text-3xl font-montserrat font-bold text-white">
+                  500+
+                </p>
+                <p className="text-sm font-inter text-gray-400">
+                  Happy Clients
+                </p>
               </div>
               <div>
-                <p className="text-3xl font-montserrat font-bold text-white">24/7</p>
-                <p className="text-sm font-inter text-gray-400">Available Service</p>
+                <p className="text-3xl font-montserrat font-bold text-white">
+                  24/7
+                </p>
+                <p className="text-sm font-inter text-gray-400">
+                  Available Service
+                </p>
               </div>
               <div>
-                <p className="text-3xl font-montserrat font-bold text-white">15+</p>
-                <p className="text-sm font-inter text-gray-400">Premium Vehicles</p>
+                <p className="text-3xl font-montserrat font-bold text-white">
+                  15+
+                </p>
+                <p className="text-sm font-inter text-gray-400">
+                  Premium Vehicles
+                </p>
               </div>
             </div>
           </div>

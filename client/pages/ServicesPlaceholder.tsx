@@ -45,18 +45,24 @@ export default function ServicesPlaceholder() {
                 Experience Excellence
               </h2>
               <p className="font-inter text-gray-600 leading-relaxed">
-                Our {serviceName.toLowerCase()} service combines luxury vehicles with professional chauffeurs to deliver an unforgettable experience. Every journey is tailored to your preferences and requirements.
+                Our {serviceName.toLowerCase()} service combines luxury vehicles
+                with professional chauffeurs to deliver an unforgettable
+                experience. Every journey is tailored to your preferences and
+                requirements.
               </p>
 
               <div className="space-y-3">
-                {["Premium Comfort", "Professional Drivers", "24/7 Availability", "Transparent Pricing"].map(
-                  (feature) => (
-                    <div key={feature} className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-gold rounded-full"></div>
-                      <span className="font-inter text-gray-600">{feature}</span>
-                    </div>
-                  )
-                )}
+                {[
+                  "Premium Comfort",
+                  "Professional Drivers",
+                  "24/7 Availability",
+                  "Transparent Pricing",
+                ].map((feature) => (
+                  <div key={feature} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-gold rounded-full"></div>
+                    <span className="font-inter text-gray-600">{feature}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -94,7 +100,8 @@ export default function ServicesPlaceholder() {
               Ready to Book?
             </h3>
             <p className="font-inter text-gray-600 mb-6">
-              Get started with XChauffur today. Our team is ready to provide you with premium service.
+              Get started with XChauffur today. Our team is ready to provide you
+              with premium service.
             </p>
             <button className="luxury-button-gold">
               Book Your {serviceName}
