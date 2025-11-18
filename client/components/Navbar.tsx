@@ -54,7 +54,7 @@ export const Navbar = () => {
         "fixed top-0 w-full z-50 transition-all duration-300",
         isScrolled
           ? "bg-white shadow-luxury"
-          : "bg-white shadow-sm"
+          : "bg-transparent"
       )}
     >
       <div className="section-container">
