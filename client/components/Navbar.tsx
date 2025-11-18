@@ -129,21 +129,30 @@ export const Navbar = () => {
 
             <Link
               to="/pricing"
-              className="px-3 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors whitespace-nowrap"
+              className={cn(
+                "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors whitespace-nowrap",
+                isScrolled ? "text-dark" : "text-white"
+              )}
             >
               Pricing
             </Link>
 
             <Link
               to="/about"
-              className="px-3 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors whitespace-nowrap"
+              className={cn(
+                "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors whitespace-nowrap",
+                isScrolled ? "text-dark" : "text-white"
+              )}
             >
               About Us
             </Link>
 
             <Link
               to="/contact"
-              className="px-3 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors whitespace-nowrap"
+              className={cn(
+                "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors whitespace-nowrap",
+                isScrolled ? "text-dark" : "text-white"
+              )}
             >
               Contact
             </Link>
