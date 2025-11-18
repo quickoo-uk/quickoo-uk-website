@@ -101,7 +101,7 @@ export const Navbar = () => {
 
             {/* Fleet Dropdown */}
             <div className="relative group">
-              <button className="px-4 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors flex items-center gap-1">
+              <button className="px-3 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors flex items-center gap-1 whitespace-nowrap">
                 Fleet
                 <ChevronDown className="w-4 h-4" />
               </button>
@@ -120,21 +120,21 @@ export const Navbar = () => {
 
             <Link
               to="/pricing"
-              className="px-4 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors"
+              className="px-3 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors whitespace-nowrap"
             >
               Pricing
             </Link>
 
             <Link
               to="/about"
-              className="px-4 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors"
+              className="px-3 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors whitespace-nowrap"
             >
               About Us
             </Link>
 
             <Link
               to="/contact"
-              className="px-4 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors"
+              className="px-3 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors whitespace-nowrap"
             >
               Contact
             </Link>
