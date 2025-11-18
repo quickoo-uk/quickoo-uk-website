@@ -75,14 +75,20 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center gap-0 absolute left-1/2 transform -translate-x-1/2">
             <Link
               to="/"
-              className="px-3 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors whitespace-nowrap"
+              className={cn(
+                "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors whitespace-nowrap",
+                isScrolled ? "text-dark" : "text-white"
+              )}
             >
               Home
             </Link>
 
             {/* Services Dropdown */}
             <div className="relative group">
-              <button className="px-3 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors flex items-center gap-1 whitespace-nowrap">
+              <button className={cn(
+                "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors flex items-center gap-1 whitespace-nowrap",
+                isScrolled ? "text-dark" : "text-white"
+              )}>
                 Services
                 <ChevronDown className="w-4 h-4" />
               </button>
