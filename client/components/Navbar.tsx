@@ -61,12 +61,12 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center gap-2">
-            <div className="w-10 h-10 bg-dark rounded-lg flex items-center justify-center">
+            <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center transition-colors", isScrolled ? "bg-dark" : "bg-white bg-opacity-20 backdrop-blur-sm")}>
               <span className="text-gold font-montserrat font-bold text-sm">
                 XC
               </span>
             </div>
-            <span className="text-xl font-montserrat font-bold text-dark hidden sm:inline">
+            <span className={cn("text-xl font-montserrat font-bold hidden sm:inline transition-colors", isScrolled ? "text-dark" : "text-white")}>
               XChauffur
             </span>
           </Link>
