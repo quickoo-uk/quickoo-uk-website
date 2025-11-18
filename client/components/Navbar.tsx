@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const SERVICES = [
@@ -27,20 +27,15 @@ const FLEET = [
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [fleetOpen, setFleetOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileFleetOpen, setMobileFleetOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const handleScroll = () => {
-    setIsScrolled(window.scrollY > 10);
-  };
-
-  useState(() => {
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  });
+  }, []);
 
   const handleNavClick = () => {
     setIsOpen(false);
@@ -51,65 +46,52 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300",
-        isScrolled ? "bg-white shadow-luxury" : "bg-transparent",
+        "fixed top-0 w-full z-50 transition-all duration-300 border-b",
+        isScrolled
+          ? "bg-white shadow-md border-gray-200"
+          : "bg-[#000000] bg-opacity-95 border-transparent",
       )}
     >
-      <div className="section-container">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex-shrink-0 flex items-center gap-2">
-            <div
-              className={cn(
-                "w-10 h-10 rounded-lg flex items-center justify-center transition-colors",
-                isScrolled
-                  ? "bg-dark"
-                  : "bg-white bg-opacity-20 backdrop-blur-sm",
-              )}
-            >
-              <span className="text-gold font-montserrat font-bold text-sm">
-                XC
-              </span>
-            </div>
-            <span
-              className={cn(
-                "text-xl font-montserrat font-bold hidden sm:inline transition-colors",
-                isScrolled ? "text-dark" : "text-white",
-              )}
-            >
-              XChauffur
-            </span>
+          <Link to="/" className="flex items-center gap-3">
+            <img
+              src="https://images.unsplash.com/photo-1615915468538-0fbd857888ca?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGxvZ298ZW58MHx8MHx8fDA%3D"
+              alt="logo"
+              className="h-12 object-contain filter invert brightness-0"
+            />
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-0 absolute left-1/2 transform -translate-x-1/2">
+          {/* CENTER MENU (Desktop) */}
+          <div className="hidden md:flex items-center gap-6">
             <Link
               to="/"
               className={cn(
-                "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors whitespace-nowrap",
-                isScrolled ? "text-dark" : "text-white",
+                "font-inter text-sm transition-colors",
+                isScrolled ? "text-black hover:text-[#d4a853]" : "text-white",
               )}
             >
               Home
             </Link>
 
-            {/* Services Dropdown */}
+            {/* Services */}
             <div className="relative group">
               <button
                 className={cn(
-                  "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors flex items-center gap-1 whitespace-nowrap",
-                  isScrolled ? "text-dark" : "text-white",
+                  "font-inter text-sm flex items-center gap-1 transition-colors",
+                  isScrolled ? "text-black hover:text-[#d4a853]" : "text-white",
                 )}
               >
-                Services
-                <ChevronDown className="w-4 h-4" />
+                Services <ChevronDown className="w-4 h-4" />
               </button>
-              <div className="absolute left-0 mt-0 w-56 bg-white rounded-lg shadow-luxury-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+
+              <div className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 {SERVICES.map((service) => (
                   <Link
                     key={service}
                     to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-3 font-inter text-sm text-dark hover:bg-muted hover:text-gold transition-colors first:rounded-t-lg last:rounded-b-lg"
+                    className="block px-4 py-3 text-sm text-black hover:bg-gray-100 hover:text-[#d4a853]"
                   >
                     {service}
                   </Link>
@@ -117,23 +99,23 @@ export const Navbar = () => {
               </div>
             </div>
 
-            {/* Fleet Dropdown */}
+            {/* Fleet */}
             <div className="relative group">
               <button
                 className={cn(
-                  "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors flex items-center gap-1 whitespace-nowrap",
-                  isScrolled ? "text-dark" : "text-white",
+                  "font-inter text-sm flex items-center gap-1 transition-colors",
+                  isScrolled ? "text-black hover:text-[#d4a853]" : "text-white",
                 )}
               >
-                Fleet
-                <ChevronDown className="w-4 h-4" />
+                Fleet <ChevronDown className="w-4 h-4" />
               </button>
-              <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-luxury-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+
+              <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 {FLEET.map((vehicle) => (
                   <Link
                     key={vehicle}
                     to={`/fleet/${vehicle.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-3 font-inter text-sm text-dark hover:bg-muted hover:text-gold transition-colors first:rounded-t-lg last:rounded-b-lg"
+                    className="block px-4 py-3 text-sm text-black hover:bg-gray-100 hover:text-[#d4a853]"
                   >
                     {vehicle}
                   </Link>
@@ -144,8 +126,8 @@ export const Navbar = () => {
             <Link
               to="/pricing"
               className={cn(
-                "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors whitespace-nowrap",
-                isScrolled ? "text-dark" : "text-white",
+                "font-inter text-sm transition-colors",
+                isScrolled ? "text-black hover:text-[#d4a853]" : "text-white",
               )}
             >
               Pricing
@@ -154,8 +136,8 @@ export const Navbar = () => {
             <Link
               to="/about"
               className={cn(
-                "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors whitespace-nowrap",
-                isScrolled ? "text-dark" : "text-white",
+                "font-inter text-sm transition-colors",
+                isScrolled ? "text-black hover:text-[#d4a853]" : "text-white",
               )}
             >
               About Us
@@ -164,65 +146,93 @@ export const Navbar = () => {
             <Link
               to="/contact"
               className={cn(
-                "px-3 py-2 font-inter text-sm font-medium hover:text-gold transition-colors whitespace-nowrap",
-                isScrolled ? "text-dark" : "text-white",
+                "font-inter text-sm transition-colors",
+                isScrolled ? "text-black hover:text-[#d4a853]" : "text-white",
               )}
             >
               Contact
             </Link>
           </div>
 
-          {/* Book Now Button */}
-          <button className="luxury-button-gold hidden md:block">
-            Book Now
-          </button>
+          {/* RIGHT SIDE — Phone Numbers + Book Now */}
+          <div className="hidden md:flex items-center gap-6">
+            <div className="flex items-center gap-1">
+              <Phone className="w-4 h-4 text-white" />
+              <span
+                className={cn(
+                  "text-sm",
+                  isScrolled ? "text-black" : "text-white",
+                )}
+              >
+                +1 (302) 526-4133
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1">
+              <Phone className="w-4 h-4 text-white" />
+              <span
+                className={cn(
+                  "text-sm",
+                  isScrolled ? "text-black" : "text-white",
+                )}
+              >
+                +44 207 078 8993
+              </span>
+            </div>
+
+            {/* BOOK NOW */}
+            <button
+              className={cn(
+                "px-6 py-2 font-inter text-sm rounded-full border transition-all",
+                isScrolled
+                  ? "bg-black text-white border-black"
+                  : "bg-white text-black border-white",
+              )}
+            >
+              Book Now
+            </button>
+          </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
-          >
+          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2">
             {isOpen ? (
-              <X className="w-6 h-6 text-dark" />
+              <X className="w-6 h-6 text-white" />
             ) : (
-              <Menu className="w-6 h-6 text-dark" />
+              <Menu className="w-6 h-6 text-white" />
             )}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* MOBILE MENU */}
         {isOpen && (
-          <div className="md:hidden pb-4 space-y-2">
+          <div className="md:hidden py-4 space-y-2">
             <Link
               to="/"
               onClick={handleNavClick}
-              className="block px-4 py-2 font-inter text-dark hover:bg-muted rounded-lg transition-colors"
+              className="block px-4 py-2 text-white bg-opacity-10 rounded-lg"
             >
               Home
             </Link>
 
-            {/* Mobile Services */}
+            {/* Services */}
             <div>
               <button
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                className="w-full text-left px-4 py-2 font-inter text-dark hover:bg-muted rounded-lg transition-colors flex items-center justify-between"
+                className="w-full flex items-center justify-between px-4 py-2 text-white"
               >
                 Services
                 <ChevronDown
-                  className={cn(
-                    "w-4 h-4 transition-transform",
-                    mobileServicesOpen ? "rotate-180" : "",
-                  )}
+                  className={cn("w-4 h-4", mobileServicesOpen && "rotate-180")}
                 />
               </button>
               {mobileServicesOpen && (
-                <div className="pl-4 space-y-1">
+                <div className="pl-4">
                   {SERVICES.map((service) => (
                     <Link
                       key={service}
                       to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
                       onClick={handleNavClick}
-                      className="block px-4 py-2 font-inter text-sm text-dark hover:bg-muted rounded-lg transition-colors"
+                      className="block px-4 py-2 text-sm text-white bg-opacity-10 rounded-lg"
                     >
                       {service}
                     </Link>
@@ -231,28 +241,25 @@ export const Navbar = () => {
               )}
             </div>
 
-            {/* Mobile Fleet */}
+            {/* Fleet */}
             <div>
               <button
                 onClick={() => setMobileFleetOpen(!mobileFleetOpen)}
-                className="w-full text-left px-4 py-2 font-inter text-dark hover:bg-muted rounded-lg transition-colors flex items-center justify-between"
+                className="w-full flex items-center justify-between px-4 py-2 text-white"
               >
                 Fleet
                 <ChevronDown
-                  className={cn(
-                    "w-4 h-4 transition-transform",
-                    mobileFleetOpen ? "rotate-180" : "",
-                  )}
+                  className={cn("w-4 h-4", mobileFleetOpen && "rotate-180")}
                 />
               </button>
               {mobileFleetOpen && (
-                <div className="pl-4 space-y-1">
+                <div className="pl-4">
                   {FLEET.map((vehicle) => (
                     <Link
                       key={vehicle}
                       to={`/fleet/${vehicle.toLowerCase().replace(/ /g, "-")}`}
                       onClick={handleNavClick}
-                      className="block px-4 py-2 font-inter text-sm text-dark hover:bg-muted rounded-lg transition-colors"
+                      className="block px-4 py-2 text-sm text-white bg-opacity-10 rounded-lg"
                     >
                       {vehicle}
                     </Link>
@@ -264,7 +271,7 @@ export const Navbar = () => {
             <Link
               to="/pricing"
               onClick={handleNavClick}
-              className="block px-4 py-2 font-inter text-dark hover:bg-muted rounded-lg transition-colors"
+              className="block px-4 py-2 text-white"
             >
               Pricing
             </Link>
@@ -272,7 +279,7 @@ export const Navbar = () => {
             <Link
               to="/about"
               onClick={handleNavClick}
-              className="block px-4 py-2 font-inter text-dark hover:bg-muted rounded-lg transition-colors"
+              className="block px-4 py-2 text-white"
             >
               About Us
             </Link>
@@ -280,12 +287,15 @@ export const Navbar = () => {
             <Link
               to="/contact"
               onClick={handleNavClick}
-              className="block px-4 py-2 font-inter text-dark hover:bg-muted rounded-lg transition-colors"
+              className="block px-4 py-2 text-white"
             >
               Contact
             </Link>
 
-            <button className="w-full luxury-button-gold mt-2">Book Now</button>
+            {/* Book Now */}
+            <button className="w-full mt-4 bg-white text-black py-2 rounded-full">
+              Book Now
+            </button>
           </div>
         )}
       </div>
