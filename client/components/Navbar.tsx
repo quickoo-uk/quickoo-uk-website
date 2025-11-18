@@ -72,17 +72,17 @@ export const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-1 absolute left-1/2 transform -translate-x-1/2">
+          <div className="hidden md:flex items-center gap-0 absolute left-1/2 transform -translate-x-1/2">
             <Link
               to="/"
-              className="px-4 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors"
+              className="px-3 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors whitespace-nowrap"
             >
               Home
             </Link>
 
             {/* Services Dropdown */}
             <div className="relative group">
-              <button className="px-4 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors flex items-center gap-1">
+              <button className="px-3 py-2 font-inter text-sm font-medium text-dark hover:text-gold transition-colors flex items-center gap-1 whitespace-nowrap">
                 Services
                 <ChevronDown className="w-4 h-4" />
               </button>
