@@ -18,7 +18,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative h-[95vh] w-full overflow-hidden flex items-center bg-gradient-to-b from-brand-soft via-white to-white">
+    <section className="relative flex min-h-[38rem] w-full items-center overflow-hidden bg-gradient-to-b from-brand-soft via-white to-white pt-28 pb-16 md:h-[95vh] md:pt-0 md:pb-0">
       {/* Background Slider */}
       <div className="absolute inset-0">
         {images.map((img, i) => (
@@ -44,8 +44,8 @@ export const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
-        <div className="w-full md:w-[60%] space-y-6">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="w-full max-w-4xl space-y-6 md:w-[60%] lg:w-full">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white/85 uppercase tracking-[0.3em] text-xs border border-white/20 shadow-[0_10px_25px_rgba(255,255,255,0.18)]">
             Quickoo Chauffeur
           </span>

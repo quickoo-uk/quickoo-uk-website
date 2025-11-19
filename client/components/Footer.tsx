@@ -7,6 +7,8 @@ import {
   Phone,
   Mail,
   MapPin,
+  ArrowRight,
+  Send,
 } from "lucide-react";
 import logo from "../public/images/logo-2.png";
 
@@ -29,66 +31,89 @@ const PAGES = [
 
 export const Footer = () => {
   return (
-    <footer className="relative overflow-hidden text-white bg-gradient-to-b from-[#140631] via-[#1c0f47] to-[#2e1a66]">
-      <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.28),transparent_65%)] pointer-events-none" />
-      <div className="absolute -top-24 -left-16 w-[520px] h-[520px] bg-white/20 blur-[130px] opacity-70 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[320px] h-[320px] bg-[#6f54ff]/30 blur-[120px] opacity-70 pointer-events-none" />
-      <div className="section-container section-spacing">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
-          {/* Company Info */}
-          <div className="col-span-1">
-            <div className="flex items-start gap-2 mb-4">
-              <div className="relative inline-flex items-center justify-center rounded-2xl bg-white/35 px-5 py-3 shadow-[0_20px_45px_rgba(46,15,102,0.5)] backdrop-blur-lg border border-white/40">
-                <div className="absolute inset-0 bg-white/60 blur-2xl opacity-60 pointer-events-none" />
-                <img
-                  src={logo}
-                  alt="Quickoo logo"
-                  className="relative h-10 w-auto"
-                />
-              </div>
+    <footer className="relative overflow-hidden bg-gradient-to-b from-[#05010c] via-[#0c0620] to-[#1a103d] text-white">
+      <div className="absolute inset-0 opacity-70 bg-[radial-gradient(circle_at_top,_rgba(111,84,255,0.35),transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+      <div className="section-container section-spacing relative z-10 space-y-16">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-white/10 via-white/5 to-white/10 p-8 backdrop-blur-xl shadow-[0_30px_80px_rgba(5,0,20,0.5)]">
+          <img
+            src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1600&h=900&fit=crop"
+            alt="Luxury car interior"
+            className="absolute inset-0 h-full w-full object-cover opacity-20"
+            loading="lazy"
+          />
+          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-[0.4em] text-gold">
+                Concierge 24 / 7
+              </p>
+              <h3 className="mt-3 text-3xl md:text-4xl font-montserrat font-bold">
+                Ready for your next itinerary? Let's choreograph it.
+              </h3>
+              <p className="mt-3 text-sm text-white/70">
+                Dedicated planners, biometric-ready chauffeurs, and a fleet at
+                standby—tailored within minutes.
+              </p>
             </div>
-            <p className="font-inter text-sm text-gray-300 mb-6">
-              Premium chauffeur services for those who demand excellence.
-            </p>
-            <div className="flex gap-4">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-all border border-white/10"
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-6 py-3 font-semibold text-dark shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-gold hover:text-dark"
               >
-                <Facebook className="w-5 h-5" />
-              </a>
+                Plan A Journey
+                <ArrowRight className="h-5 w-5" />
+              </Link>
               <a
-                href="#"
-                className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-all border border-white/10"
+                href="tel:+1234567890"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-6 py-3 text-white transition hover:border-gold"
               >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-all border border-white/10"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-all border border-white/10"
-              >
-                <Linkedin className="w-5 h-5" />
+                Call Concierge
+                <Phone className="h-5 w-5" />
               </a>
             </div>
           </div>
+        </div>
 
-          {/* Services */}
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3 shadow-xl shadow-black/20">
+              <img
+                src={logo}
+                alt="Quickoo logo"
+                className="h-9 w-auto object-contain"
+                loading="lazy"
+              />
+              {/* <span className="text-xs font-semibold uppercase tracking-[0.3em] text-dark">
+                Quickoo
+              </span> */}
+            </div>
+            <p className="text-sm text-white/70">
+              Precision chauffeur experiences orchestrated across continents with
+              hospitality-grade detail.
+            </p>
+            <div className="flex gap-3">
+              {[Facebook, Instagram, Twitter, Linkedin].map((Icon, index) => (
+                <a
+                  key={index}
+                  href="#"
+                  className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 transition hover:border-gold hover:bg-white/20"
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
+          </div>
+
           <div>
-            <h3 className="font-montserrat font-bold text-lg mb-6 text-gold">
+            <h4 className="text-sm uppercase tracking-[0.4em] text-gold">
               Services
-            </h3>
-            <ul className="space-y-3">
+            </h4>
+            <ul className="mt-6 space-y-3 text-sm text-white/70">
               {SERVICES.map((service) => (
                 <li key={service}>
                   <Link
                     to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
-                    className="font-inter text-sm text-gray-300 hover:text-gold transition-colors"
+                    className="transition hover:text-white"
                   >
                     {service}
                   </Link>
@@ -97,17 +122,16 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Fleet */}
           <div>
-            <h3 className="font-montserrat font-bold text-lg mb-6 text-gold">
-              Fleet
-            </h3>
-            <ul className="space-y-3">
+            <h4 className="text-sm uppercase tracking-[0.4em] text-gold">
+              Fleet Highlights
+            </h4>
+            <ul className="mt-6 space-y-3 text-sm text-white/70">
               {FLEET.map((vehicle) => (
                 <li key={vehicle}>
                   <Link
                     to={`/fleet/${vehicle.toLowerCase().replace(/ /g, "-")}`}
-                    className="font-inter text-sm text-gray-300 hover:text-gold transition-colors"
+                    className="transition hover:text-white"
                   >
                     {vehicle}
                   </Link>
@@ -116,80 +140,71 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Pages */}
-          <div>
-            <h3 className="font-montserrat font-bold text-lg mb-6 text-gold">
-              Company
-            </h3>
-            <ul className="space-y-3">
-              {PAGES.map((page) => (
-                <li key={page.href}>
-                  <Link
-                    to={page.href}
-                    className="font-inter text-sm text-gray-300 hover:text-gold transition-colors"
-                  >
-                    {page.label}
-                  </Link>
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-sm uppercase tracking-[0.4em] text-gold">
+                Contact
+              </h4>
+              <ul className="mt-6 space-y-4 text-sm text-white/80">
+                <li className="flex items-center gap-3">
+                  <Phone className="h-4 w-4 text-gold" />
+                  <a href="tel:+1234567890" className="transition hover:text-white">
+                    +1 (234) 567-890
+                  </a>
                 </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="font-montserrat font-bold text-lg mb-6 text-gold">
-              Contact
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                <a
-                  href="tel:+1234567890"
-                  className="font-inter text-sm text-gray-300 hover:text-gold transition-colors"
+                <li className="flex items-center gap-3">
+                  <Mail className="h-4 w-4 text-gold" />
+                  <a
+                    href="mailto:hello@xchauffur.com"
+                    className="transition hover:text-white"
+                  >
+                    hello@xchauffur.com
+                  </a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MapPin className="h-4 w-4 text-gold mt-1" />
+                  <span>123 Luxury Lane, Premium City, PC 12345</span>
+                </li>
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+              <p className="text-xs uppercase tracking-[0.4em] text-white/60">
+                Insider Drops
+              </p>
+              <p className="mt-2 text-sm text-white/80">
+                Get fleet debuts, runway alerts, and surprise upgrades.
+              </p>
+              <form className="mt-4 flex flex-col gap-2 rounded-xl border border-white/10 bg-white/10 p-2 sm:flex-row sm:items-center">
+                <input
+                  type="email"
+                  placeholder="Email address"
+                  className="flex-1 bg-transparent text-sm text-white placeholder:text-white/50 focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  className="rounded-xl bg-white/20 p-2 text-white transition hover:bg-gold hover:text-dark sm:px-4"
                 >
-                  +1 (234) 567-890
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                <a
-                  href="mailto:hello@xchauffur.com"
-                  className="font-inter text-sm text-gray-300 hover:text-gold transition-colors"
-                >
-                  hello@xchauffur.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                <span className="font-inter text-sm text-gray-300">
-                  123 Luxury Lane
-                  <br />
-                  Premium City, PC 12345
-                </span>
-              </li>
-            </ul>
+                  <Send className="h-4 w-4" />
+                </button>
+              </form>
+            </div>
           </div>
         </div>
 
-        <div className="border-t border-gold border-opacity-20 pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="font-inter text-sm text-gray-400">
-              © 2024 XChauffur. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <a
-                href="/privacy"
-                className="font-inter text-sm text-gray-300 hover:text-gold transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="/terms"
-                className="font-inter text-sm text-gray-300 hover:text-gold transition-colors"
-              >
-                Terms & Conditions
-              </a>
-            </div>
+        <div className="border-t border-white/10 pt-6 text-sm text-white/60 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <p>© {new Date().getFullYear()} XChauffur. All rights reserved.</p>
+          <div className="flex flex-wrap gap-6">
+            {PAGES.map((page) => (
+              <Link key={page.href} to={page.href} className="transition hover:text-white">
+                {page.label}
+              </Link>
+            ))}
+            <Link to="/privacy" className="transition hover:text-white">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="transition hover:text-white">
+              Terms & Conditions
+            </Link>
           </div>
         </div>
       </div>

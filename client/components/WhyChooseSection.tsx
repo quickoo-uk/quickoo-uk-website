@@ -44,8 +44,8 @@ export const WhyChooseSection = () => {
   return (
     <section className="section-spacing bg-gradient-to-b from-white via-brand-soft/40 to-white">
       <div className="section-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          <div className="space-y-6">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 mb-16">
+          <div className="space-y-6 text-center lg:text-left">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark text-white text-xs font-semibold tracking-[0.3em]">
               WHY QUICKOO
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
@@ -60,7 +60,7 @@ export const WhyChooseSection = () => {
               is staged with signature amenities.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap justify-center gap-4 lg:justify-start">
               {METRICS.map((metric) => {
                 const Icon = metric.icon;
                 return (
@@ -108,7 +108,7 @@ export const WhyChooseSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {FEATURES.map((feature) => {
             const Icon = feature.icon;
             return (

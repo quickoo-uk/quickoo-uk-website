@@ -31,7 +31,7 @@ export const AppDownloadSection = () => {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#"
-                className="flex items-center gap-4 rounded-2xl bg-dark px-6 py-4 text-white shadow-xl shadow-black/30 transition hover:-translate-y-0.5 hover:bg-gold hover:text-dark"
+                className="flex w-full items-center justify-between gap-4 rounded-2xl bg-dark px-6 py-4 text-white shadow-xl shadow-black/30 transition hover:-translate-y-0.5 hover:bg-gold hover:text-dark sm:w-auto sm:justify-start"
               >
                 <Apple className="h-6 w-6" />
                 <div className="text-left">
@@ -42,7 +42,7 @@ export const AppDownloadSection = () => {
               </a>
               <a
                 href="#"
-                className="flex items-center gap-4 rounded-2xl border border-dark/20 bg-white px-6 py-4 text-dark shadow-lg shadow-black/10 transition hover:-translate-y-0.5 hover:border-gold"
+                className="flex w-full items-center justify-between gap-4 rounded-2xl border border-dark/20 bg-white px-6 py-4 text-dark shadow-lg shadow-black/10 transition hover:-translate-y-0.5 hover:border-gold sm:w-auto sm:justify-start"
               >
                 <Play className="h-6 w-6 text-gold" />
                 <div className="text-left">
