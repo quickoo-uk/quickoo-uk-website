@@ -34,7 +34,7 @@ export const Footer = () => {
     <footer className="relative overflow-hidden bg-gradient-to-b from-[#05010c] via-[#0c0620] to-[#1a103d] text-white">
       <div className="absolute inset-0 opacity-70 bg-[radial-gradient(circle_at_top,_rgba(111,84,255,0.35),transparent_60%)] pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
-      <div className="section-container section-spacing relative z-10 space-y-16">
+      <div className="section-container section-spacing relative z-10 space-y-16 pb-8">
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-white/10 via-white/5 to-white/10 p-8 backdrop-blur-xl shadow-[0_30px_80px_rgba(5,0,20,0.5)]">
           <img
             src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1600&h=900&fit=crop"
@@ -43,7 +43,7 @@ export const Footer = () => {
             loading="lazy"
           />
           <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div>
+            <div className="w-[57%]">
               <p className="text-xs uppercase tracking-[0.4em] text-gold">
                 Concierge 24 / 7
               </p>
@@ -182,7 +182,7 @@ export const Footer = () => {
                 />
                 <button
                   type="submit"
-                  className="rounded-xl ml-[-15px] bg-white/20 p-2 text-white transition hover:bg-gold hover:text-dark sm:px-4"
+                  className="rounded-xl !ml-[-20px] bg-white/20 p-2 text-white transition hover:bg-gold hover:text-dark sm:px-4"
                 >
                   <Send className="h-4 w-4" />
                 </button>
