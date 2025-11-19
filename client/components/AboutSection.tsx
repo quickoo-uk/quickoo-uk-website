@@ -10,13 +10,13 @@ export const AboutSection = () => {
   ];
 
   return (
-    <section className="section-spacing bg-gradient-to-b from-background to-muted">
+    <section className="section-spacing bg-gradient-to-b from-[#eef4ff] via-white to-[#f9f7ff]">
       <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Image Section */}
           <div className="relative hidden md:block">
-            <div className="absolute -inset-8 bg-gold bg-opacity-5 rounded-3xl blur-2xl"></div>
-            <div className="relative bg-gradient-to-br from-gold to-gold via-gold bg-opacity-10 rounded-3xl overflow-hidden shadow-luxury-lg p-2">
+            <div className="absolute -inset-8 bg-gold/20 rounded-3xl blur-3xl"></div>
+            <div className="relative bg-gradient-to-br from-gold/20 via-[#b8b1ff]/40 to-transparent rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(94,75,255,0.35)] p-2">
               <img
                 src="/about-home.png"
                 alt="Premium Service"
@@ -28,8 +28,8 @@ export const AboutSection = () => {
           {/* Content Section */}
           <div className="space-y-8">
             <div>
-              <span className="inline-block px-4 py-2 bg-gold bg-opacity-10 text-gold rounded-full text-sm font-semibold mb-4">
-                ABOUT US
+              <span className="inline-block px-4 py-2 bg-brand-soft text-gold rounded-full text-sm font-semibold mb-4">
+                ABOUT QUICKOO
               </span>
               <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark mb-6">
                 Redefining Luxury Transportation
@@ -38,17 +38,17 @@ export const AboutSection = () => {
 
             <div className="space-y-4">
               <p className="text-lg font-inter text-gray-600 leading-relaxed">
-                Founded in 2015, XChauffur has revolutionized premium chauffeur
-                services for the discerning traveler. With an unwavering
-                commitment to excellence and meticulous attention to detail,
-                we've served thousands of satisfied clients across major cities.
+                Founded in 2015, Quickoo has reimagined premium chauffeur
+                services for the modern traveler. With an unwavering commitment
+                to empathy, technology, and elite service, we've served
+                thousands of satisfied clients across major cities.
               </p>
 
               <p className="text-lg font-inter text-gray-600 leading-relaxed">
                 Our mission is simple yet powerful: deliver unparalleled
-                comfort, safety, and professionalism. Every journey with
-                XChauffur is more than just transportation—it's an experience
-                blending luxury, cutting-edge technology, and genuine human
+                comfort, safety, and professionalism. Every journey with Quickoo
+                is more than just transportation—it's an experience blending
+                luxury, cutting-edge technology, and genuine human
                 touch.
               </p>
             </div>
@@ -58,7 +58,7 @@ export const AboutSection = () => {
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl p-6 border border-border hover:border-gold hover:shadow-luxury transition-all duration-300"
+                  className="bg-white rounded-2xl p-6 border border-transparent hover:border-gold/60 hover:shadow-[0_20px_60px_rgba(94,75,255,0.18)] transition-all duration-300"
                 >
                   <div className="text-2xl mb-2">{stat.icon}</div>
                   <p className="text-3xl font-montserrat font-bold text-dark">
@@ -71,7 +71,10 @@ export const AboutSection = () => {
               ))}
             </div>
 
-            <Link to="/about" className="luxury-button-gold inline-block">
+            <Link
+              to="/about"
+              className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-gold to-[#8a7bff] text-white font-semibold shadow-lg shadow-[#5e4bff44] hover:translate-y-0.5 transition-transform"
+            >
               Learn Our Full Story
             </Link>
           </div>

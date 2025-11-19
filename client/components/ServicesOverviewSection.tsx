@@ -81,10 +81,10 @@ const SERVICES = [
 
 export const ServicesOverviewSection = () => {
   return (
-    <section className="section-spacing bg-white">
+    <section className="section-spacing bg-gradient-to-b from-white via-[#f3f0ff] to-white">
       <div className="section-container">
         <div className="text-center mb-20">
-          <span className="inline-block px-4 py-2 bg-gold bg-opacity-10 text-gold rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-brand-soft text-gold rounded-full text-sm font-semibold mb-4">
             OUR SERVICES
           </span>
           <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark mb-6">
@@ -103,7 +103,7 @@ export const ServicesOverviewSection = () => {
               <Link
                 key={service.name}
                 to={`/services/${service.name.toLowerCase().replace(/ /g, "-")}`}
-                className="group bg-white border border-border rounded-2xl overflow-hidden hover:border-gold hover:shadow-luxury-lg transition-all duration-300"
+                className="group bg-white/90 backdrop-blur rounded-2xl overflow-hidden border border-transparent hover:border-gold/70 hover:shadow-[0_25px_70px_rgba(94,75,255,0.2)] transition-all duration-300"
               >
                 <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300">
                   <img

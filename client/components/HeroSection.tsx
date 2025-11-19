@@ -34,7 +34,7 @@ export const HeroSection = () => {
               className="w-full h-full object-cover filter grayscale contrast-110"
             />
             {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#110624]/95 via-[#1b0f3a]/85 to-[#2f1b66]/80 mix-blend-multiply"></div>
           </div>
         ))}
       </div>
@@ -42,23 +42,30 @@ export const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="w-full md:w-[60%] space-y-6">
-          <h1 className="text-white font-montserrat font-bold text-4xl md:text-6xl leading-tight">
-            PRIVATE CHAUFFEUR HIRE
-            <br /> SERVICES LONDON
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white/80 uppercase tracking-[0.3em] text-xs border border-white/20">
+            Quickoo Chauffeur
+          </span>
+          <h1 className="text-white font-montserrat font-bold text-4xl md:text-6xl leading-tight drop-shadow-[0_6px_30px_rgba(0,0,0,0.35)]">
+            Effortless Luxury Rides
+            <br /> Powered by Quickoo
           </h1>
 
-          <p className="text-gray-300 text-lg md:text-xl font-inter leading-relaxed">
-            London's premier chauffeur hire service, delivering you to your
-            destination with elegance and style. Our private transfer services
-            offer the best prices in town without compromising on quality or
-            convenience.
+          <p className="text-white/80 text-lg md:text-xl font-inter leading-relaxed">
+            Arrive calm, collected, and right on time. Quickoo pairs elite
+            chauffeurs with a connected fleet so every journey feels intuitive,
+            safe, and deeply personal.
           </p>
 
           {/* CTA Button (same style as screenshot) */}
-          <button className="rectangle-button-white flex items-center gap-2 w-fit">
-            Book Now
-            <span className="text-xl">↗</span>
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button className="flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#4e3acf] to-[#7a68ff] text-white font-semibold shadow-[0_18px_45px_rgba(75,58,207,0.4)] transition-all hover:translate-y-0.5">
+              Book Now
+              <span className="text-xl">↗</span>
+            </button>
+            <button className="flex items-center gap-2 px-8 py-4 rounded-full border border-white/30 text-white font-semibold backdrop-blur hover:bg-white/10 transition-all">
+              Explore Fleet
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -151,17 +151,17 @@ export const TestimonialsSection = () => {
   };
 
   return (
-    <section className="section-spacing bg-gradient-to-b from-background via-white to-muted">
+    <section className="section-spacing bg-gradient-to-b from-white via-[#f6f2ff] to-[#eef6ff]">
       <div className="section-container">
         <div className="text-center mb-20">
-          <span className="inline-block px-4 py-2 bg-gold bg-opacity-10 text-gold rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-brand-soft text-gold rounded-full text-sm font-semibold mb-4">
             TESTIMONIALS
           </span>
           <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark mb-6">
             What Our Clients Say
           </h2>
           <p className="text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-            Hear from thousands of satisfied customers who trust XChauffur for
+            Hear from thousands of satisfied customers who trust Quickoo for
             their premium transportation needs.
           </p>
         </div>
@@ -180,7 +180,7 @@ export const TestimonialsSection = () => {
             {getVisibleTestimonials().map((testimonial, index) => (
               <div
                 key={index}
-                className="group relative bg-white rounded-2xl p-8 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 border border-border hover:border-gold"
+                className="group relative bg-white rounded-2xl p-8 shadow-[0_15px_60px_rgba(10,5,32,0.08)] hover:shadow-[0_30px_80px_rgba(94,75,255,0.25)] transition-all duration-300 border border-transparent hover:border-gold/70"
               >
                 <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
                   <Quote className="w-8 h-8 text-gold" />
@@ -190,7 +190,7 @@ export const TestimonialsSection = () => {
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-14 h-14 rounded-full object-cover ring-2 ring-gold ring-opacity-20"
+                    className="w-14 h-14 rounded-full object-cover ring-4 ring-gold/20"
                   />
                   <div>
                     <h3 className="font-montserrat font-bold text-dark group-hover:text-gold transition-colors">

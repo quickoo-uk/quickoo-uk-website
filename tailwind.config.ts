@@ -43,8 +43,22 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        gold: "#D4AF37",
-        dark: "#111111",
+        gold: "#4C3CF2",
+        dark: "#0C0625",
+        "brand-ink": "#120732",
+        "brand-soft": "#F1EDFF",
+        "brand-glow": "#D9D2FF",
+        ink: {
+          900: "hsl(var(--ink-900))",
+          800: "hsl(var(--ink-800))",
+        },
+        violet: {
+          500: "hsl(var(--violet-500))",
+          300: "hsl(var(--violet-300))",
+        },
+        lavender: {
+          100: "hsl(var(--lavender-100))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",

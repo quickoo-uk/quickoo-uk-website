@@ -28,10 +28,10 @@ const FEATURES = [
 
 export const WhyChooseSection = () => {
   return (
-    <section className="section-spacing bg-gradient-to-b from-background to-muted">
+    <section className="section-spacing bg-gradient-to-b from-[#f9f7ff] via-white to-[#eef4ff]">
       <div className="section-container">
         <div className="text-center mb-20">
-          <span className="inline-block px-4 py-2 bg-gold bg-opacity-10 text-gold rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-brand-soft text-gold rounded-full text-sm font-semibold mb-4">
             WHY CHOOSE US
           </span>
           <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark mb-6">
@@ -50,12 +50,12 @@ export const WhyChooseSection = () => {
             return (
               <div
                 key={index}
-                className="group relative bg-white border border-border rounded-2xl p-8 hover:border-gold hover:shadow-luxury-lg transition-all duration-300 overflow-hidden"
+                className="group relative bg-white/80 backdrop-blur rounded-2xl p-8 border border-transparent hover:border-gold/40 hover:shadow-[0_25px_70px_rgba(94,75,255,0.2)] transition-all duration-300 overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gold bg-opacity-5 rounded-bl-3xl group-hover:bg-opacity-10 transition-all"></div>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gold/10 rounded-bl-3xl group-hover:bg-gold/20 transition-all"></div>
 
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gold bg-opacity-10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold group-hover:bg-opacity-20 group-hover:scale-110 transition-all duration-300">
+                  <div className="w-14 h-14 bg-brand-soft rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold/10 group-hover:scale-110 transition-all duration-300">
                     <Icon className="w-7 h-7 text-gold" />
                   </div>
 

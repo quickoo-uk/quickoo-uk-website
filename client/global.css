@@ -8,49 +8,55 @@
 @layer base {
 
   /**
-   * XChauffur Theme
-   * Light luxury theme with gold accents
-   * Branding: White #FFFFFF, Gold #D4AF37, Black #111111
+   * Quickoo Theme
+   * Clean white canvas with deep-violet accents
+   * Branding: White #FFFFFF, Ink #0A0520, Accent #5E4BFF
   */
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 6.7%;
+    --foreground: 261 62% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 6.7%;
+    --card-foreground: 261 62% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 6.7%;
+    --popover-foreground: 261 62% 14%;
 
-    --primary: 0 0% 6.7%;
+    --primary: 259 72% 46%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 45 100% 66.7%;
-    --secondary-foreground: 0 0% 6.7%;
+    --secondary: 262 55% 94%;
+    --secondary-foreground: 261 62% 14%;
 
-    --muted: 0 0% 97%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 258 44% 97%;
+    --muted-foreground: 257 28% 36%;
 
-    --accent: 45 100% 66.7%;
-    --accent-foreground: 0 0% 6.7%;
+    --accent: 259 72% 46%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 94%;
-    --input: 0 0% 97%;
-    --ring: 45 100% 66.7%;
+    --border: 259 32% 88%;
+    --input: 0 0% 98%;
+    --ring: 259 72% 46%;
+
+    --ink-900: 264 59% 7%;
+    --ink-800: 264 45% 15%;
+    --violet-500: 249 86% 68%;
+    --violet-300: 249 100% 85%;
+    --lavender-100: 258 100% 96%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 0 0% 6.7%;
-    --sidebar-primary: 45 100% 66.7%;
-    --sidebar-primary-foreground: 0 0% 6.7%;
+    --sidebar-foreground: 261 62% 14%;
+    --sidebar-primary: 259 72% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 97%;
-    --sidebar-accent-foreground: 0 0% 6.7%;
-    --sidebar-border: 0 0% 94%;
-    --sidebar-ring: 45 100% 66.7%;
+    --sidebar-accent-foreground: 261 62% 14%;
+    --sidebar-border: 259 32% 88%;
+    --sidebar-ring: 259 72% 46%;
   }
 
   .dark {
@@ -102,10 +108,10 @@
     /* Custom scrollbar - webkit browsers (Chrome, Safari, Edge) */
     scrollbar-width: thin;
     /* Firefox: thumb then track */
-    scrollbar-color: hsl(0 0% 0%) hsl(var(--input));
+    scrollbar-color: hsl(261 62% 14%) hsl(var(--input));
     /* Keep layout stable when scrollbars appear */
-    scrollbar-gutter: stable both-edges;
-    background: hsl(0 0% 0%);
+    scrollbar-gutter: stable;
+    background: hsl(var(--background));
   }
 
   /* Webkit browsers scrollbar styling */
@@ -122,7 +128,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(0 0% 0%);
+    background: hsl(261 62% 14%);
     border-radius: 9999px;
     /* remove the thumb border so there are no light seams at top/bottom */
     border: none;
@@ -132,7 +138,7 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(0 0% 0%);
+    background: hsl(261 62% 14%);
   }
 
   /* Make sure the scrollbar corner matches the track (prevents a light square) */
@@ -141,7 +147,8 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    background: linear-gradient(180deg, #f9f7ff 0%, #ffffff 30%, #f3f8ff 100%);
+    @apply text-foreground font-inter;
   }
 
   h1,

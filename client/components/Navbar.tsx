@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
-
+import logo from "../public/images/logo-2.png";
 const SERVICES = [
   "Airport Transfers",
   "City-to-City",
@@ -46,21 +46,23 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 border-b",
+        "fixed top-0 w-full z-50 transition-all duration-300 border-b backdrop-blur-lg",
         isScrolled
-          ? "bg-white shadow-md border-gray-200"
-          : "bg-[#000000] bg-opacity-95 border-transparent",
+          ? "bg-white/95 shadow-xl border-[#d5cff8]"
+          : "bg-gradient-to-r from-[#f8f5ff]/95 via-[#f1edff]/90 to-[#f8f5ff]/95 border-[#efe9ff]/80 shadow-[0_10px_40px_rgba(18,8,40,0.12)]",
       )}
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <img
-              src="https://images.unsplash.com/photo-1615915468538-0fbd857888ca?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGxvZ298ZW58MHx8MHx8fDA%3D"
-              alt="logo"
-              className="h-12 object-contain filter invert brightness-0"
-            />
+            <div className="relative flex items-center">
+              <img
+                src={logo}
+                alt="Quickoo wordmark"
+                className="h-10 w-auto object-contain drop-shadow-[0_8px_24px_rgba(12,4,32,0.4)]"
+              />
+            </div>
           </Link>
 
           {/* CENTER MENU (Desktop) */}
@@ -69,7 +71,9 @@ export const Navbar = () => {
               to="/"
               className={cn(
                 "font-inter text-sm transition-colors",
-                isScrolled ? "text-black hover:text-[#d4a853]" : "text-white",
+                isScrolled
+                  ? "text-dark hover:text-gold"
+                  : "text-[#2a1b4d] hover:text-gold",
               )}
             >
               Home
@@ -78,20 +82,22 @@ export const Navbar = () => {
             {/* Services */}
             <div className="relative group">
               <button
-                className={cn(
-                  "font-inter text-sm flex items-center gap-1 transition-colors",
-                  isScrolled ? "text-black hover:text-[#d4a853]" : "text-white",
-                )}
+              className={cn(
+                "font-inter text-sm flex items-center gap-1 transition-colors",
+                isScrolled
+                  ? "text-dark hover:text-gold"
+                  : "text-[#2a1b4d] hover:text-gold",
+              )}
               >
                 Services <ChevronDown className="w-4 h-4" />
               </button>
 
-              <div className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl ring-1 ring-[#e5defc] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 {SERVICES.map((service) => (
                   <Link
                     key={service}
                     to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-3 text-sm text-black hover:bg-gray-100 hover:text-[#d4a853]"
+                    className="block px-4 py-3 text-sm text-dark hover:bg-brand-soft hover:text-gold rounded-xl mx-1 my-0.5"
                   >
                     {service}
                   </Link>
@@ -102,20 +108,22 @@ export const Navbar = () => {
             {/* Fleet */}
             <div className="relative group">
               <button
-                className={cn(
-                  "font-inter text-sm flex items-center gap-1 transition-colors",
-                  isScrolled ? "text-black hover:text-[#d4a853]" : "text-white",
-                )}
+              className={cn(
+                "font-inter text-sm flex items-center gap-1 transition-colors",
+                isScrolled
+                  ? "text-dark hover:text-gold"
+                  : "text-[#2a1b4d] hover:text-gold",
+              )}
               >
                 Fleet <ChevronDown className="w-4 h-4" />
               </button>
 
-              <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute left-0 mt-2 w-48 bg-white rounded-2xl shadow-2xl ring-1 ring-[#e5defc] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 {FLEET.map((vehicle) => (
                   <Link
                     key={vehicle}
                     to={`/fleet/${vehicle.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-3 text-sm text-black hover:bg-gray-100 hover:text-[#d4a853]"
+                    className="block px-4 py-3 text-sm text-dark hover:bg-brand-soft hover:text-gold rounded-xl mx-1 my-0.5"
                   >
                     {vehicle}
                   </Link>
@@ -127,7 +135,9 @@ export const Navbar = () => {
               to="/pricing"
               className={cn(
                 "font-inter text-sm transition-colors",
-                isScrolled ? "text-black hover:text-[#d4a853]" : "text-white",
+                isScrolled
+                  ? "text-dark hover:text-gold"
+                  : "text-[#2a1b4d] hover:text-gold",
               )}
             >
               Pricing
@@ -137,7 +147,9 @@ export const Navbar = () => {
               to="/about"
               className={cn(
                 "font-inter text-sm transition-colors",
-                isScrolled ? "text-black hover:text-[#d4a853]" : "text-white",
+                isScrolled
+                  ? "text-dark hover:text-gold"
+                  : "text-[#2a1b4d] hover:text-gold",
               )}
             >
               About Us
@@ -147,7 +159,9 @@ export const Navbar = () => {
               to="/contact"
               className={cn(
                 "font-inter text-sm transition-colors",
-                isScrolled ? "text-black hover:text-[#d4a853]" : "text-white",
+                isScrolled
+                  ? "text-dark hover:text-gold"
+                  : "text-[#2a1b4d] hover:text-gold",
               )}
             >
               Contact
@@ -157,11 +171,16 @@ export const Navbar = () => {
           {/* RIGHT SIDE — Phone Numbers + Book Now */}
           <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center gap-1">
-              <Phone className="w-4 h-4 text-white" />
+              <Phone
+                className={cn(
+                  "w-4 h-4",
+                  isScrolled ? "text-gold" : "text-[#6d5ab8]",
+                )}
+              />
               <span
                 className={cn(
                   "text-sm",
-                  isScrolled ? "text-black" : "text-white",
+                  isScrolled ? "text-dark" : "text-[#2a1b4d]",
                 )}
               >
                 +1 (302) 526-4133
@@ -169,11 +188,16 @@ export const Navbar = () => {
             </div>
 
             <div className="flex items-center gap-1">
-              <Phone className="w-4 h-4 text-white" />
+              <Phone
+                className={cn(
+                  "w-4 h-4",
+                  isScrolled ? "text-gold" : "text-[#6d5ab8]",
+                )}
+              />
               <span
                 className={cn(
                   "text-sm",
-                  isScrolled ? "text-black" : "text-white",
+                  isScrolled ? "text-dark" : "text-[#2a1b4d]",
                 )}
               >
                 +44 207 078 8993
@@ -184,10 +208,10 @@ export const Navbar = () => {
             <Link
               to="/book-now"
               className={cn(
-                "px-8 py-3 font-inter text-sm rounded-none border transition-all font-semibold",
+                "px-8 py-3 font-inter text-sm rounded-full border transition-all font-semibold shadow-lg shadow-[#3c2c7d33]",
                 isScrolled
-                  ? "bg-black text-white border-black hover:bg-gray-800"
-                  : "bg-white text-black border-white hover:bg-gray-100",
+                  ? "bg-gradient-to-r from-gold to-[#7c6dff] text-white border-transparent hover:opacity-90"
+                  : "bg-gradient-to-r from-[#4e3acf] to-[#7a68ff] text-white border-transparent hover:opacity-90",
               )}
             >
               Book Now
@@ -202,9 +226,19 @@ export const Navbar = () => {
             aria-expanded={isOpen ? "true" : "false"}
           >
             {isOpen ? (
-              <X className="w-6 h-6 text-white" />
+              <X
+                className={cn(
+                  "w-6 h-6 transition-colors",
+                  isScrolled ? "text-dark" : "text-[#2a1b4d]",
+                )}
+              />
             ) : (
-              <Menu className="w-6 h-6 text-white" />
+              <Menu
+                className={cn(
+                  "w-6 h-6 transition-colors",
+                  isScrolled ? "text-dark" : "text-[#2a1b4d]",
+                )}
+              />
             )}
           </button>
         </div>
@@ -213,9 +247,9 @@ export const Navbar = () => {
           id="mobile-menu"
           aria-hidden={!isOpen ? "true" : "false"}
           className={cn(
-            "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
+            "md:hidden overflow-hidden transition-all duration-300 ease-in-out rounded-3xl",
             isOpen
-              ? "max-h-[1000px] opacity-100 translate-y-0 py-4 space-y-2"
+              ? "max-h-[1000px] opacity-100 translate-y-0 py-6 space-y-2 bg-gradient-to-b from-brand-ink to-[#130533]"
               : "max-h-0 opacity-0 -translate-y-2 py-0 space-y-0",
           )}
         >
@@ -259,7 +293,7 @@ export const Navbar = () => {
                   to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
                   onClick={handleNavClick}
                   className={cn(
-                    "block px-4 text-sm text-white rounded-lg",
+                    "block px-4 text-sm text-white rounded-lg bg-white/5",
                     mobileServicesOpen ? "py-2" : "py-0",
                   )}
                 >
@@ -298,7 +332,7 @@ export const Navbar = () => {
                   to={`/fleet/${vehicle.toLowerCase().replace(/ /g, "-")}`}
                   onClick={handleNavClick}
                   className={cn(
-                    "block px-4 text-sm text-white rounded-lg",
+                    "block px-4 text-sm text-white rounded-lg bg-white/5",
                     mobileFleetOpen ? "py-2" : "py-0",
                   )}
                 >
@@ -337,7 +371,7 @@ export const Navbar = () => {
             to="/book-now"
             onClick={handleNavClick}
             className={cn(
-              "w-full mt-4 bg-white text-black px-8 rounded-none font-semibold block text-center",
+              "w-full mt-4 bg-white text-dark px-8 rounded-full font-semibold block text-center shadow-lg shadow-[#5e4bff33]",
               isOpen ? "py-3" : "py-0",
             )}
           >

@@ -30,11 +30,11 @@ const FLEET_VEHICLES = [
 
 export const FleetPreviewSection = () => {
   return (
-    <section className="section-spacing bg-gradient-to-b from-background via-background to-muted">
+    <section className="section-spacing bg-gradient-to-b from-white via-[#f6f4ff] to-[#eef6ff]">
       <div className="section-container">
         {/* HEADER */}
         <div className="text-center mb-20">
-          <span className="inline-block px-4 py-2 bg-gold/10 text-gold rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-brand-soft text-gold rounded-full text-sm font-semibold mb-4">
             OUR FLEET
           </span>
 
@@ -56,10 +56,10 @@ export const FleetPreviewSection = () => {
               to={`/fleet/${vehicle.name.toLowerCase().replace(/ /g, "-")}`}
               className="
                 group bg-white rounded-2xl overflow-hidden 
-                shadow-[0_10px_40px_rgba(0,0,0,0.08)]
-                hover:shadow-[0_18px_50px_rgba(212,168,83,0.35)]
+                shadow-[0_12px_50px_rgba(10,5,32,0.08)]
+                hover:shadow-[0_25px_80px_rgba(94,75,255,0.25)]
                 transition-all duration-500 border border-transparent
-                hover:border-gold
+                hover:border-gold/60
               "
             >
               {/* IMAGE */}

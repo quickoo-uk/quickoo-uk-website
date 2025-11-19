@@ -2,13 +2,13 @@ import { Apple, Play, Download, Smartphone } from "lucide-react";
 
 export const AppDownloadSection = () => {
   return (
-    <section className="section-spacing bg-gradient-to-b from-background to-white">
+    <section className="section-spacing bg-gradient-to-b from-[#f7f4ff] via-white to-[#eef6ff]">
       <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8">
             <div>
-              <span className="inline-block px-4 py-2 bg-gold bg-opacity-10 text-gold rounded-full text-sm font-semibold mb-4">
+              <span className="inline-block px-4 py-2 bg-brand-soft text-gold rounded-full text-sm font-semibold mb-4">
                 MOBILE APP
               </span>
               <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark mb-6">
@@ -17,9 +17,9 @@ export const AppDownloadSection = () => {
             </div>
 
             <p className="text-lg font-inter text-gray-600 leading-relaxed">
-              Download the XChauffur app for seamless booking, real-time
-              tracking, and exclusive app-only offers. Your premium
-              transportation experience is just a tap away.
+              Download the Quickoo app for seamless booking, live chauffeur
+              tracking, and exclusive app-only offers. Your premium transportation
+              experience is just a tap away.
             </p>
 
             <div className="space-y-4 md:space-y-0 md:flex md:gap-6">
@@ -57,7 +57,7 @@ export const AppDownloadSection = () => {
             </div>
 
             {/* Features List */}
-            <div className="bg-gold bg-opacity-5 rounded-2xl p-6 border border-gold border-opacity-20">
+            <div className="bg-brand-soft rounded-2xl p-6 border border-gold/40">
               <p className="font-semibold text-dark mb-4 flex items-center gap-2">
                 <Smartphone className="w-5 h-5 text-gold" />
                 App Features
@@ -84,11 +84,11 @@ export const AppDownloadSection = () => {
 
           {/* Right Image */}
           <div className="relative hidden md:block">
-            <div className="absolute -inset-8 bg-gold bg-opacity-5 rounded-3xl blur-2xl"></div>
-            <div className="relative bg-gradient-to-br from-gold to-gold via-gold bg-opacity-10 rounded-3xl overflow-hidden shadow-luxury-lg p-2">
+            <div className="absolute -inset-8 bg-gold/30 rounded-3xl blur-3xl"></div>
+            <div className="relative bg-gradient-to-br from-gold/30 via-[#b8b1ff]/40 to-transparent rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(94,75,255,0.35)] p-2">
               <img
                 src="/mobile-app.png"
-                alt="XChauffur Mobile App"
+                alt="Quickoo Mobile App"
                 className="w-full h-full object-cover rounded-2xl"
               />
             </div>
