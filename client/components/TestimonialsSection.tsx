@@ -151,7 +151,7 @@ export const TestimonialsSection = () => {
   };
 
   return (
-    <section className="section-spacing bg-gradient-to-b from-white via-[#f6f2ff] to-[#eef6ff]">
+    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft to-white">
       <div className="section-container">
         <div className="text-center mb-20">
           <span className="inline-block px-4 py-2 bg-brand-soft text-gold rounded-full text-sm font-semibold mb-4">

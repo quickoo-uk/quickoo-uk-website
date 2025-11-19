@@ -2,7 +2,7 @@ import { Apple, Play, Download, Smartphone } from "lucide-react";
 
 export const AppDownloadSection = () => {
   return (
-    <section className="section-spacing bg-gradient-to-b from-[#f7f4ff] via-white to-[#eef6ff]">
+    <section className="section-spacing bg-gradient-to-b from-brand-soft via-white to-white">
       <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Left Content */}

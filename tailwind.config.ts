@@ -44,20 +44,16 @@ export default {
           foreground: "hsl(var(--accent-foreground))",
         },
         gold: "#4C3CF2",
-        dark: "#0C0625",
-        "brand-ink": "#120732",
-        "brand-soft": "#F1EDFF",
-        "brand-glow": "#D9D2FF",
-        ink: {
-          900: "hsl(var(--ink-900))",
-          800: "hsl(var(--ink-800))",
-        },
-        violet: {
-          500: "hsl(var(--violet-500))",
-          300: "hsl(var(--violet-300))",
-        },
-        lavender: {
-          100: "hsl(var(--lavender-100))",
+        dark: "#09031d",
+        "brand-ink": "hsl(var(--quickoo-ink))",
+        "brand-soft": "hsl(var(--quickoo-soft))",
+        "brand-glow": "hsl(var(--quickoo-glow))",
+        quickoo: {
+          ink: "hsl(var(--quickoo-ink))",
+          violet: "hsl(var(--quickoo-violet))",
+          electric: "hsl(var(--quickoo-electric))",
+          glow: "hsl(var(--quickoo-glow))",
+          soft: "hsl(var(--quickoo-soft))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

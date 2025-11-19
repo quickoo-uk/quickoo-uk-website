@@ -10,7 +10,7 @@ export const AboutSection = () => {
   ];
 
   return (
-    <section className="section-spacing bg-gradient-to-b from-[#eef4ff] via-white to-[#f9f7ff]">
+    <section className="section-spacing bg-gradient-to-b from-brand-soft via-white to-white">
       <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Image Section */}

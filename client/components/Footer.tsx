@@ -28,19 +28,19 @@ const PAGES = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-dark text-white">
+    <footer className="bg-[#080215] text-white">
       <div className="section-container section-spacing">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
           {/* Company Info */}
           <div className="col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center">
-                <span className="text-dark font-montserrat font-bold text-sm">
-                  XC
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#1c0e38] via-[#4630a8] to-[#8b74ff] shadow-[0_15px_35px_rgba(18,2,42,0.4)]">
+                <span className="text-white font-montserrat font-bold text-sm">
+                  QK
                 </span>
               </div>
               <span className="text-lg font-montserrat font-bold">
-                XChauffur
+                Quickoo
               </span>
             </div>
             <p className="font-inter text-sm text-gray-300 mb-6">
@@ -49,25 +49,25 @@ export const Footer = () => {
             <div className="flex gap-4">
               <a
                 href="#"
-                className="w-10 h-10 bg-gold bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-gold hover:text-dark transition-all"
+                className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-all border border-white/10"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-gold bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-gold hover:text-dark transition-all"
+                className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-all border border-white/10"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-gold bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-gold hover:text-dark transition-all"
+                className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-all border border-white/10"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-gold bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-gold hover:text-dark transition-all"
+                className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-all border border-white/10"
               >
                 <Linkedin className="w-5 h-5" />
               </a>

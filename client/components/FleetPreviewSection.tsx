@@ -30,7 +30,7 @@ const FLEET_VEHICLES = [
 
 export const FleetPreviewSection = () => {
   return (
-    <section className="section-spacing bg-gradient-to-b from-white via-[#f6f4ff] to-[#eef6ff]">
+    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft to-white">
       <div className="section-container">
         {/* HEADER */}
         <div className="text-center mb-20">
