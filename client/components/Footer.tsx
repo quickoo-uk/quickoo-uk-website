@@ -182,7 +182,7 @@ export const Footer = () => {
                 />
                 <button
                   type="submit"
-                  className="rounded-xl bg-white/20 p-2 text-white transition hover:bg-gold hover:text-dark sm:px-4"
+                  className="rounded-xl ml-[-15px] bg-white/20 p-2 text-white transition hover:bg-gold hover:text-dark sm:px-4"
                 >
                   <Send className="h-4 w-4" />
                 </button>

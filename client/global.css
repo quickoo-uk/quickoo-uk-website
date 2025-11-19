@@ -97,7 +97,9 @@
     --sidebar-ring: 45 100% 66.7%;
   }
 }
-
+body {
+  overflow-x: hidden
+}
 @layer base {
   * {
     @apply border-border;

@@ -47,6 +47,24 @@ const FLEET_VEHICLES: Vehicle[] = [
     luggage: "8",
     perks: ["Conference seating", "Starlight headliner", "Onboard refreshments"],
   },
+  {
+    name: "BMW i7 xDrive60",
+    category: "Electric Flagship",
+    image:
+      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&h=800&fit=crop",
+    passengers: "4",
+    luggage: "3",
+    perks: ["Panoramic theatre screen", "Bowers & Wilkins audio", "Ambient cabin"],
+  },
+  {
+    name: "BMW i7 xDrive60",
+    category: "Electric Flagship",
+    image:
+      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&h=800&fit=crop",
+    passengers: "4",
+    luggage: "3",
+    perks: ["Panoramic theatre screen", "Bowers & Wilkins audio", "Ambient cabin"],
+  },
   
 ];
 
@@ -69,7 +87,7 @@ export const FleetPreviewSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4 mb-16">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 mb-16">
           {FLEET_VEHICLES.map((vehicle) => (
             <Link
               key={vehicle.name}

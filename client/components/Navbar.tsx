@@ -52,8 +52,8 @@ export const Navbar = () => {
           : "bg-gradient-to-r from-[#f8f5ff]/95 via-[#f1edff]/90 to-[#f8f5ff]/95 border-[#efe9ff]/80 shadow-[0_10px_40px_rgba(18,8,40,0.12)]",
       )}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className="mx-auto flex w-full max-w-7xl px-4 sm:px-6">
+        <div className="flex h-20 w-full items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <div className="relative flex items-center">
