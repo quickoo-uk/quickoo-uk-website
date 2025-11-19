@@ -1,82 +1,151 @@
 import { Link } from "react-router-dom";
-import { TrendingUp } from "lucide-react";
+import { TrendingUp, Sparkles, ShieldCheck, Compass } from "lucide-react";
+
+const STATS = [
+  { value: "500+", label: "Chauffeurs On Call" },
+  { value: "65", label: "Global Cities" },
+  { value: "1.2M", label: "Annual Miles" },
+  { value: "97%", label: "5★ Ratings" },
+];
+
+const TIMELINE = [
+  {
+    year: "2015",
+    title: "Founded in London",
+    detail: "Bespoke chauffeur studio crafted for C-suite travel planners.",
+  },
+  {
+    year: "2019",
+    title: "Global Expansion",
+    detail: "Added concierge-partner network across North America & EU.",
+  },
+  {
+    year: "2024",
+    title: "Smart Mobility Suite",
+    detail: "Launched predictive dispatch and AI itinerary briefing.",
+  },
+];
 
 export const AboutSection = () => {
-  const stats = [
-    { value: "500+", label: "Vehicles", icon: "🚗" },
-    { value: "50K+", label: "Happy Clients", icon: "😊" },
-    { value: "24/7", label: "Availability", icon: "⏰" },
-    { value: "15+", label: "Years Experience", icon: "⭐" },
-  ];
-
   return (
-    <section className="section-spacing bg-gradient-to-b from-brand-soft via-white to-white">
+    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft/30 to-white">
       <div className="section-container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          {/* Image Section */}
-          <div className="relative hidden md:block">
-            <div className="absolute -inset-8 bg-gold/20 rounded-3xl blur-3xl"></div>
-            <div className="relative bg-gradient-to-br from-gold/20 via-[#b8b1ff]/40 to-transparent rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(94,75,255,0.35)] p-2">
-              <img
-                src="/about-home.png"
-                alt="Premium Service"
-                className="w-full h-full object-cover rounded-2xl"
-              />
-            </div>
-          </div>
-
-          {/* Content Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
-            <div>
-              <span className="inline-block px-4 py-2 bg-brand-soft text-gold rounded-full text-sm font-semibold mb-4">
+            <div className="space-y-3">
+              <span className="inline-flex items-center gap-2 rounded-full bg-dark px-4 py-2 text-xs font-semibold tracking-[0.3em] text-white">
                 ABOUT QUICKOO
+                <span className="h-1.5 w-1.5 rounded-full bg-gold" />
               </span>
-              <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark mb-6">
-                Redefining Luxury Transportation
+              <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark">
+                From boutique chauffeurs to a global concierge fleet.
               </h2>
-            </div>
-
-            <div className="space-y-4">
-              <p className="text-lg font-inter text-gray-600 leading-relaxed">
-                Founded in 2015, Quickoo has reimagined premium chauffeur
-                services for the modern traveler. With an unwavering commitment
-                to empathy, technology, and elite service, we've served
-                thousands of satisfied clients across major cities.
-              </p>
-
-              <p className="text-lg font-inter text-gray-600 leading-relaxed">
-                Our mission is simple yet powerful: deliver unparalleled
-                comfort, safety, and professionalism. Every journey with Quickoo
-                is more than just transportation—it's an experience blending
-                luxury, cutting-edge technology, and genuine human
-                touch.
+              <p className="text-lg text-gray-600">
+                We are a collective of hospitality experts, logisticians, and
+                technologists committed to making ground travel feel like a
+                five-star ritual—no matter the route.
               </p>
             </div>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6 py-4">
-              {stats.map((stat, index) => (
+            <div className="grid grid-cols-2 gap-4">
+              {STATS.map((stat) => (
                 <div
-                  key={index}
-                  className="bg-white rounded-2xl p-6 border border-transparent hover:border-gold/60 hover:shadow-[0_20px_60px_rgba(94,75,255,0.18)] transition-all duration-300"
+                  key={stat.label}
+                  className="rounded-3xl bg-white/90 p-6 shadow-xl shadow-black/5 ring-1 ring-black/5"
                 >
-                  <div className="text-2xl mb-2">{stat.icon}</div>
-                  <p className="text-3xl font-montserrat font-bold text-dark">
+                  <p className="text-4xl font-montserrat font-bold text-dark">
                     {stat.value}
                   </p>
-                  <p className="text-sm font-inter text-gray-600 mt-2">
+                  <p className="mt-1 text-sm font-semibold uppercase tracking-[0.3em] text-gray-400">
                     {stat.label}
                   </p>
                 </div>
               ))}
             </div>
 
+            <div className="space-y-6 rounded-3xl bg-white/80 p-6 shadow-inner shadow-black/5">
+              <div className="flex items-center gap-3 text-dark">
+                <Sparkles className="h-5 w-5 text-gold" />
+                <p className="font-montserrat text-lg font-semibold">
+                  Built on radical hospitality & real-time intelligence.
+                </p>
+              </div>
+              <p className="text-sm leading-relaxed text-gray-600">
+                Each booking activates a concierge pod that syncs vehicle prep,
+                chauffeur briefings, city intelligence, and client preferences.
+                The result? Doors open exactly when you arrive—never earlier,
+                never late.
+              </p>
+              <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
+                <span className="rounded-full bg-dark/5 px-3 py-1 text-dark">
+                  Biometrics Cleared
+                </span>
+                <span className="rounded-full bg-dark/5 px-3 py-1 text-dark">
+                  Concierge On-Call
+                </span>
+                <span className="rounded-full bg-dark/5 px-3 py-1 text-dark">
+                  Sustainability Pledge
+                </span>
+              </div>
+            </div>
+
             <Link
               to="/about"
-              className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-gold to-[#8a7bff] text-white font-semibold shadow-lg shadow-[#5e4bff44] hover:translate-y-0.5 transition-transform"
+              className="inline-flex items-center gap-3 rounded-full bg-dark px-10 py-4 font-semibold text-white shadow-lg shadow-black/20 transition hover:bg-gold hover:text-dark"
             >
               Learn Our Full Story
+              <TrendingUp className="h-5 w-5" />
             </Link>
+          </div>
+
+          <div className="space-y-8">
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-black/20 ring-1 ring-black/10">
+              <img
+                src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=1200&h=900&fit=crop"
+                alt="Chauffeur welcoming guests"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-2xl bg-white/95 p-4 shadow-xl">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-gray-400">
+                    Concierge Notes
+                  </p>
+                  <p className="text-sm font-semibold text-dark">
+                    Chauffeur briefing sent with venue layout & VIP protocol.
+                  </p>
+                </div>
+                <ShieldCheck className="h-6 w-6 text-gold" />
+              </div>
+            </div>
+
+            <div className="rounded-3xl bg-white/90 p-6 shadow-xl shadow-black/5 ring-1 ring-black/5">
+              <div className="flex items-center gap-3 mb-4">
+                <Compass className="h-6 w-6 text-gold" />
+                <p className="font-montserrat text-lg font-semibold text-dark">
+                  Our journey highlights
+                </p>
+              </div>
+              <div className="space-y-5">
+                {TIMELINE.map((item) => (
+                  <div key={item.year} className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <span className="font-montserrat text-sm font-bold text-gold">
+                        {item.year}
+                      </span>
+                      <span className="h-full w-px bg-gradient-to-b from-gold/60 to-transparent" />
+                    </div>
+                    <div>
+                      <p className="font-montserrat font-semibold text-dark">
+                        {item.title}
+                      </p>
+                      <p className="text-sm text-gray-600">{item.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

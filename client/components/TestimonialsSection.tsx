@@ -10,7 +10,7 @@ const TESTIMONIALS = [
       "XChauffur has been our go-to service for executive transportation. The professionalism and attention to detail is unmatched. Highly recommended.",
     rating: 5,
     image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
   },
   {
     name: "Michael Chen",
@@ -19,7 +19,7 @@ const TESTIMONIALS = [
       "I've used many premium services globally, but XChauffur stands out for their reliability and comfort. Highly recommended for business travel.",
     rating: 5,
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=400&h=400&fit=crop",
   },
   {
     name: "Emma Williams",
@@ -28,7 +28,7 @@ const TESTIMONIALS = [
       "XChauffur provided exceptional service for our bride's transportation. Professional, punctual, and absolutely perfect for the big day.",
     rating: 5,
     image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
+      "https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?w=400&h=400&fit=crop",
   },
   {
     name: "David Martinez",
@@ -37,7 +37,7 @@ const TESTIMONIALS = [
       "Outstanding service for our corporate events. The drivers are professional and the vehicles are immaculate. Five stars without question.",
     rating: 5,
     image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=400&fit=crop",
   },
 ];
 
@@ -151,107 +151,117 @@ export const TestimonialsSection = () => {
   };
 
   return (
-    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft to-white">
+    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft/40 to-white">
       <div className="section-container">
-        <div className="text-center mb-20">
-          <span className="inline-block px-4 py-2 bg-brand-soft text-gold rounded-full text-sm font-semibold mb-4">
-            TESTIMONIALS
-          </span>
-          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark mb-6">
-            What Our Clients Say
-          </h2>
-          <p className="text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-            Hear from thousands of satisfied customers who trust Quickoo for
-            their premium transportation needs.
-          </p>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+          <div className="rounded-3xl bg-dark px-8 py-10 text-white shadow-2xl shadow-black/40">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold tracking-[0.3em]">
+              TESTIMONIALS
+              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+            </span>
+            <h2 className="mt-6 text-4xl font-montserrat font-bold">
+              Clients trust Quickoo for sensory calm and bulletproof timing.
+            </h2>
+            <p className="mt-4 text-base text-white/80">
+              Every review is captured post-journey via our concierge app, and
+              shared with chauffeurs to continually elevate every ride.
+            </p>
+            <div className="mt-10 space-y-4 rounded-2xl bg-white/10 p-5">
+              <div className="flex items-center gap-3">
+                <Star className="h-5 w-5 fill-gold text-gold" />
+                <p className="text-sm uppercase tracking-[0.3em]">4.98 / 5</p>
+              </div>
+              <p className="text-sm text-white/70">
+                Average rating across 2,400+ enterprise & private itineraries in
+                2024.
+              </p>
+            </div>
+          </div>
 
-        <div
-          ref={carouselRef}
-          className="relative cursor-grab active:cursor-grabbing select-none"
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-500 pointer-events-none">
-            {getVisibleTestimonials().map((testimonial, index) => (
-              <div
-                key={index}
-                className="group relative bg-white rounded-2xl p-8 shadow-[0_15px_60px_rgba(10,5,32,0.08)] hover:shadow-[0_30px_80px_rgba(94,75,255,0.25)] transition-all duration-300 border border-transparent hover:border-gold/70"
-              >
-                <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <Quote className="w-8 h-8 text-gold" />
-                </div>
-
-                <div className="flex items-center gap-4 mb-6">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-14 h-14 rounded-full object-cover ring-4 ring-gold/20"
-                  />
-                  <div>
-                    <h3 className="font-montserrat font-bold text-dark group-hover:text-gold transition-colors">
-                      {testimonial.name}
-                    </h3>
-                    <p className="font-inter text-sm text-gray-600">
-                      {testimonial.title}
+          <div className="lg:col-span-2">
+            <div
+              ref={carouselRef}
+              className="relative cursor-grab select-none active:cursor-grabbing"
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3 pointer-events-none">
+                {getVisibleTestimonials().map((testimonial, index) => (
+                  <div
+                    key={index}
+                    className="group relative flex flex-col rounded-3xl bg-white/90 p-8 shadow-xl shadow-black/5 ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-2xl"
+                  >
+                    <Quote className="absolute right-6 top-6 h-10 w-10 text-gold/30" />
+                    <div className="mb-6 flex items-center gap-4">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="h-16 w-16 rounded-2xl object-cover"
+                        loading="lazy"
+                      />
+                      <div>
+                        <p className="font-montserrat text-lg font-semibold text-dark">
+                          {testimonial.name}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {testimonial.title}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mb-4 flex gap-1">
+                      {Array.from({ length: testimonial.rating }).map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-gold text-gold" />
+                      ))}
+                    </div>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      “{testimonial.content}”
                     </p>
                   </div>
-                </div>
+                ))}
+              </div>
 
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-gold text-gold" />
+              <div className="mt-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between pointer-events-auto">
+                <div className="flex gap-2">
+                  {TESTIMONIALS.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        pauseAutoSlide();
+                        setCurrent(index);
+                        setTimeout(resumeAutoSlide, 3000);
+                      }}
+                      title={`Go to testimonial ${index + 1}`}
+                      className={cn(
+                        "h-2 rounded-full transition-all duration-300",
+                        index === current
+                          ? "w-10 bg-dark"
+                          : "w-4 bg-gray-200 hover:bg-gold",
+                      )}
+                    />
                   ))}
                 </div>
 
-                <p className="font-inter text-gray-600 leading-relaxed">
-                  "{testimonial.content}"
-                </p>
+                <div className="flex gap-4">
+                  <button
+                    onClick={prev}
+                    title="Previous testimonial"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-dark transition hover:border-dark hover:bg-dark hover:text-white"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={next}
+                    title="Next testimonial"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-dark transition hover:border-dark hover:bg-dark hover:text-white"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                </div>
               </div>
-            ))}
-          </div>
-
-          {/* Controls */}
-          <div className="flex items-center justify-between mt-16 pointer-events-auto">
-            <div className="flex gap-2">
-              {TESTIMONIALS.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    pauseAutoSlide();
-                    setCurrent(index);
-                    setTimeout(resumeAutoSlide, 3000);
-                  }}
-                  title={`Go to testimonial ${index + 1}`}
-                  className={cn(
-                    "transition-all duration-300 rounded-full",
-                    index === current
-                      ? "bg-gold w-8 h-2"
-                      : "bg-border w-3 h-3 hover:bg-gold hover:w-4",
-                  )}
-                />
-              ))}
-            </div>
-
-            <div className="flex gap-4">
-              <button
-                onClick={prev}
-                title="Previous testimonial"
-                className="w-12 h-12 rounded-full border-2 border-border hover:border-gold bg-white hover:bg-gold hover:bg-opacity-10 flex items-center justify-center transition-all group"
-              >
-                <ChevronLeft className="w-5 h-5 text-dark group-hover:text-gold transition-colors" />
-              </button>
-              <button
-                onClick={next}
-                title="Next testimonial"
-                className="w-12 h-12 rounded-full border-2 border-border hover:border-gold bg-white hover:bg-gold hover:bg-opacity-10 flex items-center justify-center transition-all group"
-              >
-                <ChevronRight className="w-5 h-5 text-dark group-hover:text-gold transition-colors" />
-              </button>
             </div>
           </div>
         </div>
