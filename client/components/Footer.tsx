@@ -8,6 +8,7 @@ import {
   Mail,
   MapPin,
 } from "lucide-react";
+import logo from "../public/images/logo-2.png";
 
 const SERVICES = [
   "Airport Transfers",
@@ -28,20 +29,23 @@ const PAGES = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#080215] text-white">
+    <footer className="relative overflow-hidden text-white bg-gradient-to-b from-[#140631] via-[#1c0f47] to-[#2e1a66]">
+      <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.28),transparent_65%)] pointer-events-none" />
+      <div className="absolute -top-24 -left-16 w-[520px] h-[520px] bg-white/20 blur-[130px] opacity-70 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[320px] h-[320px] bg-[#6f54ff]/30 blur-[120px] opacity-70 pointer-events-none" />
       <div className="section-container section-spacing">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
           {/* Company Info */}
           <div className="col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#1c0e38] via-[#4630a8] to-[#8b74ff] shadow-[0_15px_35px_rgba(18,2,42,0.4)]">
-                <span className="text-white font-montserrat font-bold text-sm">
-                  QK
-                </span>
+            <div className="flex items-start gap-2 mb-4">
+              <div className="relative inline-flex items-center justify-center rounded-2xl bg-white/35 px-5 py-3 shadow-[0_20px_45px_rgba(46,15,102,0.5)] backdrop-blur-lg border border-white/40">
+                <div className="absolute inset-0 bg-white/60 blur-2xl opacity-60 pointer-events-none" />
+                <img
+                  src={logo}
+                  alt="Quickoo logo"
+                  className="relative h-10 w-auto"
+                />
               </div>
-              <span className="text-lg font-montserrat font-bold">
-                Quickoo
-              </span>
             </div>
             <p className="font-inter text-sm text-gray-300 mb-6">
               Premium chauffeur services for those who demand excellence.
