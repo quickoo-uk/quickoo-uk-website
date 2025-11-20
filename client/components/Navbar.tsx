@@ -210,8 +210,8 @@ export const Navbar = () => {
               className={cn(
                 "px-6 xl:px-8 py-2.5 xl:py-3 font-inter text-xs xl:text-sm rounded-full border transition-all font-semibold shadow-lg shadow-[#3c2c7d33] whitespace-nowrap",
                 isScrolled
-                  ? "bg-gradient-to-r from-gold to-[#7c6dff] text-white border-transparent hover:opacity-90"
-                  : "bg-gradient-to-r from-[#4e3acf] to-[#7a68ff] text-white border-transparent hover:opacity-90",
+                  ? "luxury-button-gold text-white border-transparent hover:opacity-90"
+                  : "luxury-button-gold text-white border-transparent hover:opacity-90",
               )}
             >
               Book Now

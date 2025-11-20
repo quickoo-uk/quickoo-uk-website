@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, Quote, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const TESTIMONIALS = [
@@ -7,28 +7,28 @@ const TESTIMONIALS = [
     name: "Sarah Johnson",
     title: "CEO, Tech Innovations",
     content:
-      "XChauffur has been our go-to service for executive transportation. The professionalism and attention to detail is unmatched. Highly recommended.",
+      "Quickoo has been our go-to service for executive transportation. The professionalism and attention to detail is unmatched. Highly recommended.",
     rating: 5,
     image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
   },
   {
     name: "Michael Chen",
     title: "Frequent Traveler",
     content:
-      "I've used many premium services globally, but XChauffur stands out for their reliability and comfort. Highly recommended for business travel.",
+      "I've used many premium services globally, but Quickoo stands out for their reliability and comfort. Highly recommended for business travel.",
     rating: 5,
     image:
-      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=400&q=80",
   },
   {
     name: "Emma Williams",
     title: "Wedding Coordinator",
     content:
-      "XChauffur provided exceptional service for our bride's transportation. Professional, punctual, and absolutely perfect for the big day.",
+      "Quickoo provided exceptional service for our bride's transportation. Professional, punctual, and absolutely perfect for the big day.",
     rating: 5,
     image:
-      "https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?auto=format&fit=crop&w=400&q=80",
   },
   {
     name: "David Martinez",
@@ -37,7 +37,7 @@ const TESTIMONIALS = [
       "Outstanding service for our corporate events. The drivers are professional and the vehicles are immaculate. Five stars without question.",
     rating: 5,
     image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80",
   },
 ];
 
@@ -49,20 +49,18 @@ export const TestimonialsSection = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const autoSlideTimer = useRef<NodeJS.Timeout | null>(null);
 
-  // Auto-slide functionality
   useEffect(() => {
     if (!isAutoSliding) return;
 
     autoSlideTimer.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 5000); // Change every 5 seconds
+    }, 5000);
 
     return () => {
       if (autoSlideTimer.current) clearInterval(autoSlideTimer.current);
     };
   }, [isAutoSliding]);
 
-  // Handle auto-slide pause on user interaction
   const pauseAutoSlide = () => {
     setIsAutoSliding(false);
     if (autoSlideTimer.current) clearInterval(autoSlideTimer.current);
@@ -75,7 +73,6 @@ export const TestimonialsSection = () => {
   const next = () => {
     pauseAutoSlide();
     setCurrent((prev) => (prev + 1) % TESTIMONIALS.length);
-    // Resume auto-slide after 3 seconds
     setTimeout(resumeAutoSlide, 3000);
   };
 
@@ -84,11 +81,9 @@ export const TestimonialsSection = () => {
     setCurrent(
       (prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length,
     );
-    // Resume auto-slide after 3 seconds
     setTimeout(resumeAutoSlide, 3000);
   };
 
-  // Drag/Swipe handlers
   const handleMouseDown = (e: React.MouseEvent) => {
     setDragStart(e.clientX);
     setIsDragging(true);
@@ -107,7 +102,6 @@ export const TestimonialsSection = () => {
     const dragEnd = e.clientX;
     const dragDiff = dragStart - dragEnd;
 
-    // Threshold for slide change
     if (Math.abs(dragDiff) > 50) {
       if (dragDiff > 0) {
         next();
@@ -119,7 +113,6 @@ export const TestimonialsSection = () => {
     }
   };
 
-  // Touch handlers for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
     setDragStart(e.touches[0].clientX);
     pauseAutoSlide();
@@ -151,27 +144,43 @@ export const TestimonialsSection = () => {
   };
 
   return (
-    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft/40 to-white">
-      <div className="section-container">
+    <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#f1f5ff] to-white">
+      {/* Background gradients */}
+      <div className="absolute -right-16 -top-10 h-56 w-56 rounded-full bg-gold/15 blur-[120px]" />
+      <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
+
+      {/* Animated SVG */}
+      <svg
+        className="pointer-events-none absolute right-10 top-20 h-40 w-40 text-[#b3c4ff]/40 animate-[spin_20s_linear_infinite]"
+        viewBox="0 0 160 160"
+        aria-hidden
+      >
+        <circle cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeWidth="0.5" />
+        <circle cx="80" cy="80" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" />
+      </svg>
+
+      <div className="section-container relative">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
-          <div className="rounded-3xl bg-dark px-8 py-10 text-white shadow-2xl shadow-black/40">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold tracking-[0.3em]">
-              TESTIMONIALS
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            </span>
+          <div className="rounded-3xl border border-white/60 bg-gradient-to-br from-[#1a1230] via-[#3f1c6e] to-[#806af1] px-8 py-10 text-white shadow-[0_30px_90px_rgba(15,23,42,0.25)]">
+            <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur mb-6">
+              <Sparkles className="h-4 w-4 text-white" />
+              <span className="text-xs tracking-[0.3em] uppercase font-semibold">
+                Testimonials
+              </span>
+            </div>
             <h2 className="mt-6 text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold">
               Clients trust Quickoo for sensory calm and bulletproof timing.
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-white/80">
+            <p className="mt-4 text-sm sm:text-base text-white/80 font-inter">
               Every review is captured post-journey via our concierge app, and
               shared with chauffeurs to continually elevate every ride.
             </p>
-            <div className="mt-10 space-y-4 rounded-2xl bg-white/10 p-5">
+            <div className="mt-10 space-y-4 rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur">
               <div className="flex items-center gap-3">
                 <Star className="h-5 w-5 fill-gold text-gold" />
                 <p className="text-sm uppercase tracking-[0.3em]">4.98 / 5</p>
               </div>
-              <p className="text-sm text-white/70">
+              <p className="text-sm text-white/70 font-inter">
                 Average rating across 2,400+ enterprise & private itineraries in
                 2024.
               </p>
@@ -193,9 +202,9 @@ export const TestimonialsSection = () => {
                 {getVisibleTestimonials().map((testimonial, index) => (
                   <div
                     key={index}
-                    className="group relative flex flex-col rounded-3xl bg-white/90 p-8 shadow-xl shadow-black/5 ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-2xl"
+                    className="group relative flex flex-col rounded-[28px] border border-white/60 bg-white/90 p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(116,128,255,0.25)]"
                   >
-                    <Quote className="absolute right-6 top-6 h-10 w-10 text-gold/30" />
+                    <Quote className="absolute right-6 top-6 h-10 w-10 text-[#7b5dff]/30" />
                     <div className="mb-6 flex items-center gap-4">
                       <img
                         src={testimonial.image}
@@ -207,18 +216,18 @@ export const TestimonialsSection = () => {
                         <p className="font-montserrat text-lg font-semibold text-dark">
                           {testimonial.name}
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-500 font-inter">
                           {testimonial.title}
                         </p>
                       </div>
                     </div>
                     <div className="mb-4 flex gap-1">
                       {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-gold text-gold" />
+                        <Star key={i} className="h-4 w-4 fill-[#7b5dff] text-[#7b5dff]" />
                       ))}
                     </div>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      “{testimonial.content}”
+                    <p className="text-sm text-gray-600 leading-relaxed font-inter">
+                      "{testimonial.content}"
                     </p>
                   </div>
                 ))}
@@ -238,8 +247,8 @@ export const TestimonialsSection = () => {
                       className={cn(
                         "h-2 rounded-full transition-all duration-300",
                         index === current
-                          ? "w-10 bg-dark"
-                          : "w-4 bg-gray-200 hover:bg-gold",
+                          ? "w-10 bg-[#7b5dff]"
+                          : "w-4 bg-gray-200 hover:bg-[#7b5dff]/50",
                       )}
                     />
                   ))}
@@ -249,14 +258,14 @@ export const TestimonialsSection = () => {
                   <button
                     onClick={prev}
                     title="Previous testimonial"
-                    className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-dark transition hover:border-dark hover:bg-dark hover:text-white"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-dark transition hover:border-[#7b5dff] hover:bg-[#7b5dff] hover:text-white shadow-sm"
                   >
                     <ChevronLeft className="h-5 w-5" />
                   </button>
                   <button
                     onClick={next}
                     title="Next testimonial"
-                    className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-dark transition hover:border-dark hover:bg-dark hover:text-white"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-dark transition hover:border-[#7b5dff] hover:bg-[#7b5dff] hover:text-white shadow-sm"
                   >
                     <ChevronRight className="h-5 w-5" />
                   </button>

@@ -28,19 +28,38 @@ const TIMELINE = [
 
 export const AboutSection = () => {
   return (
-    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft/30 to-white">
-      <div className="section-container">
+    <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#fff5ec]">
+      {/* Background gradients */}
+      <div className="absolute -right-16 -top-10 h-56 w-56 rounded-full bg-gold/15 blur-[120px]" />
+      <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
+
+      {/* Animated SVG */}
+      <svg
+        className="pointer-events-none absolute left-10 top-10 h-32 w-32 text-gold/30 animate-[spin_24s_linear_infinite]"
+        viewBox="0 0 160 160"
+        aria-hidden
+      >
+        <circle cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeWidth="0.6" />
+        <circle cx="80" cy="80" r="40" fill="none" stroke="currentColor" strokeWidth="0.6" />
+      </svg>
+
+      <div className="section-container relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
-            <div className="space-y-3">
-              <span className="inline-flex items-center gap-2 rounded-full bg-dark px-4 py-2 text-xs font-semibold tracking-[0.3em] text-white">
-                ABOUT QUICKOO
-                <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-dark">
-                From boutique chauffeurs to a global concierge fleet.
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
+                <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+                <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
+                  About Quickoo
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
+                From boutique chauffeurs to a{" "}
+                <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+                  global concierge fleet.
+                </span>
               </h2>
-              <p className="text-base sm:text-lg text-gray-600">
+              <p className="text-base sm:text-lg text-gray-600 font-inter">
                 We are a collective of hospitality experts, logisticians, and
                 technologists committed to making ground travel feel like a
                 five-star ritual—no matter the route.
@@ -51,26 +70,26 @@ export const AboutSection = () => {
               {STATS.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-3xl bg-white/90 p-6 shadow-xl shadow-black/5 ring-1 ring-black/5"
+                  className="rounded-3xl border border-white/60 bg-white/85 px-6 py-5 backdrop-blur shadow-[0_25px_70px_rgba(119,132,255,0.18)]"
                 >
-                  <p className="text-4xl font-montserrat font-bold text-dark">
+                  <p className="text-4xl font-montserrat font-bold text-[#6a63ff]">
                     {stat.value}
                   </p>
-                  <p className="mt-1 text-sm font-semibold uppercase tracking-[0.3em] text-gray-400">
+                  <p className="mt-1 text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
                     {stat.label}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="space-y-6 rounded-3xl bg-white/80 p-6 shadow-inner shadow-black/5">
+            <div className="space-y-6 rounded-3xl border border-white/60 bg-white/80 p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur">
               <div className="flex items-center gap-3 text-dark">
-                <Sparkles className="h-5 w-5 text-gold" />
+                <Sparkles className="h-5 w-5 text-[#7b5dff]" />
                 <p className="font-montserrat text-lg font-semibold">
                   Built on radical hospitality & real-time intelligence.
                 </p>
               </div>
-              <p className="text-sm leading-relaxed text-gray-600">
+              <p className="text-sm leading-relaxed text-gray-600 font-inter">
                 Each booking activates a concierge pod that syncs vehicle prep,
                 chauffeur briefings, city intelligence, and client preferences.
                 The result? Doors open exactly when you arrive—never earlier,
@@ -91,7 +110,7 @@ export const AboutSection = () => {
 
             <Link
               to="/about"
-              className="inline-flex items-center gap-3 rounded-full bg-dark px-10 py-4 font-semibold text-white shadow-lg shadow-black/20 transition hover:bg-gold hover:text-dark"
+              className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] px-10 py-4 font-semibold text-white shadow-lg shadow-[#3f1c6e]/35 transition hover:opacity-90"
             >
               Learn Our Full Story
               <TrendingUp className="h-5 w-5" />
@@ -99,30 +118,30 @@ export const AboutSection = () => {
           </div>
 
           <div className="space-y-8">
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-black/20 ring-1 ring-black/10">
+            <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_90px_rgba(15,23,42,0.15)] border border-white/60">
               <img
-                src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=1200&h=900&fit=crop"
+                src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
                 alt="Chauffeur welcoming guests"
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-2xl bg-white/95 p-4 shadow-xl">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-2xl bg-white/95 p-6 shadow-xl backdrop-blur">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.3em] text-gray-400">
+                  <p className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-2">
                     Concierge Notes
                   </p>
-                  <p className="text-sm font-semibold text-dark">
+                  <p className="text-sm font-semibold text-dark font-montserrat">
                     Chauffeur briefing sent with venue layout & VIP protocol.
                   </p>
                 </div>
-                <ShieldCheck className="h-6 w-6 text-gold" />
+                <ShieldCheck className="h-6 w-6 text-[#7b5dff]" />
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white/90 p-6 shadow-xl shadow-black/5 ring-1 ring-black/5">
+            <div className="rounded-3xl border border-white/60 bg-white/90 p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur">
               <div className="flex items-center gap-3 mb-4">
-                <Compass className="h-6 w-6 text-gold" />
+                <Compass className="h-6 w-6 text-[#7b5dff]" />
                 <p className="font-montserrat text-lg font-semibold text-dark">
                   Our journey highlights
                 </p>
@@ -131,16 +150,16 @@ export const AboutSection = () => {
                 {TIMELINE.map((item) => (
                   <div key={item.year} className="flex gap-4">
                     <div className="flex flex-col items-center">
-                      <span className="font-montserrat text-sm font-bold text-gold">
+                      <span className="font-montserrat text-sm font-bold text-[#7b5dff]">
                         {item.year}
                       </span>
-                      <span className="h-full w-px bg-gradient-to-b from-gold/60 to-transparent" />
+                      <span className="h-full w-px bg-gradient-to-b from-[#7b5dff]/60 to-transparent" />
                     </div>
                     <div>
                       <p className="font-montserrat font-semibold text-dark">
                         {item.title}
                       </p>
-                      <p className="text-sm text-gray-600">{item.detail}</p>
+                      <p className="text-sm text-gray-600 font-inter">{item.detail}</p>
                     </div>
                   </div>
                 ))}
