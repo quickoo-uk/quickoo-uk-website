@@ -11,6 +11,7 @@ import {
   Send,
 } from "lucide-react";
 import logo from "../public/images/logo-2.png";
+import { FLEET_TYPES } from "@shared/fleet";
 
 const SERVICES = [
   "Airport Transfers",
@@ -19,8 +20,6 @@ const SERVICES = [
   "Wedding",
   "Business",
 ];
-
-const FLEET = ["Mercedes S-Class", "BMW i7", "Range Rover", "Electric Fleet"];
 
 const PAGES = [
   { label: "About", href: "/about" },
@@ -127,13 +126,13 @@ export const Footer = () => {
               Fleet Highlights
             </h4>
             <ul className="mt-6 space-y-3 text-sm text-white/70">
-              {FLEET.map((vehicle) => (
-                <li key={vehicle}>
+              {FLEET_TYPES.map((carType) => (
+                <li key={carType.id}>
                   <Link
-                    to={`/fleet/${vehicle.toLowerCase().replace(/ /g, "-")}`}
+                    to={`/fleet/${carType.id}`}
                     className="transition hover:text-white"
                   >
-                    {vehicle}
+                    {carType.name}
                   </Link>
                 </li>
               ))}

@@ -11,7 +11,7 @@ import { Footer } from "@/components/Footer";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ServicesPlaceholder from "./pages/ServicesPlaceholder";
-import FleetPlaceholder from "./pages/FleetPlaceholder";
+import CarTypePage from "./pages/CarTypePage";
 import PricingPage from "./pages/Pricing";
 import AboutPage from "./pages/About";
 import ContactPage from "./pages/Contact";
@@ -60,7 +60,7 @@ const App = () => (
             path="/fleet/:id"
             element={
               <Layout>
-                <FleetPlaceholder />
+                <CarTypePage />
               </Layout>
             }
           />

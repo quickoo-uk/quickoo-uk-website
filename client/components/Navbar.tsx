@@ -3,21 +3,13 @@ import { Link } from "react-router-dom";
 import { ChevronDown, Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logo from "../public/images/logo-2.png";
+import { FLEET_TYPES } from "@shared/fleet";
+
 const SERVICES = [
   "Airport Transfers",
   "Corporate travel",
   "Special events",
   "City Tours",
-];
-
-const FLEET = [
-  "Mercedes S-Class",
-  "E-Class",
-  "V-Class",
-  "BMW i7",
-  "Range Rover",
-  "Electric Fleet",
-  "Minibuses",
 ];
 
 export const Navbar = () => {
@@ -126,14 +118,14 @@ export const Navbar = () => {
                 Fleet <ChevronDown className="w-4 h-4" />
               </button>
 
-              <div className="absolute left-0 mt-2 w-48 bg-white rounded-2xl shadow-2xl ring-1 ring-[#e5defc] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                {FLEET.map((vehicle) => (
+              <div className="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl ring-1 ring-[#e5defc] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {FLEET_TYPES.map((carType) => (
                   <Link
-                    key={vehicle}
-                    to={`/fleet/${vehicle.toLowerCase().replace(/ /g, "-")}`}
+                    key={carType.id}
+                    to={`/fleet/${carType.id}`}
                     className="block px-4 py-3 text-sm text-dark hover:bg-brand-soft hover:text-gold rounded-xl mx-1 my-0.5"
                   >
-                    {vehicle}
+                    {carType.name}
                   </Link>
                 ))}
               </div>
@@ -343,14 +335,14 @@ export const Navbar = () => {
                     : "max-h-0 opacity-0 -translate-y-1",
                 )}
               >
-                {FLEET.map((vehicle) => (
+                {FLEET_TYPES.map((carType) => (
                   <Link
-                    key={vehicle}
-                    to={`/fleet/${vehicle.toLowerCase().replace(/ /g, "-")}`}
+                    key={carType.id}
+                    to={`/fleet/${carType.id}`}
                     onClick={handleNavClick}
                     className="block px-4 py-2 text-sm text-white/90 rounded-lg hover:bg-white/10 hover:text-white transition-colors"
                   >
-                    {vehicle}
+                    {carType.name}
                   </Link>
                 ))}
               </div>

@@ -1,72 +1,30 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Users, Luggage, Wifi, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { FLEET_TYPES } from "@shared/fleet";
 
-type Vehicle = {
-  name: string;
-  category: string;
-  image: string;
-  passengers: string;
-  luggage: string;
-  perks: string[];
+// Get default images for car types
+const getCarTypeImage = (carTypeId: string): string => {
+  const imageMap: Record<string, string> = {
+    "executive-cars":
+      "https://images.unsplash.com/photo-1617469767053-adf3ef61e6d1?auto=format&fit=crop&w=2000&q=80",
+    "luxury-vip":
+      "https://images.unsplash.com/photo-1617469767053-adf3ef61e6d1?auto=format&fit=crop&w=2000&q=80",
+    "premium-suvs":
+      "https://images.unsplash.com/photo-1617814078590-0e98c024aaa0?auto=format&fit=crop&w=2000&q=80",
+    "business-vans":
+      "https://images.unsplash.com/photo-1605511876319-7f4ef3221c71?auto=format&fit=crop&w=2000&q=80",
+    "special-vehicles":
+      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=2000&q=80",
+    "electric-cars":
+      "https://images.unsplash.com/photo-1668875515314-8a79808bf6f8?auto=format&fit=crop&w=2000&q=80",
+    "vintage-cars-weddings":
+      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=2000&q=80",
+  };
+  return (
+    imageMap[carTypeId] ||
+    "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=2000&q=80"
+  );
 };
-
-const FLEET_VEHICLES: Vehicle[] = [
-  {
-    name: "Mercedes-Maybach S 680",
-    category: "Executive Sedan",
-    image:
-      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&h=800&fit=crop&sat=-30",
-    passengers: "4",
-    luggage: "3",
-    perks: ["Reclining seats", "Rear tablet suite", "Fridge & glassware"],
-  },
-  {
-    name: "BMW i7 xDrive60",
-    category: "Electric Flagship",
-    image:
-      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&h=800&fit=crop",
-    passengers: "4",
-    luggage: "3",
-    perks: ["Panoramic theatre screen", "Bowers & Wilkins audio", "Ambient cabin"],
-  },
-  {
-    name: "Range Rover Autobiography",
-    category: "Luxury SUV",
-    image:
-      "https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=1200&h=800&fit=crop",
-    passengers: "5",
-    luggage: "5",
-    perks: ["All-terrain comfort", "Executive rear seats", "Privacy glass"],
-  },
-  {
-    name: "Mercedes V-Class Lounge",
-    category: "Group & Events",
-    image:
-      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&h=800&fit=crop&sat=-40",
-    passengers: "7",
-    luggage: "8",
-    perks: ["Conference seating", "Starlight headliner", "Onboard refreshments"],
-  },
-  {
-    name: "BMW i7 xDrive60",
-    category: "Electric Flagship",
-    image:
-      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&h=800&fit=crop",
-    passengers: "4",
-    luggage: "3",
-    perks: ["Panoramic theatre screen", "Bowers & Wilkins audio", "Ambient cabin"],
-  },
-  {
-    name: "BMW i7 xDrive60",
-    category: "Electric Flagship",
-    image:
-      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&h=800&fit=crop",
-    passengers: "4",
-    luggage: "3",
-    perks: ["Panoramic theatre screen", "Bowers & Wilkins audio", "Ambient cabin"],
-  },
-  
-];
 
 export const FleetPreviewSection = () => {
   return (
@@ -88,16 +46,16 @@ export const FleetPreviewSection = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 mb-16">
-          {FLEET_VEHICLES.map((vehicle) => (
+          {FLEET_TYPES.map((carType) => (
             <Link
-              key={vehicle.name}
-              to={`/fleet/${vehicle.name.toLowerCase().replace(/ /g, "-")}`}
+              key={carType.id}
+              to={`/fleet/${carType.id}`}
               className="group flex flex-col overflow-hidden rounded-3xl bg-white/80 shadow-xl shadow-black/5 ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-2xl"
             >
               <div className="relative h-56">
                 <img
-                  src={vehicle.image}
-                  alt={vehicle.name}
+                  src={getCarTypeImage(carType.id)}
+                  alt={carType.name}
                   loading="lazy"
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 />
@@ -105,57 +63,53 @@ export const FleetPreviewSection = () => {
                 <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
                   <div>
                     <p className="text-xs uppercase tracking-[0.3em] text-white/70">
-                      {vehicle.category}
+                      {carType.cars.length > 0
+                        ? `${carType.cars.length} Vehicle${carType.cars.length > 1 ? "s" : ""}`
+                        : "Special Collection"}
                     </p>
                     <h3 className="text-2xl font-montserrat font-bold text-white">
-                      {vehicle.name}
+                      {carType.name}
                     </h3>
                   </div>
                   <div className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white">
-                    View Specs
+                    Explore
                   </div>
                 </div>
               </div>
 
               <div className="flex flex-1 flex-col gap-6 p-6">
-                <div className="flex items-center justify-between rounded-2xl border border-gray-100/80 bg-white/90 p-4">
-                  <div className="flex items-center gap-2">
-                    <Users className="h-5 w-5 text-gold" />
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-gray-400">
-                        Passengers
-                      </p>
-                      <p className="text-xl font-montserrat font-bold text-dark">
-                        {vehicle.passengers}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Luggage className="h-5 w-5 text-gold" />
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-gray-400">
-                        Luggage
-                      </p>
-                      <p className="text-xl font-montserrat font-bold text-dark">
-                        {vehicle.luggage}
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <p className="text-sm text-gray-600 font-inter leading-relaxed">
+                  {carType.description}
+                </p>
 
-                <ul className="space-y-2 text-sm text-gray-600">
-                  {vehicle.perks.map((perk) => (
-                    <li key={perk} className="flex items-center gap-2">
-                      <Sparkles className="h-4 w-4 text-gold" />
-                      {perk}
-                    </li>
-                  ))}
-                </ul>
+                {carType.cars.length > 0 && (
+                  <div className="space-y-2">
+                    <p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-semibold mb-2">
+                      Available Vehicles
+                    </p>
+                    <ul className="space-y-1.5">
+                      {carType.cars.slice(0, 3).map((car, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-center gap-2 text-sm text-gray-700"
+                        >
+                          <Sparkles className="h-3.5 w-3.5 text-gold flex-shrink-0" />
+                          {car.name}
+                        </li>
+                      ))}
+                      {carType.cars.length > 3 && (
+                        <li className="text-xs text-gray-500 pl-5">
+                          +{carType.cars.length - 3} more
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
                   <div className="flex items-center gap-2 text-sm font-semibold text-gray-500">
-                    <Wifi className="h-4 w-4 text-gold" />
-                    Always-on Wi-Fi & refreshments included
+                    <Sparkles className="h-4 w-4 text-gold" />
+                    Premium fleet selection
                   </div>
                   <ArrowRight className="h-5 w-5 text-gold transition group-hover:translate-x-1" />
                 </div>
@@ -166,10 +120,10 @@ export const FleetPreviewSection = () => {
 
         <div className="text-center">
           <Link
-            to="/fleet/all"
+            to="/fleet/executive-cars"
             className="inline-flex items-center gap-3 rounded-full bg-dark px-10 py-4 font-semibold text-white shadow-lg shadow-black/20 transition hover:bg-gold hover:text-dark"
           >
-            Explore Full Fleet
+            Explore All Categories
             <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
