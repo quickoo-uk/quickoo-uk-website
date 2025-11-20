@@ -19,10 +19,10 @@ export const AppDownloadSection = () => {
                 MOBILE HQ
                 <span className="h-1.5 w-1.5 rounded-full bg-gold" />
               </span>
-              <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-dark">
                 A control tower for every ride in your pocket.
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-base sm:text-lg text-gray-600">
                 Manage chauffeurs, share live ETAs, unlock surprise upgrades, and
                 stay in sync with your concierge pod—all from the Quickoo app.
               </p>

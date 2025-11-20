@@ -6,7 +6,7 @@ export default function PricingPage() {
       {/* ===================================== */}
       {/* HERO SECTION */}
       {/* ===================================== */}
-      <section className="relative h-[55vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] sm:h-[50vh] md:h-[55vh] flex items-center justify-center overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1597003536775-d335d5a70e21?auto=format&fit=crop&w=2000&q=80"
           className="absolute w-full h-full object-cover filter grayscale brightness-[0.55]"
@@ -15,11 +15,11 @@ export default function PricingPage() {
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
-        <div className="relative z-10 section-container text-center">
-          <h1 className="text-5xl md:text-6xl font-montserrat font-bold text-white mb-4">
+        <div className="relative z-10 section-container text-center px-4 sm:px-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-white mb-3 sm:mb-4">
             Transparent Pricing
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-inter">
+          <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-inter">
             No hidden fees. Know exactly what you'll pay before you book.
           </p>
         </div>
@@ -28,15 +28,15 @@ export default function PricingPage() {
       {/* ===================================== */}
       {/* PRICING SECTIONS */}
       {/* ===================================== */}
-      <section className="py-24 bg-white">
-        <div className="section-container space-y-24">
+      <section className="py-12 sm:py-16 md:py-24 bg-white">
+        <div className="section-container space-y-12 sm:space-y-16 md:space-y-24">
           {/* HOURLY RATES */}
           <div>
-            <h2 className="text-4xl font-montserrat font-bold text-dark mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold text-dark mb-6 sm:mb-8 md:mb-10">
               Hourly Rates
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {[
                 {
                   vehicle: "Economy Class",
@@ -165,19 +165,19 @@ export default function PricingPage() {
 
           {/* CITY TO CITY */}
           <div>
-            <h2 className="text-4xl font-montserrat font-bold text-dark mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold text-dark mb-6 sm:mb-8 md:mb-10">
               City-to-City Pricing
             </h2>
 
-            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.05)]">
-              <table className="w-full">
+            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.05)] overflow-x-auto">
+              <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="bg-dark text-white">
                     {["Route", "Distance", "Price", "Duration"].map(
                       (h, idx) => (
                         <th
                           key={idx}
-                          className="px-6 py-5 text-left font-montserrat text-lg"
+                          className="px-4 sm:px-6 py-3 sm:py-5 text-left font-montserrat text-sm sm:text-base md:text-lg"
                         >
                           {h}
                         </th>
@@ -208,16 +208,16 @@ export default function PricingPage() {
                     },
                   ].map((item, idx) => (
                     <tr key={idx} className="hover:bg-muted/40 transition-all">
-                      <td className="px-6 py-5 font-inter text-dark">
+                      <td className="px-4 sm:px-6 py-3 sm:py-5 font-inter text-sm sm:text-base text-dark">
                         {item.route}
                       </td>
-                      <td className="px-6 py-5 font-inter text-gray-600">
+                      <td className="px-4 sm:px-6 py-3 sm:py-5 font-inter text-sm sm:text-base text-gray-600">
                         {item.distance}
                       </td>
-                      <td className="px-6 py-5 text-gold font-montserrat font-bold">
+                      <td className="px-4 sm:px-6 py-3 sm:py-5 text-gold font-montserrat font-bold text-sm sm:text-base">
                         {item.price}
                       </td>
-                      <td className="px-6 py-5 font-inter text-gray-600">
+                      <td className="px-4 sm:px-6 py-3 sm:py-5 font-inter text-sm sm:text-base text-gray-600">
                         {item.duration}
                       </td>
                     </tr>
@@ -228,15 +228,15 @@ export default function PricingPage() {
           </div>
 
           {/* CTA */}
-          <div className="bg-gold/10 rounded-2xl p-12 text-center shadow-md border border-gold/20">
-            <h3 className="text-3xl font-montserrat font-bold text-dark mb-4">
+          <div className="bg-gold/10 rounded-2xl p-6 sm:p-8 md:p-12 text-center shadow-md border border-gold/20">
+            <h3 className="text-2xl sm:text-3xl font-montserrat font-bold text-dark mb-3 sm:mb-4">
               Need a Custom Quote?
             </h3>
-            <p className="text-gray-600 font-inter mb-8">
+            <p className="text-gray-600 font-inter mb-6 sm:mb-8 text-sm sm:text-base">
               Have special requirements? Our team can create a tailored pricing
               plan.
             </p>
-            <button className="luxury-button-gold text-lg px-10 py-4">
+            <button className="luxury-button-gold text-base sm:text-lg px-8 sm:px-10 py-3 sm:py-4">
               Request Custom Quote
             </button>
           </div>

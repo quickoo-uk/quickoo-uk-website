@@ -97,8 +97,9 @@
     --sidebar-ring: 45 100% 66.7%;
   }
 }
-body {
-  overflow-x: hidden
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 @layer base {
   * {
@@ -107,6 +108,8 @@ body {
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
     /* Custom scrollbar - webkit browsers (Chrome, Safari, Edge) */
     scrollbar-width: thin;
     /* Firefox: thumb then track */

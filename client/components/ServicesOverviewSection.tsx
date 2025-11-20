@@ -128,10 +128,10 @@ export const ServicesOverviewSection = () => {
             PREMIUM EXPERIENCES
             <span className="h-1.5 w-1.5 rounded-full bg-gold" />
           </span>
-          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-dark">
             Chauffeur Services Crafted For Every Journey
           </h2>
-          <p className="text-lg font-inter text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
             Discover curated itineraries, white-glove service, and modern
             vehicles tailored to airport runs, business travel, events, and
             bespoke tours.

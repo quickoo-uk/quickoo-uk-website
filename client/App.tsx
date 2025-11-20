@@ -26,9 +26,9 @@ const Layout = ({
   children: React.ReactNode;
   isFooter?: boolean;
 }) => (
-  <div className="flex flex-col min-h-screen">
+  <div className="flex flex-col min-h-screen overflow-x-hidden w-full">
     <Navbar />
-    <main className="flex-grow pt-20">{children}</main>
+    <main className="flex-grow pt-16 sm:pt-20 w-full overflow-x-hidden">{children}</main>
     {isFooter !== false && <Footer />}
   </div>
 );

@@ -77,10 +77,10 @@ export const FleetPreviewSection = () => {
             FLAGSHIP FLEET
             <span className="h-1.5 w-1.5 rounded-full bg-gold" />
           </span>
-          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-dark">
             Vehicles curated for boardrooms, red carpets, and runway transfers.
           </h2>
-          <p className="text-lg font-inter text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
             Select a category, set your preferences, and we stage the perfect
             vehicle with onboard bar, Wi-Fi, and concierge amenities before you
             arrive.

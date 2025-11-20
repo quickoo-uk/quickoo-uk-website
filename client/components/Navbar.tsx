@@ -37,6 +37,18 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const handleNavClick = () => {
     setIsOpen(false);
     setMobileServicesOpen(false);
@@ -44,29 +56,30 @@ export const Navbar = () => {
   };
 
   return (
-    <nav
-      className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 border-b backdrop-blur-lg",
-        isScrolled
-          ? "bg-white/95 shadow-xl border-[#d5cff8]"
-          : "bg-gradient-to-r from-[#f8f5ff]/95 via-[#f1edff]/90 to-[#f8f5ff]/95 border-[#efe9ff]/80 shadow-[0_10px_40px_rgba(18,8,40,0.12)]",
-      )}
-    >
-      <div className="mx-auto flex w-full max-w-7xl px-4 sm:px-6">
-        <div className="flex h-20 w-full items-center justify-between">
+    <>
+      <nav
+        className={cn(
+          "fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 border-b backdrop-blur-lg",
+          isScrolled
+            ? "bg-white/95 shadow-xl border-[#d5cff8]"
+            : "bg-gradient-to-r from-[#f8f5ff]/95 via-[#f1edff]/90 to-[#f8f5ff]/95 border-[#efe9ff]/80 shadow-[0_10px_40px_rgba(18,8,40,0.12)]",
+        )}
+      >
+        <div className="mx-auto flex w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-hidden">
+          <div className="flex h-16 sm:h-20 w-full items-center justify-between min-w-0">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3 flex-shrink-0">
             <div className="relative flex items-center">
               <img
                 src={logo}
                 alt="Quickoo wordmark"
-                className="h-10 w-auto object-contain drop-shadow-[0_8px_24px_rgba(12,4,32,0.4)]"
+                className="h-8 sm:h-10 w-auto object-contain drop-shadow-[0_8px_24px_rgba(12,4,32,0.4)]"
               />
             </div>
           </Link>
 
           {/* CENTER MENU (Desktop) */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
             <Link
               to="/"
               className={cn(
@@ -169,8 +182,8 @@ export const Navbar = () => {
           </div>
 
           {/* RIGHT SIDE — Phone Numbers + Book Now */}
-          <div className="hidden md:flex items-center gap-6">
-            <div className="flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
+            <div className="hidden xl:flex items-center gap-1">
               <Phone
                 className={cn(
                   "w-4 h-4",
@@ -208,7 +221,7 @@ export const Navbar = () => {
             <Link
               to="/book-now"
               className={cn(
-                "px-8 py-3 font-inter text-sm rounded-full border transition-all font-semibold shadow-lg shadow-[#3c2c7d33]",
+                "px-6 xl:px-8 py-2.5 xl:py-3 font-inter text-xs xl:text-sm rounded-full border transition-all font-semibold shadow-lg shadow-[#3c2c7d33] whitespace-nowrap",
                 isScrolled
                   ? "bg-gradient-to-r from-gold to-[#7c6dff] text-white border-transparent hover:opacity-90"
                   : "bg-gradient-to-r from-[#4e3acf] to-[#7a68ff] text-white border-transparent hover:opacity-90",
@@ -221,7 +234,7 @@ export const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2"
+            className="lg:hidden p-2 flex-shrink-0 ml-2"
             aria-controls="mobile-menu"
             aria-expanded={isOpen ? "true" : "false"}
           >
@@ -242,143 +255,169 @@ export const Navbar = () => {
             )}
           </button>
         </div>
-        {/* MOBILE MENU (kept in DOM for smooth transitions) */}
+      </div>
+      </nav>
+
+      {/* MOBILE MENU OVERLAY - Full Screen */}
+      {isOpen && (
         <div
-          id="mobile-menu"
-          aria-hidden={!isOpen ? "true" : "false"}
-          className={cn(
-            "md:hidden overflow-hidden transition-all duration-300 ease-in-out rounded-3xl",
-            isOpen
-              ? "max-h-[1000px] opacity-100 translate-y-0 py-6 space-y-2 bg-gradient-to-b from-brand-ink to-[#130533]"
-              : "max-h-0 opacity-0 -translate-y-2 py-0 space-y-0",
-          )}
-        >
-          <Link
-            to="/"
-            onClick={handleNavClick}
-            className={cn(
-              "block px-4 text-white rounded-lg",
-              isOpen ? "py-2" : "py-0",
-            )}
-          >
-            Home
-          </Link>
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={handleNavClick}
+          aria-hidden="true"
+        />
+      )}
 
-          {/* Services */}
-          <div>
-            <button
-              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-              className="w-full flex items-center justify-between px-4 text-white"
-              aria-expanded={mobileServicesOpen ? "true" : "false"}
+      {/* MOBILE MENU - Full Width Dropdown */}
+      <div
+        id="mobile-menu"
+        aria-hidden={!isOpen ? "true" : "false"}
+        className={cn(
+          "fixed top-16 sm:top-20 left-0 right-0 w-full max-w-full lg:hidden z-50 overflow-y-auto overflow-x-hidden transition-all duration-300 ease-in-out",
+          isOpen
+            ? "max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-5rem)] opacity-100 translate-y-0"
+            : "max-h-0 opacity-0 -translate-y-4 pointer-events-none",
+        )}
+        style={{ maxHeight: isOpen ? "calc(100vh - 4rem)" : "0" }}
+      >
+        <div className="bg-gradient-to-b from-brand-ink to-[#130533] shadow-2xl">
+          <div className="px-4 py-6 space-y-1">
+            <Link
+              to="/"
+              onClick={handleNavClick}
+              className="block px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
             >
-              <span className={cn(isOpen ? "py-2" : "py-0")}>Services</span>
-              <ChevronDown
-                className={cn(
-                  "w-4 h-4 transition-transform duration-200",
-                  mobileServicesOpen && "rotate-180",
-                )}
-              />
-            </button>
-            <div
-              className={cn(
-                "pl-4 overflow-hidden transition-all duration-200 ease-in-out",
-                mobileServicesOpen
-                  ? "max-h-[600px] opacity-100 translate-y-0 pt-2"
-                  : "max-h-0 opacity-0 -translate-y-1 pt-0",
-              )}
-            >
-              {SERVICES.map((service) => (
-                <Link
-                  key={service}
-                  to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
-                  onClick={handleNavClick}
+              Home
+            </Link>
+
+            {/* Services */}
+            <div>
+              <button
+                onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                className="w-full flex items-center justify-between px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
+                aria-expanded={mobileServicesOpen ? "true" : "false"}
+              >
+                <span>Services</span>
+                <ChevronDown
                   className={cn(
-                    "block px-4 text-sm text-white rounded-lg bg-white/5",
-                    mobileServicesOpen ? "py-2" : "py-0",
+                    "w-4 h-4 transition-transform duration-200",
+                    mobileServicesOpen && "rotate-180",
                   )}
-                >
-                  {service}
-                </Link>
-              ))}
+                />
+              </button>
+              <div
+                className={cn(
+                  "pl-4 overflow-hidden transition-all duration-200 ease-in-out",
+                  mobileServicesOpen
+                    ? "max-h-[600px] opacity-100 translate-y-0 pt-1"
+                    : "max-h-0 opacity-0 -translate-y-1",
+                )}
+              >
+                {SERVICES.map((service) => (
+                  <Link
+                    key={service}
+                    to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
+                    onClick={handleNavClick}
+                    className="block px-4 py-2 text-sm text-white/90 rounded-lg hover:bg-white/10 hover:text-white transition-colors"
+                  >
+                    {service}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Fleet */}
+            <div>
+              <button
+                onClick={() => setMobileFleetOpen(!mobileFleetOpen)}
+                className="w-full flex items-center justify-between px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
+                aria-expanded={mobileFleetOpen ? "true" : "false"}
+              >
+                <span>Fleet</span>
+                <ChevronDown
+                  className={cn(
+                    "w-4 h-4 transition-transform duration-200",
+                    mobileFleetOpen && "rotate-180",
+                  )}
+                />
+              </button>
+              <div
+                className={cn(
+                  "pl-4 overflow-hidden transition-all duration-200 ease-in-out",
+                  mobileFleetOpen
+                    ? "max-h-[600px] opacity-100 translate-y-0 pt-1"
+                    : "max-h-0 opacity-0 -translate-y-1",
+                )}
+              >
+                {FLEET.map((vehicle) => (
+                  <Link
+                    key={vehicle}
+                    to={`/fleet/${vehicle.toLowerCase().replace(/ /g, "-")}`}
+                    onClick={handleNavClick}
+                    className="block px-4 py-2 text-sm text-white/90 rounded-lg hover:bg-white/10 hover:text-white transition-colors"
+                  >
+                    {vehicle}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link
+              to="/pricing"
+              onClick={handleNavClick}
+              className="block px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
+            >
+              Pricing
+            </Link>
+
+            <Link
+              to="/about"
+              onClick={handleNavClick}
+              className="block px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
+            >
+              About Us
+            </Link>
+
+            <Link
+              to="/contact"
+              onClick={handleNavClick}
+              className="block px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
+            >
+              Contact
+            </Link>
+
+            {/* Phone Numbers in Mobile Menu */}
+            <div className="px-4 pt-4 mt-2 space-y-3 border-t border-white/10">
+              <a
+                href="tel:+13025264133"
+                onClick={handleNavClick}
+                className="flex items-center gap-3 text-white/90 hover:text-white transition-colors py-2"
+              >
+                <Phone className="w-4 h-4" />
+                <span className="text-sm">+1 (302) 526-4133</span>
+              </a>
+              <a
+                href="tel:+442070788993"
+                onClick={handleNavClick}
+                className="flex items-center gap-3 text-white/90 hover:text-white transition-colors py-2"
+              >
+                <Phone className="w-4 h-4" />
+                <span className="text-sm">+44 207 078 8993</span>
+              </a>
+            </div>
+
+            {/* Book Now */}
+            <div className="px-4 pt-4">
+              <Link
+                to="/book-now"
+                onClick={handleNavClick}
+                className="w-full bg-white text-dark px-8 py-3 rounded-full font-semibold block text-center shadow-lg shadow-[#5e4bff33] hover:opacity-90 transition-opacity"
+              >
+                Book Now
+              </Link>
             </div>
           </div>
-
-          {/* Fleet */}
-          <div>
-            <button
-              onClick={() => setMobileFleetOpen(!mobileFleetOpen)}
-              className="w-full flex items-center justify-between px-4 text-white"
-              aria-expanded={mobileFleetOpen ? "true" : "false"}
-            >
-              <span className={cn(isOpen ? "py-2" : "py-0")}>Fleet</span>
-              <ChevronDown
-                className={cn(
-                  "w-4 h-4 transition-transform duration-200",
-                  mobileFleetOpen && "rotate-180",
-                )}
-              />
-            </button>
-            <div
-              className={cn(
-                "pl-4 overflow-hidden transition-all duration-200 ease-in-out",
-                mobileFleetOpen
-                  ? "max-h-[600px] opacity-100 translate-y-0 pt-2"
-                  : "max-h-0 opacity-0 -translate-y-1 pt-0",
-              )}
-            >
-              {FLEET.map((vehicle) => (
-                <Link
-                  key={vehicle}
-                  to={`/fleet/${vehicle.toLowerCase().replace(/ /g, "-")}`}
-                  onClick={handleNavClick}
-                  className={cn(
-                    "block px-4 text-sm text-white rounded-lg bg-white/5",
-                    mobileFleetOpen ? "py-2" : "py-0",
-                  )}
-                >
-                  {vehicle}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <Link
-            to="/pricing"
-            onClick={handleNavClick}
-            className={cn("block px-4 text-white", isOpen ? "py-2" : "py-0")}
-          >
-            Pricing
-          </Link>
-
-          <Link
-            to="/about"
-            onClick={handleNavClick}
-            className={cn("block px-4 text-white", isOpen ? "py-2" : "py-0")}
-          >
-            About Us
-          </Link>
-
-          <Link
-            to="/contact"
-            onClick={handleNavClick}
-            className={cn("block px-4 text-white", isOpen ? "py-2" : "py-0")}
-          >
-            Contact
-          </Link>
-
-          {/* Book Now */}
-          <Link
-            to="/book-now"
-            onClick={handleNavClick}
-            className={cn(
-              "w-full mt-4 bg-white text-dark px-8 rounded-full font-semibold block text-center shadow-lg shadow-[#5e4bff33]",
-              isOpen ? "py-3" : "py-0",
-            )}
-          >
-            Book Now
-          </Link>
         </div>
       </div>
-    </nav>
+    </>
   );
 };

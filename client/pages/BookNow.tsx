@@ -43,10 +43,10 @@ export default function BookNow() {
     <div className="w-full min-h-screen bg-[#f4f4f4]">
       <div className="grid grid-cols-1 lg:grid-cols-3 min-h-screen">
         {/* LEFT PANEL */}
-        <div className="bg-[#eee] p-6 flex justify-center">
-          <div className="bg-white w-full max-w-md rounded-xl border shadow-sm p-6">
+        <div className="bg-[#eee] p-4 sm:p-6 flex justify-center overflow-y-auto">
+          <div className="bg-white w-full max-w-md rounded-xl border shadow-sm p-4 sm:p-6">
             {/* TABS */}
-            <div className="flex gap-6 border-b pb-3 mb-6">
+            <div className="flex gap-3 sm:gap-6 border-b pb-3 mb-4 sm:mb-6 overflow-x-auto">
               {[
                 { id: "one-way", label: "One Way" },
                 { id: "airport-pickup", label: "Airport pickup" },
@@ -55,7 +55,7 @@ export default function BookNow() {
                 <button
                   key={tab.id}
                   onClick={() => setRideType(tab.id as RideType)}
-                  className={`pb-2 font-semibold text-sm ${
+                  className={`pb-2 font-semibold text-xs sm:text-sm whitespace-nowrap ${
                     rideType === tab.id
                       ? "border-b-2 border-black text-black"
                       : "text-gray-500 hover:text-black"
@@ -69,7 +69,7 @@ export default function BookNow() {
             {/* --------------------- */}
             {/* FORM STARTS HERE     */}
             {/* --------------------- */}
-            <form className="space-y-6">
+            <form className="space-y-4 sm:space-y-6">
               {/* ================================================== */}
               {/* AIRPORT PICKUP → FLIGHT NUMBER FIELD              */}
               {/* ================================================== */}
@@ -268,7 +268,7 @@ export default function BookNow() {
               )}
 
               {/* TIMEZONE FOOTER */}
-              <div className="text-xs flex justify-between text-gray-600">
+              <div className="text-xs flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0 text-gray-600">
                 <span>Booking Timezone: Europe/London</span>
                 <span>Your Local Time: {new Date().toLocaleTimeString()}</span>
               </div>
@@ -285,7 +285,7 @@ export default function BookNow() {
         </div>
 
         {/* RIGHT PANEL — MAP */}
-        <div className="lg:col-span-2 relative">
+        <div className="lg:col-span-2 relative h-[50vh] lg:h-auto">
           <GoogleMap />
         </div>
       </div>

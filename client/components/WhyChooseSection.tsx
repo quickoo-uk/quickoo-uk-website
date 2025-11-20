@@ -50,10 +50,10 @@ export const WhyChooseSection = () => {
               WHY QUICKOO
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
             </span>
-            <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-dark">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-dark">
               A concierge-level chauffeur partner obsessed with details.
             </h2>
-            <p className="text-lg font-inter text-gray-600">
+            <p className="text-base sm:text-lg font-inter text-gray-600">
               We blend hospitality, logistics, and technology to deliver journeys
               that feel effortless. Every itinerary is tracked in real time,
               every chauffeur is briefed on your preferences, and every vehicle

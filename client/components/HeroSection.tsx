@@ -18,7 +18,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative flex min-h-[38rem] w-full items-center overflow-hidden bg-gradient-to-b from-brand-soft via-white to-white pt-28 pb-16 md:h-[95vh] md:pt-0 md:pb-0">
+    <section className="relative flex min-h-[32rem] sm:min-h-[38rem] w-full items-center overflow-hidden bg-gradient-to-b from-brand-soft via-white to-white pt-24 sm:pt-28 pb-12 sm:pb-16 md:h-[95vh] md:pt-0 md:pb-0 max-w-full">
       {/* Background Slider */}
       <div className="absolute inset-0">
         {images.map((img, i) => (
@@ -44,46 +44,46 @@ export const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="w-full max-w-4xl space-y-6 md:w-[60%] lg:w-full">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white/85 uppercase tracking-[0.3em] text-xs border border-white/20 shadow-[0_10px_25px_rgba(255,255,255,0.18)]">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-4xl space-y-4 sm:space-y-6 md:w-[60%] lg:w-full text-left">
+          <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 text-white/85 uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs border border-white/20 shadow-[0_10px_25px_rgba(255,255,255,0.18)]">
             Quickoo Chauffeur
           </span>
-          <h1 className="text-white font-montserrat font-bold text-4xl md:text-6xl leading-tight drop-shadow-[0_8px_45px_rgba(0,0,0,0.45)]">
+          <h1 className="text-white font-montserrat font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight drop-shadow-[0_8px_45px_rgba(0,0,0,0.45)]">
             Effortless Luxury Rides
             <br /> Powered by Quickoo
           </h1>
 
-          <p className="text-white/85 text-lg md:text-xl font-inter leading-relaxed">
+          <p className="text-white/85 text-base sm:text-lg md:text-xl font-inter leading-relaxed max-w-2xl">
             Arrive calm, collected, and right on time. Quickoo pairs elite
             chauffeurs with a connected fleet so every journey feels intuitive,
             safe, and deeply personal.
           </p>
 
           {/* CTA Button (same style as screenshot) */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button className="group flex items-center gap-3 px-9 py-4 rounded-full bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white font-semibold border border-white/15 shadow-[0_25px_60px_rgba(15,6,30,0.55)] transition-all hover:translate-y-0.5">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <button className="group flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-9 py-3 sm:py-4 rounded-full bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white text-sm sm:text-base font-semibold border border-white/15 shadow-[0_25px_60px_rgba(15,6,30,0.55)] transition-all hover:translate-y-0.5">
               Book Now
-              <span className="text-xl transition-transform group-hover:translate-x-1">
+              <span className="text-lg sm:text-xl transition-transform group-hover:translate-x-1">
                 ↗
               </span>
             </button>
-            <button className="flex items-center gap-3 px-9 py-4 rounded-full border border-white/35 text-white/90 font-semibold backdrop-blur bg-white/5 hover:bg-white/10 transition-all shadow-[0_18px_50px_rgba(10,5,32,0.45)]">
+            <button className="flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-9 py-3 sm:py-4 rounded-full border border-white/35 text-white/90 text-sm sm:text-base font-semibold backdrop-blur bg-white/5 hover:bg-white/10 transition-all shadow-[0_18px_50px_rgba(10,5,32,0.45)]">
               Explore Fleet
             </button>
           </div>
 
-          <div className="flex flex-wrap gap-6 pt-4 text-white/75 text-sm font-inter">
+          <div className="flex flex-wrap gap-4 sm:gap-6 pt-2 sm:pt-4 text-white/75 text-xs sm:text-sm font-inter">
             <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-white/80"></span>
+              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-white/80"></span>
               Private concierge 24/7
             </span>
             <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-white/80"></span>
+              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-white/80"></span>
               Curated electric & executive fleet
             </span>
             <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-white/80"></span>
+              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-white/80"></span>
               Global availability
             </span>
           </div>

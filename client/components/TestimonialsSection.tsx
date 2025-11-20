@@ -159,10 +159,10 @@ export const TestimonialsSection = () => {
               TESTIMONIALS
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
             </span>
-            <h2 className="mt-6 text-4xl font-montserrat font-bold">
+            <h2 className="mt-6 text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold">
               Clients trust Quickoo for sensory calm and bulletproof timing.
             </h2>
-            <p className="mt-4 text-base text-white/80">
+            <p className="mt-4 text-sm sm:text-base text-white/80">
               Every review is captured post-journey via our concierge app, and
               shared with chauffeurs to continually elevate every ride.
             </p>

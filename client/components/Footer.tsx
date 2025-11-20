@@ -31,10 +31,10 @@ const PAGES = [
 
 export const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-[#05010c] via-[#0c0620] to-[#1a103d] text-white">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-[#05010c] via-[#0c0620] to-[#1a103d] text-white w-full max-w-full">
       <div className="absolute inset-0 opacity-70 bg-[radial-gradient(circle_at_top,_rgba(111,84,255,0.35),transparent_60%)] pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
-      <div className="section-container section-spacing relative z-10 space-y-16 pb-8">
+      <div className="section-container section-spacing relative z-10 space-y-12 sm:space-y-16 pb-8 overflow-x-hidden">
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-white/10 via-white/5 to-white/10 p-8 backdrop-blur-xl shadow-[0_30px_80px_rgba(5,0,20,0.5)]">
           <img
             src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1600&h=900&fit=crop"
@@ -43,11 +43,11 @@ export const Footer = () => {
             loading="lazy"
           />
           <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div className="w-[57%]">
-              <p className="text-xs uppercase tracking-[0.4em] text-gold">
+            <div className="w-full lg:w-[57%]">
+              <p className="text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gold">
                 Concierge 24 / 7
               </p>
-              <h3 className="mt-3 text-3xl md:text-4xl font-montserrat font-bold">
+              <h3 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold">
                 Ready for your next itinerary? Let's choreograph it.
               </h3>
               <p className="mt-3 text-sm text-white/70">
@@ -55,26 +55,26 @@ export const Footer = () => {
                 standby—tailored within minutes.
               </p>
             </div>
-            <div className="flex flex-col gap-4 sm:flex-row">
+            <div className="flex flex-col gap-3 sm:gap-4 sm:flex-row w-full lg:w-auto">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-6 py-3 font-semibold text-dark shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-gold hover:text-dark"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-dark shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-gold hover:text-dark"
               >
                 Plan A Journey
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
               <a
-                href="tel:+1234567890"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-6 py-3 text-white transition hover:border-gold"
+                href="tel:+442070788993"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-white transition hover:border-gold"
               >
                 Call Concierge
-                <Phone className="h-5 w-5" />
+                <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 sm:gap-10 sm:grid-cols-2 lg:grid-cols-4 overflow-x-hidden">
           <div className="space-y-6">
             <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3 shadow-xl shadow-black/20">
               <img
@@ -167,22 +167,22 @@ export const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
-              <p className="text-xs uppercase tracking-[0.4em] text-white/60">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5 backdrop-blur overflow-hidden">
+              <p className="text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/60">
                 Insider Drops
               </p>
               <p className="mt-2 text-sm text-white/80">
                 Get fleet debuts, runway alerts, and surprise upgrades.
               </p>
-              <form className="mt-4 flex flex-col gap-2 rounded-xl border border-white/10 bg-white/10 p-2 sm:flex-row sm:items-center">
+              <form className="mt-4 flex flex-col gap-2 rounded-xl border border-white/10 bg-white/10 p-2 sm:flex-row sm:items-center overflow-hidden">
                 <input
                   type="email"
                   placeholder="Email address"
-                  className="flex-1 bg-transparent text-sm text-white placeholder:text-white/50 focus:outline-none"
+                  className="flex-1 bg-transparent text-sm text-white placeholder:text-white/50 focus:outline-none px-2 sm:px-3 py-2 min-w-0"
                 />
                 <button
                   type="submit"
-                  className="rounded-xl !ml-[-20px] bg-white/20 p-2 text-white transition hover:bg-gold hover:text-dark sm:px-4"
+                  className="rounded-xl bg-white/20 p-2 sm:p-2.5 text-white transition hover:bg-gold hover:text-dark flex items-center justify-center flex-shrink-0 sm:px-4"
                 >
                   <Send className="h-4 w-4" />
                 </button>
@@ -191,9 +191,9 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 text-sm text-white/60 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="border-t border-white/10 pt-6 text-xs sm:text-sm text-white/60 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} XChauffur. All rights reserved.</p>
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-4 sm:gap-6">
             {PAGES.map((page) => (
               <Link key={page.href} to={page.href} className="transition hover:text-white">
                 {page.label}

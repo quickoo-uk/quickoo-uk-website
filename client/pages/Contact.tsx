@@ -26,7 +26,7 @@ export default function ContactPage() {
       {/* ============================ */}
       {/*      HERO SECTION            */}
       {/* ============================ */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=2000&q=80"
           className="absolute inset-0 w-full h-full object-cover filter grayscale opacity-90"
@@ -34,11 +34,11 @@ export default function ContactPage() {
 
         <div className="absolute inset-0 bg-black/60" />
 
-        <div className="relative z-10 text-center max-w-3xl px-6">
-          <h1 className="text-5xl md:text-6xl font-montserrat font-bold text-white">
+        <div className="relative z-10 text-center max-w-3xl px-4 sm:px-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-white">
             Get in Touch
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 mt-4 font-inter">
+          <p className="text-base sm:text-lg md:text-xl text-gray-200 mt-3 sm:mt-4 font-inter px-4">
             Contact us anytime for bookings, inquiries, or premium chauffeur
             support.
           </p>
@@ -48,9 +48,9 @@ export default function ContactPage() {
       {/* ============================ */}
       {/*      CONTACT CARDS           */}
       {/* ============================ */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
             {[
               {
                 icon: Phone,
@@ -98,10 +98,10 @@ export default function ContactPage() {
           {/* ============================ */}
           {/* CONTACT FORM + SIDE PANEL   */}
           {/* ============================ */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
             {/* FORM */}
             <div>
-              <h2 className="text-3xl font-montserrat font-bold text-dark mb-8">
+              <h2 className="text-2xl sm:text-3xl font-montserrat font-bold text-dark mb-6 sm:mb-8">
                 Send us a Message
               </h2>
 
@@ -202,9 +202,9 @@ export default function ContactPage() {
             </div>
 
             {/* RIGHT SIDE CONTACT OPTIONS */}
-            <div className="space-y-10">
+            <div className="space-y-6 sm:space-y-10">
               <div>
-                <h3 className="text-2xl font-montserrat font-bold text-dark mb-6">
+                <h3 className="text-xl sm:text-2xl font-montserrat font-bold text-dark mb-4 sm:mb-6">
                   Other Ways to Reach Us
                 </h3>
               </div>

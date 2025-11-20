@@ -6,7 +6,7 @@ export default function AboutPage() {
       {/* ================================ */}
       {/* HERO SECTION */}
       {/* ================================ */}
-      <section className="relative h-[65vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] sm:h-[50vh] md:h-[65vh] flex items-center justify-center overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=2000&q=80"
           className="absolute inset-0 w-full h-full object-cover filter grayscale brightness-[0.55]"
@@ -15,11 +15,11 @@ export default function AboutPage() {
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
-        <div className="relative z-10 text-center px-6">
-          <h1 className="text-5xl md:text-6xl font-montserrat font-bold text-white">
+        <div className="relative z-10 text-center px-4 sm:px-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-white">
             About XChauffur
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 mt-4 max-w-2xl mx-auto font-inter">
+          <p className="text-base sm:text-lg md:text-xl text-gray-200 mt-3 sm:mt-4 max-w-2xl mx-auto font-inter">
             Redefining luxury transportation since 2015.
           </p>
         </div>
@@ -31,8 +31,8 @@ export default function AboutPage() {
       <section className="section-spacing bg-white">
         <div className="section-container grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* TEXT */}
-          <div className="space-y-6">
-            <h2 className="text-4xl font-montserrat font-bold text-dark">
+          <div className="space-y-4 sm:space-y-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold text-dark">
               Our Story
             </h2>
             <p className="font-inter text-gray-600 leading-relaxed">
@@ -53,7 +53,7 @@ export default function AboutPage() {
           </div>
 
           {/* IMAGE */}
-          <div className="relative h-[420px] rounded-3xl overflow-hidden shadow-xl">
+          <div className="relative h-[280px] sm:h-[350px] md:h-[420px] rounded-3xl overflow-hidden shadow-xl">
             <img
               src="https://images.unsplash.com/photo-1597009534830-9a3a8ceb903c?auto=format&fit=crop&w=1200&q=80"
               className="w-full h-full object-cover"
@@ -128,7 +128,7 @@ export default function AboutPage() {
       {/* STATS SECTION */}
       {/* ================================ */}
       <section className="section-spacing bg-dark text-white">
-        <div className="section-container grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+        <div className="section-container grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 text-center">
           {[
             { number: "500+", label: "Premium Vehicles" },
             { number: "50K+", label: "Happy Customers" },
@@ -136,10 +136,10 @@ export default function AboutPage() {
             { number: "15+", label: "Years of Excellence" },
           ].map((stat, idx) => (
             <div key={idx}>
-              <p className="text-5xl font-montserrat font-bold text-gold mb-2">
+              <p className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-bold text-gold mb-1 sm:mb-2">
                 {stat.number}
               </p>
-              <p className="font-inter text-gray-300">{stat.label}</p>
+              <p className="font-inter text-xs sm:text-sm md:text-base text-gray-300">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -208,13 +208,13 @@ export default function AboutPage() {
       {/* ================================ */}
       <section className="section-spacing bg-gold bg-opacity-10 text-center">
         <div className="section-container">
-          <h3 className="text-3xl font-montserrat font-bold text-dark mb-4">
+          <h3 className="text-2xl sm:text-3xl font-montserrat font-bold text-dark mb-3 sm:mb-4">
             Experience the XChauffur Standard
           </h3>
-          <p className="text-gray-600 font-inter max-w-xl mx-auto mb-6">
+          <p className="text-gray-600 font-inter max-w-xl mx-auto mb-4 sm:mb-6 text-sm sm:text-base">
             Luxury, comfort, reliability — redefined. Book your journey today.
           </p>
-          <button className="luxury-button-gold px-8 py-4 text-lg">
+          <button className="luxury-button-gold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg">
             Book Your Chauffeur
           </button>
         </div>
