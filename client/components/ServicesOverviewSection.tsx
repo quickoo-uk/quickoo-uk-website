@@ -121,20 +121,14 @@ const SERVICES: Service[] = [
 
 export const ServicesOverviewSection = () => {
   return (
-    <section className="section-spacing relative bg-gradient-to-b from-purple-50/20 via-white to-indigo-50/20 overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-gradient-to-br from-purple-100/20 to-pink-100/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-gradient-to-br from-indigo-100/20 to-blue-100/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
-      </div>
-
-      <div className="section-container relative z-10">
+    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft/40 to-white">
+      <div className="section-container">
         <div className="text-center mb-20 space-y-4">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-100 to-indigo-100 text-purple-700 font-semibold text-xs tracking-widest border border-purple-200/50 shadow-sm">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark text-white font-semibold text-xs tracking-widest">
             PREMIUM EXPERIENCES
-            <span className="h-1.5 w-1.5 rounded-full bg-purple-500 animate-pulse" />
+            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-indigo-900 bg-clip-text text-transparent">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-dark">
             Chauffeur Services Crafted For Every Journey
           </h2>
           <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
@@ -151,33 +145,33 @@ export const ServicesOverviewSection = () => {
               <Link
                 key={service.name}
                 to={`/services/${service.name.toLowerCase().replace(/ /g, "-")}`}
-                className="group relative flex flex-col overflow-hidden rounded-3xl border border-purple-100/50 bg-gradient-to-br from-white to-gray-50/50 shadow-lg shadow-purple-100/30 ring-1 ring-purple-100/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-200/40"
+                className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/50 bg-white/70 shadow-xl shadow-black/5 ring-1 ring-black/5 backdrop-blur transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
               >
                 <div className="relative h-52 overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.name}
                     loading="lazy"
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-900/70 via-gray-900/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/30 to-transparent" />
                   <div className="absolute inset-x-6 bottom-6 flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div
-                        className={`rounded-2xl bg-gradient-to-r ${service.accent} p-3 text-white shadow-lg shadow-black/20 group-hover:scale-110 transition-transform`}
+                        className={`rounded-2xl bg-gradient-to-r ${service.accent} p-3 text-white shadow-lg shadow-black/30`}
                       >
                         <Icon className="h-6 w-6" />
                       </div>
                       <div>
-                        <p className="text-xs uppercase tracking-[0.2em] text-white/80 font-semibold">
+                        <p className="text-xs uppercase tracking-[0.2em] text-white/70">
                           {service.highlight}
                         </p>
-                        <h3 className="text-2xl font-montserrat font-bold text-white mt-1">
+                        <h3 className="text-2xl font-montserrat font-bold text-white">
                           {service.name}
                         </h3>
                       </div>
                     </div>
-                    <span className="rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white border border-white/30">
+                    <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
                       Explore
                     </span>
                   </div>
@@ -191,7 +185,7 @@ export const ServicesOverviewSection = () => {
                     {service.features.map((feature) => (
                       <li
                         key={feature}
-                        className="rounded-full border border-purple-200/80 bg-purple-50/80 px-3 py-1 text-xs font-semibold text-purple-700"
+                        className="rounded-full border border-gray-200/80 bg-white/90 px-3 py-1 text-xs font-semibold text-gray-500"
                       >
                         {feature}
                       </li>
@@ -199,14 +193,14 @@ export const ServicesOverviewSection = () => {
                   </ul>
                   <div className="mt-auto flex items-center justify-between">
                     <div className="text-left">
-                      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-purple-600">
+                      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
                         Learn More
                       </p>
-                      <p className="text-sm font-montserrat text-gray-900">
+                      <p className="text-sm font-montserrat text-dark">
                         Tailored concierge planning
                       </p>
                     </div>
-                    <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-2 text-white shadow-lg shadow-purple-500/30 transition-all group-hover:shadow-xl group-hover:shadow-purple-500/40">
+                    <div className="flex items-center gap-2 rounded-full bg-dark px-4 py-2 text-white transition group-hover:bg-gold group-hover:text-dark">
                       Reserve
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </div>

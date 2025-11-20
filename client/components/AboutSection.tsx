@@ -28,22 +28,16 @@ const TIMELINE = [
 
 export const AboutSection = () => {
   return (
-    <section className="section-spacing relative bg-gradient-to-b from-indigo-50/20 via-white to-purple-50/20 overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 left-0 w-96 h-96 bg-gradient-to-br from-indigo-100/20 to-purple-100/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-gradient-to-br from-purple-100/20 to-pink-100/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
-      </div>
-
-      <div className="section-container relative z-10">
+    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft/30 to-white">
+      <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <div className="space-y-3">
-              <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-100 to-purple-100 px-4 py-2 text-xs font-semibold tracking-[0.3em] text-indigo-700 border border-indigo-200/50 shadow-sm">
+              <span className="inline-flex items-center gap-2 rounded-full bg-dark px-4 py-2 text-xs font-semibold tracking-[0.3em] text-white">
                 ABOUT QUICKOO
-                <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-pulse" />
+                <span className="h-1.5 w-1.5 rounded-full bg-gold" />
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold bg-gradient-to-r from-gray-900 via-indigo-900 to-purple-900 bg-clip-text text-transparent">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-dark">
                 From boutique chauffeurs to a global concierge fleet.
               </h2>
               <p className="text-base sm:text-lg text-gray-600">
@@ -57,22 +51,22 @@ export const AboutSection = () => {
               {STATS.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-3xl bg-white p-6 shadow-lg shadow-purple-100/30 ring-1 ring-purple-100/50 hover:shadow-xl transition-shadow"
+                  className="rounded-3xl bg-white/90 p-6 shadow-xl shadow-black/5 ring-1 ring-black/5"
                 >
-                  <p className="text-4xl font-montserrat font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                  <p className="text-4xl font-montserrat font-bold text-dark">
                     {stat.value}
                   </p>
-                  <p className="mt-1 text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
+                  <p className="mt-1 text-sm font-semibold uppercase tracking-[0.3em] text-gray-400">
                     {stat.label}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="space-y-6 rounded-3xl bg-gradient-to-br from-white to-purple-50/30 p-6 shadow-lg shadow-purple-100/20 ring-1 ring-purple-100/50">
-              <div className="flex items-center gap-3">
-                <Sparkles className="h-5 w-5 text-purple-600" />
-                <p className="font-montserrat text-lg font-semibold text-gray-900">
+            <div className="space-y-6 rounded-3xl bg-white/80 p-6 shadow-inner shadow-black/5">
+              <div className="flex items-center gap-3 text-dark">
+                <Sparkles className="h-5 w-5 text-gold" />
+                <p className="font-montserrat text-lg font-semibold">
                   Built on radical hospitality & real-time intelligence.
                 </p>
               </div>
@@ -82,14 +76,14 @@ export const AboutSection = () => {
                 The result? Doors open exactly when you arrive—never earlier,
                 never late.
               </p>
-              <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.3em]">
-                <span className="rounded-full bg-purple-100 px-3 py-1 text-purple-700 border border-purple-200/50">
+              <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
+                <span className="rounded-full bg-dark/5 px-3 py-1 text-dark">
                   Biometrics Cleared
                 </span>
-                <span className="rounded-full bg-indigo-100 px-3 py-1 text-indigo-700 border border-indigo-200/50">
+                <span className="rounded-full bg-dark/5 px-3 py-1 text-dark">
                   Concierge On-Call
                 </span>
-                <span className="rounded-full bg-purple-100 px-3 py-1 text-purple-700 border border-purple-200/50">
+                <span className="rounded-full bg-dark/5 px-3 py-1 text-dark">
                   Sustainability Pledge
                 </span>
               </div>
@@ -97,7 +91,7 @@ export const AboutSection = () => {
 
             <Link
               to="/about"
-              className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-10 py-4 font-semibold text-white shadow-lg shadow-purple-500/30 transition-all hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-3 rounded-full bg-dark px-10 py-4 font-semibold text-white shadow-lg shadow-black/20 transition hover:bg-gold hover:text-dark"
             >
               Learn Our Full Story
               <TrendingUp className="h-5 w-5" />
@@ -105,31 +99,31 @@ export const AboutSection = () => {
           </div>
 
           <div className="space-y-8">
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-purple-200/30 ring-1 ring-purple-100/50">
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-black/20 ring-1 ring-black/10">
               <img
                 src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=1200&h=900&fit=crop"
                 alt="Chauffeur welcoming guests"
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/20 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-2xl bg-white/95 backdrop-blur-sm p-4 shadow-xl border border-purple-100/50">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-2xl bg-white/95 p-4 shadow-xl">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.3em] text-purple-600 font-semibold">
+                  <p className="text-xs uppercase tracking-[0.3em] text-gray-400">
                     Concierge Notes
                   </p>
-                  <p className="text-sm font-semibold text-gray-900 mt-1">
+                  <p className="text-sm font-semibold text-dark">
                     Chauffeur briefing sent with venue layout & VIP protocol.
                   </p>
                 </div>
-                <ShieldCheck className="h-6 w-6 text-purple-600" />
+                <ShieldCheck className="h-6 w-6 text-gold" />
               </div>
             </div>
 
-            <div className="rounded-3xl bg-gradient-to-br from-white to-indigo-50/30 p-6 shadow-lg shadow-purple-100/30 ring-1 ring-purple-100/50">
+            <div className="rounded-3xl bg-white/90 p-6 shadow-xl shadow-black/5 ring-1 ring-black/5">
               <div className="flex items-center gap-3 mb-4">
-                <Compass className="h-6 w-6 text-purple-600" />
-                <p className="font-montserrat text-lg font-semibold text-gray-900">
+                <Compass className="h-6 w-6 text-gold" />
+                <p className="font-montserrat text-lg font-semibold text-dark">
                   Our journey highlights
                 </p>
               </div>
@@ -137,13 +131,13 @@ export const AboutSection = () => {
                 {TIMELINE.map((item) => (
                   <div key={item.year} className="flex gap-4">
                     <div className="flex flex-col items-center">
-                      <span className="font-montserrat text-sm font-bold text-purple-600">
+                      <span className="font-montserrat text-sm font-bold text-gold">
                         {item.year}
                       </span>
-                      <span className="h-full w-px bg-gradient-to-b from-purple-400/60 to-transparent" />
+                      <span className="h-full w-px bg-gradient-to-b from-gold/60 to-transparent" />
                     </div>
                     <div>
-                      <p className="font-montserrat font-semibold text-gray-900">
+                      <p className="font-montserrat font-semibold text-dark">
                         {item.title}
                       </p>
                       <p className="text-sm text-gray-600">{item.detail}</p>
