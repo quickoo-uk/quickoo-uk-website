@@ -16,6 +16,8 @@ import PricingPage from "./pages/Pricing";
 import AboutPage from "./pages/About";
 import ContactPage from "./pages/Contact";
 import BookNowPage from "./pages/BookNow";
+import PrivacyPolicyPage from "./pages/PrivacyPolicy";
+import TermsAndConditionsPage from "./pages/TermsAndConditions";
 
 const queryClient = new QueryClient();
 
@@ -93,6 +95,22 @@ const App = () => (
             element={
               <Layout isFooter={false}>
                 <BookNowPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/privacy-policy"
+            element={
+              <Layout>
+                <PrivacyPolicyPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/terms-and-conditions"
+            element={
+              <Layout>
+                <TermsAndConditionsPage />
               </Layout>
             }
           />

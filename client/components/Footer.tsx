@@ -198,10 +198,10 @@ export const Footer = () => {
                 {page.label}
               </Link>
             ))}
-            <Link to="/privacy" className="transition hover:text-white">
+            <Link to="/privacy-policy" className="transition hover:text-white">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="transition hover:text-white">
+            <Link to="/terms-and-conditions" className="transition hover:text-white">
               Terms & Conditions
             </Link>
           </div>
