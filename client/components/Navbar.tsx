@@ -62,7 +62,7 @@ export const Navbar = () => {
           "fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 border-b backdrop-blur-lg",
           isScrolled
             ? "bg-white/95 shadow-xl border-[#d5cff8]"
-            : "bg-gradient-to-r from-[#f8f5ff]/95 via-[#f1edff]/90 to-[#f8f5ff]/95 border-[#efe9ff]/80 shadow-[0_10px_40px_rgba(18,8,40,0.12)]",
+            : "bg-white/95 border-[#efe9ff]/80 shadow-[0_10px_40px_rgba(18,8,40,0.12)]",
         )}
       >
         <div className="mx-auto flex w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-visiable">
