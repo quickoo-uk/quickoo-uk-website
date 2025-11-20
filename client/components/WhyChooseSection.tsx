@@ -1,4 +1,4 @@
-import { Shield, DollarSign, Crown, Users, Award, Clock } from "lucide-react";
+import { Shield, DollarSign, Crown, Users, Award, Clock, Sparkles } from "lucide-react";
 
 const FEATURES = [
   {
@@ -42,16 +42,35 @@ const METRICS = [
 
 export const WhyChooseSection = () => {
   return (
-    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft/40 to-white">
-      <div className="section-container">
+    <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#f1f5ff] to-white">
+      {/* Background gradients */}
+      <div className="absolute -right-16 -top-10 h-56 w-56 rounded-full bg-gold/15 blur-[120px]" />
+      <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
+
+      {/* Animated SVG */}
+      <svg
+        className="pointer-events-none absolute left-10 top-10 h-32 w-32 text-gold/30 animate-[spin_24s_linear_infinite]"
+        viewBox="0 0 160 160"
+        aria-hidden
+      >
+        <circle cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeWidth="0.6" />
+        <circle cx="80" cy="80" r="40" fill="none" stroke="currentColor" strokeWidth="0.6" />
+      </svg>
+
+      <div className="section-container relative">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 mb-16">
           <div className="space-y-6 text-center lg:text-left">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark text-white text-xs font-semibold tracking-[0.3em]">
-              WHY QUICKOO
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-dark">
-              A concierge-level chauffeur partner obsessed with details.
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
+              <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+              <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
+                Why Quickoo
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
+              A concierge-level chauffeur partner{" "}
+              <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+                obsessed with details.
+              </span>
             </h2>
             <p className="text-base sm:text-lg font-inter text-gray-600">
               We blend hospitality, logistics, and technology to deliver journeys
@@ -66,18 +85,20 @@ export const WhyChooseSection = () => {
                 return (
                   <div
                     key={metric.label}
-                    className="flex items-center gap-3 rounded-2xl bg-white/90 px-5 py-4 shadow-lg shadow-black/5 ring-1 ring-black/5"
+                    className="rounded-3xl border border-white/60 bg-white/85 px-6 py-4 backdrop-blur shadow-[0_25px_70px_rgba(119,132,255,0.18)]"
                   >
-                    <div className="rounded-xl bg-dark/90 p-3 text-white">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm uppercase tracking-[0.25em] text-gray-400">
-                        {metric.label}
-                      </p>
-                      <p className="text-2xl font-montserrat font-bold text-dark">
-                        {metric.value}
-                      </p>
+                    <div className="flex items-center gap-3">
+                      <div className="rounded-xl bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] p-3 text-white">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.25em] text-gray-500">
+                          {metric.label}
+                        </p>
+                        <p className="text-2xl font-montserrat font-bold text-[#6a63ff]">
+                          {metric.value}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 );
@@ -86,17 +107,17 @@ export const WhyChooseSection = () => {
           </div>
 
           <div className="relative">
-            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-gold/30 via-purple-400/20 to-transparent blur-3xl" />
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-black/20 ring-1 ring-black/10">
+            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#f3d6ff]/30 via-[#9fd4ff]/20 to-transparent blur-3xl" />
+            <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_90px_rgba(15,23,42,0.15)] border border-white/60">
               <img
-                src="https://images.unsplash.com/photo-1472220625704-91e1462799b2?w=1200&h=900&fit=crop"
+                src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
                 alt="Chauffeur opening car door"
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/95 p-4 shadow-xl">
-                <p className="text-xs uppercase tracking-[0.25em] text-gray-400">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/95 p-6 shadow-xl backdrop-blur">
+                <p className="text-xs uppercase tracking-[0.25em] text-gray-500 mb-2">
                   Concierge Snapshot
                 </p>
                 <p className="text-dark font-montserrat text-lg font-semibold">
@@ -114,14 +135,14 @@ export const WhyChooseSection = () => {
             return (
               <div
                 key={feature.title}
-                className="group relative overflow-hidden rounded-3xl bg-white/80 p-8 shadow-xl shadow-black/5 ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-2xl"
+                className="group relative overflow-hidden rounded-[28px] bg-white/90 border border-white/60 p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(116,128,255,0.25)]"
               >
                 <div
                   className={`absolute inset-x-10 -top-16 h-32 rounded-full blur-3xl bg-gradient-to-r ${feature.accent} opacity-70`}
                 />
                 <div className="relative flex items-center gap-4 mb-6">
                   <div
-                    className={`rounded-2xl bg-gradient-to-r ${feature.accent} p-4 text-white shadow-lg shadow-black/20`}
+                    className={`rounded-2xl bg-gradient-to-r ${feature.accent} p-4 text-white shadow-lg`}
                   >
                     <Icon className="h-6 w-6" />
                   </div>

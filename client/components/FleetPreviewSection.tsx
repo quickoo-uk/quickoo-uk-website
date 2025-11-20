@@ -6,19 +6,19 @@ import { FLEET_TYPES } from "@shared/fleet";
 const getCarTypeImage = (carTypeId: string): string => {
   const imageMap: Record<string, string> = {
     "executive-cars":
-      "https://images.unsplash.com/photo-1617469767053-adf3ef61e6d1?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
     "luxury-vip":
-      "https://images.unsplash.com/photo-1617469767053-adf3ef61e6d1?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
     "premium-suvs":
-      "https://images.unsplash.com/photo-1617814078590-0e98c024aaa0?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
     "business-vans":
-      "https://images.unsplash.com/photo-1605511876319-7f4ef3221c71?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
     "special-vehicles":
-      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
     "electric-cars":
-      "https://images.unsplash.com/photo-1668875515314-8a79808bf6f8?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
     "vintage-cars-weddings":
-      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
   };
   return (
     imageMap[carTypeId] ||
@@ -28,15 +28,34 @@ const getCarTypeImage = (carTypeId: string): string => {
 
 export const FleetPreviewSection = () => {
   return (
-    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft/40 to-white">
-      <div className="section-container">
+    <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#fff5ec]">
+      {/* Background gradients */}
+      <div className="absolute -right-16 -top-10 h-56 w-56 rounded-full bg-gold/15 blur-[120px]" />
+      <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
+
+      {/* Animated SVG */}
+      <svg
+        className="pointer-events-none absolute right-10 top-20 h-40 w-40 text-[#b3c4ff]/40 animate-[spin_20s_linear_infinite]"
+        viewBox="0 0 160 160"
+        aria-hidden
+      >
+        <circle cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeWidth="0.5" />
+        <circle cx="80" cy="80" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" />
+      </svg>
+
+      <div className="section-container relative">
         <div className="text-center mb-16 space-y-4">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark text-white text-xs font-semibold tracking-[0.3em]">
-            FLAGSHIP FLEET
-            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-dark">
-            Vehicles curated for boardrooms, red carpets, and runway transfers.
+          <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
+            <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+            <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
+              Flagship Fleet
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
+            Vehicles curated for{" "}
+            <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+              boardrooms, red carpets, and runway transfers.
+            </span>
           </h2>
           <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
             Select a category, set your preferences, and we stage the perfect
@@ -50,19 +69,19 @@ export const FleetPreviewSection = () => {
             <Link
               key={carType.id}
               to={`/fleet/${carType.id}`}
-              className="group flex flex-col overflow-hidden rounded-3xl bg-white/80 shadow-xl shadow-black/5 ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-2xl"
+              className="group flex flex-col overflow-hidden rounded-[28px] bg-white/90 border border-white/60 shadow-[0_20px_70px_rgba(15,23,42,0.08)] transition hover:-translate-y-2 hover:shadow-[0_30px_90px_rgba(116,128,255,0.25)]"
             >
               <div className="relative h-56">
                 <img
                   src={getCarTypeImage(carType.id)}
                   alt={carType.name}
                   loading="lazy"
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-white/70">
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/70 mb-1">
                       {carType.cars.length > 0
                         ? `${carType.cars.length} Vehicle${carType.cars.length > 1 ? "s" : ""}`
                         : "Special Collection"}
@@ -71,7 +90,7 @@ export const FleetPreviewSection = () => {
                       {carType.name}
                     </h3>
                   </div>
-                  <div className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white">
+                  <div className="rounded-full bg-white/20 backdrop-blur px-4 py-2 text-xs font-semibold text-white">
                     Explore
                   </div>
                 </div>
@@ -93,7 +112,7 @@ export const FleetPreviewSection = () => {
                           key={idx}
                           className="flex items-center gap-2 text-sm text-gray-700"
                         >
-                          <Sparkles className="h-3.5 w-3.5 text-gold flex-shrink-0" />
+                          <Sparkles className="h-3.5 w-3.5 text-[#7b5dff] flex-shrink-0" />
                           {car.name}
                         </li>
                       ))}
@@ -108,10 +127,10 @@ export const FleetPreviewSection = () => {
 
                 <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
                   <div className="flex items-center gap-2 text-sm font-semibold text-gray-500">
-                    <Sparkles className="h-4 w-4 text-gold" />
+                    <Sparkles className="h-4 w-4 text-[#7b5dff]" />
                     Premium fleet selection
                   </div>
-                  <ArrowRight className="h-5 w-5 text-gold transition group-hover:translate-x-1" />
+                  <ArrowRight className="h-5 w-5 text-[#7b5dff] transition group-hover:translate-x-1" />
                 </div>
               </div>
             </Link>
@@ -121,7 +140,7 @@ export const FleetPreviewSection = () => {
         <div className="text-center">
           <Link
             to="/fleet/executive-cars"
-            className="inline-flex items-center gap-3 rounded-full bg-dark px-10 py-4 font-semibold text-white shadow-lg shadow-black/20 transition hover:bg-gold hover:text-dark"
+            className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] px-10 py-4 font-semibold text-white shadow-lg shadow-[#3f1c6e]/35 transition hover:opacity-90"
           >
             Explore All Categories
             <ArrowRight className="h-5 w-5" />

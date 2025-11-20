@@ -9,7 +9,7 @@ import { AppDownloadSection } from "@/components/AppDownloadSection";
 
 export default function Index() {
   return (
-    <div className="w-full bg-gradient-to-b from-brand-soft via-white to-white">
+    <div className="w-full bg-[radial-gradient(circle_at_top,_#ffffff,_#f3f6ff,_#fff6ed)]">
       <HeroSection />
       {/* <AnimatedInfinityAccent /> */}
       <WhyChooseSection />

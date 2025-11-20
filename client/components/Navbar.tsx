@@ -186,36 +186,24 @@ export const Navbar = () => {
                   +1 (302) 526-4133
                 </span>
               </div>
+            {/* BOOK NOW */}
+            <Link
+              to="/book-now"
+              className={cn(
+                "px-6 xl:px-8 py-2.5 xl:py-3 font-inter text-xs xl:text-sm rounded-full border transition-all font-semibold shadow-lg shadow-[#3c2c7d33] whitespace-nowrap",
+                isScrolled
+                  ? "luxury-button-gold text-white border-transparent hover:opacity-90"
+                  : "luxury-button-gold text-white border-transparent hover:opacity-90",
+              )}
+            >
+              Book Now
+            </Link>
+          </div>
 
-              <div className="flex items-center gap-1">
-                <Phone
-                  className={cn(
-                    "w-4 h-4",
-                    isScrolled ? "text-gold" : "text-[#6d5ab8]",
-                  )}
-                />
-                <span
-                  className={cn(
-                    "text-sm",
-                    isScrolled ? "text-dark" : "text-[#2a1b4d]",
-                  )}
-                >
-                  +44 207 078 8993
-                </span>
-              </div>
+            
 
               {/* BOOK NOW */}
-              <Link
-                to="/book-now"
-                className={cn(
-                  "px-6 xl:px-8 py-2.5 xl:py-3 font-inter text-xs xl:text-sm rounded-full border transition-all font-semibold shadow-lg shadow-[#3c2c7d33] whitespace-nowrap",
-                  isScrolled
-                    ? "bg-gradient-to-r from-gold to-[#7c6dff] text-white border-transparent hover:opacity-90"
-                    : "bg-gradient-to-r from-[#4e3acf] to-[#7a68ff] text-white border-transparent hover:opacity-90",
-                )}
-              >
-                Book Now
-              </Link>
+             
             </div>
 
             {/* Mobile Menu Button */}
@@ -242,7 +230,7 @@ export const Navbar = () => {
               )}
             </button>
           </div>
-        </div>
+      
       </nav>
 
       {/* MOBILE MENU OVERLAY - Full Screen */}

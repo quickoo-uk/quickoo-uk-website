@@ -33,80 +33,34 @@ const SERVICES: Service[] = [
     features: ["VIP meet & greet", "Real-time tracking", "Luggage care"],
     accent: "from-sky-500/90 via-sky-400/80 to-sky-500/70",
     image:
-      "https://images.unsplash.com/photo-1449960238630-7e720e630019?w=1200&h=900&fit=crop",
+      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=80",
   },
   {
     icon: Navigation2,
-    name: "City-to-City",
+    name: "Corporate Travel",
     description:
       "Comfortable long-distance journeys in executive sedans & SUVs.",
     highlight: "Door-to-Door",
     features: ["Bottled water", "Custom playlists", "Power & Wi-Fi"],
     accent: "from-indigo-500/90 via-blue-500/80 to-indigo-500/70",
     image:
-      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=1200&h=900&fit=crop",
+      "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=2000&q=80",
   },
-  {
-    icon: Clock,
-    name: "Hourly Hire",
-    description: "Book a chauffeur by the hour for maximum flexibility.",
-    highlight: "On Your Schedule",
-    features: ["Flexible routing", "Multi-stop itineraries", "Standby driver"],
-    accent: "from-amber-500/90 via-orange-500/80 to-amber-500/70",
-    image:
-      "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1200&h=900&fit=crop",
-  },
-  {
-    icon: Heart,
-    name: "Wedding",
-    description: "Make your special day even more memorable with our service.",
-    highlight: "White-Glove Care",
-    features: ["Decor-ready fleet", "Champagne service", "Red-carpet arrival"],
-    accent: "from-rose-500/90 via-pink-500/80 to-rose-500/70",
-    image:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=1200&h=900&fit=crop",
-  },
-  {
-    icon: Briefcase,
-    name: "Business",
-    description: "Professional chauffeur service for corporate needs.",
-    highlight: "Corporate Accounts",
-    features: ["Executive fleet", "Discreet drivers", "Billing portal"],
-    accent: "from-slate-900/90 via-slate-800/80 to-slate-700/70",
-    image:
-      "https://images.unsplash.com/photo-1502872364588-894d7d6ddfab?w=1200&h=900&fit=crop",
-  },
+ 
+ 
+ 
   {
     icon: Sparkles,
-    name: "Events",
+    name: "Special Events",
     description:
       "Transportation solutions for all types of events and celebrations.",
     highlight: "Group Logistics",
     features: ["Shuttle coordination", "VIP passes", "On-site lead"],
     accent: "from-fuchsia-500/90 via-purple-500/80 to-fuchsia-500/70",
     image:
-      "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=1200&h=900&fit=crop",
+      "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=2000&q=80",
   },
-  {
-    icon: Anchor,
-    name: "Seaport",
-    description: "Convenient transfers to and from seaport terminals.",
-    highlight: "Cruise Ready",
-    features: ["Dockside pickup", "Porter service", "Custom signage"],
-    accent: "from-cyan-500/90 via-teal-500/80 to-cyan-500/70",
-    image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=900&fit=crop",
-  },
-  {
-    icon: Zap,
-    name: "Private Jet",
-    description: "Coordination with private jet services for seamless travel.",
-    highlight: "FBO Coordination",
-    features: ["Ramp access", "Flight briefings", "Security cleared"],
-    accent: "from-yellow-500/90 via-lime-500/80 to-yellow-500/70",
-    image:
-      "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=1200&h=900&fit=crop",
-  },
+
   {
     icon: MapPin,
     name: "City Tours",
@@ -115,21 +69,40 @@ const SERVICES: Service[] = [
     features: ["Certified guides", "Photo stops", "Dining reservations"],
     accent: "from-emerald-500/90 via-green-500/80 to-emerald-500/70",
     image:
-      "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1200&h=900&fit=crop",
+      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=2000&q=80",
   },
 ];
 
 export const ServicesOverviewSection = () => {
   return (
-    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft/40 to-white">
-      <div className="section-container">
+    <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#f1f5ff] to-white">
+      {/* Background gradients */}
+      <div className="absolute -right-16 -top-10 h-56 w-56 rounded-full bg-gold/15 blur-[120px]" />
+      <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
+
+      {/* Animated SVG */}
+      <svg
+        className="pointer-events-none absolute right-10 top-20 h-40 w-40 text-[#b3c4ff]/40 animate-[spin_20s_linear_infinite]"
+        viewBox="0 0 160 160"
+        aria-hidden
+      >
+        <circle cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeWidth="0.5" />
+        <circle cx="80" cy="80" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" />
+      </svg>
+
+      <div className="section-container relative">
         <div className="text-center mb-20 space-y-4">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark text-white font-semibold text-xs tracking-widest">
-            PREMIUM EXPERIENCES
-            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-dark">
-            Chauffeur Services Crafted For Every Journey
+          <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
+            <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+            <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
+              Premium Experiences
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
+            Chauffeur Services{" "}
+            <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+              Crafted For Every Journey
+            </span>
           </h2>
           <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
             Discover curated itineraries, white-glove service, and modern
@@ -145,20 +118,20 @@ export const ServicesOverviewSection = () => {
               <Link
                 key={service.name}
                 to={`/services/${service.name.toLowerCase().replace(/ /g, "-")}`}
-                className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/50 bg-white/70 shadow-xl shadow-black/5 ring-1 ring-black/5 backdrop-blur transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                className="group relative flex flex-col overflow-hidden rounded-[28px] border border-white/60 bg-white/90 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_30px_90px_rgba(116,128,255,0.25)]"
               >
                 <div className="relative h-52 overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.name}
                     loading="lazy"
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/30 to-transparent" />
                   <div className="absolute inset-x-6 bottom-6 flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div
-                        className={`rounded-2xl bg-gradient-to-r ${service.accent} p-3 text-white shadow-lg shadow-black/30`}
+                        className={`rounded-2xl bg-gradient-to-r ${service.accent} p-3 text-white shadow-lg`}
                       >
                         <Icon className="h-6 w-6" />
                       </div>
@@ -171,9 +144,7 @@ export const ServicesOverviewSection = () => {
                         </h3>
                       </div>
                     </div>
-                    <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
-                      Explore
-                    </span>
+                  
                   </div>
                 </div>
 
@@ -200,7 +171,7 @@ export const ServicesOverviewSection = () => {
                         Tailored concierge planning
                       </p>
                     </div>
-                    <div className="flex items-center gap-2 rounded-full bg-dark px-4 py-2 text-white transition group-hover:bg-gold group-hover:text-dark">
+                    <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] px-4 py-2 text-white transition group-hover:opacity-90">
                       Reserve
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 const AnimatedBlob = () => (
   <svg
@@ -24,9 +25,9 @@ const AnimatedBlob = () => (
 
 export const HeroSection = () => {
   const images = [
-    "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1920&q=80",
-    "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1920&q=80",
-    "https://images.unsplash.com/photo-1529429617124-95b109e86bb8?auto=format&fit=crop&w=1920&q=80",
+    "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=2000&q=80",
+    "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=2000&q=80",
+    "https://images.unsplash.com/photo-1529429617124-95b109e86bb8?auto=format&fit=crop&w=2000&q=80",
   ];
 
   const [index, setIndex] = useState(0);
@@ -39,75 +40,88 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative flex min-h-[32rem] sm:min-h-[38rem] w-full items-center overflow-hidden bg-gradient-to-br from-white via-purple-50/30 to-indigo-50/20 pt-24 sm:pt-28 pb-12 sm:pb-16 md:h-[95vh] md:pt-0 md:pb-0 max-w-full">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <AnimatedBlob />
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-br from-purple-200/20 to-pink-200/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-indigo-200/20 to-blue-200/20 rounded-full blur-3xl animate-pulse delay-1000" />
-      </div>
-
-      {/* Background Slider with Light Overlay */}
+    <section className="relative flex min-h-[90vh] w-full items-center overflow-hidden bg-[radial-gradient(circle_at_top,_#ffffff,_#f3f6ff,_#fff6ed)] pt-24 sm:pt-28 pb-12 sm:pb-16">
+      {/* Background with light overlay */}
       <div className="absolute inset-0">
         {images.map((img, i) => (
           <div
             key={i}
             className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out
-              ${i === index ? "opacity-30" : "opacity-0"}
+              ${i === index ? "opacity-20" : "opacity-0"}
             `}
           >
             <img
               src={img}
               alt="Luxury Chauffeur"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-white/40 to-white/50" />
           </div>
         ))}
+       
       </div>
+
+      {/* Animated gradient blobs */}
+      <div className="absolute -top-24 right-6 h-72 w-72 rounded-full bg-[#f3d6ff]/40 blur-[150px] opacity-60 animate-pulse" />
+      <div className="absolute -bottom-36 left-0 h-96 w-96 bg-[#9fd4ff]/25 blur-[180px] opacity-60" />
+
+      {/* Animated SVG rings */}
+      <svg
+        className="pointer-events-none absolute -right-6 top-10 h-64 w-64 text-[#b3c4ff]/60 animate-[spin_28s_linear_infinite]"
+        viewBox="0 0 200 200"
+        aria-hidden
+      >
+        <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" strokeWidth="0.5" />
+        <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" strokeWidth="0.5" />
+      </svg>
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-4xl space-y-4 sm:space-y-6 md:w-[60%] lg:w-full text-left">
-          <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-purple-100 to-indigo-100 text-purple-700 uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs border border-purple-200/50 shadow-lg backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-purple-500 animate-pulse" />
-            Quickoo Chauffeur
-          </span>
-          <h1 className="text-gray-900 font-montserrat font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight bg-gradient-to-r from-gray-900 via-purple-900 to-indigo-900 bg-clip-text text-transparent">
+        <div className="w-full max-w-4xl space-y-6 sm:space-y-8 md:w-[60%] lg:w-full text-left">
+          <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
+            <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+            <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
+              Quickoo Chauffeur
+            </span>
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-montserrat font-semibold leading-tight text-dark">
             Effortless Luxury Rides
-            <br /> Powered by Quickoo
+            <br />
+            <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+              Powered by Quickoo
+            </span>
           </h1>
 
-          <p className="text-gray-600 text-base sm:text-lg md:text-xl font-inter leading-relaxed max-w-2xl">
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-600 font-inter leading-relaxed max-w-2xl">
             Arrive calm, collected, and right on time. Quickoo pairs elite
             chauffeurs with a connected fleet so every journey feels intuitive,
             safe, and deeply personal.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <button className="group flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-9 py-3 sm:py-4 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600 text-white text-sm sm:text-base font-semibold shadow-xl shadow-purple-500/30 transition-all hover:shadow-2xl hover:shadow-purple-500/40 hover:-translate-y-0.5">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] text-white text-base font-semibold shadow-lg shadow-[#3f1c6e]/35 transition hover:opacity-90 hover:scale-[1.02]">
               Book Now
-              <span className="text-lg sm:text-xl transition-transform group-hover:translate-x-1">
-                →
-              </span>
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </button>
-            <button className="flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-9 py-3 sm:py-4 rounded-full border-2 border-purple-200 text-purple-700 text-sm sm:text-base font-semibold bg-white/80 backdrop-blur-sm hover:bg-purple-50 transition-all shadow-lg">
+            <button className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-slate-200 bg-white text-slate-700 text-base font-semibold hover:border-[#3f1c6e] hover:text-[#3f1c6e] transition shadow-sm">
               Explore Fleet
             </button>
           </div>
 
-          <div className="flex flex-wrap gap-4 sm:gap-6 pt-2 sm:pt-4 text-gray-600 text-xs sm:text-sm font-inter">
+          {/* Trust indicators */}
+          <div className="flex flex-wrap gap-6 pt-4 text-sm text-slate-600 font-inter">
             <span className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-purple-500 animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-[#7b5dff]"></span>
               Private concierge 24/7
             </span>
             <span className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-indigo-500 animate-pulse delay-300" />
+              <span className="h-2 w-2 rounded-full bg-[#7b5dff]"></span>
               Curated electric & executive fleet
             </span>
             <span className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-purple-500 animate-pulse delay-500" />
+              <span className="h-2 w-2 rounded-full bg-[#7b5dff]"></span>
               Global availability
             </span>
           </div>
