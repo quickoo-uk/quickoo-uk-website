@@ -54,195 +54,195 @@ export const Navbar = () => {
       >
         <div className="mx-auto flex w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-visiable">
           <div className="flex h-16 sm:h-20 w-full items-center justify-between min-w-0">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 flex-shrink-0">
-            <div className="relative flex items-center">
-              <img
-                src={logo}
-                alt="Quickoo wordmark"
-                className="h-8 sm:h-10 w-auto object-contain drop-shadow-[0_8px_24px_rgba(12,4,32,0.4)]"
-              />
-            </div>
-          </Link>
-
-          {/* CENTER MENU (Desktop) */}
-          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
-            <Link
-              to="/"
-              className={cn(
-                "font-inter text-sm transition-colors",
-                isScrolled
-                  ? "text-dark hover:text-gold"
-                  : "text-[#2a1b4d] hover:text-gold",
-              )}
-            >
-              Home
-            </Link>
-
-            {/* Services */}
-            <div className="relative group">
-              <button
-              className={cn(
-                "font-inter text-sm flex items-center gap-1 transition-colors",
-                isScrolled
-                  ? "text-dark hover:text-gold"
-                  : "text-[#2a1b4d] hover:text-gold",
-              )}
-              >
-                Services <ChevronDown className="w-4 h-4" />
-              </button>
-
-              <div className="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl ring-1 ring-[#e5defc] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                {SERVICES.map((service) => (
-                  <Link
-                    key={service}
-                    to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-3 text-sm text-dark hover:bg-brand-soft hover:text-gold rounded-xl mx-1 my-0.5"
-                  >
-                    {service}
-                  </Link>
-                ))}
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-3 flex-shrink-0">
+              <div className="relative flex items-center">
+                <img
+                  src={logo}
+                  alt="Quickoo wordmark"
+                  className="h-8 sm:h-10 w-auto object-contain drop-shadow-[0_8px_24px_rgba(12,4,32,0.4)]"
+                />
               </div>
-            </div>
+            </Link>
 
-            {/* Fleet */}
-            <div className="relative group">
-              <button
-              className={cn(
-                "font-inter text-sm flex items-center gap-1 transition-colors",
-                isScrolled
-                  ? "text-dark hover:text-gold"
-                  : "text-[#2a1b4d] hover:text-gold",
-              )}
+            {/* CENTER MENU (Desktop) */}
+            <div className="hidden lg:flex items-center gap-4 xl:gap-6">
+              <Link
+                to="/"
+                className={cn(
+                  "font-inter text-sm transition-colors",
+                  isScrolled
+                    ? "text-dark hover:text-gold"
+                    : "text-[#2a1b4d] hover:text-gold",
+                )}
               >
-                Fleet <ChevronDown className="w-4 h-4" />
-              </button>
+                Home
+              </Link>
 
-              <div className="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl ring-1 ring-[#e5defc] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                {FLEET_TYPES.map((carType) => (
-                  <Link
-                    key={carType.id}
-                    to={`/fleet/${carType.id}`}
-                    className="block px-4 py-3 text-sm text-dark hover:bg-brand-soft hover:text-gold rounded-xl mx-1 my-0.5"
-                  >
-                    {carType.name}
-                  </Link>
-                ))}
+              {/* Services */}
+              <div className="relative group">
+                <button
+                  className={cn(
+                    "font-inter text-sm flex items-center gap-1 transition-colors",
+                    isScrolled
+                      ? "text-dark hover:text-gold"
+                      : "text-[#2a1b4d] hover:text-gold",
+                  )}
+                >
+                  Services <ChevronDown className="w-4 h-4" />
+                </button>
+
+                <div className="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl ring-1 ring-[#e5defc] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  {SERVICES.map((service) => (
+                    <Link
+                      key={service}
+                      to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
+                      className="block px-4 py-3 text-sm text-dark hover:bg-brand-soft hover:text-gold rounded-xl mx-1 my-0.5"
+                    >
+                      {service}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <Link
-              to="/pricing"
-              className={cn(
-                "font-inter text-sm transition-colors",
-                isScrolled
-                  ? "text-dark hover:text-gold"
-                  : "text-[#2a1b4d] hover:text-gold",
-              )}
-            >
-              Pricing
-            </Link>
+              {/* Fleet */}
+              <div className="relative group">
+                <button
+                  className={cn(
+                    "font-inter text-sm flex items-center gap-1 transition-colors",
+                    isScrolled
+                      ? "text-dark hover:text-gold"
+                      : "text-[#2a1b4d] hover:text-gold",
+                  )}
+                >
+                  Fleet <ChevronDown className="w-4 h-4" />
+                </button>
 
-            <Link
-              to="/about"
-              className={cn(
-                "font-inter text-sm transition-colors",
-                isScrolled
-                  ? "text-dark hover:text-gold"
-                  : "text-[#2a1b4d] hover:text-gold",
-              )}
-            >
-              About Us
-            </Link>
+                <div className="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl ring-1 ring-[#e5defc] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  {FLEET_TYPES.map((carType) => (
+                    <Link
+                      key={carType.id}
+                      to={`/fleet/${carType.id}`}
+                      className="block px-4 py-3 text-sm text-dark hover:bg-brand-soft hover:text-gold rounded-xl mx-1 my-0.5"
+                    >
+                      {carType.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
 
-            <Link
-              to="/contact"
-              className={cn(
-                "font-inter text-sm transition-colors",
-                isScrolled
-                  ? "text-dark hover:text-gold"
-                  : "text-[#2a1b4d] hover:text-gold",
-              )}
-            >
-              Contact
-            </Link>
-          </div>
-
-          {/* RIGHT SIDE — Phone Numbers + Book Now */}
-          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
-            <div className="hidden xl:flex items-center gap-1">
-              <Phone
+              <Link
+                to="/pricing"
                 className={cn(
-                  "w-4 h-4",
-                  isScrolled ? "text-gold" : "text-[#6d5ab8]",
-                )}
-              />
-              <span
-                className={cn(
-                  "text-sm",
-                  isScrolled ? "text-dark" : "text-[#2a1b4d]",
+                  "font-inter text-sm transition-colors",
+                  isScrolled
+                    ? "text-dark hover:text-gold"
+                    : "text-[#2a1b4d] hover:text-gold",
                 )}
               >
-                +1 (302) 526-4133
-              </span>
-            </div>
+                Pricing
+              </Link>
 
-            <div className="flex items-center gap-1">
-              <Phone
+              <Link
+                to="/about"
                 className={cn(
-                  "w-4 h-4",
-                  isScrolled ? "text-gold" : "text-[#6d5ab8]",
-                )}
-              />
-              <span
-                className={cn(
-                  "text-sm",
-                  isScrolled ? "text-dark" : "text-[#2a1b4d]",
+                  "font-inter text-sm transition-colors",
+                  isScrolled
+                    ? "text-dark hover:text-gold"
+                    : "text-[#2a1b4d] hover:text-gold",
                 )}
               >
-                +44 207 078 8993
-              </span>
+                About Us
+              </Link>
+
+              <Link
+                to="/contact"
+                className={cn(
+                  "font-inter text-sm transition-colors",
+                  isScrolled
+                    ? "text-dark hover:text-gold"
+                    : "text-[#2a1b4d] hover:text-gold",
+                )}
+              >
+                Contact
+              </Link>
             </div>
 
-            {/* BOOK NOW */}
-            <Link
-              to="/book-now"
-              className={cn(
-                "px-6 xl:px-8 py-2.5 xl:py-3 font-inter text-xs xl:text-sm rounded-full border transition-all font-semibold shadow-lg shadow-[#3c2c7d33] whitespace-nowrap",
-                isScrolled
-                  ? "bg-gradient-to-r from-gold to-[#7c6dff] text-white border-transparent hover:opacity-90"
-                  : "bg-gradient-to-r from-[#4e3acf] to-[#7a68ff] text-white border-transparent hover:opacity-90",
-              )}
-            >
-              Book Now
-            </Link>
-          </div>
+            {/* RIGHT SIDE — Phone Numbers + Book Now */}
+            <div className="hidden lg:flex items-center gap-4 xl:gap-6">
+              <div className="hidden xl:flex items-center gap-1">
+                <Phone
+                  className={cn(
+                    "w-4 h-4",
+                    isScrolled ? "text-gold" : "text-[#6d5ab8]",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "text-sm",
+                    isScrolled ? "text-dark" : "text-[#2a1b4d]",
+                  )}
+                >
+                  +1 (302) 526-4133
+                </span>
+              </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 flex-shrink-0 ml-2"
-            aria-controls="mobile-menu"
-            aria-expanded={isOpen ? "true" : "false"}
-          >
-            {isOpen ? (
-              <X
+              <div className="flex items-center gap-1">
+                <Phone
+                  className={cn(
+                    "w-4 h-4",
+                    isScrolled ? "text-gold" : "text-[#6d5ab8]",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "text-sm",
+                    isScrolled ? "text-dark" : "text-[#2a1b4d]",
+                  )}
+                >
+                  +44 207 078 8993
+                </span>
+              </div>
+
+              {/* BOOK NOW */}
+              <Link
+                to="/book-now"
                 className={cn(
-                  "w-6 h-6 transition-colors",
-                  isScrolled ? "text-dark" : "text-[#2a1b4d]",
+                  "px-6 xl:px-8 py-2.5 xl:py-3 font-inter text-xs xl:text-sm rounded-full border transition-all font-semibold shadow-lg shadow-[#3c2c7d33] whitespace-nowrap",
+                  isScrolled
+                    ? "bg-gradient-to-r from-gold to-[#7c6dff] text-white border-transparent hover:opacity-90"
+                    : "bg-gradient-to-r from-[#4e3acf] to-[#7a68ff] text-white border-transparent hover:opacity-90",
                 )}
-              />
-            ) : (
-              <Menu
-                className={cn(
-                  "w-6 h-6 transition-colors",
-                  isScrolled ? "text-dark" : "text-[#2a1b4d]",
-                )}
-              />
-            )}
-          </button>
+              >
+                Book Now
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden p-2 flex-shrink-0 ml-2"
+              aria-controls="mobile-menu"
+              aria-expanded={isOpen ? "true" : "false"}
+            >
+              {isOpen ? (
+                <X
+                  className={cn(
+                    "w-6 h-6 transition-colors",
+                    isScrolled ? "text-dark" : "text-[#2a1b4d]",
+                  )}
+                />
+              ) : (
+                <Menu
+                  className={cn(
+                    "w-6 h-6 transition-colors",
+                    isScrolled ? "text-dark" : "text-[#2a1b4d]",
+                  )}
+                />
+              )}
+            </button>
+          </div>
         </div>
-      </div>
       </nav>
 
       {/* MOBILE MENU OVERLAY - Full Screen */}
