@@ -170,14 +170,14 @@ export default function CarTypePage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/book-now"
-                className="luxury-button-gold px-8 py-3 text-base shadow-lg shadow-gold/30"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#3f1c6e]/35 transition hover:opacity-90 hover:scale-[1.02]"
               >
                 Book Now
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 to="/contact"
-                className="rounded-full border border-slate-200 px-8 py-3 text-base font-semibold text-slate-900 hover:border-[#3f1c6e] hover:text-[#3f1c6e] transition"
+                className="inline-flex items-center rounded-full border border-slate-200 bg-white px-8 py-3 text-base font-semibold text-slate-600 hover:border-[#3f1c6e] hover:text-[#3f1c6e] transition"
               >
                 View Fleet
               </Link>
