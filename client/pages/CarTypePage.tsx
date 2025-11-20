@@ -170,7 +170,7 @@ export default function CarTypePage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/book-now"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#3f1c6e]/35 transition hover:opacity-90 hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 rounded-full luxury-button-gold px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#3f1c6e]/35 transition hover:opacity-90 hover:scale-[1.02]"
               >
                 Book Now
                 <ArrowRight className="w-5 h-5" />
