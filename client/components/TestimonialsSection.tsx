@@ -151,27 +151,33 @@ export const TestimonialsSection = () => {
   };
 
   return (
-    <section className="section-spacing bg-gradient-to-b from-white via-brand-soft/40 to-white">
-      <div className="section-container">
+    <section className="section-spacing relative bg-gradient-to-b from-purple-50/20 via-white to-indigo-50/20 overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-gradient-to-br from-purple-100/20 to-pink-100/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-indigo-100/20 to-blue-100/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1.5s" }} />
+      </div>
+
+      <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
-          <div className="rounded-3xl bg-dark px-8 py-10 text-white shadow-2xl shadow-black/40">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold tracking-[0.3em]">
+          <div className="rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-700 px-8 py-10 text-white shadow-2xl shadow-purple-500/30">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-sm px-4 py-2 text-xs font-semibold tracking-[0.3em] border border-white/30">
               TESTIMONIALS
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+              <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
             </span>
             <h2 className="mt-6 text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold">
               Clients trust Quickoo for sensory calm and bulletproof timing.
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-white/80">
+            <p className="mt-4 text-sm sm:text-base text-white/90">
               Every review is captured post-journey via our concierge app, and
               shared with chauffeurs to continually elevate every ride.
             </p>
-            <div className="mt-10 space-y-4 rounded-2xl bg-white/10 p-5">
+            <div className="mt-10 space-y-4 rounded-2xl bg-white/20 backdrop-blur-sm p-5 border border-white/30">
               <div className="flex items-center gap-3">
-                <Star className="h-5 w-5 fill-gold text-gold" />
-                <p className="text-sm uppercase tracking-[0.3em]">4.98 / 5</p>
+                <Star className="h-5 w-5 fill-yellow-300 text-yellow-300" />
+                <p className="text-sm uppercase tracking-[0.3em] font-semibold">4.98 / 5</p>
               </div>
-              <p className="text-sm text-white/70">
+              <p className="text-sm text-white/80">
                 Average rating across 2,400+ enterprise & private itineraries in
                 2024.
               </p>
@@ -193,18 +199,18 @@ export const TestimonialsSection = () => {
                 {getVisibleTestimonials().map((testimonial, index) => (
                   <div
                     key={index}
-                    className="group relative flex flex-col rounded-3xl bg-white/90 p-8 shadow-xl shadow-black/5 ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-2xl"
+                    className="group relative flex flex-col rounded-3xl bg-gradient-to-br from-white to-gray-50/50 p-8 shadow-lg shadow-purple-100/30 ring-1 ring-purple-100/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-200/40"
                   >
-                    <Quote className="absolute right-6 top-6 h-10 w-10 text-gold/30" />
+                    <Quote className="absolute right-6 top-6 h-10 w-10 text-purple-200" />
                     <div className="mb-6 flex items-center gap-4">
                       <img
                         src={testimonial.image}
                         alt={testimonial.name}
-                        className="h-16 w-16 rounded-2xl object-cover"
+                        className="h-16 w-16 rounded-2xl object-cover ring-2 ring-purple-100"
                         loading="lazy"
                       />
                       <div>
-                        <p className="font-montserrat text-lg font-semibold text-dark">
+                        <p className="font-montserrat text-lg font-semibold text-gray-900">
                           {testimonial.name}
                         </p>
                         <p className="text-sm text-gray-500">
@@ -214,11 +220,11 @@ export const TestimonialsSection = () => {
                     </div>
                     <div className="mb-4 flex gap-1">
                       {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-gold text-gold" />
+                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                       ))}
                     </div>
                     <p className="text-sm text-gray-600 leading-relaxed">
-                      “{testimonial.content}”
+                      "{testimonial.content}"
                     </p>
                   </div>
                 ))}
@@ -238,8 +244,8 @@ export const TestimonialsSection = () => {
                       className={cn(
                         "h-2 rounded-full transition-all duration-300",
                         index === current
-                          ? "w-10 bg-dark"
-                          : "w-4 bg-gray-200 hover:bg-gold",
+                          ? "w-10 bg-gradient-to-r from-indigo-600 to-purple-600"
+                          : "w-4 bg-purple-200 hover:bg-purple-300",
                       )}
                     />
                   ))}
@@ -249,14 +255,14 @@ export const TestimonialsSection = () => {
                   <button
                     onClick={prev}
                     title="Previous testimonial"
-                    className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-dark transition hover:border-dark hover:bg-dark hover:text-white"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-purple-200 bg-white text-purple-700 shadow-lg shadow-purple-100/30 transition-all hover:border-purple-400 hover:bg-gradient-to-r hover:from-indigo-600 hover:to-purple-600 hover:text-white hover:shadow-xl hover:shadow-purple-500/40"
                   >
                     <ChevronLeft className="h-5 w-5" />
                   </button>
                   <button
                     onClick={next}
                     title="Next testimonial"
-                    className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-dark transition hover:border-dark hover:bg-dark hover:text-white"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-purple-200 bg-white text-purple-700 shadow-lg shadow-purple-100/30 transition-all hover:border-purple-400 hover:bg-gradient-to-r hover:from-indigo-600 hover:to-purple-600 hover:text-white hover:shadow-xl hover:shadow-purple-500/40"
                   >
                     <ChevronRight className="h-5 w-5" />
                   </button>
