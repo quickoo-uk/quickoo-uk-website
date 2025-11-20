@@ -5,13 +5,8 @@ import { cn } from "@/lib/utils";
 import logo from "../public/images/logo-2.png";
 const SERVICES = [
   "Airport Transfers",
-  "City-to-City",
-  "Hourly Hire",
-  "Wedding",
-  "Business",
-  "Events",
-  "Seaport",
-  "Private Jet",
+  "Corporate travel",
+  "Special events",
   "City Tours",
 ];
 
