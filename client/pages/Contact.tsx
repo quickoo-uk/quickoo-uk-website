@@ -31,8 +31,8 @@ const contactChannels = [
   {
     icon: Mail,
     title: "Email Support",
-    content: "care@quickoo.co.uk",
-    action: "mailto:care@quickoo.co.uk",
+    content: "info@quickoo.co.uk",
+    action: "mailto:info@quickoo.co.uk",
     description: "Response within 2 hours.",
   },
   {
@@ -120,7 +120,7 @@ export default function ContactPage() {
           alt="Quickoo concierge hero background"
           className="absolute inset-0 h-full w-full object-cover opacity-25"
         />
-      
+
         <motion.svg
           viewBox="0 0 1200 200"
           className="absolute bottom-0 left-0 w-full text-white/40 opacity-60"
@@ -280,7 +280,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                    className={inputBase}
+                      className={inputBase}
                       placeholder="Amelia Carter"
                     />
                   </div>
@@ -293,7 +293,7 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                    className={inputBase}
+                      className={inputBase}
                       placeholder="+44 20 3576 1617"
                     />
                   </div>
@@ -310,7 +310,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                    className={inputBase}
+                      className={inputBase}
                       placeholder="you@email.com"
                     />
                   </div>
@@ -324,7 +324,7 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                    className={inputBase}
+                      className={inputBase}
                       placeholder="Airport transfer, corporate account..."
                     />
                   </div>
@@ -338,11 +338,10 @@ export default function ContactPage() {
                     {serviceTypes.map((type) => (
                       <label
                         key={type}
-                        className={`rounded-2xl border px-4 py-3 text-sm font-semibold transition cursor-pointer ${
-                          formData.serviceType === type
+                        className={`rounded-2xl border px-4 py-3 text-sm font-semibold transition cursor-pointer ${formData.serviceType === type
                             ? "border-gold bg-gold/10 text-slate-900"
                             : "border-slate-200 text-slate-500 hover:border-slate-300"
-                        }`}
+                          }`}
                       >
                         <input
                           type="radio"
@@ -404,7 +403,7 @@ export default function ContactPage() {
                       Concierge desk
                     </p>
                     <p className="text-2xl font-montserrat font-semibold text-slate-900">
-                      care@quickoo.co.uk
+                      info@quickoo.co.uk
                     </p>
                   </div>
                 </div>
@@ -413,7 +412,7 @@ export default function ContactPage() {
                   follow-ups for complex itineraries.
                 </p>
                 <div className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-600">
-                  <p>450 Bath Road, Longford, London Heathrow, UB7 0EB</p>
+                  <p>450 bath road, Longford, London,Heathrow, UB70EB</p>
                   <p className="mt-2">24/7 support • Global clientele • Discreet, secure service</p>
                 </div>
               </div>
@@ -488,7 +487,7 @@ export default function ContactPage() {
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_30px_90px_rgba(15,23,42,0.08)] space-y-4">
               <div className="flex items-center gap-3 text-sm text-slate-500">
                 <MapPin className="h-5 w-5 text-gold" />
-                450 Bath Road, Longford, London Heathrow, UB7 0EB
+                450 bath road, Longford, London,Heathrow, UB70EB
               </div>
               <div className="flex items-center gap-3 text-sm text-slate-500">
                 <Phone className="h-5 w-5 text-gold" />
@@ -496,7 +495,7 @@ export default function ContactPage() {
               </div>
               <div className="flex items-center gap-3 text-sm text-slate-500">
                 <Mail className="h-5 w-5 text-gold" />
-                care@quickoo.co.uk
+                info@quickoo.co.uk
               </div>
             </div>
           </div>

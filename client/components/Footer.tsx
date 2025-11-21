@@ -15,10 +15,9 @@ import { FLEET_TYPES } from "@shared/fleet";
 
 const SERVICES = [
   "Airport Transfers",
-  "City-to-City",
-  "Hourly Hire",
-  "Wedding",
-  "Business",
+  "Corporate travel",
+  "Special events",
+  "City Tours",
 ];
 
 const PAGES = [
@@ -50,8 +49,7 @@ export const Footer = () => {
                 Ready for your next itinerary? Let's choreograph it.
               </h3>
               <p className="mt-3 text-sm text-white/70">
-                Dedicated planners, biometric-ready chauffeurs, and a fleet at
-                standby—tailored within minutes.
+                Premium car service provider offering luxury transportation across the UK. Professional, reliable, and always on time.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:gap-4 sm:flex-row w-full lg:w-auto">
@@ -63,7 +61,7 @@ export const Footer = () => {
                 <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
               <a
-                href="tel:+442070788993"
+                href="tel:+442035761617"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-white transition hover:border-gold"
               >
                 Call Concierge
@@ -147,8 +145,8 @@ export const Footer = () => {
               <ul className="mt-6 space-y-4 text-sm text-white/80">
                 <li className="flex items-center gap-3">
                   <Phone className="h-4 w-4 text-gold" />
-                  <a href="tel:+1234567890" className="transition hover:text-white">
-                    +1 (234) 567-890
+                  <a href="tel:+442035761617" className="transition hover:text-white">
+                    +44 20 3576 1617
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
@@ -157,12 +155,12 @@ export const Footer = () => {
                     href="mailto:hello@xchauffur.com"
                     className="transition hover:text-white"
                   >
-                    hello@xchauffur.com
+                    info@quickoo.co.uk
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
                   <MapPin className="h-4 w-4 text-gold mt-1" />
-                  <span>123 Luxury Lane, Premium City, PC 12345</span>
+                  <span>450 bath road, Longford, London,Heathrow, UB70EB</span>
                 </li>
               </ul>
             </div>
@@ -191,7 +189,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-white/10 pt-6 text-xs sm:text-sm text-white/60 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} XChauffur. All rights reserved.</p>
+          <p>© 2025 Quickoo PVT LTD. All Rights Reserved.</p>
           <div className="flex flex-wrap gap-4 sm:gap-6">
             {PAGES.map((page) => (
               <Link key={page.href} to={page.href} className="transition hover:text-white">

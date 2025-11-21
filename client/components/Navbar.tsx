@@ -183,54 +183,54 @@ export const Navbar = () => {
                     isScrolled ? "text-dark" : "text-[#2a1b4d]",
                   )}
                 >
-                  +1 (302) 526-4133
+                  +44 20 3576 1617
                 </span>
               </div>
-            {/* BOOK NOW */}
-            <Link
-              to="/book-now"
-              className={cn(
-                "px-6 xl:px-8 py-2.5 xl:py-3 font-inter text-xs xl:text-sm rounded-full border transition-all font-semibold shadow-lg shadow-[#3c2c7d33] whitespace-nowrap",
-                isScrolled
-                  ? "luxury-button-gold text-white border-transparent hover:opacity-90"
-                  : "luxury-button-gold text-white border-transparent hover:opacity-90",
-              )}
-            >
-              Book Now
-            </Link>
-          </div>
-
-            
-
               {/* BOOK NOW */}
-             
+              <Link
+                to="/book-now"
+                className={cn(
+                  "px-6 xl:px-8 py-2.5 xl:py-3 font-inter text-xs xl:text-sm rounded-full border transition-all font-semibold shadow-lg shadow-[#3c2c7d33] whitespace-nowrap",
+                  isScrolled
+                    ? "luxury-button-gold text-white border-transparent hover:opacity-90"
+                    : "luxury-button-gold text-white border-transparent hover:opacity-90",
+                )}
+              >
+                Book Now
+              </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 flex-shrink-0 ml-2"
-              aria-controls="mobile-menu"
-              aria-expanded={isOpen ? "true" : "false"}
-            >
-              {isOpen ? (
-                <X
-                  className={cn(
-                    "w-6 h-6 transition-colors",
-                    isScrolled ? "text-dark" : "text-[#2a1b4d]",
-                  )}
-                />
-              ) : (
-                <Menu
-                  className={cn(
-                    "w-6 h-6 transition-colors",
-                    isScrolled ? "text-dark" : "text-[#2a1b4d]",
-                  )}
-                />
-              )}
-            </button>
+
+
+            {/* BOOK NOW */}
+
           </div>
-      
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden p-2 flex-shrink-0 ml-2"
+            aria-controls="mobile-menu"
+            aria-expanded={isOpen ? "true" : "false"}
+          >
+            {isOpen ? (
+              <X
+                className={cn(
+                  "w-6 h-6 transition-colors",
+                  isScrolled ? "text-dark" : "text-[#2a1b4d]",
+                )}
+              />
+            ) : (
+              <Menu
+                className={cn(
+                  "w-6 h-6 transition-colors",
+                  isScrolled ? "text-dark" : "text-[#2a1b4d]",
+                )}
+              />
+            )}
+          </button>
+        </div>
+
       </nav>
 
       {/* MOBILE MENU OVERLAY - Full Screen */}
@@ -363,20 +363,12 @@ export const Navbar = () => {
             {/* Phone Numbers in Mobile Menu */}
             <div className="px-4 pt-4 mt-2 space-y-3 border-t border-white/10">
               <a
-                href="tel:+13025264133"
+                href="tel:+442035761617"
                 onClick={handleNavClick}
                 className="flex items-center gap-3 text-white/90 hover:text-white transition-colors py-2"
               >
                 <Phone className="w-4 h-4" />
-                <span className="text-sm">+1 (302) 526-4133</span>
-              </a>
-              <a
-                href="tel:+442070788993"
-                onClick={handleNavClick}
-                className="flex items-center gap-3 text-white/90 hover:text-white transition-colors py-2"
-              >
-                <Phone className="w-4 h-4" />
-                <span className="text-sm">+44 207 078 8993</span>
+                <span className="text-sm">+44 20 3576 1617</span>
               </a>
             </div>
 
@@ -393,6 +385,7 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
+
     </>
   );
 };
