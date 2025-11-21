@@ -1,19 +1,106 @@
-import { useState } from "react";
-import { MapPin, Calendar, Clock, Info, ChevronDown } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { MapPin, Calendar, Clock, Info, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const BookingWidget = () => {
     const [activeTab, setActiveTab] = useState<"oneway" | "hourly">("oneway");
+    const [selectedDate, setSelectedDate] = useState(new Date(2025, 10, 22)); // Nov 22, 2025
+    const [selectedTime, setSelectedTime] = useState("05:05 PM");
+    const [showDatePicker, setShowDatePicker] = useState(false);
+    const [showTimePicker, setShowTimePicker] = useState(false);
+    const [currentMonth, setCurrentMonth] = useState(new Date(2025, 10, 1)); // November 2025
+
+    const datePickerRef = useRef<HTMLDivElement>(null);
+    const timePickerRef = useRef<HTMLDivElement>(null);
+
+    // Close pickers when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (datePickerRef.current && !datePickerRef.current.contains(event.target as Node)) {
+                setShowDatePicker(false);
+            }
+            if (timePickerRef.current && !timePickerRef.current.contains(event.target as Node)) {
+                setShowTimePicker(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    // Format date for display
+    const formatDate = (date: Date) => {
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+    };
+
+    // Generate calendar days
+    const generateCalendarDays = () => {
+        const year = currentMonth.getFullYear();
+        const month = currentMonth.getMonth();
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const days = [];
+
+        // Add empty cells for days before month starts
+        for (let i = 0; i < firstDay; i++) {
+            days.push(null);
+        }
+
+        // Add days of the month
+        for (let day = 1; day <= daysInMonth; day++) {
+            days.push(new Date(year, month, day));
+        }
+
+        return days;
+    };
+
+    // Generate time slots
+    const generateTimeSlots = () => {
+        const slots = [];
+        for (let hour = 0; hour < 24; hour++) {
+            for (let minute of [0, 15, 30, 45]) {
+                const period = hour >= 12 ? "PM" : "AM";
+                const displayHour = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
+                const time = `${displayHour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")} ${period}`;
+                slots.push(time);
+            }
+        }
+        return slots;
+    };
+
+    const calendarDays = generateCalendarDays();
+    const timeSlots = generateTimeSlots();
+
+    const goToPreviousMonth = () => {
+        setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
+    };
+
+    const goToNextMonth = () => {
+        setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
+    };
+
+    const isSameDay = (date1: Date, date2: Date) => {
+        return date1.getDate() === date2.getDate() &&
+            date1.getMonth() === date2.getMonth() &&
+            date1.getFullYear() === date2.getFullYear();
+    };
+
+    const isToday = (date: Date) => {
+        const today = new Date();
+        return isSameDay(date, today);
+    };
 
     return (
-        <div className="w-full max-w-md bg-white rounded-xl shadow-2xl overflow-hidden font-inter border border-slate-100">
+        <div className="w-full max-w-md bg-white rounded-xl shadow-2xl overflow-visible font-inter border border-slate-100">
             {/* Tabs */}
             <div className="flex border-b border-gray-100">
                 <button
                     onClick={() => setActiveTab("oneway")}
                     className={`flex-1 py-4 text-base font-semibold transition-colors ${activeTab === "oneway"
-                            ? "bg-white text-[#4C3CF2] border-b-2 border-[#4C3CF2]"
-                            : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700"
+                        ? "bg-white text-[#4C3CF2] border-b-2 border-[#4C3CF2]"
+                        : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700"
                         }`}
                 >
                     One way
@@ -21,8 +108,8 @@ export const BookingWidget = () => {
                 <button
                     onClick={() => setActiveTab("hourly")}
                     className={`flex-1 py-4 text-base font-semibold transition-colors ${activeTab === "hourly"
-                            ? "bg-white text-[#4C3CF2] border-b-2 border-[#4C3CF2]"
-                            : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700"
+                        ? "bg-white text-[#4C3CF2] border-b-2 border-[#4C3CF2]"
+                        : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700"
                         }`}
                 >
                     By the hour
@@ -96,46 +183,176 @@ export const BookingWidget = () => {
                             </div>
                         )}
 
-                        {/* Date */}
-                        <div className="relative group">
-                            <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#4C3CF2] transition-colors">
+                        {/* Date Picker */}
+                        <div className="relative group" ref={datePickerRef}>
+                            <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#4C3CF2] transition-colors z-10">
                                 <Calendar className="w-5 h-5" />
                             </div>
-                            <div className="pl-12 pr-4 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#4C3CF2] focus-within:bg-white transition-all shadow-sm">
+                            <div
+                                onClick={() => {
+                                    setShowDatePicker(!showDatePicker);
+                                    setShowTimePicker(false);
+                                }}
+                                className={`pl-12 pr-4 py-3 bg-slate-50 rounded-lg border transition-all shadow-sm cursor-pointer ${showDatePicker
+                                    ? "border-[#4C3CF2] bg-white"
+                                    : "border-transparent group-hover:border-slate-200"
+                                    }`}
+                            >
                                 <label className="block text-xs font-semibold text-slate-500 mb-0.5">
                                     Date
                                 </label>
                                 <div className="flex items-center justify-between">
-                                    <input
-                                        type="text"
-                                        value="Sat, Nov 22, 2025"
-                                        readOnly
-                                        className="w-full bg-transparent border-none p-0 text-slate-900 focus:ring-0 text-sm font-medium cursor-pointer outline-none"
-                                    />
-                                    <ChevronDown className="w-4 h-4 text-slate-400" />
+                                    <span className="text-sm font-medium text-slate-900">
+                                        {formatDate(selectedDate)}
+                                    </span>
+                                    <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${showDatePicker ? "rotate-180" : ""}`} />
                                 </div>
                             </div>
+
+                            {/* Date Picker Dropdown */}
+                            <AnimatePresence>
+                                {showDatePicker && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                                        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                                        className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-5 z-50 border-2 border-purple-100"
+                                        style={{
+                                            boxShadow: "0 25px 70px rgba(70, 48, 168, 0.25), 0 0 0 1px rgba(70, 48, 168, 0.1)"
+                                        }}
+                                    >
+                                        {/* Month Navigation */}
+                                        <div className="flex items-center justify-between mb-5 pb-4 border-b border-purple-100">
+                                            <button
+                                                onClick={goToPreviousMonth}
+                                                className="p-2.5 bg-slate-100 hover:bg-gradient-to-r hover:from-[#1c0e38] hover:via-[#4630a8] hover:to-[#8b74ff] rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 group border border-slate-200 hover:border-transparent shadow-sm"
+                                            >
+                                                <ChevronLeft className="w-5 h-5 text-slate-700  transition-colors" />
+                                            </button>
+                                            <span className="text-base font-bold bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] bg-clip-text text-transparent tracking-wide">
+                                                {currentMonth.toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                                            </span>
+                                            <button
+                                                onClick={goToNextMonth}
+                                                className="p-2.5 bg-slate-100 hover:bg-gradient-to-r hover:from-[#1c0e38] hover:via-[#4630a8] hover:to-[#8b74ff] rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 group border border-slate-200 hover:border-transparent shadow-sm"
+                                            >
+                                                <ChevronRight className="w-5 h-5 text-slate-700  transition-colors" />
+                                            </button>
+                                        </div>
+
+                                        {/* Day Labels */}
+                                        <div className="grid grid-cols-7 gap-1.5 mb-3">
+                                            {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((day) => (
+                                                <div key={day} className="text-center text-xs font-bold text-purple-400 py-2">
+                                                    {day}
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        {/* Calendar Grid */}
+                                        <div className="grid grid-cols-7 gap-1.5">
+                                            {calendarDays.map((day, index) => (
+                                                <div key={index}>
+                                                    {day ? (
+                                                        <button
+                                                            onClick={() => {
+                                                                setSelectedDate(day);
+                                                                setShowDatePicker(false);
+                                                            }}
+                                                            className={`w-full aspect-square rounded-xl text-sm font-bold transition-all duration-200 relative overflow-hidden ${isSameDay(day, selectedDate)
+                                                                ? "bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white shadow-lg shadow-[#4630a8]/50 scale-110 ring-2 ring-purple-200"
+                                                                : isToday(day)
+                                                                    ? "bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white font-extrabold ring-2 ring-purple-200 hover:scale-105 hover:shadow-lg"
+                                                                    : "text-slate-700 hover:bg-purple-50 hover:scale-105 hover:text-purple-600 hover:shadow-md"
+                                                                }`}
+                                                        >
+                                                            {isSameDay(day, selectedDate) && (
+                                                                <motion.div
+                                                                    layoutId="selectedDate"
+                                                                    className="absolute inset-0 bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff]"
+                                                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                                                />
+                                                            )}
+                                                            <span className="relative z-10">{day.getDate()}</span>
+                                                        </button>
+                                                    ) : (
+                                                        <div className="w-full aspect-square" />
+                                                    )}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
 
-                        {/* Time */}
-                        <div className="relative group">
-                            <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#4C3CF2] transition-colors">
+                        {/* Time Picker */}
+                        <div className="relative group" ref={timePickerRef}>
+                            <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#4C3CF2] transition-colors z-10">
                                 <Clock className="w-5 h-5" />
                             </div>
-                            <div className="pl-12 pr-4 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#4C3CF2] focus-within:bg-white transition-all shadow-sm">
+                            <div
+                                onClick={() => {
+                                    setShowTimePicker(!showTimePicker);
+                                    setShowDatePicker(false);
+                                }}
+                                className={`pl-12 pr-4 py-3 bg-slate-50 rounded-lg border transition-all shadow-sm cursor-pointer ${showTimePicker
+                                    ? "border-[#4C3CF2] bg-white"
+                                    : "border-transparent group-hover:border-slate-200"
+                                    }`}
+                            >
                                 <label className="block text-xs font-semibold text-slate-500 mb-0.5">
                                     Pickup time
                                 </label>
                                 <div className="flex items-center justify-between">
-                                    <input
-                                        type="text"
-                                        value="05:05 PM"
-                                        readOnly
-                                        className="w-full bg-transparent border-none p-0 text-slate-900 focus:ring-0 text-sm font-medium cursor-pointer outline-none"
-                                    />
-                                    <ChevronDown className="w-4 h-4 text-slate-400" />
+                                    <span className="text-sm font-medium text-slate-900">
+                                        {selectedTime}
+                                    </span>
+                                    <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${showTimePicker ? "rotate-180" : ""}`} />
                                 </div>
                             </div>
+
+                            {/* Time Picker Dropdown */}
+                            <AnimatePresence>
+                                {showTimePicker && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                                        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                                        className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-4 z-50 max-h-72 overflow-y-auto border-2 border-purple-100"
+                                        style={{
+                                            boxShadow: "0 25px 70px rgba(70, 48, 168, 0.25), 0 0 0 1px rgba(70, 48, 168, 0.1)"
+                                        }}
+                                    >
+                                        <div className="grid grid-cols-4 gap-2">
+                                            {timeSlots.map((time) => (
+                                                <button
+                                                    key={time}
+                                                    onClick={() => {
+                                                        setSelectedTime(time);
+                                                        setShowTimePicker(false);
+                                                    }}
+                                                    className={`px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 relative overflow-hidden ${time === selectedTime
+                                                        ? "bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white shadow-lg shadow-[#4630a8]/50 scale-105 ring-2 ring-purple-200"
+                                                        : "text-slate-700 hover:bg-purple-50 border border-purple-100 hover:border-purple-300 hover:scale-105 hover:text-purple-600 hover:shadow-md"
+                                                        }`}
+                                                >
+                                                    {time === selectedTime && (
+                                                        <motion.div
+                                                            layoutId="selectedTime"
+                                                            className="absolute inset-0 bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff]"
+                                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                                        />
+                                                    )}
+                                                    <span className="relative z-10">{time}</span>
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
 
                         {/* Info Text */}

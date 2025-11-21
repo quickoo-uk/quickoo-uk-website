@@ -53,7 +53,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative flex min-h-[90vh] w-full items-center overflow-hidden bg-[radial-gradient(circle_at_top,_#ffffff,_#f3f6ff,_#fff6ed)] pt-24 sm:pt-28 pb-12 sm:pb-16">
+    <section className="relative flex min-h-[90vh] w-full items-center  bg-[radial-gradient(circle_at_top,_#ffffff,_#f3f6ff,_#fff6ed)] pt-24 sm:pt-28 pb-12 sm:pb-16">
       {/* Background with light overlay */}
       <div className="absolute inset-0">
         <AnimatePresence mode="wait">
