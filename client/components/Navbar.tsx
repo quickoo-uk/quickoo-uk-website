@@ -190,10 +190,10 @@ export const Navbar = () => {
               <Link
                 to="/book-now"
                 className={cn(
-                  "px-6 xl:px-8 py-2.5 xl:py-3 font-inter text-xs xl:text-sm rounded-full border transition-all font-semibold shadow-lg shadow-[#3c2c7d33] whitespace-nowrap",
+                  "px-6 xl:px-8 py-2.5 xl:py-3 font-inter text-xs xl:text-sm rounded-full transition-all font-semibold shadow-lg shadow-[#3c2c7d33] whitespace-nowrap",
                   isScrolled
-                    ? "luxury-button-gold text-white border-transparent hover:opacity-90"
-                    : "luxury-button-gold text-white border-transparent hover:opacity-90",
+                    ? "luxury-button-gold text-white hover:opacity-90"
+                    : "luxury-button-gold text-white hover:opacity-90",
                 )}
               >
                 Book Now

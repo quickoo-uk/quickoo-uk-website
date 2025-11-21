@@ -264,14 +264,14 @@ export const TestimonialsSection = () => {
             <div className="absolute bottom-8 right-8 flex gap-3">
               <button
                 onClick={prev}
-                className="group flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-[#7b5dff] hover:text-white hover:border-[#7b5dff]"
+                className="group flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-slate-200 bg-white text-slate-600 shadow-lg transition-all duration-300 hover:ring-0 hover:bg-gradient-to-r hover:from-[#1c0e38] hover:via-[#4630a8] hover:to-[#8b74ff] hover:text-white hover:scale-110 focus:outline-none"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="h-5 w-5 transition-transform group-hover:-translate-x-0.5" />
               </button>
               <button
                 onClick={next}
-                className="group flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-[#7b5dff] hover:text-white hover:border-[#7b5dff]"
+                className="group flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-slate-200 bg-white text-slate-600 shadow-lg transition-all duration-300 hover:ring-0 hover:bg-gradient-to-r hover:from-[#1c0e38] hover:via-[#4630a8] hover:to-[#8b74ff] hover:text-white hover:scale-110 focus:outline-none"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
