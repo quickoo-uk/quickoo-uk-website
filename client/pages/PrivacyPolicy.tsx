@@ -1,4 +1,4 @@
-import { ShieldCheck, Lock, Eye, FileText, Users, Globe, Sparkles } from "lucide-react";
+import { ShieldCheck, Lock, Eye, FileText, Users, Globe, Sparkles, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const fadeInUp = {
@@ -6,101 +6,358 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-const stagger = {
-  hidden: {},
-  visible: {
-    transition: {
-      delayChildren: 0.1,
-      staggerChildren: 0.12,
-    },
-  },
-};
-
-const privacyPrinciples = [
+const policySections = [
   {
-    icon: Lock,
-    title: "Data Encryption",
-    description: "All personal information is encrypted in transit and at rest using industry-standard protocols.",
+    title: "1. Introduction & Data Controller Information",
+    content: [
+      "Quickoo PVT LTD (\"we,\" \"our,\" \"us,\" or \"the Company\") is committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, process, disclose, and safeguard your personal information when you use our premium chauffeur and car hire services operating throughout the United Kingdom.",
+      "We comply with the UK General Data Protection Regulation (UK GDPR), the Data Protection Act 2018, and all applicable UK data protection laws. This policy should be read alongside our Terms and Conditions.",
+      "Data Controller: Quickoo PVT LTD",
+      "Registered Office: 450 bath road, Longford, London,Heathrow, UB70EB",
+      "Data Protection Officer: privacy@quickoo.co.uk",
+      "Phone: +44 20 3576 1617"
+    ]
   },
   {
-    icon: ShieldCheck,
-    title: "Secure Storage",
-    description: "Your data is stored in secure, compliant data centers with regular security audits.",
+    title: "2. Information We Collect",
+    content: [
+      "2.1 Personal Information You Provide",
+      "We collect personal information that you voluntarily provide when booking our services or communicating with us:",
+      "• Identity Data: Full name, title, date of birth (for verification purposes)",
+      "• Contact Data: Email address, telephone numbers, postal address",
+      "• Booking Data: Pickup/drop-off locations, journey dates and times, passenger numbers, special requirements",
+      "• Payment Data: Credit/debit card information, billing address, payment history",
+      "• Account Data: Username, password, communication preferences",
+      "• Communication Data: Correspondence, feedback, complaints, customer service interactions",
+      "• Special Category Data: Health information (only where necessary for accessibility requirements), with explicit consent",
+      "",
+      "2.2 Information Collected Automatically",
+      "When you interact with our digital services, we automatically collect:",
+      "• Technical Data: IP address, device type, browser type and version, operating system",
+      "• Usage Data: Pages visited, time spent on website, referring URLs, clickstream data",
+      "• Location Data: GPS coordinates (with your consent) for pickup/drop-off accuracy and driver dispatch",
+      "• Cookie Data: Information stored through cookies and similar tracking technologies",
+      "",
+      "2.3 Information from Third Parties",
+      "We may receive information from:",
+      "• Flight tracking services for airport transfer monitoring",
+      "• Payment processors and fraud prevention services",
+      "• Credit reference agencies (for corporate account applications)",
+      "• Social media platforms (if you use social login features)",
+      "• Partner companies and referral sources"
+    ]
   },
   {
-    icon: Eye,
-    title: "Transparency",
-    description: "We clearly communicate how your data is collected, used, and protected.",
+    title: "3. How We Use Your Information",
+    content: [
+      "We process your personal data for the following purposes:",
+      "",
+      "3.1 Service Provision (Contract Performance)",
+      "• Processing and managing your bookings and reservations",
+      "• Coordinating chauffeur dispatch and journey logistics",
+      "• Processing payments and managing billing",
+      "• Providing customer support and handling inquiries",
+      "• Monitoring service quality and chauffeur performance",
+      "",
+      "3.2 Business Operations (Legitimate Interests)",
+      "• Improving our services, vehicles, and customer experience",
+      "• Conducting market research and customer satisfaction surveys",
+      "• Preventing fraud and ensuring payment security",
+      "• Maintaining business records and accounting",
+      "• Training staff and monitoring service quality",
+      "• Resolving disputes and legal claims",
+      "",
+      "3.3 Marketing Communications (Consent)",
+      "• Sending promotional offers and service updates (with your consent)",
+      "• Personalizing marketing content based on your preferences",
+      "• Conducting customer retention activities",
+      "• Inviting participation in loyalty programs",
+      "",
+      "3.4 Legal Compliance (Legal Obligation)",
+      "• Complying with licensing and regulatory requirements",
+      "• Maintaining records for tax and accounting purposes",
+      "• Responding to law enforcement requests",
+      "• Ensuring health and safety compliance"
+    ]
   },
   {
-    icon: Users,
-    title: "Your Control",
-    description: "You have the right to access, modify, or delete your personal information at any time.",
-  },
-];
-
-const dataCategories = [
-  {
-    title: "Personal Information",
-    items: [
-      "Name, email address, phone number",
-      "Billing and payment information",
-      "Travel preferences and special requests",
-      "Account credentials and profile data",
-    ],
+    title: "4. Legal Basis for Processing",
+    content: [
+      "We process your personal data on the following legal bases:",
+      "• Contract Performance: To fulfill our service agreement and booking terms",
+      "• Legitimate Interests: To operate our business efficiently, improve services, and ensure security",
+      "• Consent: For marketing communications, location tracking, and optional services",
+      "• Legal Obligation: To comply with UK laws, regulations, and licensing requirements",
+      "• Vital Interests: To protect health and safety in emergency situations"
+    ]
   },
   {
-    title: "Usage Data",
-    items: [
-      "Booking history and journey details",
-      "Device information and IP addresses",
-      "App usage patterns and preferences",
-      "Location data (with your consent)",
-    ],
+    title: "5. Data Sharing & Third Party Disclosure",
+    content: [
+      "We may share your personal information with the following categories of recipients:",
+      "",
+      "5.1 Service Providers",
+      "• Chauffeurs: Name, contact details, and journey information necessary for service delivery",
+      "• Payment Processors: Stripe, PayPal, and banking partners for secure payment processing",
+      "• Technology Providers: Web hosting, cloud storage, email services, and mobile app platforms",
+      "• Communication Services: SMS and email delivery platforms",
+      "",
+      "5.2 Business Partners",
+      "• Hotels, airlines, and travel agencies (with your explicit consent)",
+      "• Corporate clients for business travel coordination",
+      "• Event organizers and wedding planners",
+      "• Vehicle maintenance and insurance providers",
+      "",
+      "5.3 Legal & Regulatory Authorities",
+      "• Police and law enforcement agencies when legally required",
+      "• Licensing authorities for compliance verification",
+      "• Courts and legal representatives in dispute resolution",
+      "• Tax authorities and regulatory bodies",
+      "",
+      "Important: We do not sell, rent, or trade your personal information to third parties for their marketing purposes. All data sharing is governed by strict contractual agreements ensuring appropriate protection."
+    ]
   },
   {
-    title: "Communication Records",
-    items: [
-      "Customer service interactions",
-      "Feedback and survey responses",
-      "Marketing communication preferences",
-      "Support ticket history",
-    ],
-  },
-];
-
-const rights = [
-  {
-    title: "Access Your Data",
-    description: "Request a copy of all personal data we hold about you.",
-  },
-  {
-    title: "Rectification",
-    description: "Correct any inaccurate or incomplete information.",
-  },
-  {
-    title: "Erasure",
-    description: "Request deletion of your personal data under certain circumstances.",
+    title: "6. Data Security Measures",
+    content: [
+      "We implement comprehensive technical and organizational security measures:",
+      "",
+      "6.1 Technical Safeguards",
+      "• 256-bit SSL encryption for all data transmission",
+      "• AES-256 encryption for data storage",
+      "• Secure, PCI DSS-compliant payment processing",
+      "• Regular security audits and penetration testing",
+      "• Intrusion detection and prevention systems",
+      "• Automated backup and disaster recovery procedures",
+      "",
+      "6.2 Organizational Measures",
+      "• Role-based access controls and authentication",
+      "• Regular staff training on data protection",
+      "• Confidentiality agreements for all employees and contractors",
+      "• Incident response and breach notification procedures",
+      "• Regular review and update of security policies"
+    ]
   },
   {
-    title: "Data Portability",
-    description: "Receive your data in a structured, machine-readable format.",
+    title: "7. Data Retention Periods",
+    content: [
+      "We retain personal data for different periods depending on the purpose:",
+      "• Booking Records: 7 years (for accounting and legal compliance)",
+      "• Payment Information: Until card expiry or account closure plus 1 year",
+      "• Customer Communications: 3 years from last interaction",
+      "• Marketing Data: Until consent withdrawn or 3 years of inactivity",
+      "• CCTV Footage: 30 days (where applicable in vehicles)",
+      "• Website Analytics: 26 months (Google Analytics default)",
+      "• Complaint Records: 6 years from resolution",
+      "• Insurance Claims: 10 years from claim closure",
+      "",
+      "Data is securely deleted or anonymized when retention periods expire, unless longer retention is required by law."
+    ]
   },
   {
-    title: "Object to Processing",
-    description: "Opt out of certain data processing activities, including marketing.",
+    title: "8. Your Rights Under UK GDPR",
+    content: [
+      "You have the following rights regarding your personal data:",
+      "",
+      "8.1 Right of Access",
+      "Request a copy of your personal data we hold, including information about processing purposes, data categories, recipients, and retention periods.",
+      "",
+      "8.2 Right to Rectification",
+      "Request correction of inaccurate or incomplete personal data. We will notify third parties of corrections where appropriate.",
+      "",
+      "8.3 Right to Erasure (\"Right to be Forgotten\")",
+      "Request deletion of your personal data when:",
+      "• Data is no longer necessary for the original purpose",
+      "• You withdraw consent and no other legal basis applies",
+      "• Data has been unlawfully processed",
+      "• Erasure is required for legal compliance",
+      "",
+      "8.4 Right to Restriction of Processing",
+      "Request limitation of processing when:",
+      "• You contest the accuracy of personal data",
+      "• Processing is unlawful but you prefer restriction to erasure",
+      "• We no longer need the data but you need it for legal claims",
+      "• You object to processing pending verification of legitimate grounds",
+      "",
+      "8.5 Right to Data Portability",
+      "Receive your personal data in a structured, commonly used, machine-readable format and transmit it to another controller where technically feasible.",
+      "",
+      "8.6 Right to Object",
+      "Object to processing based on legitimate interests or for direct marketing purposes. We will cease processing unless we can demonstrate compelling legitimate grounds.",
+      "",
+      "8.7 Rights Related to Automated Decision-Making",
+      "Not be subject to decisions based solely on automated processing, including profiling, that produce legal or similarly significant effects.",
+      "",
+      "8.8 Exercising Your Rights",
+      "To exercise any of these rights, contact us at privacy@quickoo.co.uk or write to our Data Protection Officer. We will respond within one month and may request additional information to verify your identity."
+    ]
   },
   {
-    title: "Restrict Processing",
-    description: "Limit how we use your data while we address your concerns.",
+    title: "9. Cookies & Tracking Technologies",
+    content: [
+      "We use cookies and similar technologies to enhance your experience:",
+      "",
+      "9.1 Types of Cookies",
+      "• Essential Cookies: Necessary for website functionality, booking process, and security",
+      "• Performance Cookies: Collect anonymous usage statistics to improve our website",
+      "• Functionality Cookies: Remember your preferences and personalize your experience",
+      "• Marketing Cookies: Track visits across websites to deliver relevant advertisements",
+      "",
+      "9.2 Third-Party Cookies",
+      "We use cookies from trusted third parties:",
+      "• Google Analytics: Website traffic analysis and user behavior insights",
+      "• Google Maps: Location services and route optimization",
+      "• Payment Processors: Secure payment processing and fraud prevention",
+      "• Social Media Platforms: Social sharing and login functionality",
+      "",
+      "9.3 Managing Cookies",
+      "You can control cookies through:",
+      "• Browser settings (Help menu provides guidance)",
+      "• Our cookie consent banner when first visiting our website",
+      "• Third-party opt-out tools (e.g., Google Analytics Opt-out)",
+      "• Industry preference centers (e.g., aboutcookies.org)"
+    ]
   },
+  {
+    title: "10. International Data Transfers",
+    content: [
+      "Some of our service providers are located outside the UK. When transferring data internationally, we ensure adequate protection through:",
+      "• Adequacy Decisions: Countries deemed adequate by the UK government",
+      "• Standard Contractual Clauses: UK ICO-approved contract terms",
+      "• Certification Schemes: Privacy frameworks like Privacy Shield successors",
+      "• Explicit Consent: Where other safeguards are not available",
+      "",
+      "We maintain records of all international transfers and review adequacy determinations regularly."
+    ]
+  },
+  {
+    title: "11. Children's Privacy",
+    content: [
+      "Our services are not intended for individuals under 16 years of age. We do not knowingly collect personal data from children under 16 without parental consent. If we become aware of such collection, we will delete the information immediately and may seek parental verification. Parents and guardians can contact us to review, modify, or delete their child's information."
+    ]
+  },
+  {
+    title: "12. Location Data & Mobile App Privacy",
+    content: [
+      "Our mobile application may collect location data with your permission:",
+      "",
+      "12.1 Location Data Usage",
+      "• Accurate pickup and drop-off location identification",
+      "• Real-time chauffeur dispatch and tracking",
+      "• Route optimization and traffic avoidance",
+      "• Service area verification and pricing",
+      "",
+      "12.2 Location Settings",
+      "• Allow All the Time: Continuous location access for optimal service",
+      "• Allow While Using App: Location access only when app is active",
+      "• Deny: Manual address entry required, limited functionality",
+      "",
+      "You can modify location permissions in your device settings at any time. Location data is encrypted and stored securely."
+    ]
+  },
+  {
+    title: "13. Marketing Communications",
+    content: [
+      "We may send you marketing communications if you have opted in or where we have legitimate interest:",
+      "",
+      "13.1 Types of Communications",
+      "• Service updates and new feature announcements",
+      "• Promotional offers and seasonal discounts",
+      "• Customer satisfaction surveys",
+      "• Industry news and travel tips",
+      "• Loyalty program benefits",
+      "",
+      "13.2 Opting Out",
+      "You can unsubscribe from marketing communications:",
+      "• Click \"unsubscribe\" links in emails",
+      "• Reply \"STOP\" to SMS messages",
+      "• Contact customer service at +44 20 3576 1617",
+      "• Email preferences@quickoo.co.uk",
+      "• Update preferences in your online account"
+    ]
+  },
+  {
+    title: "14. Data Breach Notification",
+    content: [
+      "In the unlikely event of a data breach that poses a risk to your rights and freedoms:",
+      "• We will notify the ICO within 72 hours of becoming aware",
+      "• We will inform affected individuals without undue delay",
+      "• Notifications will include the nature of the breach, likely consequences, and remedial measures",
+      "• We maintain detailed incident response procedures and forensic capabilities"
+    ]
+  },
+  {
+    title: "15. Privacy by Design",
+    content: [
+      "We implement privacy by design principles:",
+      "• Data Minimization: Collect only necessary personal data",
+      "• Purpose Limitation: Use data only for specified, legitimate purposes",
+      "• Storage Limitation: Retain data only as long as necessary",
+      "• Accuracy: Ensure data is accurate and up-to-date",
+      "• Security: Implement appropriate technical and organizational measures",
+      "• Accountability: Demonstrate compliance with data protection principles"
+    ]
+  },
+  {
+    title: "16. Corporate & Business Customers",
+    content: [
+      "For corporate clients, additional considerations apply:",
+      "• Corporate privacy notices may supplement this policy",
+      "• Employee travel data is processed on behalf of the corporate client",
+      "• Data Processing Agreements (DPAs) available upon request",
+      "• Corporate clients remain responsible for their employees' data rights",
+      "• Separate retention periods may apply for corporate account data"
+    ]
+  },
+  {
+    title: "17. Updates to This Privacy Policy",
+    content: [
+      "We may update this Privacy Policy periodically to reflect changes in:",
+      "• Legal requirements and regulatory guidance",
+      "• Our business practices and service offerings",
+      "• Technology and security measures",
+      "• Industry best practices",
+      "",
+      "We will notify you of material changes via email and prominent website notice. The \"Last updated\" date reflects the most recent revision. We encourage you to review this policy regularly."
+    ]
+  },
+  {
+    title: "18. Contact Information & Data Protection Officer",
+    content: [
+      "For privacy-related inquiries, to exercise your rights, or to contact our Data Protection Officer:",
+      "",
+      "Data Protection Officer",
+      "Quickoo PVT LTD",
+      "450 bath road, Longford",
+      "London, Heathrow, UB70EB",
+      "",
+      "Email: privacy@quickoo.co.uk",
+      "Phone: +44 20 3576 1617",
+      "Response Time: Within 1 month",
+      "",
+      "Customer Service: support@quickoo.co.uk",
+      "Website: www.quickoo.co.uk/privacy"
+    ]
+  },
+  {
+    title: "20. Accessibility",
+    content: [
+      "This Privacy Policy is available in alternative formats for individuals with disabilities. We can provide:",
+      "• Large print versions",
+      "• Audio recordings",
+      "• Translations in other languages",
+      "• Easy-read versions",
+      "",
+      "Contact our customer service team to request alternative formats."
+    ]
+  }
 ];
 
 export default function PrivacyPolicyPage() {
   return (
     <div className="bg-gradient-to-b from-[#f9fafc] via-white to-[#fdf7f0] text-slate-900 overflow-hidden">
       <motion.section
-        className="relative overflow-hidden min-h-[70vh] flex items-center bg-gradient-to-br from-white via-[#f1f5ff] to-[#fdf2e9]"
+        className="relative overflow-hidden min-h-[60vh] flex items-center bg-gradient-to-br from-white via-[#f1f5ff] to-[#fdf2e9]"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
@@ -112,8 +369,6 @@ export default function PrivacyPolicyPage() {
           className="absolute inset-0 h-full w-full object-cover opacity-20"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent" />
-        <div className="absolute -bottom-20 -right-8 h-72 w-72 bg-gold/30 blur-[140px] opacity-40" />
-        <div className="absolute -top-24 -left-10 h-64 w-64 bg-[#90c4ff]/30 blur-[120px] opacity-50" />
         <div className="relative z-10 px-5 sm:px-8 md:px-12 xl:px-24 py-20 w-full">
           <div className="max-w-4xl space-y-8">
             <div className="inline-flex flex-wrap items-center gap-3 rounded-full border border-slate-200 bg-white/70 px-6 py-2 backdrop-blur">
@@ -131,398 +386,36 @@ export default function PrivacyPolicyPage() {
               </h1>
               <p className="text-lg text-slate-600 font-inter max-w-3xl">
                 At Quickoo, we are committed to protecting your personal information and ensuring transparency
-                about how we collect, use, and safeguard your data. This Privacy Policy explains our practices
-                and your rights.
+                about how we collect, use, and safeguard your data.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <div className="rounded-3xl border border-slate-200 bg-white/80 p-4 text-center backdrop-blur">
-                  <p className="text-2xl sm:text-3xl font-montserrat font-semibold text-gold">GDPR</p>
-                  <p className="text-xs sm:text-sm text-slate-500">Compliant</p>
-                </div>
-                <div className="rounded-3xl border border-slate-200 bg-white/80 p-4 text-center backdrop-blur">
-                  <p className="text-2xl sm:text-3xl font-montserrat font-semibold text-gold">ISO</p>
-                  <p className="text-xs sm:text-sm text-slate-500">27001 Certified</p>
-                </div>
-                <div className="rounded-3xl border border-slate-200 bg-white/80 p-4 text-center backdrop-blur">
-                  <p className="text-2xl sm:text-3xl font-montserrat font-semibold text-gold">24/7</p>
-                  <p className="text-xs sm:text-sm text-slate-500">Security Monitoring</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </motion.section>
 
-      <motion.section
-        className="section-spacing bg-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={stagger}
-      >
-        <div className="section-container space-y-12">
-          <div className="text-center space-y-3">
-            <p className="uppercase tracking-[0.4em] text-sm text-slate-500">Our commitment</p>
-            <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
-              Privacy principles we uphold
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+        {policySections.map((section, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
+            className="bg-white rounded-3xl p-8 shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-slate-100"
+          >
+            <h2 className="text-2xl font-montserrat font-semibold text-slate-900 mb-6">
+              {section.title}
             </h2>
-            <p className="text-slate-600 font-inter max-w-2xl mx-auto">
-              We follow industry best practices and regulatory requirements to ensure your data is handled
-              with the utmost care and security.
-            </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {privacyPrinciples.map(({ icon: Icon, title, description }) => (
-              <motion.div
-                key={title}
-                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
-                variants={fadeInUp}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="rounded-full bg-gold/15 p-3 text-gold">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <p className="text-lg font-semibold text-slate-900">{title}</p>
-                </div>
-                <p className="text-sm text-slate-600">{description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      <motion.section
-        className="section-spacing bg-[#f4f6fb]"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={stagger}
-      >
-        <div className="section-container space-y-12">
-          <div className="text-center space-y-3">
-            <p className="uppercase tracking-[0.4em] text-sm text-slate-500">Information we collect</p>
-            <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
-              Data categories
-            </h2>
-            <p className="text-slate-600 font-inter max-w-2xl mx-auto">
-              We collect only the information necessary to provide you with exceptional service and improve
-              your experience.
-            </p>
-          </div>
-          <div className="grid gap-6 lg:grid-cols-3">
-            {dataCategories.map((category) => (
-              <motion.div
-                key={category.title}
-                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
-                variants={fadeInUp}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <FileText className="h-6 w-6 text-gold" />
-                  <p className="text-xl font-semibold text-slate-900">{category.title}</p>
-                </div>
-                <ul className="space-y-3 text-sm text-slate-600 list-disc list-inside">
-                  {category.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      <motion.section
-        className="section-spacing relative overflow-hidden bg-gradient-to-br from-white via-[#f5f5ff] to-[#fff8ef]"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={stagger}
-      >
-        <div className="pointer-events-none absolute inset-x-10 -top-24 h-48 rounded-full bg-gold/20 blur-[120px]" />
-        <div className="section-container space-y-12">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <motion.div className="space-y-7" variants={fadeInUp}>
-              <p className="uppercase tracking-[0.4em] text-sm text-slate-500">How we use your data</p>
-              <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
-                Purpose and processing
-              </h2>
-              <p className="text-slate-600 font-inter">
-                We use your personal information solely for the purposes outlined below, always with your
-                consent or as necessary to fulfill our contractual obligations.
-              </p>
-              <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_30px_70px_rgba(15,23,42,0.08)] space-y-4">
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-full bg-gold/15 p-2 text-gold mt-1">
-                      <Sparkles className="h-4 w-4" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-slate-900">Service Delivery</p>
-                      <p className="text-sm text-slate-600">
-                        Processing bookings, managing journeys, and providing concierge support.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-full bg-gold/15 p-2 text-gold mt-1">
-                      <Sparkles className="h-4 w-4" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-slate-900">Payment Processing</p>
-                      <p className="text-sm text-slate-600">
-                        Secure handling of transactions and billing information.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-full bg-gold/15 p-2 text-gold mt-1">
-                      <Sparkles className="h-4 w-4" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-slate-900">Communication</p>
-                      <p className="text-sm text-slate-600">
-                        Sending booking confirmations, updates, and responding to inquiries.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-full bg-gold/15 p-2 text-gold mt-1">
-                      <Sparkles className="h-4 w-4" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-slate-900">Service Improvement</p>
-                      <p className="text-sm text-slate-600">
-                        Analyzing usage patterns to enhance our platform and services.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div
-              className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-[0_50px_120px_rgba(15,23,42,0.08)]"
-              variants={fadeInUp}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <Globe className="h-6 w-6 text-gold" />
-                <p className="text-lg font-semibold text-slate-900">Data Sharing</p>
-              </div>
-              <div className="space-y-4 text-sm text-slate-600">
-                <p>
-                  We do not sell your personal information. We may share data with trusted partners only
-                  when necessary for service delivery:
+            <div className="space-y-4 text-slate-600 font-inter leading-relaxed">
+              {section.content.map((paragraph, pIndex) => (
+                <p key={pIndex} className={paragraph.startsWith("•") ? "pl-4" : ""}>
+                  {paragraph}
                 </p>
-                <ul className="space-y-2 list-disc list-inside">
-                  <li>Chauffeur partners for journey fulfillment</li>
-                  <li>Payment processors for secure transactions</li>
-                  <li>Technology providers for platform operations</li>
-                  <li>Legal compliance when required by law</li>
-                </ul>
-                <div className="rounded-2xl bg-slate-50 p-4 mt-4">
-                  <p className="font-semibold text-slate-900 mb-2">Our Promise</p>
-                  <p className="text-xs">
-                    All partners are bound by strict confidentiality agreements and data protection
-                    requirements.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      <motion.section
-        className="section-spacing bg-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={stagger}
-      >
-        <div className="section-container space-y-12">
-          <div className="text-center space-y-3">
-            <p className="uppercase tracking-[0.4em] text-sm text-gold">Your rights</p>
-            <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
-              Control your personal data
-            </h2>
-            <p className="text-slate-600 font-inter max-w-2xl mx-auto">
-              Under GDPR and other data protection laws, you have comprehensive rights regarding your
-              personal information.
-            </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {rights.map((right) => (
-              <motion.div
-                key={right.title}
-                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
-                variants={fadeInUp}
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <ShieldCheck className="h-5 w-5 text-gold" />
-                  <p className="font-semibold text-slate-900">{right.title}</p>
-                </div>
-                <p className="text-sm text-slate-600">{right.description}</p>
-              </motion.div>
-            ))}
-          </div>
-          <div className="rounded-[32px] border border-slate-200 bg-gradient-to-br from-gold/10 via-[#fff7ec] to-white p-8 shadow-[0_30px_90px_rgba(15,23,42,0.08)]">
-            <div className="flex items-start gap-4">
-              <div className="rounded-full bg-gold/20 p-3 text-gold">
-                <Lock className="h-6 w-6" />
-              </div>
-              <div className="space-y-3">
-                <p className="text-lg font-semibold text-slate-900">Exercising Your Rights</p>
-                <p className="text-slate-600">
-                  To exercise any of these rights, please contact our Data Protection Officer at{" "}
-                  <a href="mailto:privacy@quickoo.co.uk" className="text-gold font-semibold hover:underline">
-                    privacy@quickoo.co.uk
-                  </a>
-                  . We will respond to your request within 30 days.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
-      <motion.section
-        className="section-spacing bg-[#f4f6fb]"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={stagger}
-      >
-        <div className="section-container space-y-10">
-          <div className="text-center space-y-3">
-            <p className="uppercase tracking-[0.4em] text-sm text-slate-500">Security measures</p>
-            <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
-              How we protect your data
-            </h2>
-          </div>
-          <div className="grid lg:grid-cols-2 gap-8">
-            <motion.div
-              className="rounded-3xl border border-slate-200 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
-              variants={fadeInUp}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <Lock className="h-6 w-6 text-gold" />
-                <p className="text-xl font-semibold text-slate-900">Technical Safeguards</p>
-              </div>
-              <ul className="space-y-3 text-sm text-slate-600 list-disc list-inside">
-                <li>End-to-end encryption for all data transmissions</li>
-                <li>Secure socket layer (SSL) certificates</li>
-                <li>Regular security audits and penetration testing</li>
-                <li>Multi-factor authentication for staff access</li>
-                <li>Automated threat detection and monitoring</li>
-              </ul>
-            </motion.div>
-            <motion.div
-              className="rounded-3xl border border-slate-200 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
-              variants={fadeInUp}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <ShieldCheck className="h-6 w-6 text-gold" />
-                <p className="text-xl font-semibold text-slate-900">Organizational Measures</p>
-              </div>
-              <ul className="space-y-3 text-sm text-slate-600 list-disc list-inside">
-                <li>Staff training on data protection and privacy</li>
-                <li>Strict access controls and role-based permissions</li>
-                <li>Regular compliance reviews and assessments</li>
-                <li>Incident response procedures and protocols</li>
-                <li>Data retention and deletion policies</li>
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      <motion.section
-        className="section-spacing bg-gradient-to-br from-white via-[#f4f6ff] to-[#fff6ee]"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInUp}
-      >
-        <div className="section-container space-y-8">
-          <div className="text-center space-y-3">
-            <p className="uppercase tracking-[0.4em] text-sm text-slate-500">Policy updates</p>
-            <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
-              Changes to this policy
-            </h2>
-          </div>
-          <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-[0_30px_90px_rgba(15,23,42,0.08)] max-w-4xl mx-auto">
-            <div className="space-y-4 text-slate-600">
-              <p>
-                We may update this Privacy Policy from time to time to reflect changes in our practices or
-                legal requirements. We will notify you of any material changes by:
-              </p>
-              <ul className="space-y-2 list-disc list-inside">
-                <li>Posting the updated policy on our website</li>
-                <li>Sending an email notification to registered users</li>
-                <li>Displaying a prominent notice in our app</li>
-              </ul>
-              <p className="mt-4">
-                <strong className="text-slate-900">Last Updated:</strong> January 2025
-              </p>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
-      <motion.section
-        className="section-spacing bg-gradient-to-br from-gold/10 via-[#fff7ec] to-white text-dark"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInUp}
-      >
-        <div className="section-container grid lg:grid-cols-2 gap-10 items-center">
-          <div className="space-y-6">
-            <p className="uppercase tracking-[0.4em] text-sm text-dark/70">Contact us</p>
-            <h2 className="text-3xl sm:text-4xl font-montserrat font-bold">
-              Questions about privacy?
-            </h2>
-            <p className="text-gray-700 font-inter">
-              If you have questions, concerns, or wish to exercise your data protection rights, our Data
-              Protection Officer is here to help.
-            </p>
-            <div className="grid gap-4">
-              <div className="rounded-2xl border border-dark/10 bg-white/80 px-5 py-4 shadow-sm">
-                <p className="text-xs uppercase tracking-[0.4em] text-gray-500">Data Protection Officer</p>
-                <p className="text-lg font-semibold text-dark">privacy@quickoo.co.uk</p>
-              </div>
-              <div className="rounded-2xl border border-dark/10 bg-white/80 px-5 py-4 shadow-sm">
-                <p className="text-xs uppercase tracking-[0.4em] text-gray-500">General Inquiries</p>
-                <p className="text-lg font-semibold text-dark">care@quickoo.co.uk</p>
-              </div>
-              <div className="rounded-2xl border border-dark/10 bg-white/80 px-5 py-4 shadow-sm">
-                <p className="text-xs uppercase tracking-[0.4em] text-gray-500">Response Time</p>
-                <p className="text-lg font-semibold text-dark">Within 30 days</p>
-              </div>
-            </div>
-          </div>
-          <div className="rounded-[32px] border border-dark/5 bg-white/60 p-8 shadow-2xl space-y-6">
-            <h3 className="text-2xl font-montserrat font-semibold text-dark">
-              Your privacy matters
-            </h3>
-            <p className="text-gray-600 font-inter">
-              We are committed to maintaining the highest standards of data protection and privacy. Your
-              trust is essential to us, and we work continuously to ensure your information is secure and
-              handled responsibly.
-            </p>
-            <div className="flex gap-4 flex-wrap">
-              {["GDPR Compliant", "ISO 27001", "SOC 2 Type II"].map((badge) => (
-                <span
-                  key={badge}
-                  className="rounded-full border border-dark/15 bg-dark/5 px-4 py-2 text-sm font-semibold text-dark"
-                >
-                  {badge}
-                </span>
               ))}
             </div>
-          </div>
-        </div>
-      </motion.section>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }
-

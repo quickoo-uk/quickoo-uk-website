@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { BookingWidget } from "./BookingWidget";
 
 const AnimatedBlob = () => (
   <motion.svg
@@ -37,9 +38,9 @@ const AnimatedBlob = () => (
 
 export const HeroSection = () => {
   const images = [
-    "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=2000&q=80",
-    "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=2000&q=80",
-    "https://images.unsplash.com/photo-1529429617124-95b109e86bb8?auto=format&fit=crop&w=2000&q=80",
+    "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=2000&q=80",
+    "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=2000&q=80",
+    "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=2000&q=80",
   ];
 
   const [index, setIndex] = useState(0);
@@ -132,87 +133,98 @@ export const HeroSection = () => {
       </motion.svg>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-4xl space-y-6 sm:space-y-8 md:w-[60%] lg:w-full text-left">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column: Text Content */}
+          <div className="w-full space-y-6 sm:space-y-8 text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40"
+            >
+              <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+              <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
+                Quickoo Chauffeur
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-montserrat font-semibold leading-tight text-dark"
+            >
+              Experience the Art of
+              <br />
+              <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+                Premium Travel
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-lg sm:text-xl md:text-2xl text-slate-600 font-inter leading-relaxed max-w-2xl"
+            >
+              Elevate your journey with our elite chauffeur service. Meticulously curated for comfort, style, and punctuality.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] text-white text-base font-semibold shadow-lg shadow-[#3f1c6e]/35 transition hover:opacity-90"
+              >
+                Book Now
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05, backgroundColor: "#f8fafc" }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-slate-200 bg-white text-slate-700 text-base font-semibold hover:border-[#3f1c6e] hover:text-[#3f1c6e] transition shadow-sm"
+              >
+                Explore Fleet
+              </motion.button>
+            </motion.div>
+
+            {/* Trust indicators */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1 }}
+              className="flex flex-wrap gap-6 pt-4 text-sm text-slate-600 font-inter"
+            >
+              <span className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-[#7b5dff]"></span>
+                Private concierge 24/7
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-[#7b5dff]"></span>
+                Curated electric & executive fleet
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-[#7b5dff]"></span>
+                Global availability
+              </span>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Booking Widget */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40"
-          >
-            <Sparkles className="h-4 w-4 text-[#7b5dff]" />
-            <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-              Quickoo Chauffeur
-            </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-montserrat font-semibold leading-tight text-dark"
-          >
-            Effortless Luxury Rides
-            <br />
-            <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
-              Powered by Quickoo
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg sm:text-xl md:text-2xl text-slate-600 font-inter leading-relaxed max-w-2xl"
+            className="w-full flex justify-center lg:justify-end"
           >
-            Arrive calm, collected, and right on time. Quickoo pairs elite
-            chauffeurs with a connected fleet so every journey feels intuitive,
-            safe, and deeply personal.
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] text-white text-base font-semibold shadow-lg shadow-[#3f1c6e]/35 transition hover:opacity-90"
-            >
-              Book Now
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05, backgroundColor: "#f8fafc" }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-slate-200 bg-white text-slate-700 text-base font-semibold hover:border-[#3f1c6e] hover:text-[#3f1c6e] transition shadow-sm"
-            >
-              Explore Fleet
-            </motion.button>
-          </motion.div>
-
-          {/* Trust indicators */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="flex flex-wrap gap-6 pt-4 text-sm text-slate-600 font-inter"
-          >
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#7b5dff]"></span>
-              Private concierge 24/7
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#7b5dff]"></span>
-              Curated electric & executive fleet
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#7b5dff]"></span>
-              Global availability
-            </span>
+            <BookingWidget />
           </motion.div>
         </div>
       </div>

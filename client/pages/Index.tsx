@@ -16,7 +16,7 @@ export default function Index() {
       <FleetPreviewSection />
       <ServicesOverviewSection />
       <AboutSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <AppDownloadSection />
     </div>
   );

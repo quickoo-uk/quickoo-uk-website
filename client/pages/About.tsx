@@ -37,28 +37,40 @@ const stats = [
 
 const values = [
   {
-    icon: Heart,
-    title: "Care Beyond Travel",
+    icon: Award,
+    title: "Excellence",
     description:
-      "Every booking begins with empathy, personalization, and a human concierge on standby.",
+      "We never compromise on quality. Every detail matters, from the cleanliness of our vehicles to the professionalism of our chauffeurs.",
   },
   {
-    icon: Award,
-    title: "Award-Winning Service",
+    icon: ShieldCheck,
+    title: "Trust",
     description:
-      "Multiple transport excellence awards for safety, punctuality, and premium hospitality.",
+      "Building lasting relationships through transparency, reliability, and consistent delivery of our promises.",
   },
   {
     icon: TrendingUp,
-    title: "Innovation Obsessed",
+    title: "Innovation",
     description:
-      "From carbon tracking to predictive fleet routing, technology elevates every ride.",
+      "Embracing technology and new ideas to enhance customer experience and stay ahead of industry trends.",
+  },
+  {
+    icon: Heart,
+    title: "Care",
+    description:
+      "Treating every customer with genuine care and attention, ensuring comfort and satisfaction in every journey.",
+  },
+  {
+    icon: Leaf,
+    title: "Sustainability",
+    description:
+      "Committed to reducing our environmental impact with eco-friendly vehicles and sustainable practices.",
   },
   {
     icon: Users,
-    title: "Trust & Transparency",
+    title: "Community",
     description:
-      "Clear pricing, real-time tracking, and chauffeurs vetted to global hospitality standards.",
+      "Supporting local communities and creating opportunities for growth and development across the UK.",
   },
 ];
 
@@ -183,7 +195,7 @@ export default function AboutPage() {
         transition={{ duration: 0.9, ease: "easeOut" }}
       >
         <img
-          src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=2000&q=80"
+          src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=2000&q=80"
           alt="Quickoo luxury chauffeur vehicle"
           className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
@@ -528,9 +540,8 @@ export default function AboutPage() {
               {milestones.map((milestone, index) => (
                 <motion.div
                   key={milestone.title}
-                  className={`relative sm:w-[48%] ${
-                    index % 2 === 0 ? "sm:ml-auto" : "sm:mr-auto"
-                  }`}
+                  className={`relative sm:w-[48%] ${index % 2 === 0 ? "sm:ml-auto" : "sm:mr-auto"
+                    }`}
                   variants={fadeInUp}
                 >
                   <div className="rounded-3xl bg-muted p-6 shadow-lg">

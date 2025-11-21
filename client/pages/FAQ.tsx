@@ -20,52 +20,24 @@ const stagger = {
 
 const FAQ_CATEGORIES = [
     {
-        id: "booking",
-        title: "Booking & Reservations",
+        id: "general",
+        title: "Frequently Asked Questions",
         questions: [
             {
                 q: "How far in advance should I book?",
-                a: "We recommend booking at least 24 hours in advance to ensure vehicle availability, especially for specific models. However, we can often accommodate requests with as little as 2 hours notice depending on location and fleet status.",
+                a: "We recommend booking at least 24 hours in advance to ensure vehicle availability. However, we do accept last-minute bookings subject to availability. For airport transfers, we suggest booking 48 hours in advance.",
             },
             {
-                q: "Can I modify my reservation after booking?",
-                a: "Yes, you can modify your reservation through the mobile app or by contacting our 24/7 concierge team. Changes made more than 4 hours before pickup are complimentary.",
+                q: "What is your cancellation policy?",
+                a: "Cancellations made more than 24 hours before your scheduled pickup time receive a full refund. Cancellations within 24 hours are subject to our sliding scale policy detailed in our terms and conditions.",
             },
             {
-                q: "Do you offer hourly services?",
-                a: "Absolutely. Our 'As Directed' hourly service gives you the freedom to travel at your own pace. You book the vehicle and chauffeur for a set number of hours, and they are at your disposal.",
-            },
-        ],
-    },
-    {
-        id: "payments",
-        title: "Payments & Rates",
-        questions: [
-            {
-                q: "What payment methods do you accept?",
-                a: "We accept all major credit cards (Visa, Mastercard, Amex), corporate accounts, and secure in-app payments. We also support Apple Pay and Google Pay.",
+                q: "Do you provide child seats?",
+                a: "Yes, we provide complimentary child seats upon request. Please specify the age and number of children when booking so we can ensure appropriate safety seats are installed in your vehicle.",
             },
             {
-                q: "Are there any hidden fees?",
-                a: "Transparency is key. Our rates are all-inclusive, covering fuel, tolls, and standard gratuity. Any potential extra charges (like significant wait times or route deviations) will be communicated clearly.",
-            },
-            {
-                q: "When is my card charged?",
-                a: "A pre-authorization hold is placed 24 hours before your trip. The final charge is processed upon completion of the service.",
-            },
-        ],
-    },
-    {
-        id: "fleet",
-        title: "Fleet & Chauffeurs",
-        questions: [
-            {
-                q: "What vehicles are in your fleet?",
-                a: "Our fleet consists of late-model luxury vehicles including the Mercedes-Benz S-Class, V-Class, BMW 7 Series, and Range Rover Autobiography. All vehicles are less than 3 years old.",
-            },
-            {
-                q: "Are your chauffeurs vetted?",
-                a: "Yes, rigorously. All chauffeurs undergo comprehensive background checks, driving record reviews, and specialized training in defensive driving and executive etiquette.",
+                q: "What areas do you cover?",
+                a: "We provide services throughout Greater London and offer transfers to all major UK airports. We also service major cities including Manchester, Birmingham, Liverpool, and can arrange long-distance travel across the UK.",
             },
         ],
     },
