@@ -9,9 +9,12 @@ export const BookingWidget = () => {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showTimePicker, setShowTimePicker] = useState(false);
     const [currentMonth, setCurrentMonth] = useState(new Date(2025, 10, 1)); // November 2025
+    const [selectedDuration, setSelectedDuration] = useState("3 hours");
+    const [showDurationPicker, setShowDurationPicker] = useState(false);
 
     const datePickerRef = useRef<HTMLDivElement>(null);
     const timePickerRef = useRef<HTMLDivElement>(null);
+    const durationPickerRef = useRef<HTMLDivElement>(null);
 
     // Close pickers when clicking outside
     useEffect(() => {
@@ -21,6 +24,9 @@ export const BookingWidget = () => {
             }
             if (timePickerRef.current && !timePickerRef.current.contains(event.target as Node)) {
                 setShowTimePicker(false);
+            }
+            if (durationPickerRef.current && !durationPickerRef.current.contains(event.target as Node)) {
+                setShowDurationPicker(false);
             }
         };
 
@@ -72,6 +78,11 @@ export const BookingWidget = () => {
 
     const calendarDays = generateCalendarDays();
     const timeSlots = generateTimeSlots();
+
+    const durations = [
+        "3 hours", "4 hours", "5 hours", "6 hours", "7 hours",
+        "8 hours", "9 hours", "10 hours", "11 hours", "12 hours", "24 hours"
+    ];
 
     const goToPreviousMonth = () => {
         setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
@@ -163,23 +174,76 @@ export const BookingWidget = () => {
                             </div>
                         )}
 
+
+
                         {/* Duration (Only for Hourly) */}
                         {activeTab === "hourly" && (
-                            <div className="relative group">
-                                <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#4C3CF2] transition-colors">
+                            <div className="relative group" ref={durationPickerRef}>
+                                <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#4C3CF2] transition-colors z-10">
                                     <Clock className="w-5 h-5" />
                                 </div>
-                                <div className="pl-12 pr-4 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#4C3CF2] focus-within:bg-white transition-all cursor-pointer shadow-sm">
+                                <div
+                                    onClick={() => {
+                                        setShowDurationPicker(!showDurationPicker);
+                                        setShowDatePicker(false);
+                                        setShowTimePicker(false);
+                                    }}
+                                    className={`pl-12 pr-4 py-3 bg-slate-50 rounded-lg border transition-all shadow-sm cursor-pointer ${showDurationPicker
+                                        ? "border-[#4C3CF2] bg-white"
+                                        : "border-transparent group-hover:border-slate-200"
+                                        }`}
+                                >
                                     <label className="block text-xs font-semibold text-slate-500 mb-0.5">
                                         Duration
                                     </label>
                                     <div className="flex items-center justify-between">
                                         <span className="text-sm font-medium text-slate-900">
-                                            3 hours
+                                            {selectedDuration}
                                         </span>
-                                        <ChevronDown className="w-4 h-4 text-slate-400" />
+                                        <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${showDurationPicker ? "rotate-180" : ""}`} />
                                     </div>
                                 </div>
+
+                                {/* Duration Picker Dropdown */}
+                                <AnimatePresence>
+                                    {showDurationPicker && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                                            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                                            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                                            className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-4 z-50 max-h-72 overflow-y-auto border-2 border-purple-100"
+                                            style={{
+                                                boxShadow: "0 25px 70px rgba(70, 48, 168, 0.25), 0 0 0 1px rgba(70, 48, 168, 0.1)"
+                                            }}
+                                        >
+                                            <div className="grid grid-cols-3 gap-2">
+                                                {durations.map((duration) => (
+                                                    <button
+                                                        key={duration}
+                                                        onClick={() => {
+                                                            setSelectedDuration(duration);
+                                                            setShowDurationPicker(false);
+                                                        }}
+                                                        className={`px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 relative overflow-hidden ${duration === selectedDuration
+                                                            ? "bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white shadow-lg shadow-[#4630a8]/50 scale-105 ring-2 ring-purple-200"
+                                                            : "text-slate-700 hover:bg-purple-50 border border-purple-100 hover:border-purple-300 hover:scale-105 hover:text-purple-600 hover:shadow-md"
+                                                            }`}
+                                                    >
+                                                        {duration === selectedDuration && (
+                                                            <motion.div
+                                                                layoutId="selectedDuration"
+                                                                className="absolute inset-0 bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff]"
+                                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                                            />
+                                                        )}
+                                                        <span className="relative z-10">{duration}</span>
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         )}
 
