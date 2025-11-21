@@ -339,8 +339,8 @@ export default function ContactPage() {
                       <label
                         key={type}
                         className={`rounded-2xl border px-4 py-3 text-sm font-semibold transition cursor-pointer ${formData.serviceType === type
-                            ? "border-gold bg-gold/10 text-slate-900"
-                            : "border-slate-200 text-slate-500 hover:border-slate-300"
+                          ? "border-gold bg-gold/10 text-slate-900"
+                          : "border-slate-200 text-slate-500 hover:border-slate-300"
                           }`}
                       >
                         <input
@@ -385,7 +385,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="luxury-button-gold w-full text-lg py-4"
+                  className="luxury-button-gold w-full text-lg py-4 rounded-full"
                 >
                   Send Message
                 </button>

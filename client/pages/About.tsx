@@ -221,7 +221,7 @@ export default function AboutPage() {
                   and concierge-grade experiences from booking to drop-off.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <button className="luxury-button-gold px-7 py-3 text-base">
+                  <button className="luxury-button-gold px-7 py-3 text-base rounded-full">
                     Explore Concierge
                   </button>
                   <button className="rounded-full border border-slate-300 px-7 py-3 text-base font-semibold text-slate-900 hover:bg-white transition">
@@ -662,7 +662,7 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-            <button className="luxury-button-gold px-8 py-4 text-lg w-fit">
+            <button className="luxury-button-gold px-8 py-4 text-lg w-fit rounded-full">
               Book with Quickoo Concierge
             </button>
           </div>
