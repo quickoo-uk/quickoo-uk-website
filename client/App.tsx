@@ -8,7 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import ScrollToTop from "@/components/ScrollToTop";
+import { ScrollManager } from "@/components/ScrollManager";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ServicesPlaceholder from "./pages/ServicesPlaceholder";
@@ -19,6 +19,8 @@ import ContactPage from "./pages/Contact";
 import BookNowPage from "./pages/BookNow";
 import PrivacyPolicyPage from "./pages/PrivacyPolicy";
 import TermsAndConditionsPage from "./pages/TermsAndConditions";
+
+import FAQ from "./pages/FAQ";
 
 const queryClient = new QueryClient();
 
@@ -42,7 +44,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ScrollToTop />
+        <ScrollManager />
         <Routes>
           <Route
             path="/"
@@ -120,7 +122,7 @@ const App = () => (
             path="/faq"
             element={
               <Layout>
-                <NotFound />
+                <FAQ />
               </Layout>
             }
           />

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { TrendingUp, Sparkles, ShieldCheck, Compass } from "lucide-react";
+import { motion } from "framer-motion";
 
 const STATS = [
   { value: "500+", label: "Chauffeurs On Call" },
@@ -34,18 +35,42 @@ export const AboutSection = () => {
       <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
 
       {/* Animated SVG */}
-      <svg
-        className="pointer-events-none absolute left-10 top-10 h-32 w-32 text-gold/30 animate-[spin_24s_linear_infinite]"
+      <motion.svg
+        className="pointer-events-none absolute left-10 top-10 h-32 w-32 text-gold/30"
         viewBox="0 0 160 160"
         aria-hidden
+        animate={{ rotate: 360 }}
+        transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
       >
-        <circle cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeWidth="0.6" />
-        <circle cx="80" cy="80" r="40" fill="none" stroke="currentColor" strokeWidth="0.6" />
-      </svg>
+        <circle
+          cx="80"
+          cy="80"
+          r="70"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.6"
+          strokeDasharray="4 4"
+        />
+        <circle
+          cx="80"
+          cy="80"
+          r="40"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.6"
+          strokeDasharray="2 6"
+        />
+      </motion.svg>
 
       <div className="section-container relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
             <div className="space-y-4">
               <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
                 <Sparkles className="h-4 w-4 text-[#7b5dff]" />
@@ -67,9 +92,14 @@ export const AboutSection = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {STATS.map((stat) => (
-                <div
+              {STATS.map((stat, idx) => (
+                <motion.div
                   key={stat.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  whileHover={{ scale: 1.05 }}
                   className="rounded-3xl border border-white/60 bg-white/85 px-6 py-5 backdrop-blur shadow-[0_25px_70px_rgba(119,132,255,0.18)]"
                 >
                   <p className="text-4xl font-montserrat font-bold text-[#6a63ff]">
@@ -78,11 +108,17 @@ export const AboutSection = () => {
                   <p className="mt-1 text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
                     {stat.label}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            <div className="space-y-6 rounded-3xl border border-white/60 bg-white/80 p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="space-y-6 rounded-3xl border border-white/60 bg-white/80 p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur"
+            >
               <div className="flex items-center gap-3 text-dark">
                 <Sparkles className="h-5 w-5 text-[#7b5dff]" />
                 <p className="font-montserrat text-lg font-semibold">
@@ -106,7 +142,7 @@ export const AboutSection = () => {
                   Sustainability Pledge
                 </span>
               </div>
-            </div>
+            </motion.div>
 
             <Link
               to="/about"
@@ -115,18 +151,30 @@ export const AboutSection = () => {
               Learn Our Full Story
               <TrendingUp className="h-5 w-5" />
             </Link>
-          </div>
+          </motion.div>
 
-          <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
             <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_90px_rgba(15,23,42,0.15)] border border-white/60">
               <img
                 src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
                 alt="Chauffeur welcoming guests"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-2xl bg-white/95 p-6 shadow-xl backdrop-blur">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-2xl bg-white/95 p-6 shadow-xl backdrop-blur"
+              >
                 <div>
                   <p className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-2">
                     Concierge Notes
@@ -136,7 +184,7 @@ export const AboutSection = () => {
                   </p>
                 </div>
                 <ShieldCheck className="h-6 w-6 text-[#7b5dff]" />
-              </div>
+              </motion.div>
             </div>
 
             <div className="rounded-3xl border border-white/60 bg-white/90 p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur">
@@ -147,8 +195,15 @@ export const AboutSection = () => {
                 </p>
               </div>
               <div className="space-y-5">
-                {TIMELINE.map((item) => (
-                  <div key={item.year} className="flex gap-4">
+                {TIMELINE.map((item, idx) => (
+                  <motion.div
+                    key={item.year}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.2, duration: 0.5 }}
+                    className="flex gap-4"
+                  >
                     <div className="flex flex-col items-center">
                       <span className="font-montserrat text-sm font-bold text-[#7b5dff]">
                         {item.year}
@@ -161,11 +216,11 @@ export const AboutSection = () => {
                       </p>
                       <p className="text-sm text-gray-600 font-inter">{item.detail}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

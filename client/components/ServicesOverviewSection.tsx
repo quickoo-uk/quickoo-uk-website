@@ -12,6 +12,7 @@ import {
   MapPin,
   ArrowRight,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 type Service = {
   icon: LucideIcon;
@@ -46,9 +47,9 @@ const SERVICES: Service[] = [
     image:
       "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=2000&q=80",
   },
- 
- 
- 
+
+
+
   {
     icon: Sparkles,
     name: "Special Events",
@@ -73,6 +74,21 @@ const SERVICES: Service[] = [
   },
 ];
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
+};
+
 export const ServicesOverviewSection = () => {
   return (
     <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#f1f5ff] to-white">
@@ -81,17 +97,41 @@ export const ServicesOverviewSection = () => {
       <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
 
       {/* Animated SVG */}
-      <svg
-        className="pointer-events-none absolute right-10 top-20 h-40 w-40 text-[#b3c4ff]/40 animate-[spin_20s_linear_infinite]"
+      <motion.svg
+        className="pointer-events-none absolute right-10 top-20 h-40 w-40 text-[#b3c4ff]/40"
         viewBox="0 0 160 160"
         aria-hidden
+        animate={{ rotate: 360 }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       >
-        <circle cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeWidth="0.5" />
-        <circle cx="80" cy="80" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" />
-      </svg>
+        <circle
+          cx="80"
+          cy="80"
+          r="70"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          strokeDasharray="4 4"
+        />
+        <circle
+          cx="80"
+          cy="80"
+          r="40"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          strokeDasharray="2 6"
+        />
+      </motion.svg>
 
       <div className="section-container relative">
-        <div className="text-center mb-20 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20 space-y-4"
+        >
           <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
             <Sparkles className="h-4 w-4 text-[#7b5dff]" />
             <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
@@ -109,79 +149,87 @@ export const ServicesOverviewSection = () => {
             vehicles tailored to airport runs, business travel, events, and
             bespoke tours.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3"
+        >
           {SERVICES.map((service) => {
             const Icon = service.icon;
             return (
-              <Link
-                key={service.name}
-                to={`/services/${service.name.toLowerCase().replace(/ /g, "-")}`}
-                className="group relative flex flex-col overflow-hidden rounded-[28px] border border-white/60 bg-white/90 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_30px_90px_rgba(116,128,255,0.25)]"
-              >
-                <div className="relative h-52 overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt={service.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/30 to-transparent" />
-                  <div className="absolute inset-x-6 bottom-6 flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div
-                        className={`rounded-2xl bg-gradient-to-r ${service.accent} p-3 text-white shadow-lg`}
-                      >
-                        <Icon className="h-6 w-6" />
+              <motion.div key={service.name} variants={item}>
+                <Link
+                  to={`/services/${service.name.toLowerCase().replace(/ /g, "-")}`}
+                  className="group relative flex flex-col overflow-hidden rounded-[28px] border border-white/60 bg-white/90 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_30px_90px_rgba(116,128,255,0.25)]"
+                >
+                  <div className="relative h-52 overflow-hidden">
+                    <motion.img
+                      src={service.image}
+                      alt={service.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/30 to-transparent" />
+                    <div className="absolute inset-x-6 bottom-6 flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`rounded-2xl bg-gradient-to-r ${service.accent} p-3 text-white shadow-lg`}
+                        >
+                          <Icon className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.2em] text-white/70">
+                            {service.highlight}
+                          </p>
+                          <h3 className="text-2xl font-montserrat font-bold text-white">
+                            {service.name}
+                          </h3>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.2em] text-white/70">
-                          {service.highlight}
-                        </p>
-                        <h3 className="text-2xl font-montserrat font-bold text-white">
-                          {service.name}
-                        </h3>
-                      </div>
-                    </div>
-                  
-                  </div>
-                </div>
 
-                <div className="flex flex-1 flex-col gap-4 p-6">
-                  <p className="font-inter text-base text-gray-600">
-                    {service.description}
-                  </p>
-                  <ul className="flex flex-wrap gap-2">
-                    {service.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="rounded-full border border-gray-200/80 bg-white/90 px-3 py-1 text-xs font-semibold text-gray-500"
-                      >
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-auto flex items-center justify-between">
-                    <div className="text-left">
-                      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
-                        Learn More
-                      </p>
-                      <p className="text-sm font-montserrat text-dark">
-                        Tailored concierge planning
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] px-4 py-2 text-white transition group-hover:opacity-90">
-                      Reserve
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
-                </div>
-              </Link>
+
+                  <div className="flex flex-1 flex-col gap-4 p-6">
+                    <p className="font-inter text-base text-gray-600">
+                      {service.description}
+                    </p>
+                    <ul className="flex flex-wrap gap-2">
+                      {service.features.map((feature) => (
+                        <li
+                          key={feature}
+                          className="rounded-full border border-gray-200/80 bg-white/90 px-3 py-1 text-xs font-semibold text-gray-500"
+                        >
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-auto flex items-center justify-between">
+                      <div className="text-left">
+                        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
+                          Learn More
+                        </p>
+                        <p className="text-sm font-montserrat text-dark">
+                          Tailored concierge planning
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] px-4 py-2 text-white transition group-hover:opacity-90">
+                        Reserve
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
+

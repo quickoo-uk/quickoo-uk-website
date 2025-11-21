@@ -1,4 +1,5 @@
 import { Shield, DollarSign, Crown, Users, Award, Clock, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
 const FEATURES = [
   {
@@ -40,6 +41,21 @@ const METRICS = [
   { label: "Customer NPS", value: "92", icon: Award },
 ];
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
+};
+
 export const WhyChooseSection = () => {
   return (
     <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#f1f5ff] to-white">
@@ -48,18 +64,42 @@ export const WhyChooseSection = () => {
       <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
 
       {/* Animated SVG */}
-      <svg
-        className="pointer-events-none absolute left-10 top-10 h-32 w-32 text-gold/30 animate-[spin_24s_linear_infinite]"
+      <motion.svg
+        className="pointer-events-none absolute left-10 top-10 h-32 w-32 text-gold/30"
         viewBox="0 0 160 160"
         aria-hidden
+        animate={{ rotate: 360 }}
+        transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
       >
-        <circle cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeWidth="0.6" />
-        <circle cx="80" cy="80" r="40" fill="none" stroke="currentColor" strokeWidth="0.6" />
-      </svg>
+        <circle
+          cx="80"
+          cy="80"
+          r="70"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.6"
+          strokeDasharray="4 4"
+        />
+        <circle
+          cx="80"
+          cy="80"
+          r="40"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.6"
+          strokeDasharray="2 4"
+        />
+      </motion.svg>
 
       <div className="section-container relative">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 mb-16">
-          <div className="space-y-6 text-center lg:text-left">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6 text-center lg:text-left"
+          >
             <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
               <Sparkles className="h-4 w-4 text-[#7b5dff]" />
               <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
@@ -80,11 +120,16 @@ export const WhyChooseSection = () => {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 lg:justify-start">
-              {METRICS.map((metric) => {
+              {METRICS.map((metric, idx) => {
                 const Icon = metric.icon;
                 return (
-                  <div
+                  <motion.div
                     key={metric.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.2, duration: 0.5 }}
+                    whileHover={{ y: -5 }}
                     className="rounded-3xl border border-white/60 bg-white/85 px-6 py-4 backdrop-blur shadow-[0_25px_70px_rgba(119,132,255,0.18)]"
                   >
                     <div className="flex items-center gap-3">
@@ -100,23 +145,35 @@ export const WhyChooseSection = () => {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="relative">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
             <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#f3d6ff]/30 via-[#9fd4ff]/20 to-transparent blur-3xl" />
             <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_90px_rgba(15,23,42,0.15)] border border-white/60">
               <img
                 src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
                 alt="Chauffeur opening car door"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/95 p-6 shadow-xl backdrop-blur">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/95 p-6 shadow-xl backdrop-blur"
+              >
                 <p className="text-xs uppercase tracking-[0.25em] text-gray-500 mb-2">
                   Concierge Snapshot
                 </p>
@@ -124,18 +181,26 @@ export const WhyChooseSection = () => {
                   Pre-arrival checks, route notes, and vehicle telemetry sent the
                   moment your chauffeur departs.
                 </p>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4"
+        >
           {FEATURES.map((feature) => {
             const Icon = feature.icon;
             return (
-              <div
+              <motion.div
                 key={feature.title}
-                className="group relative overflow-hidden rounded-[28px] bg-white/90 border border-white/60 p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(116,128,255,0.25)]"
+                variants={item}
+                whileHover={{ y: -10 }}
+                className="group relative overflow-hidden rounded-[28px] bg-white/90 border border-white/60 p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] transition hover:shadow-[0_30px_90px_rgba(116,128,255,0.25)]"
               >
                 <div
                   className={`absolute inset-x-10 -top-16 h-32 rounded-full blur-3xl bg-gradient-to-r ${feature.accent} opacity-70`}
@@ -156,11 +221,12 @@ export const WhyChooseSection = () => {
                 <p className="text-sm font-inter leading-relaxed text-gray-600">
                   {feature.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
+
