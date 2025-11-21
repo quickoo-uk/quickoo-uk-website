@@ -528,9 +528,8 @@ export default function AboutPage() {
               {milestones.map((milestone, index) => (
                 <motion.div
                   key={milestone.title}
-                  className={`relative sm:w-[48%] ${
-                    index % 2 === 0 ? "sm:ml-auto" : "sm:mr-auto"
-                  }`}
+                  className={`relative sm:w-[48%] ${index % 2 === 0 ? "sm:ml-auto" : "sm:mr-auto"
+                    }`}
                   variants={fadeInUp}
                 >
                   <div className="rounded-3xl bg-muted p-6 shadow-lg">
