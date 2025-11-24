@@ -130,7 +130,7 @@ export const WhyChooseSection = () => {
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.2, duration: 0.5 }}
                     whileHover={{ y: -5 }}
-                    className="rounded-3xl border border-white/60 bg-white/85 px-6 py-4 backdrop-blur shadow-[0_25px_70px_rgba(119,132,255,0.18)]"
+                    className="rounded-3xl border border-white/60 bg-white/85 px-6 py-4 backdrop-blur shadow-[0_25px_70px_rgba(72,115,7,0.18)]"
                   >
                     <div className="flex items-center gap-3">
                       <div className="rounded-xl bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] p-3 text-white">
@@ -140,7 +140,7 @@ export const WhyChooseSection = () => {
                         <p className="text-xs uppercase tracking-[0.25em] text-gray-500">
                           {metric.label}
                         </p>
-                        <p className="text-2xl font-montserrat font-bold text-[#6a63ff]">
+                        <p className="text-2xl font-montserrat font-bold bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
                           {metric.value}
                         </p>
                       </div>
@@ -161,7 +161,7 @@ export const WhyChooseSection = () => {
             <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#f3d6ff]/30 via-[#9fd4ff]/20 to-transparent blur-3xl" />
             <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_90px_rgba(15,23,42,0.15)] border border-white/60">
               <img
-                src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
+                src="/home/why-quickoo-chauffeur-service.jpg"
                 alt="Chauffeur opening car door"
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"

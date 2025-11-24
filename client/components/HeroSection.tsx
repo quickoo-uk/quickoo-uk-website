@@ -38,9 +38,9 @@ const AnimatedBlob = () => (
 
 export const HeroSection = () => {
   const images = [
-    "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=2000&q=80",
-    "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=2000&q=80",
-    "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=2000&q=80",
+    "/home/hero-premium-travel-1.jpg",
+    "/home/hero-premium-travel-2.jpg",
+    "/home/hero-premium-travel-3.jpg",
   ];
 
   const [index, setIndex] = useState(0);

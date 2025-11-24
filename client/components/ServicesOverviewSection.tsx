@@ -33,8 +33,7 @@ const SERVICES: Service[] = [
     highlight: "Flight Monitoring",
     features: ["VIP meet & greet", "Real-time tracking", "Luggage care"],
     accent: "from-sky-500/90 via-sky-400/80 to-sky-500/70",
-    image:
-      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=80",
+    image: "/home/Airport Transfers.jpg",
   },
   {
     icon: Navigation2,
@@ -44,8 +43,7 @@ const SERVICES: Service[] = [
     highlight: "Door-to-Door",
     features: ["Bottled water", "Custom playlists", "Power & Wi-Fi"],
     accent: "from-indigo-500/90 via-blue-500/80 to-indigo-500/70",
-    image:
-      "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=2000&q=80",
+    image: "/home/Corporate Travel.jpg",
   },
 
 
@@ -58,8 +56,7 @@ const SERVICES: Service[] = [
     highlight: "Group Logistics",
     features: ["Shuttle coordination", "VIP passes", "On-site lead"],
     accent: "from-fuchsia-500/90 via-purple-500/80 to-fuchsia-500/70",
-    image:
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=2000&q=80",
+    image: "/home/Special Events.jpg",
   },
 
   {
@@ -69,8 +66,7 @@ const SERVICES: Service[] = [
     highlight: "Curated Routes",
     features: ["Certified guides", "Photo stops", "Dining reservations"],
     accent: "from-emerald-500/90 via-green-500/80 to-emerald-500/70",
-    image:
-      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=2000&q=80",
+    image: "/home/City Tours.jpg",
   },
 ];
 
@@ -156,7 +152,7 @@ export const ServicesOverviewSection = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-2"
         >
           {SERVICES.map((service) => {
             const Icon = service.icon;
