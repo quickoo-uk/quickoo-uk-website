@@ -108,9 +108,9 @@ export default function ServicesPlaceholder() {
 
   const serviceName = id
     ? id
-        .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ")
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ")
     : "Service";
 
   const serviceImage = SERVICE_IMAGES[id ?? ""] ?? SERVICE_IMAGES["business"];
@@ -127,11 +127,11 @@ export default function ServicesPlaceholder() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-[#f8f1ff]/60" />
         </div>
-        <div className="absolute -top-24 right-6 h-72 w-72 rounded-full bg-[#f3d6ff]/40 blur-[150px] opacity-60" />
-        <div className="absolute -bottom-36 left-0 h-96 w-96 bg-[#9fd4ff]/25 blur-[180px] opacity-60" />
+        <div className="absolute -top-24 right-6 h-72 w-72 rounded-full bg-[#8fe00f]/40 blur-[150px] opacity-60" />
+        <div className="absolute -bottom-36 left-0 h-96 w-96 bg-[#8fe00f]/25 blur-[180px] opacity-60" />
 
         <svg
-          className="pointer-events-none absolute -right-6 top-10 h-64 w-64 text-[#b3c4ff]/60 animate-[spin_28s_linear_infinite]"
+          className="pointer-events-none absolute -right-6 top-10 h-64 w-64 text-[#8fe00f]/60 animate-[spin_28s_linear_infinite]"
           viewBox="0 0 200 200"
           aria-hidden
         >
@@ -141,8 +141,8 @@ export default function ServicesPlaceholder() {
 
         <div className="relative z-10 section-container py-24 lg:py-32 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
-              <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#8fe00f]/40">
+              <Sparkles className="h-4 w-4 text-[#487307]" />
               <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
                 {serviceName} by Quickoo
               </span>
@@ -150,7 +150,7 @@ export default function ServicesPlaceholder() {
             <div className="space-y-5">
               <h1 className="text-4xl sm:text-5xl xl:text-6xl font-montserrat font-semibold leading-tight">
                 Bespoke {serviceName.toLowerCase()}{" "}
-                <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
                   without compromise.
                 </span>
               </h1>
@@ -160,10 +160,10 @@ export default function ServicesPlaceholder() {
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
-              <button className="rounded-full luxury-button-gold px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#1f143b]/35 transition hover:scale-[1.02]">
+              <button className="rounded-full luxury-button-gold px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#0a1a02]/35 transition hover:scale-[1.02]">
                 Book {serviceName}
               </button>
-              <button className="rounded-full border border-slate-200 px-8 py-3 text-base font-semibold text-slate-900 hover:border-[#3f1c6e] hover:text-[#3f1c6e] transition">
+              <button className="rounded-full border border-slate-200 px-8 py-3 text-base font-semibold text-slate-900 hover:border-[#2a4204] hover:text-[#2a4204] transition">
                 Download spec sheet
               </button>
             </div>
@@ -171,9 +171,9 @@ export default function ServicesPlaceholder() {
               {trustMetrics.map((metric) => (
                 <div
                   key={metric.label}
-                  className="rounded-3xl border border-white/60 bg-white/85 px-6 py-4 text-center backdrop-blur shadow-[0_25px_70px_rgba(119,132,255,0.18)]"
+                  className="rounded-3xl border border-white/60 bg-white/85 px-6 py-4 text-center backdrop-blur shadow-[0_25px_70px_rgba(72,115,7,0.18)]"
                 >
-                  <p className="text-2xl font-montserrat text-[#6a63ff]">{metric.value}</p>
+                  <p className="text-2xl font-montserrat text-[#487307]">{metric.value}</p>
                   <p className="text-xs tracking-[0.3em] uppercase text-slate-500">{metric.label}</p>
                 </div>
               ))}
@@ -182,7 +182,7 @@ export default function ServicesPlaceholder() {
 
           <div className="relative">
             <div className="absolute inset-0 -m-6 rounded-[40px] bg-gradient-to-br from-white/70 to-transparent blur-2xl opacity-80" />
-            <div className="relative rounded-[36px] border border-white/50 bg-white/85 p-6 backdrop-blur-lg shadow-[0_35px_90px_rgba(116,128,255,0.25)]">
+            <div className="relative rounded-[36px] border border-white/50 bg-white/85 p-6 backdrop-blur-lg shadow-[0_35px_90px_rgba(72,115,7,0.25)]">
               <div className="overflow-hidden rounded-[28px]">
                 <img
                   src={serviceImage}
@@ -193,7 +193,7 @@ export default function ServicesPlaceholder() {
               <div className="mt-6 space-y-4">
                 <div className="flex items-center justify-between">
                   <p className="font-montserrat text-dark text-xl">Concierge preview</p>
-                  <Crown className="text-[#7d6bff]" />
+                  <Crown className="text-[#487307]" />
                 </div>
                 <p className="text-sm text-slate-600 font-inter">
                   Dedicated journey designer, real-time driver comms, and curated onboard amenities.
@@ -381,7 +381,7 @@ export default function ServicesPlaceholder() {
             </div>
           </div>
 
-          <div className="rounded-[32px] border border-[#1f1c2c]/10 bg-gradient-to-br from-[#1f1c2c] via-[#2d1f46] to-[#0b1726] text-white p-10 relative overflow-hidden">
+          <div className="rounded-[32px] border border-[#0a1a02]/10 bg-gradient-to-br from-[#0a1a02] via-[#152905] to-[#2a4204] text-white p-10 relative overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=2000&q=80"
               alt="Quickoo chauffeur"

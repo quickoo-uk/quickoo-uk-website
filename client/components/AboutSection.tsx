@@ -73,14 +73,14 @@ export const AboutSection = () => {
           >
             <div className="space-y-4">
               <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
-                <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+                <Sparkles className="h-4 w-4 text-[#487307]" />
                 <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
                   About Quickoo
                 </span>
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
                 From boutique chauffeurs to a{" "}
-                <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
                   global concierge fleet.
                 </span>
               </h2>
@@ -100,9 +100,9 @@ export const AboutSection = () => {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1, duration: 0.5 }}
                   whileHover={{ scale: 1.05 }}
-                  className="rounded-3xl border border-white/60 bg-white/85 px-6 py-5 backdrop-blur shadow-[0_25px_70px_rgba(119,132,255,0.18)]"
+                  className="rounded-3xl border border-white/60 bg-white/85 px-6 py-5 backdrop-blur shadow-[0_25px_70px_rgba(72,115,7,0.18)]"
                 >
-                  <p className="text-4xl font-montserrat font-bold text-[#6a63ff]">
+                  <p className="text-4xl font-montserrat font-bold bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
                     {stat.value}
                   </p>
                   <p className="mt-1 text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
@@ -120,7 +120,7 @@ export const AboutSection = () => {
               className="space-y-6 rounded-3xl border border-white/60 bg-white/80 p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur"
             >
               <div className="flex items-center gap-3 text-dark">
-                <Sparkles className="h-5 w-5 text-[#7b5dff]" />
+                <Sparkles className="h-5 w-5 text-[#487307]" />
                 <p className="font-montserrat text-lg font-semibold">
                   Built on radical hospitality & real-time intelligence.
                 </p>
@@ -146,7 +146,7 @@ export const AboutSection = () => {
 
             <Link
               to="/about"
-              className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] px-10 py-4 font-semibold text-white shadow-lg shadow-[#3f1c6e]/35 transition hover:opacity-90"
+              className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-10 py-4 font-semibold text-white shadow-lg shadow-[#2a4204]/35 transition hover:opacity-90"
             >
               Learn Our Full Story
               <TrendingUp className="h-5 w-5" />
@@ -183,13 +183,13 @@ export const AboutSection = () => {
                     Chauffeur briefing sent with venue layout & VIP protocol.
                   </p>
                 </div>
-                <ShieldCheck className="h-6 w-6 text-[#7b5dff]" />
+                <ShieldCheck className="h-6 w-6 text-[#487307]" />
               </motion.div>
             </div>
 
             <div className="rounded-3xl border border-white/60 bg-white/90 p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur">
               <div className="flex items-center gap-3 mb-4">
-                <Compass className="h-6 w-6 text-[#7b5dff]" />
+                <Compass className="h-6 w-6 text-[#487307]" />
                 <p className="font-montserrat text-lg font-semibold text-dark">
                   Our journey highlights
                 </p>
@@ -205,10 +205,10 @@ export const AboutSection = () => {
                     className="flex gap-4"
                   >
                     <div className="flex flex-col items-center">
-                      <span className="font-montserrat text-sm font-bold text-[#7b5dff]">
+                      <span className="font-montserrat text-sm font-bold text-[#487307]">
                         {item.year}
                       </span>
-                      <span className="h-full w-px bg-gradient-to-b from-[#7b5dff]/60 to-transparent" />
+                      <span className="h-full w-px bg-gradient-to-b from-[#487307]/60 to-transparent" />
                     </div>
                     <div>
                       <p className="font-montserrat font-semibold text-dark">

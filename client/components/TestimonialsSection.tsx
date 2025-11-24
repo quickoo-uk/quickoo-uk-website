@@ -111,12 +111,12 @@ export const TestimonialsSection = () => {
   return (
     <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#fff5ec]">
       {/* Background gradients */}
-      <div className="absolute -left-20 top-20 h-72 w-72 rounded-full bg-[#a5c9ff]/10 blur-[100px]" />
+      <div className="absolute -left-20 top-20 h-72 w-72 rounded-full bg-[#8fe00f]/10 blur-[100px]" />
       <div className="absolute -right-20 bottom-20 h-80 w-80 rounded-full bg-gold/10 blur-[120px]" />
 
       {/* Animated SVG */}
       <motion.svg
-        className="pointer-events-none absolute right-10 top-10 h-48 w-48 text-[#b3c4ff]/30"
+        className="pointer-events-none absolute right-10 top-10 h-48 w-48 text-[#8fe00f]/30"
         viewBox="0 0 160 160"
         aria-hidden
         animate={{ rotate: -360 }}
@@ -150,15 +150,15 @@ export const TestimonialsSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16 space-y-4"
         >
-          <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
-            <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+          <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#8fe00f]/40">
+            <Sparkles className="h-4 w-4 text-[#487307]" />
             <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
               Client Stories
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
             Trusted by global leaders{" "}
-            <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
               and visionaries.
             </span>
           </h2>
@@ -167,7 +167,7 @@ export const TestimonialsSection = () => {
         <div className="relative mx-auto max-w-5xl">
           <div className="relative min-h-[400px] overflow-hidden rounded-[32px] bg-white/80 shadow-[0_30px_100px_rgba(15,23,42,0.1)] backdrop-blur border border-white/60">
             <div className="absolute right-8 top-8 opacity-10">
-              <Quote className="h-24 w-24 text-[#7b5dff]" />
+              <Quote className="h-24 w-24 text-[#487307]" />
             </div>
 
             <div className="flex h-full flex-col items-center justify-center p-8 md:p-16">
@@ -206,7 +206,7 @@ export const TestimonialsSection = () => {
                       />
                     </div>
                     <div className="absolute -bottom-3 -right-3 rounded-full bg-white p-2 shadow-lg">
-                      <div className="flex items-center justify-center rounded-full bg-[#7b5dff] p-2 text-white">
+                      <div className="flex items-center justify-center rounded-full bg-[#487307] p-2 text-white">
                         <Quote className="h-4 w-4 fill-current" />
                       </div>
                     </div>
@@ -264,14 +264,14 @@ export const TestimonialsSection = () => {
             <div className="absolute bottom-8 right-8 flex gap-3">
               <button
                 onClick={prev}
-                className="group flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-slate-200 bg-white text-slate-600 shadow-lg transition-all duration-300 hover:ring-0 hover:bg-gradient-to-r hover:from-[#1c0e38] hover:via-[#4630a8] hover:to-[#8b74ff] hover:text-white hover:scale-110 focus:outline-none"
+                className="group flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-slate-200 bg-white text-slate-600 shadow-lg transition-all duration-300 hover:ring-0 hover:bg-gradient-to-r hover:from-[#1a2e03] hover:via-[#487307] hover:to-[#6aa80b] hover:text-white hover:scale-110 focus:outline-none"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="h-5 w-5 transition-transform group-hover:-translate-x-0.5" />
               </button>
               <button
                 onClick={next}
-                className="group flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-slate-200 bg-white text-slate-600 shadow-lg transition-all duration-300 hover:ring-0 hover:bg-gradient-to-r hover:from-[#1c0e38] hover:via-[#4630a8] hover:to-[#8b74ff] hover:text-white hover:scale-110 focus:outline-none"
+                className="group flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-slate-200 bg-white text-slate-600 shadow-lg transition-all duration-300 hover:ring-0 hover:bg-gradient-to-r hover:from-[#1a2e03] hover:via-[#487307] hover:to-[#6aa80b] hover:text-white hover:scale-110 focus:outline-none"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />

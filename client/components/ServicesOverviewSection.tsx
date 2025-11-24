@@ -133,14 +133,14 @@ export const ServicesOverviewSection = () => {
           className="text-center mb-20 space-y-4"
         >
           <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
-            <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+            <Sparkles className="h-4 w-4 text-[#487307]" />
             <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
               Premium Experiences
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
             Chauffeur Services{" "}
-            <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
               Crafted For Every Journey
             </span>
           </h2>
@@ -217,7 +217,7 @@ export const ServicesOverviewSection = () => {
                           Tailored concierge planning
                         </p>
                       </div>
-                      <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] px-4 py-2 text-white transition group-hover:opacity-90">
+                      <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-4 py-2 text-white transition group-hover:opacity-90">
                         Reserve
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </div>

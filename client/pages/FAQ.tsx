@@ -65,14 +65,14 @@ const AccordionItem = ({
                 className="flex w-full items-center justify-between px-6 py-5 text-left transition-colors hover:bg-slate-50"
             >
                 <span
-                    className={`font-medium transition-colors ${isOpen ? "text-[#7b5dff]" : "text-slate-700"
+                    className={`font-medium transition-colors ${isOpen ? "text-[#487307]" : "text-slate-700"
                         }`}
                 >
                     {question}
                 </span>
                 <div
                     className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${isOpen
-                        ? "bg-[#7b5dff] text-white rotate-180"
+                        ? "bg-[#487307] text-white rotate-180"
                         : "bg-slate-100 text-slate-400 rotate-0"
                         }`}
                 >
@@ -116,12 +116,12 @@ export default function FAQ() {
             >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#f3f6ff,_transparent_50%)]" />
                 <div className="absolute -bottom-20 -right-8 h-72 w-72 bg-gold/20 blur-[140px] opacity-40" />
-                <div className="absolute -top-24 -left-10 h-64 w-64 bg-[#90c4ff]/20 blur-[120px] opacity-50" />
+                <div className="absolute -top-24 -left-10 h-64 w-64 bg-[#8fe00f]/20 blur-[120px] opacity-50" />
 
                 {/* Animated SVG Ring */}
                 <motion.svg
                     viewBox="0 0 500 500"
-                    className="absolute -top-20 -right-20 w-96 h-96 text-[#7b5dff]/10 pointer-events-none"
+                    className="absolute -top-20 -right-20 w-96 h-96 text-[#487307]/10 pointer-events-none"
                     initial={{ rotate: 0 }}
                     animate={{ rotate: 360 }}
                     transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
@@ -154,14 +154,14 @@ export default function FAQ() {
                             transition={{ delay: 0.2 }}
                             className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/60 px-4 py-1.5 backdrop-blur-md shadow-sm"
                         >
-                            <HelpCircle className="h-4 w-4 text-[#7b5dff]" />
+                            <HelpCircle className="h-4 w-4 text-[#487307]" />
                             <span className="text-xs font-semibold uppercase tracking-wider text-slate-600">
                                 Help Center
                             </span>
                         </motion.div>
 
                         <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-slate-900">
-                            How can we <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1]">help you?</span>
+                            How can we <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307]">help you?</span>
                         </h1>
 
                         <p className="text-lg text-slate-600 font-inter max-w-2xl mx-auto">
@@ -176,11 +176,11 @@ export default function FAQ() {
                             className="relative mx-auto max-w-xl"
                         >
                             <div className="relative flex items-center group">
-                                <Search className="absolute left-5 h-5 w-5 text-slate-400 group-focus-within:text-[#7b5dff] transition-colors" />
+                                <Search className="absolute left-5 h-5 w-5 text-slate-400 group-focus-within:text-[#487307] transition-colors" />
                                 <input
                                     type="text"
                                     placeholder="Search for answers (e.g. 'cancellation', 'luggage')"
-                                    className="w-full rounded-2xl border border-slate-200 bg-white py-4 pl-14 pr-4 text-slate-700 placeholder:text-slate-400 shadow-[0_10px_40px_rgba(0,0,0,0.05)] focus:outline-none focus:ring-2 focus:ring-[#7b5dff]/20 focus:border-[#7b5dff]/50 transition-all"
+                                    className="w-full rounded-2xl border border-slate-200 bg-white py-4 pl-14 pr-4 text-slate-700 placeholder:text-slate-400 shadow-[0_10px_40px_rgba(0,0,0,0.05)] focus:outline-none focus:ring-2 focus:ring-[#487307]/20 focus:border-[#487307]/50 transition-all"
                                 />
                             </div>
                         </motion.div>
@@ -232,7 +232,7 @@ export default function FAQ() {
                         viewport={{ once: true }}
                         className="mt-16 rounded-[32px] luxury-button-gold p-10 md:p-14 text-center text-white shadow-2xl overflow-hidden relative"
                     >
-                        <div className="absolute top-0 right-0 -mt-10 -mr-10 h-64 w-64 rounded-full bg-[#7b5dff]/20 blur-[80px]" />
+                        <div className="absolute top-0 right-0 -mt-10 -mr-10 h-64 w-64 rounded-full bg-[#487307]/20 blur-[80px]" />
                         <div className="absolute bottom-0 left-0 -mb-10 -ml-10 h-64 w-64 rounded-full bg-gold/10 blur-[80px]" />
 
                         <div className="relative z-10 space-y-6">
@@ -243,7 +243,7 @@ export default function FAQ() {
                             <div className="flex flex-wrap justify-center gap-4 pt-4">
                                 <Link
                                     to="/contact"
-                                    className="rounded-xl bg-white px-8 py-3.5 text-sm font-bold text-[#1a1431] transition hover:bg-gold hover:text-dark shadow-lg hover:shadow-gold/20"
+                                    className="rounded-xl bg-white px-8 py-3.5 text-sm font-bold text-[#0a1a02] transition hover:bg-gold hover:text-dark shadow-lg hover:shadow-gold/20"
                                 >
                                     Contact Concierge
                                 </Link>

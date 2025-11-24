@@ -110,7 +110,7 @@ export const BookingWidget = () => {
                 <button
                     onClick={() => setActiveTab("oneway")}
                     className={`flex-1 py-4 text-base font-semibold transition-colors ${activeTab === "oneway"
-                        ? "bg-white text-[#4C3CF2] border-b-2 border-[#4C3CF2]"
+                        ? "bg-white text-[#487307] border-b-2 border-[#487307]"
                         : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700"
                         }`}
                 >
@@ -119,7 +119,7 @@ export const BookingWidget = () => {
                 <button
                     onClick={() => setActiveTab("hourly")}
                     className={`flex-1 py-4 text-base font-semibold transition-colors ${activeTab === "hourly"
-                        ? "bg-white text-[#4C3CF2] border-b-2 border-[#4C3CF2]"
+                        ? "bg-white text-[#487307] border-b-2 border-[#487307]"
                         : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700"
                         }`}
                 >
@@ -140,10 +140,10 @@ export const BookingWidget = () => {
                     >
                         {/* From Location */}
                         <div className="relative group">
-                            <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#4C3CF2] transition-colors">
+                            <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors">
                                 <MapPin className="w-5 h-5" />
                             </div>
-                            <div className="pl-12 pr-4 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#4C3CF2] focus-within:bg-white transition-all shadow-sm">
+                            <div className="pl-12 pr-4 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#487307] focus-within:bg-white transition-all shadow-sm">
                                 <label className="block text-xs font-semibold text-slate-500 mb-0.5">
                                     From
                                 </label>
@@ -158,10 +158,10 @@ export const BookingWidget = () => {
                         {/* To Location (Only for One Way) */}
                         {activeTab === "oneway" && (
                             <div className="relative group">
-                                <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#4C3CF2] transition-colors">
+                                <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors">
                                     <MapPin className="w-5 h-5" />
                                 </div>
-                                <div className="pl-12 pr-4 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#4C3CF2] focus-within:bg-white transition-all shadow-sm">
+                                <div className="pl-12 pr-4 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#487307] focus-within:bg-white transition-all shadow-sm">
                                     <label className="block text-xs font-semibold text-slate-500 mb-0.5">
                                         To
                                     </label>
@@ -179,7 +179,7 @@ export const BookingWidget = () => {
                         {/* Duration (Only for Hourly) */}
                         {activeTab === "hourly" && (
                             <div className="relative group" ref={durationPickerRef}>
-                                <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#4C3CF2] transition-colors z-10">
+                                <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors z-10">
                                     <Clock className="w-5 h-5" />
                                 </div>
                                 <div
@@ -189,7 +189,7 @@ export const BookingWidget = () => {
                                         setShowTimePicker(false);
                                     }}
                                     className={`pl-12 pr-4 py-3 bg-slate-50 rounded-lg border transition-all shadow-sm cursor-pointer ${showDurationPicker
-                                        ? "border-[#4C3CF2] bg-white"
+                                        ? "border-[#487307] bg-white"
                                         : "border-transparent group-hover:border-slate-200"
                                         }`}
                                 >
@@ -212,9 +212,9 @@ export const BookingWidget = () => {
                                             animate={{ opacity: 1, y: 0, scale: 1 }}
                                             exit={{ opacity: 0, y: -10, scale: 0.95 }}
                                             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                                            className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-4 z-50 max-h-72 overflow-y-auto border-2 border-purple-100"
+                                            className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-4 z-50 max-h-72 overflow-y-auto border-2 border-green-100"
                                             style={{
-                                                boxShadow: "0 25px 70px rgba(70, 48, 168, 0.25), 0 0 0 1px rgba(70, 48, 168, 0.1)"
+                                                boxShadow: "0 25px 70px rgba(72, 115, 7, 0.25), 0 0 0 1px rgba(72, 115, 7, 0.1)"
                                             }}
                                         >
                                             <div className="grid grid-cols-3 gap-2">
@@ -226,14 +226,14 @@ export const BookingWidget = () => {
                                                             setShowDurationPicker(false);
                                                         }}
                                                         className={`px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 relative overflow-hidden ${duration === selectedDuration
-                                                            ? "bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white shadow-lg shadow-[#4630a8]/50 scale-105 ring-2 ring-purple-200"
-                                                            : "text-slate-700 hover:bg-purple-50 border border-purple-100 hover:border-purple-300 hover:scale-105 hover:text-purple-600 hover:shadow-md"
+                                                            ? "bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white shadow-lg shadow-[#487307]/50 scale-105 ring-2 ring-green-200"
+                                                            : "text-slate-700 hover:bg-green-50 border border-green-100 hover:border-green-300 hover:scale-105 hover:text-green-600 hover:shadow-md"
                                                             }`}
                                                     >
                                                         {duration === selectedDuration && (
                                                             <motion.div
                                                                 layoutId="selectedDuration"
-                                                                className="absolute inset-0 bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff]"
+                                                                className="absolute inset-0 bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b]"
                                                                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                                             />
                                                         )}
@@ -249,7 +249,7 @@ export const BookingWidget = () => {
 
                         {/* Date Picker */}
                         <div className="relative group" ref={datePickerRef}>
-                            <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#4C3CF2] transition-colors z-10">
+                            <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors z-10">
                                 <Calendar className="w-5 h-5" />
                             </div>
                             <div
@@ -258,7 +258,7 @@ export const BookingWidget = () => {
                                     setShowTimePicker(false);
                                 }}
                                 className={`pl-12 pr-4 py-3 bg-slate-50 rounded-lg border transition-all shadow-sm cursor-pointer ${showDatePicker
-                                    ? "border-[#4C3CF2] bg-white"
+                                    ? "border-[#487307] bg-white"
                                     : "border-transparent group-hover:border-slate-200"
                                     }`}
                             >
@@ -281,25 +281,25 @@ export const BookingWidget = () => {
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: -10, scale: 0.95 }}
                                         transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                                        className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-5 z-50 border-2 border-purple-100"
+                                        className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-5 z-50 border-2 border-green-100"
                                         style={{
-                                            boxShadow: "0 25px 70px rgba(70, 48, 168, 0.25), 0 0 0 1px rgba(70, 48, 168, 0.1)"
+                                            boxShadow: "0 25px 70px rgba(72, 115, 7, 0.25), 0 0 0 1px rgba(72, 115, 7, 0.1)"
                                         }}
                                     >
                                         {/* Month Navigation */}
-                                        <div className="flex items-center justify-between mb-5 pb-4 border-b border-purple-100">
+                                        <div className="flex items-center justify-between mb-5 pb-4 border-b border-green-100">
                                             <button
                                                 onClick={goToPreviousMonth}
-                                                className="p-2.5 bg-slate-100 hover:bg-gradient-to-r hover:from-[#1c0e38] hover:via-[#4630a8] hover:to-[#8b74ff] rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 group border border-slate-200 hover:border-transparent shadow-sm"
+                                                className="p-2.5 bg-slate-100 hover:bg-gradient-to-r hover:from-[#1a2e03] hover:via-[#487307] hover:to-[#6aa80b] rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 group border border-slate-200 hover:border-transparent shadow-sm"
                                             >
                                                 <ChevronLeft className="w-5 h-5 text-slate-700  transition-colors" />
                                             </button>
-                                            <span className="text-base font-bold bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] bg-clip-text text-transparent tracking-wide">
+                                            <span className="text-base font-bold bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] bg-clip-text text-transparent tracking-wide">
                                                 {currentMonth.toLocaleDateString("en-US", { month: "long", year: "numeric" })}
                                             </span>
                                             <button
                                                 onClick={goToNextMonth}
-                                                className="p-2.5 bg-slate-100 hover:bg-gradient-to-r hover:from-[#1c0e38] hover:via-[#4630a8] hover:to-[#8b74ff] rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 group border border-slate-200 hover:border-transparent shadow-sm"
+                                                className="p-2.5 bg-slate-100 hover:bg-gradient-to-r hover:from-[#1a2e03] hover:via-[#487307] hover:to-[#6aa80b] rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 group border border-slate-200 hover:border-transparent shadow-sm"
                                             >
                                                 <ChevronRight className="w-5 h-5 text-slate-700  transition-colors" />
                                             </button>
@@ -308,7 +308,7 @@ export const BookingWidget = () => {
                                         {/* Day Labels */}
                                         <div className="grid grid-cols-7 gap-1.5 mb-3">
                                             {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((day) => (
-                                                <div key={day} className="text-center text-xs font-bold text-purple-400 py-2">
+                                                <div key={day} className="text-center text-xs font-bold text-green-400 py-2">
                                                     {day}
                                                 </div>
                                             ))}
@@ -325,16 +325,16 @@ export const BookingWidget = () => {
                                                                 setShowDatePicker(false);
                                                             }}
                                                             className={`w-full aspect-square rounded-xl text-sm font-bold transition-all duration-200 relative overflow-hidden ${isSameDay(day, selectedDate)
-                                                                ? "bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white shadow-lg shadow-[#4630a8]/50 scale-110 ring-2 ring-purple-200"
+                                                                ? "bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white shadow-lg shadow-[#487307]/50 scale-110 ring-2 ring-green-200"
                                                                 : isToday(day)
-                                                                    ? "bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white font-extrabold ring-2 ring-purple-200 hover:scale-105 hover:shadow-lg"
-                                                                    : "text-slate-700 hover:bg-purple-50 hover:scale-105 hover:text-purple-600 hover:shadow-md"
+                                                                    ? "bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white font-extrabold ring-2 ring-green-200 hover:scale-105 hover:shadow-lg"
+                                                                    : "text-slate-700 hover:bg-green-50 hover:scale-105 hover:text-green-600 hover:shadow-md"
                                                                 }`}
                                                         >
                                                             {isSameDay(day, selectedDate) && (
                                                                 <motion.div
                                                                     layoutId="selectedDate"
-                                                                    className="absolute inset-0 bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff]"
+                                                                    className="absolute inset-0 bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b]"
                                                                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                                                 />
                                                             )}
@@ -353,7 +353,7 @@ export const BookingWidget = () => {
 
                         {/* Time Picker */}
                         <div className="relative group" ref={timePickerRef}>
-                            <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#4C3CF2] transition-colors z-10">
+                            <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors z-10">
                                 <Clock className="w-5 h-5" />
                             </div>
                             <div
@@ -362,7 +362,7 @@ export const BookingWidget = () => {
                                     setShowDatePicker(false);
                                 }}
                                 className={`pl-12 pr-4 py-3 bg-slate-50 rounded-lg border transition-all shadow-sm cursor-pointer ${showTimePicker
-                                    ? "border-[#4C3CF2] bg-white"
+                                    ? "border-[#487307] bg-white"
                                     : "border-transparent group-hover:border-slate-200"
                                     }`}
                             >
@@ -385,9 +385,9 @@ export const BookingWidget = () => {
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: -10, scale: 0.95 }}
                                         transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                                        className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-4 z-50 max-h-72 overflow-y-auto border-2 border-purple-100"
+                                        className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-4 z-50 max-h-72 overflow-y-auto border-2 border-green-100"
                                         style={{
-                                            boxShadow: "0 25px 70px rgba(70, 48, 168, 0.25), 0 0 0 1px rgba(70, 48, 168, 0.1)"
+                                            boxShadow: "0 25px 70px rgba(72, 115, 7, 0.25), 0 0 0 1px rgba(72, 115, 7, 0.1)"
                                         }}
                                     >
                                         <div className="grid grid-cols-4 gap-2">
@@ -399,14 +399,14 @@ export const BookingWidget = () => {
                                                         setShowTimePicker(false);
                                                     }}
                                                     className={`px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 relative overflow-hidden ${time === selectedTime
-                                                        ? "bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white shadow-lg shadow-[#4630a8]/50 scale-105 ring-2 ring-purple-200"
-                                                        : "text-slate-700 hover:bg-purple-50 border border-purple-100 hover:border-purple-300 hover:scale-105 hover:text-purple-600 hover:shadow-md"
+                                                        ? "bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white shadow-lg shadow-[#487307]/50 scale-105 ring-2 ring-green-200"
+                                                        : "text-slate-700 hover:bg-green-50 border border-green-100 hover:border-green-300 hover:scale-105 hover:text-green-600 hover:shadow-md"
                                                         }`}
                                                 >
                                                     {time === selectedTime && (
                                                         <motion.div
                                                             layoutId="selectedTime"
-                                                            className="absolute inset-0 bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff]"
+                                                            className="absolute inset-0 bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b]"
                                                             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                                         />
                                                     )}
@@ -422,13 +422,13 @@ export const BookingWidget = () => {
                         {/* Info Text */}
                         {activeTab === "oneway" && (
                             <div className="flex items-start gap-2 text-xs text-slate-500 px-1">
-                                <Info className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#4C3CF2]" />
+                                <Info className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#487307]" />
                                 <p>Chauffeur will wait 15 minutes free of charge.</p>
                             </div>
                         )}
 
                         {/* Search Button */}
-                        <button className="w-full py-4 rounded-lg bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] text-white font-montserrat font-bold text-lg shadow-lg shadow-[#3f1c6e]/35 hover:opacity-90 transition-all transform active:scale-[0.98]">
+                        <button className="w-full py-4 rounded-lg bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] text-white font-montserrat font-bold text-lg shadow-lg shadow-[#2a4204]/35 hover:opacity-90 transition-all transform active:scale-[0.98]">
                             Search
                         </button>
                     </motion.div>

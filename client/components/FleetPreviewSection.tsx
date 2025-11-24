@@ -86,14 +86,14 @@ export const FleetPreviewSection = () => {
           className="text-center mb-16 space-y-4"
         >
           <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
-            <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+            <Sparkles className="h-4 w-4 text-[#487307]" />
             <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
               Flagship Fleet
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
             Vehicles curated for{" "}
-            <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
               boardrooms, red carpets, and runway transfers.
             </span>
           </h2>
@@ -158,7 +158,7 @@ export const FleetPreviewSection = () => {
                             key={idx}
                             className="flex items-center gap-2 text-sm text-gray-700"
                           >
-                            <Sparkles className="h-3.5 w-3.5 text-[#7b5dff] flex-shrink-0" />
+                            <Sparkles className="h-3.5 w-3.5 text-[#487307] flex-shrink-0" />
                             {car.name}
                           </li>
                         ))}
@@ -173,10 +173,10 @@ export const FleetPreviewSection = () => {
 
                   <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
                     <div className="flex items-center gap-2 text-sm font-semibold text-gray-500">
-                      <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+                      <Sparkles className="h-4 w-4 text-[#487307]" />
                       Premium fleet selection
                     </div>
-                    <ArrowRight className="h-5 w-5 text-[#7b5dff] transition group-hover:translate-x-1" />
+                    <ArrowRight className="h-5 w-5 text-[#487307] transition group-hover:translate-x-1" />
                   </div>
                 </div>
               </Link>
@@ -193,7 +193,7 @@ export const FleetPreviewSection = () => {
         >
           <Link
             to="/fleet/executive-cars"
-            className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] px-10 py-4 font-semibold text-white shadow-lg shadow-[#3f1c6e]/35 transition hover:opacity-90"
+            className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-10 py-4 font-semibold text-white shadow-lg shadow-[#2a4204]/35 transition hover:opacity-90"
           >
             Explore All Categories
             <ArrowRight className="h-5 w-5" />

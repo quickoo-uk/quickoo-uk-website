@@ -6,9 +6,9 @@ export default function FleetPlaceholder() {
 
   const vehicleName = id
     ? id
-        .split("-")
-        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-        .join(" ")
+      .split("-")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ")
     : "Vehicle";
 
   // Luxury chauffeur-style real images
@@ -77,7 +77,7 @@ export default function FleetPlaceholder() {
                   className="
                     group bg-muted rounded-2xl p-10 text-center
                     border border-transparent
-                    hover:border-gold hover:shadow-[0_12px_40px_rgba(212,168,83,0.25)]
+                    hover:border-gold hover:shadow-[0_12px_40px_rgba(72,115,7,0.25)]
                     transition-all duration-300
                   "
                 >

@@ -29,11 +29,11 @@ const PAGES = [
 
 export const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-[#05010c] via-[#0c0620] to-[#1a103d] text-white w-full max-w-full">
-      <div className="absolute inset-0 opacity-70 bg-[radial-gradient(circle_at_top,_rgba(111,84,255,0.35),transparent_60%)] pointer-events-none" />
+    <footer className="relative overflow-hidden bg-gradient-to-b from-[#0a1a02] via-[#152905] to-[#2a4204] text-white w-full max-w-full">
+      <div className="absolute inset-0 opacity-70 bg-[radial-gradient(circle_at_top,_rgba(72,115,7,0.35),transparent_60%)] pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
       <div className="section-container section-spacing relative z-10 space-y-12 sm:space-y-16 pb-8 overflow-x-hidden">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-white/10 via-white/5 to-white/10 p-8 backdrop-blur-xl shadow-[0_30px_80px_rgba(5,0,20,0.5)]">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-white/10 via-white/5 to-white/10 p-8 backdrop-blur-xl shadow-[0_30px_80px_rgba(5,20,0,0.5)]">
           <img
             src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1600&h=900&fit=crop"
             alt="Luxury car interior"
@@ -202,6 +202,9 @@ export const Footer = () => {
             <Link to="/terms-and-conditions" className="transition hover:text-white">
               Terms & Conditions
             </Link>
+            <span className="transition hover:text-white cursor-default">
+              VAT Register
+            </span>
           </div>
         </div>
       </div>

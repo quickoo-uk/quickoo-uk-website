@@ -7,202 +7,205 @@
 
 @layer base {
 
-  /**
+    /**
    * Quickoo Theme
-   * Clean white canvas with deep-violet accents
-   * Branding: White #FFFFFF, Ink #0A0520, Accent #5E4BFF
+   * Clean white canvas with deep-green accents
+   * Branding: White #FFFFFF, Ink #0A0520, Accent #487307
   */
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 259 82% 8%;
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 84 82% 8%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 259 82% 8%;
+        --card: 0 0% 100%;
+        --card-foreground: 84 82% 8%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 259 82% 8%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 84 82% 8%;
 
-    --primary: 259 64% 32%;
-    --primary-foreground: 0 0% 100%;
+        --primary: 84 89% 24%;
+        --primary-foreground: 0 0% 100%;
 
-    --secondary: 262 55% 96%;
-    --secondary-foreground: 259 82% 12%;
+        --secondary: 84 55% 96%;
+        --secondary-foreground: 84 82% 12%;
 
-    --muted: 259 26% 96%;
-    --muted-foreground: 257 25% 45%;
+        --muted: 84 26% 96%;
+        --muted-foreground: 84 25% 45%;
 
-    --accent: 259 78% 56%;
-    --accent-foreground: 0 0% 100%;
+        --accent: 84 78% 56%;
+        --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
 
-    --border: 260 30% 89%;
-    --input: 0 0% 98%;
-    --ring: 259 78% 56%;
+        --border: 84 30% 89%;
+        --input: 0 0% 98%;
+        --ring: 84 78% 56%;
 
-    --quickoo-ink: 258 86% 7%;
-    --quickoo-violet: 259 64% 32%;
-    --quickoo-electric: 259 88% 60%;
-    --quickoo-glow: 259 100% 86%;
-    --quickoo-soft: 258 100% 97%;
+        --quickoo-ink: 84 86% 7%;
+        --quickoo-violet: 84 89% 24%;
+        --quickoo-electric: 84 88% 60%;
+        --quickoo-glow: 84 100% 86%;
+        --quickoo-soft: 84 100% 97%;
 
-    --radius: 0.5rem;
+        --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 261 62% 14%;
-    --sidebar-primary: 259 72% 46%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 97%;
-    --sidebar-accent-foreground: 261 62% 14%;
-    --sidebar-border: 259 32% 88%;
-    --sidebar-ring: 259 72% 46%;
-  }
+        --sidebar-background: 0 0% 100%;
+        --sidebar-foreground: 84 62% 14%;
+        --sidebar-primary: 84 72% 46%;
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 0 0% 97%;
+        --sidebar-accent-foreground: 84 62% 14%;
+        --sidebar-border: 84 32% 88%;
+        --sidebar-ring: 84 72% 46%;
+    }
 
-  .dark {
-    --background: 0 0% 6.7%;
-    --foreground: 0 0% 100%;
+    .dark {
+        --background: 0 0% 6.7%;
+        --foreground: 0 0% 100%;
 
-    --card: 0 0% 12%;
-    --card-foreground: 0 0% 100%;
+        --card: 0 0% 12%;
+        --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 12%;
-    --popover-foreground: 0 0% 100%;
+        --popover: 0 0% 12%;
+        --popover-foreground: 0 0% 100%;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 6.7%;
+        --primary: 0 0% 100%;
+        --primary-foreground: 0 0% 6.7%;
 
-    --secondary: 45 100% 66.7%;
-    --secondary-foreground: 0 0% 6.7%;
+        --secondary: 84 100% 66.7%;
+        --secondary-foreground: 0 0% 6.7%;
 
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 65%;
+        --muted: 0 0% 20%;
+        --muted-foreground: 0 0% 65%;
 
-    --accent: 45 100% 66.7%;
-    --accent-foreground: 0 0% 6.7%;
+        --accent: 84 100% 66.7%;
+        --accent-foreground: 0 0% 6.7%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 15%;
-    --ring: 45 100% 66.7%;
-    --sidebar-background: 0 0% 8%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 45 100% 66.7%;
-    --sidebar-primary-foreground: 0 0% 6.7%;
-    --sidebar-accent: 0 0% 18%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 45 100% 66.7%;
-  }
+        --border: 0 0% 20%;
+        --input: 0 0% 15%;
+        --ring: 84 100% 66.7%;
+        --sidebar-background: 0 0% 8%;
+        --sidebar-foreground: 0 0% 100%;
+        --sidebar-primary: 84 100% 66.7%;
+        --sidebar-primary-foreground: 0 0% 6.7%;
+        --sidebar-accent: 0 0% 18%;
+        --sidebar-accent-foreground: 0 0% 100%;
+        --sidebar-border: 0 0% 18%;
+        --sidebar-ring: 84 100% 66.7%;
+    }
 }
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
-}
-@layer base {
-  * {
-    @apply border-border;
-  }
 
-  html {
-    scroll-behavior: smooth;
+html,
+body {
     overflow-x: hidden;
     max-width: 100vw;
-    /* Custom scrollbar - webkit browsers (Chrome, Safari, Edge) */
-    scrollbar-width: thin;
-    /* Firefox: thumb then track */
-    scrollbar-color: hsl(var(--quickoo-ink)) hsl(var(--input));
-    /* Keep layout stable when scrollbars appear */
-    scrollbar-gutter: stable;
-    background: hsl(var(--background));
-  }
+}
 
-  /* Webkit browsers scrollbar styling */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
+@layer base {
+    * {
+        @apply border-border;
+    }
 
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--input));
-    /* ensure the corner and track match and avoid light seams */
-    -webkit-border-radius: 0;
-    border-radius: 0;
-  }
+    html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        max-width: 100vw;
+        /* Custom scrollbar - webkit browsers (Chrome, Safari, Edge) */
+        scrollbar-width: thin;
+        /* Firefox: thumb then track */
+        scrollbar-color: hsl(var(--quickoo-ink)) hsl(var(--input));
+        /* Keep layout stable when scrollbars appear */
+        scrollbar-gutter: stable;
+        background: hsl(var(--background));
+    }
 
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--quickoo-ink));
-    border-radius: 9999px;
-    /* remove the thumb border so there are no light seams at top/bottom */
-    border: none;
-    min-height: 24px;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-  }
+    /* Webkit browsers scrollbar styling */
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--quickoo-ink));
-  }
+    ::-webkit-scrollbar-track {
+        background: hsl(var(--input));
+        /* ensure the corner and track match and avoid light seams */
+        -webkit-border-radius: 0;
+        border-radius: 0;
+    }
 
-  /* Make sure the scrollbar corner matches the track (prevents a light square) */
-  ::-webkit-scrollbar-corner {
-    background: hsl(var(--input));
-  }
+    ::-webkit-scrollbar-thumb {
+        background: hsl(var(--quickoo-ink));
+        border-radius: 9999px;
+        /* remove the thumb border so there are no light seams at top/bottom */
+        border: none;
+        min-height: 24px;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+    }
 
-  body {
-    background: radial-gradient(circle at top, #fff9ff 0%, #f9f6ff 30%, #f2efff 90%);
-    @apply text-foreground font-inter;
-  }
+    ::-webkit-scrollbar-thumb:hover {
+        background: hsl(var(--quickoo-ink));
+    }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-montserrat font-bold;
-  }
+    /* Make sure the scrollbar corner matches the track (prevents a light square) */
+    ::-webkit-scrollbar-corner {
+        background: hsl(var(--input));
+    }
 
-  :where(p, span, li, a, button, label, td, th) {
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
+    body {
+        background: radial-gradient(circle at top, #f9fff9 0%, #f6fff6 30%, #efffef 90%);
+        @apply text-foreground font-inter;
+    }
 
-  pre,
-  code {
-    overflow-x: auto;
-    white-space: pre;
-  }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-montserrat font-bold;
+    }
+
+    :where(p, span, li, a, button, label, td, th) {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    pre,
+    code {
+        overflow-x: auto;
+        white-space: pre;
+    }
 }
 
 @layer components {
-  .luxury-button {
-    @apply px-8 py-3 rounded-lg font-montserrat font-semibold transition-all duration-300;
-  }
+    .luxury-button {
+        @apply px-8 py-3 rounded-lg font-montserrat font-semibold transition-all duration-300;
+    }
 
-  .luxury-button-gold {
-    @apply luxury-button bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white shadow-[0_15px_40px_rgba(24,8,52,0.35)] hover:opacity-90;
-  }
+    .luxury-button-gold {
+        @apply luxury-button bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white shadow-[0_15px_40px_rgba(20,40,5,0.35)] hover:opacity-90;
+    }
 
-  .luxury-button-outline {
-    @apply luxury-button border-2 border-white/30 text-white hover:bg-white/10;
-  }
+    .luxury-button-outline {
+        @apply luxury-button border-2 border-white/30 text-white hover:bg-white/10;
+    }
 
-  .rectangle-button {
-    @apply px-8 py-4 rounded-none font-montserrat font-semibold transition-all duration-300;
-  }
+    .rectangle-button {
+        @apply px-8 py-4 rounded-none font-montserrat font-semibold transition-all duration-300;
+    }
 
-  .rectangle-button-white {
-    @apply rectangle-button bg-white text-black hover:bg-gray-100 shadow-lg;
-  }
+    .rectangle-button-white {
+        @apply rectangle-button bg-white text-black hover:bg-gray-100 shadow-lg;
+    }
 
-  .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
+    .section-container {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
 
-  .section-spacing {
-    @apply py-20 sm:py-32;
-  }
+    .section-spacing {
+        @apply py-20 sm:py-32;
+    }
 }

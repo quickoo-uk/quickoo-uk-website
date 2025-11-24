@@ -147,11 +147,11 @@ export default function TermsAndConditionsPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent" />
         <div className="absolute -bottom-20 -right-8 h-72 w-72 bg-gold/30 blur-[140px] opacity-40" />
-        <div className="absolute -top-24 -left-10 h-64 w-64 bg-[#90c4ff]/30 blur-[120px] opacity-50" />
+        <div className="absolute -top-24 -left-10 h-64 w-64 bg-[#8fe00f]/30 blur-[120px] opacity-50" />
         <div className="relative z-10 px-5 sm:px-8 md:px-12 xl:px-24 py-20 w-full">
           <div className="max-w-4xl space-y-8">
             <div className="inline-flex flex-wrap items-center gap-3 rounded-full border border-slate-200 bg-white/70 px-6 py-2 backdrop-blur">
-              <Scale className="h-4 w-4 text-[#7b5dff]" />
+              <Scale className="h-4 w-4 text-[#487307]" />
               <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-slate-600 font-semibold">
                 Quickoo • Terms & Conditions
               </p>
@@ -159,7 +159,7 @@ export default function TermsAndConditionsPage() {
             <div className="space-y-6">
               <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-slate-900">
                 Clear terms for{" "}
-                <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
                   transparent service
                 </span>
               </h1>

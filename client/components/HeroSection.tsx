@@ -143,7 +143,7 @@ export const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40"
             >
-              <Sparkles className="h-4 w-4 text-[#7b5dff]" />
+              <Sparkles className="h-4 w-4 text-[#487307]" />
               <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
                 Quickoo Chauffeur
               </span>
@@ -157,7 +157,7 @@ export const HeroSection = () => {
             >
               Experience the Art of
               <br />
-              <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
                 Premium Travel
               </span>
             </motion.h1>
@@ -181,7 +181,7 @@ export const HeroSection = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#1a1230] via-[#3f1c6e] to-[#806af1] text-white text-base font-semibold shadow-lg shadow-[#3f1c6e]/35 transition hover:opacity-90"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] text-white text-base font-semibold shadow-lg shadow-[#2a4204]/35 transition hover:opacity-90"
               >
                 Book Now
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -203,15 +203,15 @@ export const HeroSection = () => {
               className="flex flex-wrap gap-6 pt-4 text-sm text-slate-600 font-inter"
             >
               <span className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#7b5dff]"></span>
+                <span className="h-2 w-2 rounded-full bg-[#487307]"></span>
                 Private concierge 24/7
               </span>
               <span className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#7b5dff]"></span>
+                <span className="h-2 w-2 rounded-full bg-[#487307]"></span>
                 Curated electric & executive fleet
               </span>
               <span className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#7b5dff]"></span>
+                <span className="h-2 w-2 rounded-full bg-[#487307]"></span>
                 Global availability
               </span>
             </motion.div>

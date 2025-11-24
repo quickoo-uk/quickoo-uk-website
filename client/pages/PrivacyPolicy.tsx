@@ -372,7 +372,7 @@ export default function PrivacyPolicyPage() {
         <div className="relative z-10 px-5 sm:px-8 md:px-12 xl:px-24 py-20 w-full">
           <div className="max-w-4xl space-y-8">
             <div className="inline-flex flex-wrap items-center gap-3 rounded-full border border-slate-200 bg-white/70 px-6 py-2 backdrop-blur">
-              <ShieldCheck className="h-4 w-4 text-[#7b5dff]" />
+              <ShieldCheck className="h-4 w-4 text-[#487307]" />
               <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-slate-600 font-semibold">
                 Quickoo • Privacy & Security
               </p>
@@ -380,7 +380,7 @@ export default function PrivacyPolicyPage() {
             <div className="space-y-6">
               <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-slate-900">
                 Your privacy is our{" "}
-                <span className="bg-gradient-to-r from-[#1a1431] via-[#40206c] to-[#806af1] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
                   commitment
                 </span>
               </h1>

@@ -64,13 +64,13 @@ export default function BookNow() {
           >
             {/* Header */}
             <div className="mb-6">
-              <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] bg-clip-text text-transparent mb-2">
+              <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#0a1a02] via-[#2a4204] to-[#487307] bg-clip-text text-transparent mb-2">
                 Book Your Ride
               </h1>
               <p className="text-slate-600 text-sm">Premium chauffeur service at your fingertips</p>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-xl w-full rounded-3xl shadow-[0_20px_60px_rgba(70,48,168,0.15)] border border-purple-100/50 p-6 sm:p-8">
+            <div className="bg-white/80 backdrop-blur-xl w-full rounded-3xl shadow-[0_20px_60px_rgba(72,115,7,0.15)] border border-green-100/50 p-6 sm:p-8">
               {/* TABS */}
               <div className="flex gap-2 mb-6 bg-slate-50/80 p-1.5 rounded-2xl">
                 {[
@@ -82,8 +82,8 @@ export default function BookNow() {
                     key={tab.id}
                     onClick={() => setRideType(tab.id as RideType)}
                     className={`flex-1 py-3 px-4 font-semibold text-xs sm:text-sm whitespace-nowrap rounded-xl transition-all duration-300 ${rideType === tab.id
-                        ? "bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white shadow-lg shadow-[#4630a8]/30 scale-105"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                      ? "bg-gradient-to-r from-[#0a1a02] via-[#2a4204] to-[#487307] text-white shadow-lg shadow-[#2a4204]/30 scale-105"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
                       }`}
                   >
                     {tab.label}
@@ -103,7 +103,7 @@ export default function BookNow() {
                       transition={{ duration: 0.3 }}
                       className="relative group"
                     >
-                      <div className="border-2 border-purple-100 hover:border-purple-300 rounded-2xl p-4 flex items-center gap-4 bg-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-100/50">
+                      <div className="border-2 border-purple-100 hover:border-green-300 rounded-2xl p-4 flex items-center gap-4 bg-white transition-all duration-300 hover:shadow-lg hover:shadow-green-100/50">
                         <div className="p-3 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl">
                           <Plane className="w-5 h-5 text-purple-600" />
                         </div>
@@ -125,7 +125,7 @@ export default function BookNow() {
 
                   {/* PICKUP */}
                   <div className="relative group">
-                    <div className="border-2 border-purple-100 hover:border-purple-300 rounded-2xl p-4 flex items-center gap-4 bg-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-100/50">
+                    <div className="border-2 border-purple-100 hover:border-green-300 rounded-2xl p-4 flex items-center gap-4 bg-white transition-all duration-300 hover:shadow-lg hover:shadow-green-100/50">
                       <div className="p-3 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl">
                         <MapPin className="w-5 h-5 text-emerald-600" />
                       </div>
@@ -169,7 +169,7 @@ export default function BookNow() {
                       exit={{ opacity: 0, height: 0 }}
                       className="relative group"
                     >
-                      <div className="border-2 border-purple-100 hover:border-purple-300 rounded-2xl p-4 flex items-center gap-4 bg-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-100/50">
+                      <div className="border-2 border-purple-100 hover:border-green-300 rounded-2xl p-4 flex items-center gap-4 bg-white transition-all duration-300 hover:shadow-lg hover:shadow-green-100/50">
                         <div className="p-3 bg-gradient-to-br from-rose-50 to-rose-100 rounded-xl">
                           <MapPin className="w-5 h-5 text-rose-600" />
                         </div>
@@ -208,7 +208,7 @@ export default function BookNow() {
                       </div>
 
                       {/* DURATION */}
-                      <div className="border-2 border-purple-100 hover:border-purple-300 rounded-2xl p-4 bg-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-100/50">
+                      <div className="border-2 border-purple-100 hover:border-green-300 rounded-2xl p-4 bg-white transition-all duration-300 hover:shadow-lg hover:shadow-green-100/50">
                         <div className="flex items-center gap-4">
                           <div className="p-3 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl">
                             <Clock className="w-5 h-5 text-blue-600" />
@@ -242,7 +242,7 @@ export default function BookNow() {
                       className="space-y-4"
                     >
                       {/* DATE */}
-                      <div className="border-2 border-purple-100 hover:border-purple-300 rounded-2xl p-4 bg-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-100/50">
+                      <div className="border-2 border-purple-100 hover:border-green-300 rounded-2xl p-4 bg-white transition-all duration-300 hover:shadow-lg hover:shadow-green-100/50">
                         <div className="flex items-center gap-4">
                           <div className="p-3 bg-gradient-to-br from-violet-50 to-violet-100 rounded-xl">
                             <Calendar className="w-5 h-5 text-violet-600" />
@@ -263,7 +263,7 @@ export default function BookNow() {
                       </div>
 
                       {/* TIME */}
-                      <div className="border-2 border-purple-100 hover:border-purple-300 rounded-2xl p-4 bg-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-100/50">
+                      <div className="border-2 border-purple-100 hover:border-green-300 rounded-2xl p-4 bg-white transition-all duration-300 hover:shadow-lg hover:shadow-green-100/50">
                         <div className="flex items-center gap-4">
                           <div className="p-3 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl">
                             <Clock className="w-5 h-5 text-indigo-600" />
@@ -305,7 +305,7 @@ export default function BookNow() {
                             pickupTime: p.pickupTime === "Now" ? "Later" : "Now",
                           }))
                         }
-                        className="px-5 py-2.5 flex items-center gap-2 bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white rounded-xl font-semibold shadow-lg shadow-[#4630a8]/30 hover:shadow-xl hover:shadow-[#4630a8]/40 transition-all duration-300 hover:scale-105"
+                        className="px-5 py-2.5 flex items-center gap-2 bg-gradient-to-r from-[#0a1a02] via-[#2a4204] to-[#487307] text-white rounded-xl font-semibold shadow-lg shadow-[#2a4204]/30 hover:shadow-xl hover:shadow-[#2a4204]/40 transition-all duration-300 hover:scale-105"
                       >
                         <Calendar className="w-4 h-4" />
                         {formData.pickupTime === "Now" ? "Schedule for Later" : "Book Now"}
@@ -322,14 +322,14 @@ export default function BookNow() {
                             name="date"
                             value={formData.date}
                             onChange={handleInputChange}
-                            className="w-full border-2 border-purple-100 rounded-xl px-4 py-3 focus:border-purple-300 focus:ring-0 transition-colors"
+                            className="w-full border-2 border-purple-100 rounded-xl px-4 py-3 focus:border-green-300 focus:ring-0 transition-colors"
                           />
                           <input
                             type="time"
                             name="time"
                             value={formData.time}
                             onChange={handleInputChange}
-                            className="w-full border-2 border-purple-100 rounded-xl px-4 py-3 focus:border-purple-300 focus:ring-0 transition-colors"
+                            className="w-full border-2 border-purple-100 rounded-xl px-4 py-3 focus:border-green-300 focus:ring-0 transition-colors"
                           />
                         </motion.div>
                       )}
@@ -338,9 +338,9 @@ export default function BookNow() {
                 </AnimatePresence>
 
                 {/* TIMEZONE FOOTER */}
-                <div className="pt-4 pb-2 text-xs flex flex-col sm:flex-row sm:justify-between gap-2 text-slate-500 border-t border-purple-100/50">
+                <div className="pt-4 pb-2 text-xs flex flex-col sm:flex-row sm:justify-between gap-2 text-slate-500 border-t border-green-100/50">
                   <span className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-purple-400"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-400"></div>
                     Timezone: Europe/London
                   </span>
                   <span className="flex items-center gap-1.5">
@@ -354,8 +354,8 @@ export default function BookNow() {
                   type="submit"
                   disabled={!isFormValid()}
                   className={`w-full py-4 rounded-2xl font-bold text-base transition-all duration-300 flex items-center justify-center gap-2 group ${isFormValid()
-                      ? "bg-gradient-to-r from-[#1c0e38] via-[#4630a8] to-[#8b74ff] text-white shadow-xl shadow-[#4630a8]/40 hover:shadow-2xl hover:shadow-[#4630a8]/50 hover:scale-[1.02] active:scale-[0.98]"
-                      : "bg-slate-100 text-slate-400 cursor-not-allowed"
+                    ? "bg-gradient-to-r from-[#0a1a02] via-[#2a4204] to-[#487307] text-white shadow-xl shadow-[#2a4204]/40 hover:shadow-2xl hover:shadow-[#2a4204]/50 hover:scale-[1.02] active:scale-[0.98]"
+                    : "bg-slate-100 text-slate-400 cursor-not-allowed"
                     }`}
                 >
                   Continue to Vehicle Selection
