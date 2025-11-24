@@ -13,14 +13,10 @@ export default function FleetPlaceholder() {
 
   // Luxury chauffeur-style real images
   const IMAGES: Record<string, string> = {
-    "mercedes-s-class":
-      "https://images.unsplash.com/photo-1617469767053-adf3ef61e6d1?auto=format&fit=crop&w=2000&q=80",
-    "bmw-i7":
-      "https://images.unsplash.com/photo-1668875515314-8a79808bf6f8?auto=format&fit=crop&w=2000&q=80",
-    "range-rover":
-      "https://images.unsplash.com/photo-1617814078590-0e98c024aaa0?auto=format&fit=crop&w=2000&q=80",
-    "mercedes-v-class":
-      "https://images.unsplash.com/photo-1605511876319-7f4ef3221c71?auto=format&fit=crop&w=2000&q=80",
+    "mercedes-s-class": "/fleet/Mercedes-benz-s-class.png",
+    "bmw-i7": "/fleet/BMW i7.png",
+    "range-rover": "/fleet/Range Rover Autobiography  Vogue.png",
+    "mercedes-v-class": "/fleet/Mercedes-Benz V-Class.png",
   };
 
   const heroImage = IMAGES[id ?? ""] ?? IMAGES["mercedes-s-class"];

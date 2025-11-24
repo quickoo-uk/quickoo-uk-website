@@ -39,36 +39,22 @@ export default function CarTypePage() {
   // Get hero image based on car type name or id
   const getCarTypeHeroImage = (carTypeName: string, carTypeId: string): string => {
     const typeImageMap: Record<string, string> = {
-      // By name
-      "Electric Cars":
-        "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
-      "Business Vans":
-        "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
-      "Premium SUVs":
-        "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
-      "Vintage Cars for Weddings":
-        "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=2000&q=80",
-      "Executive Cars":
-        "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
-      "Luxury (VIP Class)":
-        "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
-      "Special Vehicles (On Request)":
-        "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=2000&q=80",
+      // By name - using local fleet type hero images
+      "Electric Cars": "/fleet/Electric Cars.png",
+      "Business Vans": "/fleet/Business Vans.png",
+      "Premium SUVs": "/fleet/Premium SUVs.png",
+      "Vintage Cars for Weddings": "/fleet/Vintage Cars for Weddings.png",
+      "Executive Cars": "/fleet/Executive Cars.png",
+      "Luxury (VIP Class)": "/fleet/Luxury cars.png",
+      "Special Vehicles (On Request)": "/fleet/Special Vehicles.png",
       // By id (fallback)
-      "electric-cars":
-        "https://images.unsplash.com/photo-1593941707882-a5bac6861d75?auto=format&fit=crop&w=2000&q=80",
-      "business-vans":
-        "https://images.unsplash.com/photo-1605511876319-7f4ef3221c71?auto=format&fit=crop&w=2000&q=80",
-      "premium-suvs":
-        "https://images.unsplash.com/photo-1617814078590-0e98c024aaa0?auto=format&fit=crop&w=2000&q=80",
-      "vintage-cars-weddings":
-        "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=2000&q=80",
-      "executive-cars":
-        "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
-      "luxury-vip":
-        "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
-      "special-vehicles":
-        "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=2000&q=80",
+      "electric-cars": "/fleet/Electric Cars.png",
+      "business-vans": "/fleet/Business Vans.png",
+      "premium-suvs": "/fleet/Premium SUVs.png",
+      "vintage-cars-weddings": "/fleet/Vintage Cars for Weddings.png",
+      "executive-cars": "/fleet/Executive Cars.png",
+      "luxury-vip": "/fleet/Luxury cars.png",
+      "special-vehicles": "/fleet/Special Vehicles.png",
     };
     return (
       typeImageMap[carTypeName] ||
@@ -80,32 +66,21 @@ export default function CarTypePage() {
   // Updated working images for different car types
   const getCarImage = (carName: string): string => {
     const imageMap: Record<string, string> = {
-      "Mercedes-Benz E-Class":
-        "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
-      "BMW 5 Series":
-        "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=2000&q=80",
-      "Audi A6":
-        "https://images.unsplash.com/photo-1606664515524-ed2f786a0ec6?auto=format&fit=crop&w=2000&q=80",
-      "Mercedes-Benz S-Class":
-        "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=2000&q=80",
-      "BMW 7 Series":
-        "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=2000&q=80",
-      "Audi A8 L":
-        "https://images.unsplash.com/photo-1606664515524-ed2f786a0ec6?auto=format&fit=crop&w=2000&q=80",
-      "Range Rover Autobiography / Vogue":
-        "https://images.unsplash.com/photo-1617814078590-0e98c024aaa0?auto=format&fit=crop&w=2000&q=80",
-      "Range Rover Sport":
-        "https://images.unsplash.com/photo-1617814078590-0e98c024aaa0?auto=format&fit=crop&w=2000&q=80",
-      "Mercedes-Benz V class":
-        "https://images.unsplash.com/photo-1605511876319-7f4ef3221c71?auto=format&fit=crop&w=2000&q=80",
-      "Stretch Limousines":
-        "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=2000&q=80",
-      "Rolls Royce":
-        "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=2000&q=80",
-      EQE: "https://images.unsplash.com/photo-1593941707882-a5bac6861d75?auto=format&fit=crop&w=2000&q=80",
-      EQS: "https://images.unsplash.com/photo-1593941707882-a5bac6861d75?auto=format&fit=crop&w=2000&q=80",
-      "BMW I7":
-        "https://images.unsplash.com/photo-1593941707882-a5bac6861d75?auto=format&fit=crop&w=2000&q=80",
+      // Using local assets - matching exact filenames
+      "Mercedes-Benz E-Class": "/fleet/Mercedes-benz-e-class.jpg",
+      "BMW 5 Series": "/fleet/BMW 5 Series.png",
+      "Audi A6": "/fleet/audi A6.png",
+      "Mercedes-Benz S-Class": "/fleet/Mercedes-benz-s-class.png",
+      "BMW 7 Series": "/fleet/BMW 7 Series.png",
+      "Audi A8 L": "/fleet/Audi A8 L.png",
+      "Range Rover Autobiography / Vogue": "/fleet/Range Rover Autobiography  Vogue.png",
+      "Range Rover Sport": "/fleet/Range Rover Sport in black.png",
+      "Mercedes-Benz V class": "/fleet/Mercedes-Benz V-Class.png",
+      "Stretch Limousines": "/fleet/stretch limousine.png",
+      "Rolls Royce": "/fleet/Rolls Royce.png",
+      EQE: "/fleet/EQE.png",
+      EQS: "/fleet/EQS.png",
+      "BMW I7": "/fleet/BMW i7.png",
     };
     return (
       imageMap[carName] ||
