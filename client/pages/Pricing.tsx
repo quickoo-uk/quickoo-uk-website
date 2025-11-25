@@ -128,7 +128,7 @@ export default function PricingPage() {
             <div className="relative rounded-[2rem] border border-white/70 bg-white/90 p-6 shadow-2xl backdrop-blur">
               <div className="overflow-hidden rounded-[1.5rem]">
                 <img
-                  src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
+                  src="/pricing/pricing-hero-chauffeur.jpg"
                   alt="Chauffeur preparing luxury vehicle"
                   className="h-64 w-full object-cover"
                   loading="lazy"
@@ -192,9 +192,8 @@ export default function PricingPage() {
             {hourlyPackages.map((pkg, idx) => (
               <div
                 key={pkg.label}
-                className={`relative rounded-[1.75rem] border bg-white/90 p-8 shadow-[0_20px_80px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 ${
-                  idx === 1 ? "border-gold/60" : "border-slate-100"
-                }`}
+                className={`relative rounded-[1.75rem] border bg-white/90 p-8 shadow-[0_20px_80px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 ${idx === 1 ? "border-gold/60" : "border-slate-100"
+                  }`}
               >
                 {pkg.badge && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-dark px-4 py-1 text-xs font-montserrat uppercase tracking-[0.3em] text-white shadow-lg">
@@ -389,7 +388,7 @@ export default function PricingPage() {
 
           <div className="relative rounded-[2rem] border border-white/20 bg-dark text-white overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1600&q=80"
+              src="/pricing/pricing-concierge-service.jpg"
               alt="Driver opening car door"
               className="absolute inset-0 h-full w-full object-cover opacity-30"
               loading="lazy"

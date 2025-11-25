@@ -7,7 +7,7 @@ interface DarkHeroSectionProps {
 export const DarkHeroSection = ({
   title,
   subtitle,
-  backgroundImage = "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&h=900&fit=crop",
+  backgroundImage = "/dark-hero-default.jpg",
 }: DarkHeroSectionProps) => {
   return (
     <section className="relative min-h-[50vh] bg-dark flex items-center overflow-hidden">

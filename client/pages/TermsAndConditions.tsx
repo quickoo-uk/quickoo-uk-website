@@ -141,7 +141,7 @@ export default function TermsAndConditionsPage() {
         transition={{ duration: 0.9, ease: "easeOut" }}
       >
         <img
-          src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=2000&q=80"
+          src="/legal/terms-conditions-hero.jpg"
           alt="Legal terms and conditions"
           className="absolute inset-0 h-full w-full object-cover opacity-20"
         />

@@ -11,26 +11,16 @@ import {
 } from "lucide-react";
 
 const SERVICE_IMAGES: Record<string, string> = {
-  "airport-transfers":
-    "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=80",
-  "hourly-hire":
-    "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=2000&q=80",
-  "city-to-city":
-    "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=2000&q=80",
-  wedding:
-    "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=2000&q=80",
-  business:
-    "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=2000&q=80",
-  "corporate-travel":
-    "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=2000&q=80",
-  events:
-    "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=2000&q=80",
-  "special-events":
-    "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=2000&q=80",
-  "private-jet":
-    "https://images.unsplash.com/photo-1540949135379-59e5f2d35d34?auto=format&fit=crop&w=2000&q=80",
-  "city-tours":
-    "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=2000&q=80",
+  "airport-transfers": "/services/airport-transfer-hero.jpg",
+  "hourly-hire": "/services/hourly-hire-hero.jpg",
+  "city-to-city": "/services/city-to-city-hero.jpg",
+  wedding: "/services/wedding-hero.jpg",
+  business: "/services/business-hero.jpg",
+  "corporate-travel": "/services/business-hero.jpg",
+  events: "/services/events-hero.jpg",
+  "special-events": "/services/events-hero.jpg",
+  "private-jet": "/services/private-jet-hero.jpg",
+  "city-tours": "/services/city-tours-hero.jpg",
 };
 
 const trustMetrics = [
@@ -100,8 +90,54 @@ const curatedAddOns = [
   { label: "Brand integrations", value: "Custom proposal" },
 ];
 
-const heroWorkingImage =
-  "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1600&q=80";
+// Dynamic operations image based on service type
+const getOperationsImage = (serviceId: string) => {
+  const operationsImages: Record<string, string> = {
+    "airport-transfers": "/services/airport-transfer-operations.jpg",
+    "hourly-hire": "/services/hourly-hire-operations.jpg",
+    "city-to-city": "/services/city-to-city-operations.jpg",
+    wedding: "/services/wedding-operations.jpg",
+    business: "/services/business-operations.jpg",
+    "corporate-travel": "/services/business-operations.jpg",
+    events: "/services/events-operations.jpg",
+    "special-events": "/services/events-operations.jpg",
+    "private-jet": "/services/private-jet-operations.jpg",
+    "city-tours": "/services/city-tours-operations.jpg",
+  };
+  return operationsImages[serviceId] ?? "/services/business-operations.jpg";
+};
+
+const getTeamCollaborationImage = (serviceId: string) => {
+  const teamImages: Record<string, string> = {
+    "airport-transfers": "/services/airport-transfer-team-collaboration.jpg",
+    "hourly-hire": "/services/hourly-hire-team-collaboration.jpg",
+    "city-to-city": "/services/city-to-city-team-collaboration.jpg",
+    wedding: "/services/wedding-team-collaboration.jpg",
+    business: "/services/business-team-collaboration.jpg",
+    "corporate-travel": "/services/business-team-collaboration.jpg",
+    events: "/services/events-team-collaboration.jpg",
+    "special-events": "/services/events-team-collaboration.jpg",
+    "private-jet": "/services/private-jet-team-collaboration.jpg",
+    "city-tours": "/services/city-tours-team-collaboration.jpg",
+  };
+  return teamImages[serviceId] ?? "/services/business-team-collaboration.jpg";
+};
+
+const getChauffeurPortraitImage = (serviceId: string) => {
+  const portraitImages: Record<string, string> = {
+    "airport-transfers": "/services/airport-transfer-chauffeur-portrait.jpg",
+    "hourly-hire": "/services/hourly-hire-chauffeur-portrait.jpg",
+    "city-to-city": "/services/city-to-city-chauffeur-portrait.jpg",
+    wedding: "/services/wedding-chauffeur-portrait.jpg",
+    business: "/services/business-chauffeur-portrait.jpg",
+    "corporate-travel": "/services/business-chauffeur-portrait.jpg",
+    events: "/services/events-chauffeur-portrait.jpg",
+    "special-events": "/services/events-chauffeur-portrait.jpg",
+    "private-jet": "/services/private-jet-chauffeur-portrait.jpg",
+    "city-tours": "/services/city-tours-chauffeur-portrait.jpg",
+  };
+  return portraitImages[serviceId] ?? "/services/business-chauffeur-portrait.jpg";
+};
 
 export default function ServicesPlaceholder() {
   const { id } = useParams<{ id: string }>();
@@ -207,7 +243,7 @@ export default function ServicesPlaceholder() {
               <div className="absolute -bottom-8 -right-8 hidden sm:block rounded-[28px] border border-white/60 bg-white/90 p-4 shadow-xl">
                 <div className="overflow-hidden rounded-2xl">
                   <img
-                    src={heroWorkingImage}
+                    src={getOperationsImage(id ?? "")}
                     alt="Quickoo concierge at work"
                     className="h-28 w-40 object-cover"
                   />
@@ -261,7 +297,7 @@ export default function ServicesPlaceholder() {
           </div>
           <div className="relative rounded-[36px] border border-white/60 bg-white/80 shadow-[0_35px_90px_rgba(15,23,42,0.1)] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
+              src={getTeamCollaborationImage(id ?? "")}
               alt="Quickoo operations team collaborating"
               className="h-full w-full object-cover"
               loading="lazy"
@@ -383,7 +419,7 @@ export default function ServicesPlaceholder() {
 
           <div className="rounded-[32px] border border-[#0a1a02]/10 bg-gradient-to-br from-[#0a1a02] via-[#152905] to-[#2a4204] text-white p-10 relative overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=2000&q=80"
+              src={getChauffeurPortraitImage(id ?? "")}
               alt="Quickoo chauffeur"
               className="absolute inset-0 h-full w-full object-cover opacity-25"
               loading="lazy"

@@ -195,7 +195,7 @@ export default function AboutPage() {
         transition={{ duration: 0.9, ease: "easeOut" }}
       >
         <img
-          src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=2000&q=80"
+          src="/about/about-hero-luxury-vehicle.jpg"
           alt="Quickoo luxury chauffeur vehicle"
           className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
@@ -311,7 +311,7 @@ export default function AboutPage() {
           variants={fadeInUp}
         >
           <img
-            src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1600&q=80"
+            src="/about/about-vehicle-interior.jpg"
             alt="Inside a Quickoo chauffeur vehicle"
             className="h-full w-full object-cover"
           />
@@ -622,7 +622,7 @@ export default function AboutPage() {
           </div>
           <div className="relative h-[320px] rounded-[32px] overflow-hidden shadow-2xl">
             <img
-              src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
+              src="/about/about-fleet-showcase.jpg"
               alt="Quickoo premium fleet"
               className="h-full w-full object-cover"
             />

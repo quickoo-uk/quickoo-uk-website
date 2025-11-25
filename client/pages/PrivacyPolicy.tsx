@@ -364,7 +364,7 @@ export default function PrivacyPolicyPage() {
         transition={{ duration: 0.9, ease: "easeOut" }}
       >
         <img
-          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80"
+          src="/legal/privacy-policy-hero.jpg"
           alt="Privacy and security"
           className="absolute inset-0 h-full w-full object-cover opacity-20"
         />

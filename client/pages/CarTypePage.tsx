@@ -59,7 +59,7 @@ export default function CarTypePage() {
     return (
       typeImageMap[carTypeName] ||
       typeImageMap[carTypeId] ||
-      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=2000&q=80"
+      "/fleet/fleet-default-hero.jpg"
     );
   };
 
@@ -84,13 +84,12 @@ export default function CarTypePage() {
     };
     return (
       imageMap[carName] ||
-      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=2000&q=80"
+      "/fleet/fleet-default-car.jpg"
     );
   };
 
   const heroImage = getCarTypeHeroImage(carType.name, carType.id);
-  const heroWorkingImage =
-    "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1600&q=80";
+  const heroWorkingImage = "/fleet/fleet-operations-card.jpg";
 
   const trustMetrics = [
     { label: "Fleet size", value: "500+" },

@@ -35,7 +35,7 @@ export const Footer = () => {
       <div className="section-container section-spacing relative z-10 space-y-12 sm:space-y-16 pb-8 overflow-x-hidden">
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-white/10 via-white/5 to-white/10 p-8 backdrop-blur-xl shadow-[0_30px_80px_rgba(5,20,0,0.5)]">
           <img
-            src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1600&h=900&fit=crop"
+            src="/footer-cta-background.jpg"
             alt="Luxury car interior"
             className="absolute inset-0 h-full w-full object-cover opacity-20"
             loading="lazy"
