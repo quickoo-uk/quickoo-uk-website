@@ -159,6 +159,13 @@ body {
         @apply text-foreground font-inter;
     }
 
+    /* Force white background even in dark mode */
+    @media (prefers-color-scheme: dark) {
+        body {
+            background: radial-gradient(circle at top, #f9fff9 0%, #f6fff6 30%, #efffef 90%) !important;
+        }
+    }
+
     h1,
     h2,
     h3,
@@ -181,24 +188,48 @@ body {
 }
 
 @layer components {
-    .luxury-button {
-        @apply px-8 py-3 rounded-lg font-montserrat font-semibold transition-all duration-300;
+    .luxury-button-gold {
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        transition: all 0.3s;
+        background: linear-gradient(to right, #1a2e03, #487307, #6aa80b);
+        color: white;
+        box-shadow: 0 15px 40px rgba(20, 40, 5, 0.35);
     }
 
-    .luxury-button-gold {
-        @apply luxury-button bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white shadow-[0_15px_40px_rgba(20,40,5,0.35)] hover:opacity-90;
+    .luxury-button-gold:hover {
+        opacity: 0.9;
     }
 
     .luxury-button-outline {
-        @apply luxury-button border-2 border-white/30 text-white hover:bg-white/10;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
     }
 
-    .rectangle-button {
-        @apply px-8 py-4 rounded-none font-montserrat font-semibold transition-all duration-300;
+    .luxury-button-outline:hover {
+        background: rgba(255, 255, 255, 0.1);
     }
 
     .rectangle-button-white {
-        @apply rectangle-button bg-white text-black hover:bg-gray-100 shadow-lg;
+        padding: 1rem 2rem;
+        border-radius: 0;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        transition: all 0.3s;
+        background: white;
+        color: black;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .rectangle-button-white:hover {
+        background: #f3f4f6;
     }
 
     .section-container {
