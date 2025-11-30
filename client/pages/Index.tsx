@@ -12,8 +12,9 @@ export default function Index() {
     <div className="w-full bg-[radial-gradient(circle_at_top,_#ffffff,_#f3f6ff,_#fff6ed)]">
       <HeroSection />
       {/* <AnimatedInfinityAccent /> */}
-      <WhyChooseSection />
+      
       <FleetPreviewSection />
+      <WhyChooseSection />
       <ServicesOverviewSection />
       <AboutSection />
       {/* <TestimonialsSection /> */}

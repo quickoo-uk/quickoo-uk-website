@@ -158,7 +158,7 @@ export const HeroSection = () => {
               Experience the Art of
               <br />
               <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                Premium Travel
+                Luxury Travel
               </span>
             </motion.h1>
 
