@@ -128,41 +128,47 @@ export const FleetPreviewSection = () => {
               variants={item}
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}
-              className="group flex flex-col overflow-hidden rounded-[28px] bg-white border border-gray-100 shadow-md hover:shadow-lg transition-all duration-500"
+              className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-500"
             >
+              {/* Premium Badge - Top Center */}
+              <div className="relative bg-gradient-to-br from-[#f8faf5] to-white pt-4 pb-2">
+                <div className="flex justify-center">
+                  <div className="rounded-full bg-white/95 backdrop-blur px-4 py-1.5 shadow-sm border border-gray-100">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#487307]">
+                      Premium
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               {/* Image Section */}
-              <div className="relative h-64 overflow-hidden bg-gradient-to-br from-[#f8faf5] to-white p-6 flex items-center justify-center">
+              <div className="relative overflow-hidden bg-gradient-to-br from-[#f8faf5] to-white px-6 pb-6 flex items-center justify-center">
                 <motion.img
                   src={vehicle.image}
                   alt={vehicle.name}
                   loading="lazy"
-                  className="max-h-44 w-auto object-contain transition duration-700 group-hover:scale-105"
+                  className="max-h-40 w-auto object-contain transition duration-700 group-hover:scale-105"
                 />
-                <div className="absolute top-4 right-4 rounded-full bg-white/95 backdrop-blur px-4 py-2 shadow-lg">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#487307]">
-                    Premium
-                  </p>
-                </div>
               </div>
 
               {/* Content Section */}
-              <div className="flex flex-1 flex-col gap-6 p-8">
-                {/* Title */}
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1 min-w-0 pr-8 md:pr-12">
-                    <h3 className="text-2xl md:text-3xl font-montserrat font-bold text-dark mb-1 leading-tight">
+              <div className="flex flex-1 flex-col gap-5 p-6">
+                {/* Title and Price - Horizontal Layout */}
+                <div className="flex items-baseline justify-between gap-4 pb-4 border-b border-gray-100">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-xl font-montserrat font-bold text-dark leading-tight">
                       {vehicle.name}
                     </h3>
-                    <p className="text-sm text-gray-500 font-inter">
+                    <p className="text-xs text-gray-500 font-inter mt-1">
                       {vehicle.subtitle}
                     </p>
                   </div>
 
-                  <div className="shrink-0 self-start text-right flex flex-col items-end">
-                    <span className="inline-flex items-center bg-[#e6f6e8] text-[#2f6b2b] font-bold px-3 py-1 rounded-full text-sm md:text-base">
+                  <div className="shrink-0 text-right">
+                    <span className="inline-block bg-gradient-to-r from-[#2f6b2b] to-[#487307] text-white font-bold px-3 py-1.5 rounded-lg text-sm whitespace-nowrap">
                       {vehicle.priceMain}
                     </span>
-                    <p className="text-sm text-gray-500 mt-1">{vehicle.priceNote}</p>
+                    <p className="text-xs text-gray-500 mt-1">{vehicle.priceNote}</p>
                   </div>
                 </div>
 
@@ -172,14 +178,14 @@ export const FleetPreviewSection = () => {
                 </p>
 
                 {/* Specifications */}
-                <div className="space-y-4 pt-4 border-t border-gray-100">
+                <div className="space-y-3">
                   {/* Guests */}
-                  <div className="flex items-start gap-3">
-                    <div className="rounded-full bg-[#eaf7e8] p-2.5 flex items-center justify-center">
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-full bg-[#eaf7e8] p-2 flex items-center justify-center shrink-0">
                       <Users className="h-4 w-4 text-[#487307]" />
                     </div>
-                    <div className="flex-1">
-                      <p className="text-xs uppercase tracking-widest text-gray-500 font-semibold mb-1">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs uppercase tracking-wider text-gray-500 font-semibold">
                         Capacity
                       </p>
                       <p className="text-sm font-semibold text-dark">
@@ -189,12 +195,12 @@ export const FleetPreviewSection = () => {
                   </div>
 
                   {/* Luggage */}
-                  <div className="flex items-start gap-3">
-                    <div className="rounded-full bg-[#eaf7e8] p-2.5 flex items-center justify-center">
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-full bg-[#eaf7e8] p-2 flex items-center justify-center shrink-0">
                       <Luggage className="h-4 w-4 text-[#487307]" />
                     </div>
-                    <div className="flex-1">
-                      <p className="text-xs uppercase tracking-widest text-gray-500 font-semibold mb-1">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs uppercase tracking-wider text-gray-500 font-semibold">
                         Luggage
                       </p>
                       <p className="text-sm font-semibold text-dark">
@@ -205,10 +211,10 @@ export const FleetPreviewSection = () => {
                 </div>
 
                 {/* Premium Features Badge */}
-                <div className="mt-auto pt-6 border-t border-gray-100">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-[#487307]">
+                <div className="mt-auto pt-4 border-t border-gray-100">
+                  <div className="flex items-center gap-2 text-sm">
                     <Sparkles className="h-4 w-4 text-[#487307]" />
-                    <span className="text-gray-700">Premium chauffeur service</span>
+                    <span className="text-gray-700 font-medium">Premium chauffeur service</span>
                   </div>
                 </div>
               </div>

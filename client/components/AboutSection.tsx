@@ -162,7 +162,7 @@ export const AboutSection = () => {
           >
             <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_90px_rgba(15,23,42,0.15)] border border-white/60">
               <img
-                src="/home/about-quickoo-chauffeur-service.jpg"
+                src="/home/about-quickoo-chauffeur-service.jpeg"
                 alt="Chauffeur welcoming guests"
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"

@@ -38,7 +38,7 @@ const AnimatedBlob = () => (
 
 export const HeroSection = () => {
   const images = [
-    "/home/hero-premium-travel-1.jpg",
+    "/home/hero-premium-travel-1.png",
     "/home/hero-premium-travel-2.jpg",
     "/home/hero-premium-travel-3.jpg",
   ];
