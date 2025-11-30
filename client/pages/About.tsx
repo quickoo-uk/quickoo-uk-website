@@ -278,15 +278,18 @@ export default function AboutPage() {
                     <p className="text-xs uppercase tracking-[0.4em] text-slate-500">Signature Fleet</p>
                     <p className="text-2xl font-semibold text-slate-900">Mercedes-Maybach</p>
                   </div>
-                  <motion.img
-                    src="/fleet/Mercedes-S-Class.png"
-                    alt="Mercedes S-Class representing Quickoo chauffeur fleet"
-                    className="w-full max-w-md mx-auto drop-shadow-[0_25px_40px_rgba(15,23,42,0.35)]"
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
-                    loading="lazy"
-                  />
+                  <div className="relative mx-auto max-w-md overflow-hidden rounded-2xl border-[6px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+                    <motion.img
+                      src="/fleet/Mercedes-benz-s-class.png"
+                      alt="Mercedes S-Class representing Quickoo chauffeur fleet"
+                      className="h-full w-full object-cover"
+                      initial={{ opacity: 0, scale: 1.1 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 1.2, ease: "easeOut" }}
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                  </div>
                   <div className="flex items-center justify-between text-xs text-slate-500 uppercase tracking-[0.4em]">
                     <span>Hybrid ready</span>
                     <span>WiFi onboard</span>
