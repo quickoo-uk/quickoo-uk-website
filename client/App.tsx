@@ -19,8 +19,11 @@ import ContactPage from "./pages/Contact";
 import BookNowPage from "./pages/BookNow";
 import PrivacyPolicyPage from "./pages/PrivacyPolicy";
 import TermsAndConditionsPage from "./pages/TermsAndConditions";
-
 import FAQ from "./pages/FAQ";
+import SafetyFirstPage from "./pages/SafetyFirst";
+import TransparentPricingPage from "./pages/TransparentPricing";
+import LuxuryFleetPage from "./pages/LuxuryFleet";
+import EliteChauffeurs from "./pages/EliteChauffeurs";
 
 const queryClient = new QueryClient();
 
@@ -123,6 +126,38 @@ const App = () => (
             element={
               <Layout>
                 <FAQ />
+              </Layout>
+            }
+          />
+          <Route
+            path="/why-choose/safety-first"
+            element={
+              <Layout>
+                <SafetyFirstPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/why-choose/transparent-pricing"
+            element={
+              <Layout>
+                <TransparentPricingPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/why-choose/luxury-fleet"
+            element={
+              <Layout>
+                <LuxuryFleetPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/why-choose/elite-chauffeurs"
+            element={
+              <Layout>
+                <EliteChauffeurs />
               </Layout>
             }
           />

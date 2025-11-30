@@ -9,7 +9,7 @@ export const BookingWidget = () => {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showTimePicker, setShowTimePicker] = useState(false);
     const [currentMonth, setCurrentMonth] = useState(new Date(2025, 10, 1)); // November 2025
-    const [selectedDuration, setSelectedDuration] = useState("3 hours");
+    const [selectedDuration, setSelectedDuration] = useState("4 hours");
     const [showDurationPicker, setShowDurationPicker] = useState(false);
 
     const datePickerRef = useRef<HTMLDivElement>(null);
@@ -80,7 +80,7 @@ export const BookingWidget = () => {
     const timeSlots = generateTimeSlots();
 
     const durations = [
-        "3 hours", "4 hours", "5 hours", "6 hours", "7 hours",
+        "4 hours", "5 hours", "6 hours", "7 hours",
         "8 hours", "9 hours", "10 hours", "11 hours", "12 hours", "24 hours"
     ];
 

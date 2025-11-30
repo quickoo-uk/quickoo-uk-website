@@ -11,14 +11,14 @@ const FEATURES = [
 
 export const AppDownloadSection = () => {
   return (
-    <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#fff5ec]">
+    <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#f1f5ff]">
       {/* Background gradients */}
-      <div className="absolute -right-20 top-20 h-72 w-72 rounded-full bg-[#a5c9ff]/10 blur-[100px]" />
-      <div className="absolute -left-20 bottom-20 h-80 w-80 rounded-full bg-gold/10 blur-[120px]" />
+      <div className="absolute -right-20 top-20 h-72 w-72 rounded-full bg-[#487307]/5 blur-[100px]" />
+      <div className="absolute -left-20 bottom-20 h-80 w-80 rounded-full bg-[#6aa80b]/10 blur-[120px]" />
 
       {/* Animated SVG */}
       <motion.svg
-        className="pointer-events-none absolute bottom-0 left-1/2 h-64 w-64 -translate-x-1/2 text-gold/20"
+        className="pointer-events-none absolute bottom-0 left-1/2 h-64 w-64 -translate-x-1/2 text-[#487307]/10"
         viewBox="0 0 160 160"
         aria-hidden
         animate={{ rotate: 360 }}
@@ -53,7 +53,7 @@ export const AppDownloadSection = () => {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
+            <div className="inline-flex items-center gap-3 rounded-full border border-[#487307]/20 bg-white/80 px-6 py-2 backdrop-blur shadow-sm">
               <Sparkles className="h-4 w-4 text-[#487307]" />
               <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
                 Mobile Experience
@@ -62,7 +62,7 @@ export const AppDownloadSection = () => {
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark leading-tight">
               Your entire journey,{" "}
-              <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] bg-clip-text text-transparent">
                 in your pocket.
               </span>
             </h2>
@@ -91,55 +91,40 @@ export const AppDownloadSection = () => {
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-3 rounded-xl bg-dark px-6 py-3 text-white shadow-lg shadow-dark/20 transition hover:bg-dark/90"
-              >
-                <Apple className="h-6 w-6" />
-                <div className="text-left">
-                  <p className="text-[10px] font-medium uppercase opacity-80">
-                    Download on the
-                  </p>
-                  <p className="text-sm font-bold">App Store</p>
+              {/* App Store Button */}
+              <div className="group relative overflow-hidden rounded-xl bg-black text-white shadow-lg transition-all hover:scale-105 cursor-pointer">
+                <div className="flex items-center gap-3 px-6 py-3 transition-transform duration-300 group-hover:-translate-y-full">
+                  <Apple className="h-6 w-6" />
+                  <div className="text-left">
+                    <p className="text-[10px] font-medium uppercase opacity-80">
+                      Download on the
+                    </p>
+                    <p className="text-sm font-bold">App Store</p>
+                  </div>
                 </div>
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-3 rounded-xl bg-white border border-gray-200 px-6 py-3 text-dark shadow-lg shadow-gray-200/50 transition hover:bg-gray-50"
-              >
-                <Smartphone className="h-6 w-6" />
-                <div className="text-left">
-                  <p className="text-[10px] font-medium uppercase opacity-60">
-                    Get it on
-                  </p>
-                  <p className="text-sm font-bold">Google Play</p>
+                <div className="absolute inset-0 flex items-center justify-center bg-[#487307] text-white transition-transform duration-300 translate-y-full group-hover:translate-y-0">
+                  <span className="text-sm font-bold">Coming Soon</span>
                 </div>
-              </motion.button>
-            </div>
-
-            <div className="flex items-center gap-4 pt-4">
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <img
-                    key={i}
-                    src={`https://randomuser.me/api/portraits/men/${i + 20
-                      }.jpg`}
-                    alt="User"
-                    className="h-10 w-10 rounded-full border-2 border-white object-cover"
-                  />
-                ))}
               </div>
-              <div className="text-sm">
-                <div className="flex items-center gap-1 font-bold text-dark">
-                  4.9
-                  <Star className="h-4 w-4 fill-gold text-gold" />
+
+              {/* Google Play Button */}
+              <div className="group relative overflow-hidden rounded-xl bg-white border border-gray-200 text-dark shadow-lg transition-all hover:scale-105 cursor-pointer">
+                <div className="flex items-center gap-3 px-6 py-3 transition-transform duration-300 group-hover:-translate-y-full">
+                  <Smartphone className="h-6 w-6" />
+                  <div className="text-left">
+                    <p className="text-[10px] font-medium uppercase opacity-60">
+                      Get it on
+                    </p>
+                    <p className="text-sm font-bold">Google Play</p>
+                  </div>
                 </div>
-                <p className="text-gray-500">from 2,000+ reviews</p>
+                <div className="absolute inset-0 flex items-center justify-center bg-[#487307] text-white transition-transform duration-300 translate-y-full group-hover:translate-y-0">
+                  <span className="text-sm font-bold">Coming Soon</span>
+                </div>
               </div>
             </div>
+
+
           </motion.div>
 
           <motion.div
@@ -155,10 +140,15 @@ export const AppDownloadSection = () => {
                 <img
                   src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80"
                   alt="App Interface"
-                  className="h-full w-full object-cover rounded-[2.5rem]"
+                  className="h-full w-full object-cover rounded-[2.5rem] blur-sm"
                 />
-                <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-8 left-6 right-6 text-white">
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 rounded-[2.5rem]">
+                  <div className="rounded-full bg-[#487307]/90 px-6 py-2 backdrop-blur-md shadow-lg border border-white/20">
+                    <span className="text-white font-bold tracking-wider uppercase text-sm">Coming Soon</span>
+                  </div>
+                </div>
+                <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-8 left-6 right-6 text-white blur-[2px]">
                   <p className="text-sm font-medium opacity-80">
                     Arriving in 5 mins
                   </p>
@@ -189,7 +179,7 @@ export const AppDownloadSection = () => {
             <motion.div
               animate={{ y: [0, 20, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -left-12 bottom-20 z-0 h-64 w-64 rounded-full bg-gold/20 blur-3xl"
+              className="absolute -left-12 bottom-20 z-0 h-64 w-64 rounded-full bg-[#6aa80b]/20 blur-3xl"
             />
           </motion.div>
         </div>

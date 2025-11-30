@@ -1,5 +1,6 @@
 import { Shield, DollarSign, Crown, Users, Award, Clock, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const FEATURES = [
   {
@@ -9,6 +10,7 @@ const FEATURES = [
       "Vetted chauffeurs, biometric access controls, and real-time vehicle monitoring.",
     badge: "ISO 39001",
     accent: "from-emerald-500/90 via-green-400/90 to-emerald-500/80",
+    link: "/why-choose/safety-first",
   },
   {
     icon: DollarSign,
@@ -17,6 +19,7 @@ const FEATURES = [
       "Smart routing + automated surge shielding keep every quote honest and upfront.",
     badge: "Live Quotes",
     accent: "from-sky-500/90 via-indigo-500/80 to-sky-500/70",
+    link: "/why-choose/transparent-pricing",
   },
   {
     icon: Crown,
@@ -25,6 +28,7 @@ const FEATURES = [
       "From Maybach sedans to V-Class lounges, each ride includes Wi-Fi, refreshments, and concierge extras.",
     badge: "Curated Fleet",
     accent: "from-amber-500/90 via-orange-500/80 to-amber-500/70",
+    link: "/why-choose/luxury-fleet",
   },
   {
     icon: Users,
@@ -33,6 +37,7 @@ const FEATURES = [
       "Hospitality-trained drivers fluent in multiple languages and versed in VIP protocol.",
     badge: "1% Hired",
     accent: "from-purple-500/90 via-fuchsia-500/80 to-purple-500/70",
+    link: "/why-choose/elite-chauffeurs",
   },
 ];
 
@@ -103,7 +108,7 @@ export const WhyChooseSection = () => {
             <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
               <Sparkles className="h-4 w-4 text-[#487307]" />
               <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                Why Quickoo
+                Why Our Clients Trust Quickoo
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
@@ -119,36 +124,7 @@ export const WhyChooseSection = () => {
               is staged with signature amenities.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4 lg:justify-start">
-              {METRICS.map((metric, idx) => {
-                const Icon = metric.icon;
-                return (
-                  <motion.div
-                    key={metric.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.2, duration: 0.5 }}
-                    whileHover={{ y: -5 }}
-                    className="rounded-3xl border border-white/60 bg-white/85 px-6 py-4 backdrop-blur shadow-[0_25px_70px_rgba(72,115,7,0.18)]"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="rounded-xl bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] p-3 text-white">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.25em] text-gray-500">
-                          {metric.label}
-                        </p>
-                        <p className="text-2xl font-montserrat font-bold bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                          {metric.value}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
+
           </motion.div>
 
           <motion.div
@@ -161,7 +137,7 @@ export const WhyChooseSection = () => {
             <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#f3d6ff]/30 via-[#9fd4ff]/20 to-transparent blur-3xl" />
             <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_90px_rgba(15,23,42,0.15)] border border-white/60">
               <img
-                src="/home/why-quickoo-chauffeur-service.jpg"
+                src="/home/why-quickoo-chauffeur-service.png"
                 alt="Chauffeur opening car door"
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
@@ -196,32 +172,33 @@ export const WhyChooseSection = () => {
           {FEATURES.map((feature) => {
             const Icon = feature.icon;
             return (
-              <motion.div
-                key={feature.title}
-                variants={item}
-                whileHover={{ y: -10 }}
-                className="group relative overflow-hidden rounded-[28px] bg-white/90 border border-white/60 p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] transition hover:shadow-[0_30px_90px_rgba(116,128,255,0.25)]"
-              >
-                <div
-                  className={`absolute inset-x-10 -top-16 h-32 rounded-full blur-3xl bg-gradient-to-r ${feature.accent} opacity-70`}
-                />
-                <div className="relative flex items-center gap-4 mb-6">
+              <Link key={feature.title} to={feature.link}>
+                <motion.div
+                  variants={item}
+                  whileHover={{ y: -10 }}
+                  className="group relative overflow-hidden rounded-[28px] bg-white/90 border border-white/60 p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] transition hover:shadow-[0_30px_90px_rgba(116,128,255,0.25)] cursor-pointer"
+                >
                   <div
-                    className={`rounded-2xl bg-gradient-to-r ${feature.accent} p-4 text-white shadow-lg`}
-                  >
-                    <Icon className="h-6 w-6" />
+                    className={`absolute inset-x-10 -top-16 h-32 rounded-full blur-3xl bg-gradient-to-r ${feature.accent} opacity-70`}
+                  />
+                  <div className="relative flex items-center gap-4 mb-6">
+                    <div
+                      className={`rounded-2xl bg-gradient-to-r ${feature.accent} p-4 text-white shadow-lg`}
+                    >
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <span className="rounded-full bg-dark/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-dark/60">
+                      {feature.badge}
+                    </span>
                   </div>
-                  <span className="rounded-full bg-dark/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-dark/60">
-                    {feature.badge}
-                  </span>
-                </div>
-                <h3 className="text-2xl font-montserrat font-bold text-dark mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-sm font-inter leading-relaxed text-gray-600">
-                  {feature.description}
-                </p>
-              </motion.div>
+                  <h3 className="text-2xl font-montserrat font-bold text-dark mb-4">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm font-inter leading-relaxed text-gray-600">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              </Link>
             );
           })}
         </motion.div>

@@ -38,7 +38,7 @@ const AnimatedBlob = () => (
 
 export const HeroSection = () => {
   const images = [
-    "/home/hero-premium-travel-1.jpg",
+    "/home/hero-premium-travel-1.png",
     "/home/hero-premium-travel-2.jpg",
     "/home/hero-premium-travel-3.jpg",
   ];
@@ -158,7 +158,7 @@ export const HeroSection = () => {
               Experience the Art of
               <br />
               <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                Premium Travel
+                Luxury Travel
               </span>
             </motion.h1>
 
