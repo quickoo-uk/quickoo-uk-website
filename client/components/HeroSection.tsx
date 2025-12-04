@@ -145,7 +145,7 @@ export const HeroSection = () => {
             >
               <Sparkles className="h-4 w-4 text-[#487307]" />
               <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                Quickoo Chauffeur
+                Quickoo Chauffeur Services
               </span>
             </motion.div>
 

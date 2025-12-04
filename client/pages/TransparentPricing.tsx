@@ -1,4 +1,4 @@
-import { DollarSign, CheckCircle2, TrendingUp, Shield, Calculator, CreditCard, ArrowRight, Sparkles, FileText } from "lucide-react";
+import { DollarSign, CheckCircle2, TrendingUp, Shield, Calculator, CreditCard, ArrowRight, Sparkles, FileText, PoundSterlingIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -122,7 +122,7 @@ export default function TransparentPricingPage() {
                     <div className="grid gap-12 lg:grid-cols-2 items-center">
                         <div className="space-y-8">
                             <div className="inline-flex items-center gap-3 rounded-full border border-[#487307]/20 bg-white/80 px-6 py-2 backdrop-blur shadow-sm">
-                                <DollarSign className="h-4 w-4 text-[#487307]" />
+                                <PoundSterlingIcon className="h-4 w-4 text-[#487307]" />
                                 <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
                                     Transparent Pricing
                                 </span>

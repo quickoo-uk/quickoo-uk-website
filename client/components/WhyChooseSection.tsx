@@ -1,4 +1,4 @@
-import { Shield, DollarSign, Crown, Users, Award, Clock, Sparkles } from "lucide-react";
+import { Shield, DollarSign, Crown, Users, Award, Clock, Sparkles, PoundSterlingIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const FEATURES = [
     link: "/why-choose/safety-first",
   },
   {
-    icon: DollarSign,
+    icon: PoundSterlingIcon ,
     title: "Transparent Pricing",
     description:
       "Smart routing + automated surge shielding keep every quote honest and upfront.",
