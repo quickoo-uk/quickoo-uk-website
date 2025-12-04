@@ -142,22 +142,7 @@ export const WhyChooseSection = () => {
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/95 p-6 shadow-xl backdrop-blur"
-              >
-                <p className="text-xs uppercase tracking-[0.25em] text-gray-500 mb-2">
-                  Concierge Snapshot
-                </p>
-                <p className="text-dark font-montserrat text-lg font-semibold">
-                  Pre-arrival checks, route notes, and vehicle telemetry sent the
-                  moment your chauffeur departs.
-                </p>
-              </motion.div>
+             
             </div>
           </motion.div>
         </div>
@@ -181,15 +166,13 @@ export const WhyChooseSection = () => {
                   <div
                     className={`absolute inset-x-10 -top-16 h-32 rounded-full blur-3xl bg-gradient-to-r ${feature.accent} opacity-70`}
                   />
-                  <div className="relative flex items-center gap-4 mb-6">
+                  <div className="relative flex items-center gap-4 mb-6 justify-center">
                     <div
                       className={`rounded-2xl bg-gradient-to-r ${feature.accent} p-4 text-white shadow-lg`}
                     >
                       <Icon className="h-6 w-6" />
                     </div>
-                    <span className="rounded-full bg-dark/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-dark/60">
-                      {feature.badge}
-                    </span>
+                  
                   </div>
                   <h3 className="text-2xl font-montserrat font-bold text-dark mb-4">
                     {feature.title}

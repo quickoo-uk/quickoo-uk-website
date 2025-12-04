@@ -84,10 +84,10 @@ const journeySteps = [
 ];
 
 const curatedAddOns = [
-  { label: "Event command center", value: "From £280 / hr" },
-  { label: "Security liaison", value: "From £350 / day" },
-  { label: "Private route curator", value: "Included on multi-city itineraries" },
-  { label: "Brand integrations", value: "Custom proposal" },
+  { label: "Event command center", note: "On-demand event coordination and live comms." },
+  { label: "Security liaison", note: "Professional security and close-protection coordination." },
+  { label: "Private route curator", note: "Custom route planning for multi-city and VIP transfers." },
+  { label: "Brand integrations", note: "Branding, vehicle wraps and guest experience integrations." },
 ];
 
 // Dynamic operations image based on service type
@@ -199,21 +199,9 @@ export default function ServicesPlaceholder() {
               <button className="rounded-full luxury-button-gold px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#0a1a02]/35 transition hover:scale-[1.02]">
                 Book {serviceName}
               </button>
-              <button className="rounded-full border border-slate-200 px-8 py-3 text-base font-semibold text-slate-900 hover:border-[#2a4204] hover:text-[#2a4204] transition">
-                Download spec sheet
-              </button>
+             
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {trustMetrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="rounded-3xl border border-white/60 bg-white/85 px-6 py-4 text-center backdrop-blur shadow-[0_25px_70px_rgba(72,115,7,0.18)]"
-                >
-                  <p className="text-2xl font-montserrat text-[#487307]">{metric.value}</p>
-                  <p className="text-xs tracking-[0.3em] uppercase text-slate-500">{metric.label}</p>
-                </div>
-              ))}
-            </div>
+           
           </div>
 
           <div className="relative">
@@ -240,78 +228,13 @@ export default function ServicesPlaceholder() {
                   <span>Climate suite</span>
                 </div>
               </div>
-              <div className="absolute -bottom-8 -right-8 hidden sm:block rounded-[28px] border border-white/60 bg-white/90 p-4 shadow-xl">
-                <div className="overflow-hidden rounded-2xl">
-                  <img
-                    src={getOperationsImage(id ?? "")}
-                    alt="Quickoo concierge at work"
-                    className="h-28 w-40 object-cover"
-                  />
-                </div>
-                <p className="mt-3 text-xs uppercase tracking-[0.4em] text-slate-500">Ops in action</p>
-                <p className="text-sm font-semibold text-slate-800">Live itinerary updates</p>
-              </div>
+              
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-spacing relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#fdfaff] via-[#f1f5ff] to-[#fff5ec]" />
-        <div className="absolute -right-16 -top-10 h-56 w-56 rounded-full bg-gold/15 blur-[120px]" />
-        <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
-        <svg
-          className="pointer-events-none absolute left-10 top-10 h-32 w-32 text-gold/30 animate-[spin_24s_linear_infinite]"
-          viewBox="0 0 160 160"
-          aria-hidden
-        >
-          <circle cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeWidth="0.6" />
-          <circle cx="80" cy="80" r="40" fill="none" stroke="currentColor" strokeWidth="0.6" />
-        </svg>
-
-        <div className="section-container relative grid gap-12 lg:grid-cols-[1.05fr_0.95fr] items-center">
-          <div className="space-y-6">
-            <p className="uppercase tracking-[0.4em] text-xs text-slate-500">Operations studio</p>
-            <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-dark">
-              White-glove coordination that feels calm and modern
-            </h2>
-            <p className="text-slate-600 font-inter">
-              Our concierge team works inside a bright, hospitality-inspired studio that mirrors the light
-              gradients of this page. Your itinerary is monitored by humans and technology in harmony.
-            </p>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {[
-                "Live ops dashboard & sentiment tracking",
-                "Instant escalation routes with regional leads",
-                "Calm, white-theme UI that clients can share",
-                "Motion cues for status changes & approvals",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-white/60 bg-white/80 px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="relative rounded-[36px] border border-white/60 bg-white/80 shadow-[0_35px_90px_rgba(15,23,42,0.1)] overflow-hidden">
-            <img
-              src={getTeamCollaborationImage(id ?? "")}
-              alt="Quickoo operations team collaborating"
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/30 bg-white/80 px-5 py-4 text-sm text-slate-600 font-inter shadow-lg backdrop-blur">
-              <p className="uppercase tracking-[0.4em] text-xs text-slate-500">Working live</p>
-              <p className="text-lg font-montserrat text-dark">Ops floor monitors {serviceName}</p>
-              <p>Synchronized callouts, ETA nudges, and guest updates for every journey.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+    
       <section className="section-spacing relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#f1f3ff,_transparent_65%)]" />
         <div className="section-container relative space-y-12">
@@ -390,61 +313,42 @@ export default function ServicesPlaceholder() {
         </div>
       </section>
 
-      <section className="section-spacing bg-gradient-to-b from-white via-[#f7f8ff] to-white">
-        <div className="section-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-start">
-          <div className="rounded-[32px] border border-slate-100 bg-gradient-to-b from-white via-white to-[#f8fafc] p-8 shadow-[0_25px_80px_rgba(15,23,42,0.08)] space-y-6">
-            <p className="uppercase tracking-[0.4em] text-sm text-slate-500">
-              Tailored add-ons
-            </p>
-            <h3 className="text-3xl font-montserrat font-semibold text-dark">
-              Extend your {serviceName.toLowerCase()} suite
-            </h3>
-            <p className="text-slate-600 font-inter">
-              Layer concierge services that mirror event mobility or corporate programs featured on our About page.
-            </p>
-            <div className="grid gap-4">
-              {curatedAddOns.map((addon) => (
-                <div
-                  key={addon.label}
-                  className="rounded-2xl border border-white/40 bg-white/80 px-5 py-4 flex flex-col"
-                >
-                  <span className="text-xs uppercase tracking-[0.35em] text-slate-500">
-                    {addon.label}
-                  </span>
-                  <span className="text-lg font-montserrat text-dark">{addon.value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+      <section className="relative overflow-hidden bg-white min-h-[600px] md:min-h-[500px]">
+        <div className="absolute inset-0">
+          <img
+            src="/fleet/BusinessClass.png"
+            alt="Premium luxury vehicle"
+            className="w-full h-full object-cover object-center opacity-90"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent" />
+        </div>
 
-          <div className="rounded-[32px] border border-[#0a1a02]/10 bg-gradient-to-br from-[#0a1a02] via-[#152905] to-[#2a4204] text-white p-10 relative overflow-hidden">
-            <img
-              src={getChauffeurPortraitImage(id ?? "")}
-              alt="Quickoo chauffeur"
-              className="absolute inset-0 h-full w-full object-cover opacity-25"
-              loading="lazy"
-            />
-            <div className="relative space-y-6">
-              <p className="uppercase tracking-[0.4em] text-sm text-white/70">Concierge insights</p>
-              <h3 className="text-3xl font-montserrat font-semibold leading-tight">
-                “The new {serviceName.toLowerCase()} hub mirrors our About page and gives guests confidence from the first scroll.”
-              </h3>
-              <div className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-full bg-white/15 flex items-center justify-center">
-                  <MapPin className="text-white" />
-                </div>
-                <div>
-                  <p className="font-montserrat text-lg">Selena Ward</p>
-                  <p className="text-sm text-white/70 font-inter">Head of Concierge Experience</p>
-                </div>
-              </div>
-              <div className="rounded-2xl border border-white/20 bg-white/5 p-6 space-y-3">
-                <p className="text-xs uppercase tracking-[0.4em] text-white/60">Insights</p>
-                <p className="text-2xl font-montserrat">4.9 ★ average service review</p>
-                <p className="text-white/70">
-                  Verified guests cite clarity, mood-rich UI, and quick concierge response times as key decision drivers.
+        <div className="relative">
+          <div className="section-container grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-center py-16 md:py-28">
+            <div className="space-y-6">
+              <div className="inline-block">
+                <p className="uppercase tracking-[0.4em] text-sm font-semibold text-dark/80 bg-dark/5 px-4 py-2 rounded-full">
+                  Concierge Insights
                 </p>
               </div>
+              <h3 className="text-3xl sm:text-4xl font-montserrat font-semibold leading-tight text-dark">
+                Premium comfort meets precision planning
+              </h3>
+              <p className="text-lg text-dark/70 leading-relaxed">
+                Experience the perfect balance of luxury and reliability. Our concierge team ensures every detail exceeds expectations, making your journey memorable from start to finish.
+              </p>
+              <div className="mt-8 flex items-center gap-4">
+                <div className="h-12 w-12 rounded-full bg-dark/10 flex items-center justify-center">
+                  <MapPin className="text-dark" size={20} />
+                </div>
+                <div>
+                  <p className="font-montserrat text-lg font-semibold text-dark">Selena Ward</p>
+                  <p className="text-sm text-dark/60 font-inter">Head of Concierge Experience</p>
+                </div>
+              </div>
+
+          
             </div>
           </div>
         </div>
@@ -491,13 +395,7 @@ export default function ServicesPlaceholder() {
               <p className="text-lg font-montserrat">+44 20 3576 1617</p>
               <p className="text-slate-600 font-inter">Direct line to our 24/7 guest experience desk.</p>
             </div>
-            <div className="rounded-2xl border border-dark/5 bg-dark text-white px-5 py-4 flex items-center justify-between">
-              <div>
-                <p className="text-xs uppercase tracking-[0.4em] text-white/60">Response time</p>
-                <p className="text-2xl font-montserrat">12 min avg</p>
-              </div>
-              <ArrowRight className="text-white" />
-            </div>
+          
           </div>
         </div>
       </section>

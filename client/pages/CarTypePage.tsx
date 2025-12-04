@@ -156,19 +156,7 @@ export default function CarTypePage() {
                 View Fleet
               </Link>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {trustMetrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="rounded-3xl border border-white/60 bg-white/85 px-6 py-4 text-center backdrop-blur shadow-[0_25px_70px_rgba(72,115,7,0.18)]"
-                >
-                  <p className="text-2xl font-montserrat text-[#487307]">{metric.value}</p>
-                  <p className="text-xs tracking-[0.3em] uppercase text-slate-500">
-                    {metric.label}
-                  </p>
-                </div>
-              ))}
-            </div>
+          
           </div>
 
           <div className="relative">
@@ -196,20 +184,7 @@ export default function CarTypePage() {
                   <span>Comfort</span>
                 </div>
               </div>
-              <div className="absolute -bottom-8 -right-8 hidden sm:block rounded-[28px] border border-white/60 bg-white/90 p-4 shadow-xl">
-                <div className="overflow-hidden rounded-2xl">
-                  <img
-                    src={heroWorkingImage}
-                    alt="Quickoo fleet operations"
-                    className="h-28 w-40 object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <p className="mt-3 text-xs uppercase tracking-[0.4em] text-slate-500">
-                  Fleet operations
-                </p>
-                <p className="text-sm font-semibold text-slate-800">Live availability</p>
-              </div>
+             
             </div>
           </div>
         </div>

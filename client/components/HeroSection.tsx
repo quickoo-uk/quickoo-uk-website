@@ -60,7 +60,7 @@ export const HeroSection = () => {
           <motion.div
             key={index}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.2 }}
+            animate={{ opacity: 0.4 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5 }}
             className="absolute inset-0"
@@ -195,26 +195,7 @@ export const HeroSection = () => {
               </motion.button>
             </motion.div>
 
-            {/* Trust indicators */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
-              className="flex flex-wrap gap-6 pt-4 text-sm text-slate-600 font-inter"
-            >
-              <span className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#487307]"></span>
-                Private concierge 24/7
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#487307]"></span>
-                Curated electric & executive fleet
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#487307]"></span>
-                Global availability
-              </span>
-            </motion.div>
+          
           </div>
 
           {/* Right Column: Booking Widget */}

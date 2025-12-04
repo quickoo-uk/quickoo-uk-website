@@ -79,9 +79,9 @@ export const AboutSection = () => {
                 </span>
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-                From boutique chauffeurs to a{" "}
+                From personalized chauffeur service to a{" "}
                 <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                  global concierge fleet.
+                  world-class executive fleet.
                 </span>
               </h2>
               <p className="text-base sm:text-lg text-gray-600 font-inter">
@@ -91,26 +91,7 @@ export const AboutSection = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {STATS.map((stat, idx) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
-                  whileHover={{ scale: 1.05 }}
-                  className="rounded-3xl border border-white/60 bg-white/85 px-6 py-5 backdrop-blur shadow-[0_25px_70px_rgba(72,115,7,0.18)]"
-                >
-                  <p className="text-4xl font-montserrat font-bold bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                    {stat.value}
-                  </p>
-                  <p className="mt-1 text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
-                    {stat.label}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+           
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -167,24 +148,7 @@ export const AboutSection = () => {
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-2xl bg-white/95 p-6 shadow-xl backdrop-blur"
-              >
-                <div>
-                  <p className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-2">
-                    Concierge Notes
-                  </p>
-                  <p className="text-sm font-semibold text-dark font-montserrat">
-                    Chauffeur briefing sent with venue layout & VIP protocol.
-                  </p>
-                </div>
-                <ShieldCheck className="h-6 w-6 text-[#487307]" />
-              </motion.div>
+             
             </div>
 
             <div className="rounded-3xl border border-white/60 bg-white/90 p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur">
