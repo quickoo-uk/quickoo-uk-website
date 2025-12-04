@@ -136,7 +136,7 @@ export default function TransparentPricingPage() {
                                     </span>
                                 </h1>
                                 <p className="text-lg text-slate-600 font-inter">
-                                    Experience the certainty of fixed-price journeys. Smart routing and automated surge shielding mean the price you see is always the price you pay.
+                                    Experience complete pricing transparency with fixed-rate journeys. Smart routing technology and surge protection guarantee the price you see is always the price you pay.
                                 </p>
 
                                 <div className="flex flex-wrap gap-4">
@@ -152,47 +152,18 @@ export default function TransparentPricingPage() {
                                     </Link>
                                 </div>
                             </div>
-
-                            {/* Price Guarantee Badge */}
-                            <div className="rounded-2xl border border-[#487307]/20 bg-white/80 p-6 backdrop-blur">
-                                <div className="flex items-center gap-4">
-                                    <div className="rounded-xl bg-gradient-to-br from-[#1a2e03] to-[#487307] p-4 text-white">
-                                        <Shield className="h-8 w-8" />
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-slate-600">Quickoo Promise</p>
-                                        <p className="text-xl font-montserrat font-bold text-[#487307]">Fixed Price Guarantee</p>
-                                        <p className="text-xs text-slate-500">No surge pricing, ever.</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
-                        {/* Visual Element */}
+                        {/* Hero Image */}
                         <div className="relative">
                             <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#487307]/20 via-[#6aa80b]/10 to-transparent blur-3xl" />
-                            <div className="relative rounded-3xl border border-white/60 bg-white/90 p-8 backdrop-blur-lg shadow-2xl">
-                                <div className="flex items-center justify-center h-64 mb-6">
-                                    <Calculator className="h-48 w-48 text-[#487307]/20" strokeWidth={0.5} />
-                                </div>
-                                <div className="space-y-4">
-                                    <div className="flex items-center justify-between p-3 rounded-xl bg-[#f9fafc] border border-slate-100">
-                                        <span className="text-sm font-medium text-slate-600">Base Fare</span>
-                                        <span className="text-sm font-bold text-slate-900">Included</span>
-                                    </div>
-                                    <div className="flex items-center justify-between p-3 rounded-xl bg-[#f9fafc] border border-slate-100">
-                                        <span className="text-sm font-medium text-slate-600">Tolls & Fees</span>
-                                        <span className="text-sm font-bold text-slate-900">Included</span>
-                                    </div>
-                                    <div className="flex items-center justify-between p-3 rounded-xl bg-[#f9fafc] border border-slate-100">
-                                        <span className="text-sm font-medium text-slate-600">Meet & Greet</span>
-                                        <span className="text-sm font-bold text-slate-900">Included</span>
-                                    </div>
-                                    <div className="flex items-center justify-between p-4 rounded-xl bg-[#e8f5e9] border border-[#487307]/20">
-                                        <span className="font-bold text-[#487307]">Total Price</span>
-                                        <span className="font-bold text-[#487307]">Guaranteed</span>
-                                    </div>
-                                </div>
+                            <div className="relative rounded-3xl border border-white/60 bg-white/90 p-4 backdrop-blur-lg shadow-2xl overflow-hidden">
+                                <img
+                                    src="/images/why-choose/transparent-pricing-hero.jpg"
+                                    alt="Transparent Pricing - Fixed rates with no hidden fees"
+                                    className="w-full h-auto rounded-2xl object-cover"
+                                    style={{ minHeight: '400px', maxHeight: '500px' }}
+                                />
                             </div>
                         </div>
                     </div>

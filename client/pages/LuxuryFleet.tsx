@@ -167,7 +167,7 @@ export default function LuxuryFleetPage() {
                                     </span>
                                 </h1>
                                 <p className="text-lg text-slate-600 font-inter">
-                                    From flagship sedans to spacious lounges on wheels, our fleet represents the pinnacle of automotive luxury, maintained to showroom standards.
+                                    From flagship sedans to spacious executive MPVs, our meticulously curated fleet represents the pinnacle of automotive luxury, maintained to showroom standards.
                                 </p>
 
                                 <div className="flex flex-wrap gap-4">
@@ -183,45 +183,18 @@ export default function LuxuryFleetPage() {
                                     </Link>
                                 </div>
                             </div>
-
-                            {/* Fleet Stats */}
-                            <div className="grid grid-cols-3 gap-4">
-                                <div className="rounded-2xl border border-[#487307]/20 bg-white/80 p-4 text-center backdrop-blur">
-                                    <p className="text-2xl font-montserrat font-bold text-[#487307]">100%</p>
-                                    <p className="text-xs text-slate-600">Mercedes-Benz</p>
-                                </div>
-                                <div className="rounded-2xl border border-[#487307]/20 bg-white/80 p-4 text-center backdrop-blur">
-                                    <p className="text-2xl font-montserrat font-bold text-[#487307]">&lt;3yrs</p>
-                                    <p className="text-xs text-slate-600">Average Age</p>
-                                </div>
-                                <div className="rounded-2xl border border-[#487307]/20 bg-white/80 p-4 text-center backdrop-blur">
-                                    <p className="text-2xl font-montserrat font-bold text-[#487307]">24/7</p>
-                                    <p className="text-xs text-slate-600">Support</p>
-                                </div>
-                            </div>
                         </div>
 
-                        {/* Visual Element */}
+                        {/* Hero Image */}
                         <div className="relative">
                             <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#487307]/20 via-[#6aa80b]/10 to-transparent blur-3xl" />
-                            <div className="relative rounded-3xl border border-white/60 bg-white/90 p-8 backdrop-blur-lg shadow-2xl">
-                                <div className="flex items-center justify-center h-64 mb-6">
-                                    <Car className="h-48 w-48 text-[#487307]/20" strokeWidth={0.5} />
-                                </div>
-                                <div className="space-y-3">
-                                    <div className="flex items-center gap-3">
-                                        <Star className="h-5 w-5 text-[#487307]" />
-                                        <span className="text-sm font-medium text-slate-700">Immaculate Presentation</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <Star className="h-5 w-5 text-[#487307]" />
-                                        <span className="text-sm font-medium text-slate-700">Premium Amenities</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <Star className="h-5 w-5 text-[#487307]" />
-                                        <span className="text-sm font-medium text-slate-700">Chauffeur Driven</span>
-                                    </div>
-                                </div>
+                            <div className="relative rounded-3xl border border-white/60 bg-white/90 p-4 backdrop-blur-lg shadow-2xl overflow-hidden">
+                                <img
+                                    src="/images/why-choose/luxury-fleet-hero.jpg"
+                                    alt="Luxury Fleet - Premium Mercedes-Benz vehicles"
+                                    className="w-full h-auto rounded-2xl object-cover"
+                                    style={{ minHeight: '400px', maxHeight: '500px' }}
+                                />
                             </div>
                         </div>
                     </div>

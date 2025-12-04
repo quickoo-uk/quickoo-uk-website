@@ -174,7 +174,7 @@ export default function EliteChauffeurs() {
                                     </span>
                                 </h1>
                                 <p className="text-lg text-slate-600 font-inter">
-                                    Only 1% of applicants join our elite team. Fluent in multiple languages, trained in five-star hospitality, and experts in executive service standards.
+                                    Only 1% of applicants join our elite team. Multilingual professionals trained in five-star hospitality and VIP protocol, delivering exceptional executive service on every journey.
                                 </p>
 
                                 <div className="flex flex-wrap gap-4">
@@ -190,48 +190,18 @@ export default function EliteChauffeurs() {
                                     </Link>
                                 </div>
                             </div>
-
-                            {/* Chauffeur Stats */}
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                {chauffeurStats.map((stat) => (
-                                    <div
-                                        key={stat.label}
-                                        className="rounded-2xl border border-[#487307]/20 bg-white/80 p-4 text-center backdrop-blur"
-                                    >
-                                        <p className="text-2xl font-montserrat font-semibold text-[#487307]">
-                                            {stat.value}
-                                        </p>
-                                        <p className="text-xs text-slate-600 mt-1">{stat.label}</p>
-                                    </div>
-                                ))}
-                            </div>
                         </div>
 
-                        {/* Visual Element */}
+                        {/* Hero Image */}
                         <div className="relative">
                             <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#487307]/20 via-[#6aa80b]/10 to-transparent blur-3xl" />
-                            <div className="relative rounded-3xl border border-white/60 bg-white/90 p-8 backdrop-blur-lg shadow-2xl">
-                                <div className="flex items-center justify-center h-64 mb-6">
-                                    <Users className="h-48 w-48 text-[#487307]/20" strokeWidth={0.5} />
-                                </div>
-                                <div className="space-y-3">
-                                    <div className="flex items-center gap-3">
-                                        <Star className="h-5 w-5 text-[#487307]" />
-                                        <span className="text-sm font-medium text-slate-700">VIP Protocol Certified</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <Star className="h-5 w-5 text-[#487307]" />
-                                        <span className="text-sm font-medium text-slate-700">Multilingual Excellence</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <Star className="h-5 w-5 text-[#487307]" />
-                                        <span className="text-sm font-medium text-slate-700">5-Star Hospitality Trained</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <Star className="h-5 w-5 text-[#487307]" />
-                                        <span className="text-sm font-medium text-slate-700">Enhanced DBS Cleared</span>
-                                    </div>
-                                </div>
+                            <div className="relative rounded-3xl border border-white/60 bg-white/90 p-4 backdrop-blur-lg shadow-2xl overflow-hidden">
+                                <img
+                                    src="/images/why-choose/elite-chauffeurs-hero.jpg"
+                                    alt="Elite Chauffeurs - VIP-trained professional drivers"
+                                    className="w-full h-auto rounded-2xl object-cover"
+                                    style={{ minHeight: '400px', maxHeight: '500px' }}
+                                />
                             </div>
                         </div>
                     </div>
