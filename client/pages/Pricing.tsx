@@ -103,24 +103,9 @@ export default function PricingPage() {
               <button className="luxury-button-gold px-10 py-3 text-base sm:text-lg shadow-lg shadow-gold/40">
                 Explore Packages
               </button>
-              <button className="rounded-full border border-dark/10 px-8 py-3 font-montserrat text-sm uppercase tracking-[0.2em] text-dark hover:border-gold hover:text-gold transition">
-                Request bespoke quote
-              </button>
+            
             </div>
-            <div className="flex flex-wrap gap-8 text-sm text-gray-500">
-              <div>
-                <p className="font-montserrat text-3xl text-dark">10k+</p>
-                <p className="font-inter uppercase tracking-[0.2em] text-xs">
-                  completed journeys
-                </p>
-              </div>
-              <div>
-                <p className="font-montserrat text-3xl text-dark">4.98★</p>
-                <p className="font-inter uppercase tracking-[0.2em] text-xs">
-                  guest satisfaction
-                </p>
-              </div>
-            </div>
+           
           </div>
 
           <div className="relative">
@@ -243,28 +228,7 @@ export default function PricingPage() {
               All transfer quotes include luggage handling, smart flight delay adjustments,
               and real-time driver tracking links sent to passengers.
             </p>
-            <div className="rounded-3xl border border-gold/20 bg-white/80 p-6 shadow-xl">
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div>
-                  <p className="text-3xl font-montserrat text-dark">15 min</p>
-                  <p className="text-xs uppercase tracking-[0.3em] text-gray-500">
-                    wait window
-                  </p>
-                </div>
-                <div>
-                  <p className="text-3xl font-montserrat text-dark">Zero</p>
-                  <p className="text-xs uppercase tracking-[0.3em] text-gray-500">
-                    surge fees
-                  </p>
-                </div>
-                <div>
-                  <p className="text-3xl font-montserrat text-dark">24/7</p>
-                  <p className="text-xs uppercase tracking-[0.3em] text-gray-500">
-                    concierge
-                  </p>
-                </div>
-              </div>
-            </div>
+          
           </div>
 
           <div className="rounded-[2rem] border border-white/60 bg-white/90 shadow-[0_30px_80px_rgba(15,23,42,0.1)] p-8">

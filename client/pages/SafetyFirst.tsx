@@ -41,11 +41,7 @@ const safetyFeatures = [
 ];
 
 const ukCompliance = [
-    {
-        title: "ISO 39001 Certified",
-        description: "International road traffic safety management system certification ensuring systematic safety protocols.",
-        standard: "ISO 39001:2012",
-    },
+  
     {
         title: "Enhanced DBS Checks",
         description: "All chauffeurs undergo Enhanced Disclosure and Barring Service checks, updated every 3 years.",
@@ -136,7 +132,7 @@ export default function SafetyFirstPage() {
                                     </span>
                                 </h1>
                                 <p className="text-lg text-slate-600 font-inter">
-                                    ISO 39001 certified safety protocols, real-time monitoring, and vetted chauffeurs ensure every journey meets the highest security standards.
+                                Safety protocols, real-time monitoring, and vetted chauffeurs ensure every journey meets the highest security standards.
                                 </p>
 
                                 <div className="flex flex-wrap gap-4">
@@ -153,19 +149,7 @@ export default function SafetyFirstPage() {
                                 </div>
                             </div>
 
-                            {/* ISO Badge */}
-                            <div className="rounded-2xl border border-[#487307]/20 bg-white/80 p-6 backdrop-blur">
-                                <div className="flex items-center gap-4">
-                                    <div className="rounded-xl bg-gradient-to-br from-[#1a2e03] to-[#487307] p-4 text-white">
-                                        <Award className="h-8 w-8" />
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-slate-600">Certified Under</p>
-                                        <p className="text-xl font-montserrat font-bold text-[#487307]">ISO 39001:2012</p>
-                                        <p className="text-xs text-slate-500">Road Traffic Safety Management</p>
-                                    </div>
-                                </div>
-                            </div>
+                         
                         </div>
 
                         {/* Visual Element */}
