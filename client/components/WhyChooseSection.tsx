@@ -1,4 +1,4 @@
-import { Shield, DollarSign, Crown, Users, Award, Clock, Sparkles } from "lucide-react";
+import { Shield, DollarSign, Crown, Users, Award, Clock, Sparkles, PoundSterlingIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -10,15 +10,17 @@ const FEATURES = [
       "Vetted chauffeurs, biometric access controls, and real-time vehicle monitoring.",
     badge: "ISO 39001",
     accent: "from-emerald-500/90 via-green-400/90 to-emerald-500/80",
+    shadowColor: "rgba(16, 185, 129, 0.4)", // emerald-500
     link: "/why-choose/safety-first",
   },
   {
-    icon: DollarSign,
+    icon: PoundSterlingIcon,
     title: "Transparent Pricing",
     description:
       "Smart routing + automated surge shielding keep every quote honest and upfront.",
     badge: "Live Quotes",
     accent: "from-sky-500/90 via-indigo-500/80 to-sky-500/70",
+    shadowColor: "rgba(14, 165, 233, 0.4)", // sky-500
     link: "/why-choose/transparent-pricing",
   },
   {
@@ -28,6 +30,7 @@ const FEATURES = [
       "From Maybach sedans to V-Class lounges, each ride includes Wi-Fi, refreshments, and concierge extras.",
     badge: "Curated Fleet",
     accent: "from-amber-500/90 via-orange-500/80 to-amber-500/70",
+    shadowColor: "rgba(245, 158, 11, 0.4)", // amber-500
     link: "/why-choose/luxury-fleet",
   },
   {
@@ -37,6 +40,7 @@ const FEATURES = [
       "Hospitality-trained drivers fluent in multiple languages and versed in VIP protocol.",
     badge: "1% Hired",
     accent: "from-purple-500/90 via-fuchsia-500/80 to-purple-500/70",
+    shadowColor: "rgba(168, 85, 247, 0.4)", // purple-500
     link: "/why-choose/elite-chauffeurs",
   },
 ];
@@ -105,16 +109,16 @@ export const WhyChooseSection = () => {
             transition={{ duration: 0.8 }}
             className="space-y-6 text-center lg:text-left"
           >
-            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
+            <div className="inline-flex items-center  gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
               <Sparkles className="h-4 w-4 text-[#487307]" />
-              <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
+              <span className="text-xs  tracking-[0.4em] uppercase text-slate-600 font-semibold">
                 Why Our Clients Trust Quickoo
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-              A concierge-level chauffeur partner{" "}
+              A luxury chauffeur partner defined by{" "}
               <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                obsessed with details.
+                precision and perfection.
               </span>
             </h2>
             <p className="text-base sm:text-lg font-inter text-gray-600">
@@ -142,66 +146,55 @@ export const WhyChooseSection = () => {
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/95 p-6 shadow-xl backdrop-blur"
-              >
-                <p className="text-xs uppercase tracking-[0.25em] text-gray-500 mb-2">
-                  Concierge Snapshot
-                </p>
-                <p className="text-dark font-montserrat text-lg font-semibold">
-                  Pre-arrival checks, route notes, and vehicle telemetry sent the
-                  moment your chauffeur departs.
-                </p>
-              </motion.div>
+
             </div>
           </motion.div>
         </div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4"
-        >
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 auto-rows-fr">
           {FEATURES.map((feature) => {
             const Icon = feature.icon;
             return (
-              <Link key={feature.title} to={feature.link}>
+              <Link key={feature.title} to={feature.link} className="flex">
                 <motion.div
                   variants={item}
-                  whileHover={{ y: -10 }}
-                  className="group relative overflow-hidden rounded-[28px] bg-white/90 border border-white/60 p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] transition hover:shadow-[0_30px_90px_rgba(116,128,255,0.25)] cursor-pointer"
+                  whileHover={{
+                    y: -10,
+                    boxShadow: `0 30px 90px ${feature.shadowColor}`
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="group relative flex flex-col overflow-hidden rounded-[28px] bg-white/90 border border-white/60 p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] cursor-pointer w-full h-full"
                 >
+                  {/* Glow Effect */}
                   <div
                     className={`absolute inset-x-10 -top-16 h-32 rounded-full blur-3xl bg-gradient-to-r ${feature.accent} opacity-70`}
                   />
-                  <div className="relative flex items-center gap-4 mb-6">
+
+                  {/* Icon Section */}
+                  <div className="relative flex items-center justify-center mb-6">
                     <div
-                      className={`rounded-2xl bg-gradient-to-r ${feature.accent} p-4 text-white shadow-lg`}
+                      className={`rounded-2xl bg-gradient-to-r ${feature.accent} p-4 text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}
                     >
                       <Icon className="h-6 w-6" />
                     </div>
-                    <span className="rounded-full bg-dark/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-dark/60">
-                      {feature.badge}
-                    </span>
                   </div>
-                  <h3 className="text-2xl font-montserrat font-bold text-dark mb-4">
+
+                  {/* Title - Fixed height */}
+                  <h3 className="text-2xl font-montserrat font-bold text-dark mb-4 text-center min-h-[64px] flex items-center justify-center">
                     {feature.title}
                   </h3>
-                  <p className="text-sm font-inter leading-relaxed text-gray-600">
-                    {feature.description}
-                  </p>
+
+                  {/* Description - Fixed min-height for alignment */}
+                  <div className="min-h-[96px] flex items-start justify-center">
+                    <p className="text-sm font-inter leading-relaxed text-gray-600 text-center">
+                      {feature.description}
+                    </p>
+                  </div>
                 </motion.div>
               </Link>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

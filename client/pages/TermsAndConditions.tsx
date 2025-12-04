@@ -167,20 +167,7 @@ export default function TermsAndConditionsPage() {
                 These Terms and Conditions govern your use of Quickoo's chauffeur services. Please read
                 them carefully to understand your rights and responsibilities when booking with us.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <div className="rounded-3xl border border-slate-200 bg-white/80 p-4 text-center backdrop-blur">
-                  <p className="text-2xl sm:text-3xl font-montserrat font-semibold text-gold">24hr</p>
-                  <p className="text-xs sm:text-sm text-slate-500">Cancellation</p>
-                </div>
-                <div className="rounded-3xl border border-slate-200 bg-white/80 p-4 text-center backdrop-blur">
-                  <p className="text-2xl sm:text-3xl font-montserrat font-semibold text-gold">100%</p>
-                  <p className="text-xs sm:text-sm text-slate-500">Insured</p>
-                </div>
-                <div className="rounded-3xl border border-slate-200 bg-white/80 p-4 text-center backdrop-blur">
-                  <p className="text-2xl sm:text-3xl font-montserrat font-semibold text-gold">UK</p>
-                  <p className="text-xs sm:text-sm text-slate-500">Law Governed</p>
-                </div>
-              </div>
+           
             </div>
           </div>
         </div>

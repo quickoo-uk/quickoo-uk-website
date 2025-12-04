@@ -229,19 +229,7 @@ export default function AboutPage() {
                   </button>
                 </div>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="rounded-3xl border border-slate-200 bg-white/80 p-5 text-center backdrop-blur"
-                  >
-                    <p className="text-2xl sm:text-3xl font-montserrat font-semibold text-gold">
-                      {stat.number}
-                    </p>
-                    <p className="text-xs sm:text-sm text-slate-500">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
+            
             </div>
             <div className="relative">
               <motion.div

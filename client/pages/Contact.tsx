@@ -154,31 +154,7 @@ export default function ContactPage() {
                 Our concierge team operates round the clock with sub-two-hour response times.
               </p>
             </div>
-            <motion.div
-              className="inline-flex items-center gap-3 rounded-2xl border border-slate-200 bg-white/80 px-5 py-3 shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="h-10 w-10 rounded-full bg-gold/15 flex items-center justify-center text-gold font-semibold">
-                4.9
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-900">Guest rating</p>
-                <p className="text-xs uppercase tracking-[0.4em] text-slate-500">based on 5k+ rides</p>
-              </div>
-            </motion.div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {heroStats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-3xl border border-slate-200 bg-white/80 p-4 text-center shadow-[0_20px_50px_rgba(15,23,42,0.06)]"
-                >
-                  <p className="text-xl font-montserrat font-semibold text-gold">{stat.value}</p>
-                  <p className="text-xs uppercase tracking-[0.4em] text-slate-500">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+           
           </div>
           <div className="relative">
             <motion.div

@@ -12,29 +12,32 @@ const VEHICLE_CLASSES = [
     image: "/fleet/BusinessClass.png",
     guests: "Up to 3 guests",
     luggage: "2 carry-on bags, or 2 standard bags",
-    description: "Premium executive vehicles designed for business professionals.",
+    description: "Mercedes E-Class, BMW 5 Series, or similar premium executive vehicles.",
+    vehicles: ["Mercedes E-Class", "BMW 5 Series", "Or similar"],
   },
   {
     id: "first-class",
     name: "First\u00A0Class",
     subtitle: "Tours starting (incl. VAT, fees)",
-    priceMain: "From £80 / hr",
+    priceMain: "From £75 / hr",
     priceNote: "(incl. VAT)",
     image: "/fleet/firstClass.png",
     guests: "Up to 3 guests",
     luggage: "2 carry-on bags or 2 standard bags",
-    description: "Ultimate luxury sedans for executive travel and VIP occasions.",
+    description: "Mercedes S-Class, BMW 7 Series, or similar luxury sedans.",
+    vehicles: ["Mercedes S-Class", "BMW 7 Series", "Or similar luxury sedan"],
   },
   {
     id: "business-van",
     name: "Business\u00A0Van",
     subtitle: "Tours starting (incl. VAT, fees)",
-    priceMain: "From £75 / hr",
+    priceMain: "From £70 / hr",
     priceNote: "(incl. VAT)",
     image: "/fleet/BusinessVAN.png",
     guests: "Up to 5 guests",
-    luggage: "8 carry-on bags, or 5 standard bags",
-    description: "Spacious and comfortable vans perfect for group travel.",
+    luggage: "6 carry-on bags, or 6 standard bags",
+    description: "Mercedes Vito or similar executive vans for group travel.",
+    vehicles: ["Mercedes Vito", "Or similar executive van"],
   },
 ];
 
@@ -103,9 +106,9 @@ export const FleetPreviewSection = () => {
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-            Vehicles curated for{" "}
+            High-end chauffeur services for{" "}
             <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-              boardrooms, red carpets, and runway transfers.
+              corporate travel, luxury events, and runway transfers.
             </span>
           </h2>
           <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">

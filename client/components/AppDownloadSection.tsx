@@ -138,7 +138,7 @@ export const AppDownloadSection = () => {
               <div className="absolute top-0 left-1/2 h-6 w-40 -translate-x-1/2 rounded-b-xl bg-dark" />
               <div className="h-full w-full overflow-hidden rounded-[2.5rem] bg-gray-50">
                 <img
-                  src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80"
+                  src="/home/appImage.png"
                   alt="App Interface"
                   className="h-full w-full object-cover rounded-[2.5rem] blur-sm"
                 />

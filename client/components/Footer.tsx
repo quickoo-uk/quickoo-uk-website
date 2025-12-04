@@ -46,7 +46,7 @@ export const Footer = () => {
                 Concierge 24 / 7
               </p>
               <h3 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold">
-                Ready for your next itinerary? Let's choreograph it.
+                Planning your next journey? We’ll handle every detail.
               </h3>
               <p className="mt-3 text-sm text-white/70">
                 Premium car service provider offering luxury transportation across the UK. Professional, reliable, and always on time.

@@ -22,6 +22,7 @@ type Service = {
   highlight: string;
   features: string[];
   accent: string;
+  premium?: string;
 };
 
 const SERVICES: Service[] = [
@@ -33,7 +34,8 @@ const SERVICES: Service[] = [
     highlight: "Flight Monitoring",
     features: ["VIP meet & greet", "Real-time tracking", "Luggage care"],
     accent: "from-sky-500/90 via-sky-400/80 to-sky-500/70",
-    image: "/home/Airport Transfers.jpg",
+    image: "/home/Airport Transfers.png",
+    premium: "Your schedule comes first: 1 hour complimentary wait time with advanced flight monitoring.",
   },
   {
     icon: Navigation2,
@@ -135,9 +137,9 @@ export const ServicesOverviewSection = () => {
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-            Chauffeur Services{" "}
+            Luxury Chauffeurs {" "}<br />
             <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-              Crafted For Every Journey
+              Designed Around Your Travel Needs
             </span>
           </h2>
           <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
@@ -152,70 +154,119 @@ export const ServicesOverviewSection = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-2"
+          className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-2"
         >
           {SERVICES.map((service) => {
             const Icon = service.icon;
             return (
-              <motion.div key={service.name} variants={item}>
+              <motion.div
+                key={service.name}
+                variants={item}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="group relative flex flex-col overflow-visible rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-500 h-full"
+              >
+                {/* Premium Feature - Modern Floating Tooltip */}
+                {service.premium && (
+                  <div className="absolute -top-16 left-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-400 transform group-hover:-translate-y-2 translate-y-1 pointer-events-none">
+                    {/* Glow Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#487307]/30 via-[#487307]/20 to-[#487307]/30 blur-xl rounded-3xl"></div>
+
+                    {/* Main Tooltip */}
+                    <div className="relative rounded-2xl border-2 border-[#487307]/60 bg-gradient-to-br from-white via-[#f0f9eb] to-[#eaf7e8] px-6 py-4 shadow-[0_20px_60px_rgba(72,115,7,0.4)] backdrop-blur-md">
+                      {/* Pointer Arrow */}
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 rotate-45 bg-gradient-to-br from-white to-[#eaf7e8] border-r-2 border-b-2 border-[#487307]/60"></div>
+
+                      {/* Content */}
+                      <div className="relative flex items-start gap-3">
+                        <span className="text-2xl shrink-0 animate-pulse">✨</span>
+                        <p className="text-sm font-semibold text-[#1a3d01] leading-relaxed">
+                          {service.premium}
+                        </p>
+                      </div>
+
+                      {/* Shine Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shimmer_2s_ease-in-out] rounded-2xl"></div>
+                    </div>
+                  </div>
+                )}
+
                 <Link
                   to={`/services/${service.name.toLowerCase().replace(/ /g, "-")}`}
-                  className="group relative flex flex-col overflow-hidden rounded-[28px] border border-white/60 bg-white/90 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_30px_90px_rgba(116,128,255,0.25)]"
+                  className="flex flex-col h-full overflow-hidden rounded-2xl"
                 >
-                  <div className="relative h-52 overflow-hidden">
-                    <motion.img
-                      src={service.image}
-                      alt={service.name}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/30 to-transparent" />
-                    <div className="absolute inset-x-6 bottom-6 flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div
-                          className={`rounded-2xl bg-gradient-to-r ${service.accent} p-3 text-white shadow-lg`}
-                        >
-                          <Icon className="h-6 w-6" />
-                        </div>
-                        <div>
-                          <p className="text-xs uppercase tracking-[0.2em] text-white/70">
-                            {service.highlight}
-                          </p>
-                          <h3 className="text-2xl font-montserrat font-bold text-white">
-                            {service.name}
-                          </h3>
-                        </div>
-                      </div>
+                  {/* Badge Section */}
+                  <div className="relative bg-gradient-to-br from-[#f8faf5] to-white pt-4 pb-2">
+                    <div className="flex justify-center">
 
                     </div>
                   </div>
 
-                  <div className="flex flex-1 flex-col gap-4 p-6">
-                    <p className="font-inter text-base text-gray-600">
+                  {/* Image Section */}
+                  <div className="relative overflow-hidden bg-gradient-to-br from-[#f8faf5] to-white px-6 pb-6">
+                    <div className="relative h-48 rounded-xl overflow-hidden">
+                      <motion.img
+                        src={service.image}
+                        alt={service.name}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-transparent" />
+
+                      {/* Icon Overlay */}
+                      <div className="absolute bottom-4 left-4">
+                        <div
+                          className={`rounded-2xl bg-gradient-to-r ${service.accent} p-3 text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}
+                        >
+                          <Icon className="h-6 w-6" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="flex flex-1 flex-col p-6">
+                    {/* Title */}
+                    <div className="pb-3 border-b border-gray-100 mb-4">
+                      <h3 className="text-2xl font-montserrat font-bold text-dark leading-tight">
+                        {service.name}
+                      </h3>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-600 font-inter leading-relaxed mb-4">
                       {service.description}
                     </p>
-                    <ul className="flex flex-wrap gap-2">
+
+
+
+                    {/* Features Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {service.features.map((feature) => (
-                        <li
+                        <span
                           key={feature}
-                          className="rounded-full border border-gray-200/80 bg-white/90 px-3 py-1 text-xs font-semibold text-gray-500"
+                          className="inline-flex items-center rounded-full border border-gray-200/80 bg-white px-3 py-1.5 text-xs font-semibold text-gray-600 transition-colors group-hover:border-[#487307]/30 group-hover:bg-[#eaf7e8]/50"
                         >
                           {feature}
-                        </li>
+                        </span>
                       ))}
-                    </ul>
-                    <div className="mt-auto flex items-center justify-between">
-                      <div className="text-left">
-                        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
-                          Learn More
-                        </p>
-                        <p className="text-sm font-montserrat text-dark">
-                          Tailored concierge planning
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-4 py-2 text-white transition group-hover:opacity-90">
-                        Reserve
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+
+                    {/* CTA Section */}
+                    <div className="mt-auto pt-4 border-t border-gray-100">
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex-1">
+                          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400 mb-1">
+                            Learn More
+                          </p>
+                          <p className="text-sm font-montserrat font-semibold text-dark">
+                            Luxury Travel, Perfectly Managed.
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all group-hover:shadow-lg group-hover:scale-105">
+                          Reserve
+                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </div>
                       </div>
                     </div>
                   </div>
