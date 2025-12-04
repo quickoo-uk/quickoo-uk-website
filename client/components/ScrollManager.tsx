@@ -8,13 +8,16 @@ export const ScrollManager = () => {
 
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            duration: 1.5, // Increased for smoother, more gradual scrolling
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth easing
             orientation: "vertical",
             gestureOrientation: "vertical",
             smoothWheel: true,
-            wheelMultiplier: 1,
-            touchMultiplier: 2,
+            wheelMultiplier: 1, // Standard wheel sensitivity
+            touchMultiplier: 2, // Smooth touch scrolling
+            infinite: false,
+            autoResize: true,
+            lerp: 0.1, // Lower value = smoother, more gradual (0.1 is very smooth)
         });
 
         lenisRef.current = lenis;
