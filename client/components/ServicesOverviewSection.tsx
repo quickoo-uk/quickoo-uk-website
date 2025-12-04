@@ -22,6 +22,7 @@ type Service = {
   highlight: string;
   features: string[];
   accent: string;
+  premium?: string;
 };
 
 const SERVICES: Service[] = [
@@ -34,6 +35,7 @@ const SERVICES: Service[] = [
     features: ["VIP meet & greet", "Real-time tracking", "Luggage care"],
     accent: "from-sky-500/90 via-sky-400/80 to-sky-500/70",
     image: "/home/Airport Transfers.jpg",
+    premium: "Your schedule comes first: 1 hour complimentary wait time with advanced flight monitoring.",
   },
   {
     icon: Navigation2,
@@ -135,9 +137,9 @@ export const ServicesOverviewSection = () => {
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-            Chauffeur Services{" "}
+            Luxury Chauffeurs {" "}<br />
             <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-              Crafted For Every Journey
+              Designed Around Your Travel Needs
             </span>
           </h2>
           <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
@@ -194,6 +196,13 @@ export const ServicesOverviewSection = () => {
                     <p className="font-inter text-base text-gray-600">
                       {service.description}
                     </p>
+                    {service.premium && (
+                      <div className="rounded-2xl border-l-4 border-[#487307] bg-[#0f1801]/5 px-4 py-3">
+                        <p className="text-sm font-semibold text-[#2a4204]">
+                          ✨ {service.premium}
+                        </p>
+                      </div>
+                    )}
                     <ul className="flex flex-wrap gap-2">
                       {service.features.map((feature) => (
                         <li
@@ -210,7 +219,7 @@ export const ServicesOverviewSection = () => {
                           Learn More
                         </p>
                         <p className="text-sm font-montserrat text-dark">
-                          Tailored concierge planning
+                          Luxury Travel, Perfectly Managed.
                         </p>
                       </div>
                       <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-4 py-2 text-white transition group-hover:opacity-90">

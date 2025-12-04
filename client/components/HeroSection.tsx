@@ -53,14 +53,14 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative flex min-h-[90vh] w-full items-center  bg-[radial-gradient(circle_at_top,_#ffffff,_#f3f6ff,_#fff6ed)] pt-24 sm:pt-28 pb-12 sm:pb-16">
-      {/* Background with light overlay */}
+    <section className="relative flex min-h-[75vh] w-full items-center pt-20 sm:pt-24 pb-8 sm:pb-12 ">
+      {/* Background with enhanced overlay */}
       <div className="absolute inset-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.4 }}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 0.65 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5 }}
             className="absolute inset-0"
@@ -73,14 +73,18 @@ export const HeroSection = () => {
             />
           </motion.div>
         </AnimatePresence>
+        
+        {/* Enhanced gradient overlay - lighter for better image visibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/55 via-white/20 to-transparent"></div>
       </div>
 
-      {/* Animated gradient blobs */}
+      {/* Animated gradient blobs - Enhanced */}
       <motion.div
-        className="absolute -top-24 right-6 h-72 w-72 rounded-full bg-[#f3d6ff]/40 blur-[150px] opacity-60"
+        className="absolute -top-32 -right-20 h-80 w-80 rounded-full bg-gradient-to-br from-[#487307]/30 via-[#0f1801]/10 to-transparent blur-3xl opacity-70"
         animate={{
           scale: [1, 1.2, 1],
-          opacity: [0.6, 0.4, 0.6],
+          opacity: [0.7, 0.4, 0.7],
+          x: [0, 30, 0],
         }}
         transition={{
           duration: 8,
@@ -89,10 +93,11 @@ export const HeroSection = () => {
         }}
       />
       <motion.div
-        className="absolute -bottom-36 left-0 h-96 w-96 bg-[#9fd4ff]/25 blur-[180px] opacity-60"
+        className="absolute -bottom-40 -left-20 h-96 w-96 bg-gradient-to-tr from-[#487307]/20 via-[#2a4204]/10 to-transparent blur-3xl opacity-60"
         animate={{
           scale: [1, 1.3, 1],
           opacity: [0.6, 0.3, 0.6],
+          x: [-20, 20, -20],
         }}
         transition={{
           duration: 10,
@@ -133,19 +138,22 @@ export const HeroSection = () => {
       </motion.svg>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column: Text Content */}
-          <div className="w-full space-y-6 sm:space-y-8 text-left">
+          <div className="w-full space-y-5 sm:space-y-7 text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40"
+              className="inline-flex items-center gap-3 rounded-full border-2 border-[#487307]/30 bg-white/90 px-6 py-2.5 backdrop-blur-md shadow-lg shadow-[#487307]/20 hover:shadow-[#487307]/40 transition-all"
             >
-              <Sparkles className="h-4 w-4 text-[#487307]" />
-              <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                Quickoo Chauffeur Services
+              <span className="relative flex h-2 w-2">
+                <span className="animate-pulse absolute inline-flex h-full w-full rounded-full bg-[#487307] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#487307]"></span>
+              </span>
+              <span className="text-xs tracking-[0.5em] uppercase text-[#2a4204] font-bold">
+                Quickoo Luxury
               </span>
             </motion.div>
 
@@ -153,12 +161,20 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-montserrat font-semibold leading-tight text-dark"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-montserrat font-bold leading-tight text-[#0f1801]"
             >
               Experience the Art of
               <br />
-              <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                Luxury Travel
+              <span className="relative">
+                <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                  Luxury Travel
+                </span>
+                <motion.span
+                  className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-[#0f1801] via-[#487307] to-transparent"
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 0.8, delay: 1 }}
+                ></motion.span>
               </span>
             </motion.h1>
 
@@ -166,32 +182,36 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg sm:text-xl md:text-2xl text-slate-600 font-inter leading-relaxed max-w-2xl"
+              className="text-lg sm:text-xl text-[#2a4204] font-inter leading-relaxed max-w-xl font-medium tracking-wide"
             >
               Elevate your journey with our elite chauffeur service. Meticulously curated for comfort, style, and punctuality.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Enhanced */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 pt-4"
             >
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.08, boxShadow: "0 20px 40px rgba(15, 24, 1, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] text-white text-base font-semibold shadow-lg shadow-[#2a4204]/35 transition hover:opacity-90"
+                className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] text-white text-base font-bold shadow-lg shadow-[#2a4204]/40 transition overflow-hidden"
               >
-                Book Now
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <span className="relative z-10 flex items-center gap-2">
+                  Book Now
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
+                </span>
               </motion.button>
+              
               <motion.button
-                whileHover={{ scale: 1.05, backgroundColor: "#f8fafc" }}
+                whileHover={{ scale: 1.08, borderColor: "#487307", backgroundColor: "#f8faf5" }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-slate-200 bg-white text-slate-700 text-base font-semibold hover:border-[#3f1c6e] hover:text-[#3f1c6e] transition shadow-sm"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border-2 border-[#487307]/40 bg-white hover:border-[#487307] text-[#0f1801] text-base font-bold transition shadow-md hover:shadow-lg"
               >
                 Explore Fleet
+                <Sparkles className="w-5 h-5" />
               </motion.button>
             </motion.div>
 
@@ -205,7 +225,9 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="w-full flex justify-center lg:justify-end"
           >
-            <BookingWidget />
+            <div className="w-full max-w-sm lg:max-w-md">
+              <BookingWidget />
+            </div>
           </motion.div>
         </div>
       </div>
