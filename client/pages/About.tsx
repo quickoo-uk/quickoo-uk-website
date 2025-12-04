@@ -12,6 +12,7 @@ import {
   Zap,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -208,7 +209,7 @@ export default function AboutPage() {
               <div className="inline-flex flex-wrap items-center gap-3 rounded-full border border-slate-200 bg-white/70 px-6 py-2 backdrop-blur">
                 <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
                 <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-slate-600 font-semibold">
-                  Quickoo • Driving Excellence
+                  Our Mission • Our Vision
                 </p>
               </div>
               <div className="space-y-6">
@@ -221,15 +222,15 @@ export default function AboutPage() {
                   and concierge-grade experiences from booking to drop-off.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <button className="luxury-button-gold px-7 py-3 text-base rounded-full">
-                    Explore Concierge
-                  </button>
-                  <button className="rounded-full border border-slate-300 px-7 py-3 text-base font-semibold text-slate-900 hover:bg-white transition">
+                  <Link to="/book-now" className="luxury-button-gold px-7 py-3 text-base rounded-full inline-block">
+                    Book Now
+                  </Link>
+                  <Link to="/fleet/business-class" className="rounded-full border border-slate-300 px-7 py-3 text-base font-semibold text-slate-900 hover:bg-white transition inline-block">
                     View Fleet
-                  </button>
+                  </Link>
                 </div>
               </div>
-            
+
             </div>
             <div className="relative">
               <motion.div
@@ -594,19 +595,19 @@ export default function AboutPage() {
       >
         <div className="section-container grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           <div className="space-y-6">
-            <p className="uppercase tracking-[0.4em] text-sm text-gold">Eco-luxury fleet</p>
+            <p className="uppercase tracking-[0.4em] text-sm text-gold">Premium Fleet Excellence</p>
             <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-dark">
-              Meticulously curated vehicles
+              Luxury vehicles, meticulously maintained
             </h2>
             <p className="text-gray-600 font-inter">
-              From the Mercedes-Maybach to the Range Rover Autobiography and all-electric BMW i7,
-              every vehicle undergoes multi-point detailing before each ride. Guests can opt for hybrid
-              or fully electric drives without compromising comfort.
+              Our premium fleet features the finest luxury vehicles, each undergoing rigorous multi-point
+              detailing before every journey. Choose from our selection of hybrid and fully electric
+              options, delivering exceptional comfort while minimizing environmental impact.
             </p>
             <div className="grid sm:grid-cols-3 gap-4">
-              {["Mercedes-Maybach", "Range Rover SV", "BMW i7"].map((model) => (
-                <div key={model} className="rounded-2xl bg-muted p-4 text-center font-semibold">
-                  {model}
+              {["Eco-Friendly", "Premium Comfort", "Latest Models"].map((feature) => (
+                <div key={feature} className="rounded-2xl bg-muted p-4 text-center font-semibold">
+                  {feature}
                 </div>
               ))}
             </div>
