@@ -47,23 +47,36 @@ const coreHighlights = [
   },
 ];
 
-const servicePillars = [
-  {
-    icon: Clock,
-    title: "Always On Time",
-    copy: "Dynamic dispatch and predictive routing that flex with live conditions.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Trusted Professionals",
-    copy: "NDAs on file, elevated etiquette standards, and annual safety certifications.",
-  },
-  {
-    icon: Star,
-    title: "Luxury Guaranteed",
-    copy: "Flagship fleet, ambient suites, refreshments, and fragrance libraries.",
-  },
-];
+const getServicePillars = (serviceId?: string) => {
+  const basePillars = [
+    {
+      icon: Clock,
+      title: "Always On Time",
+      copy: "Dynamic dispatch and predictive routing that flex with live conditions.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Trusted Professionals",
+      copy: "NDAs on file, elevated etiquette standards, and annual safety certifications.",
+    },
+    {
+      icon: Star,
+      title: "Luxury Guaranteed",
+      copy: "Flagship fleet, ambient suites, refreshments, and fragrance libraries.",
+    },
+  ];
+
+  // Add airport-specific premium feature as a 4th point
+  if (serviceId === "airport-transfers") {
+    basePillars.push({
+      icon: Sparkles,
+      title: "Your Schedule First",
+      copy: "1 hour complimentary wait time with advanced flight monitoring.",
+    });
+  }
+
+  return basePillars;
+};
 
 const journeySteps = [
   {
@@ -199,9 +212,9 @@ export default function ServicesPlaceholder() {
               <button className="rounded-full luxury-button-gold px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#0a1a02]/35 transition hover:scale-[1.02]">
                 Book {serviceName}
               </button>
-             
+
             </div>
-           
+
           </div>
 
           <div className="relative">
@@ -228,13 +241,13 @@ export default function ServicesPlaceholder() {
                   <span>Climate suite</span>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
       </section>
 
-    
+
       <section className="section-spacing relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#f1f3ff,_transparent_65%)]" />
         <div className="section-container relative space-y-12">
@@ -275,7 +288,7 @@ export default function ServicesPlaceholder() {
               the About aesthetic so guests feel continuity from storytelling to booking.
             </p>
             <div className="space-y-4">
-              {servicePillars.map(({ icon: Icon, title, copy }) => (
+              {getServicePillars(id).map(({ icon: Icon, title, copy }) => (
                 <div
                   key={title}
                   className="flex items-start gap-4 rounded-2xl border border-white/60 bg-white/80 p-5 shadow-sm"
@@ -348,7 +361,7 @@ export default function ServicesPlaceholder() {
                 </div>
               </div>
 
-          
+
             </div>
           </div>
         </div>
@@ -395,7 +408,7 @@ export default function ServicesPlaceholder() {
               <p className="text-lg font-montserrat">+44 20 3576 1617</p>
               <p className="text-slate-600 font-inter">Direct line to our 24/7 guest experience desk.</p>
             </div>
-          
+
           </div>
         </div>
       </section>
