@@ -21,6 +21,8 @@ const SERVICE_IMAGES: Record<string, string> = {
   "special-events": "/services/events-hero.jpg",
   "private-jet": "/services/private-jet-hero.jpg",
   "city-tours": "/services/city-tours-hero.jpg",
+  "private-jet-chauffeur": "/services/private-jet-hero.jpg",
+  "london-cruise-transfer": "/services/london-cruise-transfer-hero.png",
 };
 
 const trustMetrics = [
@@ -103,6 +105,8 @@ const getOperationsImage = (serviceId: string) => {
     "special-events": "/services/events-operations.jpg",
     "private-jet": "/services/private-jet-operations.jpg",
     "city-tours": "/services/city-tours-operations.jpg",
+    "private-jet-chauffeur": "/services/private-jet-operations.jpg",
+    "london-cruise-transfer": "/services/london-cruise-transfer-operations.png",
   };
   return operationsImages[serviceId] ?? "/services/business-operations.jpg";
 };
@@ -119,6 +123,8 @@ const getTeamCollaborationImage = (serviceId: string) => {
     "special-events": "/services/events-team-collaboration.jpg",
     "private-jet": "/services/private-jet-team-collaboration.jpg",
     "city-tours": "/services/city-tours-team-collaboration.jpg",
+    "private-jet-chauffeur": "/services/private-jet-team-collaboration.jpg",
+    "london-cruise-transfer": "/services/london-cruise-transfer-team-collaboration.png",
   };
   return teamImages[serviceId] ?? "/services/business-team-collaboration.jpg";
 };
@@ -135,6 +141,8 @@ const getChauffeurPortraitImage = (serviceId: string) => {
     "special-events": "/services/events-chauffeur-portrait.jpg",
     "private-jet": "/services/private-jet-chauffeur-portrait.jpg",
     "city-tours": "/services/city-tours-chauffeur-portrait.jpg",
+    "private-jet-chauffeur": "/services/private-jet-chauffeur-portrait.jpg",
+    "london-cruise-transfer": "/services/london-cruise-transfer-chauffeur-portrait.png",
   };
   return portraitImages[serviceId] ?? "/services/business-chauffeur-portrait.jpg";
 };
@@ -199,9 +207,9 @@ export default function ServicesPlaceholder() {
               <button className="rounded-full luxury-button-gold px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#0a1a02]/35 transition hover:scale-[1.02]">
                 Book {serviceName}
               </button>
-             
+
             </div>
-           
+
           </div>
 
           <div className="relative">
@@ -228,13 +236,13 @@ export default function ServicesPlaceholder() {
                   <span>Climate suite</span>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
       </section>
 
-    
+
       <section className="section-spacing relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#f1f3ff,_transparent_65%)]" />
         <div className="section-container relative space-y-12">
@@ -348,7 +356,7 @@ export default function ServicesPlaceholder() {
                 </div>
               </div>
 
-          
+
             </div>
           </div>
         </div>
@@ -395,7 +403,7 @@ export default function ServicesPlaceholder() {
               <p className="text-lg font-montserrat">+44 20 3576 1617</p>
               <p className="text-slate-600 font-inter">Direct line to our 24/7 guest experience desk.</p>
             </div>
-          
+
           </div>
         </div>
       </section>

@@ -18,6 +18,8 @@ const SERVICES = [
   "Corporate travel",
   "Special events",
   "City Tours",
+  "Private Jet Chauffeur",
+  "London Cruise Transfer",
 ];
 
 const PAGES = [
