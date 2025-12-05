@@ -49,23 +49,36 @@ const coreHighlights = [
   },
 ];
 
-const servicePillars = [
-  {
-    icon: Clock,
-    title: "Always On Time",
-    copy: "Dynamic dispatch and predictive routing that flex with live conditions.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Trusted Professionals",
-    copy: "NDAs on file, elevated etiquette standards, and annual safety certifications.",
-  },
-  {
-    icon: Star,
-    title: "Luxury Guaranteed",
-    copy: "Flagship fleet, ambient suites, refreshments, and fragrance libraries.",
-  },
-];
+const getServicePillars = (serviceId?: string) => {
+  const basePillars = [
+    {
+      icon: Clock,
+      title: "Always On Time",
+      copy: "Dynamic dispatch and predictive routing that flex with live conditions.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Trusted Professionals",
+      copy: "NDAs on file, elevated etiquette standards, and annual safety certifications.",
+    },
+    {
+      icon: Star,
+      title: "Luxury Guaranteed",
+      copy: "Flagship fleet, ambient suites, refreshments, and fragrance libraries.",
+    },
+  ];
+
+  // Add airport-specific premium feature as a 4th point
+  if (serviceId === "airport-transfers") {
+    basePillars.push({
+      icon: Sparkles,
+      title: "Your Schedule First",
+      copy: "1 hour complimentary wait time with advanced flight monitoring.",
+    });
+  }
+
+  return basePillars;
+};
 
 const journeySteps = [
   {
@@ -283,7 +296,7 @@ export default function ServicesPlaceholder() {
               the About aesthetic so guests feel continuity from storytelling to booking.
             </p>
             <div className="space-y-4">
-              {servicePillars.map(({ icon: Icon, title, copy }) => (
+              {getServicePillars(id).map(({ icon: Icon, title, copy }) => (
                 <div
                   key={title}
                   className="flex items-start gap-4 rounded-2xl border border-white/60 bg-white/80 p-5 shadow-sm"
