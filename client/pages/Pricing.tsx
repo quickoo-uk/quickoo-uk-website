@@ -89,10 +89,10 @@ export default function PricingPage() {
               Transparent luxury pricing
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-bold leading-[1.05] text-dark">
-              Bespoke chauffeur pricing,
+              Transparent luxury pricing,
               <span className="bg-gradient-to-r from-gold to-amber-400 bg-clip-text text-transparent">
                 {" "}
-                reimagined for 2025.
+                with no hidden costs.
               </span>
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground font-inter max-w-2xl">

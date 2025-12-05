@@ -25,6 +25,41 @@ const SERVICE_IMAGES: Record<string, string> = {
   "london-cruise-transfer": "/services/london-cruise-transfer-hero.png",
 };
 
+const SERVICE_TAGLINES: Record<string, { title: string; highlight: string }> = {
+  "airport-transfers": {
+    title: "Seamless airport transfers,",
+    highlight: "redefined for punctuality.",
+  },
+  "corporate-travel": {
+    title: "Executive corporate travel,",
+    highlight: "engineered for efficiency.",
+  },
+  "special-events": {
+    title: "Unforgettable special events,",
+    highlight: "elevated by luxury.",
+  },
+  "city-tours": {
+    title: "Curated city tours,",
+    highlight: "discovering hidden gems.",
+  },
+  "wedding": {
+    title: "Your perfect wedding day,",
+    highlight: "arriving in timeless style.",
+  },
+  "hourly-hire": {
+    title: "Flexible hourly hire,",
+    highlight: "tailored to your schedule.",
+  },
+  "city-to-city": {
+    title: "City-to-city journeys,",
+    highlight: "comfort beyond boundaries.",
+  },
+  "private-jet": {
+    title: "Private jet chauffeur,",
+    highlight: "seamless tarmac transfers.",
+  },
+};
+
 const trustMetrics = [
   { label: "Average arrival window", value: "7 min" },
   { label: "Concierge support", value: "24/7" },
@@ -206,10 +241,21 @@ export default function ServicesPlaceholder() {
             </div>
             <div className="space-y-5">
               <h1 className="text-4xl sm:text-5xl xl:text-6xl font-montserrat font-semibold leading-tight">
-                Bespoke {serviceName.toLowerCase()}{" "}
-                <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                  without compromise.
-                </span>
+                {SERVICE_TAGLINES[id ?? ""] ? (
+                  <>
+                    {SERVICE_TAGLINES[id ?? ""].title}{" "}
+                    <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                      {SERVICE_TAGLINES[id ?? ""].highlight}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    Bespoke {serviceName.toLowerCase()}{" "}
+                    <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                      without compromise.
+                    </span>
+                  </>
+                )}
               </h1>
               <p className="text-lg text-slate-600 font-inter max-w-2xl">
                 Concierge-led planning, telemetry-enabled precision, and sensorial hospitality

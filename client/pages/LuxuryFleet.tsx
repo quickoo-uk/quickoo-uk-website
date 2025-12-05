@@ -161,9 +161,9 @@ export default function LuxuryFleetPage() {
 
                             <div className="space-y-6">
                                 <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-slate-900">
-                                    Designed for{" "}
+                                    A pristine collection,{" "}
                                     <span className="bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] bg-clip-text text-transparent">
-                                        uncompromising comfort
+                                        curated for every occasion.
                                     </span>
                                 </h1>
                                 <p className="text-lg text-slate-600 font-inter">

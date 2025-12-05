@@ -14,6 +14,37 @@ import {
 import { getCarTypeById } from "@shared/fleet";
 import { cn } from "@/lib/utils";
 
+const CAR_TYPE_TAGLINES: Record<string, { title: string; highlight: string }> = {
+  "executive-cars": {
+    title: "Executive standards,",
+    highlight: "defined by excellence.",
+  },
+  "luxury-vip": {
+    title: "The pinnacle of",
+    highlight: "automotive luxury.",
+  },
+  "business-vans": {
+    title: "Spacious comfort,",
+    highlight: "for your entire team.",
+  },
+  "premium-suvs": {
+    title: "Commanding presence,",
+    highlight: "superior comfort.",
+  },
+  "electric-cars": {
+    title: "Sustainable luxury,",
+    highlight: "for a greener future.",
+  },
+  "vintage-cars-weddings": {
+    title: "Timeless elegance,",
+    highlight: "for your special day.",
+  },
+  "special-vehicles": {
+    title: "Bespoke solutions,",
+    highlight: "for unique requirements.",
+  },
+};
+
 export default function CarTypePage() {
   const { id } = useParams<{ id: string }>();
   const carType = id ? getCarTypeById(id) : null;
@@ -132,10 +163,21 @@ export default function CarTypePage() {
             </div>
             <div className="space-y-5">
               <h1 className="text-4xl sm:text-5xl xl:text-6xl font-montserrat font-semibold leading-tight">
-                Premium {carType.name.toLowerCase()}{" "}
-                <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                  collection.
-                </span>
+                {CAR_TYPE_TAGLINES[id ?? ""] ? (
+                  <>
+                    {CAR_TYPE_TAGLINES[id ?? ""].title}{" "}
+                    <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                      {CAR_TYPE_TAGLINES[id ?? ""].highlight}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    Premium {carType.name.toLowerCase()}{" "}
+                    <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                      collection.
+                    </span>
+                  </>
+                )}
               </h1>
               <p className="text-lg text-slate-600 font-inter max-w-2xl">
                 {carType.description}
