@@ -156,7 +156,7 @@ export default function CarTypePage() {
                 View Fleet
               </Link>
             </div>
-          
+
           </div>
 
           <div className="relative">
@@ -184,7 +184,7 @@ export default function CarTypePage() {
                   <span>Comfort</span>
                 </div>
               </div>
-             
+
             </div>
           </div>
         </div>
@@ -211,7 +211,7 @@ export default function CarTypePage() {
                 Available vehicles
               </p>
               <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
-                Explore our curated {carType.name.toLowerCase()} fleet
+                Explore our premium {carType.name.toLowerCase()} fleet
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto font-inter">
                 Each vehicle is meticulously maintained and equipped with premium amenities for your
@@ -300,7 +300,7 @@ export default function CarTypePage() {
                   Special Collection
                 </h2>
                 <p className="text-lg text-gray-600 mb-8 font-inter">
-                  Our vintage car collection for weddings features carefully curated classic vehicles
+                  Our vintage car collection for weddings features carefully selected classic vehicles
                   that add timeless elegance to your special day. Contact us to discuss available
                   options and make your wedding transportation truly memorable.
                 </p>
@@ -406,7 +406,7 @@ export default function CarTypePage() {
             </h2>
             <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto font-inter">
               Experience the perfect blend of comfort, style, and exceptional service with our
-              curated {carType.name.toLowerCase()} collection.
+              exclusive {carType.name.toLowerCase()} collection.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

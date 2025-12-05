@@ -25,18 +25,6 @@ const chauffeurQualities = [
         highlight: "1% acceptance rate",
     },
     {
-        icon: Globe,
-        title: "Multilingual Excellence",
-        description: "Our chauffeurs are fluent in multiple languages including English, French, German, Spanish, Arabic, and Mandarin for international guests.",
-        highlight: "15+ languages spoken",
-    },
-    {
-        icon: BookOpen,
-        title: "VIP Protocol Training",
-        description: "Specialized training in executive etiquette, diplomatic protocol, and high-net-worth individual service standards.",
-        highlight: "VIP certified",
-    },
-    {
         icon: Heart,
         title: "Hospitality-First Mindset",
         description: "Trained in five-star hospitality standards with emphasis on discretion, anticipation of needs, and personalized service.",
@@ -247,15 +235,9 @@ export default function EliteChauffeurs() {
                                             <h3 className="text-xl font-montserrat font-bold text-slate-900 mb-2">
                                                 {quality.title}
                                             </h3>
-                                            <p className="text-sm text-slate-600 leading-relaxed mb-3">
+                                            <p className="text-sm text-slate-600 leading-relaxed">
                                                 {quality.description}
                                             </p>
-                                            <div className="inline-flex items-center gap-2 rounded-full bg-[#e8f5e9] px-3 py-1">
-                                                <Award className="h-3 w-3 text-[#487307]" />
-                                                <span className="text-xs font-semibold text-[#487307]">
-                                                    {quality.highlight}
-                                                </span>
-                                            </div>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -295,23 +277,12 @@ export default function EliteChauffeurs() {
                                 whileHover={{ y: -5 }}
                             >
                                 <div className="space-y-3">
-                                    <div className="inline-flex items-center gap-2 rounded-full bg-[#e8f5e9] px-3 py-1">
-                                        <BookOpen className="h-3 w-3 text-[#487307]" />
-                                        <span className="text-xs font-bold text-[#487307] uppercase tracking-wider">
-                                            {program.duration}
-                                        </span>
-                                    </div>
                                     <h3 className="text-lg font-montserrat font-bold text-slate-900">
                                         {program.title}
                                     </h3>
                                     <p className="text-sm text-slate-600 leading-relaxed">
                                         {program.description}
                                     </p>
-                                    <div className="pt-2 border-t border-slate-100">
-                                        <p className="text-xs text-[#487307] font-semibold">
-                                            {program.certification}
-                                        </p>
-                                    </div>
                                 </div>
                             </motion.div>
                         ))}
@@ -391,12 +362,6 @@ export default function EliteChauffeurs() {
                                 whileHover={{ y: -5 }}
                             >
                                 <div className="space-y-3">
-                                    <div className="inline-flex items-center gap-2 rounded-full bg-[#e8f5e9] px-3 py-1">
-                                        <Shield className="h-3 w-3 text-[#487307]" />
-                                        <span className="text-xs font-bold text-[#487307] uppercase tracking-wider">
-                                            {requirement.standard}
-                                        </span>
-                                    </div>
                                     <h3 className="text-lg font-montserrat font-bold text-slate-900">
                                         {requirement.title}
                                     </h3>
@@ -410,38 +375,6 @@ export default function EliteChauffeurs() {
                 </div>
             </motion.section>
 
-            {/* Testimonial Section */}
-            <motion.section
-                className="section-spacing bg-white"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                variants={fadeInUp}
-            >
-                <div className="section-container">
-                    <div className="max-w-4xl mx-auto">
-                        <div className="rounded-3xl border border-[#487307]/20 bg-gradient-to-br from-[#e8f5e9] to-white p-8 md:p-12 shadow-xl">
-                            <div className="flex items-center gap-2 mb-6">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="h-6 w-6 fill-[#487307] text-[#487307]" />
-                                ))}
-                            </div>
-                            <blockquote className="text-xl md:text-2xl font-montserrat text-slate-900 mb-6 leading-relaxed">
-                                "Our chauffeur was exceptional—punctual, professional, and incredibly knowledgeable about London. The service felt truly bespoke, from the immaculate vehicle to the thoughtful amenities. This is luxury travel done right."
-                            </blockquote>
-                            <div className="flex items-center gap-4">
-                                <div className="h-12 w-12 rounded-full bg-[#e8f5e9] flex items-center justify-center">
-                                    <span className="text-[#487307] font-bold text-lg">JM</span>
-                                </div>
-                                <div>
-                                    <p className="font-semibold text-slate-900">James Morrison</p>
-                                    <p className="text-sm text-slate-600">CEO, Tech Ventures Ltd</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </motion.section>
 
             {/* Related Features Section */}
             <motion.section

@@ -31,7 +31,7 @@ const stagger = {
 
 const stats = [
   { number: "500+", label: "Chauffeurs & Fleet Partners" },
-  { number: "50K+", label: "Curated Journeys" },
+  { number: "50K+", label: "Premium Journeys" },
   { number: "24/7", label: "Concierge Support" },
   { number: "25", label: "Cities Across the UK" },
 ];
@@ -94,7 +94,7 @@ const pillars = [
   {
     icon: Sparkles,
     title: "Experience Design",
-    text: "Signature welcome rituals, curated playlists, and amenities inspired by boutique hotels.",
+    text: "Signature welcome rituals, personalized playlists, and amenities inspired by boutique hotels.",
   },
 ];
 
@@ -121,7 +121,7 @@ const milestones = [
     year: "2025",
     title: "Luxury Reimagined",
     description:
-      "New bespoke experiences: runway-to-resort transfers, corporate mobility suites, and curated city immersions.",
+      "New bespoke experiences: runway-to-resort transfers, corporate mobility suites, and tailored city immersions.",
   },
 ];
 
@@ -131,7 +131,7 @@ const difference = [
     title: "Signature Hospitality",
     points: [
       "Professionally trained chauffeurs with service playbooks for VIP, executive, and family travel.",
-      "Personalized onboard touches: fragrance, ambient lighting, curated playlists, refreshments.",
+      "Personalized onboard touches: fragrance, ambient lighting, custom playlists, refreshments.",
     ],
   },
   {
@@ -163,7 +163,7 @@ const programs = [
   {
     title: "Immersive City Escapes",
     description:
-      "Runway-to-resort itineraries that blend premium transfers with curated dining and culture stops.",
+      "Runway-to-resort itineraries that blend premium transfers with exclusive dining and culture stops.",
     highlights: ["Concierge route curation", "Private guides on request"],
     accent: "#7DD3FC",
   },
@@ -399,7 +399,7 @@ export default function AboutPage() {
             <p className="text-slate-600 font-inter">
               Our concierge team designs routes and rituals around the traveler. From board meetings to
               immersive escapes, each program layers service standards with adaptive technology, ensuring
-              every transfer feels curated and intuitive.
+              every transfer feels tailored and intuitive.
             </p>
             <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_30px_70px_rgba(15,23,42,0.08)] space-y-4">
               <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.4em] text-slate-500">

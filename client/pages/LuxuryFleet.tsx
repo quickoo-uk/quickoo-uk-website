@@ -161,13 +161,13 @@ export default function LuxuryFleetPage() {
 
                             <div className="space-y-6">
                                 <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-slate-900">
-                                    Curated for{" "}
+                                    Designed for{" "}
                                     <span className="bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] bg-clip-text text-transparent">
                                         uncompromising comfort
                                     </span>
                                 </h1>
                                 <p className="text-lg text-slate-600 font-inter">
-                                    From flagship sedans to spacious executive MPVs, our meticulously curated fleet represents the pinnacle of automotive luxury, maintained to showroom standards.
+                                    From flagship sedans to spacious executive MPVs, our premium fleet collection represents the pinnacle of automotive luxury, maintained to showroom standards.
                                 </p>
 
                                 <div className="flex flex-wrap gap-4">

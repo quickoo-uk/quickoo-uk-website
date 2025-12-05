@@ -96,16 +96,16 @@ export default function PricingPage() {
               </span>
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground font-inter max-w-2xl">
-              Crafted for discerning travelers who value elegance, predictability, and curated service.
+              Crafted for discerning travelers who value elegance, predictability, and premium service.
               Every kilometer is accounted for with effortless clarity.
             </p>
             <div className="flex flex-wrap gap-4">
               <button className="luxury-button-gold px-10 py-3 text-base sm:text-lg shadow-lg shadow-gold/40">
                 Explore Packages
               </button>
-            
+
             </div>
-           
+
           </div>
 
           <div className="relative">
@@ -228,7 +228,7 @@ export default function PricingPage() {
               All transfer quotes include luggage handling, smart flight delay adjustments,
               and real-time driver tracking links sent to passengers.
             </p>
-          
+
           </div>
 
           <div className="rounded-[2rem] border border-white/60 bg-white/90 shadow-[0_30px_80px_rgba(15,23,42,0.1)] p-8">

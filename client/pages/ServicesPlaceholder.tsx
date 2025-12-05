@@ -40,7 +40,7 @@ const coreHighlights = [
   {
     title: "Signature hospitality",
     description:
-      "Chauffeurs trained in luxury etiquette, bilingual support, and curated onboard touches.",
+      "Chauffeurs trained in luxury etiquette, bilingual support, and personalized onboard touches.",
   },
   {
     title: "Transparent pricing",
@@ -85,7 +85,7 @@ const journeySteps = [
   },
 ];
 
-const curatedAddOns = [
+const premiumAddOns = [
   { label: "Event command center", note: "On-demand event coordination and live comms." },
   { label: "Security liaison", note: "Professional security and close-protection coordination." },
   { label: "Private route curator", note: "Custom route planning for multi-city and VIP transfers." },
@@ -228,7 +228,7 @@ export default function ServicesPlaceholder() {
                   <Crown className="text-[#487307]" />
                 </div>
                 <p className="text-sm text-slate-600 font-inter">
-                  Dedicated journey designer, real-time driver comms, and curated onboard amenities.
+                  Dedicated journey designer, real-time driver comms, and tailored onboard amenities.
                 </p>
                 <div className="grid grid-cols-3 gap-3 text-center text-xs uppercase tracking-[0.3em] text-slate-500">
                   <span>Wifi ready</span>
