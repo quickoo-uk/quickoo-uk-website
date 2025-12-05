@@ -4,7 +4,7 @@ import { BookingWidget } from "./BookingWidget";
 
 export const HeroSection = () => {
   return (
-    <section className="relative flex min-h-[85vh] w-full items-center pt-20 sm:pt-24 pb-8 sm:pb-12 overflow-hidden">
+    <section className="relative flex min-h-[85vh] w-full items-center pt-20 sm:pt-24 pb-8 sm:pb-12">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/40 z-10" /> {/* Overlay for readability */}
