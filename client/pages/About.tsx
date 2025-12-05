@@ -12,6 +12,7 @@ import {
   Zap,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -30,7 +31,7 @@ const stagger = {
 
 const stats = [
   { number: "500+", label: "Chauffeurs & Fleet Partners" },
-  { number: "50K+", label: "Curated Journeys" },
+  { number: "50K+", label: "Premium Journeys" },
   { number: "24/7", label: "Concierge Support" },
   { number: "25", label: "Cities Across the UK" },
 ];
@@ -93,7 +94,7 @@ const pillars = [
   {
     icon: Sparkles,
     title: "Experience Design",
-    text: "Signature welcome rituals, curated playlists, and amenities inspired by boutique hotels.",
+    text: "Signature welcome rituals, personalized playlists, and amenities inspired by boutique hotels.",
   },
 ];
 
@@ -120,7 +121,7 @@ const milestones = [
     year: "2025",
     title: "Luxury Reimagined",
     description:
-      "New bespoke experiences: runway-to-resort transfers, corporate mobility suites, and curated city immersions.",
+      "New bespoke experiences: runway-to-resort transfers, corporate mobility suites, and tailored city immersions.",
   },
 ];
 
@@ -130,7 +131,7 @@ const difference = [
     title: "Signature Hospitality",
     points: [
       "Professionally trained chauffeurs with service playbooks for VIP, executive, and family travel.",
-      "Personalized onboard touches: fragrance, ambient lighting, curated playlists, refreshments.",
+      "Personalized onboard touches: fragrance, ambient lighting, custom playlists, refreshments.",
     ],
   },
   {
@@ -162,7 +163,7 @@ const programs = [
   {
     title: "Immersive City Escapes",
     description:
-      "Runway-to-resort itineraries that blend premium transfers with curated dining and culture stops.",
+      "Runway-to-resort itineraries that blend premium transfers with exclusive dining and culture stops.",
     highlights: ["Concierge route curation", "Private guides on request"],
     accent: "#7DD3FC",
   },
@@ -208,7 +209,7 @@ export default function AboutPage() {
               <div className="inline-flex flex-wrap items-center gap-3 rounded-full border border-slate-200 bg-white/70 px-6 py-2 backdrop-blur">
                 <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
                 <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-slate-600 font-semibold">
-                  Quickoo • Driving Excellence
+                  Our Mission • Our Vision
                 </p>
               </div>
               <div className="space-y-6">
@@ -221,15 +222,15 @@ export default function AboutPage() {
                   and concierge-grade experiences from booking to drop-off.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <button className="luxury-button-gold px-7 py-3 text-base rounded-full">
-                    Explore Concierge
-                  </button>
-                  <button className="rounded-full border border-slate-300 px-7 py-3 text-base font-semibold text-slate-900 hover:bg-white transition">
+                  <Link to="/book-now" className="luxury-button-gold px-7 py-3 text-base rounded-full inline-block">
+                    Book Now
+                  </Link>
+                  <Link to="/fleet/business-class" className="rounded-full border border-slate-300 px-7 py-3 text-base font-semibold text-slate-900 hover:bg-white transition inline-block">
                     View Fleet
-                  </button>
+                  </Link>
                 </div>
               </div>
-            
+
             </div>
             <div className="relative">
               <motion.div
@@ -398,7 +399,7 @@ export default function AboutPage() {
             <p className="text-slate-600 font-inter">
               Our concierge team designs routes and rituals around the traveler. From board meetings to
               immersive escapes, each program layers service standards with adaptive technology, ensuring
-              every transfer feels curated and intuitive.
+              every transfer feels tailored and intuitive.
             </p>
             <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_30px_70px_rgba(15,23,42,0.08)] space-y-4">
               <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.4em] text-slate-500">
@@ -594,19 +595,19 @@ export default function AboutPage() {
       >
         <div className="section-container grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           <div className="space-y-6">
-            <p className="uppercase tracking-[0.4em] text-sm text-gold">Eco-luxury fleet</p>
+            <p className="uppercase tracking-[0.4em] text-sm text-gold">Premium Fleet Excellence</p>
             <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-dark">
-              Meticulously curated vehicles
+              Luxury vehicles, meticulously maintained
             </h2>
             <p className="text-gray-600 font-inter">
-              From the Mercedes-Maybach to the Range Rover Autobiography and all-electric BMW i7,
-              every vehicle undergoes multi-point detailing before each ride. Guests can opt for hybrid
-              or fully electric drives without compromising comfort.
+              Our premium fleet features the finest luxury vehicles, each undergoing rigorous multi-point
+              detailing before every journey. Choose from our selection of hybrid and fully electric
+              options, delivering exceptional comfort while minimizing environmental impact.
             </p>
             <div className="grid sm:grid-cols-3 gap-4">
-              {["Mercedes-Maybach", "Range Rover SV", "BMW i7"].map((model) => (
-                <div key={model} className="rounded-2xl bg-muted p-4 text-center font-semibold">
-                  {model}
+              {["Eco-Friendly", "Premium Comfort", "Latest Models"].map((feature) => (
+                <div key={feature} className="rounded-2xl bg-muted p-4 text-center font-semibold">
+                  {feature}
                 </div>
               ))}
             </div>

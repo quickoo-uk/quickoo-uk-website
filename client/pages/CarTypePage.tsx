@@ -14,6 +14,37 @@ import {
 import { getCarTypeById } from "@shared/fleet";
 import { cn } from "@/lib/utils";
 
+const CAR_TYPE_TAGLINES: Record<string, { title: string; highlight: string }> = {
+  "executive-cars": {
+    title: "Executive standards,",
+    highlight: "defined by excellence.",
+  },
+  "luxury-vip": {
+    title: "The pinnacle of",
+    highlight: "automotive luxury.",
+  },
+  "business-vans": {
+    title: "Spacious comfort,",
+    highlight: "for your entire team.",
+  },
+  "premium-suvs": {
+    title: "Commanding presence,",
+    highlight: "superior comfort.",
+  },
+  "electric-cars": {
+    title: "Sustainable luxury,",
+    highlight: "for a greener future.",
+  },
+  "vintage-cars-weddings": {
+    title: "Timeless elegance,",
+    highlight: "for your special day.",
+  },
+  "special-vehicles": {
+    title: "Bespoke solutions,",
+    highlight: "for unique requirements.",
+  },
+};
+
 export default function CarTypePage() {
   const { id } = useParams<{ id: string }>();
   const carType = id ? getCarTypeById(id) : null;
@@ -132,10 +163,21 @@ export default function CarTypePage() {
             </div>
             <div className="space-y-5">
               <h1 className="text-4xl sm:text-5xl xl:text-6xl font-montserrat font-semibold leading-tight">
-                Premium {carType.name.toLowerCase()}{" "}
-                <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                  collection.
-                </span>
+                {CAR_TYPE_TAGLINES[id ?? ""] ? (
+                  <>
+                    {CAR_TYPE_TAGLINES[id ?? ""].title}{" "}
+                    <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                      {CAR_TYPE_TAGLINES[id ?? ""].highlight}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    Premium {carType.name.toLowerCase()}{" "}
+                    <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                      collection.
+                    </span>
+                  </>
+                )}
               </h1>
               <p className="text-lg text-slate-600 font-inter max-w-2xl">
                 {carType.description}
@@ -156,7 +198,7 @@ export default function CarTypePage() {
                 View Fleet
               </Link>
             </div>
-          
+
           </div>
 
           <div className="relative">
@@ -184,7 +226,7 @@ export default function CarTypePage() {
                   <span>Comfort</span>
                 </div>
               </div>
-             
+
             </div>
           </div>
         </div>
@@ -211,7 +253,7 @@ export default function CarTypePage() {
                 Available vehicles
               </p>
               <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
-                Explore our curated {carType.name.toLowerCase()} fleet
+                Explore our premium {carType.name.toLowerCase()} fleet
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto font-inter">
                 Each vehicle is meticulously maintained and equipped with premium amenities for your
@@ -300,7 +342,7 @@ export default function CarTypePage() {
                   Special Collection
                 </h2>
                 <p className="text-lg text-gray-600 mb-8 font-inter">
-                  Our vintage car collection for weddings features carefully curated classic vehicles
+                  Our vintage car collection for weddings features carefully selected classic vehicles
                   that add timeless elegance to your special day. Contact us to discuss available
                   options and make your wedding transportation truly memorable.
                 </p>
@@ -406,7 +448,7 @@ export default function CarTypePage() {
             </h2>
             <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto font-inter">
               Experience the perfect blend of comfort, style, and exceptional service with our
-              curated {carType.name.toLowerCase()} collection.
+              exclusive {carType.name.toLowerCase()} collection.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

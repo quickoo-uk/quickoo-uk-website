@@ -41,7 +41,7 @@ const safetyFeatures = [
 ];
 
 const ukCompliance = [
-  
+
     {
         title: "Enhanced DBS Checks",
         description: "All chauffeurs undergo Enhanced Disclosure and Barring Service checks, updated every 3 years.",
@@ -132,7 +132,7 @@ export default function SafetyFirstPage() {
                                     </span>
                                 </h1>
                                 <p className="text-lg text-slate-600 font-inter">
-                                Safety protocols, real-time monitoring, and vetted chauffeurs ensure every journey meets the highest security standards.
+                                    Advanced safety protocols, real-time monitoring, and thoroughly vetted chauffeurs ensure every journey meets the highest security standards.
                                 </p>
 
                                 <div className="flex flex-wrap gap-4">
@@ -148,35 +148,18 @@ export default function SafetyFirstPage() {
                                     </Link>
                                 </div>
                             </div>
-
-                         
                         </div>
 
-                        {/* Visual Element */}
+                        {/* Hero Image */}
                         <div className="relative">
                             <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#487307]/20 via-[#6aa80b]/10 to-transparent blur-3xl" />
-                            <div className="relative rounded-3xl border border-white/60 bg-white/90 p-8 backdrop-blur-lg shadow-2xl">
-                                <div className="flex items-center justify-center h-64 mb-6">
-                                    <Shield className="h-48 w-48 text-[#487307]/20" strokeWidth={0.5} />
-                                </div>
-                                <div className="grid grid-cols-2 gap-3 text-center">
-                                    <div className="rounded-xl bg-[#e8f5e9] p-3">
-                                        <Eye className="h-5 w-5 text-[#487307] mx-auto mb-1" />
-                                        <p className="text-xs font-medium text-slate-700">Live Tracking</p>
-                                    </div>
-                                    <div className="rounded-xl bg-[#e8f5e9] p-3">
-                                        <Lock className="h-5 w-5 text-[#487307] mx-auto mb-1" />
-                                        <p className="text-xs font-medium text-slate-700">Secure</p>
-                                    </div>
-                                    <div className="rounded-xl bg-[#e8f5e9] p-3">
-                                        <Bell className="h-5 w-5 text-[#487307] mx-auto mb-1" />
-                                        <p className="text-xs font-medium text-slate-700">24/7 Support</p>
-                                    </div>
-                                    <div className="rounded-xl bg-[#e8f5e9] p-3">
-                                        <Users className="h-5 w-5 text-[#487307] mx-auto mb-1" />
-                                        <p className="text-xs font-medium text-slate-700">Vetted</p>
-                                    </div>
-                                </div>
+                            <div className="relative rounded-3xl border border-white/60 bg-white/90 p-4 backdrop-blur-lg shadow-2xl overflow-hidden">
+                                <img
+                                    src="/images/why-choose/safety-first-hero.jpg"
+                                    alt="Safety First - Advanced security features and monitoring"
+                                    className="w-full h-auto rounded-2xl object-cover"
+                                    style={{ minHeight: '400px', maxHeight: '500px' }}
+                                />
                             </div>
                         </div>
                     </div>

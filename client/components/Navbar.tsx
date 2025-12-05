@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logo from "../public/images/logo-2.png";
+const logo = "/images/logo-2.png";
 import { FLEET_TYPES } from "@shared/fleet";
 
 const SERVICES = [
@@ -10,6 +10,8 @@ const SERVICES = [
   "Corporate travel",
   "Special events",
   "City Tours",
+  "Private Jet Chauffeur",
+  "London Cruise Transfer",
 ];
 
 export const Navbar = () => {

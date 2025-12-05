@@ -10,7 +10,7 @@ import {
   ArrowRight,
   Send,
 } from "lucide-react";
-import logo from "../public/images/logo-2.png";
+const logo = "/images/logo-2.png";
 import { FLEET_TYPES } from "@shared/fleet";
 
 const SERVICES = [
@@ -18,6 +18,8 @@ const SERVICES = [
   "Corporate travel",
   "Special events",
   "City Tours",
+  "Private Jet Chauffeur",
+  "London Cruise Transfer",
 ];
 
 const PAGES = [

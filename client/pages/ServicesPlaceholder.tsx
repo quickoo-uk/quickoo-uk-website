@@ -11,16 +11,61 @@ import {
 } from "lucide-react";
 
 const SERVICE_IMAGES: Record<string, string> = {
-  "airport-transfers": "/services/airport-transfer-hero.jpg",
-  "hourly-hire": "/services/hourly-hire-hero.jpg",
-  "city-to-city": "/services/city-to-city-hero.jpg",
+  "airport-transfers": "/services/airport-transfer-hero.png",
+  "hourly-hire": "/services/hourly-hire-hero.png",
+  "city-to-city": "/services/city-to-city-hero.png",
   wedding: "/services/wedding-hero.jpg",
-  business: "/services/business-hero.jpg",
-  "corporate-travel": "/services/business-hero.jpg",
-  events: "/services/events-hero.jpg",
-  "special-events": "/services/events-hero.jpg",
+  business: "/services/business-hero.png",
+  "corporate-travel": "/services/business-hero.png",
+  events: "/services/special-events-distinct.jpg",
+  "special-events": "/services/special-events-distinct.jpg",
   "private-jet": "/services/private-jet-hero.jpg",
-  "city-tours": "/services/city-tours-hero.jpg",
+  "city-tours": "/services/city-tours-distinct.jpg",
+  "private-jet-chauffeur": "/services/private-jet-hero.jpg",
+  "london-cruise-transfer": "/services/city-tours-hero.jpg",
+};
+
+const SERVICE_TAGLINES: Record<string, { title: string; highlight: string }> = {
+  "airport-transfers": {
+    title: "Seamless airport transfers,",
+    highlight: "redefined for punctuality.",
+  },
+  "corporate-travel": {
+    title: "Executive corporate travel,",
+    highlight: "engineered for efficiency.",
+  },
+  "special-events": {
+    title: "Unforgettable special events,",
+    highlight: "elevated by luxury.",
+  },
+  "city-tours": {
+    title: "Curated city tours,",
+    highlight: "discovering hidden gems.",
+  },
+  "wedding": {
+    title: "Your perfect wedding day,",
+    highlight: "arriving in timeless style.",
+  },
+  "hourly-hire": {
+    title: "Flexible hourly hire,",
+    highlight: "tailored to your schedule.",
+  },
+  "city-to-city": {
+    title: "City-to-city journeys,",
+    highlight: "comfort beyond boundaries.",
+  },
+  "private-jet": {
+    title: "Private jet chauffeur,",
+    highlight: "seamless tarmac transfers.",
+  },
+  "private-jet-chauffeur": {
+    title: "Private aviation transfers,",
+    highlight: "tarmac-side precision.",
+  },
+  "london-cruise-transfer": {
+    title: "Port of London transfers,",
+    highlight: "beginning your voyage in luxury.",
+  },
 };
 
 const trustMetrics = [
@@ -38,7 +83,7 @@ const coreHighlights = [
   {
     title: "Signature hospitality",
     description:
-      "Chauffeurs trained in luxury etiquette, bilingual support, and curated onboard touches.",
+      "Chauffeurs trained in luxury etiquette, bilingual support, and personalized onboard touches.",
   },
   {
     title: "Transparent pricing",
@@ -96,7 +141,7 @@ const journeySteps = [
   },
 ];
 
-const curatedAddOns = [
+const premiumAddOns = [
   { label: "Event command center", note: "On-demand event coordination and live comms." },
   { label: "Security liaison", note: "Professional security and close-protection coordination." },
   { label: "Private route curator", note: "Custom route planning for multi-city and VIP transfers." },
@@ -105,51 +150,18 @@ const curatedAddOns = [
 
 // Dynamic operations image based on service type
 const getOperationsImage = (serviceId: string) => {
-  const operationsImages: Record<string, string> = {
-    "airport-transfers": "/services/airport-transfer-operations.jpg",
-    "hourly-hire": "/services/hourly-hire-operations.jpg",
-    "city-to-city": "/services/city-to-city-operations.jpg",
-    wedding: "/services/wedding-operations.jpg",
-    business: "/services/business-operations.jpg",
-    "corporate-travel": "/services/business-operations.jpg",
-    events: "/services/events-operations.jpg",
-    "special-events": "/services/events-operations.jpg",
-    "private-jet": "/services/private-jet-operations.jpg",
-    "city-tours": "/services/city-tours-operations.jpg",
-  };
-  return operationsImages[serviceId] ?? "/services/business-operations.jpg";
+  // Fallback to business hero for now as specific operation images are not yet generated
+  return "/services/business-hero.png";
 };
 
 const getTeamCollaborationImage = (serviceId: string) => {
-  const teamImages: Record<string, string> = {
-    "airport-transfers": "/services/airport-transfer-team-collaboration.jpg",
-    "hourly-hire": "/services/hourly-hire-team-collaboration.jpg",
-    "city-to-city": "/services/city-to-city-team-collaboration.jpg",
-    wedding: "/services/wedding-team-collaboration.jpg",
-    business: "/services/business-team-collaboration.jpg",
-    "corporate-travel": "/services/business-team-collaboration.jpg",
-    events: "/services/events-team-collaboration.jpg",
-    "special-events": "/services/events-team-collaboration.jpg",
-    "private-jet": "/services/private-jet-team-collaboration.jpg",
-    "city-tours": "/services/city-tours-team-collaboration.jpg",
-  };
-  return teamImages[serviceId] ?? "/services/business-team-collaboration.jpg";
+  // Fallback to business hero for now
+  return "/services/business-hero.png";
 };
 
 const getChauffeurPortraitImage = (serviceId: string) => {
-  const portraitImages: Record<string, string> = {
-    "airport-transfers": "/services/airport-transfer-chauffeur-portrait.jpg",
-    "hourly-hire": "/services/hourly-hire-chauffeur-portrait.jpg",
-    "city-to-city": "/services/city-to-city-chauffeur-portrait.jpg",
-    wedding: "/services/wedding-chauffeur-portrait.jpg",
-    business: "/services/business-chauffeur-portrait.jpg",
-    "corporate-travel": "/services/business-chauffeur-portrait.jpg",
-    events: "/services/events-chauffeur-portrait.jpg",
-    "special-events": "/services/events-chauffeur-portrait.jpg",
-    "private-jet": "/services/private-jet-chauffeur-portrait.jpg",
-    "city-tours": "/services/city-tours-chauffeur-portrait.jpg",
-  };
-  return portraitImages[serviceId] ?? "/services/business-chauffeur-portrait.jpg";
+  // Fallback to business hero for now
+  return "/services/business-hero.png";
 };
 
 export default function ServicesPlaceholder() {
@@ -198,10 +210,21 @@ export default function ServicesPlaceholder() {
             </div>
             <div className="space-y-5">
               <h1 className="text-4xl sm:text-5xl xl:text-6xl font-montserrat font-semibold leading-tight">
-                Bespoke {serviceName.toLowerCase()}{" "}
-                <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                  without compromise.
-                </span>
+                {SERVICE_TAGLINES[id ?? ""] ? (
+                  <>
+                    {SERVICE_TAGLINES[id ?? ""].title}{" "}
+                    <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                      {SERVICE_TAGLINES[id ?? ""].highlight}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    Bespoke {serviceName.toLowerCase()}{" "}
+                    <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                      without compromise.
+                    </span>
+                  </>
+                )}
               </h1>
               <p className="text-lg text-slate-600 font-inter max-w-2xl">
                 Concierge-led planning, telemetry-enabled precision, and sensorial hospitality
@@ -233,7 +256,7 @@ export default function ServicesPlaceholder() {
                   <Crown className="text-[#487307]" />
                 </div>
                 <p className="text-sm text-slate-600 font-inter">
-                  Dedicated journey designer, real-time driver comms, and curated onboard amenities.
+                  Dedicated journey designer, real-time driver comms, and tailored onboard amenities.
                 </p>
                 <div className="grid grid-cols-3 gap-3 text-center text-xs uppercase tracking-[0.3em] text-slate-500">
                   <span>Wifi ready</span>
