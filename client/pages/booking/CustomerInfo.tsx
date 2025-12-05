@@ -122,7 +122,7 @@ export default function CustomerInfo() {
                             <div className="text-right">
                                 <p className="text-sm text-slate-500">Starting from</p>
                                 <p className="text-2xl font-bold text-[#487307]">
-                                    ${bookingData.selectedCar.price}
+                                    £{bookingData.selectedCar.price}
                                     <span className="text-sm font-normal text-slate-500">/hr</span>
                                 </p>
                             </div>
@@ -152,8 +152,8 @@ export default function CustomerInfo() {
                                         value={formData.firstName}
                                         onChange={(e) => handleChange('firstName', e.target.value)}
                                         className={`w-full pl-12 pr-4 py-3 border-2 rounded-xl focus:outline-none transition-all ${errors.firstName
-                                                ? 'border-red-300 focus:border-red-500'
-                                                : 'border-slate-200 focus:border-[#487307]'
+                                            ? 'border-red-300 focus:border-red-500'
+                                            : 'border-slate-200 focus:border-[#487307]'
                                             }`}
                                         placeholder="John"
                                     />
@@ -175,8 +175,8 @@ export default function CustomerInfo() {
                                         value={formData.lastName}
                                         onChange={(e) => handleChange('lastName', e.target.value)}
                                         className={`w-full pl-12 pr-4 py-3 border-2 rounded-xl focus:outline-none transition-all ${errors.lastName
-                                                ? 'border-red-300 focus:border-red-500'
-                                                : 'border-slate-200 focus:border-[#487307]'
+                                            ? 'border-red-300 focus:border-red-500'
+                                            : 'border-slate-200 focus:border-[#487307]'
                                             }`}
                                         placeholder="Doe"
                                     />
@@ -199,8 +199,8 @@ export default function CustomerInfo() {
                                     value={formData.email}
                                     onChange={(e) => handleChange('email', e.target.value)}
                                     className={`w-full pl-12 pr-4 py-3 border-2 rounded-xl focus:outline-none transition-all ${errors.email
-                                            ? 'border-red-300 focus:border-red-500'
-                                            : 'border-slate-200 focus:border-[#487307]'
+                                        ? 'border-red-300 focus:border-red-500'
+                                        : 'border-slate-200 focus:border-[#487307]'
                                         }`}
                                     placeholder="john.doe@example.com"
                                 />
@@ -222,8 +222,8 @@ export default function CustomerInfo() {
                                     value={formData.phone}
                                     onChange={(e) => handleChange('phone', e.target.value)}
                                     className={`w-full pl-12 pr-4 py-3 border-2 rounded-xl focus:outline-none transition-all ${errors.phone
-                                            ? 'border-red-300 focus:border-red-500'
-                                            : 'border-slate-200 focus:border-[#487307]'
+                                        ? 'border-red-300 focus:border-red-500'
+                                        : 'border-slate-200 focus:border-[#487307]'
                                         }`}
                                     placeholder="+1 (555) 123-4567"
                                 />

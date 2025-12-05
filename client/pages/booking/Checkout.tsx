@@ -274,7 +274,7 @@ export default function Checkout() {
                                         onChange={(e) => setPaymentMethod(e.target.value)}
                                         className="w-5 h-5 text-[#487307]"
                                     />
-                                    <span className="w-6 h-6 flex items-center justify-center text-slate-400 font-bold">$</span>
+                                    <span className="w-6 h-6 flex items-center justify-center text-slate-400 font-bold">£</span>
                                     <span className="font-semibold text-slate-900">Pay with Cash</span>
                                 </label>
                             </div>
@@ -294,21 +294,21 @@ export default function Checkout() {
                             <div className="space-y-4 mb-6">
                                 <div className="flex justify-between text-slate-600">
                                     <span>Subtotal</span>
-                                    <span className="font-semibold">${pricing.subtotal.toFixed(2)}</span>
+                                    <span className="font-semibold">£{pricing.subtotal.toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between text-slate-600">
                                     <span>Service Fee</span>
-                                    <span className="font-semibold">${pricing.serviceFee.toFixed(2)}</span>
+                                    <span className="font-semibold">£{pricing.serviceFee.toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between text-slate-600">
                                     <span>Tax (10%)</span>
-                                    <span className="font-semibold">${pricing.tax.toFixed(2)}</span>
+                                    <span className="font-semibold">£{pricing.tax.toFixed(2)}</span>
                                 </div>
                                 <div className="border-t-2 border-slate-200 pt-4">
                                     <div className="flex justify-between items-center">
                                         <span className="text-lg font-bold text-slate-900">Total</span>
                                         <span className="text-2xl font-bold text-[#487307]">
-                                            ${pricing.total.toFixed(2)}
+                                            £{pricing.total.toFixed(2)}
                                         </span>
                                     </div>
                                 </div>

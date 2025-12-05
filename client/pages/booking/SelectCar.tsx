@@ -9,7 +9,7 @@ const luxuryCars = [
         id: 'mercedes-s-class',
         name: 'Mercedes S-Class',
         image: '/home/hero-premium-travel-1.png',
-        price: 150,
+        price: 75,
         passengers: 3,
         luggage: 2,
         features: ['Premium Leather', 'Climate Control', 'WiFi', 'Refreshments'],
@@ -19,7 +19,7 @@ const luxuryCars = [
         id: 'bmw-7-series',
         name: 'BMW 7 Series',
         image: '/home/hero-premium-travel-2.jpg',
-        price: 145,
+        price: 75,
         passengers: 3,
         luggage: 2,
         features: ['Massage Seats', 'Premium Sound', 'WiFi', 'Privacy Glass'],
@@ -29,7 +29,7 @@ const luxuryCars = [
         id: 'audi-a8',
         name: 'Audi A8',
         image: '/home/hero-premium-travel-3.jpg',
-        price: 140,
+        price: 70,
         passengers: 3,
         luggage: 2,
         features: ['Matrix LED', 'Virtual Cockpit', 'WiFi', 'Premium Audio'],
@@ -39,7 +39,7 @@ const luxuryCars = [
         id: 'mercedes-v-class',
         name: 'Mercedes V-Class',
         image: '/home/hero-premium-travel-1.png',
-        price: 180,
+        price: 70,
         passengers: 6,
         luggage: 6,
         features: ['Spacious Interior', 'Captain Seats', 'WiFi', 'Entertainment System'],
@@ -49,21 +49,21 @@ const luxuryCars = [
         id: 'range-rover',
         name: 'Range Rover',
         image: '/home/hero-premium-travel-2.jpg',
-        price: 165,
+        price: 80,
         passengers: 4,
         luggage: 4,
         features: ['All-Terrain', 'Panoramic Roof', 'WiFi', 'Premium Leather'],
         description: 'Luxury SUV for any journey'
     },
     {
-        id: 'bentley-flying-spur',
-        name: 'Bentley Flying Spur',
+        id: 'mercedes-e-class',
+        name: 'Mercedes E-Class',
         image: '/home/hero-premium-travel-3.jpg',
-        price: 250,
+        price: 60,
         passengers: 3,
         luggage: 2,
-        features: ['Handcrafted Interior', 'Champagne Cooler', 'WiFi', 'Premium Sound'],
-        description: 'The pinnacle of automotive luxury'
+        features: ['Executive Comfort', 'Premium Sound', 'WiFi', 'Climate Control'],
+        description: 'Premium executive sedan for business travel'
     }
 ];
 
@@ -169,8 +169,8 @@ export default function SelectCar() {
                             transition={{ delay: 0.1 * index }}
                             onClick={() => handleSelectCar(car)}
                             className={`relative bg-white rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${selectedCarId === car.id
-                                    ? 'ring-4 ring-[#487307] shadow-2xl shadow-[#487307]/20 scale-[1.02]'
-                                    : 'shadow-lg hover:shadow-xl hover:scale-[1.01] border border-slate-200'
+                                ? 'ring-4 ring-[#487307] shadow-2xl shadow-[#487307]/20 scale-[1.02]'
+                                : 'shadow-lg hover:shadow-xl hover:scale-[1.01] border border-slate-200'
                                 }`}
                         >
                             {/* Selected Badge */}
@@ -227,14 +227,14 @@ export default function SelectCar() {
                                     <div>
                                         <p className="text-xs text-slate-500">Starting from</p>
                                         <p className="text-2xl font-bold text-slate-900">
-                                            ${car.price}
+                                            £{car.price}
                                             <span className="text-sm font-normal text-slate-500">/hour</span>
                                         </p>
                                     </div>
                                     <button
                                         className={`px-6 py-2 rounded-full font-semibold transition-all ${selectedCarId === car.id
-                                                ? 'bg-[#487307] text-white'
-                                                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                                            ? 'bg-[#487307] text-white'
+                                            : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                                             }`}
                                     >
                                         {selectedCarId === car.id ? 'Selected' : 'Select'}
@@ -259,8 +259,8 @@ export default function SelectCar() {
                         onClick={handleContinue}
                         disabled={!selectedCarId}
                         className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold transition-all ${selectedCarId
-                                ? 'bg-gradient-to-r from-[#0f1801] via-[#487307] to-[#6aa80b] text-white hover:shadow-lg hover:shadow-[#487307]/30'
-                                : 'bg-slate-200 text-slate-400 cursor-not-allowed'
+                            ? 'bg-gradient-to-r from-[#0f1801] via-[#487307] to-[#6aa80b] text-white hover:shadow-lg hover:shadow-[#487307]/30'
+                            : 'bg-slate-200 text-slate-400 cursor-not-allowed'
                             }`}
                     >
                         Continue to Customer Info
