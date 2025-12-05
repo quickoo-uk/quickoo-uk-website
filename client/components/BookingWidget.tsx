@@ -1,8 +1,12 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { MapPin, Calendar, Clock, Info, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useBooking } from "@/contexts/BookingContext";
 
 export const BookingWidget = () => {
+    const navigate = useNavigate();
+    const { updateBookingData } = useBooking();
     const [activeTab, setActiveTab] = useState<"oneway" | "hourly">("oneway");
     const [selectedDate, setSelectedDate] = useState(new Date(2025, 10, 22)); // Nov 22, 2025
     const [selectedTime, setSelectedTime] = useState("05:05 PM");
@@ -11,6 +15,8 @@ export const BookingWidget = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date(2025, 10, 1)); // November 2025
     const [selectedDuration, setSelectedDuration] = useState("4 hours");
     const [showDurationPicker, setShowDurationPicker] = useState(false);
+    const [fromLocation, setFromLocation] = useState("");
+    const [toLocation, setToLocation] = useState("");
 
     const datePickerRef = useRef<HTMLDivElement>(null);
     const timePickerRef = useRef<HTMLDivElement>(null);
@@ -149,6 +155,8 @@ export const BookingWidget = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    value={fromLocation}
+                                    onChange={(e) => setFromLocation(e.target.value)}
                                     placeholder="Address, airport, hotel, ..."
                                     className="w-full bg-transparent border-none p-0 text-slate-900 placeholder-slate-400 focus:ring-0 text-sm font-medium outline-none"
                                 />
@@ -167,6 +175,8 @@ export const BookingWidget = () => {
                                     </label>
                                     <input
                                         type="text"
+                                        value={toLocation}
+                                        onChange={(e) => setToLocation(e.target.value)}
                                         placeholder="Address, airport, hotel, ..."
                                         className="w-full bg-transparent border-none p-0 text-slate-900 placeholder-slate-400 focus:ring-0 text-sm font-medium outline-none"
                                     />
@@ -428,7 +438,20 @@ export const BookingWidget = () => {
                         )}
 
                         {/* Search Button */}
-                        <button className="w-full py-4 rounded-lg bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] text-white font-montserrat font-bold text-lg shadow-lg shadow-[#2a4204]/35 hover:opacity-90 transition-all transform active:scale-[0.98]">
+                        <button
+                            onClick={() => {
+                                updateBookingData({
+                                    bookingType: activeTab,
+                                    fromLocation,
+                                    toLocation,
+                                    date: selectedDate,
+                                    time: selectedTime,
+                                    duration: selectedDuration,
+                                });
+                                navigate('/booking/select-car');
+                            }}
+                            className="w-full py-4 rounded-lg bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] text-white font-montserrat font-bold text-lg shadow-lg shadow-[#2a4204]/35 hover:opacity-90 transition-all transform active:scale-[0.98]"
+                        >
                             Search
                         </button>
                     </motion.div>

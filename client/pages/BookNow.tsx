@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   MapPin,
   Calendar,
@@ -11,10 +12,13 @@ import {
 } from "lucide-react";
 import { GoogleMap } from "@/components/GoogleMap";
 import { motion, AnimatePresence } from "framer-motion";
+import { useBooking } from "@/contexts/BookingContext";
 
 type RideType = "one-way" | "airport-pickup" | "hourly";
 
 export default function BookNow() {
+  const navigate = useNavigate();
+  const { updateBookingData } = useBooking();
   const [rideType, setRideType] = useState<RideType>("one-way");
   const [formData, setFormData] = useState({
     pickupAddress: "",
@@ -351,8 +355,26 @@ export default function BookNow() {
 
                 {/* CONTINUE BUTTON */}
                 <button
-                  type="submit"
+                  type="button"
                   disabled={!isFormValid()}
+                  onClick={() => {
+                    if (isFormValid()) {
+                      // Map the BookNow form data to BookingContext format
+                      const bookingType = rideType === "one-way" ? "oneway" : "hourly";
+                      const date = formData.date ? new Date(formData.date) : new Date();
+
+                      updateBookingData({
+                        bookingType,
+                        fromLocation: formData.pickupAddress,
+                        toLocation: formData.dropoffAddress,
+                        date,
+                        time: formData.time || formData.pickupTime,
+                        duration: formData.duration,
+                      });
+
+                      navigate('/booking/select-car');
+                    }
+                  }}
                   className={`w-full py-4 rounded-2xl font-bold text-base transition-all duration-300 flex items-center justify-center gap-2 group ${isFormValid()
                     ? "bg-gradient-to-r from-[#0a1a02] via-[#2a4204] to-[#487307] text-white shadow-xl shadow-[#2a4204]/40 hover:shadow-2xl hover:shadow-[#2a4204]/50 hover:scale-[1.02] active:scale-[0.98]"
                     : "bg-slate-100 text-slate-400 cursor-not-allowed"
