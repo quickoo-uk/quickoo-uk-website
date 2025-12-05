@@ -185,7 +185,7 @@ export default function EliteChauffeurs() {
                             <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#487307]/20 via-[#6aa80b]/10 to-transparent blur-3xl" />
                             <div className="relative rounded-3xl border border-white/60 bg-white/90 p-4 backdrop-blur-lg shadow-2xl overflow-hidden">
                                 <img
-                                    src="/images/why-choose/elite-chauffeurs-hero.jpg"
+                                    src="/images/why-choose/elite-chauffeurs-hero.png"
                                     alt="Elite Chauffeurs - VIP-trained professional drivers"
                                     className="w-full h-auto rounded-2xl object-cover"
                                     style={{ minHeight: '400px', maxHeight: '500px' }}
