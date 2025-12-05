@@ -11,18 +11,18 @@ import {
 } from "lucide-react";
 
 const SERVICE_IMAGES: Record<string, string> = {
-  "airport-transfers": "/services/airport-transfer-hero.jpg",
-  "hourly-hire": "/services/hourly-hire-hero.jpg",
-  "city-to-city": "/services/city-to-city-hero.jpg",
+  "airport-transfers": "/services/airport-transfer-hero.png",
+  "hourly-hire": "/services/hourly-hire-hero.png",
+  "city-to-city": "/services/city-to-city-hero.png",
   wedding: "/services/wedding-hero.jpg",
-  business: "/services/business-hero.jpg",
-  "corporate-travel": "/services/business-hero.jpg",
-  events: "/services/events-hero.jpg",
-  "special-events": "/services/events-hero.jpg",
+  business: "/services/business-hero.png",
+  "corporate-travel": "/services/business-hero.png",
+  events: "/services/special-events-distinct.jpg",
+  "special-events": "/services/special-events-distinct.jpg",
   "private-jet": "/services/private-jet-hero.jpg",
-  "city-tours": "/services/city-tours-hero.jpg",
+  "city-tours": "/services/city-tours-distinct.jpg",
   "private-jet-chauffeur": "/services/private-jet-hero.jpg",
-  "london-cruise-transfer": "/services/london-cruise-transfer-hero.png",
+  "london-cruise-transfer": "/services/city-tours-hero.jpg",
 };
 
 const SERVICE_TAGLINES: Record<string, { title: string; highlight: string }> = {
@@ -57,6 +57,14 @@ const SERVICE_TAGLINES: Record<string, { title: string; highlight: string }> = {
   "private-jet": {
     title: "Private jet chauffeur,",
     highlight: "seamless tarmac transfers.",
+  },
+  "private-jet-chauffeur": {
+    title: "Private aviation transfers,",
+    highlight: "tarmac-side precision.",
+  },
+  "london-cruise-transfer": {
+    title: "Port of London transfers,",
+    highlight: "beginning your voyage in luxury.",
   },
 };
 
@@ -142,57 +150,18 @@ const premiumAddOns = [
 
 // Dynamic operations image based on service type
 const getOperationsImage = (serviceId: string) => {
-  const operationsImages: Record<string, string> = {
-    "airport-transfers": "/services/airport-transfer-operations.jpg",
-    "hourly-hire": "/services/hourly-hire-operations.jpg",
-    "city-to-city": "/services/city-to-city-operations.jpg",
-    wedding: "/services/wedding-operations.jpg",
-    business: "/services/business-operations.jpg",
-    "corporate-travel": "/services/business-operations.jpg",
-    events: "/services/events-operations.jpg",
-    "special-events": "/services/events-operations.jpg",
-    "private-jet": "/services/private-jet-operations.jpg",
-    "city-tours": "/services/city-tours-operations.jpg",
-    "private-jet-chauffeur": "/services/private-jet-operations.jpg",
-    "london-cruise-transfer": "/services/london-cruise-transfer-operations.png",
-  };
-  return operationsImages[serviceId] ?? "/services/business-operations.jpg";
+  // Fallback to business hero for now as specific operation images are not yet generated
+  return "/services/business-hero.png";
 };
 
 const getTeamCollaborationImage = (serviceId: string) => {
-  const teamImages: Record<string, string> = {
-    "airport-transfers": "/services/airport-transfer-team-collaboration.jpg",
-    "hourly-hire": "/services/hourly-hire-team-collaboration.jpg",
-    "city-to-city": "/services/city-to-city-team-collaboration.jpg",
-    wedding: "/services/wedding-team-collaboration.jpg",
-    business: "/services/business-team-collaboration.jpg",
-    "corporate-travel": "/services/business-team-collaboration.jpg",
-    events: "/services/events-team-collaboration.jpg",
-    "special-events": "/services/events-team-collaboration.jpg",
-    "private-jet": "/services/private-jet-team-collaboration.jpg",
-    "city-tours": "/services/city-tours-team-collaboration.jpg",
-    "private-jet-chauffeur": "/services/private-jet-team-collaboration.jpg",
-    "london-cruise-transfer": "/services/london-cruise-transfer-team-collaboration.png",
-  };
-  return teamImages[serviceId] ?? "/services/business-team-collaboration.jpg";
+  // Fallback to business hero for now
+  return "/services/business-hero.png";
 };
 
 const getChauffeurPortraitImage = (serviceId: string) => {
-  const portraitImages: Record<string, string> = {
-    "airport-transfers": "/services/airport-transfer-chauffeur-portrait.jpg",
-    "hourly-hire": "/services/hourly-hire-chauffeur-portrait.jpg",
-    "city-to-city": "/services/city-to-city-chauffeur-portrait.jpg",
-    wedding: "/services/wedding-chauffeur-portrait.jpg",
-    business: "/services/business-chauffeur-portrait.jpg",
-    "corporate-travel": "/services/business-chauffeur-portrait.jpg",
-    events: "/services/events-chauffeur-portrait.jpg",
-    "special-events": "/services/events-chauffeur-portrait.jpg",
-    "private-jet": "/services/private-jet-chauffeur-portrait.jpg",
-    "city-tours": "/services/city-tours-chauffeur-portrait.jpg",
-    "private-jet-chauffeur": "/services/private-jet-chauffeur-portrait.jpg",
-    "london-cruise-transfer": "/services/london-cruise-transfer-chauffeur-portrait.png",
-  };
-  return portraitImages[serviceId] ?? "/services/business-chauffeur-portrait.jpg";
+  // Fallback to business hero for now
+  return "/services/business-hero.png";
 };
 
 export default function ServicesPlaceholder() {
