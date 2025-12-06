@@ -34,7 +34,7 @@ const SERVICES: Service[] = [
     highlight: "Flight Monitoring",
     features: ["VIP meet & greet", "Real-time tracking", "Luggage care"],
     accent: "from-sky-500/90 via-sky-400/80 to-sky-500/70",
-    image: "/home/Airport Transfers.png",
+    image: "/home/Airport Transfers-home.png",
     premium: "Your schedule comes first: 1 hour complimentary wait time with advanced flight monitoring.",
   },
   {
@@ -45,7 +45,7 @@ const SERVICES: Service[] = [
     highlight: "Door-to-Door",
     features: ["Bottled water", "Custom playlists", "Power & Wi-Fi"],
     accent: "from-indigo-500/90 via-blue-500/80 to-indigo-500/70",
-    image: "/home/Corporate Travel.jpg",
+    image: "/home/Corporate Travel.png",
   },
 
 
@@ -68,7 +68,7 @@ const SERVICES: Service[] = [
     highlight: "Curated Routes",
     features: ["Certified guides", "Photo stops", "Dining reservations"],
     accent: "from-emerald-500/90 via-green-500/80 to-emerald-500/70",
-    image: "/home/City Tours.jpg",
+    image: "/home/City Tours.png",
   },
 ];
 

@@ -12,7 +12,7 @@ const hourlyPackages = [
     label: "Premium Hourly",
     rate: "$90",
     description: "For VIP guests who expect silence and service.",
-    items: ["BMW 7 Series", "Priority driver", "Aromatherapy cabin"],
+    items: ["BMW 7 Series", "Priority chauffeur", "Aromatherapy cabin"],
   },
   {
     label: "Elite Signature",
@@ -226,7 +226,7 @@ export default function PricingPage() {
             </h2>
             <p className="font-inter text-gray-600">
               All transfer quotes include luggage handling, smart flight delay adjustments,
-              and real-time driver tracking links sent to passengers.
+              and real-time chauffeur tracking links sent to passengers.
             </p>
 
           </div>
@@ -275,7 +275,7 @@ export default function PricingPage() {
               Transparent distance-based pricing
             </h2>
             <p className="max-w-2xl font-inter text-gray-600">
-              Each charter includes professional driver etiquette training,
+              Each charter includes professional chauffeur etiquette training,
               luxury hydration program, and adaptive climate controls.
             </p>
           </div>
@@ -353,7 +353,7 @@ export default function PricingPage() {
           <div className="relative rounded-[2rem] border border-white/20 bg-dark text-white overflow-hidden">
             <img
               src="/pricing/pricing-concierge-service.jpg"
-              alt="Driver opening car door"
+              alt="Chauffeur opening car door"
               className="absolute inset-0 h-full w-full object-cover opacity-30"
               loading="lazy"
             />

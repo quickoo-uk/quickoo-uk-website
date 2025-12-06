@@ -45,12 +45,7 @@ const trainingPrograms = [
         duration: "24 hours",
         certification: "Institute of Hospitality",
     },
-    {
-        title: "Safety & First Aid",
-        description: "Emergency response, first aid, CPR, and passenger safety procedures.",
-        duration: "16 hours",
-        certification: "St John Ambulance",
-    },
+
     {
         title: "Local Knowledge",
         description: "Routes, landmarks, restaurants, hotels, and cultural venues across all operating cities.",
@@ -68,13 +63,13 @@ const chauffeurStats = [
 
 const ukRequirements = [
     {
-        title: "Private Hire Driver License",
-        description: "All chauffeurs hold valid PHV driver licenses issued by local licensing authorities, meeting UK legal requirements.",
+        title: "Private Hire Chauffeur License",
+        description: "All chauffeurs hold valid PHV chauffeur licenses issued by local licensing authorities, meeting UK legal requirements.",
         standard: "PHV Licensed",
     },
     {
         title: "Enhanced DBS Clearance",
-        description: "Enhanced Disclosure and Barring Service checks completed for all drivers, updated every 3 years minimum.",
+        description: "Enhanced Disclosure and Barring Service checks completed for all chauffeurs, updated every 3 years minimum.",
         standard: "Enhanced DBS",
     },
     {
@@ -156,7 +151,7 @@ export default function EliteChauffeurs() {
 
                             <div className="space-y-6">
                                 <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-slate-900">
-                                    Hospitality-trained drivers{" "}
+                                    Hospitality-trained chauffeurs{" "}
                                     <span className="bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] bg-clip-text text-transparent">
                                         versed in VIP protocol
                                     </span>
@@ -186,7 +181,7 @@ export default function EliteChauffeurs() {
                             <div className="relative rounded-3xl border border-white/60 bg-white/90 p-4 backdrop-blur-lg shadow-2xl overflow-hidden">
                                 <img
                                     src="/images/why-choose/elite-chauffeurs-hero.png"
-                                    alt="Elite Chauffeurs - VIP-trained professional drivers"
+                                    alt="Elite Chauffeurs - VIP-trained professional chauffeurs"
                                     className="w-full h-auto rounded-2xl object-cover"
                                     style={{ minHeight: '400px', maxHeight: '500px' }}
                                 />

@@ -79,7 +79,7 @@ const pillars = [
   {
     icon: ShieldCheck,
     title: "Safety First",
-    text: "Fleet-wide telemetry, quarterly driver wellness checks, and ISO-aligned safety playbooks.",
+    text: "Fleet-wide telemetry, quarterly chauffeur wellness checks, and ISO-aligned safety playbooks.",
   },
   {
     icon: Leaf,

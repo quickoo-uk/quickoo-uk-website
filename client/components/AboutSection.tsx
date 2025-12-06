@@ -91,7 +91,7 @@ export const AboutSection = () => {
               </p>
             </div>
 
-           
+
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -148,7 +148,7 @@ export const AboutSection = () => {
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
-             
+
             </div>
 
             <div className="rounded-3xl border border-white/60 bg-white/90 p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur">

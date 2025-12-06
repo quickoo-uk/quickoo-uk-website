@@ -37,7 +37,7 @@ const FEATURES = [
     icon: Users,
     title: "Elite Chauffeurs",
     description:
-      "Hospitality-trained drivers fluent in multiple languages and versed in VIP protocol.",
+      "Hospitality-trained chauffeurs fluent in multiple languages and versed in VIP protocol.",
     badge: "1% Hired",
     accent: "from-purple-500/90 via-fuchsia-500/80 to-purple-500/70",
     shadowColor: "rgba(168, 85, 247, 0.4)", // purple-500

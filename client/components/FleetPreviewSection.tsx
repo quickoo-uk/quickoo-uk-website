@@ -36,7 +36,7 @@ const VEHICLE_CLASSES = [
     image: "/fleet/BusinessVAN.png",
     guests: "Up to 5 guests",
     luggage: "6 carry-on bags, or 6 standard bags",
-    description: "Mercedes Vito or similar executive vans for group travel.",
+    description: "Mercedes V-Class, spacious 7-seater perfect for families and groups.",
     vehicles: ["Mercedes Vito", "Or similar executive van"],
   },
 ];

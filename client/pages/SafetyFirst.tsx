@@ -1,4 +1,4 @@
-import { Shield, CheckCircle2, Eye, Lock, Bell, Users, ArrowRight, Sparkles, Award } from "lucide-react";
+import { Shield, CheckCircle2, Eye, Bell, Users, ArrowRight, Sparkles, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -23,11 +23,7 @@ const safetyFeatures = [
         title: "Real-Time Monitoring",
         description: "GPS tracking and live journey updates ensure complete visibility of your ride from pickup to destination.",
     },
-    {
-        icon: Lock,
-        title: "Biometric Access",
-        description: "Advanced biometric controls and secure authentication protect every aspect of your journey.",
-    },
+
     {
         icon: Bell,
         title: "24/7 Support",
@@ -36,7 +32,7 @@ const safetyFeatures = [
     {
         icon: Users,
         title: "Vetted Chauffeurs",
-        description: "Every driver undergoes comprehensive background checks and continuous safety training.",
+        description: "Every Chauffeur undergoes comprehensive background checks and continuous safety training.",
     },
 ];
 
@@ -54,7 +50,7 @@ const ukCompliance = [
     },
     {
         title: "PHV License Compliance",
-        description: "All vehicles and drivers hold valid Private Hire Vehicle licenses from local licensing authorities.",
+        description: "All vehicles and chauffeurs hold valid Private Hire Vehicle licenses from local licensing authorities.",
         standard: "PHV Licensed",
     },
     {
@@ -72,7 +68,7 @@ const ukCompliance = [
 const emergencyProtocols = [
     "Immediate emergency contact activation",
     "Real-time location sharing with authorities",
-    "In-vehicle panic button system",
+
     "24/7 emergency response coordination",
     "Automated incident reporting",
     "Medical emergency protocols",
@@ -93,7 +89,7 @@ const relatedFeatures = [
     },
     {
         title: "Elite Chauffeurs",
-        description: "VIP-trained professional drivers",
+        description: "VIP-trained professional chauffeurs",
         link: "/why-choose/elite-chauffeurs",
         icon: "⭐",
     },
@@ -155,7 +151,7 @@ export default function SafetyFirstPage() {
                             <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#487307]/20 via-[#6aa80b]/10 to-transparent blur-3xl" />
                             <div className="relative rounded-3xl border border-white/60 bg-white/90 p-4 backdrop-blur-lg shadow-2xl overflow-hidden">
                                 <img
-                                    src="/images/why-choose/safety-first-hero.jpg"
+                                    src="/images/why-choose/safety-first-hero.png"
                                     alt="Safety First - Advanced security features and monitoring"
                                     className="w-full h-auto rounded-2xl object-cover"
                                     style={{ minHeight: '400px', maxHeight: '500px' }}
@@ -187,7 +183,7 @@ export default function SafetyFirstPage() {
                         </p>
                     </div>
 
-                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                    <div className="grid gap-6 md:grid-cols-3">
                         {safetyFeatures.map((feature) => {
                             const Icon = feature.icon;
                             return (
