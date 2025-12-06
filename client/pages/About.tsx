@@ -187,7 +187,7 @@ const contactHighlights = [
 
 export default function AboutPage() {
   return (
-    <div className="bg-gradient-to-b from-[#f9fafc] via-white to-[#fdf7f0] text-slate-900 overflow-hidden">
+    <div className="bg-gradient-to-b from-white via-[#fafbff] to-white text-slate-900 overflow-hidden">
       <motion.section
         className="relative overflow-hidden min-h-[70vh] flex items-center bg-gradient-to-br from-white via-[#f1f5ff] to-[#fdf2e9]"
         initial="hidden"
@@ -292,63 +292,178 @@ export default function AboutPage() {
       </motion.section>
 
       <motion.section
-        className="section-spacing section-container grid grid-cols-1 lg:grid-cols-2 gap-10 bg-transparent"
+        className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#fafbff] to-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={stagger}
       >
-        <motion.div
-          className="relative rounded-[32px] overflow-hidden shadow-2xl"
-          variants={fadeInUp}
+        {/* Background decorative elements */}
+        <div className="absolute -left-20 top-20 h-80 w-80 rounded-full bg-[#487307]/10 blur-[150px]" />
+        <div className="absolute -right-16 bottom-10 h-72 w-72 rounded-full bg-gold/15 blur-[130px]" />
+
+        {/* Animated SVG */}
+        <motion.svg
+          className="pointer-events-none absolute right-10 top-10 h-44 w-44 text-[#487307]/10"
+          viewBox="0 0 200 200"
+          aria-hidden
+          animate={{ rotate: 360 }}
+          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
         >
-          <img
-            src="/about/about-vehicle-interior.jpg"
-            alt="Inside a Quickoo chauffeur vehicle"
-            className="h-full w-full object-cover"
+          <circle
+            cx="100"
+            cy="100"
+            r="90"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="0.4"
+            strokeDasharray="8 8"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/20 bg-white/5 p-6 backdrop-blur">
-            <p className="text-sm uppercase tracking-[0.4em] text-gray-200 font-semibold">
-              Since 2015
-            </p>
-            <p className="text-2xl font-montserrat">
-              Reimagining premium mobility with detail-obsessed hospitality.
-            </p>
-          </div>
-        </motion.div>
-        <motion.div
-          className="space-y-8 rounded-[32px] bg-white text-dark p-8 md:p-10 shadow-[0_50px_120px_rgba(0,0,0,0.35)]"
-          variants={fadeInUp}
-        >
-          <p className="text-sm uppercase tracking-[0.3em] text-gold font-semibold">Mission & Vision</p>
-          <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-dark">
-            Excellence in every journey
-          </h2>
-          <p className="font-inter text-gray-600">
-            Founded to redefine luxury travel across the United Kingdom, Quickoo delivers
-            concierge-level precision at every touchpoint. We pair meticulously maintained fleets
-            with professional chauffeurs trained for elevated service rituals.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-6">
-            <div className="rounded-2xl bg-muted p-5 space-y-2">
-              <p className="text-xs uppercase tracking-[0.4em] text-gray-500">Mission</p>
-              <p className="text-base font-semibold text-dark">
-                Deliver reliable, safe, and memorable luxury journeys 24/7 with transparent pricing.
-              </p>
+          <circle
+            cx="100"
+            cy="100"
+            r="60"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="0.4"
+            strokeDasharray="4 4"
+          />
+        </motion.svg>
+
+        <div className="section-container relative">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16 space-y-4"
+          >
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
+              <Sparkles className="h-4 w-4 text-[#487307]" />
+              <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
+                Mission & Vision
+              </span>
             </div>
-            <div className="rounded-2xl bg-muted p-5 space-y-2">
-              <p className="text-xs uppercase tracking-[0.4em] text-gray-500">Vision</p>
-              <p className="text-base font-semibold text-dark">
-                Become the UK’s most trusted and innovative luxury transportation partner.
-              </p>
-            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark max-w-4xl mx-auto leading-tight">
+              Driving Excellence,{" "}
+              <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                Defining Elegance
+              </span>
+            </h2>
+            <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
+              Our commitment to redefining luxury travel through precision, care, and unwavering excellence.
+            </p>
+          </motion.div>
+
+          {/* Mission & Vision Cards */}
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Mission Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="group relative overflow-hidden rounded-3xl bg-white border border-slate-100 p-10 shadow-[0_20px_70px_rgba(15,23,42,0.05)] hover:shadow-[0_30px_90px_rgba(72,115,7,0.1)] transition-all duration-500"
+            >
+              {/* Glow effect */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-[#487307]/20 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative space-y-6">
+                {/* Icon */}
+                <div className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] p-4 shadow-lg">
+                  <Award className="h-8 w-8 text-white" />
+                </div>
+
+                {/* Title */}
+                <div className="space-y-3">
+                  <h3 className="text-2xl sm:text-3xl font-montserrat font-bold text-dark leading-tight">
+                    Our Mission
+                  </h3>
+                  <div className="h-1 w-16 bg-gradient-to-r from-[#487307] to-transparent rounded-full" />
+                </div>
+
+                {/* Content */}
+                <p className="text-base font-inter text-gray-600 leading-relaxed">
+                  To deliver reliable, safe, and memorable luxury journeys 24/7 with transparent pricing. Founded to redefine luxury travel across the United Kingdom, Quickoo delivers concierge-level precision at every touchpoint, pairing meticulously maintained fleets with professional chauffeurs trained for elevated service rituals.
+                </p>
+
+                {/* Decorative line */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#487307]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </motion.div>
+
+            {/* Vision Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="group relative overflow-hidden rounded-3xl bg-white border border-slate-100 p-10 shadow-[0_20px_70px_rgba(15,23,42,0.05)] hover:shadow-[0_30px_90px_rgba(212,175,55,0.1)] transition-all duration-500"
+            >
+              {/* Glow effect */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-gold/20 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative space-y-6">
+                {/* Icon */}
+                <div className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-gold via-[#f5d77e] to-gold p-4 shadow-lg">
+                  <Star className="h-8 w-8 text-[#0f1801]" />
+                </div>
+
+                {/* Title */}
+                <div className="space-y-3">
+                  <h3 className="text-2xl sm:text-3xl font-montserrat font-bold text-dark leading-tight">
+                    Our Vision
+                  </h3>
+                  <div className="h-1 w-16 bg-gradient-to-r from-gold to-transparent rounded-full" />
+                </div>
+
+                {/* Content */}
+                <p className="text-base font-inter text-gray-600 leading-relaxed">
+                  Our vision is to be regarded as a distinguished name in chauffeur-driven mobility, recognised for redefining travel as an elegant and personalised experience rather than a mere transfer. We aspire to set a lasting benchmark in refined service, where every journey becomes a quiet expression of sophistication, and every detail reflects an ethos of excellence without compromise.
+                </p>
+
+                {/* Decorative line */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
+
+          {/* Bottom Quote/Statement */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="relative mt-12"
+          >
+            <div className="absolute -inset-8 rounded-3xl bg-gradient-to-r from-[#487307]/10 via-gold/10 to-[#487307]/10 blur-3xl" />
+            <div className="relative rounded-3xl border border-slate-100 bg-white p-10 shadow-[0_30px_90px_rgba(72,115,7,0.08)] text-center overflow-hidden">
+              {/* Decorative elements */}
+              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-[#487307]/10 to-transparent rounded-full blur-2xl" />
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-gold/10 to-transparent rounded-full blur-2xl" />
+
+              <div className="relative max-w-3xl mx-auto space-y-6">
+                <div className="inline-flex items-center gap-3 mb-4">
+                  <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#487307]/50" />
+                  <Sparkles className="h-6 w-6 text-[#487307]" />
+                  <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#487307]/50" />
+                </div>
+
+                <p className="text-xl sm:text-2xl font-montserrat font-semibold text-dark italic leading-relaxed">
+                  "Excellence in every journey—where precision meets care, and every detail reflects our unwavering commitment to{" "}
+                  <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                    luxury without compromise.
+                  </span>"
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </motion.section>
 
       <motion.section
-        className="section-spacing bg-[#f4f6fb]"
+        className="section-spacing bg-gradient-to-b from-white via-[#f8f9fb] to-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -382,7 +497,7 @@ export default function AboutPage() {
       </motion.section>
 
       <motion.section
-        className="section-spacing relative overflow-hidden bg-gradient-to-br from-white via-[#f5f5ff] to-[#fff8ef]"
+        className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#fafbff] to-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -553,7 +668,7 @@ export default function AboutPage() {
       </motion.section>
 
       <motion.section
-        className="section-spacing bg-[#f4f6fb]"
+        className="section-spacing bg-gradient-to-b from-white via-[#f8f9fb] to-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -624,7 +739,7 @@ export default function AboutPage() {
       </motion.section>
 
       <motion.section
-        className="section-spacing bg-gradient-to-br from-gold/10 via-[#fff7ec] to-white text-dark"
+        className="section-spacing bg-gradient-to-b from-white via-[#fafbff] to-white text-dark"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}

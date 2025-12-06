@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   ArrowRight,
   Clock,
@@ -166,6 +166,7 @@ const getChauffeurPortraitImage = (serviceId: string) => {
 
 export default function ServicesPlaceholder() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const serviceName = id
     ? id
@@ -232,7 +233,10 @@ export default function ServicesPlaceholder() {
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
-              <button className="rounded-full luxury-button-gold px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#0a1a02]/35 transition hover:scale-[1.02]">
+              <button
+                onClick={() => navigate('/booking/select-car')}
+                className="rounded-full luxury-button-gold px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#0a1a02]/35 transition hover:scale-[1.02]"
+              >
                 Book {serviceName}
               </button>
 
@@ -413,7 +417,10 @@ export default function ServicesPlaceholder() {
               )}
             </div>
             <div className="flex flex-wrap gap-4">
-              <button className="luxury-button-gold px-8 py-4 text-lg shadow-lg shadow-gold/30">
+              <button
+                onClick={() => navigate('/booking/select-car')}
+                className="luxury-button-gold px-8 py-4 text-lg shadow-lg shadow-gold/30"
+              >
                 Reserve now
               </button>
               <button className="rounded-full border border-dark/20 px-8 py-4 text-lg font-semibold text-dark hover:border-gold hover:text-gold transition">

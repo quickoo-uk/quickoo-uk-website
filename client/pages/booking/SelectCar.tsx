@@ -1,70 +1,44 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Users, Briefcase, Check, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Users, Luggage, Check, ArrowRight, ArrowLeft, Sparkles, Info } from 'lucide-react';
 import { useBooking } from '@/contexts/BookingContext';
 
-const luxuryCars = [
+// Fleet vehicle classes matching FleetPreviewSection
+const VEHICLE_CLASSES = [
     {
-        id: 'mercedes-s-class',
-        name: 'Mercedes S-Class',
-        image: '/home/hero-premium-travel-1.png',
-        price: 75,
-        passengers: 3,
+        id: "business-class",
+        name: "Business Class",
+        priceMain: 60,
+        image: "/fleet/BusinessClass.png",
+        guests: 3,
         luggage: 2,
-        features: ['Premium Leather', 'Climate Control', 'WiFi', 'Refreshments'],
-        description: 'Ultimate luxury and comfort for executive travel'
+        description: "Mercedes E-Class, BMW 5 Series, or similar premium executive vehicles.",
+        longDescription: "Perfect for business meetings and airport transfers. Enjoy a smooth ride in our premium executive sedans.",
+        vehicles: ["Mercedes E-Class", "BMW 5 Series", "Or similar"]
     },
     {
-        id: 'bmw-7-series',
-        name: 'BMW 7 Series',
-        image: '/home/hero-premium-travel-2.jpg',
-        price: 75,
-        passengers: 3,
+        id: "first-class",
+        name: "First Class",
+        priceMain: 75,
+        image: "/fleet/firstClass.png",
+        guests: 3,
         luggage: 2,
-        features: ['Massage Seats', 'Premium Sound', 'WiFi', 'Privacy Glass'],
-        description: 'Sophisticated elegance meets cutting-edge technology'
+        description: "Mercedes S-Class, BMW 7 Series, or similar luxury sedans.",
+        longDescription: "The ultimate in luxury and comfort. Ideal for VIPs and special occasions.",
+        vehicles: ["Mercedes S-Class", "BMW 7 Series", "Or similar luxury sedan"]
     },
     {
-        id: 'audi-a8',
-        name: 'Audi A8',
-        image: '/home/hero-premium-travel-3.jpg',
-        price: 70,
-        passengers: 3,
-        luggage: 2,
-        features: ['Matrix LED', 'Virtual Cockpit', 'WiFi', 'Premium Audio'],
-        description: 'German engineering at its finest'
-    },
-    {
-        id: 'mercedes-v-class',
-        name: 'Mercedes V-Class',
-        image: '/home/hero-premium-travel-1.png',
-        price: 70,
-        passengers: 6,
+        id: "business-van",
+        name: "Business Van",
+        priceMain: 70,
+        image: "/fleet/BusinessVAN.png",
+        guests: 6,
         luggage: 6,
-        features: ['Spacious Interior', 'Captain Seats', 'WiFi', 'Entertainment System'],
-        description: 'Perfect for group travel with maximum comfort'
+        description: "Mercedes Vito or similar executive vans for group travel.",
+        longDescription: "Spacious and comfortable for groups or families with extra luggage.",
+        vehicles: ["Mercedes Vito", "Or similar executive van"]
     },
-    {
-        id: 'range-rover',
-        name: 'Range Rover',
-        image: '/home/hero-premium-travel-2.jpg',
-        price: 80,
-        passengers: 4,
-        luggage: 4,
-        features: ['All-Terrain', 'Panoramic Roof', 'WiFi', 'Premium Leather'],
-        description: 'Luxury SUV for any journey'
-    },
-    {
-        id: 'mercedes-e-class',
-        name: 'Mercedes E-Class',
-        image: '/home/hero-premium-travel-3.jpg',
-        price: 60,
-        passengers: 3,
-        luggage: 2,
-        features: ['Executive Comfort', 'Premium Sound', 'WiFi', 'Climate Control'],
-        description: 'Premium executive sedan for business travel'
-    }
 ];
 
 export default function SelectCar() {
@@ -74,9 +48,27 @@ export default function SelectCar() {
         bookingData.selectedCar?.id || null
     );
 
-    const handleSelectCar = (car: typeof luxuryCars[0]) => {
-        setSelectedCarId(car.id);
-        updateBookingData({ selectedCar: car });
+    const handleSelectCar = (car: typeof VEHICLE_CLASSES[0]) => {
+        if (selectedCarId === car.id) {
+            // Deselect logic
+            setSelectedCarId(null);
+            updateBookingData({ selectedCar: undefined });
+        } else {
+            // Select logic
+            setSelectedCarId(car.id);
+            updateBookingData({
+                selectedCar: {
+                    id: car.id,
+                    name: car.name,
+                    image: car.image,
+                    price: car.priceMain, // Using the base price
+                    passengers: car.guests,
+                    luggage: car.luggage,
+                    features: car.vehicles,
+                    description: car.description
+                }
+            });
+        }
     };
 
     const handleContinue = () => {
@@ -116,14 +108,14 @@ export default function SelectCar() {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center mb-12"
                 >
-                    <h1 className="text-4xl sm:text-5xl font-montserrat font-bold text-slate-900 mb-4">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-bold text-slate-900 mb-4">
                         Select Your{' '}
                         <span className="bg-gradient-to-r from-[#0f1801] via-[#487307] to-[#6aa80b] bg-clip-text text-transparent">
-                            Luxury Vehicle
+                            Vehicle Class
                         </span>
                     </h1>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Choose from our premium fleet of meticulously maintained vehicles
+                        Choose the perfect vehicle category for your journey
                     </p>
                 </motion.div>
 
@@ -132,7 +124,7 @@ export default function SelectCar() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 mb-8"
+                    className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 mb-12"
                 >
                     <h3 className="text-lg font-bold text-slate-900 mb-4">Your Booking Details</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -159,85 +151,103 @@ export default function SelectCar() {
                     </div>
                 </motion.div>
 
-                {/* Car Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                    {luxuryCars.map((car, index) => (
+                {/* Vehicle Class Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                    {VEHICLE_CLASSES.map((car, index) => (
                         <motion.div
                             key={car.id}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 * index }}
                             onClick={() => handleSelectCar(car)}
-                            className={`relative bg-white rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${selectedCarId === car.id
-                                ? 'ring-4 ring-[#487307] shadow-2xl shadow-[#487307]/20 scale-[1.02]'
-                                : 'shadow-lg hover:shadow-xl hover:scale-[1.01] border border-slate-200'
+                            className={`group relative bg-white rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 flex flex-col ${selectedCarId === car.id
+                                ? 'ring-4 ring-[#487307] shadow-2xl shadow-[#487307]/20 scale-[1.02] z-10'
+                                : 'shadow-sm hover:shadow-xl hover:-translate-y-1 border border-slate-200'
                                 }`}
                         >
                             {/* Selected Badge */}
                             {selectedCarId === car.id && (
-                                <div className="absolute top-4 right-4 z-10 bg-[#487307] text-white rounded-full p-2 shadow-lg">
+                                <div className="absolute top-4 right-4 z-20 bg-[#487307] text-white rounded-full p-2 shadow-lg">
                                     <Check className="w-5 h-5" />
                                 </div>
                             )}
 
-                            {/* Car Image */}
-                            <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
-                                <img
-                                    src={car.image}
-                                    alt={car.name}
-                                    className="w-full h-full object-cover"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                                <div className="absolute bottom-4 left-4 right-4">
-                                    <h3 className="text-xl font-bold text-white mb-1">{car.name}</h3>
-                                    <p className="text-sm text-white/90">{car.description}</p>
-                                </div>
+                            {/* Premium Label */}
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-b-xl border-x border-b border-slate-100 shadow-sm">
+                                <span className="text-xs font-bold uppercase tracking-widest text-[#487307]">Premium</span>
                             </div>
 
-                            {/* Car Details */}
-                            <div className="p-6">
-                                {/* Capacity */}
-                                <div className="flex items-center gap-4 mb-4">
-                                    <div className="flex items-center gap-2">
-                                        <Users className="w-5 h-5 text-[#487307]" />
-                                        <span className="text-sm font-semibold text-slate-700">{car.passengers} Passengers</span>
+                            {/* Image Section */}
+                            <div className="relative h-56 bg-gradient-to-br from-slate-50 to-slate-100 p-6 flex items-center justify-center overflow-hidden">
+                                <motion.img
+                                    src={car.image}
+                                    alt={car.name}
+                                    className="w-full h-full object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-110"
+                                />
+                            </div>
+
+                            {/* Content Section */}
+                            <div className="p-8 flex flex-col flex-grow">
+                                <div className="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h3 className="text-2xl font-montserrat font-bold text-slate-900">{car.name}</h3>
+                                        <p className="text-sm text-slate-500 mt-1">or similar</p>
                                     </div>
-                                    <div className="flex items-center gap-2">
-                                        <Briefcase className="w-5 h-5 text-[#487307]" />
-                                        <span className="text-sm font-semibold text-slate-700">{car.luggage} Luggage</span>
+                                    <div className="text-right">
+                                        <p className="text-xs text-slate-500">from</p>
+                                        <p className="text-xl font-bold text-[#487307]">£{car.priceMain}<span className="text-xs font-normal text-slate-400">/hr</span></p>
                                     </div>
                                 </div>
 
-                                {/* Features */}
-                                <div className="mb-4">
+                                <p className="text-sm text-slate-600 mb-6 leading-relaxed">
+                                    {car.description}
+                                </p>
+
+                                {/* Specs */}
+                                <div className="grid grid-cols-2 gap-4 mb-8">
+                                    <div className="flex items-center gap-3 bg-slate-50 p-3 rounded-xl">
+                                        <Users className="w-5 h-5 text-[#487307]" />
+                                        <div>
+                                            <p className="text-xs text-slate-500 font-semibold uppercase">Guests</p>
+                                            <p className="text-sm font-bold text-slate-900">{car.guests}</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-3 bg-slate-50 p-3 rounded-xl">
+                                        <Luggage className="w-5 h-5 text-[#487307]" />
+                                        <div>
+                                            <p className="text-xs text-slate-500 font-semibold uppercase">Luggage</p>
+                                            <p className="text-sm font-bold text-slate-900">{car.luggage}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Examples */}
+                                <div className="mb-8">
+                                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Includes</p>
                                     <div className="flex flex-wrap gap-2">
-                                        {car.features.map((feature) => (
-                                            <span
-                                                key={feature}
-                                                className="text-xs px-3 py-1 bg-green-50 text-[#487307] rounded-full font-medium"
-                                            >
-                                                {feature}
+                                        {car.vehicles.map((v, i) => (
+                                            <span key={i} className="text-xs px-3 py-1 bg-slate-100 text-slate-600 rounded-lg">
+                                                {v}
                                             </span>
                                         ))}
                                     </div>
                                 </div>
 
-                                {/* Price */}
-                                <div className="flex items-center justify-between pt-4 border-t border-slate-200">
-                                    <div>
-                                        <p className="text-xs text-slate-500">Starting from</p>
-                                        <p className="text-2xl font-bold text-slate-900">
-                                            £{car.price}
-                                            <span className="text-sm font-normal text-slate-500">/hour</span>
-                                        </p>
-                                    </div>
+                                <div className="mt-auto">
                                     <button
-                                        className={`px-6 py-2 rounded-full font-semibold transition-all ${selectedCarId === car.id
-                                            ? 'bg-[#487307] text-white'
-                                            : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                                        className={`w-full py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 ${selectedCarId === car.id
+                                            ? 'bg-gradient-to-r from-[#0f1801] via-[#487307] to-[#6aa80b] text-white shadow-lg shadow-[#487307]/30'
+                                            : 'bg-transparent border-2 border-[#487307] text-[#487307] hover:bg-[#487307]/5 hover:-translate-y-0.5'
                                             }`}
                                     >
-                                        {selectedCarId === car.id ? 'Selected' : 'Select'}
+                                        {selectedCarId === car.id ? (
+                                            <>
+                                                <Check className="w-5 h-5" />
+                                                Selected
+                                            </>
+                                        ) : (
+                                            'Select Category'
+                                        )}
                                     </button>
                                 </div>
                             </div>
@@ -246,7 +256,7 @@ export default function SelectCar() {
                 </div>
 
                 {/* Navigation Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
+                <div className="flex flex-col sm:flex-row gap-4 justify-between items-center pt-8 border-t border-slate-200">
                     <button
                         onClick={handleBack}
                         className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-slate-300 bg-white text-slate-700 font-bold hover:bg-slate-50 transition-all"
@@ -258,9 +268,9 @@ export default function SelectCar() {
                     <button
                         onClick={handleContinue}
                         disabled={!selectedCarId}
-                        className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold transition-all ${selectedCarId
-                            ? 'bg-gradient-to-r from-[#0f1801] via-[#487307] to-[#6aa80b] text-white hover:shadow-lg hover:shadow-[#487307]/30'
-                            : 'bg-slate-200 text-slate-400 cursor-not-allowed'
+                        className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full font-bold transition-all ${selectedCarId
+                            ? 'bg-gradient-to-r from-[#0f1801] via-[#487307] to-[#6aa80b] text-white hover:shadow-xl hover:shadow-[#487307]/30 hover:-translate-y-1'
+                            : 'bg-[#0f1801]/10 text-[#0f1801]/40 cursor-not-allowed'
                             }`}
                     >
                         Continue to Customer Info
