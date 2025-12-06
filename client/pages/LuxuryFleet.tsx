@@ -93,7 +93,7 @@ const vehicleStandards = [
 const ukCompliance = [
     {
         title: "DVSA Approved",
-        description: "All vehicles meet strict Driver and Vehicle Standards Agency safety requirements.",
+        description: "All vehicles meet strict Chauffeur and Vehicle Standards Agency safety requirements.",
         standard: "DVSA Certified",
     },
     {
