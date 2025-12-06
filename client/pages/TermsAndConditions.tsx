@@ -54,7 +54,7 @@ const sections = [
       "All bookings require payment at the time of reservation unless prior arrangements have been made for corporate accounts.",
       "Prices are quoted in GBP and include applicable taxes. Additional charges may apply for waiting time, extra stops, or route deviations.",
       "We accept major credit cards, debit cards, and approved corporate payment methods.",
-      "Booking confirmations will be sent via email and SMS with journey details and driver contact information.",
+      "Booking confirmations will be sent via email and SMS with journey details and chauffeur contact information.",
     ],
   },
   {
@@ -167,7 +167,7 @@ export default function TermsAndConditionsPage() {
                 These Terms and Conditions govern your use of Quickoo's chauffeur services. Please read
                 them carefully to understand your rights and responsibilities when booking with us.
               </p>
-           
+
             </div>
           </div>
         </div>

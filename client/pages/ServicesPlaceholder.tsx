@@ -132,7 +132,7 @@ const journeySteps = [
   {
     title: "Live Journey Tracking",
     detail:
-      "Personalized link with driver profile, vehicle telemetry, and real-time ETA adjustments.",
+      "Personalized link with chauffeur profile, vehicle telemetry, and real-time ETA adjustments.",
   },
   {
     title: "Arrival Rituals",
@@ -256,7 +256,7 @@ export default function ServicesPlaceholder() {
                   <Crown className="text-[#487307]" />
                 </div>
                 <p className="text-sm text-slate-600 font-inter">
-                  Dedicated journey designer, real-time driver comms, and tailored onboard amenities.
+                  Dedicated journey designer, real-time chauffeur comms, and tailored onboard amenities.
                 </p>
                 <div className="grid grid-cols-3 gap-3 text-center text-xs uppercase tracking-[0.3em] text-slate-500">
                   <span>Wifi ready</span>
@@ -374,7 +374,7 @@ export default function ServicesPlaceholder() {
               <p className="text-lg text-dark/70 leading-relaxed">
                 Experience the perfect balance of luxury and reliability. Our concierge team ensures every detail exceeds expectations, making your journey memorable from start to finish.
               </p>
-              <div className="mt-8 flex items-center gap-4">
+              {/* <div className="mt-8 flex items-center gap-4">
                 <div className="h-12 w-12 rounded-full bg-dark/10 flex items-center justify-center">
                   <MapPin className="text-dark" size={20} />
                 </div>
@@ -382,7 +382,7 @@ export default function ServicesPlaceholder() {
                   <p className="font-montserrat text-lg font-semibold text-dark">Selena Ward</p>
                   <p className="text-sm text-dark/60 font-inter">Head of Concierge Experience</p>
                 </div>
-              </div>
+              </div> */}
 
 
             </div>

@@ -128,7 +128,7 @@ const relatedFeatures = [
     },
     {
         title: "Elite Chauffeurs",
-        description: "VIP-trained professional drivers",
+        description: "VIP-trained professional chauffeurs",
         link: "/why-choose/elite-chauffeurs",
         icon: "⭐",
     },

@@ -34,7 +34,7 @@ const SERVICES: Service[] = [
     highlight: "Flight Monitoring",
     features: ["VIP meet & greet", "Real-time tracking", "Luggage care"],
     accent: "from-sky-500/90 via-sky-400/80 to-sky-500/70",
-    image: "/home/Airport Transfers.png",
+    image: "/home/Airport Transfers-home.png",
     premium: "Your schedule comes first: 1 hour complimentary wait time with advanced flight monitoring.",
   },
   {

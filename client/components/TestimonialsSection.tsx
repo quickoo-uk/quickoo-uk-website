@@ -41,7 +41,7 @@ const TESTIMONIALS = [
     image:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
     content:
-      "I've used many chauffeur services, but Quickoo stands out. The booking process is effortless, and the drivers are true professionals who know the city inside out. A five-star experience every time.",
+      "I've used many chauffeur services, but Quickoo stands out. The booking process is effortless, and the chauffeurs are true professionals who know the city inside out. A five-star experience every time.",
     rating: 5,
     location: "New York, NY",
     tags: ["Business Travel", "City Tours"],
