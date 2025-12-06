@@ -18,6 +18,7 @@ export interface BookingData {
         passengers: number;
         luggage: number;
         features: string[];
+        description?: string;
     };
 
     // Customer info

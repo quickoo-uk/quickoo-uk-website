@@ -4,63 +4,112 @@ import { BookingWidget } from "./BookingWidget";
 
 export const HeroSection = () => {
   return (
-    <section className="relative flex min-h-[85vh] w-full items-center section-spacing">
+    <section className="relative flex min-h-[100dvh] w-full items-center pt-28 pb-20 lg:py-0 overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/40 z-10" /> {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-10" />
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-105" // Slight scale to prevent edge artifacts
         >
           <source src="/home/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
 
+      {/* Animated SVG decorations */}
+      <motion.svg
+        className="pointer-events-none absolute left-10 bottom-10 h-48 w-48 text-white/10 z-10 hidden sm:block"
+        viewBox="0 0 200 200"
+        aria-hidden
+        animate={{ rotate: 360 }}
+        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+      >
+        <circle
+          cx="100"
+          cy="100"
+          r="90"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          strokeDasharray="8 8"
+        />
+        <circle
+          cx="100"
+          cy="100"
+          r="60"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          strokeDasharray="5 5"
+        />
+        <circle
+          cx="100"
+          cy="100"
+          r="30"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          strokeDasharray="3 3"
+        />
+      </motion.svg>
+
+      <motion.svg
+        className="pointer-events-none absolute right-20 top-20 h-40 w-40 text-green-400/10 z-10 hidden sm:block"
+        viewBox="0 0 160 160"
+        aria-hidden
+        animate={{ rotate: -360 }}
+        transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+      >
+        <circle
+          cx="80"
+          cy="80"
+          r="70"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          strokeDasharray="6 6"
+        />
+        <circle
+          cx="80"
+          cy="80"
+          r="45"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          strokeDasharray="4 4"
+        />
+      </motion.svg>
+
       {/* Content */}
       <div className="relative z-20 mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column: Text Content */}
-          <div className="w-full space-y-6 sm:space-y-8 text-left">
+          <div className="w-full space-y-8 text-left pt-10 lg:pt-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-5 py-2 backdrop-blur-md shadow-lg"
+              className="inline-flex items-center gap-2 sm:gap-3 rounded-full border border-green-500/50 bg-white/95 px-4 sm:px-6 py-2 sm:py-2.5 backdrop-blur-md shadow-[0_0_30px_rgba(72,115,7,0.3)]"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#487307] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-full w-full bg-[#487307]"></span>
               </span>
-              <span className="text-xs tracking-[0.2em] uppercase text-white font-semibold">
-                Premium Chauffeur Service
+              <span className="text-xs sm:text-sm tracking-[0.2em] uppercase text-[#487307] font-bold">
+                Travel by Style
               </span>
-            </motion.div>
-
-            {/* Tagline */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="space-y-3"
-            >
-              <div className="relative inline-block">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-montserrat font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-green-100 to-white tracking-tight">
-                  Travel by Style
-                </h2>
-                <div className="absolute -bottom-2 left-0 w-32 h-1 bg-gradient-to-r from-green-400 to-transparent rounded-full"></div>
-              </div>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold leading-tight text-white"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-montserrat font-bold leading-[1.1] text-white tracking-tight"
             >
               Experience the
               <br />
@@ -73,7 +122,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="text-lg sm:text-xl text-gray-200 font-inter leading-relaxed max-w-xl font-light tracking-wide"
+              className="text-lg sm:text-xl md:text-2xl text-gray-200 font-inter leading-relaxed max-w-xl font-light tracking-wide"
             >
               Elevate your journey with our elite chauffeur service. Where sophistication meets comfort, and every ride is a statement of elegance.
             </motion.p>
@@ -112,7 +161,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="w-full flex justify-center lg:justify-end"
+            className="w-full flex justify-center lg:justify-end lg:pt-0 pt-8"
           >
             <div className="w-full max-w-sm lg:max-w-md relative z-30">
               <BookingWidget />

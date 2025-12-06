@@ -1,8 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Users, Luggage, Zap, Wind, Music } from "lucide-react";
+import { useBooking } from "@/contexts/BookingContext";
 
 export default function FleetPlaceholder() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const { updateBookingData } = useBooking();
 
   const vehicleName = id
     ? id
@@ -20,6 +23,55 @@ export default function FleetPlaceholder() {
   };
 
   const heroImage = IMAGES[id ?? ""] ?? IMAGES["mercedes-s-class"];
+
+  // Map fleet page IDs to Booking Categories (SelectCar.tsx)
+  const mapToBookingCategory = (fleetId: string) => {
+    switch (fleetId) {
+      case "mercedes-s-class":
+      case "bmw-i7":
+      case "range-rover":
+        return {
+          id: "first-class",
+          name: "First Class",
+          image: "/fleet/firstClass.png",
+          price: 75,
+          passengers: 3,
+          luggage: 2,
+          features: []
+        };
+      case "mercedes-v-class":
+        return {
+          id: "business-van",
+          name: "Business Van",
+          image: "/fleet/BusinessVAN.png",
+          price: 70,
+          passengers: 6,
+          luggage: 6,
+          features: []
+        };
+      default:
+        // Default fallback (e.g. Business Class)
+        return {
+          id: "business-class",
+          name: "Business Class",
+          image: "/fleet/BusinessClass.png",
+          price: 60,
+          passengers: 3,
+          luggage: 2,
+          features: []
+        };
+    }
+  };
+
+  const handleBook = () => {
+    const category = mapToBookingCategory(id || "");
+
+    updateBookingData({
+      selectedCar: category
+    });
+
+    navigate('/booking/select-car');
+  };
 
   return (
     <div className="w-full">
@@ -43,7 +95,12 @@ export default function FleetPlaceholder() {
             Luxury, comfort, and class — experience a world-class ride with our{" "}
             {vehicleName}.
           </p>
-          <button className="luxury-button-gold">Book {vehicleName}</button>
+          <button
+            onClick={handleBook}
+            className="luxury-button-gold"
+          >
+            Book {vehicleName}
+          </button>
         </div>
       </section>
 
@@ -144,7 +201,10 @@ export default function FleetPlaceholder() {
                 ))}
               </div>
 
-              <button className="luxury-button-gold w-full mt-8 text-lg py-4">
+              <button
+                onClick={handleBook}
+                className="luxury-button-gold w-full mt-8 text-lg py-4"
+              >
                 Book {vehicleName}
               </button>
             </div>

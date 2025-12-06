@@ -15,13 +15,13 @@ import { AppDownloadSection } from "@/components/AppDownloadSection";
 
 export default function Index() {
   return (
-    <div className="w-full bg-[radial-gradient(circle_at_top,_#ffffff,_#f3f6ff,_#fff6ed)]">
+    <div className="w-full bg-gradient-to-b from-white via-slate-50/50 to-white">
       <HeroSection />
       {/* <AnimatedInfinityAccent /> */}
 
       <FleetPreviewSection />
       <WhyChooseSection />
-      <TravelByStyleBanner />
+
       <ServicesOverviewSection />
       <ProfessionalismSection />
       <PersonalizationSection />
@@ -31,6 +31,7 @@ export default function Index() {
       <AboutSection />
       {/* <TestimonialsSection /> */}
       <AppDownloadSection />
+      <TravelByStyleBanner />
     </div>
   );
 }
