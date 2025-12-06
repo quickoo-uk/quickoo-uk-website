@@ -60,7 +60,7 @@ const ukCompliance = [
     },
     {
         title: "DVSA & MOT Certified",
-        description: "Regular vehicle inspections by Driver and Vehicle Standards Agency with valid MOT certificates.",
+        description: "Regular vehicle inspections by Chauffeurs and Vehicle Standards Agency with valid MOT certificates.",
         standard: "DVSA Approved",
     },
 ];
