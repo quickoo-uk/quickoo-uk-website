@@ -4,7 +4,7 @@ import { BookingWidget } from "./BookingWidget";
 
 export const HeroSection = () => {
   return (
-    <section className="relative flex min-h-[85vh] w-full items-center pt-20 sm:pt-24 pb-8 sm:pb-12">
+    <section className="relative flex min-h-[85vh] w-full items-center section-spacing">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/40 z-10" /> {/* Overlay for readability */}
@@ -41,26 +41,41 @@ export const HeroSection = () => {
               </span>
             </motion.div>
 
+            {/* Tagline */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="space-y-3"
+            >
+              <div className="relative inline-block">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-montserrat font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-green-100 to-white tracking-tight">
+                  Travel by Style
+                </h2>
+                <div className="absolute -bottom-2 left-0 w-32 h-1 bg-gradient-to-r from-green-400 to-transparent rounded-full"></div>
+              </div>
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-montserrat font-bold leading-tight text-white"
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold leading-tight text-white"
             >
               Experience the
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-green-200 to-white">
-                Art of Travel
+                Art of Luxury Travel
               </span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
               className="text-lg sm:text-xl text-gray-200 font-inter leading-relaxed max-w-xl font-light tracking-wide"
             >
-              Elevate your journey with our elite chauffeur service. Meticulously curated for comfort, style, and punctuality.
+              Elevate your journey with our elite chauffeur service. Where sophistication meets comfort, and every ride is a statement of elegance.
             </motion.p>
 
             {/* CTA Buttons */}

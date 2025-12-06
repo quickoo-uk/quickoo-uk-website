@@ -45,7 +45,7 @@ const SERVICES: Service[] = [
     highlight: "Door-to-Door",
     features: ["Bottled water", "Custom playlists", "Power & Wi-Fi"],
     accent: "from-indigo-500/90 via-blue-500/80 to-indigo-500/70",
-    image: "/home/Corporate Travel.jpg",
+    image: "/home/Corporate Travel.png",
   },
 
 
@@ -68,7 +68,7 @@ const SERVICES: Service[] = [
     highlight: "Curated Routes",
     features: ["Certified guides", "Photo stops", "Dining reservations"],
     accent: "from-emerald-500/90 via-green-500/80 to-emerald-500/70",
-    image: "/home/City Tours.jpg",
+    image: "/home/City Tours.png",
   },
 ];
 

@@ -290,7 +290,7 @@ export default function CarTypePage() {
                           <p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-inter">
                             Passengers
                           </p>
-                          <p className="text-lg font-montserrat font-bold text-dark">4-5</p>
+                          <p className="text-lg font-montserrat font-bold text-dark">{car.name === "Mercedes-Benz V class" ? "Up to 5" : "Up to 3"}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
@@ -299,7 +299,7 @@ export default function CarTypePage() {
                           <p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-inter">
                             Luggage
                           </p>
-                          <p className="text-lg font-montserrat font-bold text-dark">3-4</p>
+                          <p className="text-lg font-montserrat font-bold text-dark">{car.name === "Mercedes-Benz V class" ? "4-5" : "3-4"}</p>
                         </div>
                       </div>
                     </div>
