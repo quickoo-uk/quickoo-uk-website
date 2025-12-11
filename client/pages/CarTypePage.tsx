@@ -71,7 +71,7 @@ export default function CarTypePage() {
   const getCarTypeHeroImage = (carTypeName: string, carTypeId: string): string => {
     const typeImageMap: Record<string, string> = {
       // By name - using local fleet type hero images
-      "Electric Cars": "/fleet/Electric Cars.png",
+      "Electric Class": "/fleet/Electric Cars.png",
       "Business Vans": "/fleet/Business Vans.png",
       "Premium SUVs": "/fleet/Premium SUVs.png",
       "Vintage Cars for Weddings": "/fleet/Vintage Cars for Weddings.png",
@@ -290,16 +290,15 @@ export default function CarTypePage() {
                           <p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-inter">
                             Passengers
                           </p>
-                          <p className="text-lg font-montserrat font-bold text-dark">{car.name === "Mercedes-Benz V class" ? "Up to 5" : "Up to 3"}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Luggage className="h-5 w-5 text-[#487307]" />
-                        <div>
-                          <p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-inter">
-                            Luggage
+                          <p className="text-lg font-montserrat font-bold text-dark">
+                            {(() => {
+                              if (carType.id === "business-vans") return "Up to 7";
+                              if (carType.id === "special-vehicles") {
+                                return index === 0 ? "Up to 7" : "Up to 4";
+                              }
+                              return "Up to 4";
+                            })()}
                           </p>
-                          <p className="text-lg font-montserrat font-bold text-dark">{car.name === "Mercedes-Benz V class" ? "4-5" : "3-4"}</p>
                         </div>
                       </div>
                     </div>

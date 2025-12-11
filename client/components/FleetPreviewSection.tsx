@@ -6,7 +6,7 @@ const VEHICLE_CLASSES = [
   {
     id: "business-class",
     name: "Business\u00A0Class",
-    subtitle: "Tours starting (incl. VAT, fees)",
+    subtitle: "journey starting (incl. VAT, fees)",
     priceMain: "From £60 / hr",
     priceNote: "(incl. VAT)",
     image: "/fleet/BusinessClass.png",
@@ -18,7 +18,7 @@ const VEHICLE_CLASSES = [
   {
     id: "first-class",
     name: "First\u00A0Class",
-    subtitle: "Tours starting (incl. VAT, fees)",
+    subtitle: "Journey starting (incl. VAT, fees)",
     priceMain: "From £75 / hr",
     priceNote: "(incl. VAT)",
     image: "/fleet/firstClass.png",
@@ -30,7 +30,7 @@ const VEHICLE_CLASSES = [
   {
     id: "business-van",
     name: "Business\u00A0Van",
-    subtitle: "Tours starting (incl. VAT, fees)",
+    subtitle: "Journey starting (incl. VAT, fees)",
     priceMain: "From £70 / hr",
     priceNote: "(incl. VAT)",
     image: "/fleet/BusinessVAN.png",
@@ -167,12 +167,12 @@ export const FleetPreviewSection = () => {
                     </p>
                   </div>
 
-                  <div className="shrink-0 text-right">
+                  {/* <div className="shrink-0 text-right">
                     <span className="inline-block bg-gradient-to-r from-[#2f6b2b] to-[#487307] text-white font-bold px-3 py-1.5 rounded-lg text-sm whitespace-nowrap">
                       {vehicle.priceMain}
                     </span>
                     <p className="text-xs text-gray-500 mt-1">{vehicle.priceNote}</p>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Description */}
