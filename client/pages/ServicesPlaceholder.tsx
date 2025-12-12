@@ -20,9 +20,9 @@ const SERVICE_IMAGES: Record<string, string> = {
   events: "/services/special-events-distinct.jpg",
   "special-events": "/services/special-events-distinct.jpg",
   "private-jet": "/services/private-jet-hero.jpg",
-  "city-tours": "/services/city-tours-distinct.jpg",
-  "private-jet-chauffeur": "/services/private-jet-hero.jpg",
-  "london-cruise-transfer": "/services/city-tours-hero.jpg",
+  "city-tours": "/services/city-tours-distinct-2.png",
+  "private-jet-chauffeur": "/services/private-jet-hero-2.png",
+  "london-cruise-transfer": "/services/city-tours-hero-2.png",
 };
 
 const SERVICE_TAGLINES: Record<string, { title: string; highlight: string }> = {
@@ -405,15 +405,26 @@ export default function ServicesPlaceholder() {
               Our concierge team replies within 15 minutes with availability, vehicle pairings, and custom amenities.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
-              {["Instant WhatsApp concierge", "Secure payment links", "Bespoke itineraries"].map(
-                (item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl border border-dark/10 bg-white/80 px-4 py-3 text-sm font-semibold text-dark"
-                  >
-                    {item}
-                  </div>
-                ),
+              {["Instant WhatsApp concierge", "Secure payment links"].map(
+                (item) =>
+                  item === "Instant WhatsApp concierge" ? (
+                    <a
+                      key={item}
+                      href="https://wa.me/442035761617"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-2xl border border-dark/10 bg-white/80 px-4 py-3 text-sm font-semibold text-dark hover:border-gold hover:text-gold transition-colors cursor-pointer text-center block"
+                    >
+                      {item}
+                    </a>
+                  ) : (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-dark/10 bg-white/80 px-4 py-3 text-sm font-semibold text-dark text-center"
+                    >
+                      {item}
+                    </div>
+                  ),
               )}
             </div>
             <div className="flex flex-wrap gap-4">
@@ -423,9 +434,14 @@ export default function ServicesPlaceholder() {
               >
                 Reserve now
               </button>
-              <button className="rounded-full border border-dark/20 px-8 py-4 text-lg font-semibold text-dark hover:border-gold hover:text-gold transition">
+              <a
+                href="https://wa.me/442035761617"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-dark/20 px-8 py-4 text-lg font-semibold text-dark hover:border-gold hover:text-gold transition inline-flex items-center justify-center"
+              >
                 Talk to concierge
-              </button>
+              </a>
             </div>
           </div>
           <div className="rounded-[32px] border border-dark/10 bg-white/80 p-8 shadow-2xl text-dark space-y-5">

@@ -32,10 +32,17 @@ const SERVICES: Service[] = [
     description:
       "Seamless airport pickups and drop-offs with flight tracking.",
     highlight: "Flight Monitoring",
-    features: ["VIP meet & greet", "Real-time tracking", "Luggage care"],
+    features: [
+      "VIP meet & greet",
+      "Real-time tracking",
+      "Luggage care",
+      "Route Preference",
+      "Audio Preference",
+    ],
     accent: "from-sky-500/90 via-sky-400/80 to-sky-500/70",
     image: "/home/Airport Transfers-home.png",
-    premium: "Your schedule comes first: 1 hour complimentary wait time with advanced flight monitoring.",
+    premium:
+      "Your schedule comes first: 1 hour complimentary wait time with advanced flight monitoring.",
   },
   {
     icon: Navigation2,
@@ -43,12 +50,15 @@ const SERVICES: Service[] = [
     description:
       "Comfortable long-distance journeys in executive sedans & SUVs.",
     highlight: "Door-to-Door",
-    features: ["Bottled water", "Custom playlists", "Power & Wi-Fi"],
+    features: [
+      "Bottled water",
+      "Power & Wi-Fi",
+      "Route Preference",
+      "Audio Preference",
+    ],
     accent: "from-indigo-500/90 via-blue-500/80 to-indigo-500/70",
     image: "/home/Corporate Travel.png",
   },
-
-
 
   {
     icon: Sparkles,
@@ -56,7 +66,13 @@ const SERVICES: Service[] = [
     description:
       "Transportation solutions for all types of events and celebrations.",
     highlight: "Group Logistics",
-    features: ["Shuttle coordination", "VIP passes", "On-site lead"],
+    features: [
+      "Shuttle coordination",
+      "VIP passes",
+      "On-site lead",
+      "Route Preference",
+      "Audio Preference",
+    ],
     accent: "from-fuchsia-500/90 via-purple-500/80 to-fuchsia-500/70",
     image: "/home/Special Events.jpg",
   },
@@ -66,9 +82,15 @@ const SERVICES: Service[] = [
     name: "City Tours",
     description: "Guided city tours with a knowledgeable, professional driver.",
     highlight: "Curated Routes",
-    features: ["Certified guides", "Photo stops", "Dining reservations"],
+    features: [
+      "Certified guides",
+      "Photo stops",
+      "Dining reservations",
+      "Route Preference",
+      "Audio Preference",
+    ],
     accent: "from-emerald-500/90 via-green-500/80 to-emerald-500/70",
-    image: "/home/City Tours.png",
+    image: "/home/City Tours new.png",
   },
 ];
 

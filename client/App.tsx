@@ -32,6 +32,8 @@ import Success from "./pages/booking/Success";
 
 const queryClient = new QueryClient();
 
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+
 const Layout = ({
   children,
   isFooter,
@@ -43,6 +45,7 @@ const Layout = ({
     <Navbar />
     <main className="flex-grow pt-16 sm:pt-20 w-full overflow-x-hidden">{children}</main>
     {isFooter !== false && <Footer />}
+    <WhatsAppButton />
   </div>
 );
 

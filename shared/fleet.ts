@@ -60,7 +60,7 @@ export const FLEET_TYPES: CarType[] = [
   },
   {
     id: "electric-cars",
-    name: "Electric Cars",
+    name: "Electric Class",
     description: "Cutting-edge electric vehicles combining luxury with environmental consciousness.",
     cars: [
       { name: "EQE" },
