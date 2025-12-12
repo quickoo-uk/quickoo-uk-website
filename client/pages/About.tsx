@@ -269,7 +269,7 @@ export default function AboutPage() {
                   </div>
                   <div className="relative mx-auto max-w-md overflow-hidden rounded-2xl border-[6px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
                     <motion.img
-                      src="/fleet/Mercedes-benz-s-class.png"
+                      src="/about/about-hero.png"
                       alt="Mercedes S-Class representing Quickoo chauffeur fleet"
                       className="h-full w-full object-cover"
                       initial={{ opacity: 0, scale: 1.1 }}

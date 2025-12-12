@@ -20,9 +20,9 @@ const SERVICE_IMAGES: Record<string, string> = {
   events: "/services/special-events-distinct.jpg",
   "special-events": "/services/special-events-distinct.jpg",
   "private-jet": "/services/private-jet-hero.jpg",
-  "city-tours": "/services/city-tours-distinct.jpg",
-  "private-jet-chauffeur": "/services/private-jet-hero.jpg",
-  "london-cruise-transfer": "/services/city-tours-hero.jpg",
+  "city-tours": "/services/city-tours-distinct-2.png",
+  "private-jet-chauffeur": "/services/private-jet-hero-2.png",
+  "london-cruise-transfer": "/services/city-tours-hero-2.png",
 };
 
 const SERVICE_TAGLINES: Record<string, { title: string; highlight: string }> = {

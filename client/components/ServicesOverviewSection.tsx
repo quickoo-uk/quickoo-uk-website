@@ -90,7 +90,7 @@ const SERVICES: Service[] = [
       "Audio Preference",
     ],
     accent: "from-emerald-500/90 via-green-500/80 to-emerald-500/70",
-    image: "/home/City Tours.png",
+    image: "/home/City Tours new.png",
   },
 ];
 

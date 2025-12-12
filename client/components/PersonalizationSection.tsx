@@ -162,7 +162,7 @@ export const PersonalizationSection = () => {
                         <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#487307]/20 via-[#a5c9ff]/10 to-transparent blur-3xl" />
                         <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_90px_rgba(15,23,42,0.15)] border border-white/60">
                             <img
-                                src="/home/personalized-luxury-chauffeur.jpg"
+                                src="/home/personalized-luxury-chauffeur-2.png"
                                 alt="Personalized luxury chauffeur service"
                                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                                 loading="lazy"
