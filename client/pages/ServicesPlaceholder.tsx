@@ -356,7 +356,7 @@ export default function ServicesPlaceholder() {
       <section className="relative overflow-hidden bg-white min-h-[600px] md:min-h-[500px]">
         <div className="absolute inset-0">
           <img
-            src="/fleet/BusinessClass.png"
+            src="/fleet/BusinessClass-2.png"
             alt="Premium luxury vehicle"
             className="w-full h-full object-cover object-center opacity-90"
             loading="lazy"
