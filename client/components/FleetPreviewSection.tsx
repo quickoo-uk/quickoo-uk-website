@@ -134,13 +134,16 @@ export const FleetPreviewSection = () => {
               className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-500"
             >
               {/* Premium Badge - Top Center */}
+        
               <div className="relative bg-gradient-to-br from-[#f8faf5] to-white pt-4 pb-2">
                 <div className="flex justify-center">
-                  <div className="rounded-full bg-white/95 backdrop-blur px-4 py-1.5 shadow-sm border border-gray-100">
+                 {
+                  vehicle.id==="first-class" && ( <div className="rounded-full bg-white/95 backdrop-blur px-4 py-1.5 shadow-sm border border-gray-100">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#487307]">
                       Premium
                     </p>
-                  </div>
+                  </div>)
+                 }
                 </div>
               </div>
 
