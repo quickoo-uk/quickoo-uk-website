@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import {
   Instagram,
   Facebook,
-  Twitter,
   Linkedin,
   Phone,
   Mail,
@@ -12,6 +11,18 @@ import {
 } from "lucide-react";
 const logo = "/images/logo-2.png";
 import { FLEET_TYPES } from "@shared/fleet";
+
+const XIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    {...props}
+    fill="currentColor"
+    stroke="none"
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 const SERVICES = [
   "Airport Transfers",
@@ -91,7 +102,7 @@ export const Footer = () => {
               hospitality-grade detail.
             </p>
             <div className="flex gap-3">
-              {[Facebook, Instagram, Twitter, Linkedin].map((Icon, index) => (
+              {[Facebook, Instagram, XIcon, Linkedin].map((Icon, index) => (
                 <a
                   key={index}
                   href="#"
@@ -205,7 +216,10 @@ export const Footer = () => {
               Terms & Conditions
             </Link>
             <span className="transition hover:text-white cursor-default">
-              VAT Register
+              Company No: XXXXXXXX
+            </span>
+            <span className="transition hover:text-white cursor-default">
+              VAT No: XXXXXXXX
             </span>
           </div>
         </div>

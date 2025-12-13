@@ -86,7 +86,7 @@ export const PersonalizationSection = () => {
                             <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
                                 <Star className="h-4 w-4 text-[#487307]" />
                                 <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                                    A Class Above
+                                    Your Requirements
                                 </span>
                             </div>
                             <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
