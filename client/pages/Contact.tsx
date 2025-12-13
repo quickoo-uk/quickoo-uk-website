@@ -116,7 +116,7 @@ export default function ContactPage() {
         transition={{ duration: 0.8 }}
       >
         <img
-          src="/contact/contact-hero-background.jpg"
+          src="/contact/contact-hero-background.jpeg"
           alt="Quickoo concierge hero background"
           className="absolute inset-0 h-full w-full object-cover opacity-25"
         />
@@ -164,7 +164,7 @@ export default function ContactPage() {
             />
             <div className="relative rounded-[32px] border border-white/60 bg-white/90 p-8 shadow-[0_40px_120px_rgba(15,23,42,0.15)] space-y-6 backdrop-blur">
               <img
-                src="/contact/contact-concierge-team.jpg"
+                src="/contact/contact-concierge-team.jpeg"
                 alt="Quickoo concierge team"
                 className="rounded-2xl object-cover h-56 w-full"
                 loading="lazy"
