@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const PROFESSIONAL_FEATURES = [
     {
         icon: Users,
-        title: "Highly Trained Executive Chauffeurs",
+        title: "Highly Trained Professional Chauffeurs",
         description: "Every driver undergoes rigorous training in hospitality, safety, and VIP protocol.",
     },
     {
@@ -14,7 +14,7 @@ const PROFESSIONAL_FEATURES = [
     },
     {
         icon: Award,
-        title: "Premium Vehicle Standards",
+        title: "Premium Vehicle Quality",
         description: "Immaculate interiors, latest models, and luxury amenities in every ride.",
     },
     {

@@ -45,11 +45,12 @@ const contactChannels = [
 ];
 
 const serviceTypes = [
-  "Airport Transfer",
-  "Corporate Travel",
-  "Event Mobility",
-  "Hourly Hire",
-  "Other",
+  "Airport Transfers",
+  "Corporate travel",
+  "Special events",
+  "City Tours",
+  "Private Jet Chauffeur",
+  "London Cruise Transfer",
 ];
 
 const faqs = [
@@ -154,7 +155,7 @@ export default function ContactPage() {
                 Our concierge team operates round the clock with sub-two-hour response times.
               </p>
             </div>
-           
+
           </div>
           <div className="relative">
             <motion.div

@@ -4,7 +4,7 @@ export interface BookingData {
     // Booking type and basic info
     bookingType: 'oneway' | 'hourly';
     fromLocation: string;
-    toLocation: string;
+    toLocation: string | string[];
     date: Date;
     time: string;
     duration: string;

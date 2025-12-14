@@ -102,12 +102,12 @@ const getServicePillars = (serviceId?: string) => {
     {
       icon: ShieldCheck,
       title: "Trusted Professionals",
-      copy: "NDAs on file, elevated etiquette standards, and annual safety certifications.",
+      copy: "DBS verified, elevated etiquette standards, and regular safety check.",
     },
     {
       icon: Star,
       title: "Luxury Guaranteed",
-      copy: "Flagship fleet, ambient suites, refreshments, and fragrance libraries.",
+      copy: "Flagship fleet, ambient atmosphere and refreshments.",
     },
   ];
 
@@ -116,7 +116,7 @@ const getServicePillars = (serviceId?: string) => {
     basePillars.push({
       icon: Sparkles,
       title: "Your Schedule First",
-      copy: "1 hour complimentary wait time with advanced flight monitoring.",
+      copy: "Airport one hour complimentary wait time with advanced flight monitoring.",
     });
   }
 
@@ -343,10 +343,9 @@ export default function ServicesPlaceholder() {
               ))}
             </div>
             <div className="mt-8 rounded-2xl border border-gold/30 bg-[#fff6e8] p-6 text-sm text-slate-600 font-inter">
-              <p className="uppercase tracking-[0.4em] text-xs text-gold mb-2">Service radius</p>
+              <p className="uppercase tracking-[0.4em] text-xs text-gold mb-2">Quickoo radius</p>
               <p>
-                Available across London, Manchester, Edinburgh, Birmingham and partner cities, with global
-                dispatch via Quickoo Collective.
+                Available across all London airports, major cities, and partner cities, with global dispatch via Quickoo Collective.
               </p>
             </div>
           </div>
@@ -399,10 +398,10 @@ export default function ServicesPlaceholder() {
           <div className="space-y-6">
             <p className="uppercase tracking-[0.4em] text-sm text-dark/70">Ready to begin?</p>
             <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-dark">
-              Let’s design your next {serviceName.toLowerCase()} journey
+              Let’s plan your next {serviceName.toLowerCase()} journey
             </h2>
             <p className="text-gray-700 font-inter">
-              Our concierge team replies within 15 minutes with availability, vehicle pairings, and custom amenities.
+              Our concierge team replies within 2 hours with availability, vehicle requirements, and custom amenities.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
               {["Instant WhatsApp concierge", "Secure payment links"].map(
@@ -440,19 +439,19 @@ export default function ServicesPlaceholder() {
                 rel="noopener noreferrer"
                 className="rounded-full border border-dark/20 px-8 py-4 text-lg font-semibold text-dark hover:border-gold hover:text-gold transition inline-flex items-center justify-center"
               >
-                Talk to concierge
+                Talk to Quickoo
               </a>
             </div>
           </div>
           <div className="rounded-[32px] border border-dark/10 bg-white/80 p-8 shadow-2xl text-dark space-y-5">
-            <p className="uppercase tracking-[0.4em] text-xs text-gray-500">Concierge desk</p>
+            <p className="uppercase tracking-[0.4em] text-xs text-gray-500">Quickoo information</p>
             <div className="space-y-3">
-              <p className="text-xl font-semibold flex items-center gap-2">
+              <p className="text-xl font-semibold flex items-start gap-2">
                 <MapPin className="text-gold" />
-                450 Bath Road, Longford, London Heathrow
+                450 Bath Road, Longford, London Heathrow, UB70EB
               </p>
               <p className="text-lg font-montserrat">+44 20 3576 1617</p>
-              <p className="text-slate-600 font-inter">Direct line to our 24/7 guest experience desk.</p>
+              <p className="text-slate-600 font-inter">Direct line to our 24/7 experience Concierge desk.</p>
             </div>
 
           </div>

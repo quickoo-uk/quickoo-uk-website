@@ -55,7 +55,7 @@ export const TravelByStyleBanner = () => {
 
                                 <p className="text-xl sm:text-3xl font-serif italic text-slate-800">
                                     "You don’t just travel with us— <br className="sm:hidden" />
-                                    <span className="not-italic font-montserrat font-bold text-[#487307]">you travel by style.</span>"
+                                    <span className="not-italic font-montserrat font-bold text-[#487307]">you travel in style.</span>"
                                 </p>
                             </div>
                         </div>

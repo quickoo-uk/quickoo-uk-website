@@ -34,9 +34,10 @@ const SERVICES: Service[] = [
     highlight: "Flight Monitoring",
     features: [
       "VIP meet & greet",
+      "One hour complementary wait",
       "Real-time tracking",
       "Luggage care",
-      "Route Preference",
+      "Power & Wi-Fi",
       "Audio Preference",
     ],
     accent: "from-sky-500/90 via-sky-400/80 to-sky-500/70",
@@ -53,7 +54,6 @@ const SERVICES: Service[] = [
     features: [
       "Bottled water",
       "Power & Wi-Fi",
-      "Route Preference",
       "Audio Preference",
     ],
     accent: "from-indigo-500/90 via-blue-500/80 to-indigo-500/70",
@@ -68,9 +68,9 @@ const SERVICES: Service[] = [
     highlight: "Group Logistics",
     features: [
       "Shuttle coordination",
-      "VIP passes",
+      "VIP access",
       "On-site lead",
-      "Route Preference",
+      "Power & Wi-Fi",
       "Audio Preference",
     ],
     accent: "from-fuchsia-500/90 via-purple-500/80 to-fuchsia-500/70",
@@ -83,10 +83,9 @@ const SERVICES: Service[] = [
     description: "Guided city tours with a knowledgeable, professional driver.",
     highlight: "Curated Routes",
     features: [
-      "Certified guides",
       "Photo stops",
       "Dining reservations",
-      "Route Preference",
+      "Power & Wi-Fi",
       "Audio Preference",
     ],
     accent: "from-emerald-500/90 via-green-500/80 to-emerald-500/70",

@@ -101,7 +101,7 @@ export const HeroSection = () => {
                 <span className="relative inline-flex rounded-full h-full w-full bg-[#487307]"></span>
               </span>
               <span className="text-xs sm:text-sm tracking-[0.2em] uppercase text-[#487307] font-bold">
-                Travel by Style
+                Travel in Style
               </span>
             </motion.div>
 

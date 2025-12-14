@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const WHY_QUICKO_FEATURES = [
     {
         icon: Award,
-        title: "Executive Chauffeur Standards",
+        title: "Executive Chauffeur",
         description: "Professionally trained drivers who understand VIP protocol and hospitality excellence.",
     },
     {
@@ -73,7 +73,7 @@ export const WhyQuickoSection = () => {
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark max-w-4xl mx-auto leading-tight">
                         More Than Just Transportation—
-                        <span className="text-[#487307]"> Style in Motion</span>
+                        <span className="text-[#487307]"> Travel in Style</span>
                     </h2>
 
                     <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">

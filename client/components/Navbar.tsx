@@ -14,10 +14,18 @@ const SERVICES = [
   "London Cruise Transfer",
 ];
 
+const WHY_CHOOSE_LINKS = [
+  { name: "Safety First", path: "/why-choose/safety-first" },
+  { name: "Transparent Pricing", path: "/why-choose/transparent-pricing" },
+  { name: "Tailored Luxury Fleet", path: "/why-choose/luxury-fleet" },
+  { name: "Elite Chauffeurs", path: "/why-choose/elite-chauffeurs" },
+];
+
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileFleetOpen, setMobileFleetOpen] = useState(false);
+  const [mobileWhyChooseOpen, setMobileWhyChooseOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -42,6 +50,7 @@ export const Navbar = () => {
     setIsOpen(false);
     setMobileServicesOpen(false);
     setMobileFleetOpen(false);
+    setMobileWhyChooseOpen(false);
   };
 
   return (
@@ -133,17 +142,31 @@ export const Navbar = () => {
                 </div>
               </div>
 
-              <Link
-                to="/pricing"
-                className={cn(
-                  "font-inter text-sm transition-colors",
-                  isScrolled
-                    ? "text-dark hover:text-gold"
-                    : "text-[#2a1b4d] hover:text-gold",
-                )}
-              >
-                Pricing
-              </Link>
+              {/* Why Choose Us */}
+              <div className="relative group">
+                <button
+                  className={cn(
+                    "font-inter text-sm flex items-center gap-1 transition-colors",
+                    isScrolled
+                      ? "text-dark hover:text-gold"
+                      : "text-[#2a1b4d] hover:text-gold",
+                  )}
+                >
+                  Why Choose Us <ChevronDown className="w-4 h-4" />
+                </button>
+
+                <div className="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl ring-1 ring-[#e5defc] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  {WHY_CHOOSE_LINKS.map((item) => (
+                    <Link
+                      key={item.name}
+                      to={item.path}
+                      className="block px-4 py-3 text-sm text-dark hover:bg-brand-soft hover:text-gold rounded-xl mx-1 my-0.5"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
 
               <Link
                 to="/about"
@@ -338,13 +361,43 @@ export const Navbar = () => {
               </div>
             </div>
 
-            <Link
-              to="/pricing"
-              onClick={handleNavClick}
-              className="block px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
-            >
-              Pricing
-            </Link>
+
+
+            {/* Why Choose Us */}
+            <div>
+              <button
+                onClick={() => setMobileWhyChooseOpen(!mobileWhyChooseOpen)}
+                className="w-full flex items-center justify-between px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
+                aria-expanded={mobileWhyChooseOpen ? "true" : "false"}
+              >
+                <span>Why Choose Us</span>
+                <ChevronDown
+                  className={cn(
+                    "w-4 h-4 transition-transform duration-200",
+                    mobileWhyChooseOpen && "rotate-180",
+                  )}
+                />
+              </button>
+              <div
+                className={cn(
+                  "pl-4 overflow-hidden transition-all duration-200 ease-in-out",
+                  mobileWhyChooseOpen
+                    ? "max-h-[600px] opacity-100 translate-y-0 pt-1"
+                    : "max-h-0 opacity-0 -translate-y-1",
+                )}
+              >
+                {WHY_CHOOSE_LINKS.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    onClick={handleNavClick}
+                    className="block px-4 py-2 text-sm text-white/90 rounded-lg hover:bg-white/10 hover:text-white transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
             <Link
               to="/about"

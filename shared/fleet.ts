@@ -47,6 +47,7 @@ export const FLEET_TYPES: CarType[] = [
     description: "Spacious and comfortable vans perfect for group travel and business events.",
     cars: [
       { name: "Mercedes-Benz V class" },
+      { name: "Luggage Transfer" },
     ],
   },
   {

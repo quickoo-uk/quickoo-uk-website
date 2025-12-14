@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Calendar, Clock, Info, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { MapPin, Calendar, Clock, Info, ChevronDown, ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useBooking } from "@/contexts/BookingContext";
 
@@ -16,7 +16,7 @@ export const BookingWidget = () => {
     const [selectedDuration, setSelectedDuration] = useState("4 hours");
     const [showDurationPicker, setShowDurationPicker] = useState(false);
     const [fromLocation, setFromLocation] = useState("");
-    const [toLocation, setToLocation] = useState("");
+    const [destinations, setDestinations] = useState<string[]>([""]);
 
     const datePickerRef = useRef<HTMLDivElement>(null);
     const timePickerRef = useRef<HTMLDivElement>(null);
@@ -109,6 +109,23 @@ export const BookingWidget = () => {
         return isSameDay(date, today);
     };
 
+    const handleAddDestination = () => {
+        if (destinations.length < 4) {
+            setDestinations([...destinations, ""]);
+        }
+    };
+
+    const handleRemoveDestination = (index: number) => {
+        const newDestinations = destinations.filter((_, i) => i !== index);
+        setDestinations(newDestinations);
+    };
+
+    const handleDestinationChange = (index: number, value: string) => {
+        const newDestinations = [...destinations];
+        newDestinations[index] = value;
+        setDestinations(newDestinations);
+    };
+
     return (
         <div className="w-full max-w-md bg-white rounded-xl shadow-2xl overflow-visible font-inter border border-slate-100">
             {/* Tabs */}
@@ -163,24 +180,50 @@ export const BookingWidget = () => {
                             </div>
                         </div>
 
-                        {/* To Location (Only for One Way) */}
+                        {/* Destinations (One Way) */}
                         {activeTab === "oneway" && (
-                            <div className="relative group">
-                                <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors">
-                                    <MapPin className="w-5 h-5" />
-                                </div>
-                                <div className="pl-12 pr-4 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#487307] focus-within:bg-white transition-all shadow-sm">
-                                    <label className="block text-xs font-semibold text-slate-500 mb-0.5">
-                                        To
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={toLocation}
-                                        onChange={(e) => setToLocation(e.target.value)}
-                                        placeholder="Address, airport, hotel, ..."
-                                        className="w-full bg-transparent border-none p-0 text-slate-900 placeholder-slate-400 focus:ring-0 text-sm font-medium outline-none"
-                                    />
-                                </div>
+                            <div className="space-y-2">
+                                {destinations.map((destination, index) => (
+                                    <div key={index} className="relative group">
+                                        <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors z-10">
+                                            <MapPin className="w-5 h-5" />
+                                        </div>
+                                        <div className="pl-12 pr-10 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#487307] focus-within:bg-white transition-all shadow-sm relative">
+                                            <label className="block text-xs font-semibold text-slate-500 mb-0.5">
+                                                To {destinations.length > 1 ? `#${index + 1}` : ""}
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={destination}
+                                                onChange={(e) => handleDestinationChange(index, e.target.value)}
+                                                placeholder="Address, airport, hotel, ..."
+                                                className="w-full bg-transparent border-none p-0 text-slate-900 placeholder-slate-400 focus:ring-0 text-sm font-medium outline-none"
+                                            />
+                                            {/* Remove Button for extra destinations */}
+                                            {destinations.length > 1 && (
+                                                <button
+                                                    onClick={() => handleRemoveDestination(index)}
+                                                    className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-red-500 transition-colors"
+                                                >
+                                                    <div className="w-4 h-4 flex items-center justify-center font-bold">×</div>
+                                                </button>
+                                            )}
+                                        </div>
+
+                                        {/* Add Destination Button (only after the last input if less than 4) */}
+                                        {index === destinations.length - 1 && destinations.length < 4 && (
+                                            <div className="flex justify-end mt-2">
+                                                <button
+                                                    onClick={handleAddDestination}
+                                                    className="flex items-center gap-1.5 text-sm font-semibold text-[#487307] hover:text-[#3a5c05] transition-colors group/add"
+                                                >
+                                                    <Plus className="w-5 h-5" strokeWidth={2.5} />
+                                                    <span>Add Stop</span>
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
                             </div>
                         )}
 
@@ -429,13 +472,7 @@ export const BookingWidget = () => {
                             </AnimatePresence>
                         </div>
 
-                        {/* Info Text */}
-                        {activeTab === "oneway" && (
-                            <div className="flex items-start gap-2 text-xs text-slate-500 px-1">
-                                <Info className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#487307]" />
-                                <p>Chauffeur will wait 15 minutes free of charge.</p>
-                            </div>
-                        )}
+
 
                         {/* Search Button */}
                         <button
@@ -443,7 +480,7 @@ export const BookingWidget = () => {
                                 updateBookingData({
                                     bookingType: activeTab,
                                     fromLocation,
-                                    toLocation,
+                                    toLocation: destinations,
                                     date: selectedDate,
                                     time: selectedTime,
                                     duration: selectedDuration,

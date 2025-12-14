@@ -10,7 +10,7 @@ const PROMISE_FEATURES = [
     {
         icon: CheckCircle2,
         title: "Verified Chauffeurs",
-        description: "Background-checked, hospitality-trained professionals.",
+        description: "Background-checked and experienced professional chauffeurs.",
     },
     {
         icon: Clock,
@@ -19,8 +19,8 @@ const PROMISE_FEATURES = [
     },
     {
         icon: Sparkles,
-        title: "Sanitized Vehicles",
-        description: "Hospital-grade cleaning protocols after every journey.",
+        title: "Immaculate Vehicles",
+        description: "Every ride followed by Deep-cleaned after every journey.",
     },
     {
         icon: Shield,

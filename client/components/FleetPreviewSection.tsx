@@ -10,9 +10,9 @@ const VEHICLE_CLASSES = [
     priceMain: "From £60 / hr",
     priceNote: "(incl. VAT)",
     image: "/fleet/BusinessClass.png",
-    guests: "Up to 3 guests",
+    guests: "Up to 4 guests",
     luggage: "2 carry-on bags, or 2 standard bags",
-    description: "Mercedes E-Class, BMW 5 Series, or similar premium executive vehicles.",
+    description: "Mercedes E-Class,or similar premium executive cars.",
     vehicles: ["Mercedes E-Class", "BMW 5 Series", "Or similar"],
   },
   {
@@ -24,7 +24,7 @@ const VEHICLE_CLASSES = [
     image: "/fleet/firstClass.png",
     guests: "Up to 3 guests",
     luggage: "2 carry-on bags or 2 standard bags",
-    description: "Mercedes S-Class, BMW 7 Series, or similar luxury sedans.",
+    description: "Mercedes S-Class, BMW 7 Series, or similar luxury cars.",
     vehicles: ["Mercedes S-Class", "BMW 7 Series", "Or similar luxury sedan"],
   },
   {
@@ -34,7 +34,7 @@ const VEHICLE_CLASSES = [
     priceMain: "From £70 / hr",
     priceNote: "(incl. VAT)",
     image: "/fleet/BusinessVAN.png",
-    guests: "Up to 5 guests",
+    guests: "Up to 7 guests",
     luggage: "6 carry-on bags, or 6 standard bags",
     description: "Mercedes V-Class, spacious 7-seater perfect for families and groups.",
     vehicles: ["Mercedes Vito", "Or similar executive van"],
@@ -134,16 +134,10 @@ export const FleetPreviewSection = () => {
               className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-500"
             >
               {/* Premium Badge - Top Center */}
-        
+
               <div className="relative bg-gradient-to-br from-[#f8faf5] to-white pt-4 pb-2">
                 <div className="flex justify-center">
-                 {
-                  vehicle.id==="first-class" && ( <div className="rounded-full bg-white/95 backdrop-blur px-4 py-1.5 shadow-sm border border-gray-100">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#487307]">
-                      Premium
-                    </p>
-                  </div>)
-                 }
+
                 </div>
               </div>
 

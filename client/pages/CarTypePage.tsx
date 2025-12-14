@@ -10,6 +10,7 @@ import {
   Clock,
   Star,
   MapPin,
+  Leaf,
 } from "lucide-react";
 import { getCarTypeById } from "@shared/fleet";
 import { cn } from "@/lib/utils";
@@ -112,6 +113,7 @@ export default function CarTypePage() {
       EQE: "/fleet/EQE.png",
       EQS: "/fleet/EQS.png",
       "BMW I7": "/fleet/BMW i7.png",
+      "Luggage Transfer": "/fleet/Mercedes-Benz V-Class.png",
     };
     return (
       imageMap[carName] ||
@@ -283,25 +285,50 @@ export default function CarTypePage() {
                   </div>
 
                   <div className="p-6 space-y-5">
-                    <div className="flex items-center justify-between rounded-2xl border border-slate-100 bg-gradient-to-r from-white via-white to-white/60 p-4">
-                      <div className="flex items-center gap-3">
-                        <Users className="h-5 w-5 text-[#487307]" />
-                        <div>
-                          <p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-inter">
-                            Passengers
-                          </p>
-                          <p className="text-lg font-montserrat font-bold text-dark">
-                            {(() => {
-                              if (carType.id === "business-vans") return "Up to 7";
-                              if (carType.id === "special-vehicles") {
-                                return index === 0 ? "Up to 7" : "Up to 4";
-                              }
-                              return "Up to 4";
-                            })()}
-                          </p>
-                        </div>
+                    {
+                      carType.id === "special-vehicles" ? null : <div className="flex items-center justify-between rounded-2xl border border-slate-100 bg-gradient-to-r from-white via-white to-white/60 p-4">
+
+                        {car.name !== "Luggage Transfer" && (
+                          <div className="flex items-center gap-3">
+                            <Users className="h-5 w-5 text-[#487307]" />
+
+                            <div>
+                              <p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-inter">
+                                Passengers
+                              </p>
+                              <p className="text-lg font-montserrat font-bold text-dark">
+                                {(() => {
+                                  if (carType.id === "business-vans") return "Up to 7";
+                                  if (carType.id === "special-vehicles") {
+                                    return index === 0 ? "Up to 7" : "Up to 4";
+                                  }
+                                  return car.name === "EQS" || car.name === "BMW I7" ? "Up to 3" : "Up to 4";
+                                })()}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+
+
+
+
+                        {car.name === "Luggage Transfer" && (
+                          <div className="flex items-start gap-3 text-right ml-auto">
+                            <div className="text-right">
+                              <p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-inter">
+                                Luggage
+                              </p>
+                              <p className="text-lg font-montserrat font-bold text-dark">
+                                {car.name === "Luggage Transfer" && "Large Capacity"}
+                              </p>
+                            </div>
+                            <Luggage className="h-5 w-5 text-[#487307]" />
+                          </div>
+                        )}
+
+
                       </div>
-                    </div>
+                    }
 
                     <ul className="space-y-3">
                       {[
@@ -309,6 +336,8 @@ export default function CarTypePage() {
                         "Advanced climate control",
                         "Premium sound system",
                         "Wi-Fi & charging ports",
+                        "Complimentary water bottle",
+                        "Professional chauffeur attire"
                       ].map((feature, idx) => (
                         <li key={idx} className="flex items-center gap-3 text-sm text-gray-600">
                           <Check className="h-4 w-4 text-[#487307] flex-shrink-0" />
@@ -316,14 +345,16 @@ export default function CarTypePage() {
                         </li>
                       ))}
                     </ul>
+                    {
+                      !car.name?.includes('Audi ') && <Link
+                        to="/booking/select-car"
+                        className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#0a1a02] via-[#2a4204] to-[#487307] text-white font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-[#2a4204]/30"
+                      >
+                        Book Now
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    }
 
-                    <Link
-                      to="/booking/select-car"
-                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#0a1a02] via-[#2a4204] to-[#487307] text-white font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-[#2a4204]/30"
-                    >
-                      Book {car.name}
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
                   </div>
                 </div>
               ))}
@@ -397,6 +428,22 @@ export default function CarTypePage() {
                   description:
                     "Our concierge service is available around the clock to assist with your transportation needs.",
                 },
+                {
+                  icon: Leaf,
+                  title: "Eco-Friendly Choice",
+                  description:
+                    "We are committed to sustainability, offering a range of electric and hybrid vehicles for a greener journey.",
+                },
+                ...(carType.id === "business-vans"
+                  ? [
+                    {
+                      icon: Luggage,
+                      title: "Luggage Transfer",
+                      description:
+                        "Generous cargo space ideal for airport transfers, equipment transport, and group luggage requirements.",
+                    },
+                  ]
+                  : []),
               ].map((feature, index) => {
                 const Icon = feature.icon;
                 return (
@@ -467,7 +514,7 @@ export default function CarTypePage() {
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
               {[
                 { label: "Concierge desk", value: "+44 20 3576 1617" },
-                { label: "Response time", value: "12 min avg" },
+                { label: "Response time", value: "Within 2 hours" },
                 { label: "Availability", value: "24/7 support" },
               ].map((item) => (
                 <div

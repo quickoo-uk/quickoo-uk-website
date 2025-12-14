@@ -134,9 +134,20 @@ export default function Checkout() {
                                         <MapPin className="w-5 h-5 text-slate-400 mt-1" />
                                         <div>
                                             <p className="text-sm text-slate-500">To</p>
-                                            <p className="text-base font-semibold text-slate-900">
-                                                {bookingData.toLocation || 'Not specified'}
-                                            </p>
+                                            {Array.isArray(bookingData.toLocation) ? (
+                                                <div className="flex flex-col gap-1">
+                                                    {bookingData.toLocation.filter(loc => loc.trim() !== '').map((loc, index) => (
+                                                        <div key={index} className="flex items-start gap-2">
+                                                            <span className="text-xs font-bold bg-slate-100 text-slate-500 rounded px-1.5 py-0.5 mt-0.5">
+                                                                {index + 1}
+                                                            </span>
+                                                            <span>{loc}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                bookingData.toLocation || 'Not specified'
+                                            )}
                                         </div>
                                     </div>
                                 )}

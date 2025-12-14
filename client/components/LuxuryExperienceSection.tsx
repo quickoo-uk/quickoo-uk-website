@@ -132,7 +132,18 @@ export const LuxuryExperienceSection = () => {
                     </div>
 
                     <p className="text-2xl md:text-3xl font-montserrat font-medium text-dark leading-relaxed">
-                        "Because you deserve more than just transportation—you deserve <span className="text-[#487307] italic">style in motion</span>."
+                        "Because you deserve more than just transportation—you deserve{" "}
+                        <span className="relative inline-block font-bold text-[#487307]">
+                            travel in style
+                            <motion.span
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                                className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#487307] origin-left rounded-full"
+                            />
+                        </span>
+                        ."
                     </p>
                 </motion.div>
             </div>

@@ -65,16 +65,7 @@ const financialCompliance = [
         description: "Payment processes aligned with Financial Conduct Authority guidelines.",
         standard: "FCA Standards",
     },
-    {
-        title: "PCI DSS Level 1",
-        description: "Highest level of payment card industry security standards.",
-        standard: "PCI DSS Certified",
-    },
-    {
-        title: "HMRC Compliant",
-        description: "Full VAT compliance and transparent tax reporting.",
-        standard: "VAT Registered",
-    },
+
     {
         title: "Consumer Rights",
         description: "Terms and conditions fully aligned with UK Consumer Rights Act 2015.",
@@ -278,7 +269,7 @@ export default function TransparentPricingPage() {
                         </p>
                     </div>
 
-                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
                         {financialCompliance.map((item) => (
                             <motion.div
                                 key={item.title}
