@@ -67,6 +67,7 @@ export const FLEET_TYPES: CarType[] = [
       { name: "EQE" },
       { name: "EQS" },
       { name: "BMW I7" },
+      { name: "EQV" },
     ],
   },
   {

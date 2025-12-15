@@ -114,6 +114,7 @@ export default function CarTypePage() {
       EQS: "/fleet/EQS.png",
       "BMW I7": "/fleet/BMW i7.png",
       "Luggage Transfer": "/fleet/Mercedes-Benz V-Class.png",
+      "EQV": "/fleet/Mercedes-EQV.png",
     };
     return (
       imageMap[carName] ||
@@ -213,6 +214,7 @@ export default function CarTypePage() {
                   className="h-64 w-full object-cover"
                   loading="lazy"
                 />
+
               </div>
               <div className="mt-6 space-y-4">
                 <div className="flex items-center justify-between">
