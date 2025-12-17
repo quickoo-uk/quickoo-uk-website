@@ -11,9 +11,17 @@ import {
   Star,
   MapPin,
   Leaf,
+  Eye,
 } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { getCarTypeById } from "@shared/fleet";
 import { cn } from "@/lib/utils";
+import { SectionChip } from "@/components/SectionChip";
 
 const CAR_TYPE_TAGLINES: Record<string, { title: string; highlight: string }> = {
   "executive-cars": {
@@ -125,11 +133,106 @@ export default function CarTypePage() {
   const heroImage = getCarTypeHeroImage(carType.name, carType.id);
   const heroWorkingImage = "/fleet/fleet-operations-card.jpg";
 
-  const trustMetrics = [
-    { label: "Fleet size", value: "500+" },
-    { label: "Service rating", value: "4.98★" },
-    { label: "Availability", value: "24/7" },
-  ];
+  // Detailed specifications for each vehicle model
+  const CAR_CONFIGURATIONS: Record<string, string[]> = {
+    "Mercedes-Benz E-Class": [
+      "Extended legroom (LWB)",
+      "Rear climate control",
+      "Ambient lighting (64 colors)",
+      "Burmester® surround sound",
+    ],
+    "BMW 5 Series": [
+      "Spacious rear cabin",
+      "Four-zone climate control",
+      "Harman Kardon audio",
+      "Fine-grain leather upholstery",
+    ],
+    "Audi A6": [
+      "Matrix LED lighting",
+      " Acoustic glazing for silence",
+      "Valcona leather seating",
+      "Bang & Olufsen 3D sound",
+    ],
+    "Mercedes-Benz S-Class": [
+      "Executive rear seating",
+      "Chauffeur package with footrest",
+      "Rear seat massage function",
+      "Burmester® 4D surround sound",
+    ],
+    "BMW 7 Series": [
+      "Sky Lounge panoramic roof",
+      "Rear-seat theater screen",
+      "Executive Lounge seating",
+      "Bowers & Wilkins Diamond sound",
+    ],
+    "Audi A8 L": [
+      "Relaxation seat with foot massage",
+      "Predictive active suspension",
+      "OLED rear lighting",
+      "Rear seat remote control",
+    ],
+    "Range Rover Autobiography / Vogue": [
+      "Executive Class rear seating",
+      "Deployable center console",
+      "Meridian™ Signature Sound",
+      "Panoramic sliding roof",
+    ],
+    "Range Rover Sport": [
+      "Meridian™ Sound System",
+      "Heated and cooled seats",
+      "Electronic air suspension",
+      "Premium leather interior",
+    ],
+    "Mercedes-Benz V class": [
+      "Conference style seating",
+      "Burmester® surround sound",
+      "Electric sliding doors",
+      "Nappa leather upholstery",
+    ],
+    "Mercedes-Benz V-Class": [
+      "Conference style seating",
+      "Burmester® surround sound",
+      "Electric sliding doors",
+      "Nappa leather upholstery",
+    ],
+    "Stretch Limousines": [
+      "Privacy partition",
+      "Fiber optic mood lighting",
+      "Champagne bar",
+      "Premium sound system",
+    ],
+    "Rolls Royce": [
+      "Starlight headliner",
+      "Bespoke audio system",
+      "Lambswool floor mats",
+      "Champagne cooler",
+    ],
+    EQE: [
+      "HEPA air filtration",
+      "MBUX Hyperscreen",
+      "Burmester® 3D sound",
+      "Zero-emission luxury",
+    ],
+    EQS: [
+      "Rear seat massage",
+      "MBUX High-End Rear Entertainment",
+      "Energizing Air Control",
+      "Active ambient lighting",
+    ],
+    "BMW I7": [
+      "31-inch Theatre Screen",
+      "Executive Lounge seating",
+      "Automatic doors",
+      "Iconic Glow crystal headlights",
+    ],
+    EQV: [
+      "Electric intelligence",
+      "MBUX infotainment",
+      "Flexible seating rail system",
+      "Pre-entry climate control",
+    ],
+    "Luggage Transfer": ["Large capacity cargo", "Secure transport", "GPS tracking"],
+  };
 
   return (
     <div className="w-full bg-[radial-gradient(circle_at_top,_#ffffff,_#f3f6ff,_#fff6ed)] text-slate-900">
@@ -158,12 +261,7 @@ export default function CarTypePage() {
 
         <div className="relative z-10 section-container py-12 lg:py-20 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#8fe00f]/40">
-              <Sparkles className="h-4 w-4 text-[#487307]" />
-              <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                {carType.name.toUpperCase()}
-              </span>
-            </div>
+            <SectionChip title={carType.name.toUpperCase()} icon={Sparkles} />
             <div className="space-y-5">
               <h1 className="text-4xl sm:text-5xl xl:text-6xl font-montserrat font-semibold leading-tight">
                 {CAR_TYPE_TAGLINES[id ?? ""] ? (
@@ -298,7 +396,7 @@ export default function CarTypePage() {
                               <p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-inter">
                                 Passengers
                               </p>
-                              <p className="text-lg font-montserrat font-bold text-dark">
+                              <p className="text-lg font-montserrat font-bold text-dark flex items-center gap-2">
                                 {(() => {
                                   if (carType.id === "business-vans") return "Up to 7";
                                   if (carType.id === "special-vehicles") {
@@ -306,10 +404,36 @@ export default function CarTypePage() {
                                   }
                                   return car.name === "EQS" || car.name === "BMW I7" ? "Up to 3" : "Up to 4";
                                 })()}
+                                <Eye className="w-3 h-3 text-slate-400" />
                               </p>
                             </div>
                           </div>
                         )}
+
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <button className="p-2 rounded-full hover:bg-slate-100 transition-colors">
+                                  <Eye className="h-5 w-5 text-[#487307]" />
+                                </button>
+                              </TooltipTrigger>
+                              <TooltipContent side="top" className="bg-white border text-slate-900 border-slate-200">
+                                <p className="font-semibold mb-2 text-[#487307]">{car.name} Configuration</p>
+                                <ul className="list-disc pl-4 space-y-1 text-xs">
+                                  {CAR_CONFIGURATIONS[car.name] ? (
+                                    CAR_CONFIGURATIONS[car.name].map((spec, i) => (
+                                      <li key={i}>{spec}</li>
+                                    ))
+                                  ) : (
+                                    <li>Premium luxury specification</li>
+                                  )}
+                                </ul>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </div>
+
 
 
 
@@ -485,12 +609,7 @@ export default function CarTypePage() {
 
         <div className="section-container relative">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm mb-6">
-              <Sparkles className="h-4 w-4 text-[#487307]" />
-              <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                Ready to experience luxury
-              </span>
-            </div>
+            <SectionChip title="Ready to experience luxury" icon={Sparkles} />
             <h2 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-dark">
               Book your premium {carType.name.toLowerCase()} today
             </h2>

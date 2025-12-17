@@ -1,5 +1,6 @@
 import { Car, Route, Armchair, Sparkles, Star } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionChip } from "./SectionChip";
 
 const PERSONALIZATION_FEATURES = [
     {
@@ -83,12 +84,7 @@ export const PersonalizationSection = () => {
                         className="space-y-8"
                     >
                         <div className="space-y-4">
-                            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
-                                <Star className="h-4 w-4 text-[#487307]" />
-                                <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                                    Your Requirements
-                                </span>
-                            </div>
+                            <SectionChip title="Your Requirements" icon={Star} />
                             <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
                                 Every Trip is Personalized{" "}
                                 <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">

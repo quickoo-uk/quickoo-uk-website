@@ -1,5 +1,6 @@
 import { CheckCircle2, Shield, Crown, Users, Clock, Sparkles, Award } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionChip } from "./SectionChip";
 
 const WHY_QUICKO_FEATURES = [
     {
@@ -64,12 +65,7 @@ export const WhyQuickoSection = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16 space-y-4"
                 >
-                    <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-1.5 shadow-sm">
-                        <Sparkles className="h-3.5 w-3.5 text-[#487307]" />
-                        <span className="text-xs tracking-widest uppercase text-slate-600 font-semibold">
-                            Why Quicko
-                        </span>
-                    </div>
+                    <SectionChip title="Why Quicko" />
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark max-w-4xl mx-auto leading-tight">
                         More Than Just Transportation—

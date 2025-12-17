@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SectionChip } from "@/components/SectionChip";
 import {
   Phone,
   Mail,
@@ -140,12 +141,7 @@ export default function ContactPage() {
         </motion.svg>
         <div className="section-container py-16 sm:py-20 lg:py-24 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
-              <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-slate-600 font-semibold">
-                Quickoo • Contact Concierge
-              </p>
-            </div>
+            <SectionChip title="Quickoo • Contact Concierge" />
             <div className="space-y-5">
               <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-slate-900">
                 We’re here 24/7 for elite journeys and instant support.
@@ -165,8 +161,8 @@ export default function ContactPage() {
             />
             <div className="relative rounded-[32px] border border-white/60 bg-white/90 p-8 shadow-[0_40px_120px_rgba(15,23,42,0.15)] space-y-6 backdrop-blur">
               <img
-                src="/contact/contact-concierge-team.jpeg"
-                alt="Quickoo concierge team"
+                src="/contact/contact-concierge-new.png"
+                alt="Quickoo concierge specialist"
                 className="rounded-2xl object-cover h-56 w-full"
                 loading="lazy"
               />

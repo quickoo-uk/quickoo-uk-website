@@ -1,5 +1,6 @@
 import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionChip } from "./SectionChip";
 
 export const TravelByStyleBanner = () => {
     return (
@@ -27,12 +28,7 @@ export const TravelByStyleBanner = () => {
                     >
                         {/* Upper Badge */}
                         <div className="flex justify-center">
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-50/80 backdrop-blur-sm">
-                                <Sparkles className="w-3.5 h-3.5 text-[#487307]" />
-                                <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-slate-600">
-                                    The Quickoo Standard
-                                </span>
-                            </div>
+                            <SectionChip title="The Quickoo Standard" />
                         </div>
 
                         {/* Heading */}

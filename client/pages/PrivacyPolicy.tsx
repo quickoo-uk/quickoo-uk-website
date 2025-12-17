@@ -1,5 +1,6 @@
 import { ShieldCheck, Lock, Eye, FileText, Users, Globe, Sparkles, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionChip } from "@/components/SectionChip";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -371,12 +372,7 @@ export default function PrivacyPolicyPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent" />
         <div className="relative z-10 px-5 sm:px-8 md:px-12 xl:px-24 py-20 w-full">
           <div className="max-w-4xl space-y-8">
-            <div className="inline-flex flex-wrap items-center gap-3 rounded-full border border-slate-200 bg-white/70 px-6 py-2 backdrop-blur">
-              <ShieldCheck className="h-4 w-4 text-[#487307]" />
-              <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-slate-600 font-semibold">
-                Quickoo • Privacy & Security
-              </p>
-            </div>
+            <SectionChip title="Quickoo • Privacy & Security" icon={ShieldCheck} />
             <div className="space-y-6">
               <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-slate-900">
                 Your privacy is our{" "}

@@ -1,5 +1,6 @@
 import { Sparkles, Crown, Lock } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionChip } from "./SectionChip";
 
 const container = {
     hidden: { opacity: 0 },
@@ -32,12 +33,7 @@ export const LuxuryExperienceSection = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16 space-y-4"
                 >
-                    <div className="inline-flex items-center gap-2 rounded-full border border-[#487307]/10 bg-[#487307]/5 px-4 py-1.5">
-                        <Crown className="h-3.5 w-3.5 text-[#487307]" />
-                        <span className="text-xs tracking-widest uppercase text-[#487307] font-semibold">
-                            Luxury Chauffeur Experience
-                        </span>
-                    </div>
+                    <SectionChip title="Luxury Chauffeur Experience" icon={Crown} />
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark max-w-4xl mx-auto leading-tight">
                         Designed for Individuals Who Value{" "}

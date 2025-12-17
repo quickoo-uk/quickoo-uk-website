@@ -1,5 +1,6 @@
 import { FileText, Scale, AlertCircle, CheckCircle, Clock, ShieldCheck, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionChip } from "@/components/SectionChip";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -150,12 +151,7 @@ export default function TermsAndConditionsPage() {
         <div className="absolute -top-24 -left-10 h-64 w-64 bg-[#8fe00f]/30 blur-[120px] opacity-50" />
         <div className="relative z-10 px-5 sm:px-8 md:px-12 xl:px-24 py-20 w-full">
           <div className="max-w-4xl space-y-8">
-            <div className="inline-flex flex-wrap items-center gap-3 rounded-full border border-slate-200 bg-white/70 px-6 py-2 backdrop-blur">
-              <Scale className="h-4 w-4 text-[#487307]" />
-              <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-slate-600 font-semibold">
-                Quickoo • Terms & Conditions
-              </p>
-            </div>
+            <SectionChip title="Quickoo • Terms & Conditions" icon={Scale} />
             <div className="space-y-6">
               <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-slate-900">
                 Clear terms for{" "}

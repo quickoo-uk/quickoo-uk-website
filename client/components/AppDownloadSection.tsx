@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Apple, Smartphone, Sparkles, ArrowRight, Star } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionChip } from "./SectionChip";
 
 const FEATURES = [
   "Real-time chauffeur tracking",
@@ -53,12 +54,7 @@ export const AppDownloadSection = () => {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="inline-flex items-center gap-3 rounded-full border border-[#487307]/20 bg-white/80 px-6 py-2 backdrop-blur shadow-sm">
-              <Sparkles className="h-4 w-4 text-[#487307]" />
-              <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                Mobile Experience
-              </span>
-            </div>
+            <SectionChip title="Mobile Experience" />
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark leading-tight">
               Your entire journey,{" "}

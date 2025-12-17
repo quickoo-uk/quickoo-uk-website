@@ -1,6 +1,7 @@
 import { Crown, Wifi, Coffee, Music, Shield, Smartphone, ArrowRight, Sparkles, Car, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { SectionChip } from "@/components/SectionChip";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -152,12 +153,7 @@ export default function LuxuryFleetPage() {
                 <div className="relative z-10 section-container py-20 w-full">
                     <div className="grid gap-12 lg:grid-cols-2 items-center">
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-3 rounded-full border border-[#487307]/20 bg-white/80 px-6 py-2 backdrop-blur shadow-sm">
-                                <Crown className="h-4 w-4 text-[#487307]" />
-                                <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                                    Tailored Luxury Fleet
-                                </span>
-                            </div>
+                            <SectionChip title="Tailored Luxury Fleet" icon={Crown} />
 
                             <div className="space-y-6">
                                 <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-slate-900">
@@ -365,12 +361,7 @@ export default function LuxuryFleetPage() {
             >
                 <div className="section-container space-y-12">
                     <div className="text-center space-y-4">
-                        <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm">
-                            <Sparkles className="h-4 w-4 text-[#487307]" />
-                            <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                                Explore More
-                            </span>
-                        </div>
+                        <SectionChip title="Explore More" />
                         <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
                             Discover what makes us different
                         </h2>

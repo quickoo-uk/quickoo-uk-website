@@ -1,4 +1,5 @@
 import { Check, Crown, Shield, Sparkles } from "lucide-react";
+import { SectionChip } from "@/components/SectionChip";
 
 const hourlyPackages = [
   {
@@ -84,10 +85,7 @@ export default function PricingPage() {
 
         <div className="section-container relative z-10 grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6 text-dark">
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-white/80 px-4 py-2 font-inter text-xs uppercase tracking-[0.2em] text-gold shadow-sm shadow-gold/30">
-              <Sparkles className="h-4 w-4 text-gold" />
-              Transparent luxury pricing
-            </div>
+            <SectionChip title="Transparent luxury pricing" icon={Sparkles} />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-bold leading-[1.05] text-dark">
               Transparent luxury pricing,
               <span className="bg-gradient-to-r from-gold to-amber-400 bg-clip-text text-transparent">

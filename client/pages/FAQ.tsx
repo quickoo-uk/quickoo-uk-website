@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, Search, HelpCircle, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SectionChip } from "@/components/SectionChip";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -148,17 +149,7 @@ export default function FAQ() {
 
                 <div className="section-container relative z-10 w-full pt-20 pb-10">
                     <div className="mx-auto max-w-3xl text-center space-y-8">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 }}
-                            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/60 px-4 py-1.5 backdrop-blur-md shadow-sm"
-                        >
-                            <HelpCircle className="h-4 w-4 text-[#487307]" />
-                            <span className="text-xs font-semibold uppercase tracking-wider text-slate-600">
-                                Help Center
-                            </span>
-                        </motion.div>
+                        <SectionChip title="Help Center" icon={HelpCircle} />
 
                         <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-slate-900">
                             How can we <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307]">help you?</span>

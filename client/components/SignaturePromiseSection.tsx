@@ -1,5 +1,6 @@
 import { Shield, CheckCircle2, Clock, Sparkles, Star, Award } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionChip } from "./SectionChip";
 
 const PROMISE_FEATURES = [
     {
@@ -101,12 +102,7 @@ export const SignaturePromiseSection = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16 space-y-4"
                 >
-                    <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
-                        <Award className="h-4 w-4 text-[#487307]" />
-                        <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                            Quicko Signature Promise
-                        </span>
-                    </div>
+                    <SectionChip title="Quicko Signature Promise" icon={Award} />
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
                         When You Choose Quicko,{" "}
                         <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">

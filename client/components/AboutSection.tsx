@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { TrendingUp, Sparkles, ShieldCheck, Compass } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionChip } from "./SectionChip";
 
 const STATS = [
   { value: "500+", label: "Chauffeurs On Call" },
@@ -72,12 +73,7 @@ export const AboutSection = () => {
             className="space-y-8"
           >
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
-                <Sparkles className="h-4 w-4 text-[#487307]" />
-                <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                  About Quickoo
-                </span>
-              </div>
+              <SectionChip title="About Quickoo" />
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
                 From personalized chauffeur service to a{" "}
                 <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">

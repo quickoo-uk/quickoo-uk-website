@@ -8,6 +8,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SectionChip } from "./SectionChip";
 
 const TESTIMONIALS = [
   {
@@ -150,12 +151,7 @@ export const TestimonialsSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16 space-y-4"
         >
-          <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#8fe00f]/40">
-            <Sparkles className="h-4 w-4 text-[#487307]" />
-            <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-              Client Stories
-            </span>
-          </div>
+          <SectionChip title="Client Stories" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
             Trusted by global leaders{" "}
             <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">

@@ -1,5 +1,6 @@
 import { Shield, Zap, Award, Clock, Users, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionChip } from "./SectionChip";
 
 const PROFESSIONAL_FEATURES = [
     {
@@ -87,12 +88,7 @@ export const ProfessionalismSection = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16 space-y-4"
                 >
-                    <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#c9d6ff]/40">
-                        <Sparkles className="h-4 w-4 text-[#487307]" />
-                        <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                            Driven by Professionalism
-                        </span>
-                    </div>
+                    <SectionChip title="Driven by Professionalism" />
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
                         Your Journey is Powered by{" "}
                         <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
@@ -154,12 +150,7 @@ export const ProfessionalismSection = () => {
                     transition={{ delay: 0.6, duration: 0.8 }}
                     className="mt-16 text-center"
                 >
-                    <div className="inline-flex items-center gap-3 rounded-full border border-[#487307]/30 bg-gradient-to-r from-white via-[#f0f9eb] to-white px-8 py-4 shadow-lg shadow-[#487307]/10">
-                        <Sparkles className="h-5 w-5 text-[#487307]" />
-                        <p className="text-lg font-montserrat font-semibold bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                            Excellence Without Compromise
-                        </p>
-                    </div>
+                    <SectionChip title="Excellence Without Compromise" icon={Sparkles} />
                 </motion.div>
             </div>
         </section>

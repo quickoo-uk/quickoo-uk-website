@@ -9,6 +9,7 @@ import {
   MapPin,
   Sparkles,
 } from "lucide-react";
+import { SectionChip } from "@/components/SectionChip";
 
 const SERVICE_IMAGES: Record<string, string> = {
   "airport-transfers": "/services/airport-transfer-hero.png",
@@ -203,12 +204,7 @@ export default function ServicesPlaceholder() {
 
         <div className="relative z-10 section-container py-24 lg:py-32 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-6 py-2 backdrop-blur shadow-sm shadow-[#8fe00f]/40">
-              <Sparkles className="h-4 w-4 text-[#487307]" />
-              <span className="text-xs tracking-[0.4em] uppercase text-slate-600 font-semibold">
-                {serviceName} by Quickoo
-              </span>
-            </div>
+            <SectionChip title={`${serviceName} by Quickoo`} />
             <div className="space-y-5">
               <h1 className="text-4xl sm:text-5xl xl:text-6xl font-montserrat font-semibold leading-tight">
                 {SERVICE_TAGLINES[id ?? ""] ? (
