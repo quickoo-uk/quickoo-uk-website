@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Clock,
@@ -149,6 +150,19 @@ const premiumAddOns = [
   { label: "Brand integrations", note: "Branding, vehicle wraps and guest experience integrations." },
 ];
 
+const CITY_ATTRACTIONS = [
+  { name: "London Eye", description: "Giant observation wheel with spectacular city views.", image: "/services/city-tours/londonEye.jpg" },
+  { name: "Tower of London", description: "Historic fortress and home of the Crown Jewels.", image: "/services/city-tours/Tower of London.jpg" },
+  { name: "Buckingham Palace", description: "The King’s official residence; famous for the Changing of the Guard.", image: "/services/city-tours/Buckingham Palace.jpg" },
+  { name: "Big Ben & Houses of Parliament", description: "Iconic symbol of London and UK politics.", image: "/services/city-tours/Big Ben & Houses of Parliament.jpg" },
+  { name: "British Museum", description: "World-class museum with free entry and global treasures.", image: "/services/city-tours/British Museum.jpg" },
+  { name: "Tower Bridge", description: "Famous Victorian bridge with glass walkway views.", image: "/services/city-tours/Tower Bridge.jpg" },
+  { name: "Westminster Abbey", description: "Coronations, royal weddings, and centuries of history.", image: "/services/city-tours/Westminster Abbey.jpg" },
+  { name: "St Paul's Cathedral", description: "Stunning dome and panoramic views from the top.", image: "/services/city-tours/St Paul's Cathedral.jpg" },
+  { name: "Trafalgar Square", description: "Central square with Nelson’s Column and the National Gallery.", image: "/services/city-tours/Trafalgar Square.jpg" },
+  { name: "Hyde Park", description: "Huge green space for walks, relaxation, and boating.", image: "/services/city-tours/Hyde Park.png" },
+];
+
 // Dynamic operations image based on service type
 const getOperationsImage = (serviceId: string) => {
   // Fallback to business hero for now as specific operation images are not yet generated
@@ -269,6 +283,80 @@ export default function ServicesPlaceholder() {
           </div>
         </div>
       </section>
+
+      {/* ============================== */}
+      {/* CITY ATTRACTIONS (Specific to city-tours) */}
+      {/* ============================== */}
+      {id === "city-tours" && (
+        <section className="section-spacing bg-slate-50 relative overflow-hidden">
+          <div className="section-container relative z-10">
+            <div className="text-center mb-16 space-y-4">
+              <p className="uppercase tracking-[0.4em] text-sm text-[#487307] font-semibold">
+                Discover London
+              </p>
+              <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-slate-900">
+                Iconic City Attractions
+              </h2>
+              <p className="max-w-2xl mx-auto text-slate-600 font-inter text-lg">
+                Experience the rich history and modern marvels of London with our curated tours.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+              {CITY_ATTRACTIONS.map((attraction, index) => (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  key={index}
+                  className="group relative flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100"
+                >
+                  {/* Card Image */}
+                  <div className="relative h-64 overflow-hidden">
+                    <div className="absolute inset-0 bg-slate-200 animate-pulse" /> {/* Placeholder while loading */}
+                    <img
+                      src={attraction.image}
+                      alt={attraction.name}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-[-10px] group-hover:translate-y-0">
+                      <MapPin className="w-5 h-5 text-[#487307]" />
+                    </div>
+                  </div>
+
+                  {/* Card Content */}
+                  <div className="flex flex-col flex-grow p-8 relative">
+                    {/* Decorative line */}
+                    <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+
+                    <h3 className="text-2xl font-montserrat font-bold text-slate-900 mb-3 group-hover:text-[#487307] transition-colors">
+                      {attraction.name}
+                    </h3>
+
+                    <p className="text-slate-600 font-inter leading-relaxed flex-grow">
+                      {attraction.description}
+                    </p>
+
+                    <div className="mt-6 pt-6 border-t border-slate-100 flex items-center justify-between">
+                      <button
+                        onClick={() => navigate('/booking/select-car')}
+                        className="text-sm font-semibold text-[#487307] uppercase tracking-wider group-hover:translate-x-1 transition-transform cursor-pointer flex items-center gap-2 hover:bg-transparent border-none p-0 focus:outline-none"
+                      >
+                        Explore <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Bottom Border Gradient */}
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#487307] to-[#8fe00f] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
 
       <section className="section-spacing relative">
