@@ -24,7 +24,6 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
-
 function expressPlugin(): Plugin {
   return {
     name: "express-plugin",
