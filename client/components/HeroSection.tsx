@@ -5,20 +5,15 @@ import { BookingWidget } from "./BookingWidget";
 export const HeroSection = () => {
   return (
     <section className="relative flex min-h-[100dvh] w-full items-center pt-28 pb-20 lg:py-0 overflow-hidden">
-      {/* Video Background */}
+      {/* Hero Image Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black/40 z-10" /> {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-10" />
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover scale-105" // Slight scale to prevent edge artifacts
-        >
-          <source src="/home/video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div className="absolute inset-0 bg-black/50 z-10" /> {/* Darker overlay for static image */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent z-10" />
+        <img
+          src="/about/about-hero.png"
+          alt="Premium Mercedes S-Class Chauffeur Service"
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Animated SVG decorations */}
