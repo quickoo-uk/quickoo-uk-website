@@ -111,99 +111,123 @@ export default function ContactPage() {
 
   return (
     <div className="bg-white text-slate-900">
-      <motion.section
-        className="relative overflow-hidden bg-gradient-to-br from-white via-[#eef2ff] to-[#fff5ec]"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <img
-          src="/contact/contact-hero-background.jpeg"
-          alt="Quickoo concierge hero background"
-          className="absolute inset-0 h-full w-full object-cover opacity-25"
-        />
-
-        <motion.svg
-          viewBox="0 0 1200 200"
-          className="absolute bottom-0 left-0 w-full text-white/40 opacity-60"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          <motion.path
-            d="M0 120 C 200 60, 400 180, 600 120 C 800 60, 1000 180, 1200 110"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeDasharray="12 8"
-            animate={{ strokeDashoffset: [0, -200] }}
-            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-white">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/contact/contact-hero-background.jpeg"
+            alt="Quickoo Premium Support"
+            className="h-full w-full object-cover opacity-20"
           />
-        </motion.svg>
-        <div className="section-container py-16 sm:py-20 lg:py-24 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
-          <div className="space-y-8">
-            <SectionChip title="Quickoo • Contact Concierge" />
-            <div className="space-y-5">
-              <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-slate-900">
-                We’re here 24/7 for elite journeys and instant support.
-              </h1>
-              <p className="text-lg text-slate-600 font-inter">
-                Book a chauffeur, fine-tune a corporate mobility plan, or ask about bespoke events.
-                Our concierge team operates round the clock with sub-two-hour response times.
-              </p>
-            </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/80 md:via-white/80 md:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white" />
+        </div>
 
-          </div>
-          <div className="relative">
+        {/* Decorative Mesh Gradients */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#8fe00f]/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-[400px] h-[400px] bg-[#487307]/10 blur-[100px] rounded-full pointer-events-none" />
+
+        <div className="section-container relative z-10 w-full pt-32 pb-20">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
             <motion.div
-              className="absolute -right-6 -top-6 w-32 h-32 rounded-full border border-white/40"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            />
-            <div className="relative rounded-[32px] border border-white/60 bg-white/90 p-8 shadow-[0_40px_120px_rgba(15,23,42,0.15)] space-y-6 backdrop-blur">
-              <img
-                src="/contact/contact-concierge-new.png"
-                alt="Quickoo concierge specialist"
-                className="rounded-2xl object-cover h-56 w-full"
-                loading="lazy"
-              />
-              <div className="space-y-3">
-                <p className="text-sm uppercase tracking-[0.4em] text-slate-500">Concierge hotline</p>
-                <p className="text-2xl font-montserrat font-semibold text-slate-900">
-                  +44 20 3576 1617
-                </p>
-                <p className="text-slate-600 text-sm">
-                  Call, WhatsApp, or email us anytime for bookings, live journey updates, or tailored
-                  travel advice.
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-10"
+            >
+              <div className="space-y-6">
+                <SectionChip title="Direct Concierge Access" />
+                <h1 className="font-montserrat text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] text-slate-900">
+                  Refined <br />
+                  <span className="bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#8fe00f] bg-clip-text text-transparent">
+                    Support
+                  </span> <br />
+                  Round the Clock.
+                </h1>
+                <p className="text-lg md:text-xl text-slate-600 font-inter max-w-2xl leading-relaxed">
+                  Elite chauffeur coordination, corporate mobility planning, and bespoke event logistics—managed with sub-two-hour response times.
                 </p>
               </div>
-            </div>
-            <motion.svg
-              viewBox="0 0 400 400"
-              className="absolute inset-0 -z-10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+
+              <div className="flex flex-wrap gap-6 pt-4">
+                {heroStats.map((stat, i) => (
+                  <div key={i} className="flex flex-col">
+                    <span className="text-3xl font-montserrat font-bold text-slate-900">{stat.value}</span>
+                    <span className="text-xs uppercase tracking-widest text-slate-500 font-bold mt-1">{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
             >
-              <defs>
-                <linearGradient id="contact-orbit" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#D4A853" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#94a3b8" stopOpacity="0.2" />
-                </linearGradient>
-              </defs>
-              <motion.circle
-                cx="200"
-                cy="200"
-                r="180"
-                fill="none"
-                stroke="url(#contact-orbit)"
-                strokeWidth="1.5"
-                strokeDasharray="12 12"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              />
-            </motion.svg>
+              <div className="absolute -inset-4 bg-gradient-to-br from-[#487307]/20 to-transparent blur-2xl rounded-[48px] opacity-50" />
+              <div className="relative rounded-[48px] border border-white/60 bg-white/95 p-10 shadow-[0_50px_100px_rgba(72,115,7,0.15)] backdrop-blur-xl">
+                <div className="relative h-64 mb-10 rounded-[32px] overflow-hidden group">
+                  <img
+                    src="/contact/contact-concierge-new.png"
+                    alt="Quickoo Concierge Team"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
+                    <p className="text-white font-montserrat font-bold">24/7 Availability</p>
+                    <div className="flex gap-1">
+                      {[1, 2, 3].map(i => (
+                        <div key={i} className="w-2 h-2 rounded-full bg-[#8fe00f] animate-pulse" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-8">
+                  <div className="space-y-2">
+                    <p className="text-xs uppercase tracking-[0.4em] text-slate-500 font-bold">Priority Hotline</p>
+                    <a
+                      href="tel:+442035761617"
+                      className="text-3xl md:text-4xl font-montserrat font-bold text-slate-900 block hover:text-[#487307] transition-colors"
+                    >
+                      +44 20 3576 1617
+                    </a>
+                  </div>
+
+                  <p className="text-slate-600 font-inter leading-relaxed">
+                    Connect instantly with our flagship desk at Heathrow. We handle multi-city itineraries, VIP arrivals, and urgent amendments with absolute discretion.
+                  </p>
+
+                  <div className="pt-6 border-t border-slate-100 grid grid-cols-2 gap-4">
+                    <button
+                      onClick={() => window.open('https://wa.me/442035761617', '_blank')}
+                      className="flex items-center justify-center gap-2 py-4 px-6 rounded-2xl bg-slate-900 text-white text-sm font-bold hover:bg-[#487307] transition-all"
+                    >
+                      WhatsApp
+                    </button>
+                    <button
+                      onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+                      className="flex items-center justify-center gap-2 py-4 px-6 rounded-2xl border border-slate-200 text-slate-900 text-sm font-bold hover:border-[#487307] hover:text-[#487307] transition-all"
+                    >
+                      Enquiry
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative Circle */}
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white shadow-2xl rounded-full flex items-center justify-center border border-slate-100 z-20">
+                <div className="text-center">
+                  <p className="text-2xl font-montserrat font-bold text-[#487307]">99%</p>
+                  <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Happy Clients</p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
-      </motion.section>
+      </section>
+
 
       <section className="section-spacing bg-gradient-to-b from-white via-[#f8fbff] to-[#fff8f0]">
         <div className="section-container space-y-12">
