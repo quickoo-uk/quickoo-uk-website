@@ -197,7 +197,7 @@ export default function EliteChauffeurs() {
             >
                 <div className="section-container space-y-12">
                     <div className="text-center space-y-4">
-                        <p className="uppercase tracking-[0.4em] text-sm text-[#487307] font-semibold">
+                        <p className="uppercase tracking-[0.4em] text-lg text-[#487307] font-semibold">
                             What Sets Us Apart
                         </p>
                         <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
@@ -248,7 +248,7 @@ export default function EliteChauffeurs() {
             >
                 <div className="section-container space-y-12">
                     <div className="text-center space-y-4">
-                        <p className="uppercase tracking-[0.4em] text-sm text-slate-500 font-semibold">
+                        <p className="uppercase tracking-[0.4em] text-lg text-slate-500 font-semibold">
                             Continuous Development
                         </p>
                         <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
@@ -291,7 +291,7 @@ export default function EliteChauffeurs() {
             >
                 <div className="section-container space-y-12">
                     <div className="text-center space-y-4">
-                        <p className="uppercase tracking-[0.4em] text-sm text-[#487307] font-semibold">
+                        <p className="uppercase tracking-[0.4em] text-md text-[#487307] font-semibold">
                             Service Excellence
                         </p>
                         <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
@@ -333,7 +333,7 @@ export default function EliteChauffeurs() {
             >
                 <div className="section-container space-y-12">
                     <div className="text-center space-y-4">
-                        <p className="uppercase tracking-[0.4em] text-sm text-slate-500 font-semibold">
+                        <p className="uppercase tracking-[0.4em] text-md text-slate-500 font-semibold">
                             UK Legal Compliance
                         </p>
                         <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">

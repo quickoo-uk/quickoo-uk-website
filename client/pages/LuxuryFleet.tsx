@@ -207,7 +207,7 @@ export default function LuxuryFleetPage() {
             >
                 <div className="section-container space-y-12">
                     <div className="text-center space-y-4">
-                        <p className="uppercase tracking-[0.4em] text-sm text-[#487307] font-semibold">
+                        <p className="uppercase tracking-[0.4em] text-lg text-[#487307] font-semibold">
                             Our Collection
                         </p>
                         <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">

@@ -472,7 +472,7 @@ export default function AboutPage() {
       >
         <div className="section-container space-y-12">
           <div className="text-center space-y-3">
-            <p className="uppercase tracking-[0.4em] text-sm text-slate-500">Core values</p>
+            <p className="uppercase tracking-[0.4em] text-md text-slate-500">Core values</p>
             <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
               Quickoo Promise
             </h2>
@@ -508,7 +508,7 @@ export default function AboutPage() {
         <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-[radial-gradient(circle_at_top,#d9e6ff,transparent_60%)] opacity-60" />
         <div className="section-container relative grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <motion.div className="space-y-8" variants={fadeInUp}>
-            <p className="uppercase tracking-[0.4em] text-sm text-slate-500">Tailored programs</p>
+            <p className="uppercase tracking-[0.4em] text-md text-slate-500">Tailored programs</p>
             <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
               Crafted for every journey profile
             </h2>
@@ -575,7 +575,7 @@ export default function AboutPage() {
         <div className="section-container space-y-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div className="space-y-7" variants={fadeInUp}>
-              <p className="uppercase tracking-[0.4em] text-sm text-slate-500">
+              <p className="uppercase tracking-[0.4em] text-md text-slate-500">
                 Why travelers choose us
               </p>
               <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
@@ -653,7 +653,7 @@ export default function AboutPage() {
       >
         <div className="section-container space-y-10">
           <div className="text-center space-y-3">
-            <p className="uppercase tracking-[0.4em] text-sm text-slate-500">The Quickoo difference</p>
+            <p className="uppercase tracking-[0.4em] text-md text-slate-500">The Quickoo difference</p>
             <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
               Designed for discerning travelers
             </h2>
@@ -687,7 +687,7 @@ export default function AboutPage() {
       >
         <div className="section-container grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           <div className="space-y-6">
-            <p className="uppercase tracking-[0.4em] text-sm text-gold">Premium Fleet Excellence</p>
+            <p className="uppercase tracking-[0.4em] text-md text-gold">Premium Fleet Excellence</p>
             <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-dark">
               Luxury vehicles, meticulously maintained
             </h2>
@@ -724,7 +724,7 @@ export default function AboutPage() {
       >
         <div className="section-container grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
-            <p className="uppercase tracking-[0.4em] text-sm text-dark/70">
+            <p className="uppercase tracking-[0.4em] text-md text-dark/70">
               Concierge connections
             </p>
             <h2 className="text-3xl sm:text-4xl font-montserrat font-bold">

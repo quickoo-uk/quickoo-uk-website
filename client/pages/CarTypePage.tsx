@@ -351,7 +351,7 @@ export default function CarTypePage() {
 
           <div className="section-container relative">
             <div className="text-center mb-12 space-y-4">
-              <p className="text-xs uppercase tracking-[0.4em] text-slate-500">
+              <p className="text-lg uppercase tracking-[0.4em] text-slate-500">
                 Available vehicles
               </p>
               <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
@@ -521,7 +521,7 @@ export default function CarTypePage() {
         <div className="section-container relative">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12 space-y-4">
-              <p className="text-xs uppercase tracking-[0.4em] text-slate-500">
+              <p className="text-lg uppercase tracking-[0.4em] text-slate-500">
                 Why choose us
               </p>
               <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">

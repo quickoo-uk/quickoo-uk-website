@@ -422,7 +422,7 @@ export default function ContactPage() {
       <section className="section-spacing bg-gradient-to-b from-[#f8fbff] via-white to-[#fff6ef]">
         <div className="section-container space-y-10">
           <div className="text-center space-y-3">
-            <p className="text-sm uppercase tracking-[0.4em] text-slate-500">FAQs</p>
+            <p className="text-md uppercase tracking-[0.4em] text-slate-500">FAQs</p>
             <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
               Frequently asked questions
             </h2>
@@ -447,7 +447,7 @@ export default function ContactPage() {
       <section className="section-spacing bg-gradient-to-br from-white via-[#f4f6ff] to-[#fff6ee]">
         <div className="section-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-center">
           <div className="space-y-6">
-            <p className="text-sm uppercase tracking-[0.4em] text-slate-500">
+            <p className="text-md uppercase tracking-[0.4em] text-slate-500">
               Visit our flagship lounge
             </p>
             <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
