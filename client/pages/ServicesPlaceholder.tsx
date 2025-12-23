@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { CITY_ATTRACTIONS } from "@/lib/constants";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -154,18 +155,8 @@ const premiumAddOns = [
   { label: "Brand integrations", note: "Branding, vehicle wraps and guest experience integrations." },
 ];
 
-const CITY_ATTRACTIONS = [
-  { name: "London Eye", description: "Giant observation wheel with spectacular city views.", image: "/services/city-tours/londonEye.jpg" },
-  { name: "Tower of London", description: "Historic fortress and home of the Crown Jewels.", image: "/services/city-tours/Tower of London.jpg" },
-  { name: "Buckingham Palace", description: "The King’s official residence; famous for the Changing of the Guard.", image: "/services/city-tours/Buckingham Palace.jpg" },
-  { name: "Big Ben & Houses of Parliament", description: "Iconic symbol of London and UK politics.", image: "/services/city-tours/Big Ben & Houses of Parliament.jpg" },
-  { name: "British Museum", description: "World-class museum with free entry and global treasures.", image: "/services/city-tours/British Museum.jpg" },
-  { name: "Tower Bridge", description: "Famous Victorian bridge with glass walkway views.", image: "/services/city-tours/Tower Bridge.jpg" },
-  { name: "Westminster Abbey", description: "Coronations, royal weddings, and centuries of history.", image: "/services/city-tours/Westminster Abbey.jpg" },
-  { name: "St Paul's Cathedral", description: "Stunning dome and panoramic views from the top.", image: "/services/city-tours/St Paul's Cathedral.jpg" },
-  { name: "Trafalgar Square", description: "Central square with Nelson’s Column and the National Gallery.", image: "/services/city-tours/Trafalgar Square.jpg" },
-  { name: "Hyde Park", description: "Huge green space for walks, relaxation, and boating.", image: "/services/city-tours/Hyde Park.png" },
-];
+
+
 
 const PRIVATE_JET_AIRPORTS = [
   {
@@ -391,6 +382,19 @@ export default function ServicesPlaceholder() {
                           Location {index + 1 < 10 ? `0${index + 1}` : index + 1}
                         </span>
                       </div>
+
+                      {/* Map Icon Button */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(attraction.mapUrl, '_blank');
+                        }}
+                        className="absolute top-8 right-8 w-12 h-12 rounded-full bg-white shadow-xl flex items-center justify-center text-[#487307] hover:bg-[#487307] hover:text-white transition-all duration-300 group/map z-20"
+                        title="View on Google Maps"
+                      >
+                        <MapPin className="w-5 h-5 group-hover/map:scale-110 transition-transform" />
+                      </button>
+
                     </div>
 
                     <div className="p-10 flex flex-col justify-between">
@@ -405,15 +409,19 @@ export default function ServicesPlaceholder() {
 
                       <div className="mt-8 flex items-center justify-between">
                         <button
-                          onClick={() => navigate('/booking/select-car')}
+                          onClick={() => navigate(`/services/city-tours/${attraction.id}`)}
                           className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-slate-900 hover:text-[#487307] transition-colors group/btn"
                         >
-                          Book Experience
+                          Explore Details
                           <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
                         </button>
-                        <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center border border-slate-100 group-hover:bg-[#487307] transition-colors">
+                        <button
+                          onClick={() => navigate('/booking/select-car')}
+                          className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center border border-slate-100 hover:bg-[#487307] transition-colors group"
+                          title="Book Now"
+                        >
                           <Crown className="w-4 h-4 text-[#487307] group-hover:text-white" />
-                        </div>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -442,182 +450,186 @@ export default function ServicesPlaceholder() {
       {/* ============================== */}
       {/* CRUISE PORT TRANSFERS (Specific to london-cruise-transfer) */}
       {/* ============================== */}
-      {id === "london-cruise-transfer" && (
-        <section className="section-spacing bg-white relative overflow-hidden">
-          <div className="section-container relative z-10">
-            <div className="text-center mb-20 space-y-6">
-              <p className="uppercase tracking-[0.4em] text-sm text-[#487307] font-semibold">
-                Port Connections
-              </p>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-slate-900 leading-tight">
-                Premium London <br className="hidden md:block" />
-                <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                  Cruise Transfers
-                </span>
-              </h2>
-              <p className="max-w-3xl mx-auto text-slate-600 font-inter text-lg md:text-xl">
-                Reliable door-to-dock chauffeur services connecting London and its airports to all major UK cruise terminals.
-              </p>
-            </div>
-
-            {/* Hero Image Section */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative rounded-[40px] overflow-hidden mb-20 shadow-2xl h-[400px] md:h-[500px]"
-            >
-              <img
-                src="/services/cruise-port-transfer-hero.png"
-                alt="London Cruise Port Transfers"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-10 left-10 right-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
-                <div className="space-y-2">
-                  <p className="text-white/80 font-inter uppercase tracking-widest text-sm">Luxury Port Arrivals</p>
-                  <h3 className="text-white text-3xl font-montserrat font-bold">Door-to-Deck Excellence</h3>
-                </div>
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-2xl flex items-center gap-4 text-white">
-                  <div className="text-right">
-                    <p className="text-[10px] uppercase tracking-widest opacity-70">Fleet Standard</p>
-                    <p className="text-sm font-bold">Mercedes S-Class New Model</p>
-                  </div>
-                  <Ship className="w-8 h-8 text-[#8fe00f]" />
-                </div>
+      {
+        id === "london-cruise-transfer" && (
+          <section className="section-spacing bg-white relative overflow-hidden">
+            <div className="section-container relative z-10">
+              <div className="text-center mb-20 space-y-6">
+                <p className="uppercase tracking-[0.4em] text-sm text-[#487307] font-semibold">
+                  Port Connections
+                </p>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-slate-900 leading-tight">
+                  Premium London <br className="hidden md:block" />
+                  <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                    Cruise Transfers
+                  </span>
+                </h2>
+                <p className="max-w-3xl mx-auto text-slate-600 font-inter text-lg md:text-xl">
+                  Reliable door-to-dock chauffeur services connecting London and its airports to all major UK cruise terminals.
+                </p>
               </div>
-            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {CRUISE_PORTS.map((port, index) => (
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  key={index}
-                  className="group flex flex-col h-full bg-[#f8fafc] rounded-3xl p-8 hover:bg-white hover:shadow-[0_40px_100px_rgba(72,115,7,0.12)] transition-all duration-500 border border-slate-100"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-8 group-hover:bg-[#487307] transition-colors duration-500">
-                    <port.icon className="w-7 h-7 text-[#487307] group-hover:text-white transition-colors duration-500" />
+              {/* Hero Image Section */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative rounded-[40px] overflow-hidden mb-20 shadow-2xl h-[400px] md:h-[500px]"
+              >
+                <img
+                  src="/services/cruise-port-transfer-hero.png"
+                  alt="London Cruise Port Transfers"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-10 left-10 right-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                  <div className="space-y-2">
+                    <p className="text-white/80 font-inter uppercase tracking-widest text-sm">Luxury Port Arrivals</p>
+                    <h3 className="text-white text-3xl font-montserrat font-bold">Door-to-Deck Excellence</h3>
                   </div>
-
-                  <h3 className="text-xl font-montserrat font-bold text-slate-900 mb-4 group-hover:text-[#487307] transition-colors">
-                    {port.name}
-                  </h3>
-
-                  <p className="text-slate-600 font-inter text-sm leading-relaxed flex-grow">
-                    {port.description}
-                  </p>
-
-                  <div className="mt-8 pt-6 border-t border-slate-200 flex items-center justify-between">
-                    <button
-                      onClick={() => navigate('/booking/select-car')}
-                      className="text-xs font-semibold text-slate-900 uppercase tracking-widest group-hover:text-[#487307] transition-colors flex items-center gap-2"
-                    >
-                      Book Port <ArrowRight className="w-4 h-4" />
-                    </button>
-                    <div className="text-[9px] text-slate-400 uppercase tracking-widest font-bold">VIP Concierge</div>
+                  <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-2xl flex items-center gap-4 text-white">
+                    <div className="text-right">
+                      <p className="text-[10px] uppercase tracking-widest opacity-70">Fleet Standard</p>
+                      <p className="text-sm font-bold">Mercedes S-Class New Model</p>
+                    </div>
+                    <Ship className="w-8 h-8 text-[#8fe00f]" />
                   </div>
-                </motion.div>
-              ))}
+                </div>
+              </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {CRUISE_PORTS.map((port, index) => (
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, duration: 0.6 }}
+                    key={index}
+                    className="group flex flex-col h-full bg-[#f8fafc] rounded-3xl p-8 hover:bg-white hover:shadow-[0_40px_100px_rgba(72,115,7,0.12)] transition-all duration-500 border border-slate-100"
+                  >
+                    <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-8 group-hover:bg-[#487307] transition-colors duration-500">
+                      <port.icon className="w-7 h-7 text-[#487307] group-hover:text-white transition-colors duration-500" />
+                    </div>
+
+                    <h3 className="text-xl font-montserrat font-bold text-slate-900 mb-4 group-hover:text-[#487307] transition-colors">
+                      {port.name}
+                    </h3>
+
+                    <p className="text-slate-600 font-inter text-sm leading-relaxed flex-grow">
+                      {port.description}
+                    </p>
+
+                    <div className="mt-8 pt-6 border-t border-slate-200 flex items-center justify-between">
+                      <button
+                        onClick={() => navigate('/booking/select-car')}
+                        className="text-xs font-semibold text-slate-900 uppercase tracking-widest group-hover:text-[#487307] transition-colors flex items-center gap-2"
+                      >
+                        Book Port <ArrowRight className="w-4 h-4" />
+                      </button>
+                      <div className="text-[9px] text-slate-400 uppercase tracking-widest font-bold">VIP Concierge</div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      }
 
 
       {/* ============================== */}
       {/* PRIVATE JET AIRPORTS (Specific to private-jet-chauffeur and private-jet) */}
       {/* ============================== */}
-      {(id === "private-jet-chauffeur" || id === "private-jet") && (
-        <section className="section-spacing bg-white relative overflow-hidden">
-          <div className="section-container relative z-10">
-            <div className="text-center mb-20 space-y-6">
-              <p className="uppercase tracking-[0.4em] text-sm text-[#487307] font-semibold">
-                London Terminals
-              </p>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-slate-900 leading-tight">
-                London’s Leading <br className="hidden md:block" />
-                <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                  Private Jet Airports
-                </span>
-              </h2>
-              <p className="max-w-3xl mx-auto text-slate-600 font-inter text-lg md:text-xl">
-                We provide seamless tarmac-side transfers and FBO arrivals across all major business aviation hubs in the capital.
-              </p>
-            </div>
-
-            {/* Title Image Section */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative rounded-[40px] overflow-hidden mb-20 shadow-2xl h-[400px] md:h-[500px]"
-            >
-              <img
-                src="/services/private-jet-airports-hero.png"
-                alt="London Private Jet Airports"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-              <div className="absolute bottom-10 left-10 right-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
-                <div className="space-y-2">
-                  <p className="text-white/80 font-inter uppercase tracking-widest text-sm">Signature Flight Support</p>
-                  <h3 className="text-white text-3xl font-montserrat font-bold">Unrivaled VIP Access</h3>
-                </div>
-                <div className="flex -space-x-3">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="w-12 h-12 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-xl">
-                      <img src={`/services/private-jet-chauffeur-portrait.jpg`} alt="Chauffeur" className="w-full h-full object-cover" />
-                    </div>
-                  ))}
-                  <div className="w-12 h-12 rounded-full border-2 border-white bg-[#487307] flex items-center justify-center text-white text-xs font-bold shadow-xl">
-                    +15
-                  </div>
-                </div>
+      {
+        (id === "private-jet-chauffeur" || id === "private-jet") && (
+          <section className="section-spacing bg-white relative overflow-hidden">
+            <div className="section-container relative z-10">
+              <div className="text-center mb-20 space-y-6">
+                <p className="uppercase tracking-[0.4em] text-sm text-[#487307] font-semibold">
+                  London Terminals
+                </p>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-slate-900 leading-tight">
+                  London’s Leading <br className="hidden md:block" />
+                  <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                    Private Jet Airports
+                  </span>
+                </h2>
+                <p className="max-w-3xl mx-auto text-slate-600 font-inter text-lg md:text-xl">
+                  We provide seamless tarmac-side transfers and FBO arrivals across all major business aviation hubs in the capital.
+                </p>
               </div>
-            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {PRIVATE_JET_AIRPORTS.map((airport, index) => (
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  key={index}
-                  className="group flex flex-col h-full bg-[#f8fafc] rounded-3xl p-10 hover:bg-white hover:shadow-[0_40px_100px_rgba(72,115,7,0.12)] transition-all duration-500 border border-slate-100"
-                >
-                  <div className="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-8 group-hover:bg-[#487307] transition-colors duration-500">
-                    <airport.icon className="w-8 h-8 text-[#487307] group-hover:text-white transition-colors duration-500" />
+              {/* Title Image Section */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative rounded-[40px] overflow-hidden mb-20 shadow-2xl h-[400px] md:h-[500px]"
+              >
+                <img
+                  src="/services/private-jet-airports-hero.png"
+                  alt="London Private Jet Airports"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                <div className="absolute bottom-10 left-10 right-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                  <div className="space-y-2">
+                    <p className="text-white/80 font-inter uppercase tracking-widest text-sm">Signature Flight Support</p>
+                    <h3 className="text-white text-3xl font-montserrat font-bold">Unrivaled VIP Access</h3>
                   </div>
-
-                  <h3 className="text-2xl font-montserrat font-bold text-slate-900 mb-4 group-hover:text-[#487307] transition-colors">
-                    {airport.name}
-                  </h3>
-
-                  <p className="text-slate-600 font-inter leading-relaxed flex-grow">
-                    {airport.description}
-                  </p>
-
-                  <div className="mt-10 pt-8 border-t border-slate-200 flex items-center justify-between">
-                    <button
-                      onClick={() => navigate('/booking/select-car')}
-                      className="text-sm font-semibold text-slate-900 uppercase tracking-widest group-hover:text-[#487307] transition-colors flex items-center gap-2"
-                    >
-                      Book Terminal <ArrowRight className="w-4 h-4" />
-                    </button>
-                    <div className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">24/7 FBO</div>
+                  <div className="flex -space-x-3">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div key={i} className="w-12 h-12 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-xl">
+                        <img src={`/services/private-jet-chauffeur-portrait.jpg`} alt="Chauffeur" className="w-full h-full object-cover" />
+                      </div>
+                    ))}
+                    <div className="w-12 h-12 rounded-full border-2 border-white bg-[#487307] flex items-center justify-center text-white text-xs font-bold shadow-xl">
+                      +15
+                    </div>
                   </div>
-                </motion.div>
-              ))}
+                </div>
+              </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {PRIVATE_JET_AIRPORTS.map((airport, index) => (
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, duration: 0.6 }}
+                    key={index}
+                    className="group flex flex-col h-full bg-[#f8fafc] rounded-3xl p-10 hover:bg-white hover:shadow-[0_40px_100px_rgba(72,115,7,0.12)] transition-all duration-500 border border-slate-100"
+                  >
+                    <div className="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-8 group-hover:bg-[#487307] transition-colors duration-500">
+                      <airport.icon className="w-8 h-8 text-[#487307] group-hover:text-white transition-colors duration-500" />
+                    </div>
+
+                    <h3 className="text-2xl font-montserrat font-bold text-slate-900 mb-4 group-hover:text-[#487307] transition-colors">
+                      {airport.name}
+                    </h3>
+
+                    <p className="text-slate-600 font-inter leading-relaxed flex-grow">
+                      {airport.description}
+                    </p>
+
+                    <div className="mt-10 pt-8 border-t border-slate-200 flex items-center justify-between">
+                      <button
+                        onClick={() => navigate('/booking/select-car')}
+                        className="text-sm font-semibold text-slate-900 uppercase tracking-widest group-hover:text-[#487307] transition-colors flex items-center gap-2"
+                      >
+                        Book Terminal <ArrowRight className="w-4 h-4" />
+                      </button>
+                      <div className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">24/7 FBO</div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      }
 
 
       <section className="section-spacing relative">
@@ -802,6 +814,6 @@ export default function ServicesPlaceholder() {
           </div>
         </div>
       </section>
-    </div>
+    </div >
   );
 }
