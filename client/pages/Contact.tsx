@@ -54,6 +54,24 @@ const serviceTypes = [
   "London Cruise Transfer",
 ];
 
+const countries = [
+  { name: "United Kingdom", code: "+44", iso: "gb" },
+  { name: "United States", code: "+1", iso: "us" },
+  { name: "United Arab Emirates", code: "+971", iso: "ae" },
+  { name: "Saudi Arabia", code: "+966", iso: "sa" },
+  { name: "Qatar", code: "+974", iso: "qa" },
+  { name: "Kuwait", code: "+965", iso: "kw" },
+  { name: "Australia", code: "+61", iso: "au" },
+  { name: "Canada", code: "+1", iso: "ca" },
+  { name: "China", code: "+86", iso: "cn" },
+  { name: "France", code: "+33", iso: "fr" },
+  { name: "Germany", code: "+49", iso: "de" },
+  { name: "India", code: "+91", iso: "in" },
+  { name: "Italy", code: "+39", iso: "it" },
+  { name: "Japan", code: "+81", iso: "jp" },
+  { name: "Spain", code: "+34", iso: "es" },
+];
+
 const faqs = [
   {
     question: "How far in advance should I book?",
@@ -86,6 +104,9 @@ export default function ContactPage() {
     serviceType: "",
     message: "",
   });
+
+  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
+  const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
 
   const [newsletterOptIn, setNewsletterOptIn] = useState(true);
 
@@ -281,18 +302,58 @@ export default function ContactPage() {
                       placeholder="Amelia Carter"
                     />
                   </div>
-                  <div>
+                  <div className="relative">
                     <label className="font-inter font-semibold text-slate-700 mb-1 block">
                       Phone
                     </label>
-                    <input
-                      type="text"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className={inputBase}
-                      placeholder="+44 20 3576 1617"
-                    />
+                    <div className="relative flex">
+                      <div className="relative">
+                        <button
+                          type="button"
+                          onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
+                          className="h-full min-w-[85px] flex items-center justify-center gap-1.5 px-2.5 border border-slate-200 border-r-0 rounded-l-2xl bg-slate-50 hover:bg-slate-100 transition-colors whitespace-nowrap"
+                        >
+                          <img
+                            src={`https://flagcdn.com/w40/${selectedCountry.iso}.png`}
+                            alt={selectedCountry.iso}
+                            className="w-6 h-auto rounded-sm shadow-sm"
+                          />
+                          <span className="text-sm font-bold text-slate-700">{selectedCountry.code}</span>
+                        </button>
+
+                        {isCountryDropdownOpen && (
+                          <div className="absolute top-full left-0 mt-2 w-72 max-h-64 overflow-y-auto bg-white border border-slate-200 rounded-2xl shadow-2xl z-50 py-2">
+                            {countries.map((country) => (
+                              <button
+                                key={country.name + country.code}
+                                type="button"
+                                onClick={() => {
+                                  setSelectedCountry(country);
+                                  setIsCountryDropdownOpen(false);
+                                }}
+                                className="w-full flex items-center gap-4 px-4 py-3 hover:bg-slate-50 transition-colors text-left"
+                              >
+                                <img
+                                  src={`https://flagcdn.com/w40/${country.iso}.png`}
+                                  alt={country.iso}
+                                  className="w-6 h-auto rounded-sm shadow-sm"
+                                />
+                                <span className="flex-1 text-sm font-medium text-slate-700">{country.name}</span>
+                                <span className="text-xs font-semibold text-slate-400">{country.code}</span>
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className={`${inputBase} rounded-l-none`}
+                        placeholder="7400 123456"
+                      />
+                    </div>
                   </div>
                 </div>
 
