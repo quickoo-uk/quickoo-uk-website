@@ -29,6 +29,7 @@ import SelectCar from "./pages/booking/SelectCar";
 import CustomerInfo from "./pages/booking/CustomerInfo";
 import Checkout from "./pages/booking/Checkout";
 import Success from "./pages/booking/Success";
+import CityTourDetail from "./pages/CityTourDetail";
 
 const queryClient = new QueryClient();
 
@@ -71,6 +72,14 @@ const App = () => (
               element={
                 <Layout>
                   <ServicesPlaceholder />
+                </Layout>
+              }
+            />
+            <Route
+              path="/services/city-tours/:attractionId"
+              element={
+                <Layout>
+                  <CityTourDetail />
                 </Layout>
               }
             />
