@@ -34,7 +34,7 @@ const SERVICES = [
 ];
 
 const PAGES = [
-  { label: "About", href: "/about" },
+  // { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
   { label: "FAQ", href: "/faq" },
 ];
@@ -110,6 +110,15 @@ export const Footer = () => {
                   <Icon className="h-5 w-5" />
                 </a>
               ))}
+            </div>
+            <div className="inline-flex items-center rounded-xl bg-white px-5 py-3 shadow-xl shadow-black/20">
+              <img
+                src="/images/tfl-logo.png"
+                alt="Transport for London"
+                className="h-10 w-auto object-contain"
+                style={{ imageRendering: 'auto' }}
+                loading="lazy"
+              />
             </div>
           </div>
 
@@ -202,7 +211,7 @@ export const Footer = () => {
 
         <div className="border-t border-white/10 pt-6 text-xs sm:text-sm text-white/60 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <p>© 2025 Quickoo PVT LTD. All Rights Reserved.</p>
-          <div className="flex flex-wrap gap-4 sm:gap-6">
+          <div className="flex flex-wrap gap-2 sm:gap-4">
             {PAGES.map((page) => (
               <Link key={page.href} to={page.href} className="transition hover:text-white">
                 {page.label}
@@ -215,10 +224,13 @@ export const Footer = () => {
               Terms & Conditions
             </Link>
             <span className="transition hover:text-white cursor-default">
-              Company No: XXXXXXXX
+              Company No: 16397074
             </span>
             <span className="transition hover:text-white cursor-default">
-              VAT No: XXXXXXXX
+              VAT No: 493019386
+            </span>
+            <span className="transition hover:text-white cursor-default">
+              TFL Licence No: 11668
             </span>
           </div>
         </div>

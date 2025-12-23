@@ -209,7 +209,7 @@ export const FleetPreviewSection = () => {
                 {/* Premium Features Badge */}
                 <div className="mt-auto pt-4 border-t border-gray-100">
                   <div className="flex items-center gap-2 text-sm">
-                    <Sparkles className="h-4 w-4 text-[#487307]" />
+                    <img src="/images/q-icon.png" alt="Q" className="h-4 w-4 object-contain" />
                     <span className="text-gray-700 font-medium">Premium chauffeur service</span>
                   </div>
                 </div>

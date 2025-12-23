@@ -170,12 +170,12 @@ const PRIVATE_JET_AIRPORTS = [
     icon: ShieldCheck,
   },
   {
-    name: "London Luton Airport",
+    name: "Signature Aviation LTN",
     description: "A major private jet hub featuring multiple FBO terminals, ideal for flexible scheduling and high-volume business aviation traffic.",
     icon: Clock,
   },
   {
-    name: "London Stansted Airport",
+    name: "Harrods Aviation",
     description: "Offers robust private aviation facilities alongside commercial operations, making it a versatile option for business jet travelers.",
     icon: MapPin,
   },
@@ -188,6 +188,11 @@ const PRIVATE_JET_AIRPORTS = [
     name: "London City Airport",
     description: "Suitable for select business jets with aircraft size restrictions, providing the fastest access to London’s financial district.",
     icon: Crown,
+  },
+  {
+    name: "The Windsor by Heathrow",
+    description: "The most exclusive and private terminal at Heathrow, offering ultimate discretion and luxury for VIP travelers, with personal suite access and direct tarmac-side transfers.",
+    icon: Sparkles,
   },
 ];
 
@@ -562,53 +567,67 @@ export default function ServicesPlaceholder() {
                 </p>
               </div>
 
-              {/* Title Image Section */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative rounded-[40px] overflow-hidden mb-20 shadow-2xl h-[400px] md:h-[500px]"
-              >
-                <img
-                  src="/services/private-jet-airports-hero.png"
-                  alt="London Private Jet Airports"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                <div className="absolute bottom-10 left-10 right-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
-                  <div className="space-y-2">
-                    <p className="text-white/80 font-inter uppercase tracking-widest text-sm">Signature Flight Support</p>
-                    <h3 className="text-white text-3xl font-montserrat font-bold">Unrivaled VIP Access</h3>
-                  </div>
-                  <div className="flex -space-x-3">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="w-12 h-12 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-xl">
-                        <img src={`/services/private-jet-chauffeur-portrait.jpg`} alt="Chauffeur" className="w-full h-full object-cover" />
+            <div className="space-y-8">
+              {/* Featured Terminal (Card 1) */}
+              {(() => {
+                const FeaturedIcon = PRIVATE_JET_AIRPORTS[0].icon;
+                return (
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="group relative bg-gradient-to-br from-[#f8fafc] to-white rounded-[40px] p-8 md:p-12 border border-slate-100 hover:shadow-[0_45px_100px_rgba(72,115,7,0.15)] transition-all duration-700 overflow-hidden"
+                  >
+                    <div className="relative z-10 flex flex-col md:flex-row gap-8 md:items-center">
+                      <div className="w-20 h-20 rounded-3xl bg-white shadow-md flex items-center justify-center group-hover:bg-[#487307] group-hover:text-white transition-all duration-500 flex-shrink-0">
+                        <FeaturedIcon className="w-10 h-10 text-[#487307] group-hover:text-white" />
                       </div>
-                    ))}
-                    <div className="w-12 h-12 rounded-full border-2 border-white bg-[#487307] flex items-center justify-center text-white text-xs font-bold shadow-xl">
-                      +15
+                      <div className="flex-grow space-y-4">
+                        <div className="flex items-center gap-3">
+                          <h3 className="text-2xl md:text-4xl font-montserrat font-bold text-slate-900 leading-tight">
+                            {PRIVATE_JET_AIRPORTS[0].name}
+                          </h3>
+                          <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-[#487307]/10 text-[#487307] text-[10px] font-bold uppercase tracking-widest">
+                            Flagship Hub
+                          </span>
+                        </div>
+                        <p className="text-slate-600 font-inter text-lg md:text-xl max-w-3xl leading-relaxed">
+                          {PRIVATE_JET_AIRPORTS[0].description}
+                        </p>
+                        <div className="pt-4 flex items-center justify-between border-t border-slate-100">
+                          <button
+                            onClick={() => navigate('/booking/select-car')}
+                            className="text-sm font-bold text-slate-900 uppercase tracking-widest flex items-center gap-3 group/btn hover:text-[#487307] transition-colors"
+                          >
+                            Book Primary Terminal <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
+                          </button>
+                          <span className="text-xs text-slate-400 font-medium">Global Dispatch Center</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </motion.div>
+                    {/* Subtle background decorative element */}
+                    <Sparkles className="absolute top-1/2 -right-8 -translate-y-1/2 w-64 h-64 text-[#487307]/5 rotate-12" />
+                  </motion.div>
+                );
+              })()}
 
+              {/* Remaining 6 Terminals in a Perfect 3-column Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {PRIVATE_JET_AIRPORTS.map((airport, index) => (
+                {PRIVATE_JET_AIRPORTS.slice(1).map((airport, index) => (
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1, duration: 0.6 }}
                     key={index}
-                    className="group flex flex-col h-full bg-[#f8fafc] rounded-3xl p-10 hover:bg-white hover:shadow-[0_40px_100px_rgba(72,115,7,0.12)] transition-all duration-500 border border-slate-100"
+                    className="group flex flex-col h-full bg-[#f8fafc] rounded-[32px] p-8 md:p-10 hover:bg-white hover:shadow-[0_40px_100px_rgba(72,115,7,0.12)] transition-all duration-500 border border-slate-100"
                   >
                     <div className="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-8 group-hover:bg-[#487307] transition-colors duration-500">
                       <airport.icon className="w-8 h-8 text-[#487307] group-hover:text-white transition-colors duration-500" />
                     </div>
 
-                    <h3 className="text-2xl font-montserrat font-bold text-slate-900 mb-4 group-hover:text-[#487307] transition-colors">
+                    <h3 className="text-xl md:text-2xl font-montserrat font-bold text-slate-900 mb-4 group-hover:text-[#487307] transition-colors">
                       {airport.name}
                     </h3>
 
@@ -628,6 +647,7 @@ export default function ServicesPlaceholder() {
                   </motion.div>
                 ))}
               </div>
+            </div>
             </div>
           </section>
         )
