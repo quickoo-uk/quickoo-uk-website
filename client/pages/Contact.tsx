@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { SectionChip } from "@/components/SectionChip";
 import {
   Phone,
@@ -109,6 +109,25 @@ export default function ContactPage() {
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
 
   const [newsletterOptIn, setNewsletterOptIn] = useState(true);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsCountryDropdownOpen(false);
+      }
+    }
+
+    if (isCountryDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isCountryDropdownOpen]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -307,7 +326,7 @@ export default function ContactPage() {
                       Phone
                     </label>
                     <div className="relative flex">
-                      <div className="relative">
+                      <div className="relative" ref={dropdownRef}>
                         <button
                           type="button"
                           onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
