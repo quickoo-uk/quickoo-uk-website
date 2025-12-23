@@ -121,7 +121,7 @@ export default function CarTypePage() {
       EQE: "/fleet/EQE.png",
       EQS: "/fleet/EQS.png",
       "BMW I7": "/fleet/BMW i7.png",
-      "Luggage Transfer": "/fleet/Mercedes-Benz V-Class.png",
+      "Luggage Transfer": "/fleet/luggage-transfer.png",
       "EQV": "/fleet/Mercedes-EQV.png",
     };
     return (
