@@ -43,7 +43,7 @@ export const LuxuryExperienceSection = () => {
                     </h2>
 
                     <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-                        Quicko provides premium chauffeur-driven travel for airport transfers, business trips, corporate visitors, VIP movements, and high-level executives.
+                        Quickoo provides premium chauffeur-driven travel for airport transfers, business trips, corporate visitors, VIP movements, and high-level executives.
                     </p>
                 </motion.div>
 
@@ -130,7 +130,7 @@ export const LuxuryExperienceSection = () => {
                     <p className="text-2xl md:text-3xl font-montserrat font-medium text-dark leading-relaxed">
                         "Because you deserve more than just transportation—you deserve{" "}
                         <span className="relative inline-block font-bold text-[#487307]">
-                            travel in style
+                            Travel In Style
                             <motion.span
                                 initial={{ scaleX: 0 }}
                                 whileInView={{ scaleX: 1 }}
