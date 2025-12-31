@@ -445,7 +445,7 @@ export default function CarTypePage() {
                                 Luggage
                               </p>
                               <p className="text-lg font-montserrat font-bold text-dark">
-                                {car.name === "Luggage Transfer" && "Large Capacity"}
+                                {car.name === "Luggage Transfer" && "35"}
                               </p>
                             </div>
                             <Luggage className="h-5 w-5 text-[#487307]" />
