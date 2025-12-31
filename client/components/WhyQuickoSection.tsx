@@ -65,15 +65,15 @@ export const WhyQuickoSection = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16 space-y-4"
                 >
-                    <SectionChip title="Why Quicko" />
+                    <SectionChip title="Why Quickoo" />
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark max-w-4xl mx-auto leading-tight">
                         More Than Just Transportation—
-                        <span className="text-[#487307]"> Travel in Style</span>
+                        <span className="text-[#487307]"> Travel In Style</span>
                     </h2>
 
                     <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-                        Discover what sets Quicko apart as the premier choice for luxury chauffeur services.
+                        Discover what sets Quickoo apart as the premier choice for luxury chauffeur services.
                     </p>
                 </motion.div>
 
@@ -124,10 +124,10 @@ export const WhyQuickoSection = () => {
                     <div className="relative z-10 text-center max-w-3xl mx-auto space-y-8">
                         <div className="space-y-4">
                             <h3 className="text-2xl sm:text-3xl font-montserrat font-bold text-dark">
-                                Experience the <span className="text-[#487307]">Quicko Difference</span>
+                                Experience the <span className="text-[#487307]">Quickoo Difference</span>
                             </h3>
                             <p className="text-base sm:text-lg font-inter text-gray-600">
-                                Join thousands of satisfied clients who trust Quicko for their luxury transportation needs. Every journey is an opportunity to experience excellence.
+                                Join thousands of satisfied clients who trust Quickoo for their luxury transportation needs. Every journey is an opportunity to experience excellence.
                             </p>
                         </div>
 

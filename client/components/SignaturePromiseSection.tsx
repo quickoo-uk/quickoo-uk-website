@@ -102,15 +102,15 @@ export const SignaturePromiseSection = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16 space-y-4"
                 >
-                    <SectionChip title="Quicko Signature Promise" icon={Award} />
+                    <SectionChip title="Quickoo Signature Promise" icon={Award} />
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-                        When You Choose Quicko,{" "}
+                        When You Choose Quickoo,{" "}
                         <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
                             You Choose Class
                         </span>
                     </h2>
                     <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-                        Our commitment to excellence is reflected in every aspect of your journey. Experience the Quicko difference.
+                        Our commitment to excellence is reflected in every aspect of your journey. Experience the Quickoo difference.
                     </p>
                 </motion.div>
 

@@ -760,7 +760,7 @@ export default function AboutPage() {
               major UK city with uncompromised hospitality.
             </p>
             <div className="flex gap-4 flex-wrap">
-              {["Sustainable Fleet Awards 2024", "Luxury Transport Guild", "Five-Star Chauffeur Collective"].map(
+              {["Luxury Transport Guild", "Five-Star Chauffeur Collective"].map(
                 (badge) => (
                   <span
                     key={badge}
