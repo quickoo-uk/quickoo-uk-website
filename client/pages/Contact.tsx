@@ -313,7 +313,7 @@ export default function ContactPage() {
               {/* Decorative Circle */}
               <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white shadow-2xl rounded-full flex items-center justify-center border border-slate-100 z-20">
                 <div className="text-center">
-                  <p className="text-2xl font-montserrat font-bold text-[#487307]">99%</p>
+                  <p className="text-2xl font-montserrat font-bold text-[#487307]">70%</p>
                   <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Happy Clients</p>
                 </div>
               </div>

@@ -75,7 +75,7 @@ const vehicleStandards = [
         standard: "Daily Valet",
     },
     {
-        title: "Under 3 Years Old",
+        title: "Under 5 Years Old",
         description: "Our fleet consists only of the latest models, ensuring reliability and modern comfort.",
         standard: "Latest Models",
     },

@@ -279,12 +279,16 @@ export const Navbar = () => {
         )}
         style={{ maxHeight: isOpen ? "calc(100vh - 4rem)" : "0" }}
       >
-        <div className="bg-gradient-to-b from-brand-ink to-[#130533] shadow-2xl">
-          <div className="px-4 py-6 space-y-1">
+        <div className="relative bg-gradient-to-br from-[#0f1801] via-[#1a2e03] to-[#2a4204] shadow-2xl">
+          {/* Decorative Elements */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#487307]/20 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#6aa80b]/10 rounded-full blur-[80px] pointer-events-none" />
+
+          <div className="relative px-4 py-6 space-y-2">
             <Link
               to="/"
               onClick={handleNavClick}
-              className="block px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
+              className="block px-5 py-3.5 text-white font-medium rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 border border-transparent hover:border-[#487307]/30"
             >
               Home
             </Link>
@@ -293,35 +297,37 @@ export const Navbar = () => {
             <div>
               <button
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                className="w-full flex items-center justify-between px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
+                className="w-full flex items-center justify-between px-5 py-3.5 text-white font-medium rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 border border-transparent hover:border-[#487307]/30"
                 aria-expanded={mobileServicesOpen ? "true" : "false"}
               >
                 <span>Services</span>
                 <ChevronDown
                   className={cn(
-                    "w-4 h-4 transition-transform duration-200",
-                    mobileServicesOpen && "rotate-180",
+                    "w-4 h-4 transition-transform duration-300",
+                    mobileServicesOpen && "rotate-180 text-[#6aa80b]",
                   )}
                 />
               </button>
               <div
                 className={cn(
-                  "pl-4 overflow-hidden transition-all duration-200 ease-in-out",
+                  "pl-3 overflow-hidden transition-all duration-300 ease-in-out",
                   mobileServicesOpen
-                    ? "max-h-[600px] opacity-100 translate-y-0 pt-1"
+                    ? "max-h-[600px] opacity-100 translate-y-0 pt-2"
                     : "max-h-0 opacity-0 -translate-y-1",
                 )}
               >
-                {SERVICES.map((service) => (
-                  <Link
-                    key={service}
-                    to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
-                    onClick={handleNavClick}
-                    className="block px-4 py-2 text-sm text-white/90 rounded-lg hover:bg-white/10 hover:text-white transition-colors"
-                  >
-                    {service}
-                  </Link>
-                ))}
+                <div className="space-y-1 border-l-2 border-[#487307]/30 ml-2 pl-3">
+                  {SERVICES.map((service) => (
+                    <Link
+                      key={service}
+                      to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
+                      onClick={handleNavClick}
+                      className="block px-4 py-2.5 text-sm text-white/80 rounded-lg hover:bg-[#487307]/20 hover:text-white transition-all duration-300 hover:translate-x-1"
+                    >
+                      {service}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -329,80 +335,82 @@ export const Navbar = () => {
             <div>
               <button
                 onClick={() => setMobileFleetOpen(!mobileFleetOpen)}
-                className="w-full flex items-center justify-between px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
+                className="w-full flex items-center justify-between px-5 py-3.5 text-white font-medium rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 border border-transparent hover:border-[#487307]/30"
                 aria-expanded={mobileFleetOpen ? "true" : "false"}
               >
                 <span>Fleet</span>
                 <ChevronDown
                   className={cn(
-                    "w-4 h-4 transition-transform duration-200",
-                    mobileFleetOpen && "rotate-180",
+                    "w-4 h-4 transition-transform duration-300",
+                    mobileFleetOpen && "rotate-180 text-[#6aa80b]",
                   )}
                 />
               </button>
               <div
                 className={cn(
-                  "pl-4 overflow-hidden transition-all duration-200 ease-in-out",
+                  "pl-3 overflow-hidden transition-all duration-300 ease-in-out",
                   mobileFleetOpen
-                    ? "max-h-[600px] opacity-100 translate-y-0 pt-1"
+                    ? "max-h-[600px] opacity-100 translate-y-0 pt-2"
                     : "max-h-0 opacity-0 -translate-y-1",
                 )}
               >
-                {FLEET_TYPES.map((carType) => (
-                  <Link
-                    key={carType.id}
-                    to={`/fleet/${carType.id}`}
-                    onClick={handleNavClick}
-                    className="block px-4 py-2 text-sm text-white/90 rounded-lg hover:bg-white/10 hover:text-white transition-colors"
-                  >
-                    {carType.name}
-                  </Link>
-                ))}
+                <div className="space-y-1 border-l-2 border-[#487307]/30 ml-2 pl-3">
+                  {FLEET_TYPES.map((carType) => (
+                    <Link
+                      key={carType.id}
+                      to={`/fleet/${carType.id}`}
+                      onClick={handleNavClick}
+                      className="block px-4 py-2.5 text-sm text-white/80 rounded-lg hover:bg-[#487307]/20 hover:text-white transition-all duration-300 hover:translate-x-1"
+                    >
+                      {carType.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
-
-
 
             {/* Why Choose Us */}
             <div>
               <button
                 onClick={() => setMobileWhyChooseOpen(!mobileWhyChooseOpen)}
-                className="w-full flex items-center justify-between px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
+                className="w-full flex items-center justify-between px-5 py-3.5 text-white font-medium rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 border border-transparent hover:border-[#487307]/30"
                 aria-expanded={mobileWhyChooseOpen ? "true" : "false"}
               >
                 <span>Why Choose Us</span>
                 <ChevronDown
                   className={cn(
-                    "w-4 h-4 transition-transform duration-200",
-                    mobileWhyChooseOpen && "rotate-180",
+                    "w-4 h-4 transition-transform duration-300",
+                    mobileWhyChooseOpen && "rotate-180 text-[#6aa80b]",
                   )}
                 />
               </button>
               <div
                 className={cn(
-                  "pl-4 overflow-hidden transition-all duration-200 ease-in-out",
+                  "pl-3 overflow-hidden transition-all duration-300 ease-in-out",
                   mobileWhyChooseOpen
-                    ? "max-h-[600px] opacity-100 translate-y-0 pt-1"
+                    ? "max-h-[600px] opacity-100 translate-y-0 pt-2"
                     : "max-h-0 opacity-0 -translate-y-1",
                 )}
               >
-                {WHY_CHOOSE_LINKS.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.path}
-                    onClick={handleNavClick}
-                    className="block px-4 py-2 text-sm text-white/90 rounded-lg hover:bg-white/10 hover:text-white transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+                <div className="space-y-1 border-l-2 border-[#487307]/30 ml-2 pl-3">
+                  {WHY_CHOOSE_LINKS.map((item) => (
+                    <Link
+                      key={item.name}
+                      to={item.path}
+                      onClick={handleNavClick}
+                      className="block px-4 py-2.5 text-sm text-white/80 rounded-lg hover:bg-[#487307]/20 hover:text-white transition-all duration-300 hover:translate-x-1"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
 
             <Link
               to="/about"
               onClick={handleNavClick}
-              className="block px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
+              className="block px-5 py-3.5 text-white font-medium rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 border border-transparent hover:border-[#487307]/30"
             >
               About Us
             </Link>
@@ -410,31 +418,44 @@ export const Navbar = () => {
             <Link
               to="/contact"
               onClick={handleNavClick}
-              className="block px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors"
+              className="block px-5 py-3.5 text-white font-medium rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 border border-transparent hover:border-[#487307]/30"
             >
               Contact
             </Link>
 
             {/* Phone Numbers in Mobile Menu */}
-            <div className="px-4 pt-4 mt-2 space-y-3 border-t border-white/10">
+            <div className="px-2 pt-4 mt-3 space-y-3 border-t border-[#487307]/20">
               <a
                 href="tel:+442035761617"
                 onClick={handleNavClick}
-                className="flex items-center gap-3 text-white/90 hover:text-white transition-colors py-2"
+                className="flex items-center gap-3 px-4 py-3 text-white/90 hover:text-white rounded-xl hover:bg-[#487307]/20 transition-all duration-300 backdrop-blur-sm"
               >
-                <Phone className="w-4 h-4" />
-                <span className="text-sm">+44 20 3576 1617</span>
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#487307] to-[#6aa80b] flex items-center justify-center shadow-lg">
+                  <Phone className="w-4 h-4 text-white" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xs text-white/60 uppercase tracking-wider font-semibold">Call Us</span>
+                  <span className="text-sm font-semibold">+44 20 3576 1617</span>
+                </div>
               </a>
             </div>
 
             {/* Book Now */}
-            <div className="px-4 pt-4">
+            <div className="px-2 pt-4 pb-2">
               <Link
                 to="/book-now"
                 onClick={handleNavClick}
-                className="w-full bg-white text-dark px-8 py-3 rounded-full font-semibold block text-center shadow-lg shadow-[#5e4bff33] hover:opacity-90 transition-opacity"
+                className="w-full bg-gradient-to-r from-[#487307] to-[#6aa80b] text-white px-8 py-4 rounded-full font-bold text-center shadow-xl shadow-[#487307]/30 hover:shadow-2xl hover:shadow-[#487307]/40 transition-all duration-300 flex items-center justify-center gap-2 group"
               >
-                Book Now
+                <span>Book Now</span>
+                <svg
+                  className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </Link>
             </div>
           </div>
