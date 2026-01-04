@@ -1,8 +1,11 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { BookingWidget } from "./BookingWidget";
 
 export const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative flex min-h-[100dvh] w-full items-center pt-28 pb-20 lg:py-0 overflow-hidden">
       {/* Hero Image Background */}
@@ -136,6 +139,7 @@ export const HeroSection = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => navigate("/booking/select-car")}
                 className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-[#487307] hover:bg-gray-50 text-base font-bold shadow-lg shadow-black/10 transition-all duration-300"
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -147,6 +151,7 @@ export const HeroSection = () => {
               <motion.button
                 whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => navigate("/why-choose/luxury-fleet")}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/30 bg-transparent text-white text-base font-bold transition-all duration-300 hover:border-white/60 backdrop-blur-sm"
               >
                 Explore Fleet

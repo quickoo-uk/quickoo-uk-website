@@ -111,11 +111,11 @@ export const Footer = () => {
                 </a>
               ))}
             </div>
-            <div className="inline-flex items-center rounded-xl bg-white px-5 py-3 shadow-xl shadow-black/20">
+            <div className="inline-flex items-center rounded-xl bg-white px-3 py-2 shadow-xl shadow-black/20">
               <img
                 src="/images/tfl-logo.png"
                 alt="Transport for London"
-                className="h-10 w-auto object-contain"
+                className="h-14 w-auto object-contain"
                 style={{ imageRendering: 'auto' }}
                 loading="lazy"
               />
