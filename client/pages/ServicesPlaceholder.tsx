@@ -18,7 +18,7 @@ import {
 import { SectionChip } from "@/components/SectionChip";
 
 const SERVICE_IMAGES: Record<string, string> = {
-  "airport-transfers": "/services/airport-transfer-hero.png",
+  "airport-transfers": "/services/airport_transfer_hero.png",
   "hourly-hire": "/services/hourly-hire-hero.png",
   "city-to-city": "/services/city-to-city-hero.png",
   wedding: "/services/wedding-hero.jpg",
@@ -567,87 +567,87 @@ export default function ServicesPlaceholder() {
                 </p>
               </div>
 
-            <div className="space-y-8">
-              {/* Featured Terminal (Card 1) */}
-              {(() => {
-                const FeaturedIcon = PRIVATE_JET_AIRPORTS[0].icon;
-                return (
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="group relative bg-gradient-to-br from-[#f8fafc] to-white rounded-[40px] p-8 md:p-12 border border-slate-100 hover:shadow-[0_45px_100px_rgba(72,115,7,0.15)] transition-all duration-700 overflow-hidden"
-                  >
-                    <div className="relative z-10 flex flex-col md:flex-row gap-8 md:items-center">
-                      <div className="w-20 h-20 rounded-3xl bg-white shadow-md flex items-center justify-center group-hover:bg-[#487307] group-hover:text-white transition-all duration-500 flex-shrink-0">
-                        <FeaturedIcon className="w-10 h-10 text-[#487307] group-hover:text-white" />
-                      </div>
-                      <div className="flex-grow space-y-4">
-                        <div className="flex items-center gap-3">
-                          <h3 className="text-2xl md:text-4xl font-montserrat font-bold text-slate-900 leading-tight">
-                            {PRIVATE_JET_AIRPORTS[0].name}
-                          </h3>
-                          <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-[#487307]/10 text-[#487307] text-[10px] font-bold uppercase tracking-widest">
-                            Flagship Hub
-                          </span>
+              <div className="space-y-8">
+                {/* Featured Terminal (Card 1) */}
+                {(() => {
+                  const FeaturedIcon = PRIVATE_JET_AIRPORTS[0].icon;
+                  return (
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8 }}
+                      className="group relative bg-gradient-to-br from-[#f8fafc] to-white rounded-[40px] p-8 md:p-12 border border-slate-100 hover:shadow-[0_45px_100px_rgba(72,115,7,0.15)] transition-all duration-700 overflow-hidden"
+                    >
+                      <div className="relative z-10 flex flex-col md:flex-row gap-8 md:items-center">
+                        <div className="w-20 h-20 rounded-3xl bg-white shadow-md flex items-center justify-center group-hover:bg-[#487307] group-hover:text-white transition-all duration-500 flex-shrink-0">
+                          <FeaturedIcon className="w-10 h-10 text-[#487307] group-hover:text-white" />
                         </div>
-                        <p className="text-slate-600 font-inter text-lg md:text-xl max-w-3xl leading-relaxed">
-                          {PRIVATE_JET_AIRPORTS[0].description}
-                        </p>
-                        <div className="pt-4 flex items-center justify-between border-t border-slate-100">
-                          <button
-                            onClick={() => navigate('/booking/select-car')}
-                            className="text-sm font-bold text-slate-900 uppercase tracking-widest flex items-center gap-3 group/btn hover:text-[#487307] transition-colors"
-                          >
-                            Book Primary Terminal <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
-                          </button>
-                          <span className="text-xs text-slate-400 font-medium">Global Dispatch Center</span>
+                        <div className="flex-grow space-y-4">
+                          <div className="flex items-center gap-3">
+                            <h3 className="text-2xl md:text-4xl font-montserrat font-bold text-slate-900 leading-tight">
+                              {PRIVATE_JET_AIRPORTS[0].name}
+                            </h3>
+                            <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-[#487307]/10 text-[#487307] text-[10px] font-bold uppercase tracking-widest">
+                              Flagship Hub
+                            </span>
+                          </div>
+                          <p className="text-slate-600 font-inter text-lg md:text-xl max-w-3xl leading-relaxed">
+                            {PRIVATE_JET_AIRPORTS[0].description}
+                          </p>
+                          <div className="pt-4 flex items-center justify-between border-t border-slate-100">
+                            <button
+                              onClick={() => navigate('/booking/select-car')}
+                              className="text-sm font-bold text-slate-900 uppercase tracking-widest flex items-center gap-3 group/btn hover:text-[#487307] transition-colors"
+                            >
+                              Book Primary Terminal <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
+                            </button>
+                            <span className="text-xs text-slate-400 font-medium">Global Dispatch Center</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    {/* Subtle background decorative element */}
-                    <Sparkles className="absolute top-1/2 -right-8 -translate-y-1/2 w-64 h-64 text-[#487307]/5 rotate-12" />
-                  </motion.div>
-                );
-              })()}
+                      {/* Subtle background decorative element */}
+                      <Sparkles className="absolute top-1/2 -right-8 -translate-y-1/2 w-64 h-64 text-[#487307]/5 rotate-12" />
+                    </motion.div>
+                  );
+                })()}
 
-              {/* Remaining 6 Terminals in a Perfect 3-column Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {PRIVATE_JET_AIRPORTS.slice(1).map((airport, index) => (
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.6 }}
-                    key={index}
-                    className="group flex flex-col h-full bg-[#f8fafc] rounded-[32px] p-8 md:p-10 hover:bg-white hover:shadow-[0_40px_100px_rgba(72,115,7,0.12)] transition-all duration-500 border border-slate-100"
-                  >
-                    <div className="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-8 group-hover:bg-[#487307] transition-colors duration-500">
-                      <airport.icon className="w-8 h-8 text-[#487307] group-hover:text-white transition-colors duration-500" />
-                    </div>
+                {/* Remaining 6 Terminals in a Perfect 3-column Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {PRIVATE_JET_AIRPORTS.slice(1).map((airport, index) => (
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1, duration: 0.6 }}
+                      key={index}
+                      className="group flex flex-col h-full bg-[#f8fafc] rounded-[32px] p-8 md:p-10 hover:bg-white hover:shadow-[0_40px_100px_rgba(72,115,7,0.12)] transition-all duration-500 border border-slate-100"
+                    >
+                      <div className="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-8 group-hover:bg-[#487307] transition-colors duration-500">
+                        <airport.icon className="w-8 h-8 text-[#487307] group-hover:text-white transition-colors duration-500" />
+                      </div>
 
-                    <h3 className="text-xl md:text-2xl font-montserrat font-bold text-slate-900 mb-4 group-hover:text-[#487307] transition-colors">
-                      {airport.name}
-                    </h3>
+                      <h3 className="text-xl md:text-2xl font-montserrat font-bold text-slate-900 mb-4 group-hover:text-[#487307] transition-colors">
+                        {airport.name}
+                      </h3>
 
-                    <p className="text-slate-600 font-inter leading-relaxed flex-grow">
-                      {airport.description}
-                    </p>
+                      <p className="text-slate-600 font-inter leading-relaxed flex-grow">
+                        {airport.description}
+                      </p>
 
-                    <div className="mt-10 pt-8 border-t border-slate-200 flex items-center justify-between">
-                      <button
-                        onClick={() => navigate('/booking/select-car')}
-                        className="text-sm font-semibold text-slate-900 uppercase tracking-widest group-hover:text-[#487307] transition-colors flex items-center gap-2"
-                      >
-                        Book Terminal <ArrowRight className="w-4 h-4" />
-                      </button>
-                      <div className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">24/7 FBO</div>
-                    </div>
-                  </motion.div>
-                ))}
+                      <div className="mt-10 pt-8 border-t border-slate-200 flex items-center justify-between">
+                        <button
+                          onClick={() => navigate('/booking/select-car')}
+                          className="text-sm font-semibold text-slate-900 uppercase tracking-widest group-hover:text-[#487307] transition-colors flex items-center gap-2"
+                        >
+                          Book Terminal <ArrowRight className="w-4 h-4" />
+                        </button>
+                        <div className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">24/7 FBO</div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </div>
             </div>
           </section>
         )
