@@ -8,8 +8,23 @@ import {
   Clock,
   ShieldCheck,
   Headphones,
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 
 const inputBase =
   "w-full px-4 py-3 border border-slate-200 rounded-2xl bg-white focus:outline-none focus:ring-2 focus:ring-gold/40";
@@ -54,6 +69,17 @@ const serviceTypes = [
   "London Cruise Transfer",
 ];
 
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(5, "Invalid phone number"),
+  subject: z.string().min(5, "Subject must be at least 5 characters"),
+  serviceType: z.string().min(1, "Please select a service type"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
+
 interface Country {
   name: string;
   code: string;
@@ -84,14 +110,25 @@ const faqs = [
 ];
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    serviceType: "",
-    message: "",
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+
+  const {
+    register,
+    handleSubmit: handleFormSubmit,
+    formState: { errors },
+    reset,
+    setValue,
+    watch,
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      serviceType: "",
+    },
   });
+
+  const selectedServiceType = watch("serviceType");
 
   const [countries, setCountries] = useState<Country[]>([]);
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
@@ -183,24 +220,34 @@ export default function ContactPage() {
     };
   }, [isCountryDropdownOpen]);
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const fieldValue = type === "checkbox" ? checked : value;
-    setFormData((prev) => ({ ...prev, [name]: fieldValue }));
-  };
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    try {
+      const templateParams = {
+        name: data.name,
+        phone: `${selectedCountry.code} ${data.phone}`,
+        email: data.email,
+        subject: data.subject,
+        service: data.serviceType,
+        message: data.message,
+      };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", { ...formData, newsletterOptIn });
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      serviceType: "",
-      message: "",
-    });
-    setNewsletterOptIn(true);
+      await emailjs.send(
+        "service_sinng3w",
+        "template_s10flct",
+        templateParams,
+        "f2mEVklY9RlV91XcR"
+      );
+
+      setShowSuccessModal(true);
+      reset();
+      setNewsletterOptIn(true);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setShowErrorModal(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -359,7 +406,7 @@ export default function ContactPage() {
                   A concierge specialist will reply within two hours during business hours.
                 </p>
               </div>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleFormSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="font-inter font-semibold text-slate-700 mb-1 block">
@@ -367,13 +414,13 @@ export default function ContactPage() {
                     </label>
                     <input
                       type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className={inputBase}
+                      {...register("name")}
+                      className={cn(inputBase, errors.name && "border-red-500")}
                       placeholder="Amelia Carter"
                     />
+                    {errors.name && (
+                      <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
+                    )}
                   </div>
                   <div className="relative">
                     <label className="font-inter font-semibold text-slate-700 mb-1 block">
@@ -449,13 +496,14 @@ export default function ContactPage() {
                       </div>
                       <input
                         type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className={`${inputBase} rounded-l-none`}
+                        {...register("phone")}
+                        className={cn(inputBase, "rounded-l-none", errors.phone && "border-red-500")}
                         placeholder="7400 123456"
                       />
                     </div>
+                    {errors.phone && (
+                      <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
+                    )}
                   </div>
                 </div>
 
@@ -466,13 +514,13 @@ export default function ContactPage() {
                     </label>
                     <input
                       type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className={inputBase}
+                      {...register("email")}
+                      className={cn(inputBase, errors.email && "border-red-500")}
                       placeholder="you@email.com"
                     />
+                    {errors.email && (
+                      <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+                    )}
                   </div>
                   <div>
                     <label className="font-inter font-semibold text-slate-700 mb-1 block">
@@ -480,41 +528,56 @@ export default function ContactPage() {
                     </label>
                     <input
                       type="text"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className={inputBase}
+                      {...register("subject")}
+                      className={cn(inputBase, errors.subject && "border-red-500")}
                       placeholder="Airport transfer, corporate account..."
                     />
+                    {errors.subject && (
+                      <p className="text-red-500 text-xs mt-1">{errors.subject.message}</p>
+                    )}
                   </div>
                 </div>
 
                 <div>
-                  <label className="font-inter font-semibold text-slate-700 mb-1 block">
+                  <label className="font-inter font-semibold text-slate-800 mb-4 block text-lg">
                     Service Type
                   </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {serviceTypes.map((type) => (
                       <label
                         key={type}
-                        className={`rounded-2xl border px-4 py-3 text-sm font-semibold transition cursor-pointer ${formData.serviceType === type
-                          ? "border-gold bg-gold/10 text-slate-900"
-                          : "border-slate-200 text-slate-500 hover:border-slate-300"
-                          }`}
+                        className={cn(
+                          "relative rounded-[24px] border px-6 py-6 text-[15px] font-semibold transition-all cursor-pointer flex items-center min-h-[80px] group",
+                          selectedServiceType === type
+                            ? "border-[#487307] bg-[#487307]/5 text-[#1a2e03] shadow-[0_10px_25px_rgba(72,115,7,0.12)]"
+                            : "border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:bg-slate-50 shadow-sm"
+                        )}
                       >
                         <input
                           type="radio"
-                          name="serviceType"
                           value={type}
-                          checked={formData.serviceType === type}
-                          onChange={handleChange}
+                          checked={selectedServiceType === type}
+                          onChange={(e) => setValue("serviceType", e.target.value, { shouldValidate: true })}
                           className="sr-only"
                         />
-                        {type}
+                        <span className="leading-snug pr-4">{type}</span>
+
+                        <div className={cn(
+                          "absolute top-4 right-4 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all",
+                          selectedServiceType === type
+                            ? "border-[#487307] bg-[#487307]"
+                            : "border-slate-200 bg-white group-hover:border-slate-300"
+                        )}>
+                          {selectedServiceType === type && (
+                            <div className="w-2 h-2 rounded-full bg-white" />
+                          )}
+                        </div>
                       </label>
                     ))}
                   </div>
+                  {errors.serviceType && (
+                    <p className="text-red-500 text-xs mt-2 ml-1">{errors.serviceType.message}</p>
+                  )}
                 </div>
 
                 <div>
@@ -522,14 +585,14 @@ export default function ContactPage() {
                     Message
                   </label>
                   <textarea
-                    name="message"
                     rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className={`${inputBase} resize-none`}
+                    {...register("message")}
+                    className={cn(inputBase, "resize-none", errors.message && "border-red-500")}
                     placeholder="Tell us about your itinerary, passenger count, or bespoke requests..."
                   />
+                  {errors.message && (
+                    <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
+                  )}
                 </div>
 
                 <label className="flex items-start gap-3 text-sm text-slate-600">
@@ -545,9 +608,17 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="luxury-button-gold w-full text-lg py-4 rounded-full"
+                  disabled={isSubmitting}
+                  className="luxury-button-gold w-full text-lg py-4 rounded-full flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Processing your booking…
+                    </>
+                  ) : (
+                    "Send Message"
+                  )}
                 </button>
               </form>
             </div>
@@ -672,6 +743,72 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <Dialog open={showSuccessModal} onOpenChange={setShowSuccessModal}>
+        <DialogContent className="sm:max-w-md bg-white rounded-[32px] border-none shadow-2xl p-0 overflow-hidden [&>button]:text-white [&>button]:opacity-100 [&>button]:hover:bg-white/10 [&>button]:transition-all">
+          <div className="bg-gradient-to-br from-[#1a2e03] to-[#487307] p-8 text-center flex flex-col items-center">
+            <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mb-6 backdrop-blur-md">
+              <CheckCircle2 className="w-10 h-10 text-[#8fe00f]" />
+            </div>
+            <DialogTitle className="text-2xl font-montserrat font-bold text-white mb-2">
+              Message Received
+            </DialogTitle>
+            <DialogDescription className="text-white/80 font-inter">
+              Your inquiry has been sent to our flagship concierge desk.
+            </DialogDescription>
+          </div>
+          <div className="p-8 space-y-6">
+            <p className="text-slate-600 text-center leading-relaxed font-inter">
+              An elite chauffeur coordinator will review your details and respond within <b>two hours</b>.
+              For urgent updates, please reference your name on our priority hotline.
+            </p>
+            <button
+              onClick={() => setShowSuccessModal(false)}
+              className="w-full py-4 rounded-2xl bg-[#487307] text-white font-bold hover:bg-[#1a2e03] transition-all shadow-lg overflow-hidden relative group"
+            >
+              <span className="relative z-10">Back to Journey Planning</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Error Modal */}
+      <Dialog open={showErrorModal} onOpenChange={setShowErrorModal}>
+        <DialogContent className="sm:max-w-md bg-white rounded-[32px] border-none shadow-2xl p-0 overflow-hidden [&>button]:text-white [&>button]:opacity-100 [&>button]:hover:bg-white/10 [&>button]:transition-all">
+          <div className="bg-gradient-to-br from-red-900 to-red-800 p-8 text-center flex flex-col items-center">
+            <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mb-6 backdrop-blur-md">
+              <AlertCircle className="w-10 h-10 text-red-400" />
+            </div>
+            <DialogTitle className="text-2xl font-montserrat font-bold text-white mb-2">
+              Submission Error
+            </DialogTitle>
+            <DialogDescription className="text-white/80 font-inter">
+              We encountered a technical issue sending your request.
+            </DialogDescription>
+          </div>
+          <div className="p-8 space-y-6">
+            <p className="text-slate-600 text-center leading-relaxed font-inter">
+              Our servers are currently experiencing high volume. Please try again in 5 minutes
+              or contact our 24/7 concierge directly at <b>+44 20 3576 1617</b>.
+            </p>
+            <div className="grid grid-cols-2 gap-4">
+              <button
+                onClick={() => setShowErrorModal(false)}
+                className="py-4 rounded-2xl border border-slate-200 text-slate-600 font-bold hover:bg-slate-50 transition-all"
+              >
+                Close
+              </button>
+              <button
+                href="tel:+442035761617"
+                onClick={() => (window.location.href = "tel:+442035761617")}
+                className="py-4 rounded-2xl bg-red-800 text-white font-bold hover:bg-red-900 transition-all shadow-lg"
+              >
+                Call Now
+              </button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
