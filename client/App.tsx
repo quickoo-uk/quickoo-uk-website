@@ -31,6 +31,8 @@ import Checkout from "./pages/booking/Checkout";
 import Success from "./pages/booking/Success";
 import CityTourDetail from "./pages/CityTourDetail";
 
+import CDSTestPage from "./pages/CDSTest";
+
 const queryClient = new QueryClient();
 
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -208,6 +210,14 @@ const App = () => (
               element={
                 <Layout isFooter={false}>
                   <Success />
+                </Layout>
+              }
+            />
+            <Route
+              path="/cds-test"
+              element={
+                <Layout>
+                  <CDSTestPage />
                 </Layout>
               }
             />

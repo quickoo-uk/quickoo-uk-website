@@ -12,17 +12,17 @@ const STATS = [
 
 const TIMELINE = [
   {
-    year: "2015",
+    year: "2020",
     title: "Founded in London",
     detail: "Bespoke chauffeur studio crafted for C-suite travel planners.",
   },
   {
-    year: "2019",
+    year: "2023",
     title: "Global Expansion",
     detail: "Added concierge-partner network across North America & EU.",
   },
   {
-    year: "2024",
+    year: "2025",
     title: "Smart Mobility Suite",
     detail: "Launched predictive dispatch and AI itinerary briefing.",
   },
