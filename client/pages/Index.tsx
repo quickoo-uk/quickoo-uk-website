@@ -1,21 +1,22 @@
-import { HeroSection } from "@/components/HeroSection";
-import { AnimatedInfinityAccent } from "@/components/AnimatedInfinityAccent";
-import { WhyChooseSection } from "@/components/WhyChooseSection";
-import { TravelByStyleBanner } from "@/components/TravelByStyleBanner";
-import { FleetPreviewSection } from "@/components/FleetPreviewSection";
-import { ServicesOverviewSection } from "@/components/ServicesOverviewSection";
-import { ProfessionalismSection } from "@/components/ProfessionalismSection";
-import { PersonalizationSection } from "@/components/PersonalizationSection";
-import { SignaturePromiseSection } from "@/components/SignaturePromiseSection";
-import { LuxuryExperienceSection } from "@/components/LuxuryExperienceSection";
-import { WhyQuickoSection } from "@/components/WhyQuickoSection";
 import { AboutSection } from "@/components/AboutSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { AppDownloadSection } from "@/components/AppDownloadSection";
+import { FleetPreviewSection } from "@/components/FleetPreviewSection";
+import { HeroSection } from "@/components/HeroSection";
+import { LuxuryExperienceSection } from "@/components/LuxuryExperienceSection";
+import { PersonalizationSection } from "@/components/PersonalizationSection";
+import { ProfessionalismSection } from "@/components/ProfessionalismSection";
+import { ServicesOverviewSection } from "@/components/ServicesOverviewSection";
+import { SignaturePromiseSection } from "@/components/SignaturePromiseSection";
+import { TravelByStyleBanner } from "@/components/TravelByStyleBanner";
+import { WhyChooseSection } from "@/components/WhyChooseSection";
+import { WhyQuickoSection } from "@/components/WhyQuickoSection";
+
+import { FestivalOfferModal } from "@/components/FestivalOfferModal";
 
 export default function Index() {
   return (
     <div className="w-full bg-gradient-to-b from-white via-slate-50/50 to-white">
+      <FestivalOfferModal />
       <HeroSection />
       {/* <AnimatedInfinityAccent /> */}
 

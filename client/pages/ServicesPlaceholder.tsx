@@ -32,6 +32,25 @@ const SERVICE_IMAGES: Record<string, string> = {
   "london-cruise-transfer": "/services/city-tours-hero-2_cleanup.png",
 };
 
+const CONCIERGE_INSIGHTS_IMAGES: Record<string, string> = {
+  "airport-transfers": "/fleet/Mercedes-benz-e-class.jpg",
+  "corporate-travel": "/fleet/BMW 7 Series.png",
+  "special-events": "/fleet/Mercedes-benz-s-class.png",
+  "city-tours": "/fleet/Range Rover Autobiography  Vogue.png",
+  "private-jet-chauffeur": "/fleet/Mercedes-Benz V-Class.png",
+  "london-cruise-transfer": "/fleet/Audi A8 L.png",
+};
+
+const CONCIERGE_CAR_NAMES: Record<string, string> = {
+  "airport-transfers": "Mercedes-Benz E-Class",
+  "corporate-travel": "BMW 7 Series L",
+  "special-events": "Mercedes-Benz S-Class",
+  "city-tours": "Range Rover Autobiography",
+  "private-jet-chauffeur": "Mercedes-Benz V-Class",
+  "london-cruise-transfer": "Audi A8 L WB",
+};
+
+
 const SERVICE_TAGLINES: Record<string, { title: string; highlight: string }> = {
   "airport-transfers": {
     title: "Seamless airport transfers,",
@@ -731,43 +750,92 @@ export default function ServicesPlaceholder() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-white min-h-[600px] md:min-h-[500px]">
-        <div className="absolute inset-0">
-          <img
-            src="/fleet/BusinessClass-2.png"
-            alt="Premium luxury vehicle"
-            className="w-full h-full object-cover object-center opacity-90"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent" />
-        </div>
+      <section className="section-spacing relative overflow-hidden bg-white">
+        {/* Harmonized Background Gradients/Elements */}
+        <div className="absolute -right-24 top-0 h-96 w-96 rounded-full bg-[#8fe00f]/10 blur-[150px] opacity-60" />
+        <div className="absolute -left-24 bottom-0 h-96 w-96 bg-[#487307]/5 blur-[180px] opacity-60" />
 
-        <div className="relative">
-          <div className="section-container grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-center py-16 md:py-28">
-            <div className="space-y-6">
-              <div className="inline-block">
-                <p className="uppercase tracking-[0.4em] text-sm font-semibold text-dark/80 bg-dark/5 px-4 py-2 rounded-full">
-                  Concierge Insights
-                </p>
+        <div className="section-container relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:items-center">
+
+            {/* Left Content Column */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-10 lg:pr-12"
+            >
+              <div className="space-y-8">
+                <SectionChip title="Concierge Insights" />
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-montserrat font-semibold text-dark leading-[1.1] tracking-tight">
+                  Unmatched <br />
+                  <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+                    Concierge Mastery.
+                  </span>
+                </h2>
+                <div className="space-y-6">
+                  <p className="text-lg sm:text-xl text-gray-600 font-inter leading-relaxed">
+                    Your journey is more than a destination. It's a calculated orchestration of comfort, timing, and personal preference, managed in real-time by London's most discrete logistics experts.
+                  </p>
+                  <p className="text-base text-gray-500 font-inter leading-relaxed max-w-lg">
+                    We transcend the standard chauffeur model by providing a dedicated experience desk that monitors every mile, ensuring your transition is as seamless as it is silent.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-3xl sm:text-4xl font-montserrat font-semibold leading-tight text-dark">
-                Premium comfort meets precision planning
-              </h3>
-              <p className="text-lg text-dark/70 leading-relaxed">
-                Experience the perfect balance of luxury and reliability. Our concierge team ensures every detail exceeds expectations, making your journey memorable from start to finish.
-              </p>
-              {/* <div className="mt-8 flex items-center gap-4">
-                <div className="h-12 w-12 rounded-full bg-dark/10 flex items-center justify-center">
-                  <MapPin className="text-dark" size={20} />
-                </div>
-                <div>
-                  <p className="font-montserrat text-lg font-semibold text-dark">Selena Ward</p>
-                  <p className="text-sm text-dark/60 font-inter">Head of Concierge Experience</p>
-                </div>
-              </div> */}
+            </motion.div>
 
+            {/* Right Image Side */}
+            {/* Right Image Side */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="relative rounded-[40px] overflow-hidden shadow-[0_40px_100px_rgba(72,115,7,0.2)] border border-white/60 group/img">
+                <img
+                  src={CONCIERGE_INSIGHTS_IMAGES[id ?? ""] ?? "/fleet/BusinessClass-2.png"}
+                  alt="Premium luxury service"
+                  className="w-full h-[500px] lg:h-[600px] object-cover transition-transform duration-[2s] group-hover/img:scale-105"
+                  loading="lazy"
+                />
 
-            </div>
+                {/* Sleek Integrated Asset Strip - "Proper" design addition */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="flex items-center justify-between px-6 py-4 rounded-[20px] bg-dark/20 backdrop-blur-md border border-white/10 shadow-2xl overflow-hidden">
+                    <div className="flex flex-col">
+                      <span className="text-xs font-montserrat font-bold text-white tracking-wide">
+                        {CONCIERGE_CAR_NAMES[id ?? ""] ?? "Premium Luxury Fleet"}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-3 pl-6 border-l border-white/10">
+                      <div className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8fe00f] opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#8fe00f]"></span>
+                      </div>
+                      <span className="text-[9px] font-bold text-white uppercase tracking-[0.2em] italic">Elite Selection</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Corner Designer Sparkle - Positioned OUTSIDE to avoid clipping */}
+              <div className="absolute -bottom-2 -right-2 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center shadow-xl border border-slate-100 z-30">
+                <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-[#487307] animate-[pulse_3s_ease-in-out_infinite]" />
+              </div>
+
+              {/* Decorative SVG Ring - Matching Page Hero Style */}
+              <svg
+                className="pointer-events-none absolute -right-12 -bottom-12 h-48 w-48 text-[#8fe00f]/40 animate-[spin_20s_linear_infinite]"
+                viewBox="0 0 200 200"
+                aria-hidden
+              >
+                <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" />
+              </svg>
+            </motion.div>
           </div>
         </div>
       </section>
