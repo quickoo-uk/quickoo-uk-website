@@ -160,6 +160,16 @@ export default function Success() {
                                 </div>
                             </div>
 
+                            {bookingData.flightNumber && bookingData.flightNumber.trim() !== '' && (
+                                <div className="flex items-start gap-3">
+                                    <Clock className="w-5 h-5 text-[#487307] mt-1" />
+                                    <div>
+                                        <p className="text-sm text-slate-500 mb-1">Flight Number</p>
+                                        <p className="text-base font-semibold text-slate-900">{bookingData.flightNumber}</p>
+                                    </div>
+                                </div>
+                            )}
+
                             {bookingData.fromLocation && (
                                 <div className="flex items-start gap-3">
                                     <MapPin className="w-5 h-5 text-[#487307] mt-1" />

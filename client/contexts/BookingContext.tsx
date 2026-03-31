@@ -5,6 +5,7 @@ export interface BookingData {
     bookingType: 'oneway' | 'hourly';
     fromLocation: string;
     toLocation: string | string[];
+    flightNumber: string;
     date: Date;
     time: string;
     duration: string;
@@ -45,6 +46,7 @@ const defaultBookingData: BookingData = {
     bookingType: 'oneway',
     fromLocation: '',
     toLocation: '',
+    flightNumber: '',
     date: new Date(),
     time: '12:00 PM',
     duration: '4 hours',

@@ -72,6 +72,7 @@ export const notifyAdminBooking: RequestHandler = async (req, res) => {
       `To/Stops: ${formatToLocation(bookingData.toLocation)}`,
       `Date: ${formatDateValue(bookingData.date)}`,
       `Pickup Time: ${bookingData.time || "N/A"}`,
+      `Flight Number: ${bookingData.flightNumber || "N/A"}`,
       `Duration: ${bookingData.duration || "N/A"}`,
       `Terms Accepted: ${bookingData.termsAccepted ? "Yes" : "No"}`,
       "",

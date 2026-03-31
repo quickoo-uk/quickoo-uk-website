@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useLayoutEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Calendar, Clock, Info, ChevronDown, ChevronLeft, ChevronRight, Plus } from "lucide-react";
+import { MapPin, Calendar, Clock, Info, ChevronDown, ChevronLeft, ChevronRight, Plus, Plane } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useBooking } from "@/contexts/BookingContext";
 import { bindPlacesAutocomplete, ensureGoogleMapsPlacesLoaded } from "@/lib/googlePlacesAutocomplete";
@@ -24,6 +24,7 @@ export const BookingWidget = () => {
     const [selectedDuration, setSelectedDuration] = useState("4 hours");
     const [showDurationPicker, setShowDurationPicker] = useState(false);
     const [fromLocation, setFromLocation] = useState("");
+    const [flightNumber, setFlightNumber] = useState("");
     const [destinations, setDestinations] = useState<DestinationRow[]>(() => [newDestinationRow()]);
     const destinationsRef = useRef(destinations);
     destinationsRef.current = destinations;
@@ -387,6 +388,25 @@ export const BookingWidget = () => {
                             </div>
                         )}
 
+                        {/* Flight Number */}
+                        <div className="relative group">
+                            <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors z-10">
+                                <Plane className="w-5 h-5" />
+                            </div>
+                            <div className="pl-12 pr-4 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#487307] focus-within:bg-white transition-all shadow-sm">
+                                <label className="block text-xs font-semibold text-slate-500 mb-0.5">
+                                    Flight Number
+                                </label>
+                                <input
+                                    type="text"
+                                    value={flightNumber}
+                                    onChange={(e) => setFlightNumber(e.target.value)}
+                                    placeholder="e.g. BA2490"
+                                    className="w-full bg-transparent border-none p-0 text-slate-900 placeholder-slate-400 focus:ring-0 text-sm font-medium outline-none"
+                                />
+                            </div>
+                        </div>
+
                         {/* Date Picker */}
                         <div className="relative group" ref={datePickerRef}>
                             <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors z-10">
@@ -536,6 +556,7 @@ export const BookingWidget = () => {
                                     bookingType: activeTab,
                                     fromLocation,
                                     toLocation: destinations.map((d) => d.value),
+                                    flightNumber,
                                     date: selectedDate,
                                     time: selectedTime,
                                     duration: selectedDuration,

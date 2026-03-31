@@ -142,6 +142,12 @@ export default function SelectCar() {
                             <p className="text-xs text-slate-500 mb-1">Time</p>
                             <p className="text-sm font-semibold text-slate-900">{bookingData.time}</p>
                         </div>
+                        {bookingData.flightNumber?.trim() && (
+                            <div>
+                                <p className="text-xs text-slate-500 mb-1">Flight Number</p>
+                                <p className="text-sm font-semibold text-slate-900">{bookingData.flightNumber}</p>
+                            </div>
+                        )}
                         {bookingData.bookingType === 'hourly' && (
                             <div>
                                 <p className="text-xs text-slate-500 mb-1">Duration</p>

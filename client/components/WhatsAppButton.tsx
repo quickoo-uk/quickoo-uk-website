@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 export const WhatsAppButton = () => {
     const phoneNumber = "442035761617"; // The phone number found in Navbar
-    const message = "Hi! I'm interested in booking a ride.";
+    const message = "Hello, I’m interested in booking a journey and would appreciate it if you could provide more details regarding availability, pricing, and the booking process. I really appreciate any help you can provide.";
 
     return (
         <a
