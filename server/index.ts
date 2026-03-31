@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { notifyAdminBooking } from "./routes/booking-notify";
 import {
   establishWidgetConfig,
   validateDiscount,
@@ -32,6 +33,7 @@ export function createServer() {
   app.post("/api/cds/quote", getQuotes);
   app.post("/api/cds/book", finalizeBooking);
   app.post("/api/cds/payment", requestPayment);
+  app.post("/api/booking/notify-admin", notifyAdminBooking);
 
   return app;
 }

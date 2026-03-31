@@ -200,9 +200,7 @@ export default function SelectCar() {
                                             </p>
                                         </div>
 
-                                        {/* Price Section */}
-                                        <div className="text-right flex items-center gap-2 sm:gap-4 flex-shrink-0">
-                                            <p className="text-base sm:text-xl font-bold text-slate-900 whitespace-nowrap">£{car.priceMain.toFixed(2)}</p>
+                                        <div className="flex items-center flex-shrink-0 self-center">
                                             <ChevronDown className={`w-4 h-4 sm:w-5 sm:h-5 text-slate-400 transition-transform duration-300 ${selectedCarId === car.id ? 'rotate-180 text-[#487307]' : ''}`} />
                                         </div>
                                     </div>
@@ -216,14 +214,6 @@ export default function SelectCar() {
                                     animate={{ opacity: 1, height: 'auto' }}
                                     className="px-6 pb-6 pt-0"
                                 >
-                                    <div className="mt-4 pt-4 border-t border-slate-200">
-                                        <h4 className="font-bold text-slate-900 mb-4 text-base">Price breakdown</h4>
-                                        <div className="flex justify-between items-end text-sm text-slate-600 border-b border-dotted border-slate-300 pb-1">
-                                            <span>Base fare</span>
-                                            <span className="font-semibold text-slate-900">£{car.priceMain.toFixed(2)}</span>
-                                        </div>
-                                    </div>
-
                                     <div className="mt-6 text-sm text-slate-500">
                                         <p className="italic">{car.longDescription}</p>
                                     </div>

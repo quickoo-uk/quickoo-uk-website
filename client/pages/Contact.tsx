@@ -799,7 +799,7 @@ export default function ContactPage() {
                 Close
               </button>
               <button
-                href="tel:+442035761617"
+                type="button"
                 onClick={() => (window.location.href = "tel:+442035761617")}
                 className="py-4 rounded-2xl bg-red-800 text-white font-bold hover:bg-red-900 transition-all shadow-lg"
               >

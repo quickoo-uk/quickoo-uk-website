@@ -18,6 +18,8 @@ export const ScrollManager = () => {
             infinite: false,
             autoResize: true,
             lerp: 0.1, // Lower value = smoother, more gradual (0.1 is very smooth)
+            // Google Places suggestions (ported to body): allow native wheel on the dropdown
+            prevent: (node) => node instanceof HTMLElement && node.classList.contains("pac-container"),
         });
 
         lenisRef.current = lenis;

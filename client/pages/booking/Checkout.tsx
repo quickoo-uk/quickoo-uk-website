@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-    CreditCard,
     Calendar,
     MapPin,
     Clock,
@@ -10,51 +9,47 @@ import {
     Mail,
     Phone,
     Check,
-    ArrowRight,
-    ArrowLeft
+    ArrowLeft,
 } from 'lucide-react';
 import { useBooking } from '@/contexts/BookingContext';
 
 export default function Checkout() {
     const navigate = useNavigate();
     const { bookingData, updateBookingData } = useBooking();
-    const [paymentMethod, setPaymentMethod] = useState('card');
     const [termsAccepted, setTermsAccepted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitError, setSubmitError] = useState('');
 
-    // Calculate pricing
-    const calculateTotal = () => {
-        if (!bookingData.selectedCar) {
-            return {
-                subtotal: 0,
-                tax: 0,
-                serviceFee: 0,
-                total: 0
+    const handleConfirmBooking = async () => {
+        if (!termsAccepted || isSubmitting) return;
+        setSubmitError('');
+        setIsSubmitting(true);
+        try {
+            const payload = {
+                bookingData: {
+                    ...bookingData,
+                    termsAccepted: true,
+                },
             };
-        }
-        const basePrice = bookingData.selectedCar.price;
-        const hours = bookingData.bookingType === 'hourly'
-            ? parseInt(bookingData.duration)
-            : 4; // Default 4 hours for one-way
-        const subtotal = basePrice * hours;
-        const tax = subtotal * 0.1; // 10% tax
-        const serviceFee = 15;
-        return {
-            subtotal,
-            tax,
-            serviceFee,
-            total: subtotal + tax + serviceFee
-        };
-    };
-
-    const pricing = calculateTotal();
-
-    const handleConfirmBooking = () => {
-        if (termsAccepted) {
-            updateBookingData({
-                paymentMethod,
-                termsAccepted
+            const response = await fetch('/api/booking/notify-admin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
             });
+
+            if (!response.ok) {
+                const data = await response.json().catch(() => ({ message: 'Unable to send booking email.' }));
+                throw new Error(data?.message || 'Unable to send booking email.');
+            }
+
+            updateBookingData({ termsAccepted: true });
             navigate('/booking/success');
+        } catch (error) {
+            setSubmitError(error instanceof Error ? error.message : 'Unable to confirm booking right now.');
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -105,9 +100,7 @@ export default function Checkout() {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Left Column - Booking Details */}
-                    <div className="lg:col-span-2 space-y-6">
+                <div className="max-w-4xl mx-auto space-y-6">
                         {/* Trip Details */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -252,80 +245,12 @@ export default function Checkout() {
                             </div>
                         </motion.div>
 
-                        {/* Payment Method */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4 }}
-                            className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6"
-                        >
-                            <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                                <CreditCard className="w-6 h-6 text-[#487307]" />
-                                Payment Method
-                            </h2>
-                            <div className="space-y-3">
-                                <label className="flex items-center gap-4 p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-[#487307] transition-all">
-                                    <input
-                                        type="radio"
-                                        name="payment"
-                                        value="card"
-                                        checked={paymentMethod === 'card'}
-                                        onChange={(e) => setPaymentMethod(e.target.value)}
-                                        className="w-5 h-5 text-[#487307]"
-                                    />
-                                    <CreditCard className="w-6 h-6 text-slate-400" />
-                                    <span className="font-semibold text-slate-900">Credit / Debit Card</span>
-                                </label>
-                                <label className="flex items-center gap-4 p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-[#487307] transition-all">
-                                    <input
-                                        type="radio"
-                                        name="payment"
-                                        value="cash"
-                                        checked={paymentMethod === 'cash'}
-                                        onChange={(e) => setPaymentMethod(e.target.value)}
-                                        className="w-5 h-5 text-[#487307]"
-                                    />
-                                    <span className="w-6 h-6 flex items-center justify-center text-slate-400 font-bold">£</span>
-                                    <span className="font-semibold text-slate-900">Pay with Cash</span>
-                                </label>
-                            </div>
-                        </motion.div>
-                    </div>
-
-                    {/* Right Column - Price Summary */}
-                    <div className="lg:col-span-1">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 }}
-                            className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sticky top-24"
+                            className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6"
                         >
-                            <h2 className="text-xl font-bold text-slate-900 mb-6">Price Summary</h2>
-
-                            <div className="space-y-4 mb-6">
-                                <div className="flex justify-between text-slate-600">
-                                    <span>Subtotal</span>
-                                    <span className="font-semibold">£{pricing.subtotal.toFixed(2)}</span>
-                                </div>
-                                <div className="flex justify-between text-slate-600">
-                                    <span>Service Fee</span>
-                                    <span className="font-semibold">£{pricing.serviceFee.toFixed(2)}</span>
-                                </div>
-                                <div className="flex justify-between text-slate-600">
-                                    <span>Tax (10%)</span>
-                                    <span className="font-semibold">£{pricing.tax.toFixed(2)}</span>
-                                </div>
-                                <div className="border-t-2 border-slate-200 pt-4">
-                                    <div className="flex justify-between items-center">
-                                        <span className="text-lg font-bold text-slate-900">Total</span>
-                                        <span className="text-2xl font-bold text-[#487307]">
-                                            £{pricing.total.toFixed(2)}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Terms Checkbox */}
                             <label className="flex items-start gap-3 p-4 bg-slate-50 rounded-xl cursor-pointer mb-6">
                                 <input
                                     type="checkbox"
@@ -347,17 +272,19 @@ export default function Checkout() {
 
                             <button
                                 onClick={handleConfirmBooking}
-                                disabled={!termsAccepted}
-                                className={`w-full py-4 rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2 ${termsAccepted
+                                disabled={!termsAccepted || isSubmitting}
+                                className={`w-full py-4 rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2 ${termsAccepted && !isSubmitting
                                     ? 'bg-gradient-to-r from-[#0f1801] via-[#487307] to-[#6aa80b] text-white hover:shadow-lg hover:shadow-[#487307]/30'
                                     : 'bg-slate-200 text-slate-400 cursor-not-allowed'
                                     }`}
                             >
                                 <Check className="w-6 h-6" />
-                                Confirm Booking
+                                {isSubmitting ? 'Sending Booking...' : 'Confirm Booking'}
                             </button>
+                            {submitError && (
+                                <p className="mt-3 text-sm text-red-600">{submitError}</p>
+                            )}
                         </motion.div>
-                    </div>
                 </div>
 
                 {/* Back Button */}

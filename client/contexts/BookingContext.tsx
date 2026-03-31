@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 export interface BookingData {
     // Booking type and basic info
@@ -50,10 +50,49 @@ const defaultBookingData: BookingData = {
     duration: '4 hours',
 };
 
+const BOOKING_STORAGE_KEY = 'quickoo_booking_data_v1';
+
+function readStoredBookingData(): BookingData | null {
+    if (typeof window === 'undefined') return null;
+    try {
+        const raw = window.localStorage.getItem(BOOKING_STORAGE_KEY);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw) as Partial<BookingData> & { date?: string | Date };
+        if (!parsed || typeof parsed !== 'object') return null;
+
+        const dateValue =
+            parsed.date instanceof Date
+                ? parsed.date
+                : parsed.date
+                    ? new Date(parsed.date)
+                    : defaultBookingData.date;
+
+        return {
+            ...defaultBookingData,
+            ...parsed,
+            date: Number.isNaN(dateValue.getTime()) ? new Date() : dateValue,
+        };
+    } catch {
+        return null;
+    }
+}
+
 const BookingContext = createContext<BookingContextType | undefined>(undefined);
 
 export const BookingProvider = ({ children }: { children: ReactNode }) => {
-    const [bookingData, setBookingData] = useState<BookingData>(defaultBookingData);
+    const [bookingData, setBookingData] = useState<BookingData>(() => {
+        const stored = readStoredBookingData();
+        return stored ?? defaultBookingData;
+    });
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        try {
+            window.localStorage.setItem(BOOKING_STORAGE_KEY, JSON.stringify(bookingData));
+        } catch {
+            // Ignore storage failures (private mode / quota / disabled storage)
+        }
+    }, [bookingData]);
 
     const updateBookingData = (data: Partial<BookingData>) => {
         setBookingData(prev => ({ ...prev, ...data }));
@@ -61,6 +100,13 @@ export const BookingProvider = ({ children }: { children: ReactNode }) => {
 
     const resetBooking = () => {
         setBookingData(defaultBookingData);
+        if (typeof window !== 'undefined') {
+            try {
+                window.localStorage.removeItem(BOOKING_STORAGE_KEY);
+            } catch {
+                // no-op
+            }
+        }
     };
 
     return (

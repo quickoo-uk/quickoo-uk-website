@@ -1,18 +1,27 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { User, Mail, Phone, MessageSquare, ArrowRight, ArrowLeft } from 'lucide-react';
+import { User, Mail, MessageSquare, ArrowRight, ArrowLeft } from 'lucide-react';
 import { useBooking } from '@/contexts/BookingContext';
+import {
+    PhoneWithCountryField,
+    DEFAULT_PHONE_COUNTRY,
+    formatFullPhone,
+    type CountryDialOption,
+} from '@/components/PhoneWithCountryField';
 
 export default function CustomerInfo() {
     const navigate = useNavigate();
     const { bookingData, updateBookingData } = useBooking();
 
+    const savedPhone = bookingData.customerInfo?.phone ?? '';
+    const [selectedCountry, setSelectedCountry] = useState<CountryDialOption>(DEFAULT_PHONE_COUNTRY);
+
     const [formData, setFormData] = useState({
         firstName: bookingData.customerInfo?.firstName || '',
         lastName: bookingData.customerInfo?.lastName || '',
         email: bookingData.customerInfo?.email || '',
-        phone: bookingData.customerInfo?.phone || '',
+        phone: savedPhone.trim().startsWith('+') ? '' : savedPhone,
         specialRequests: bookingData.customerInfo?.specialRequests || '',
     });
 
@@ -32,9 +41,10 @@ export default function CustomerInfo() {
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
             newErrors.email = 'Invalid email format';
         }
+        const localDigits = formData.phone.replace(/\D/g, '');
         if (!formData.phone.trim()) {
             newErrors.phone = 'Phone number is required';
-        } else if (!/^\+?[\d\s-()]+$/.test(formData.phone)) {
+        } else if (localDigits.length < 5) {
             newErrors.phone = 'Invalid phone number';
         }
 
@@ -44,7 +54,12 @@ export default function CustomerInfo() {
 
     const handleContinue = () => {
         if (validateForm()) {
-            updateBookingData({ customerInfo: formData });
+            updateBookingData({
+                customerInfo: {
+                    ...formData,
+                    phone: formatFullPhone(selectedCountry, formData.phone.trim()),
+                },
+            });
             navigate('/booking/checkout');
         }
     };
@@ -117,13 +132,6 @@ export default function CustomerInfo() {
                                 <h3 className="text-xl font-bold text-slate-900">{bookingData.selectedCar.name}</h3>
                                 <p className="text-sm text-slate-600 mt-1">
                                     {bookingData.selectedCar.passengers} Passengers • {bookingData.selectedCar.luggage} Luggage
-                                </p>
-                            </div>
-                            <div className="text-right">
-                                <p className="text-sm text-slate-500">Starting from</p>
-                                <p className="text-2xl font-bold text-[#487307]">
-                                    £{bookingData.selectedCar.price}
-                                    <span className="text-sm font-normal text-slate-500">/hr</span>
                                 </p>
                             </div>
                         </div>
@@ -210,28 +218,14 @@ export default function CustomerInfo() {
                             )}
                         </div>
 
-                        {/* Phone */}
-                        <div>
-                            <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                Phone Number *
-                            </label>
-                            <div className="relative">
-                                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                                <input
-                                    type="tel"
-                                    value={formData.phone}
-                                    onChange={(e) => handleChange('phone', e.target.value)}
-                                    className={`w-full pl-12 pr-4 py-3 border-2 rounded-xl focus:outline-none transition-all ${errors.phone
-                                        ? 'border-red-300 focus:border-red-500'
-                                        : 'border-slate-200 focus:border-[#487307]'
-                                        }`}
-                                    placeholder="+1 (555) 123-4567"
-                                />
-                            </div>
-                            {errors.phone && (
-                                <p className="text-sm text-red-500 mt-1">{errors.phone}</p>
-                            )}
-                        </div>
+                        <PhoneWithCountryField
+                            localPhone={formData.phone}
+                            onLocalPhoneChange={(v) => handleChange('phone', v)}
+                            selectedCountry={selectedCountry}
+                            onCountryChange={setSelectedCountry}
+                            error={errors.phone}
+                            initialFullPhone={savedPhone.trim().startsWith('+') ? savedPhone : undefined}
+                        />
 
                         {/* Special Requests */}
                         <div>

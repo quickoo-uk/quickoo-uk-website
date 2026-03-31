@@ -7,9 +7,9 @@ export const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative flex min-h-[100dvh] w-full items-center pt-28 pb-20 lg:py-0 overflow-hidden">
-      {/* Hero Image Background */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative flex min-h-[100dvh] w-full items-center pt-28 pb-20 lg:py-0">
+      {/* Hero Image Background — overflow contained here so booking dropdowns can extend past the section */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-black/40 z-10" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent z-10" />
         <video

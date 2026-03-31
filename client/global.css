@@ -252,3 +252,8 @@ body {
         transform: scale(1);
     }
 }
+
+/* Google Places suggestions above booking card / stacking contexts */
+.pac-container {
+    z-index: 10050 !important;
+}

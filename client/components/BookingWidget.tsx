@@ -1,8 +1,16 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useLayoutEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { MapPin, Calendar, Clock, Info, ChevronDown, ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useBooking } from "@/contexts/BookingContext";
+import { bindPlacesAutocomplete, ensureGoogleMapsPlacesLoaded } from "@/lib/googlePlacesAutocomplete";
+import { PickupTimePickerDialog } from "@/components/PickupTimePickerDialog";
+
+type DestinationRow = { id: string; value: string };
+
+function newDestinationRow(): DestinationRow {
+    return { id: crypto.randomUUID(), value: "" };
+}
 
 export const BookingWidget = () => {
     const navigate = useNavigate();
@@ -16,11 +24,17 @@ export const BookingWidget = () => {
     const [selectedDuration, setSelectedDuration] = useState("4 hours");
     const [showDurationPicker, setShowDurationPicker] = useState(false);
     const [fromLocation, setFromLocation] = useState("");
-    const [destinations, setDestinations] = useState<string[]>([""]);
+    const [destinations, setDestinations] = useState<DestinationRow[]>(() => [newDestinationRow()]);
+    const destinationsRef = useRef(destinations);
+    destinationsRef.current = destinations;
 
     const datePickerRef = useRef<HTMLDivElement>(null);
     const timePickerRef = useRef<HTMLDivElement>(null);
     const durationPickerRef = useRef<HTMLDivElement>(null);
+    const fromInputRef = useRef<HTMLInputElement>(null);
+    const destInputByIdRef = useRef<Map<string, HTMLInputElement | null>>(new Map());
+
+    const destinationRowIds = destinations.map((r) => r.id).join("|");
 
     // Close pickers when clicking outside
     useEffect(() => {
@@ -29,6 +43,8 @@ export const BookingWidget = () => {
                 setShowDatePicker(false);
             }
             if (timePickerRef.current && !timePickerRef.current.contains(event.target as Node)) {
+                const el = event.target as HTMLElement | null;
+                if (el?.closest?.('[role="dialog"]')) return;
                 setShowTimePicker(false);
             }
             if (durationPickerRef.current && !durationPickerRef.current.contains(event.target as Node)) {
@@ -39,6 +55,90 @@ export const BookingWidget = () => {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
+
+    const handleDestinationChange = useCallback((id: string, value: string) => {
+        setDestinations((prev) => prev.map((row) => (row.id === id ? { ...row, value } : row)));
+    }, []);
+
+    /** From stays mounted outside tab animation — bind once per widget mount. */
+    useLayoutEffect(() => {
+        const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
+        if (!apiKey?.trim()) return;
+
+        let cancelled = false;
+        let rafId = 0;
+        const sessionCleanups: (() => void)[] = [];
+
+        const attach = () => {
+            sessionCleanups.forEach((fn) => fn());
+            sessionCleanups.length = 0;
+            const el = fromInputRef.current;
+            if (el) {
+                sessionCleanups.push(bindPlacesAutocomplete(el, setFromLocation));
+            }
+        };
+
+        ensureGoogleMapsPlacesLoaded(apiKey)
+            .then(() => {
+                if (cancelled) return;
+                rafId = requestAnimationFrame(() => {
+                    rafId = 0;
+                    if (cancelled) return;
+                    attach();
+                });
+            })
+            .catch(() => {
+                /* invalid key / network */
+            });
+
+        return () => {
+            cancelled = true;
+            if (rafId) cancelAnimationFrame(rafId);
+            sessionCleanups.forEach((fn) => fn());
+            sessionCleanups.length = 0;
+        };
+    }, []);
+
+    /** To / stops — rebind only when row ids or tab change, not on every keystroke. */
+    useLayoutEffect(() => {
+        const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
+        if (!apiKey?.trim() || activeTab !== "oneway") return;
+
+        let cancelled = false;
+        let rafId = 0;
+        const sessionCleanups: (() => void)[] = [];
+
+        const attach = () => {
+            sessionCleanups.forEach((fn) => fn());
+            sessionCleanups.length = 0;
+            for (const row of destinationsRef.current) {
+                const el = destInputByIdRef.current.get(row.id);
+                if (el) {
+                    sessionCleanups.push(
+                        bindPlacesAutocomplete(el, (addr) => handleDestinationChange(row.id, addr)),
+                    );
+                }
+            }
+        };
+
+        ensureGoogleMapsPlacesLoaded(apiKey)
+            .then(() => {
+                if (cancelled) return;
+                rafId = requestAnimationFrame(() => {
+                    rafId = 0;
+                    if (cancelled) return;
+                    attach();
+                });
+            })
+            .catch(() => {});
+
+        return () => {
+            cancelled = true;
+            if (rafId) cancelAnimationFrame(rafId);
+            sessionCleanups.forEach((fn) => fn());
+            sessionCleanups.length = 0;
+        };
+    }, [activeTab, destinationRowIds, handleDestinationChange]);
 
     // Format date for display
     const formatDate = (date: Date) => {
@@ -68,27 +168,9 @@ export const BookingWidget = () => {
         return days;
     };
 
-    // Generate time slots
-    const generateTimeSlots = () => {
-        const slots = [];
-        for (let hour = 0; hour < 24; hour++) {
-            for (let minute of [0, 15, 30, 45]) {
-                const period = hour >= 12 ? "PM" : "AM";
-                const displayHour = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
-                const time = `${displayHour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")} ${period}`;
-                slots.push(time);
-            }
-        }
-        return slots;
-    };
-
     const calendarDays = generateCalendarDays();
-    const timeSlots = generateTimeSlots();
 
-    const durations = [
-        "4 hours", "5 hours", "6 hours", "7 hours",
-        "8 hours", "9 hours", "10 hours", "11 hours", "12 hours", "24 hours"
-    ];
+    const durations = Array.from({ length: 21 }, (_, i) => `${4 + i} hours`);
 
     const goToPreviousMonth = () => {
         setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
@@ -110,20 +192,11 @@ export const BookingWidget = () => {
     };
 
     const handleAddDestination = () => {
-        if (destinations.length < 4) {
-            setDestinations([...destinations, ""]);
-        }
+        setDestinations((prev) => (prev.length < 4 ? [...prev, newDestinationRow()] : prev));
     };
 
-    const handleRemoveDestination = (index: number) => {
-        const newDestinations = destinations.filter((_, i) => i !== index);
-        setDestinations(newDestinations);
-    };
-
-    const handleDestinationChange = (index: number, value: string) => {
-        const newDestinations = [...destinations];
-        newDestinations[index] = value;
-        setDestinations(newDestinations);
+    const handleRemoveDestination = (id: string) => {
+        setDestinations((prev) => prev.filter((row) => row.id !== id));
     };
 
     return (
@@ -151,7 +224,29 @@ export const BookingWidget = () => {
             </div>
 
             {/* Content */}
-            <div className="p-6 space-y-4">
+            <div className="p-6 space-y-4 overflow-visible">
+                {/* From — outside tab animation so the input/DOM node (and Places Autocomplete) are not torn down on tab change */}
+                <div className="relative group">
+                    <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors">
+                        <MapPin className="w-5 h-5" />
+                    </div>
+                    <div className="pl-12 pr-4 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#487307] focus-within:bg-white transition-all shadow-sm">
+                        <label className="block text-xs font-semibold text-slate-500 mb-0.5">
+                            From
+                        </label>
+                        <input
+                            ref={fromInputRef}
+                            type="text"
+                            value={fromLocation}
+                            onChange={(e) => setFromLocation(e.target.value)}
+                            onInput={(e) => setFromLocation((e.target as HTMLInputElement).value)}
+                            placeholder="Address, airport, hotel, ..."
+                            className="w-full bg-transparent border-none p-0 text-slate-900 placeholder-slate-400 focus:ring-0 text-sm font-medium outline-none"
+                            autoComplete="off"
+                        />
+                    </div>
+                </div>
+
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeTab}
@@ -159,32 +254,13 @@ export const BookingWidget = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
-                        className="space-y-4"
+                        className="space-y-4 overflow-visible"
                     >
-                        {/* From Location */}
-                        <div className="relative group">
-                            <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors">
-                                <MapPin className="w-5 h-5" />
-                            </div>
-                            <div className="pl-12 pr-4 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#487307] focus-within:bg-white transition-all shadow-sm">
-                                <label className="block text-xs font-semibold text-slate-500 mb-0.5">
-                                    From
-                                </label>
-                                <input
-                                    type="text"
-                                    value={fromLocation}
-                                    onChange={(e) => setFromLocation(e.target.value)}
-                                    placeholder="Address, airport, hotel, ..."
-                                    className="w-full bg-transparent border-none p-0 text-slate-900 placeholder-slate-400 focus:ring-0 text-sm font-medium outline-none"
-                                />
-                            </div>
-                        </div>
-
                         {/* Destinations (One Way) */}
                         {activeTab === "oneway" && (
                             <div className="space-y-2">
-                                {destinations.map((destination, index) => (
-                                    <div key={index} className="relative group">
+                                {destinations.map((row, index) => (
+                                    <div key={row.id} className="relative group">
                                         <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors z-10">
                                             <MapPin className="w-5 h-5" />
                                         </div>
@@ -193,16 +269,25 @@ export const BookingWidget = () => {
                                                 To {destinations.length > 1 ? `#${index + 1}` : ""}
                                             </label>
                                             <input
+                                                ref={(el) => {
+                                                    if (el) destInputByIdRef.current.set(row.id, el);
+                                                    else destInputByIdRef.current.delete(row.id);
+                                                }}
                                                 type="text"
-                                                value={destination}
-                                                onChange={(e) => handleDestinationChange(index, e.target.value)}
+                                                value={row.value}
+                                                onChange={(e) => handleDestinationChange(row.id, e.target.value)}
+                                                onInput={(e) =>
+                                                    handleDestinationChange(row.id, (e.target as HTMLInputElement).value)
+                                                }
                                                 placeholder="Address, airport, hotel, ..."
                                                 className="w-full bg-transparent border-none p-0 text-slate-900 placeholder-slate-400 focus:ring-0 text-sm font-medium outline-none"
+                                                autoComplete="off"
                                             />
                                             {/* Remove Button for extra destinations */}
                                             {destinations.length > 1 && (
                                                 <button
-                                                    onClick={() => handleRemoveDestination(index)}
+                                                    type="button"
+                                                    onClick={() => handleRemoveDestination(row.id)}
                                                     className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-red-500 transition-colors"
                                                 >
                                                     <div className="w-4 h-4 flex items-center justify-center font-bold">×</div>
@@ -214,6 +299,7 @@ export const BookingWidget = () => {
                                         {index === destinations.length - 1 && destinations.length < 4 && (
                                             <div className="flex justify-end mt-2">
                                                 <button
+                                                    type="button"
                                                     onClick={handleAddDestination}
                                                     className="flex items-center gap-1.5 text-sm font-semibold text-[#487307] hover:text-[#3a5c05] transition-colors group/add"
                                                 >
@@ -261,11 +347,12 @@ export const BookingWidget = () => {
                                 <AnimatePresence>
                                     {showDurationPicker && (
                                         <motion.div
+                                            data-lenis-prevent
                                             initial={{ opacity: 0, y: -10, scale: 0.95 }}
                                             animate={{ opacity: 1, y: 0, scale: 1 }}
                                             exit={{ opacity: 0, y: -10, scale: 0.95 }}
                                             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                                            className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-4 z-50 max-h-72 overflow-y-auto border-2 border-green-100"
+                                            className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-4 z-50 max-h-72 overflow-y-auto overscroll-contain border-2 border-green-100"
                                             style={{
                                                 boxShadow: "0 25px 70px rgba(72, 115, 7, 0.25), 0 0 0 1px rgba(72, 115, 7, 0.1)"
                                             }}
@@ -330,17 +417,18 @@ export const BookingWidget = () => {
                             <AnimatePresence>
                                 {showDatePicker && (
                                     <motion.div
-                                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                                        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                                        className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-5 z-50 border-2 border-green-100"
+                                        data-lenis-prevent
+                                        initial={{ opacity: 0, y: -8 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -8 }}
+                                        transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                                        className="absolute top-full mt-2 left-0 right-0 z-[100] max-h-[min(24rem,calc(100dvh-8rem))] overflow-y-auto overscroll-contain bg-white rounded-2xl shadow-2xl p-4 sm:p-5 border-2 border-green-100"
                                         style={{
                                             boxShadow: "0 25px 70px rgba(72, 115, 7, 0.25), 0 0 0 1px rgba(72, 115, 7, 0.1)"
                                         }}
                                     >
                                         {/* Month Navigation */}
-                                        <div className="flex items-center justify-between mb-5 pb-4 border-b border-green-100">
+                                        <div className="flex items-center justify-between mb-3 pb-3 border-b border-green-100">
                                             <button
                                                 onClick={goToPreviousMonth}
                                                 className="p-2.5 bg-slate-100 hover:bg-gradient-to-r hover:from-[#1a2e03] hover:via-[#487307] hover:to-[#6aa80b] rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 group border border-slate-200 hover:border-transparent shadow-sm"
@@ -359,29 +447,30 @@ export const BookingWidget = () => {
                                         </div>
 
                                         {/* Day Labels */}
-                                        <div className="grid grid-cols-7 gap-1.5 mb-3">
+                                        <div className="grid grid-cols-7 gap-1 mb-2">
                                             {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((day) => (
-                                                <div key={day} className="text-center text-xs font-bold text-green-400 py-2">
+                                                <div key={day} className="flex h-7 items-center justify-center text-center text-[11px] font-bold uppercase tracking-wide text-green-500">
                                                     {day}
                                                 </div>
                                             ))}
                                         </div>
 
-                                        {/* Calendar Grid */}
-                                        <div className="grid grid-cols-7 gap-1.5">
+                                        {/* Calendar Grid — fixed row height avoids clipping when parent has limited space */}
+                                        <div className="grid grid-cols-7 gap-1">
                                             {calendarDays.map((day, index) => (
-                                                <div key={index}>
+                                                <div key={index} className="flex items-center justify-center">
                                                     {day ? (
                                                         <button
+                                                            type="button"
                                                             onClick={() => {
                                                                 setSelectedDate(day);
                                                                 setShowDatePicker(false);
                                                             }}
-                                                            className={`w-full aspect-square rounded-xl text-sm font-bold transition-all duration-200 relative overflow-hidden ${isSameDay(day, selectedDate)
-                                                                ? "bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white shadow-lg shadow-[#487307]/50 scale-110 ring-2 ring-green-200"
+                                                            className={`flex h-9 w-full max-w-[2.5rem] items-center justify-center rounded-lg text-sm font-semibold transition-colors relative overflow-hidden ${isSameDay(day, selectedDate)
+                                                                ? "bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white shadow-md ring-2 ring-green-200/80"
                                                                 : isToday(day)
-                                                                    ? "bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white font-extrabold ring-2 ring-green-200 hover:scale-105 hover:shadow-lg"
-                                                                    : "text-slate-700 hover:bg-green-50 hover:scale-105 hover:text-green-600 hover:shadow-md"
+                                                                    ? "bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white font-bold ring-2 ring-green-200/80 hover:opacity-95"
+                                                                    : "text-slate-700 hover:bg-green-50 hover:text-green-700"
                                                                 }`}
                                                         >
                                                             {isSameDay(day, selectedDate) && (
@@ -391,10 +480,10 @@ export const BookingWidget = () => {
                                                                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                                                 />
                                                             )}
-                                                            <span className="relative z-10">{day.getDate()}</span>
+                                                            <span className="relative z-10 leading-none">{day.getDate()}</span>
                                                         </button>
                                                     ) : (
-                                                        <div className="w-full aspect-square" />
+                                                        <div className="h-9 w-full max-w-[2.5rem]" aria-hidden />
                                                     )}
                                                 </div>
                                             ))}
@@ -430,46 +519,12 @@ export const BookingWidget = () => {
                                 </div>
                             </div>
 
-                            {/* Time Picker Dropdown */}
-                            <AnimatePresence>
-                                {showTimePicker && (
-                                    <motion.div
-                                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                                        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                                        className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-4 z-50 max-h-72 overflow-y-auto border-2 border-green-100"
-                                        style={{
-                                            boxShadow: "0 25px 70px rgba(72, 115, 7, 0.25), 0 0 0 1px rgba(72, 115, 7, 0.1)"
-                                        }}
-                                    >
-                                        <div className="grid grid-cols-4 gap-2">
-                                            {timeSlots.map((time) => (
-                                                <button
-                                                    key={time}
-                                                    onClick={() => {
-                                                        setSelectedTime(time);
-                                                        setShowTimePicker(false);
-                                                    }}
-                                                    className={`px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 relative overflow-hidden ${time === selectedTime
-                                                        ? "bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white shadow-lg shadow-[#487307]/50 scale-105 ring-2 ring-green-200"
-                                                        : "text-slate-700 hover:bg-green-50 border border-green-100 hover:border-green-300 hover:scale-105 hover:text-green-600 hover:shadow-md"
-                                                        }`}
-                                                >
-                                                    {time === selectedTime && (
-                                                        <motion.div
-                                                            layoutId="selectedTime"
-                                                            className="absolute inset-0 bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b]"
-                                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                                        />
-                                                    )}
-                                                    <span className="relative z-10">{time}</span>
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
+                            <PickupTimePickerDialog
+                                open={showTimePicker}
+                                onOpenChange={setShowTimePicker}
+                                value={selectedTime}
+                                onCommit={setSelectedTime}
+                            />
                         </div>
 
 
@@ -480,7 +535,7 @@ export const BookingWidget = () => {
                                 updateBookingData({
                                     bookingType: activeTab,
                                     fromLocation,
-                                    toLocation: destinations,
+                                    toLocation: destinations.map((d) => d.value),
                                     date: selectedDate,
                                     time: selectedTime,
                                     duration: selectedDuration,
