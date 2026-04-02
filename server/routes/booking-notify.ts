@@ -61,6 +61,9 @@ export const notifyAdminBooking: RequestHandler = async (req, res) => {
 
     const customer = bookingData.customerInfo || {};
     const car = bookingData.selectedCar || {};
+    const breakdown = Array.isArray(car.price_breakdown) ? car.price_breakdown : [];
+    const totalAmt = Number(car.total_price ?? car.price ?? 0);
+    const distanceMiles = bookingData.quoteResponse?.distance_miles;
 
     const subject = `New Booking Received - ${customer.firstName || "Customer"} ${customer.lastName || ""}`.trim();
     const emailText = [
@@ -74,6 +77,7 @@ export const notifyAdminBooking: RequestHandler = async (req, res) => {
       `Pickup Time: ${bookingData.time || "N/A"}`,
       `Flight Number: ${bookingData.flightNumber || "N/A"}`,
       `Duration: ${bookingData.duration || "N/A"}`,
+      `Quoted distance (miles): ${distanceMiles != null ? String(distanceMiles) : "N/A"}`,
       `Terms Accepted: ${bookingData.termsAccepted ? "Yes" : "No"}`,
       "",
       "=== Vehicle ===",
@@ -83,6 +87,15 @@ export const notifyAdminBooking: RequestHandler = async (req, res) => {
       `Luggage: ${car.luggage ?? "N/A"}`,
       `Features: ${Array.isArray(car.features) ? car.features.join(", ") : "N/A"}`,
       `Description: ${car.description || "N/A"}`,
+      "",
+      "=== Pricing ===",
+      ...(breakdown.length > 0
+        ? breakdown.map(
+            (row: { description?: string; amount?: number }) =>
+              `${String(row.description || "Line")}: £${Number(row.amount ?? 0).toFixed(2)}`,
+          )
+        : ["(No line-item breakdown)"]),
+      `Total: £${totalAmt.toFixed(2)}`,
       "",
       "=== Customer ===",
       `First Name: ${customer.firstName || "N/A"}`,

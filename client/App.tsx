@@ -1,11 +1,12 @@
 import "./global.css";
+import { useEffect, useState } from "react";
 
 import { Toaster } from "@/components/ui/toaster";
-import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ScrollManager } from "@/components/ScrollManager";
@@ -28,14 +29,20 @@ import EliteChauffeurs from "./pages/EliteChauffeurs";
 import SelectCar from "./pages/booking/SelectCar";
 import CustomerInfo from "./pages/booking/CustomerInfo";
 import Checkout from "./pages/booking/Checkout";
+import Payment from "./pages/booking/Payment";
 import Success from "./pages/booking/Success";
 import CityTourDetail from "./pages/CityTourDetail";
 
 import CDSTestPage from "./pages/CDSTest";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminBookingData from "./pages/admin/AdminBookingData";
+import AdminVehicleClassManagement from "./pages/admin/AdminVehicleClassManagement";
+import AdminPickupPricingSettings from "./pages/admin/AdminPickupPricingSettings";
+import { ensureAdminSession } from "@/lib/adminAuth";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const queryClient = new QueryClient();
-
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const Layout = ({
   children,
@@ -52,7 +59,35 @@ const Layout = ({
   </div>
 );
 
-const App = () => (
+const AdminGuard = ({ children }: { children: React.ReactNode }) => {
+  const [status, setStatus] = useState<"checking" | "allowed" | "denied">("checking");
+
+  useEffect(() => {
+    let mounted = true;
+    ensureAdminSession().then((ok) => {
+      if (!mounted) return;
+      setStatus(ok ? "allowed" : "denied");
+    });
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  if (status === "checking") {
+    return (
+      <div className="min-h-screen bg-slate-100 flex items-center justify-center text-slate-600">
+        Checking admin session...
+      </div>
+    );
+  }
+  if (status === "denied") {
+    return <Navigate to="/admin-panel/login" replace />;
+  }
+  return <>{children}</>;
+};
+
+export default function App() {
+  return (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <BookingProvider>
@@ -206,6 +241,14 @@ const App = () => (
               }
             />
             <Route
+              path="/booking/payment"
+              element={
+                <Layout isFooter={false}>
+                  <Payment />
+                </Layout>
+              }
+            />
+            <Route
               path="/booking/success"
               element={
                 <Layout isFooter={false}>
@@ -222,6 +265,43 @@ const App = () => (
               }
             />
             <Route
+              path="/admin-panel"
+              element={<Navigate to="/admin-panel/login" replace />}
+            />
+            <Route path="/admin-panel/login" element={<AdminLogin />} />
+            <Route
+              path="/admin-panel/dashboard"
+              element={
+                <AdminGuard>
+                  <AdminDashboard />
+                </AdminGuard>
+              }
+            />
+            <Route
+              path="/admin-panel/booking-data"
+              element={
+                <AdminGuard>
+                  <AdminBookingData />
+                </AdminGuard>
+              }
+            />
+            <Route
+              path="/admin-panel/vehicle-class-management"
+              element={
+                <AdminGuard>
+                  <AdminVehicleClassManagement />
+                </AdminGuard>
+              }
+            />
+            <Route
+              path="/admin-panel/settings"
+              element={
+                <AdminGuard>
+                  <AdminPickupPricingSettings />
+                </AdminGuard>
+              }
+            />
+            <Route
               path="*"
               element={
                 <Layout>
@@ -234,6 +314,5 @@ const App = () => (
       </BookingProvider>
     </TooltipProvider>
   </QueryClientProvider>
-);
-
-createRoot(document.getElementById("root")!).render(<App />);
+  );
+}

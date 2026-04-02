@@ -1,10 +1,18 @@
-import { useState, useRef, useEffect, useLayoutEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useLayoutEffect, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Calendar, Clock, Info, ChevronDown, ChevronLeft, ChevronRight, Plus, Plane } from "lucide-react";
+import { MapPin, Calendar, Clock, ChevronDown, ChevronLeft, ChevronRight, Plus, Plane, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useBooking } from "@/contexts/BookingContext";
 import { bindPlacesAutocomplete, ensureGoogleMapsPlacesLoaded } from "@/lib/googlePlacesAutocomplete";
 import { PickupTimePickerDialog } from "@/components/PickupTimePickerDialog";
+import { fetchGetQuotes } from "@/lib/quotesApi";
+import {
+    getFirstValidTime12hOnLondonDay,
+    getLondonYmd,
+    getMinimumPickupUtcMs,
+    isCalendarDayDisabledForMinPickup,
+    isPickupAtLeastTwoHoursAheadLondon,
+} from "@/lib/londonPickupWindow";
 
 type DestinationRow = { id: string; value: string };
 
@@ -12,17 +20,25 @@ function newDestinationRow(): DestinationRow {
     return { id: crypto.randomUUID(), value: "" };
 }
 
+function getInitialBookingSlot(): { date: Date; time: string } {
+    const minMs = getMinimumPickupUtcMs();
+    const { y, m0, d } = getLondonYmd(Date.now());
+    const date = new Date(y, m0, d);
+    const time = getFirstValidTime12hOnLondonDay(y, m0, d, minMs) ?? "12:00 PM";
+    return { date, time };
+}
+
 export const BookingWidget = () => {
     const navigate = useNavigate();
     const { updateBookingData } = useBooking();
-    const [activeTab, setActiveTab] = useState<"oneway" | "hourly">("oneway");
-    const [selectedDate, setSelectedDate] = useState(new Date(2025, 10, 22)); // Nov 22, 2025
-    const [selectedTime, setSelectedTime] = useState("05:05 PM");
+    const initialSlot = useMemo(() => getInitialBookingSlot(), []);
+    const [selectedDate, setSelectedDate] = useState(initialSlot.date);
+    const [selectedTime, setSelectedTime] = useState(initialSlot.time);
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showTimePicker, setShowTimePicker] = useState(false);
-    const [currentMonth, setCurrentMonth] = useState(new Date(2025, 10, 1)); // November 2025
-    const [selectedDuration, setSelectedDuration] = useState("4 hours");
-    const [showDurationPicker, setShowDurationPicker] = useState(false);
+    const [currentMonth, setCurrentMonth] = useState(
+        () => new Date(initialSlot.date.getFullYear(), initialSlot.date.getMonth(), 1),
+    );
     const [fromLocation, setFromLocation] = useState("");
     const [flightNumber, setFlightNumber] = useState("");
     const [destinations, setDestinations] = useState<DestinationRow[]>(() => [newDestinationRow()]);
@@ -31,9 +47,10 @@ export const BookingWidget = () => {
 
     const datePickerRef = useRef<HTMLDivElement>(null);
     const timePickerRef = useRef<HTMLDivElement>(null);
-    const durationPickerRef = useRef<HTMLDivElement>(null);
     const fromInputRef = useRef<HTMLInputElement>(null);
     const destInputByIdRef = useRef<Map<string, HTMLInputElement | null>>(new Map());
+    const fromCoordsRef = useRef<{ latitude: number; longitude: number } | null>(null);
+    const destCoordsByIdRef = useRef<Map<string, { latitude: number; longitude: number }>>(new Map());
 
     const destinationRowIds = destinations.map((r) => r.id).join("|");
 
@@ -48,18 +65,63 @@ export const BookingWidget = () => {
                 if (el?.closest?.('[role="dialog"]')) return;
                 setShowTimePicker(false);
             }
-            if (durationPickerRef.current && !durationPickerRef.current.contains(event.target as Node)) {
-                setShowDurationPicker(false);
-            }
         };
 
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    const handleDestinationChange = useCallback((id: string, value: string) => {
+    const handleDestinationInputChange = useCallback((id: string, value: string) => {
+        destCoordsByIdRef.current.delete(id);
         setDestinations((prev) => prev.map((row) => (row.id === id ? { ...row, value } : row)));
     }, []);
+
+    const [searchError, setSearchError] = useState("");
+    const [isSearching, setIsSearching] = useState(false);
+
+    const bookingYmdLondon = useMemo(
+        () => ({
+            y: selectedDate.getFullYear(),
+            m0: selectedDate.getMonth(),
+            d: selectedDate.getDate(),
+        }),
+        [selectedDate],
+    );
+
+    useEffect(() => {
+        const minMs = getMinimumPickupUtcMs();
+        const y = selectedDate.getFullYear();
+        const m0 = selectedDate.getMonth();
+        const d = selectedDate.getDate();
+        setSelectedTime((prev) => {
+            if (isPickupAtLeastTwoHoursAheadLondon(selectedDate, prev)) return prev;
+            return getFirstValidTime12hOnLondonDay(y, m0, d, minMs) ?? prev;
+        });
+    }, [selectedDate]);
+
+    const sanitizeTimeOnPickerOpen = useCallback(
+        (cur: string) => {
+            if (isPickupAtLeastTwoHoursAheadLondon(selectedDate, cur)) return cur;
+            const minMs = getMinimumPickupUtcMs();
+            return (
+                getFirstValidTime12hOnLondonDay(
+                    bookingYmdLondon.y,
+                    bookingYmdLondon.m0,
+                    bookingYmdLondon.d,
+                    minMs,
+                ) ?? cur
+            );
+        },
+        [selectedDate, bookingYmdLondon],
+    );
+
+    const getPickupTimeCommitError = useCallback(
+        (t: string) =>
+            isPickupAtLeastTwoHoursAheadLondon(selectedDate, t)
+                ? null
+                : "Pickup must be at least 2 hours from now (UK / London time).",
+        [selectedDate],
+    );
 
     /** From stays mounted outside tab animation — bind once per widget mount. */
     useLayoutEffect(() => {
@@ -75,7 +137,15 @@ export const BookingWidget = () => {
             sessionCleanups.length = 0;
             const el = fromInputRef.current;
             if (el) {
-                sessionCleanups.push(bindPlacesAutocomplete(el, setFromLocation));
+                sessionCleanups.push(
+                    bindPlacesAutocomplete(el, (place) => {
+                        fromCoordsRef.current = {
+                            latitude: place.latitude,
+                            longitude: place.longitude,
+                        };
+                        setFromLocation(place.formattedAddress);
+                    }),
+                );
             }
         };
 
@@ -100,10 +170,10 @@ export const BookingWidget = () => {
         };
     }, []);
 
-    /** To / stops — rebind only when row ids or tab change, not on every keystroke. */
+    /** To / stops — rebind only when row ids change, not on every keystroke. */
     useLayoutEffect(() => {
         const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
-        if (!apiKey?.trim() || activeTab !== "oneway") return;
+        if (!apiKey?.trim()) return;
 
         let cancelled = false;
         let rafId = 0;
@@ -116,7 +186,17 @@ export const BookingWidget = () => {
                 const el = destInputByIdRef.current.get(row.id);
                 if (el) {
                     sessionCleanups.push(
-                        bindPlacesAutocomplete(el, (addr) => handleDestinationChange(row.id, addr)),
+                        bindPlacesAutocomplete(el, (place) => {
+                            destCoordsByIdRef.current.set(row.id, {
+                                latitude: place.latitude,
+                                longitude: place.longitude,
+                            });
+                            setDestinations((prev) =>
+                                prev.map((r) =>
+                                    r.id === row.id ? { ...r, value: place.formattedAddress } : r,
+                                ),
+                            );
+                        }),
                     );
                 }
             }
@@ -139,7 +219,7 @@ export const BookingWidget = () => {
             sessionCleanups.forEach((fn) => fn());
             sessionCleanups.length = 0;
         };
-    }, [activeTab, destinationRowIds, handleDestinationChange]);
+    }, [destinationRowIds]);
 
     // Format date for display
     const formatDate = (date: Date) => {
@@ -171,8 +251,6 @@ export const BookingWidget = () => {
 
     const calendarDays = generateCalendarDays();
 
-    const durations = Array.from({ length: 21 }, (_, i) => `${4 + i} hours`);
-
     const goToPreviousMonth = () => {
         setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
     };
@@ -197,33 +275,94 @@ export const BookingWidget = () => {
     };
 
     const handleRemoveDestination = (id: string) => {
+        destCoordsByIdRef.current.delete(id);
         setDestinations((prev) => prev.filter((row) => row.id !== id));
+    };
+
+    const handleSearch = async () => {
+        setSearchError("");
+        if (!isPickupAtLeastTwoHoursAheadLondon(selectedDate, selectedTime)) {
+            setSearchError(
+                "Pickup date and time must be at least 2 hours from now (UK / London time).",
+            );
+            return;
+        }
+        const toLocations = destinations.map((d) => d.value.trim()).filter(Boolean);
+        const firstDestRow = destinations.find((d) => d.value.trim() !== "");
+
+        if (!fromLocation.trim()) {
+            setSearchError("Please enter a pickup location.");
+            return;
+        }
+        if (!firstDestRow) {
+            setSearchError("Please enter a destination.");
+            return;
+        }
+
+        const fromCoords = fromCoordsRef.current;
+        const toCoords = destCoordsByIdRef.current.get(firstDestRow.id);
+        if (!fromCoords || !toCoords) {
+            setSearchError(
+                "Please choose From and To from the Google suggestions list so we can calculate the route.",
+            );
+            return;
+        }
+
+        const pickupType = flightNumber.trim() ? "airport" : "standard";
+        setIsSearching(true);
+        try {
+            const quoteResponse = await fetchGetQuotes({
+                from: fromCoords,
+                to: toCoords,
+                pickup_type: pickupType,
+            });
+            updateBookingData({
+                bookingType: "oneway",
+                fromLocation,
+                toLocation: destinations.map((d) => d.value),
+                flightNumber,
+                date: selectedDate,
+                time: selectedTime,
+                duration: "4 hours",
+                quoteResponse,
+                quotePickupType: pickupType,
+                routePoints: {
+                    from: {
+                        address: fromLocation.trim(),
+                        latitude: fromCoords.latitude,
+                        longitude: fromCoords.longitude,
+                    },
+                    to: {
+                        address: firstDestRow.value.trim(),
+                        latitude: toCoords.latitude,
+                        longitude: toCoords.longitude,
+                    },
+                    stops: destinations
+                        .filter((d) => d.id !== firstDestRow.id && d.value.trim() !== "")
+                        .map((d) => {
+                            const coords = destCoordsByIdRef.current.get(d.id);
+                            return coords
+                                ? {
+                                    address: d.value.trim(),
+                                    latitude: coords.latitude,
+                                    longitude: coords.longitude,
+                                }
+                                : null;
+                        })
+                        .filter((x): x is { address: string; latitude: number; longitude: number } => x !== null),
+                },
+                selectedCar: undefined,
+            });
+            navigate("/booking/select-car");
+        } catch (e) {
+            setSearchError(e instanceof Error ? e.message : "Could not load prices. Try again.");
+        } finally {
+            setIsSearching(false);
+        }
     };
 
     return (
         <div className="w-full max-w-md bg-white rounded-xl shadow-2xl overflow-visible font-inter border border-slate-100">
-            {/* Tabs */}
-            <div className="flex border-b border-gray-100">
-                <button
-                    onClick={() => setActiveTab("oneway")}
-                    className={`flex-1 py-4 text-base font-semibold transition-colors ${activeTab === "oneway"
-                        ? "bg-white text-[#487307] border-b-2 border-[#487307]"
-                        : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700"
-                        }`}
-                >
-                    One way
-                </button>
-                <button
-                    onClick={() => setActiveTab("hourly")}
-                    className={`flex-1 py-4 text-base font-semibold transition-colors ${activeTab === "hourly"
-                        ? "bg-white text-[#487307] border-b-2 border-[#487307]"
-                        : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700"
-                        }`}
-                >
-                    By the hour
-                </button>
-            </div>
-
             {/* Content */}
             <div className="p-6 space-y-4 overflow-visible">
                 {/* From — outside tab animation so the input/DOM node (and Places Autocomplete) are not torn down on tab change */}
@@ -239,8 +378,14 @@ export const BookingWidget = () => {
                             ref={fromInputRef}
                             type="text"
                             value={fromLocation}
-                            onChange={(e) => setFromLocation(e.target.value)}
-                            onInput={(e) => setFromLocation((e.target as HTMLInputElement).value)}
+                            onChange={(e) => {
+                                fromCoordsRef.current = null;
+                                setFromLocation(e.target.value);
+                            }}
+                            onInput={(e) => {
+                                fromCoordsRef.current = null;
+                                setFromLocation((e.target as HTMLInputElement).value);
+                            }}
                             placeholder="Address, airport, hotel, ..."
                             className="w-full bg-transparent border-none p-0 text-slate-900 placeholder-slate-400 focus:ring-0 text-sm font-medium outline-none"
                             autoComplete="off"
@@ -248,18 +393,8 @@ export const BookingWidget = () => {
                     </div>
                 </div>
 
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={activeTab}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                        className="space-y-4 overflow-visible"
-                    >
-                        {/* Destinations (One Way) */}
-                        {activeTab === "oneway" && (
-                            <div className="space-y-2">
+                <div className="space-y-4 overflow-visible">
+                        <div className="space-y-2">
                                 {destinations.map((row, index) => (
                                     <div key={row.id} className="relative group">
                                         <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors z-10">
@@ -276,9 +411,14 @@ export const BookingWidget = () => {
                                                 }}
                                                 type="text"
                                                 value={row.value}
-                                                onChange={(e) => handleDestinationChange(row.id, e.target.value)}
+                                                onChange={(e) =>
+                                                    handleDestinationInputChange(row.id, e.target.value)
+                                                }
                                                 onInput={(e) =>
-                                                    handleDestinationChange(row.id, (e.target as HTMLInputElement).value)
+                                                    handleDestinationInputChange(
+                                                        row.id,
+                                                        (e.target as HTMLInputElement).value,
+                                                    )
                                                 }
                                                 placeholder="Address, airport, hotel, ..."
                                                 className="w-full bg-transparent border-none p-0 text-slate-900 placeholder-slate-400 focus:ring-0 text-sm font-medium outline-none"
@@ -311,82 +451,7 @@ export const BookingWidget = () => {
                                         )}
                                     </div>
                                 ))}
-                            </div>
-                        )}
-
-
-
-                        {/* Duration (Only for Hourly) */}
-                        {activeTab === "hourly" && (
-                            <div className="relative group" ref={durationPickerRef}>
-                                <div className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-[#487307] transition-colors z-10">
-                                    <Clock className="w-5 h-5" />
-                                </div>
-                                <div
-                                    onClick={() => {
-                                        setShowDurationPicker(!showDurationPicker);
-                                        setShowDatePicker(false);
-                                        setShowTimePicker(false);
-                                    }}
-                                    className={`pl-12 pr-4 py-3 bg-slate-50 rounded-lg border transition-all shadow-sm cursor-pointer ${showDurationPicker
-                                        ? "border-[#487307] bg-white"
-                                        : "border-transparent group-hover:border-slate-200"
-                                        }`}
-                                >
-                                    <label className="block text-xs font-semibold text-slate-500 mb-0.5">
-                                        Duration
-                                    </label>
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-sm font-medium text-slate-900">
-                                            {selectedDuration}
-                                        </span>
-                                        <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${showDurationPicker ? "rotate-180" : ""}`} />
-                                    </div>
-                                </div>
-
-                                {/* Duration Picker Dropdown */}
-                                <AnimatePresence>
-                                    {showDurationPicker && (
-                                        <motion.div
-                                            data-lenis-prevent
-                                            initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                                            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                                            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                                            className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl p-4 z-50 max-h-72 overflow-y-auto overscroll-contain border-2 border-green-100"
-                                            style={{
-                                                boxShadow: "0 25px 70px rgba(72, 115, 7, 0.25), 0 0 0 1px rgba(72, 115, 7, 0.1)"
-                                            }}
-                                        >
-                                            <div className="grid grid-cols-3 gap-2">
-                                                {durations.map((duration) => (
-                                                    <button
-                                                        key={duration}
-                                                        onClick={() => {
-                                                            setSelectedDuration(duration);
-                                                            setShowDurationPicker(false);
-                                                        }}
-                                                        className={`px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 relative overflow-hidden ${duration === selectedDuration
-                                                            ? "bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white shadow-lg shadow-[#487307]/50 scale-105 ring-2 ring-green-200"
-                                                            : "text-slate-700 hover:bg-green-50 border border-green-100 hover:border-green-300 hover:scale-105 hover:text-green-600 hover:shadow-md"
-                                                            }`}
-                                                    >
-                                                        {duration === selectedDuration && (
-                                                            <motion.div
-                                                                layoutId="selectedDuration"
-                                                                className="absolute inset-0 bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b]"
-                                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                                            />
-                                                        )}
-                                                        <span className="relative z-10">{duration}</span>
-                                                    </button>
-                                                ))}
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                        )}
+                        </div>
 
                         {/* Flight Number */}
                         <div className="relative group">
@@ -482,11 +547,23 @@ export const BookingWidget = () => {
                                                     {day ? (
                                                         <button
                                                             type="button"
+                                                            disabled={isCalendarDayDisabledForMinPickup(
+                                                                day,
+                                                                getMinimumPickupUtcMs(),
+                                                            )}
                                                             onClick={() => {
+                                                                if (
+                                                                    isCalendarDayDisabledForMinPickup(
+                                                                        day,
+                                                                        getMinimumPickupUtcMs(),
+                                                                    )
+                                                                ) {
+                                                                    return;
+                                                                }
                                                                 setSelectedDate(day);
                                                                 setShowDatePicker(false);
                                                             }}
-                                                            className={`flex h-9 w-full max-w-[2.5rem] items-center justify-center rounded-lg text-sm font-semibold transition-colors relative overflow-hidden ${isSameDay(day, selectedDate)
+                                                            className={`flex h-9 w-full max-w-[2.5rem] items-center justify-center rounded-lg text-sm font-semibold transition-colors relative overflow-hidden disabled:opacity-35 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-slate-400 ${isSameDay(day, selectedDate)
                                                                 ? "bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white shadow-md ring-2 ring-green-200/80"
                                                                 : isToday(day)
                                                                     ? "bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] text-white font-bold ring-2 ring-green-200/80 hover:opacity-95"
@@ -544,31 +621,37 @@ export const BookingWidget = () => {
                                 onOpenChange={setShowTimePicker}
                                 value={selectedTime}
                                 onCommit={setSelectedTime}
+                                bookingYmdLondon={bookingYmdLondon}
+                                getCommitError={getPickupTimeCommitError}
+                                sanitizeOnOpen={sanitizeTimeOnPickerOpen}
                             />
                         </div>
 
 
 
+                        {searchError && (
+                            <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
+                                {searchError}
+                            </p>
+                        )}
+
                         {/* Search Button */}
                         <button
-                            onClick={() => {
-                                updateBookingData({
-                                    bookingType: activeTab,
-                                    fromLocation,
-                                    toLocation: destinations.map((d) => d.value),
-                                    flightNumber,
-                                    date: selectedDate,
-                                    time: selectedTime,
-                                    duration: selectedDuration,
-                                });
-                                navigate('/booking/select-car');
-                            }}
-                            className="w-full py-4 rounded-lg bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] text-white font-montserrat font-bold text-lg shadow-lg shadow-[#2a4204]/35 hover:opacity-90 transition-all transform active:scale-[0.98]"
+                            type="button"
+                            disabled={isSearching}
+                            onClick={() => void handleSearch()}
+                            className="w-full py-4 rounded-lg bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] text-white font-montserrat font-bold text-lg shadow-lg shadow-[#2a4204]/35 hover:opacity-90 transition-all transform active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                         >
-                            Search
+                            {isSearching ? (
+                                <>
+                                    <Loader2 className="w-5 h-5 animate-spin" />
+                                    Getting prices…
+                                </>
+                            ) : (
+                                "Search"
+                            )}
                         </button>
-                    </motion.div>
-                </AnimatePresence>
+                </div>
             </div>
         </div>
     );

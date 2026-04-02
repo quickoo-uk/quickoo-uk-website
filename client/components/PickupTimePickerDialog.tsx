@@ -1,5 +1,12 @@
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import {
+    getFirstValidTime12hOnLondonDay,
+    getLondonWallClockFromUtc,
+    getMinimumPickupUtcMs,
+    getUtcMillisForLondonWallClock,
+    time24To12hString,
+} from "@/lib/londonPickupWindow";
+import {
     Dialog,
     DialogContent,
     DialogHeader,
@@ -146,29 +153,80 @@ function ScrollColumn<T extends string | number>({
     );
 }
 
+type BookingYmd = { y: number; m0: number; d: number };
+
 type PickupTimePickerDialogProps = {
     open: boolean;
     onOpenChange: (open: boolean) => void;
     value: string;
     onCommit: (time: string) => void;
+    /** When set, pickup uses this calendar day in UK (London) with the chosen time. */
+    bookingYmdLondon?: BookingYmd;
+    /** Return an error message to block commit, or null if OK. */
+    getCommitError?: (time12h: string) => string | null;
+    /** When dialog opens, replace invalid time with parent-suggested string. */
+    sanitizeOnOpen?: (current: string) => string;
 };
 
-export function PickupTimePickerDialog({ open, onOpenChange, value, onCommit }: PickupTimePickerDialogProps) {
+export function PickupTimePickerDialog({
+    open,
+    onOpenChange,
+    value,
+    onCommit,
+    bookingYmdLondon,
+    getCommitError,
+    sanitizeOnOpen,
+}: PickupTimePickerDialogProps) {
     const [hour, setHour] = useState(9);
     const [minute, setMinute] = useState(0);
     const [period, setPeriod] = useState<"AM" | "PM">("AM");
+    const [commitError, setCommitError] = useState("");
 
     useLayoutEffect(() => {
         if (!open) return;
-        const p = parseTime12h(value);
+        setCommitError("");
+        const raw = sanitizeOnOpen ? sanitizeOnOpen(value) : value;
+        const p = parseTime12h(raw);
         setHour(p.h);
         setMinute(p.m);
         setPeriod(p.p);
-    }, [open, value]);
+    }, [open, value, sanitizeOnOpen]);
 
     const preview = formatTime12h(hour, minute, period);
 
     const applyNow = () => {
+        setCommitError("");
+        if (bookingYmdLondon) {
+            const minMs = getMinimumPickupUtcMs();
+            const { y, m0, d } = bookingYmdLondon;
+            const londonNow = getLondonWallClockFromUtc(Date.now());
+            const sameDay =
+                londonNow.y === y && londonNow.m0 === m0 && londonNow.d === d;
+            if (sameDay) {
+                const utcNowPick = getUtcMillisForLondonWallClock(
+                    y,
+                    m0,
+                    d,
+                    londonNow.h24,
+                    londonNow.mm,
+                );
+                if (utcNowPick >= minMs) {
+                    const p = parseTime12h(time24To12hString(londonNow.h24, londonNow.mm));
+                    setHour(p.h);
+                    setMinute(p.m);
+                    setPeriod(p.p);
+                    return;
+                }
+            }
+            const first = getFirstValidTime12hOnLondonDay(y, m0, d, minMs);
+            if (first) {
+                const p = parseTime12h(first);
+                setHour(p.h);
+                setMinute(p.m);
+                setPeriod(p.p);
+                return;
+            }
+        }
         const n = nowTo12h();
         setHour(n.h);
         setMinute(n.m);
@@ -228,10 +286,16 @@ export function PickupTimePickerDialog({ open, onOpenChange, value, onCommit }: 
                     />
                 </div>
 
+                {commitError ? (
+                    <p className="px-4 pb-2 text-center text-sm text-red-600">{commitError}</p>
+                ) : null}
                 <div className="flex gap-3 p-4 bg-white">
                     <button
                         type="button"
-                        onClick={() => onOpenChange(false)}
+                        onClick={() => {
+                            setCommitError("");
+                            onOpenChange(false);
+                        }}
                         className="flex-1 rounded-xl border border-slate-200 bg-slate-50 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
                     >
                         Cancel
@@ -239,6 +303,12 @@ export function PickupTimePickerDialog({ open, onOpenChange, value, onCommit }: 
                     <button
                         type="button"
                         onClick={() => {
+                            const err = getCommitError?.(preview) ?? null;
+                            if (err) {
+                                setCommitError(err);
+                                return;
+                            }
+                            setCommitError("");
                             onCommit(preview);
                             onOpenChange(false);
                         }}

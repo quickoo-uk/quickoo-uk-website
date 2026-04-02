@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Menu, X, Phone } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 const logo = "/images/logo-2.png";
 import { FLEET_TYPES } from "@shared/fleet";
@@ -193,41 +193,7 @@ export const Navbar = () => {
               </Link>
             </div>
 
-            {/* RIGHT SIDE — Phone Numbers + Book Now */}
-            <div className="hidden lg:flex items-center gap-4 xl:gap-6">
-              <div className="hidden xl:flex items-center gap-1">
-                <Phone
-                  className={cn(
-                    "w-4 h-4",
-                    isScrolled ? "text-gold" : "text-[#6d5ab8]",
-                  )}
-                />
-                <span
-                  className={cn(
-                    "text-sm",
-                    isScrolled ? "text-dark" : "text-[#2a1b4d]",
-                  )}
-                >
-                  +44 20 3576 1617
-                </span>
-              </div>
-              {/* BOOK NOW */}
-              <Link
-                to="/book-now"
-                className={cn(
-                  "px-6 xl:px-8 py-2.5 xl:py-3 font-inter text-xs xl:text-sm rounded-full transition-all font-semibold shadow-lg shadow-[#3c2c7d33] whitespace-nowrap",
-                  isScrolled
-                    ? "luxury-button-gold text-white hover:opacity-90"
-                    : "luxury-button-gold text-white hover:opacity-90",
-                )}
-              >
-                Book Now
-              </Link>
-            </div>
-
-
-
-            {/* BOOK NOW */}
+            {/* RIGHT SIDE removed per design update */}
 
           </div>
 
@@ -423,41 +389,7 @@ export const Navbar = () => {
               Contact
             </Link>
 
-            {/* Phone Numbers in Mobile Menu */}
-            <div className="px-2 pt-4 mt-3 space-y-3 border-t border-[#487307]/20">
-              <a
-                href="tel:+442035761617"
-                onClick={handleNavClick}
-                className="flex items-center gap-3 px-4 py-3 text-white/90 hover:text-white rounded-xl hover:bg-[#487307]/20 transition-all duration-300 backdrop-blur-sm"
-              >
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#487307] to-[#6aa80b] flex items-center justify-center shadow-lg">
-                  <Phone className="w-4 h-4 text-white" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xs text-white/60 uppercase tracking-wider font-semibold">Call Us</span>
-                  <span className="text-sm font-semibold">+44 20 3576 1617</span>
-                </div>
-              </a>
-            </div>
-
-            {/* Book Now */}
-            <div className="px-2 pt-4 pb-2">
-              <Link
-                to="/book-now"
-                onClick={handleNavClick}
-                className="w-full bg-gradient-to-r from-[#487307] to-[#6aa80b] text-white px-8 py-4 rounded-full font-bold text-center shadow-xl shadow-[#487307]/30 hover:shadow-2xl hover:shadow-[#487307]/40 transition-all duration-300 flex items-center justify-center gap-2 group"
-              >
-                <span>Book Now</span>
-                <svg
-                  className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
+            <div className="h-2" />
           </div>
         </div>
       </div>
