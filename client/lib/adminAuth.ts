@@ -1,3 +1,5 @@
+import { backendApiUrl } from "@/lib/backendApiUrl";
+
 export const ADMIN_SESSION_STORAGE_KEY = "quickoo_admin_session_v1";
 
 export type AdminSession = {
@@ -84,7 +86,7 @@ function isTokenExpired(session: AdminSession): boolean {
 }
 
 export async function loginAdmin(email: string, password: string): Promise<AdminSession> {
-  const response = await fetch("/api/admin/login", {
+  const response = await fetch(backendApiUrl("/api/v1/admins/login"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -122,7 +124,7 @@ export async function refreshAdminTokenIfNeeded(): Promise<boolean> {
   if (!session) return false;
   if (!isTokenExpired(session)) return true;
 
-  const response = await fetch("/api/admin/refresh-token", {
+  const response = await fetch(backendApiUrl("/api/v1/admins/refresh-token"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

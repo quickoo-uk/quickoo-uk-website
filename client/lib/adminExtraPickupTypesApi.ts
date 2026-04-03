@@ -1,4 +1,5 @@
 import { clearAdminSession, getValidAdminAccessToken } from "@/lib/adminAuth";
+import { backendApiUrl } from "@/lib/backendApiUrl";
 
 export type ExtraPickupTypeApiItem = {
   id: string;
@@ -58,14 +59,14 @@ async function authorizedJsonFetch(path: string, init: RequestInit): Promise<unk
 }
 
 export async function fetchExtraPickupTypes(): Promise<ExtraPickupTypeApiItem[]> {
-  const data = await authorizedJsonFetch("/api/admin/extra-pickup-types", {
+  const data = await authorizedJsonFetch(backendApiUrl("/api/v1/extra-pickup-types"), {
     method: "GET",
   });
   return extractArray(data).map(normalizeItem).filter((item) => item.id);
 }
 
 export async function createExtraPickupType(payload: ExtraPickupTypePayload): Promise<void> {
-  await authorizedJsonFetch("/api/admin/extra-pickup-types", {
+  await authorizedJsonFetch(backendApiUrl("/api/v1/extra-pickup-types"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -75,7 +76,7 @@ export async function createExtraPickupType(payload: ExtraPickupTypePayload): Pr
 }
 
 export async function updateExtraPickupType(id: string, payload: ExtraPickupTypePayload): Promise<void> {
-  await authorizedJsonFetch(`/api/admin/extra-pickup-types/${id}`, {
+  await authorizedJsonFetch(backendApiUrl(`/api/v1/extra-pickup-types/${id}`), {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -85,7 +86,7 @@ export async function updateExtraPickupType(id: string, payload: ExtraPickupType
 }
 
 export async function deleteExtraPickupType(id: string): Promise<void> {
-  await authorizedJsonFetch(`/api/admin/extra-pickup-types/${id}`, {
+  await authorizedJsonFetch(backendApiUrl(`/api/v1/extra-pickup-types/${id}`), {
     method: "DELETE",
   });
 }
