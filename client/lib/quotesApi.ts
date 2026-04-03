@@ -1,3 +1,5 @@
+import { backendApiUrl } from "@/lib/backendApiUrl";
+
 export type VehicleQuote = {
   vehicle_class_id: string;
   vehicle_class_image: string;
@@ -49,7 +51,7 @@ function normalizeVehicleQuote(raw: Record<string, unknown>): VehicleQuote {
 }
 
 export async function fetchGetQuotes(body: GetQuotesRequestBody): Promise<GetQuotesResponse> {
-  const response = await fetch("/api/quotes/get-quotes", {
+  const response = await fetch(backendApiUrl("/api/v1/quotes/get-quotes"), {
     method: "POST",
     headers: {
       accept: "application/json",

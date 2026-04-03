@@ -1,4 +1,5 @@
 import { clearAdminSession, getValidAdminAccessToken } from "@/lib/adminAuth";
+import { backendApiUrl } from "@/lib/backendApiUrl";
 
 export type VehicleClassApiItem = {
   id: string;
@@ -64,14 +65,14 @@ async function authorizedJsonFetch(path: string, init: RequestInit): Promise<unk
 }
 
 export async function fetchVehicleClasses(): Promise<VehicleClassApiItem[]> {
-  const data = await authorizedJsonFetch("/api/admin/vehicle-classes", {
+  const data = await authorizedJsonFetch(backendApiUrl("/api/v1/vehicle-classes"), {
     method: "GET",
   });
   return extractArray(data).map(normalizeVehicleClass).filter((item) => item.id);
 }
 
 export async function createVehicleClass(payload: VehicleClassPayload): Promise<void> {
-  await authorizedJsonFetch("/api/admin/vehicle-classes", {
+  await authorizedJsonFetch(backendApiUrl("/api/v1/vehicle-classes"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -81,7 +82,7 @@ export async function createVehicleClass(payload: VehicleClassPayload): Promise<
 }
 
 export async function updateVehicleClass(id: string, payload: VehicleClassPayload): Promise<void> {
-  await authorizedJsonFetch(`/api/admin/vehicle-classes/${id}`, {
+  await authorizedJsonFetch(backendApiUrl(`/api/v1/vehicle-classes/${id}`), {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -91,7 +92,7 @@ export async function updateVehicleClass(id: string, payload: VehicleClassPayloa
 }
 
 export async function deleteVehicleClass(id: string): Promise<void> {
-  await authorizedJsonFetch(`/api/admin/vehicle-classes/${id}`, {
+  await authorizedJsonFetch(backendApiUrl(`/api/v1/vehicle-classes/${id}`), {
     method: "DELETE",
   });
 }
@@ -110,7 +111,7 @@ export function extractPublicUrlFromUploadResponse(data: unknown): string {
   return url;
 }
 
-/** Same-origin proxy → backend upload (avoids browser CORS to :8000). */
+/** Direct upload to FastAPI (CORS must allow this origin). */
 export async function uploadVehicleClassImage(file: File): Promise<string> {
   const token = await getValidAdminAccessToken();
   if (!token) {
@@ -121,7 +122,7 @@ export async function uploadVehicleClassImage(file: File): Promise<string> {
   const formData = new FormData();
   formData.append("file", file);
 
-  const response = await fetch("/api/admin/files/upload", {
+  const response = await fetch(backendApiUrl("/api/v1/files/upload"), {
     method: "POST",
     headers: {
       accept: "application/json",

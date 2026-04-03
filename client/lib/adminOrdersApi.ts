@@ -1,4 +1,5 @@
 import { clearAdminSession, getValidAdminAccessToken } from "@/lib/adminAuth";
+import { backendApiUrl } from "@/lib/backendApiUrl";
 import type { CreateOrderRequestBody, CreateOrderRoutePoint, UpdateOrderRequestBody } from "@/lib/ordersApi";
 
 /** Canonical UI/API status values (lowercase with space). */
@@ -159,14 +160,14 @@ async function authorizedJsonFetch(path: string, init: RequestInit): Promise<unk
 }
 
 export async function fetchAdminOrders(): Promise<AdminOrderRow[]> {
-  const data = await authorizedJsonFetch("/api/admin/orders", { method: "GET" });
+  const data = await authorizedJsonFetch(backendApiUrl("/api/v1/orders"), { method: "GET" });
   return extractOrdersArray(data)
     .map((row) => normalizeAdminOrder(row))
     .filter((row): row is AdminOrderRow => row !== null);
 }
 
 export async function createAdminOrder(body: CreateOrderRequestBody): Promise<unknown> {
-  return authorizedJsonFetch("/api/admin/orders", {
+  return authorizedJsonFetch(backendApiUrl("/api/v1/orders"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
@@ -174,7 +175,7 @@ export async function createAdminOrder(body: CreateOrderRequestBody): Promise<un
 }
 
 export async function updateAdminOrder(orderId: string, body: UpdateOrderRequestBody): Promise<unknown> {
-  return authorizedJsonFetch(`/api/admin/orders/${encodeURIComponent(orderId)}`, {
+  return authorizedJsonFetch(backendApiUrl(`/api/v1/orders/${encodeURIComponent(orderId)}`), {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),

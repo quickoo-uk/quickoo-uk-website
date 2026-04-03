@@ -1,7 +1,8 @@
 import type { BookingData } from "@/contexts/BookingContext";
+import { backendApiUrl } from "@/lib/backendApiUrl";
 
 /**
- * Request body for POST /api/v1/orders (same-origin: POST /api/orders).
+ * Request body for POST /api/v1/orders (browser: direct to FastAPI).
  * Field names match backend OpenAPI (including transcation_id spelling).
  */
 export type CreateOrderRoutePoint = {
@@ -126,7 +127,7 @@ export function buildCreateOrderRequestBody(
 }
 
 export async function fetchCreateOrder(body: CreateOrderRequestBody): Promise<unknown> {
-  const response = await fetch("/api/orders", {
+  const response = await fetch(backendApiUrl("/api/v1/orders"), {
     method: "POST",
     headers: {
       accept: "application/json",

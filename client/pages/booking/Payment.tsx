@@ -7,6 +7,7 @@ import { ArrowLeft, Check, CreditCard, Loader2 } from "lucide-react";
 import { useBooking } from "@/contexts/BookingContext";
 import { StripePaymentForm } from "@/components/booking/StripePaymentForm";
 import { buildCreateOrderRequestBody, fetchCreateOrder } from "@/lib/ordersApi";
+import { backendApiUrl } from "@/lib/backendApiUrl";
 
 const publishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string | undefined;
 
@@ -158,7 +159,7 @@ export default function Payment() {
     let cancelled = false;
     setIntentLoading(true);
     setIntentError("");
-    fetch("/api/stripe/create-payment-intent", {
+    fetch(backendApiUrl("/api/v1/payments/create-payment-intent"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
