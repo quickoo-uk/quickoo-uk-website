@@ -35,7 +35,6 @@ export default function Payment() {
   const [intentError, setIntentError] = useState("");
   const returnHandledRef = useRef(false);
 
-  const breakdown = bookingData.selectedCar?.price_breakdown ?? [];
   const total =
     bookingData.selectedCar?.total_price ?? bookingData.selectedCar?.price ?? 0;
   const amountPence = Math.max(0, Math.round(total * 100));
@@ -289,20 +288,6 @@ export default function Payment() {
               <p className="text-sm text-slate-500">{bookingData.selectedCar.name}</p>
             </div>
           </div>
-
-          {breakdown.length > 0 && (
-            <div className="border-t border-slate-100 pt-4">
-              <p className="text-sm font-semibold text-slate-700 mb-3">Price breakdown</p>
-              <ul className="space-y-2 text-sm">
-                {breakdown.map((line, i) => (
-                  <li key={i} className="flex justify-between gap-4 text-slate-600">
-                    <span className="min-w-0">{line.description}</span>
-                    <span className="font-medium text-slate-900 shrink-0">£{line.amount.toFixed(2)}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
 
           {!publishableKey?.trim() && (
             <p className="text-sm text-amber-800 bg-amber-50 border border-amber-100 rounded-lg px-3 py-2">

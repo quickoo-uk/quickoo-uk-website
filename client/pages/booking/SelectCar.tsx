@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Users, Luggage, Check, ArrowRight, ArrowLeft, Info, ChevronDown } from "lucide-react";
+import { Users, Luggage, Check, ArrowRight, ArrowLeft, Info } from "lucide-react";
 import { useBooking } from "@/contexts/BookingContext";
 import type { VehicleQuote } from "@/lib/quotesApi";
 
@@ -13,7 +13,6 @@ type StaticVehicle = {
   guests: number;
   luggage: number;
   description: string;
-  longDescription: string;
   vehicles: string[];
 };
 
@@ -26,8 +25,6 @@ const VEHICLE_CLASSES: StaticVehicle[] = [
     guests: 3,
     luggage: 2,
     description: "Mercedes E-Class, BMW 5 Series, or similar premium executive vehicles.",
-    longDescription:
-      "Perfect for business meetings and airport transfers. Enjoy a smooth ride in our premium executive sedans.",
     vehicles: ["Mercedes E-Class", "BMW 5 Series", "Or similar"],
   },
   {
@@ -38,7 +35,6 @@ const VEHICLE_CLASSES: StaticVehicle[] = [
     guests: 3,
     luggage: 2,
     description: "Mercedes S-Class, BMW 7 Series, or similar luxury sedans.",
-    longDescription: "The ultimate in luxury and comfort. Ideal for VIPs and special occasions.",
     vehicles: ["Mercedes S-Class", "BMW 7 Series", "Or similar luxury sedan"],
   },
   {
@@ -49,7 +45,6 @@ const VEHICLE_CLASSES: StaticVehicle[] = [
     guests: 6,
     luggage: 6,
     description: "Mercedes Vito or similar executive vans for group travel.",
-    longDescription: "Spacious and comfortable for groups or families with extra luggage.",
     vehicles: ["Mercedes Vito", "Or similar executive van"],
   },
 ];
@@ -61,7 +56,6 @@ type DisplayVehicle = {
   guests: number;
   luggage: number;
   subtitle: string;
-  longDescription: string;
   features: string[];
   totalPrice: number | null;
   price_breakdown?: { description: string; amount: number }[];
@@ -75,9 +69,6 @@ function quoteToDisplay(vq: VehicleQuote): DisplayVehicle {
     guests: vq.allow_passengers,
     luggage: vq.allow_luggage,
     subtitle: `${vq.class_name} or similar`,
-    longDescription:
-      vq.price_breakdown.find((l) => l.description.toLowerCase().includes("distance"))?.description ??
-      "Pricing includes distance, applicable surcharges, and VAT as shown in your quote breakdown on checkout.",
     features: [vq.class_name],
     totalPrice: vq.total_price,
     price_breakdown: vq.price_breakdown,
@@ -92,7 +83,6 @@ function staticToDisplay(car: StaticVehicle): DisplayVehicle {
     guests: car.guests,
     luggage: car.luggage,
     subtitle: `${car.vehicles[0]} or similar`,
-    longDescription: car.longDescription,
     features: car.vehicles,
     totalPrice: null,
     price_breakdown: undefined,
@@ -209,14 +199,6 @@ export default function SelectCar() {
               <p className="text-xs text-slate-500 mb-1">Time</p>
               <p className="text-sm font-semibold text-slate-900">{bookingData.time}</p>
             </div>
-            {bookingData.quoteResponse != null && bookingData.bookingType === "oneway" && (
-              <div>
-                <p className="text-xs text-slate-500 mb-1">Distance</p>
-                <p className="text-sm font-semibold text-slate-900">
-                  {bookingData.quoteResponse.distance_miles.toFixed(2)} mi
-                </p>
-              </div>
-            )}
             {bookingData.flightNumber?.trim() && (
               <div>
                 <p className="text-xs text-slate-500 mb-1">Flight Number</p>
@@ -275,39 +257,10 @@ export default function SelectCar() {
                           <p className="text-lg sm:text-xl font-bold text-[#487307]">£{car.totalPrice.toFixed(2)}</p>
                         </div>
                       )}
-                      <ChevronDown
-                        className={`w-4 h-4 sm:w-5 sm:h-5 text-slate-400 transition-transform duration-300 ${
-                          selectedCarId === car.id ? "rotate-180 text-[#487307]" : ""
-                        }`}
-                      />
                     </div>
                   </div>
                 </div>
               </div>
-
-              {selectedCarId === car.id && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  className="px-6 pb-6 pt-0"
-                >
-                  <div className="mt-6 text-sm text-slate-500 space-y-3">
-                    <p className="italic">{car.longDescription}</p>
-                    {car.price_breakdown && car.price_breakdown.length > 0 && (
-                      <ul className="not-italic text-xs space-y-1 border-t border-slate-200 pt-3">
-                        {car.price_breakdown.map((line, i) => (
-                          <li key={i} className="flex justify-between gap-4 text-slate-600">
-                            <span className="min-w-0">{line.description}</span>
-                            <span className="font-semibold text-slate-800 shrink-0">
-                              £{line.amount.toFixed(2)}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                </motion.div>
-              )}
             </motion.div>
           ))}
         </div>
