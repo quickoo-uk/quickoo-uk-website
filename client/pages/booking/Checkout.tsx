@@ -11,6 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { useBooking } from "@/contexts/BookingContext";
+import { displayPriceBreakdownDescription } from "@/lib/priceBreakdownDisplay";
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -19,7 +20,9 @@ export default function Checkout() {
   const breakdown = bookingData.selectedCar?.price_breakdown ?? [];
   const total =
     bookingData.selectedCar?.total_price ?? bookingData.selectedCar?.price ?? 0;
-  const hasPricedQuote = breakdown.length > 0 || (bookingData.selectedCar?.total_price != null && bookingData.selectedCar.total_price > 0);
+  const hasPricedQuote =
+    breakdown.length > 0 ||
+    (bookingData.selectedCar?.total_price != null && bookingData.selectedCar.total_price > 0);
 
   const handleBack = () => {
     navigate("/booking/customer-info");
@@ -111,17 +114,6 @@ export default function Checkout() {
                       ) : (
                         bookingData.toLocation || "Not specified"
                       )}
-                    </div>
-                  </div>
-                )}
-                {bookingData.quoteResponse != null && bookingData.bookingType === "oneway" && (
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-slate-400 mt-1" />
-                    <div>
-                      <p className="text-sm text-slate-500">Route distance</p>
-                      <p className="text-base font-semibold text-slate-900">
-                        {bookingData.quoteResponse.distance_miles.toFixed(2)} miles
-                      </p>
                     </div>
                   </div>
                 )}
@@ -250,7 +242,9 @@ export default function Checkout() {
                 <ul className="space-y-3 text-sm border-b border-slate-100 pb-4">
                   {breakdown.map((line, i) => (
                     <li key={i} className="flex justify-between gap-3 text-slate-600">
-                      <span className="min-w-0 leading-snug">{line.description}</span>
+                      <span className="min-w-0 leading-snug">
+                        {displayPriceBreakdownDescription(line.description)}
+                      </span>
                       <span className="font-semibold text-slate-900 shrink-0">£{line.amount.toFixed(2)}</span>
                     </li>
                   ))}

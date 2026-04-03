@@ -61,6 +61,9 @@ export async function fetchGetQuotes(body: GetQuotesRequestBody): Promise<GetQuo
   });
 
   const data = await response.json().catch(() => ({}));
+  if (Array.isArray(data.vehicle_quotes)) {
+    data.vehicle_quotes = [...data.vehicle_quotes].reverse();
+  }
   if (!response.ok) {
     throw new Error(
       (data as { detail?: string; message?: string })?.detail ||
