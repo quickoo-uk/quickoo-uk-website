@@ -167,7 +167,7 @@ export default function LuxuryFleetPage() {
                                 </p>
 
                                 <div className="flex flex-wrap gap-4">
-                                    <Link to="/book-now">
+                                    <Link to="/#home-booking">
                                         <button className="luxury-button-gold px-7 py-3 text-base rounded-full">
                                             View Our Fleet
                                         </button>
@@ -244,7 +244,7 @@ export default function LuxuryFleetPage() {
                                                 </li>
                                             ))}
                                         </ul>
-                                        <Link to="/book-now">
+                                        <Link to="/#home-booking">
                                             <button className="w-full rounded-xl border border-[#487307]/20 bg-white py-3 text-sm font-semibold text-[#487307] hover:bg-[#487307] hover:text-white transition-colors">
                                                 Book {category.title}
                                             </button>
@@ -407,7 +407,7 @@ export default function LuxuryFleetPage() {
                         Experience the difference of a meticulously maintained luxury fleet. Book your vehicle today.
                     </p>
                     <div className="flex flex-wrap gap-4 justify-center">
-                        <Link to="/book-now">
+                        <Link to="/#home-booking">
                             <button className="bg-white text-[#487307] px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-50 transition shadow-xl">
                                 Book Luxury Vehicle
                             </button>

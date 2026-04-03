@@ -128,7 +128,7 @@ export default function SafetyFirstPage() {
                                 </p>
 
                                 <div className="flex flex-wrap gap-4">
-                                    <Link to="/book-now">
+                                    <Link to="/#home-booking">
                                         <button className="luxury-button-gold px-7 py-3 text-base rounded-full">
                                             Book Secure Ride
                                         </button>
@@ -362,7 +362,7 @@ export default function SafetyFirstPage() {
                         Book with confidence knowing every journey is protected by ISO-certified safety protocols and real-time monitoring.
                     </p>
                     <div className="flex flex-wrap gap-4 justify-center">
-                        <Link to="/book-now">
+                        <Link to="/#home-booking">
                             <button className="bg-white text-[#487307] px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-50 transition shadow-xl">
                                 Book Secure Ride
                             </button>

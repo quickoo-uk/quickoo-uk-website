@@ -127,7 +127,7 @@ export default function TransparentPricingPage() {
                                 </p>
 
                                 <div className="flex flex-wrap gap-4">
-                                    <Link to="/book-now">
+                                    <Link to="/#home-booking">
                                         <button className="luxury-button-gold px-7 py-3 text-base rounded-full">
                                             Get Instant Quote
                                         </button>
@@ -349,7 +349,7 @@ export default function TransparentPricingPage() {
                         See exactly what you'll pay before you book. No surprises, just premium service at a fair price.
                     </p>
                     <div className="flex flex-wrap gap-4 justify-center">
-                        <Link to="/book-now">
+                        <Link to="/#home-booking">
                             <button className="bg-white text-[#487307] px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-50 transition shadow-xl">
                                 Get Instant Quote
                             </button>

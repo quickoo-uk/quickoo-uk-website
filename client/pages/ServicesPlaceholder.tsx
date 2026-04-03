@@ -322,7 +322,7 @@ export default function ServicesPlaceholder() {
             </div>
             <div className="flex flex-wrap gap-4">
               <button
-                onClick={() => navigate('/booking/select-car')}
+                onClick={() => navigate('/#home-booking')}
                 className="rounded-full luxury-button-gold px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#0a1a02]/35 transition hover:scale-[1.02]"
               >
                 Book {serviceName}
@@ -444,7 +444,7 @@ export default function ServicesPlaceholder() {
                         <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-3 transition-transform" />
                       </button>
                       <button
-                        onClick={() => navigate('/booking/select-car')}
+                        onClick={() => navigate('/#home-booking')}
                         className="luxury-button-gold px-10 py-4 text-xs font-bold uppercase tracking-widest shadow-xl hover:scale-105 transition-all active:scale-95"
                       >
                         Book Now
@@ -462,7 +462,7 @@ export default function ServicesPlaceholder() {
                 <p className="text-slate-500 font-inter mt-1">Our concierge can plan a multi-stop journey tailored to your preferences.</p>
               </div>
               <button
-                onClick={() => navigate('/booking/select-car')}
+                onClick={() => navigate('/#home-booking')}
                 className="luxury-button-gold px-10"
               >
                 Plan Custom Route
@@ -548,7 +548,7 @@ export default function ServicesPlaceholder() {
 
                     <div className="mt-8 pt-6 border-t border-slate-200 flex items-center justify-between">
                       <button
-                        onClick={() => navigate('/booking/select-car')}
+                        onClick={() => navigate('/#home-booking')}
                         className="text-xs font-semibold text-slate-900 uppercase tracking-widest group-hover:text-[#487307] transition-colors flex items-center gap-2"
                       >
                         Book Port <ArrowRight className="w-4 h-4" />
@@ -616,7 +616,7 @@ export default function ServicesPlaceholder() {
                           </p>
                           <div className="pt-4 flex items-center justify-between border-t border-slate-100">
                             <button
-                              onClick={() => navigate('/booking/select-car')}
+                              onClick={() => navigate('/#home-booking')}
                               className="text-sm font-bold text-slate-900 uppercase tracking-widest flex items-center gap-3 group/btn hover:text-[#487307] transition-colors"
                             >
                               Book Primary Terminal <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
@@ -656,7 +656,7 @@ export default function ServicesPlaceholder() {
 
                       <div className="mt-10 pt-8 border-t border-slate-200 flex items-center justify-between">
                         <button
-                          onClick={() => navigate('/booking/select-car')}
+                          onClick={() => navigate('/#home-booking')}
                           className="text-sm font-semibold text-slate-900 uppercase tracking-widest group-hover:text-[#487307] transition-colors flex items-center gap-2"
                         >
                           Book Terminal <ArrowRight className="w-4 h-4" />
@@ -875,7 +875,7 @@ export default function ServicesPlaceholder() {
             </div>
             <div className="flex flex-wrap gap-4">
               <button
-                onClick={() => navigate('/booking/select-car')}
+                onClick={() => navigate('/#home-booking')}
                 className="luxury-button-gold px-8 py-4 text-lg shadow-lg shadow-gold/30"
               >
                 Reserve now

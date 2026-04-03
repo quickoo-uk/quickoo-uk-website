@@ -24,19 +24,39 @@ export function ensureGoogleMapsPlacesLoaded(apiKey: string): Promise<void> {
     return loadPromise;
 }
 
-/** Attach Places Autocomplete to an input; returns teardown for listeners. */
+export type PlaceAutocompleteResult = {
+    formattedAddress: string;
+    latitude: number;
+    longitude: number;
+};
+
+/** Attach Places Autocomplete; returns teardown for listeners. */
 export function bindPlacesAutocomplete(
     input: HTMLInputElement,
-    onFormattedAddress: (address: string) => void,
+    onPlaceSelected: (place: PlaceAutocompleteResult) => void,
 ): () => void {
     const autocomplete = new google.maps.places.Autocomplete(input, {
-        fields: ["formatted_address", "name", "place_id"],
+        fields: ["formatted_address", "name", "place_id", "geometry"],
     });
 
     const listener = autocomplete.addListener("place_changed", () => {
         const place = autocomplete.getPlace();
+        const loc = place.geometry?.location;
+        if (!loc) return;
+        const readCoord = (v: number | (() => number) | undefined): number | null => {
+            if (v == null) return null;
+            const n = typeof v === "function" ? v() : v;
+            return typeof n === "number" && !Number.isNaN(n) ? n : null;
+        };
+        const lat = readCoord(loc.lat);
+        const lng = readCoord(loc.lng);
         const text = place.formatted_address ?? place.name ?? "";
-        if (text) onFormattedAddress(text);
+        if (!text || lat == null || lng == null) return;
+        onPlaceSelected({
+            formattedAddress: text,
+            latitude: lat,
+            longitude: lng,
+        });
     });
 
     return () => {

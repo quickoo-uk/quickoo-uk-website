@@ -226,7 +226,7 @@ export default function CityTourDetail() {
 
                                 <div className="pt-4 space-y-4">
                                     <button
-                                        onClick={() => navigate('/booking/select-car')}
+                                        onClick={() => navigate('/#home-booking')}
                                         className="w-full luxury-button-gold py-5 text-lg font-bold flex items-center justify-center gap-3 group"
                                     >
                                         Book Now

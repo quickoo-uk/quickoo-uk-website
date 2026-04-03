@@ -9,7 +9,6 @@ import {
     User,
     Mail,
     Phone,
-    Download,
     Home,
     Car
 } from 'lucide-react';
@@ -34,11 +33,6 @@ export default function Success() {
         navigate('/');
     };
 
-    const handleDownloadConfirmation = () => {
-        // Placeholder for download functionality
-        alert('Download functionality will be implemented with backend integration');
-    };
-
     if (!bookingData.selectedCar || !bookingData.customerInfo) {
         return null;
     }
@@ -49,8 +43,8 @@ export default function Success() {
             <div className="bg-white border-b border-slate-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                     <div className="flex items-center justify-between mb-2">
-                        <h2 className="text-sm font-semibold text-slate-600">Step 4 of 4</h2>
-                        <span className="text-sm font-medium text-[#487307]">100% Complete</span>
+                        <h2 className="text-sm font-semibold text-slate-600">Booking complete</h2>
+                        <span className="text-sm font-medium text-[#487307]">Thank you</span>
                     </div>
                     <div className="w-full bg-slate-200 rounded-full h-2">
                         <motion.div
@@ -255,40 +249,15 @@ export default function Success() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="flex flex-col sm:flex-row gap-4"
+                    className="flex justify-center"
                 >
                     <button
-                        onClick={handleDownloadConfirmation}
-                        className="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-[#487307] bg-white text-[#487307] font-bold hover:bg-green-50 transition-all"
-                    >
-                        <Download className="w-5 h-5" />
-                        Download Confirmation
-                    </button>
-                    <button
                         onClick={handleNewBooking}
-                        className="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#0f1801] via-[#487307] to-[#6aa80b] text-white font-bold hover:shadow-lg hover:shadow-[#487307]/30 transition-all"
+                        className="w-full sm:w-auto min-w-[240px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#0f1801] via-[#487307] to-[#6aa80b] text-white font-bold hover:shadow-lg hover:shadow-[#487307]/30 transition-all"
                     >
                         <Home className="w-5 h-5" />
                         Return to Home
                     </button>
-                </motion.div>
-
-                {/* Support Info */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                    className="text-center mt-12 text-sm text-slate-600"
-                >
-                    <p>Need help? Contact us at{' '}
-                        <a href="tel:+1234567890" className="text-[#487307] font-semibold hover:underline">
-                            +1 (234) 567-890
-                        </a>
-                        {' '}or{' '}
-                        <a href="mailto:support@quickoo.com" className="text-[#487307] font-semibold hover:underline">
-                            support@quickoo.com
-                        </a>
-                    </p>
                 </motion.div>
             </div>
         </div>

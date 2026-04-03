@@ -228,7 +228,7 @@ export default function AboutPage() {
                   and concierge-grade experiences from booking to drop-off.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Link to="/book-now" className="luxury-button-gold px-7 py-3 text-base rounded-full inline-block">
+                  <Link to="/#home-booking" className="luxury-button-gold px-7 py-3 text-base rounded-full inline-block">
                     Book Now
                   </Link>
                   <Link to="/fleet/business-class" className="rounded-full border border-slate-300 px-7 py-3 text-base font-semibold text-slate-900 hover:bg-white transition inline-block">

@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { BookingWidget } from "./BookingWidget";
@@ -7,7 +7,7 @@ export const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative flex min-h-[100dvh] w-full items-center pt-28 pb-20 lg:py-0">
+    <section id="home-booking" className="relative flex min-h-[100dvh] w-full items-center pt-28 pb-20 lg:py-0 scroll-mt-24">
       {/* Hero Image Background — overflow contained here so booking dropdowns can extend past the section */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-black/40 z-10" />
@@ -129,25 +129,13 @@ export const HeroSection = () => {
               Elevate your journey with our elite chauffeur service. Where sophistication meets comfort, and every ride is a statement of elegance.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => navigate("/booking/select-car")}
-                className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-[#487307] hover:bg-gray-50 text-base font-bold shadow-lg shadow-black/10 transition-all duration-300"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Book Now
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </span>
-              </motion.button>
-
               <motion.button
                 whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                 whileTap={{ scale: 0.95 }}
