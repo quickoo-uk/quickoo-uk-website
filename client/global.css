@@ -253,7 +253,92 @@ body {
     }
 }
 
-/* Google Places suggestions above booking card / stacking contexts */
+/* Google Places Autocomplete Styling — Extra Polished & Compact */
 .pac-container {
     z-index: 10050 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important; /* slate-200 */
+    border-radius: 12px !important;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(72, 115, 7, 0.05) !important;
+    margin-top: 6px !important;
+    padding: 6px 0 !important;
+    font-family: 'Inter', sans-serif !important;
+    overflow: hidden !important;
+    
+    /* Shift to left and adjust width to perfectly fit inside the widget */
+    width: 375px !important; 
+    transform: translateX(-44px) !important;
+    max-width: 90vw !important;
 }
+
+.pac-item {
+    padding: 8px 14px !important;
+    cursor: pointer !important;
+    border-top: 1px solid #f8fafc !important; 
+    
+    /* Block layout with fixed line-height for truncation + alignment */
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    line-height: 24px !important; /* Forces items to stay centered */
+    
+    font-size: 11px !important; 
+    color: #94a3b8 !important; /* slate-400 */
+    transition: all 0.15s ease-out !important;
+}
+
+/* Use inline and vertical-align for consistent centering with parent's ellipsis */
+.pac-item > span:not(.pac-icon) {
+    display: inline !important;
+    vertical-align: middle !important;
+}
+
+.pac-item:first-of-type {
+    border-top: none !important;
+}
+
+.pac-item:hover {
+    background-color: #f0fdf4 !important; 
+}
+
+.pac-item-query {
+    font-size: 13px !important; 
+    color: #1a2e05 !important; 
+    padding-right: 6px !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+}
+
+.pac-matched {
+    color: #487307 !important; 
+}
+
+.pac-icon {
+    display: inline-block !important;
+    vertical-align: middle !important;
+    margin-right: 12px !important;
+    margin-top: -2px !important; 
+    width: 15px !important;
+    height: 18px !important;
+    filter: hue-rotate(50deg) saturate(0.7) !important;
+}
+
+/* Style the "Powered by Google" section */
+.pac-logo:after {
+    padding: 8px !important;
+    height: 10px !important;
+    background-size: 50px !important;
+    opacity: 0.3 !important;
+    border-top: 1px solid #f8fafc !important;
+}
+
+.pac-item:hover .pac-item-query {
+    color: #487307 !important;
+}
+
+
+
+
+
+

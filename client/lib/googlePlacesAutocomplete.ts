@@ -37,6 +37,7 @@ export function bindPlacesAutocomplete(
 ): () => void {
     const autocomplete = new google.maps.places.Autocomplete(input, {
         fields: ["formatted_address", "name", "place_id", "geometry"],
+        componentRestrictions: { country: "gb" },
     });
 
     const listener = autocomplete.addListener("place_changed", () => {

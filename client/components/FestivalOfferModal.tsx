@@ -14,188 +14,156 @@ import confetti from "canvas-confetti";
 
 export const FestivalOfferModal = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [currentFestivalIndex, setCurrentFestivalIndex] = useState(0);
 
-    const festivals = [
-        {
-            name: "Christmas Luxury Ride",
-            badge: "Holiday Exclusive",
-            headline: "Christmas Magic",
-            highlight: "in Every Mile",
-            description: "Experience the magic of the season with our elite fleet. Sophisticated comfort for your holiday gatherings.",
-            mainImg: "https://images.unsplash.com/photo-1512470876302-972fad2aa9dd?auto=format&fit=crop&q=80&w=1200",
-            color: "from-white via-green-100 to-green-50",
-            glow: "rgba(72, 115, 7, 0.4)"
-        }
-    ];
-
-    const currentFestival = festivals[currentFestivalIndex];
+    const festiveData = {
+        badge: "Easter Sunday",
+        headline: "Happy Easter",
+        highlight: "from Quickoo",
+        description: "Wishing you and your family a wonderful Easter weekend. May your spring journeys be as bright and peaceful as the season.",
+        mainImg: "https://images.unsplash.com/photo-1522336572242-999335f639dd?auto=format&fit=crop&q=80&w=1200",
+        glow: "rgba(143, 224, 15, 0.3)"
+    };
 
     const fireConfetti = useCallback(() => {
-        const count = 250;
-        const defaults = {
-            origin: { y: 0.6 },
-            zIndex: 10000,
-            colors: ['#487307', '#1a2e03', '#FFFFFF', '#FFD700']
-        };
+        const duration = 3 * 1000;
+        const animationEnd = Date.now() + duration;
+        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999, colors: ['#487307', '#FFD700', '#FFFFFF', '#8fe00f'] };
 
-        function fire(particleRatio: number, opts: any) {
-            confetti({
-                ...defaults,
-                ...opts,
-                particleCount: Math.floor(count * particleRatio),
-            });
+        function randomInRange(min: number, max: number) {
+            return Math.random() * (max - min) + min;
         }
 
-        fire(0.25, { spread: 26, startVelocity: 55 });
-        fire(0.2, { spread: 60 });
-        fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
-        fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
-        fire(0.1, { spread: 120, startVelocity: 45 });
+        const interval: any = setInterval(function () {
+            const timeLeft = animationEnd - Date.now();
+
+            if (timeLeft <= 0) {
+                return clearInterval(interval);
+            }
+
+            const particleCount = 50 * (timeLeft / duration);
+            // Since particles fall down, start a bit higher than random
+            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+        }, 250);
     }, []);
 
     useEffect(() => {
-        const hasShown = sessionStorage.getItem("festival-modal-shown");
-        if (!hasShown) {
+        // --- Selection Logic ---
+        const MODAL_KEY = "easter_wish_2026_shown";
+
+        // Check if already shown in this session
+        const alreadyShown = sessionStorage.getItem(MODAL_KEY);
+        
+        if (!alreadyShown) {
             const timer = setTimeout(() => {
-                setIsOpen(false);
-                sessionStorage.setItem("festival-modal-shown", "true");
-            }, 2500);
+                setIsOpen(true);
+                sessionStorage.setItem(MODAL_KEY, "true");
+            }, 1500);
             return () => clearTimeout(timer);
-        } else {
-            setIsOpen(false);
         }
     }, []);
 
-    // Fire confetti when isOpen becomes true
     useEffect(() => {
         if (isOpen) {
-            const timer = setTimeout(fireConfetti, 500);
-            return () => clearTimeout(timer);
+            const confettiTimer = setTimeout(fireConfetti, 500);
+
+            // Auto close after 10 seconds
+            const autoCloseTimer = setTimeout(() => {
+                setIsOpen(false);
+            }, 8000);
+
+            return () => {
+                clearTimeout(confettiTimer);
+                clearTimeout(autoCloseTimer);
+            };
         }
     }, [isOpen, fireConfetti]);
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            <DialogContent className="max-w-[95%] sm:max-w-[650px] p-0 overflow-hidden border-none bg-transparent shadow-none">
+            <DialogContent className="max-w-[95%] sm:max-w-[600px] p-0 overflow-hidden border-none bg-transparent shadow-none">
                 <AnimatePresence>
                     {isOpen && (
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.98 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 1.02 }}
-                            transition={{ duration: 0.4, ease: "easeOut" }}
-                            className="relative w-full overflow-hidden rounded-[2.5rem] bg-[#0A0520] border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)]"
+                            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 1.05 }}
+                            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                            className="relative w-full overflow-hidden rounded-[2rem] sm:rounded-[3rem] bg-[#0d1502] border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)]"
                         >
                             {/* Background Visual Layer */}
                             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#1a2e03]/60 via-[#0A0520] to-[#0A0520] z-10" />
+                                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0d1502]/95 to-[#0d1502] z-10" />
                                 <div
-                                    className="absolute -top-[10%] -right-[10%] w-[80%] h-[80%] rounded-full blur-[100px] pointer-events-none opacity-40 transition-colors duration-1000"
-                                    style={{ backgroundColor: currentFestival.glow }}
+                                    className="absolute -top-[20%] -right-[10%] w-[100%] h-[100%] rounded-full blur-[100px] pointer-events-none opacity-30"
+                                    style={{ backgroundColor: festiveData.glow }}
                                 />
                                 <motion.div
                                     initial={{ opacity: 0 }}
-                                    animate={{ opacity: 0.35 }}
-                                    transition={{ duration: 1 }}
+                                    animate={{ opacity: 0.2 }}
                                     className="absolute inset-0 z-[5]"
                                 >
                                     <img
-                                        src={currentFestival.mainImg}
+                                        src={festiveData.mainImg}
                                         className="w-full h-full object-cover"
-                                        alt=""
+                                        alt="Easter Spring"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0520]/40 to-[#0A0520]" />
                                 </motion.div>
-                                <motion.div
-                                    animate={{ x: ['-200%', '200%'] }}
-                                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                                    className="absolute inset-0 z-[15] pointer-events-none bg-gradient-to-r from-transparent via-white/5 to-transparent rotate-12"
-                                />
                             </div>
 
                             {/* Content Layer */}
-                            <div className="relative z-20 flex flex-col items-center px-8 sm:px-16 pt-14 pb-12 text-center">
+                            <div className="relative z-20 flex flex-col items-center px-6 sm:px-10 lg:px-16 pt-16 sm:pt-20 pb-14 sm:pb-16 text-center">
                                 {/* Badge */}
-                                <div className="mb-8">
-                                    <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#487307]/20 backdrop-blur-xl px-5 py-2 ring-1 ring-white/10 shadow-lg">
-                                        <div className="relative flex h-2 w-2">
-                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
-                                        </div>
-                                        <span className="text-[10px] tracking-[0.4em] uppercase text-white font-black">
-                                            {currentFestival.badge}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Headline & Subtext */}
-                                <div className="space-y-6 w-full mb-10">
-                                    <h2 className="text-4xl sm:text-6xl font-montserrat font-black text-white leading-[1.05] tracking-tighter">
-                                        {currentFestival.headline}
-                                        <br />
-                                        <span className={`text-transparent bg-clip-text bg-gradient-to-r ${currentFestival.color}`}>
-                                            {currentFestival.highlight}
-                                        </span>
-                                    </h2>
-                                    <p className="text-lg sm:text-xl font-inter text-white/80 font-light leading-relaxed tracking-wide max-w-2xl mx-auto">
-                                        {currentFestival.description}
-                                    </p>
-                                </div>
-
-                                {/* Offer Box */}
                                 <motion.div
-                                    whileHover={{ scale: 1.01, y: -2 }}
-                                    className="group relative w-full rounded-3xl overflow-hidden bg-white/5 border border-white/10 p-8 sm:p-10 mb-10 shadow-2xl backdrop-blur-md transition-all duration-500"
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.3 }}
+                                    className="mb-8 sm:mb-10"
                                 >
-                                    <div className="absolute inset-0 bg-[#487307]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    <div className="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
-                                        <div className="flex items-center gap-6 text-left w-full sm:w-auto overflow-hidden">
-                                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#487307] to-[#1a2e03] flex items-center justify-center shadow-2xl ring-1 ring-white/10 flex-shrink-0">
-                                                <Gift className="w-8 h-8 text-white" />
-                                            </div>
-                                            <div className="overflow-hidden">
-                                                <p className="text-3xl sm:text-4xl font-montserrat font-black text-white leading-none mb-2 tracking-tighter truncate">Up to 20% Off</p>
-                                                <p className="text-sm font-bold text-green-400/70 uppercase tracking-[0.2em] truncate">{currentFestival.name}</p>
-                                            </div>
-                                        </div>
-                                        <Sparkles className="w-8 h-8 text-white/10 animate-pulse hidden sm:block" />
+                                    <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#487307]/30 backdrop-blur-xl px-5 py-2 ring-1 ring-white/10 shadow-lg" title="Easter 2026 Greeting">
+                                        <Sparkles className="w-4 h-4 text-[#8fe00f]" />
+                                        <span className="text-[10px] tracking-[0.4em] uppercase text-white font-black">
+                                            {festiveData.badge}
+                                        </span>
                                     </div>
                                 </motion.div>
 
-                                {/* Action Buttons */}
-                                <div className="flex flex-col sm:flex-row gap-5 w-full">
-                                    <motion.button
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        onClick={() => setIsOpen(false)}
-                                        className="flex-[2] px-10 py-6 rounded-2xl bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#1a2e03] text-white font-montserrat font-black text-xl shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 border-none ring-1 ring-white/20"
-                                    >
-                                        Reserve Now
-                                        <ArrowRight className="w-6 h-6" />
-                                    </motion.button>
-                                    <button
-                                        onClick={() => setIsOpen(false)}
-                                        className="flex-1 px-8 py-6 text-white/50 hover:text-white font-montserrat font-bold text-sm tracking-[0.3em] transition-all rounded-2xl border border-white/10 bg-white/5"
-                                    >
-                                        DISMISS
-                                    </button>
+                                {/* Headline & Subtext */}
+                                <div className="space-y-6 w-full">
+                                    <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-montserrat font-black text-white leading-tight sm:leading-[1.1] tracking-tight">
+                                        {festiveData.headline}
+                                        <br />
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8fe00f] via-white to-[#8fe00f]">
+                                            {festiveData.highlight}
+                                        </span>
+                                    </h2>
+                                    <p className="text-lg sm:text-xl lg:text-2xl font-inter text-white/70 font-light leading-relaxed max-w-xl mx-auto pt-4">
+                                        {festiveData.description}
+                                    </p>
                                 </div>
 
-                                {/* Branding */}
-                                <div className="mt-12 flex items-center gap-6 w-full justify-center opacity-30">
-                                    <div className="h-[0.5px] flex-grow bg-gradient-to-r from-transparent to-white/50" />
-                                    <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.5em] font-black text-white whitespace-nowrap">
-                                        Quickoo &bull; Elite Excellence
-                                    </span>
-                                    <div className="h-[0.5px] flex-grow bg-gradient-to-l from-transparent to-white/50" />
+                                {/* Branding Overlay */}
+                                <div className="mt-12 sm:mt-20 flex flex-col items-center gap-6 w-full">
+                                    <div className="flex items-center gap-6 w-full opacity-20">
+                                        <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent to-white" />
+                                        <div className="w-2 h-2 rounded-full bg-white rotate-45" />
+                                        <div className="h-[1px] flex-grow bg-gradient-to-l from-transparent to-white" />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <p className="text-[14px] sm:text-xl uppercase tracking-[0.5em] font-black text-[#8fe00f] drop-shadow-[0_0_10px_rgba(143,224,15,0.5)]">
+                                            QUICKOO
+                                        </p>
+                                        <p className="text-[8px] sm:text-[10px] uppercase tracking-[0.8em] font-bold text-white/40">
+                                            Premium Excellence
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
 
                             {/* Close Button */}
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="absolute top-8 right-8 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:bg-[#487307] transition-all z-[100]"
+                                className="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-[#487307] transition-all z-[100]"
                             >
                                 <X className="w-6 h-6" />
                             </button>

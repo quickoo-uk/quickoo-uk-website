@@ -47,8 +47,8 @@ const contactChannels = [
   {
     icon: Mail,
     title: "Email Support",
-    content: "info@quickoo.co.uk",
-    action: "mailto:info@quickoo.co.uk",
+    content: "support@quickoo.co.uk",
+    action: "mailto:support@quickoo.co.uk",
     description: "Response within 2 hours.",
   },
   {
@@ -358,12 +358,12 @@ export default function ContactPage() {
               </div>
 
               {/* Decorative Circle */}
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white shadow-2xl rounded-full flex items-center justify-center border border-slate-100 z-20">
+              {/* <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white shadow-2xl rounded-full flex items-center justify-center border border-slate-100 z-20">
                 <div className="text-center">
                   <p className="text-2xl font-montserrat font-bold text-[#487307]">70%</p>
                   <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Happy Clients</p>
                 </div>
-              </div>
+              </div> */}
             </motion.div>
           </div>
         </div>
@@ -733,7 +733,7 @@ export default function ContactPage() {
           <div className="h-[420px] rounded-[32px] overflow-hidden border border-slate-200 shadow-[0_40px_140px_rgba(15,23,42,0.1)]">
             <iframe
               title="Quickoo Heathrow Lounge"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9931.775679568785!2d-0.455213!3d51.471682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487671472a42b5e3%3A0x9d9c8c0d5e94d55a!2sBath%20Rd%2C%20Longford%2C%20Hounslow%20UB7%200EB%2C%20UK!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.703811061033!2d-0.47560220000000003!3d51.48195080000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876718619b70ac9%3A0x323bebac9f3831f6!2sHeathrow%2C%20450%20Bath%20Rd%2C%20Longford%2C%20Harmondsworth%2C%20West%20Drayton%20UB7%200EB%2C%20UK!5e0!3m2!1sen!2sin!4v1775389465641!5m2!1sen!2sin"
               width="100%"
               height="100%"
               loading="lazy"

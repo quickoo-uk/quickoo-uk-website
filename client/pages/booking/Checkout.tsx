@@ -192,7 +192,7 @@ export default function Checkout() {
             >
               <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                 <User className="w-6 h-6 text-[#487307]" />
-                Customer Information
+                Guest Information
               </h2>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
@@ -218,16 +218,7 @@ export default function Checkout() {
               </div>
             </motion.div>
 
-            <div className="lg:hidden">
-              <button
-                type="button"
-                onClick={handleProceedToPayment}
-                className="w-full py-4 rounded-full font-bold text-lg bg-gradient-to-r from-[#0f1801] via-[#487307] to-[#6aa80b] text-white shadow-lg flex items-center justify-center gap-2"
-              >
-                Proceed to payment
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
+            {/* Mobile button removed from here to be placed after pricing */}
           </div>
 
           <div className="lg:col-span-1">
@@ -263,7 +254,7 @@ export default function Checkout() {
               <button
                 type="button"
                 onClick={handleProceedToPayment}
-                className="hidden lg:flex w-full py-4 rounded-full font-bold text-lg bg-gradient-to-r from-[#0f1801] via-[#487307] to-[#6aa80b] text-white shadow-lg items-center justify-center gap-2 hover:shadow-[#487307]/25 transition-shadow"
+                className="flex w-full py-4 rounded-full font-bold text-lg bg-gradient-to-r from-[#0f1801] via-[#487307] to-[#6aa80b] text-white shadow-lg items-center justify-center gap-2 hover:shadow-[#487307]/25 transition-shadow"
               >
                 Proceed to payment
                 <ArrowRight className="w-5 h-5" />

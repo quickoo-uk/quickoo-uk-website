@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Users, Luggage, Check, ArrowRight, ArrowLeft, Info } from "lucide-react";
+import { Users, Luggage, Check, ArrowRight, ArrowLeft, Info, MapPin, Calendar, Clock, Plane, MousePointer2 } from "lucide-react";
 import { useBooking } from "@/contexts/BookingContext";
 import type { VehicleQuote } from "@/lib/quotesApi";
 
@@ -180,14 +180,36 @@ export default function SelectCar() {
           className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 mb-12"
         >
           <h3 className="text-lg font-bold text-slate-900 mb-4">Your Booking Details</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div>
-              <p className="text-xs text-slate-500 mb-1">Type</p>
-              <p className="text-sm font-semibold text-slate-900 capitalize">{bookingData.bookingType}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="md:col-span-1">
+              <p className="text-sm font-bold text-[#487307] mb-1.5 flex items-center gap-2">
+                <MousePointer2 className="w-4 h-4" /> Service Type
+              </p>
+              <p className="text-base font-semibold text-slate-900 capitalize">{bookingData.bookingType}</p>
             </div>
+            <div className="md:col-span-1">
+              <p className="text-sm font-bold text-[#487307] mb-1.5 flex items-center gap-2">
+                <MapPin className="w-4 h-4" /> Pickup Location
+              </p>
+              <p className="text-base font-semibold text-slate-900 truncate" title={bookingData.fromLocation}>
+                {bookingData.fromLocation}
+              </p>
+            </div>
+            <div className="md:col-span-1">
+              <p className="text-sm font-bold text-[#487307] mb-1.5 flex items-center gap-2">
+                <MapPin className="w-4 h-4" /> Destination
+              </p>
+              <p className="text-base font-semibold text-slate-900 truncate" title={Array.isArray(bookingData.toLocation) ? bookingData.toLocation.join(" → ") : bookingData.toLocation}>
+                {Array.isArray(bookingData.toLocation) ? bookingData.toLocation.join(" → ") : bookingData.toLocation}
+              </p>
+            </div>
+
+            {/* Row 2: Date, Time and extra info */}
             <div>
-              <p className="text-xs text-slate-500 mb-1">Date</p>
-              <p className="text-sm font-semibold text-slate-900">
+              <p className="text-sm font-bold text-[#487307] mb-1.5 flex items-center gap-2">
+                <Calendar className="w-4 h-4" /> Date
+              </p>
+              <p className="text-base font-semibold text-slate-900">
                 {bookingData.date.toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
@@ -196,22 +218,29 @@ export default function SelectCar() {
               </p>
             </div>
             <div>
-              <p className="text-xs text-slate-500 mb-1">Time</p>
-              <p className="text-sm font-semibold text-slate-900">{bookingData.time}</p>
+              <p className="text-sm font-bold text-[#487307] mb-1.5 flex items-center gap-2">
+                <Clock className="w-4 h-4" /> Time
+              </p>
+              <p className="text-base font-semibold text-slate-900">{bookingData.time}</p>
             </div>
             {bookingData.flightNumber?.trim() && (
               <div>
-                <p className="text-xs text-slate-500 mb-1">Flight Number</p>
-                <p className="text-sm font-semibold text-slate-900">{bookingData.flightNumber}</p>
+                <p className="text-sm font-bold text-[#487307] mb-1.5 flex items-center gap-2">
+                  <Plane className="w-4 h-4" /> Flight Number
+                </p>
+                <p className="text-base font-semibold text-slate-900">{bookingData.flightNumber}</p>
               </div>
             )}
             {bookingData.bookingType === "hourly" && (
               <div>
-                <p className="text-xs text-slate-500 mb-1">Duration</p>
-                <p className="text-sm font-semibold text-slate-900">{bookingData.duration}</p>
+                <p className="text-sm font-bold text-[#487307] mb-1.5 flex items-center gap-2">
+                  <Clock className="w-4 h-4" /> Duration
+                </p>
+                <p className="text-base font-semibold text-slate-900">{bookingData.duration}</p>
               </div>
             )}
           </div>
+
         </motion.div>
 
         <div className="flex flex-col gap-4 mb-12 max-w-4xl mx-auto">
@@ -222,11 +251,10 @@ export default function SelectCar() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * index }}
               onClick={() => handleSelectCar(car)}
-              className={`relative rounded-xl border transition-all duration-200 cursor-pointer overflow-hidden ${
-                selectedCarId === car.id
-                  ? "bg-[#ecf3e6] border-2 border-[#487307] shadow-sm"
-                  : "bg-white border-slate-200 hover:border-slate-300"
-              }`}
+              className={`relative rounded-xl border transition-all duration-200 cursor-pointer overflow-hidden ${selectedCarId === car.id
+                ? "bg-[#ecf3e6] border-2 border-[#487307] shadow-sm"
+                : "bg-white border-slate-200 hover:border-slate-300"
+                }`}
             >
               <div className="flex items-center p-3 sm:p-6 gap-3 sm:gap-6">
                 <div className="w-20 sm:w-36 flex-shrink-0">
@@ -255,6 +283,7 @@ export default function SelectCar() {
                         <div className="text-right">
                           <p className="text-[10px] uppercase tracking-wide text-slate-500 font-semibold">Total</p>
                           <p className="text-lg sm:text-xl font-bold text-[#487307]">£{car.totalPrice.toFixed(2)}</p>
+                          <p className="text-[10px] text-[#487307] font-semibold mt-0.5 whitespace-nowrap">(including VAT)</p>
                         </div>
                       )}
                     </div>
@@ -266,19 +295,19 @@ export default function SelectCar() {
         </div>
 
         <div className="bg-white border border-slate-200 rounded-xl p-6 mb-12">
-          <p className="text-sm font-semibold text-[#487307] mb-4 flex items-center gap-2">
+          {/* <p className="text-sm font-semibold text-[#487307] mb-4 flex items-center gap-2">
             <Info className="w-4 h-4" />
             All classes include:
-          </p>
+          </p> */}
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 mb-6">
             {[
-              "Free cancellation up until 1 hour before pickup",
+              "Free cancellation up until 2 hour before pickup",
               "Free 15 minutes of wait time",
               "Meet & Greet service",
               "Complimentary bottle of water",
             ].map((item, idx) => (
               <li key={idx} className="flex items-start gap-2 text-sm text-slate-600">
-                <Check className="w-4 h-4 text-[#487307] mt-0.5 flex-shrink-0" />
+                <Check className="w-4 h-4 text-[#487307] mt-0.5 flex-shrink-0" strokeWidth={3} />
                 <span>{item}</span>
               </li>
             ))}
@@ -297,11 +326,10 @@ export default function SelectCar() {
           <button
             onClick={handleContinue}
             disabled={!selectedCarId}
-            className={`w-full sm:w-auto px-10 py-3 rounded-full font-bold text-white transition-all shadow-lg flex items-center justify-center gap-2 ${
-              selectedCarId
-                ? "bg-[#487307] hover:bg-[#3a5c06] shadow-[#487307]/20 transform hover:-translate-y-0.5"
-                : "bg-slate-300 cursor-not-allowed"
-            }`}
+            className={`w-full sm:w-auto px-10 py-3 rounded-full font-bold text-white transition-all shadow-lg flex items-center justify-center gap-2 ${selectedCarId
+              ? "bg-[#487307] hover:bg-[#3a5c06] shadow-[#487307]/20 transform hover:-translate-y-0.5"
+              : "bg-slate-300 cursor-not-allowed"
+              }`}
           >
             Continue to Customer Info
             <ArrowRight className="w-4 h-4" />
