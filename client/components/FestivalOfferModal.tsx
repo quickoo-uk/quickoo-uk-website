@@ -53,10 +53,10 @@ export const FestivalOfferModal = () => {
 
         // Check if already shown in this session
         const alreadyShown = sessionStorage.getItem(MODAL_KEY);
-        
+
         if (!alreadyShown) {
             const timer = setTimeout(() => {
-                setIsOpen(true);
+                setIsOpen(false);
                 sessionStorage.setItem(MODAL_KEY, "true");
             }, 1500);
             return () => clearTimeout(timer);
