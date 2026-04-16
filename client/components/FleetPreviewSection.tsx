@@ -59,7 +59,7 @@ const item = {
 
 export const FleetPreviewSection = () => {
   return (
-    <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#fff5ec]">
+    <section className="pt-20 pb-6 sm:py-32 relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#fff5ec]">
       {/* Background gradients */}
       <div className="absolute -right-16 -top-10 h-56 w-56 rounded-full bg-gold/15 blur-[120px]" />
       <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
@@ -119,7 +119,7 @@ export const FleetPreviewSection = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3"
+          className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3"
         >
           {VEHICLE_CLASSES.map((vehicle) => (
             <motion.div
@@ -127,91 +127,92 @@ export const FleetPreviewSection = () => {
               variants={item}
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}
-              className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-500"
+              className="group overflow-hidden rounded-2xl transition-all duration-500"
             >
-              {/* Premium Badge - Top Center */}
-
-              <div className="relative bg-gradient-to-br from-[#f8faf5] to-white pt-4 pb-2">
-                <div className="flex justify-center">
-
+              {/* Desktop view: Traditional vertical card */}
+              <div className="hidden md:flex flex-col h-full bg-white border border-gray-200 shadow-sm hover:shadow-xl">
+                {/* Image Section */}
+                <div className="relative overflow-hidden bg-gradient-to-br from-[#f8faf5] to-white px-6 pb-6 pt-10 flex items-center justify-center">
+                  <motion.img
+                    src={vehicle.image}
+                    alt={vehicle.name}
+                    loading="lazy"
+                    className="max-h-40 w-auto object-contain transition duration-700 group-hover:scale-105"
+                  />
                 </div>
-              </div>
 
-              {/* Image Section */}
-              <div className="relative overflow-hidden bg-gradient-to-br from-[#f8faf5] to-white px-6 pb-6 flex items-center justify-center">
-                <motion.img
-                  src={vehicle.image}
-                  alt={vehicle.name}
-                  loading="lazy"
-                  className="max-h-40 w-auto object-contain transition duration-700 group-hover:scale-105"
-                />
-              </div>
-
-              {/* Content Section */}
-              <div className="flex flex-1 flex-col gap-5 p-6">
-                {/* Title and Price - Horizontal Layout */}
-                <div className="flex items-baseline justify-between gap-4 pb-4 border-b border-gray-100">
-                  <div className="flex-1 min-w-0">
+                {/* Content Section */}
+                <div className="flex flex-1 flex-col gap-5 p-6">
+                  <div className="pb-4 border-b border-gray-100">
                     <h3 className="text-xl font-montserrat font-bold text-dark leading-tight">
                       {vehicle.name}
                     </h3>
-                    <p className="text-xs text-gray-500 font-inter mt-1">
-                      {vehicle.subtitle}
-                    </p>
                   </div>
 
-                  {/* <div className="shrink-0 text-right">
-                    <span className="inline-block bg-gradient-to-r from-[#2f6b2b] to-[#487307] text-white font-bold px-3 py-1.5 rounded-lg text-sm whitespace-nowrap">
-                      {vehicle.priceMain}
-                    </span>
-                    <p className="text-xs text-gray-500 mt-1">{vehicle.priceNote}</p>
-                  </div> */}
-                </div>
+                  {/* Description */}
+                  <p className="text-sm text-gray-600 font-inter leading-relaxed">
+                    {vehicle.description}
+                  </p>
 
-                {/* Description */}
-                <p className="text-sm text-gray-600 font-inter leading-relaxed">
-                  {vehicle.description}
-                </p>
-
-                {/* Specifications */}
-                <div className="space-y-3">
-                  {/* Guests */}
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-full bg-[#eaf7e8] p-2 flex items-center justify-center shrink-0">
-                      <Users className="h-4 w-4 text-[#487307]" />
+                  {/* Specifications */}
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="rounded-full bg-[#eaf7e8] p-2 flex items-center justify-center shrink-0">
+                        <Users className="h-4 w-4 text-[#487307]" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Capacity</p>
+                        <p className="text-sm font-semibold text-dark">{vehicle.guests}</p>
+                      </div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs uppercase tracking-wider text-gray-500 font-semibold">
-                        Capacity
-                      </p>
-                      <p className="text-sm font-semibold text-dark">
-                        {vehicle.guests}
-                      </p>
+                    <div className="flex items-center gap-3">
+                      <div className="rounded-full bg-[#eaf7e8] p-2 flex items-center justify-center shrink-0">
+                        <Luggage className="h-4 w-4 text-[#487307]" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Luggage</p>
+                        <p className="text-sm font-semibold text-dark">{vehicle.luggage}</p>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Luggage */}
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-full bg-[#eaf7e8] p-2 flex items-center justify-center shrink-0">
-                      <Luggage className="h-4 w-4 text-[#487307]" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs uppercase tracking-wider text-gray-500 font-semibold">
-                        Luggage
-                      </p>
-                      <p className="text-sm font-semibold text-dark">
-                        {vehicle.luggage}
-                      </p>
+                  {/* Premium Brand Badge */}
+                  <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-sm">
+                      <img src="/images/q-icon.png" alt="Q" className="h-4 w-4 object-contain" />
+                      <span className="text-gray-700 font-medium whitespace-nowrap">Premium chauffeur</span>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Premium Features Badge */}
-                <div className="mt-auto pt-4 border-t border-gray-100">
-                  <div className="flex items-center gap-2 text-sm">
-                    <img src="/images/q-icon.png" alt="Q" className="h-4 w-4 object-contain" />
-                    <span className="text-gray-700 font-medium">Premium chauffeur service</span>
+              <div className="md:hidden flex items-center p-4 gap-4 bg-white rounded-2xl border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+                {/* Left: Image */}
+                <div className="w-36 flex-shrink-0">
+                  <img src={vehicle.image} alt={vehicle.name} className="w-full h-auto object-contain scale-110" />
+                </div>
+
+                {/* Center: Info */}
+                <div className="flex-grow min-w-0">
+                  <h3 className="text-lg font-bold text-slate-900 leading-tight">{vehicle.name}</h3>
+                  <div className="flex items-center gap-4 my-1.5 text-slate-700">
+                    <div className="flex items-center gap-1.5">
+                      <Users className="w-5 h-5 text-[#487307]" strokeWidth={2.5} />
+                      <span className="text-sm font-bold">{vehicle.id === 'business-van' ? '6' : (vehicle.id === 'first-class' ? '3' : '4')}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Luggage className="w-5 h-5 text-[#487307]" strokeWidth={2.5} />
+                      <span className="text-sm font-bold">{vehicle.id === 'business-van' ? '6' : '2'}</span>
+                    </div>
                   </div>
+                  <p className="text-xs text-slate-500 font-medium">
+                    {vehicle.name.replace('\u00A0', ' ')} or similar
+                  </p>
+                </div>
+
+                {/* Right: Icon (since price is removed) */}
+                <div className="text-right flex-shrink-0">
+                   <img src="/images/q-icon.png" alt="Q" className="h-5 w-5 object-contain ml-auto" />
                 </div>
               </div>
             </motion.div>
