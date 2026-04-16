@@ -17,7 +17,7 @@ export const HeroSection = () => {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-fill"
         >
           <source src="/home/video.mp4" type="video/mp4" />
         </video>

@@ -1,10 +1,10 @@
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import {
-    getFirstValidTime12hOnLondonDay,
+    getFirstValidTime24hOnLondonDay,
     getLondonWallClockFromUtc,
     getMinimumPickupUtcMs,
     getUtcMillisForLondonWallClock,
-    time24To12hString,
+    time24To24hString,
 } from "@/lib/londonPickupWindow";
 import {
     Dialog,
@@ -19,32 +19,26 @@ const ROW_PX = 40;
 const VIEW_H = 200;
 const PAD_Y = (VIEW_H - ROW_PX) / 2;
 
-const HOURS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
+const HOURS = Array.from({ length: 24 }, (_, i) => i);
 const MINUTES = Array.from({ length: 60 }, (_, i) => i);
-const PERIODS = ["AM", "PM"] as const;
 
-export function parseTime12h(input: string): { h: number; m: number; p: "AM" | "PM" } {
-    const m = input.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
-    if (!m) return { h: 12, m: 0, p: "AM" };
-    let h = parseInt(m[1], 10);
+export function parseTime24h(input: string): { h: number; m: number } {
+    const m = input.trim().match(/^(\d{1,2}):(\d{2})$/);
+    if (!m) return { h: 12, m: 0 };
+    const h = parseInt(m[1], 10);
     const min = parseInt(m[2], 10);
-    const p = m[3].toUpperCase() === "PM" ? "PM" : "AM";
-    h = Number.isFinite(h) ? Math.min(12, Math.max(1, h)) : 12;
-    const minute = Number.isFinite(min) ? Math.min(59, Math.max(0, min)) : 0;
-    return { h, m: minute, p };
+    const hh = Number.isFinite(h) ? Math.min(23, Math.max(0, h)) : 12;
+    const mm = Number.isFinite(min) ? Math.min(59, Math.max(0, min)) : 0;
+    return { h: hh, m: mm };
 }
 
-export function formatTime12h(h: number, m: number, p: "AM" | "PM"): string {
-    return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")} ${p}`;
+export function formatTime24h(h: number, m: number): string {
+    return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}`;
 }
 
-function nowTo12h(): { h: number; m: number; p: "AM" | "PM" } {
+function nowTo24h(): { h: number; m: number } {
     const d = new Date();
-    let h24 = d.getHours();
-    const p: "AM" | "PM" = h24 >= 12 ? "PM" : "AM";
-    let h12 = h24 % 12;
-    if (h12 === 0) h12 = 12;
-    return { h: h12, m: d.getMinutes(), p };
+    return { h: d.getHours(), m: d.getMinutes() };
 }
 
 type ScrollColumnProps<T extends string | number> = {
@@ -163,7 +157,7 @@ type PickupTimePickerDialogProps = {
     /** When set, pickup uses this calendar day in UK (London) with the chosen time. */
     bookingYmdLondon?: BookingYmd;
     /** Return an error message to block commit, or null if OK. */
-    getCommitError?: (time12h: string) => string | null;
+    getCommitError?: (time24h: string) => string | null;
     /** When dialog opens, replace invalid time with parent-suggested string. */
     sanitizeOnOpen?: (current: string) => string;
 };
@@ -177,22 +171,20 @@ export function PickupTimePickerDialog({
     getCommitError,
     sanitizeOnOpen,
 }: PickupTimePickerDialogProps) {
-    const [hour, setHour] = useState(9);
+    const [hour, setHour] = useState(12);
     const [minute, setMinute] = useState(0);
-    const [period, setPeriod] = useState<"AM" | "PM">("AM");
     const [commitError, setCommitError] = useState("");
 
     useLayoutEffect(() => {
         if (!open) return;
         setCommitError("");
         const raw = sanitizeOnOpen ? sanitizeOnOpen(value) : value;
-        const p = parseTime12h(raw);
+        const p = parseTime24h(raw);
         setHour(p.h);
         setMinute(p.m);
-        setPeriod(p.p);
     }, [open, value, sanitizeOnOpen]);
 
-    const preview = formatTime12h(hour, minute, period);
+    const preview = formatTime24h(hour, minute);
 
     const applyNow = () => {
         setCommitError("");
@@ -211,26 +203,23 @@ export function PickupTimePickerDialog({
                     londonNow.mm,
                 );
                 if (utcNowPick >= minMs) {
-                    const p = parseTime12h(time24To12hString(londonNow.h24, londonNow.mm));
+                    const p = parseTime24h(time24To24hString(londonNow.h24, londonNow.mm));
                     setHour(p.h);
                     setMinute(p.m);
-                    setPeriod(p.p);
                     return;
                 }
             }
-            const first = getFirstValidTime12hOnLondonDay(y, m0, d, minMs);
+            const first = getFirstValidTime24hOnLondonDay(y, m0, d, minMs);
             if (first) {
-                const p = parseTime12h(first);
+                const p = parseTime24h(first);
                 setHour(p.h);
                 setMinute(p.m);
-                setPeriod(p.p);
                 return;
             }
         }
-        const n = nowTo12h();
+        const n = nowTo24h();
         setHour(n.h);
         setMinute(n.m);
-        setPeriod(n.p);
     };
 
     return (
@@ -267,6 +256,7 @@ export function PickupTimePickerDialog({
                         items={HOURS}
                         value={hour}
                         onChange={(v) => setHour(v as number)}
+                        format={(h) => (h as number).toString().padStart(2, "0")}
                         mutedClassName="bg-slate-100/80"
                     />
                     <ScrollColumn
@@ -275,13 +265,6 @@ export function PickupTimePickerDialog({
                         value={minute}
                         onChange={(v) => setMinute(v as number)}
                         format={(m) => (m as number).toString().padStart(2, "0")}
-                        mutedClassName="bg-white"
-                    />
-                    <ScrollColumn<"AM" | "PM">
-                        label="AM/PM"
-                        items={PERIODS}
-                        value={period}
-                        onChange={(v) => setPeriod(v)}
                         mutedClassName="bg-white"
                     />
                 </div>

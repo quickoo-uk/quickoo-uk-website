@@ -63,6 +63,17 @@ export function getUtcMillisForLondonWallClock(
   return Math.floor((lo + hi) / 2);
 }
 
+export function parseTime24hToHour24(time24h: string): { h24: number; mm: number } | null {
+  const m = time24h.trim().match(/^(\d{1,2}):(\d{2})$/);
+  if (!m) return null;
+  const hh = Number(m[1]);
+  const mm = Number(m[2]);
+  if (!Number.isFinite(hh) || !Number.isFinite(mm)) return null;
+  const h24 = Math.min(23, Math.max(0, hh));
+  const minute = Math.min(59, Math.max(0, mm));
+  return { h24, mm: minute };
+}
+
 function parseTime12hToHour24(time12h: string): { h24: number; mm: number } | null {
   const m = time12h.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
   if (!m) return null;
@@ -84,24 +95,29 @@ export function time24To12hString(h24: number, mm: number): string {
   return `${String(h12).padStart(2, "0")}:${String(mm).padStart(2, "0")} ${p}`;
 }
 
-/** Calendar date from widget (Y/M/D) + 12h label interpreted as London local time → UTC ms. */
-export function getPickupUtcMsFromCalendarDateAndTime12h(calendarDate: Date, time12h: string): number | null {
+export function time24To24hString(h24: number, mm: number): string {
+  return `${String(h24).padStart(2, "0")}:${String(mm).padStart(2, "0")}`;
+}
+
+/** Calendar date from widget (Y/M/D) + label (12h or 24h) interpreted as London local time → UTC ms. */
+export function getPickupUtcMsFromCalendarDateAndTime(calendarDate: Date, timeStr: string): number | null {
   const y = calendarDate.getFullYear();
   const m0 = calendarDate.getMonth();
   const d = calendarDate.getDate();
-  const parsed = parseTime12hToHour24(time12h);
+  const parsed12 = parseTime12hToHour24(timeStr);
+  const parsed = parsed12 || parseTime24hToHour24(timeStr);
   if (!parsed) return null;
   return getUtcMillisForLondonWallClock(y, m0, d, parsed.h24, parsed.mm);
 }
 
-export function isPickupAtLeastTwoHoursAheadLondon(calendarDate: Date, time12h: string): boolean {
-  const pickup = getPickupUtcMsFromCalendarDateAndTime12h(calendarDate, time12h);
+export function isPickupAtLeastTwoHoursAheadLondon(calendarDate: Date, timeStr: string): boolean {
+  const pickup = getPickupUtcMsFromCalendarDateAndTime(calendarDate, timeStr);
   if (pickup == null) return false;
   return pickup >= getMinimumPickupUtcMs();
 }
 
-/** First HH:MM (12h string) on that London calendar day that satisfies the min lead-time rule, or null if none left that day. */
-export function getFirstValidTime12hOnLondonDay(
+/** First HH:MM (24h string) on that London calendar day that satisfies the min lead-time rule, or null if none left that day. */
+export function getFirstValidTime24hOnLondonDay(
   y: number,
   m0: number,
   d: number,
@@ -111,7 +127,7 @@ export function getFirstValidTime12hOnLondonDay(
     const h24 = Math.floor(total / 60);
     const mm = total % 60;
     const utc = getUtcMillisForLondonWallClock(y, m0, d, h24, mm);
-    if (utc >= minUtcMs) return time24To12hString(h24, mm);
+    if (utc >= minUtcMs) return time24To24hString(h24, mm);
   }
   return null;
 }

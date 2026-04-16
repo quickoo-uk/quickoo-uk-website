@@ -28,6 +28,7 @@ export type PlaceAutocompleteResult = {
     formattedAddress: string;
     latitude: number;
     longitude: number;
+    isAirport?: boolean;
 };
 
 /** Attach Places Autocomplete; returns teardown for listeners. */
@@ -36,7 +37,7 @@ export function bindPlacesAutocomplete(
     onPlaceSelected: (place: PlaceAutocompleteResult) => void,
 ): () => void {
     const autocomplete = new google.maps.places.Autocomplete(input, {
-        fields: ["formatted_address", "name", "place_id", "geometry"],
+        fields: ["formatted_address", "name", "place_id", "geometry", "types"],
         componentRestrictions: { country: "gb" },
     });
 
@@ -53,10 +54,14 @@ export function bindPlacesAutocomplete(
         const lng = readCoord(loc.lng);
         const text = place.formatted_address ?? place.name ?? "";
         if (!text || lat == null || lng == null) return;
+        const isAirport = place.types?.includes("airport") || 
+                          text.toLowerCase().includes("airport") || 
+                          (place.name?.toLowerCase().includes("airport") ?? false);
         onPlaceSelected({
             formattedAddress: text,
             latitude: lat,
             longitude: lng,
+            isAirport,
         });
     });
 
