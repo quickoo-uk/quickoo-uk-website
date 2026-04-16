@@ -1,9 +1,15 @@
 import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Users, Luggage, Check, ArrowRight, ArrowLeft, Info, MapPin, Calendar, Clock, Plane, MousePointer2 } from "lucide-react";
 import { useBooking } from "@/contexts/BookingContext";
 import type { VehicleQuote } from "@/lib/quotesApi";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip";
 
 type StaticVehicle = {
   id: string;
@@ -295,23 +301,46 @@ export default function SelectCar() {
         </div>
 
         <div className="bg-white border border-slate-200 rounded-xl p-6 mb-12">
-          {/* <p className="text-sm font-semibold text-[#487307] mb-4 flex items-center gap-2">
-            <Info className="w-4 h-4" />
-            All classes include:
-          </p> */}
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 mb-6">
-            {[
-              "Free cancellation up until 2 hour before pickup",
-              "Free 15 minutes of wait time",
-              "Meet & Greet service",
-              "Complimentary bottle of water",
-            ].map((item, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-sm text-slate-600">
-                <Check className="w-4 h-4 text-[#487307] mt-0.5 flex-shrink-0" strokeWidth={3} />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+          <TooltipProvider>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 mb-6">
+              {[
+                { text: "Meet & Greet service" },
+                { text: "Complimentary bottle of water/wifi/charging cable" },
+                {
+                  text: "Free cancellation, please see ",
+                  hasTooltip: true,
+                },
+                {
+                  text: bookingData.quotePickupType === "airport"
+                    ? "Free 60 minutes of wait time"
+                    : "Free 15 minutes of wait time"
+                },
+              ].map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-sm text-slate-600">
+                  <Check className="w-4 h-4 text-[#487307] mt-0.5 flex-shrink-0" strokeWidth={3} />
+                  <div className="flex items-center gap-1.5">
+                    <span>{item.text}</span>
+                    {item.hasTooltip && (
+                      <Tooltip delayDuration={100}>
+                        <TooltipTrigger asChild>
+                          <span className="text-[#487307] font-bold cursor-help text-[14px] underline underline-offset-2">T&C*</span>
+                        </TooltipTrigger>
+                        <TooltipContent className="bg-white p-2 border-[#487307]/20 shadow-xl pointer-events-auto">
+                          <Link
+                            to="/terms-and-conditions#cancellation-policy"
+                            className="flex items-center gap-2 text-[#487307] font-bold text-sm hover:underline py-1 px-2 whitespace-nowrap"
+                          >
+                            <span>★ See Terms & Conditions</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                        </TooltipContent>
+                      </Tooltip>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </TooltipProvider>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-between items-center pt-6 border-t border-slate-200">

@@ -7,7 +7,7 @@ import { bindPlacesAutocomplete, ensureGoogleMapsPlacesLoaded } from "@/lib/goog
 import { PickupTimePickerDialog } from "@/components/PickupTimePickerDialog";
 import { fetchGetQuotes } from "@/lib/quotesApi";
 import {
-    getFirstValidTime12hOnLondonDay,
+    getFirstValidTime24hOnLondonDay,
     getLondonYmd,
     getMinimumPickupUtcMs,
     isCalendarDayDisabledForMinPickup,
@@ -24,7 +24,7 @@ function getInitialBookingSlot(): { date: Date; time: string } {
     const minMs = getMinimumPickupUtcMs();
     const { y, m0, d } = getLondonYmd(Date.now());
     const date = new Date(y, m0, d);
-    const time = getFirstValidTime12hOnLondonDay(y, m0, d, minMs) ?? "12:00 PM";
+    const time = getFirstValidTime24hOnLondonDay(y, m0, d, minMs) ?? "12:00";
     return { date, time };
 }
 
@@ -40,6 +40,7 @@ export const BookingWidget = () => {
         () => new Date(initialSlot.date.getFullYear(), initialSlot.date.getMonth(), 1),
     );
     const [fromLocation, setFromLocation] = useState("");
+    const [isFromAirport, setIsFromAirport] = useState(false);
     const [flightNumber, setFlightNumber] = useState("");
     const [destinations, setDestinations] = useState<DestinationRow[]>(() => [newDestinationRow()]);
     const destinationsRef = useRef(destinations);
@@ -95,7 +96,7 @@ export const BookingWidget = () => {
         const d = selectedDate.getDate();
         setSelectedTime((prev) => {
             if (isPickupAtLeastTwoHoursAheadLondon(selectedDate, prev)) return prev;
-            return getFirstValidTime12hOnLondonDay(y, m0, d, minMs) ?? prev;
+            return getFirstValidTime24hOnLondonDay(y, m0, d, minMs) ?? prev;
         });
     }, [selectedDate]);
 
@@ -104,7 +105,7 @@ export const BookingWidget = () => {
             if (isPickupAtLeastTwoHoursAheadLondon(selectedDate, cur)) return cur;
             const minMs = getMinimumPickupUtcMs();
             return (
-                getFirstValidTime12hOnLondonDay(
+                getFirstValidTime24hOnLondonDay(
                     bookingYmdLondon.y,
                     bookingYmdLondon.m0,
                     bookingYmdLondon.d,
@@ -144,6 +145,7 @@ export const BookingWidget = () => {
                             longitude: place.longitude,
                         };
                         setFromLocation(place.formattedAddress);
+                        setIsFromAirport(!!place.isAirport);
                     }),
                 );
             }
@@ -281,21 +283,27 @@ export const BookingWidget = () => {
 
     const handleSearch = async () => {
         setSearchError("");
-        if (!isPickupAtLeastTwoHoursAheadLondon(selectedDate, selectedTime)) {
-            setSearchError(
-                "Pickup date and time must be at least 2 hours from now (UK / London time).",
-            );
-            return;
-        }
-        const toLocations = destinations.map((d) => d.value.trim()).filter(Boolean);
-        const firstDestRow = destinations.find((d) => d.value.trim() !== "");
 
+        const firstDestRow = destinations.find((d) => d.value.trim() !== "");
         if (!fromLocation.trim()) {
             setSearchError("Please enter a pickup location.");
             return;
         }
         if (!firstDestRow) {
             setSearchError("Please enter a destination.");
+            return;
+        }
+
+        const isAirportPickup = isFromAirport || fromLocation.toLowerCase().includes("airport");
+        if (isAirportPickup && !flightNumber.trim()) {
+            setSearchError("Flight number is compulsory for airport pickups.");
+            return;
+        }
+
+        if (!isPickupAtLeastTwoHoursAheadLondon(selectedDate, selectedTime)) {
+            setSearchError(
+                "Pickup date and time must be at least 2 hours from now (UK / London time).",
+            );
             return;
         }
 
@@ -308,7 +316,7 @@ export const BookingWidget = () => {
             return;
         }
 
-        const pickupType = flightNumber.trim() ? "airport" : "standard";
+        const pickupType = isAirportPickup ? "airport" : "standard";
         setIsSearching(true);
         try {
             const quoteResponse = await fetchGetQuotes({
@@ -381,10 +389,12 @@ export const BookingWidget = () => {
                             onChange={(e) => {
                                 fromCoordsRef.current = null;
                                 setFromLocation(e.target.value);
+                                setIsFromAirport(e.target.value.toLowerCase().includes("airport"));
                             }}
                             onInput={(e) => {
                                 fromCoordsRef.current = null;
                                 setFromLocation((e.target as HTMLInputElement).value);
+                                setIsFromAirport((e.target as HTMLInputElement).value.toLowerCase().includes("airport"));
                             }}
                             placeholder="Address, airport, hotel, ..."
                             className="w-full bg-transparent border-none p-0 text-slate-900 placeholder-slate-400 focus:ring-0 text-sm font-medium outline-none"
@@ -460,7 +470,7 @@ export const BookingWidget = () => {
                             </div>
                             <div className="pl-12 pr-4 py-3 bg-slate-50 rounded-lg border border-transparent group-hover:border-slate-200 focus-within:border-[#487307] focus-within:bg-white transition-all shadow-sm">
                                 <label className="block text-xs font-semibold text-slate-500 mb-0.5">
-                                    Flight Number
+                                    Flight Number {(isFromAirport || fromLocation.toLowerCase().includes("airport")) && <span className="text-red-500">(Required)</span>}
                                 </label>
                                 <input
                                     type="text"

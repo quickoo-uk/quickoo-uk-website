@@ -6,7 +6,7 @@ export const defaultBookingData: BookingData = {
   toLocation: "",
   flightNumber: "",
   date: new Date(),
-  time: "12:00 PM",
+  time: "12:00",
   duration: "4 hours",
   quoteResponse: undefined,
   quotePickupType: undefined,

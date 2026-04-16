@@ -56,16 +56,27 @@ function toYyyyMmDd(date: Date): string {
 }
 
 /** ISO-8601 UTC with milliseconds, e.g. 2026-04-02T10:11:49.716Z */
-function toIsoPickupTime(date: Date, time12h: string): string {
-  const match = time12h.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+function toIsoPickupTime(date: Date, timeStr: string): string {
   const dt = new Date(date);
-  if (!match) return dt.toISOString();
-  const hh = Number(match[1]);
-  const mm = Number(match[2]);
-  const mer = match[3].toUpperCase();
-  let hour24 = hh % 12;
-  if (mer === "PM") hour24 += 12;
-  dt.setHours(hour24, mm, 0, 0);
+  const match12 = timeStr.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+  if (match12) {
+    const hh = Number(match12[1]);
+    const mm = Number(match12[2]);
+    const mer = match12[3].toUpperCase();
+    let hour24 = hh % 12;
+    if (mer === "PM") hour24 += 12;
+    dt.setHours(hour24, mm, 0, 0);
+    return dt.toISOString();
+  }
+
+  const match24 = timeStr.trim().match(/^(\d{1,2}):(\d{2})$/);
+  if (match24) {
+    const hh = Number(match24[1]);
+    const mm = Number(match24[2]);
+    dt.setHours(hh, mm, 0, 0);
+    return dt.toISOString();
+  }
+
   return dt.toISOString();
 }
 

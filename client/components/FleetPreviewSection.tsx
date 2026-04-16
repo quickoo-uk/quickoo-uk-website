@@ -35,7 +35,7 @@ const VEHICLE_CLASSES = [
     priceMain: "From £70 / hr",
     priceNote: "(incl. VAT)",
     image: "/fleet/BusinessVAN.png",
-    guests: "Up to 7 guests",
+    guests: "Up to 6 guests",
     luggage: "6 carry-on bags, or 6 standard bags",
     description: "Mercedes V-Class, spacious 7-seater perfect for families and groups.",
     vehicles: ["Mercedes Vito", "Or similar executive van"],

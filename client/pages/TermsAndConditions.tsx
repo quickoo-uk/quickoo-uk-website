@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FileText, Scale, AlertCircle, CheckCircle, Clock, ShieldCheck, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { SectionChip } from "@/components/SectionChip";
@@ -132,6 +133,21 @@ const sections = [
 ];
 
 export default function TermsAndConditionsPage() {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          const yOffset = -100; // Account for sticky navbar
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }, 300);
+      }
+    }
+  }, []);
+
   return (
     <div className="bg-gradient-to-b from-[#f9fafc] via-white to-[#fdf7f0] text-slate-900 overflow-hidden">
       <motion.section
@@ -228,6 +244,7 @@ export default function TermsAndConditionsPage() {
             {sections.map((section, index) => (
               <motion.div
                 key={section.title}
+                id={section.title.toLowerCase().includes("cancellation") ? "cancellation-policy" : undefined}
                 className="rounded-3xl border border-slate-200 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
                 variants={fadeInUp}
                 initial="hidden"
