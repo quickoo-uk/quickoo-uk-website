@@ -212,7 +212,7 @@ export const FleetPreviewSection = () => {
 
                 {/* Right: Icon (since price is removed) */}
                 <div className="text-right flex-shrink-0">
-                   <img src="/images/q-icon.png" alt="Q" className="h-5 w-5 object-contain ml-auto" />
+                  <img src="/images/q-icon.png" alt="Q" className="h-5 w-5 object-contain ml-auto" />
                 </div>
               </div>
             </motion.div>

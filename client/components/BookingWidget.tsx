@@ -370,7 +370,7 @@ export const BookingWidget = () => {
     };
 
     return (
-        <div className="w-full max-w-md bg-white rounded-xl shadow-2xl overflow-visible font-inter border border-slate-100">
+        <div className="w-full mx-auto bg-white rounded-xl shadow-2xl overflow-visible font-inter border border-slate-100">
             {/* Content */}
             <div className="p-6 space-y-4 overflow-visible">
                 {/* From — outside tab animation so the input/DOM node (and Places Autocomplete) are not torn down on tab change */}
