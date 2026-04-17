@@ -7,96 +7,157 @@ export const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="home-booking" className="relative flex min-h-[100dvh] w-full items-center pt-28 pb-20 lg:py-0 scroll-mt-24">
-      {/* Hero Image Background — overflow contained here so booking dropdowns can extend past the section */}
+    <section id="home-booking" className="relative flex min-h-[100dvh] w-full items-center pt-24 pb-20 lg:py-0 scroll-mt-24">
+      {/* Hero Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent z-10" />
+        <div className="absolute inset-0 bg-black/50 z-10 lg:bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 lg:bg-gradient-to-r lg:from-black/80 lg:via-black/20 lg:to-transparent z-10" />
+
+        {/* Mobile/Tablet Premium Chauffeur Background - HIGH VISIBILITY VERSION */}
+        <div className="lg:hidden absolute inset-0 overflow-hidden bg-black">
+          {/* Base Image Overlay - Increased Visibility */}
+          <div
+            className="absolute inset-0 opacity-30 blur-xl scale-110"
+            style={{
+              backgroundImage: `url('/brain/586bf587-30e8-4181-b3bb-5c2f8c653507/luxury_chauffeur_mobile_hero_1776447543788.png')`,
+              backgroundSize: 'cover',
+            }}
+          />
+
+          {/* VIBRANT Animated Reflection Gradients */}
+          <motion.div
+            animate={{
+              x: ["-15%", "15%", "-15%"],
+              y: ["-8%", "8%", "-8%"],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute inset-0 opacity-80"
+            style={{
+              background: "radial-gradient(circle at 30% 30%, #4ade80 0%, transparent 60%), radial-gradient(circle at 70% 70%, #84cc16 0%, transparent 60%), radial-gradient(circle at 50% 50%, #166534 0%, transparent 80%)",
+              filter: "blur(50px)",
+            }}
+          />
+
+          {/* BRIGHT Floating Luxury Bokeh Particles */}
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={`bokeh-${i}`}
+              animate={{
+                y: [0, -120, 0],
+                x: [0, Math.random() * 60 - 30, 0],
+                opacity: [0.2, 0.5, 0.2],
+                scale: [1, 1.4, 1],
+              }}
+              transition={{
+                duration: 8 + i * 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.8,
+              }}
+              className="absolute rounded-full bg-green-400/40 blur-xl"
+              style={{
+                width: `${30 + i * 15}px`,
+                height: `${30 + i * 15}px`,
+                left: `${(i * 15) % 100}%`,
+                top: `${(i * 25) % 100}%`,
+              }}
+            />
+          ))}
+
+          {/* Luxury Vertical "Glow Columns" */}
+          <div className="absolute inset-0 flex justify-around opacity-30">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <motion.div
+                key={`col-${i}`}
+                animate={{
+                  height: ["10%", "70%", "10%"],
+                  opacity: [0.2, 0.6, 0.2],
+                }}
+                transition={{
+                  duration: 4 + i * 1,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.4,
+                }}
+                className="w-[2px] bg-gradient-to-b from-transparent via-green-400 to-transparent shadow-[0_0_15px_rgba(74,222,128,0.5)]"
+              />
+            ))}
+          </div>
+
+          {/* Horizontal SHARP Speed Lines */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[1, 2, 3, 4].map((i) => (
+              <motion.div
+                key={`line-${i}`}
+                initial={{ x: "-150%", y: 250 + i * 140, rotate: -8 }}
+                animate={{ x: "150%" }}
+                transition={{
+                  duration: 5 + i * 1.5,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: i * 2,
+                }}
+                className="absolute h-[3px] w-[350px] bg-gradient-to-r from-transparent via-green-400 to-transparent blur-[1px] shadow-[0_0_10px_rgba(74,222,128,0.4)]"
+              />
+            ))}
+          </div>
+
+          {/* Final Subtle Vignette - NOT covering everything */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 pointer-events-none" />
+        </div>
+
+        {/* Desktop Video */}
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-fill"
+          className="hidden lg:block w-full h-full object-fill"
         >
           <source src="/home/video.mp4" type="video/mp4" />
         </video>
       </div>
 
-      {/* Animated SVG decorations */}
+      {/* Animated SVG decorations - Hidden on mobile for cleaner look as requested by "hide krdena" vibe */}
       <motion.svg
-        className="pointer-events-none absolute left-10 bottom-10 h-48 w-48 text-white/10 z-10 hidden sm:block"
+        className="pointer-events-none absolute left-10 bottom-10 h-48 w-48 text-white/10 z-10 hidden lg:block"
         viewBox="0 0 200 200"
         aria-hidden
         animate={{ rotate: 360 }}
         transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
       >
-        <circle
-          cx="100"
-          cy="100"
-          r="90"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="0.5"
-          strokeDasharray="8 8"
-        />
-        <circle
-          cx="100"
-          cy="100"
-          r="60"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="0.5"
-          strokeDasharray="5 5"
-        />
-        <circle
-          cx="100"
-          cy="100"
-          r="30"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="0.5"
-          strokeDasharray="3 3"
-        />
+        <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="8 8" />
+        <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="5 5" />
+        <circle cx="100" cy="100" r="30" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 3" />
       </motion.svg>
 
-      <motion.svg
-        className="pointer-events-none absolute right-20 top-20 h-40 w-40 text-green-400/10 z-10 hidden sm:block"
-        viewBox="0 0 160 160"
-        aria-hidden
-        animate={{ rotate: -360 }}
-        transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-      >
-        <circle
-          cx="80"
-          cy="80"
-          r="70"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="0.5"
-          strokeDasharray="6 6"
-        />
-        <circle
-          cx="80"
-          cy="80"
-          r="45"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="0.5"
-          strokeDasharray="4 4"
-        />
-      </motion.svg>
-
-      {/* Content */}
+      {/* Content Container */}
       <div className="relative z-20 mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Text Content */}
-          <div className="w-full space-y-8 text-left pt-10 lg:pt-0">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+
+          {/* Top on Mobile: Booking Widget */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="w-full flex justify-center lg:justify-end order-1 lg:order-2"
+          >
+            <div className="w-full max-w-xl sm:max-w-3xl lg:max-w-md relative z-30 mx-auto lg:ml-auto lg:mr-0">
+              <BookingWidget />
+            </div>
+          </motion.div>
+
+          {/* Bottom on Mobile: Text Content */}
+          <div className="w-full space-y-8 text-center lg:text-left order-2 lg:order-1 flex flex-col items-center lg:items-start mx-auto lg:mx-0">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 sm:gap-3 rounded-full border border-green-500/50 bg-white/95 px-4 sm:px-6 py-2 sm:py-2.5 backdrop-blur-md shadow-[0_0_30px_rgba(72,115,7,0.3)]"
+              className="inline-flex items-center gap-2 sm:gap-3 rounded-full border border-green-500/50 bg-white/95 px-4 sm:px-6 py-2 sm:py-2.5 backdrop-blur-md shadow-[0_0_30px_rgba(72,115,7,0.3)] mx-auto lg:mx-0"
             >
               <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#487307] opacity-75"></span>
@@ -111,7 +172,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-montserrat font-bold leading-[1.1] text-white tracking-tight"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-montserrat font-bold leading-[1.1] text-white tracking-tight text-center lg:text-left w-full"
             >
               Experience the
               <br />
@@ -124,7 +185,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="text-lg sm:text-xl md:text-2xl text-gray-200 font-inter leading-relaxed max-w-xl font-light tracking-wide"
+              className="text-base sm:text-xl md:text-2xl text-gray-200 font-inter leading-relaxed max-w-xl font-light tracking-wide mx-auto lg:mx-0 text-center lg:text-left"
             >
               Elevate your journey with our elite chauffeur service. Where sophistication meets comfort, and every ride is a statement of elegance.
             </motion.p>
@@ -134,31 +195,19 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto items-center lg:items-start"
             >
               <motion.button
                 whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate("/why-choose/luxury-fleet")}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/30 bg-transparent text-white text-base font-bold transition-all duration-300 hover:border-white/60 backdrop-blur-sm"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/30 bg-transparent text-white text-base font-bold transition-all duration-300 hover:border-white/60 backdrop-blur-sm w-full sm:w-auto"
               >
                 Explore Fleet
                 <Sparkles className="w-5 h-5" />
               </motion.button>
             </motion.div>
           </div>
-
-          {/* Right Column: Booking Widget */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="w-full flex justify-center lg:justify-end lg:pt-0 pt-8"
-          >
-            <div className="w-full max-w-sm lg:max-w-md relative z-30">
-              <BookingWidget />
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
