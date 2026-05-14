@@ -66,7 +66,7 @@ export const Navbar = () => {
         <div className="mx-auto flex w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-visiable">
           <div className="flex h-16 sm:h-20 w-full items-center justify-between min-w-0">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 flex-shrink-0">
+            <a href="/" className="flex items-center gap-3 flex-shrink-0">
               <div className="relative flex items-center">
                 <img
                   src={logo}
@@ -74,12 +74,12 @@ export const Navbar = () => {
                   className="h-8 sm:h-10 w-auto object-contain drop-shadow-[0_8px_24px_rgba(12,4,32,0.4)]"
                 />
               </div>
-            </Link>
+            </a>
 
             {/* CENTER MENU (Desktop) */}
             <div className="hidden lg:flex items-center gap-4 xl:gap-6">
-              <Link
-                to="/"
+              <a
+                href="/"
                 className={cn(
                   "font-inter text-sm transition-colors",
                   isScrolled
@@ -88,7 +88,7 @@ export const Navbar = () => {
                 )}
               >
                 Home
-              </Link>
+              </a>
 
               {/* Services */}
               <div className="relative group">
@@ -191,10 +191,29 @@ export const Navbar = () => {
               >
                 Contact
               </Link>
+              {/* <Link
+                to="/book-now"
+                className={cn(
+                  "font-inter text-sm transition-colors",
+                  isScrolled
+                    ? "text-dark hover:text-gold"
+                    : "text-[#2a1b4d] hover:text-gold",
+                )}
+              ></Link> */}
+              <a
+                href="/book-now"
+                className={cn(
+                  "font-inter text-sm transition-colors",
+                  isScrolled
+                    ? "text-dark hover:text-gold"
+                    : "text-[#2a1b4d] hover:text-gold",
+                )}
+              >
+                Book Now
+              </a>
             </div>
 
             {/* RIGHT SIDE removed per design update */}
-
           </div>
 
           {/* Mobile Menu Button */}
@@ -221,7 +240,6 @@ export const Navbar = () => {
             )}
           </button>
         </div>
-
       </nav>
 
       {/* MOBILE MENU OVERLAY - Full Screen */}
@@ -393,7 +411,6 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
-
     </>
   );
 };

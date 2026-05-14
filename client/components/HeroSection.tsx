@@ -2,6 +2,7 @@ import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { BookingWidget } from "./BookingWidget";
+import LogistifieBookingWidget from "./LogistifieBookingWidget";
 
 export const HeroSection = () => {
   const navigate = useNavigate();
@@ -146,8 +147,9 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="w-full flex justify-center lg:justify-end order-1 lg:order-2"
           >
-            <div className="w-full max-w-xl sm:max-w-3xl lg:max-w-md relative z-30 mx-auto lg:ml-auto lg:mr-0">
-              <BookingWidget />
+            <div className="w-full max-w-xl sm:max-w-3xl lg:max-w-md relative z-30 mx-auto lg:ml-auto lg:mr-0 hero_booking_engine">
+              {/* <BookingWidget /> */}
+              <LogistifieBookingWidget/>
             </div>
           </motion.div>
 
