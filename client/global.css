@@ -337,8 +337,150 @@ body {
     color: #487307 !important;
 }
 
+/* Logistife Booking engine overwrite css  */
+.hero_booking_engine {
+  backdrop-filter: blur(20px);
+  background: hsl(var(--background) / 0.82);
+  border-radius: 20px;
+  border: 1px solid hsl(var(--border) / 0.5);
+  box-shadow:
+    0 10px 40px hsl(var(--quickoo-violet) / 0.15),
+    0 0 0 1px hsl(var(--border) / 0.15);
+}
 
+/* Inner container */
+.hero_booking_engine .lf-bg-white,
+.mobile-form .lf-bg-white {
+  border-radius: 16px;
+  background: hsl(var(--card) / 0.9);
+  border: 1px solid hsl(var(--border) / 0.5);
+  box-shadow:
+    inset 0 0 25px hsl(var(--quickoo-glow) / 0.08),
+    0 4px 20px hsl(var(--quickoo-violet) / 0.08);
+}
 
+/* Tabs */
+.hero_booking_engine .lf-grid-cols-3 > div > button,
+.mobile-form .lf-grid-cols-3 > div > button {
+  background: transparent;
+  color: hsl(var(--muted-foreground)) !important;
+  border-bottom: 2px solid transparent;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
 
+/* Active tab */
+.hero_booking_engine .lf-grid-cols-3 .\!lf-border-\[--primary-color\],
+.mobile-form .lf-grid-cols-3 .\!lf-border-\[--primary-color\] {
+  color: hsl(var(--primary)) !important;
+  border-bottom: 2px solid hsl(var(--primary)) !important;
+}
 
+/* Hover tab */
+.hero_booking_engine .lf-grid-cols-3 > div > button:hover,
+.mobile-form .lf-grid-cols-3 > div > button:hover {
+  color: hsl(var(--foreground)) !important;
+  border-bottom: 2px solid hsl(var(--primary) / 0.4);
+}
 
+/* Labels */
+.hero_booking_engine label,
+.mobile-form label {
+  color: hsl(var(--foreground)) !important;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* Inputs */
+.hero_booking_engine input,
+.mobile-form input {
+  border-radius: 12px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--secondary));
+  color: hsl(var(--foreground));
+  padding: 10px 26px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+/* Icons */
+.hero_booking_engine .fa-calendar-day,
+.hero_booking_engine .fa-clock,
+.hero_booking_engine .fa-location-dot,
+.hero_booking_engine button[type="button"]:hover,
+.hero_booking_engine i.-lf-translate-y-2\/4,
+.mobile-form .fa-calendar-day,
+.mobile-form .fa-clock,
+.mobile-form .fa-location-dot,
+.mobile-form button[type="button"]:hover,
+.mobile-form i.-lf-translate-y-2\/4 {
+  color: hsl(var(--primary));
+  font-size: 15px;
+}
+
+/* Placeholder */
+.hero_booking_engine input::placeholder,
+.mobile-form input::placeholder {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* Focus state */
+.hero_booking_engine input:focus,
+.mobile-form input:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  background: hsl(var(--background));
+  box-shadow:
+    0 0 0 3px hsl(var(--primary) / 0.15),
+    0 0 20px hsl(var(--quickoo-electric) / 0.12);
+}
+
+/* Small helper text */
+h5.lf-text-\[--primary-color\] {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* Buttons */
+.hero_booking_engine button[type="button"],
+.mobile-form button[type="button"] {
+  color: hsl(var(--muted-foreground));
+  font-size: 14px !important;
+  transition: all 0.3s ease;
+}
+
+/* Dropdown trigger */
+.lf-max-w-\[180px\] .lf-py-1\.5 button[type="button"] {
+  font-size: 14px !important;
+}
+
+/* Remove unwanted hover bg */
+.hero_booking_engine .hover\:lf-bg-gray-200:hover {
+  background-color: transparent;
+}
+
+/* Submit button */
+.hero_booking_engine button[type="submit"],
+.mobile-form button[type="submit"] {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-radius: 12px;
+  font-weight: 600;
+  padding: 12px 40px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 8px 20px hsl(var(--primary) / 0.25);
+}
+
+/* Submit hover */
+.hero_booking_engine button[type="submit"]:hover,
+.hero_booking_engine button[type="submit"]:focus,
+.mobile-form button[type="submit"]:hover,
+.mobile-form button[type="submit"]:focus {
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  transform: translateY(-1px);
+  box-shadow:
+    0 12px 24px hsl(var(--accent) / 0.3);
+}

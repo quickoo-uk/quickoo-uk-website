@@ -41,16 +41,12 @@ import AdminVehicleClassManagement from "./pages/admin/AdminVehicleClassManageme
 import AdminPickupPricingSettings from "./pages/admin/AdminPickupPricingSettings";
 import { ensureAdminSession } from "@/lib/adminAuth";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import BookFleet from "./pages/BookFleet";
+import LogistifieBookNow from "./pages/LogistifieBookNow";
 
 const queryClient = new QueryClient();
 
-const Layout = ({
-  children,
-  isFooter,
-}: {
-  children: React.ReactNode;
-  isFooter?: boolean;
-}) => (
+const Layout = ({ children, isFooter }: { children: React.ReactNode; isFooter?: boolean;}) => (
   <div className="flex flex-col min-h-screen overflow-x-hidden w-full">
     <Navbar />
     <main className="flex-grow pt-16 sm:pt-20 w-full overflow-x-hidden">{children}</main>
@@ -152,11 +148,19 @@ export default function App() {
                 </Layout>
               }
             />
-            <Route
+            {/* <Route
               path="/book-now"
               element={
                 <Layout isFooter={false}>
                   <BookNowPage />
+                </Layout>
+              }
+            /> */}
+            <Route
+              path="/book-now"
+              element={
+                <Layout>
+                  <LogistifieBookNow />
                 </Layout>
               }
             />
@@ -265,6 +269,15 @@ export default function App() {
               }
             />
             <Route
+              path="/book-fleet"
+              element={
+                <Layout>
+                  <BookFleet />
+                </Layout>
+              }
+            />
+            
+            <Route
               path="/admin-panel"
               element={<Navigate to="/admin-panel/login" replace />}
             />
@@ -301,6 +314,7 @@ export default function App() {
                 </AdminGuard>
               }
             />
+            
             <Route
               path="*"
               element={
