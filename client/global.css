@@ -347,7 +347,9 @@ body {
     0 10px 40px hsl(var(--quickoo-violet) / 0.15),
     0 0 0 1px hsl(var(--border) / 0.15);
 }
-
+ booking-widget span.lf-text-xs{
+ width: 32px !important;
+}
 /* Inner container */
 .hero_booking_engine .lf-bg-white,
 .mobile-form .lf-bg-white {

@@ -5,7 +5,7 @@ const SCRIPT_URL = "https://lf-grafana.logistifie.com/js/bundle_booking.js";
 
 const LogistifieBookNow = () => {
   return (
-    <section className="py-16 min-h-screen bg-white">
+    <section className="py-16 bg-white">
       <div className="py-4">
         <BookingWidgetLoader scriptUrl={SCRIPT_URL}>
           <booking-widget
