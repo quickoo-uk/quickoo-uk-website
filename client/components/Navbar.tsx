@@ -200,18 +200,7 @@ export const Navbar = () => {
                     : "text-[#2a1b4d] hover:text-gold",
                 )}
               ></Link> */}
-              <a
-                href="/book-now"
-                className={cn(
-                  "font-inter text-sm transition-colors",
-                  isScrolled
-                    ? "text-dark hover:text-gold"
-                    : "text-[#2a1b4d] hover:text-gold",
-                )}
-              >
-                Book Now
-              </a>
-              <a
+               <a
                 href="https://quickoo.dashboardloginapp.com/login"
                 className={cn(
                   "font-inter text-sm transition-colors",
@@ -229,6 +218,18 @@ export const Navbar = () => {
                     : "text-[#2a1b4d] hover:text-gold",
                 )}
               >Sign Up</a>
+              <a
+                href="/book-now"
+                className={cn(
+                  "font-inter text-sm transition-colors",
+                  isScrolled
+                    ? "text-dark hover:text-gold"
+                    : "text-[#2a1b4d] hover:text-gold",
+                )}
+              >
+                Book Now
+              </a>
+             
             </div>
 
             {/* RIGHT SIDE removed per design update */}
