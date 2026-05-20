@@ -34,7 +34,7 @@ const policySections = [
       "",
       "2.2 Information Collected Automatically",
       "When you interact with our digital services, we automatically collect:",
-      "• Technical Data: IP address, device type, browser type and version, operating system",
+      "• Technical Data: Location, IP address, device type, browser type and version, operating system",
       "• Usage Data: Pages visited, time spent on website, referring URLs, clickstream data",
       "• Location Data: GPS coordinates (with your consent) for pickup/drop-off accuracy and chauffeur dispatch",
       "• Cookie Data: Information stored through cookies and similar tracking technologies",
