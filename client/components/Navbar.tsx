@@ -426,6 +426,30 @@ export const Navbar = () => {
               Contact
             </Link>
 
+            <a
+              href="https://quickoo.dashboardloginapp.com/login"
+              onClick={handleNavClick}
+              className="block px-5 py-3.5 text-white font-medium rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 border border-transparent hover:border-[#487307]/30"
+            >
+              Login
+            </a>
+
+            <a
+              href="https://quickoo.dashboardloginapp.com/register"
+              onClick={handleNavClick}
+              className="block px-5 py-3.5 text-white font-medium rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 border border-transparent hover:border-[#487307]/30"
+            >
+              Sign Up
+            </a>
+
+            <a
+              href="/book-now"
+              onClick={handleNavClick}
+              className="block px-5 py-3.5 text-white font-medium rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 border border-transparent hover:border-[#487307]/30"
+            >
+              Book Now
+            </a>
+
             <div className="h-2" />
           </div>
         </div>

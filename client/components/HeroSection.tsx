@@ -149,7 +149,7 @@ export const HeroSection = () => {
           >
             <div className="w-full max-w-xl sm:max-w-3xl lg:max-w-md relative z-30 mx-auto lg:ml-auto lg:mr-0 hero_booking_engine">
               {/* <BookingWidget /> */}
-              <LogistifieBookingWidget/>
+              <LogistifieBookingWidget />
             </div>
           </motion.div>
 
