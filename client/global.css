@@ -237,7 +237,7 @@ body {
     }
 
     .section-spacing {
-        @apply py-20 sm:py-32;
+        @apply py-12 sm:py-32;
     }
 }
 
