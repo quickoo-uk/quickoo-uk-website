@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Users, Luggage, Sparkles, ChevronDown } from "lucide-react";
+import { Users, Luggage, Sparkles, ChevronDown, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionChip } from "./SectionChip";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -15,7 +15,7 @@ const VEHICLE_CLASSES = [
     image: "/fleet/BusinessClass.png",
     guests: "Up to 4 guests",
     luggage: "2 carry-on bags, or 2 standard bags",
-    description: "Mercedes E-Class,or similar premium executive cars.",
+    description: "Business Class vehicles are ideal for corporate transportation and airport transfers. A professional, comfortable and practical solution for business or other executive-style travel. Suitable for Corporate meetings, Airport Transfers and Professional appointments.",
     vehicles: ["Mercedes E-Class", "BMW 5 Series", "Or similar"],
     longDescription: (
       <>
@@ -35,7 +35,7 @@ const VEHICLE_CLASSES = [
     image: "/fleet/firstClass.png",
     guests: "Up to 3 guests",
     luggage: "2 carry-on bags or 2 standard bags",
-    description: "Mercedes S-Class, BMW 7 Series, or similar luxury cars.",
+    description: "Enjoy exceptional luxury in premium chauffeur-driven vehicles. They provide an exceptional travel experience to executives, VIP guests and other persons who expect the highest levels of comfort and class. Suitable for Executive Transportation, VIP transportation and Corporate Roadshows.",
     vehicles: ["Mercedes S-Class", "BMW 7 Series", "Or similar luxury sedan"],
     longDescription: (
       <>
@@ -55,7 +55,7 @@ const VEHICLE_CLASSES = [
     image: "/fleet/BusinessVAN.png",
     guests: "Up to 6 guests",
     luggage: "6 carry-on bags, or 6 standard bags",
-    description: "Mercedes V-Class, spacious 7-seater perfect for families and groups.",
+    description: "Travelling with your entire family or a larger group of individuals. Business Class Luxury Vans provide ample room and comfort for multiple passengers and their luggage. Perfect for corporate group airport transfers, family transportation and event transportation.",
     vehicles: ["Mercedes Vito", "Or similar executive van"],
     longDescription: (
       <>
@@ -66,6 +66,43 @@ const VEHICLE_CLASSES = [
       </>
     ),
   },
+];
+
+// New services
+const FLEET_SERVICES = [
+  {
+    id: "corporate-travel",
+    title: "Corporate Travel",
+    image: "/new_images/Corporate-Travel.png",
+    description: (
+      <>
+        <p>Our corporate travel services are specifically designed for executives, business travellers and companies who appreciate the importance of punctuality and professionalism.</p>
+        <p className="mt-2">With our executive chauffeur service, you can be assured of a comfortable and productive journey while travelling.</p>
+      </>
+    )
+  },
+  {
+    id: "event-chauffeur",
+    title: "Event chauffeur Services",
+    image: "/new_images/Event-Chauffeur.png",
+    description: (
+      <>
+        <p>Make an entrance when you attend sporting events, award shows, concerts, private functions or VIP gatherings.</p>
+        <p className="mt-2">Our luxury event valet service is designed to create an elegant and customised travel experience for your events.</p>
+      </>
+    )
+  },
+  {
+    id: "private-chauffeur",
+    title: "Private chauffeur Services",
+    image: "/new_images/Private-Jet-Chauffeur.png",
+    description: (
+      <>
+        <p>From one hour to an entire day, there is always flexibility and privacy in using our private chauffeur service.</p>
+        <p className="mt-2">Let us handle all of the details, while you relax and enjoy your trip.</p>
+      </>
+    )
+  }
 ];
 
 const container = {
@@ -122,24 +159,89 @@ export const FleetPreviewSection = () => {
       </motion.svg>
 
       <div className="section-container relative">
+        {/* Flagship Fleet Info */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 space-y-4"
+          className="text-center mb-24 space-y-4"
         >
           <SectionChip title="Flagship Fleet" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-            High-end chauffeur services for{" "}
+            Premium chauffeur Services for{" "}
             <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-              corporate travel, luxury events, and runway transfers.
+              Corporate Travel, Luxury Events, and Runway Transfers
             </span>
           </h2>
           <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-            Select a category, set your preferences, and we stage the perfect
-            vehicle with onboard bar, Wi-Fi, and concierge amenities before you
-            arrive.
+            We will provide you with a stress-free airport transportation experience, whether you are coming or going from Heathrow, Gatwick, Stansted, Luton or London City Airports.
+
+          </p>
+        </motion.div>
+
+        <div className="flex flex-col gap-24 sm:gap-32 mb-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {FLEET_SERVICES.map((service, index) => (
+            <div
+              key={service.id}
+              className={`flex flex-col ${index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
+                } items-center gap-12 lg:gap-16`}
+            >
+              {/* Image Side */}
+              <motion.div
+                initial={{ opacity: 0, x: index % 2 === 1 ? 50 : -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-full lg:w-1/2 relative"
+              >
+                <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#eaf7e8]/60 via-[#487307]/10 to-transparent blur-3xl" />
+                <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_90px_rgba(15,23,42,0.15)] border border-white/60 aspect-[3/2] sm:aspect-[16/9] lg:aspect-[4/3]">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Content Side */}
+              <motion.div
+                initial={{ opacity: 0, x: index % 2 === 1 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-full lg:w-1/2 space-y-6 text-center lg:text-left"
+              >
+                <h3 className="text-3xl sm:text-4xl font-montserrat font-semibold text-dark">
+                  {service.title}
+                </h3>
+                <div className="text-base sm:text-lg font-inter text-gray-600 space-y-4 max-w-xl mx-auto lg:mx-0">
+                  {service.description}
+                </div>
+              </motion.div>
+            </div>
+          ))}
+        </div>
+
+        {/* Vehicle Selection Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20 space-y-4"
+        >
+          <SectionChip title="Our Fleet" />
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
+            Choose the Perfect Vehicle{" "}
+            <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
+              for Your Journey
+            </span>
+          </h2>
+          <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto mt-4">
+            Whether you need the understated elegance of an executive sedan or the spacious luxury of a premium MPV, our immaculate fleet is meticulously maintained to exceed your expectations.
           </p>
         </motion.div>
 
@@ -159,14 +261,14 @@ export const FleetPreviewSection = () => {
               className="group overflow-hidden rounded-2xl transition-all duration-500"
             >
               {/* Desktop view: Traditional vertical card */}
-              <div className="hidden md:flex flex-col h-full bg-white border border-gray-200 shadow-sm hover:shadow-xl">
+              <div className="hidden md:flex flex-col h-full bg-white border border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] rounded-2xl overflow-hidden transition-all duration-500 group-hover:-translate-y-1">
                 {/* Image Section */}
-                <div className="relative overflow-hidden bg-gradient-to-br from-[#f8faf5] to-white px-6 pb-6 pt-10 flex items-center justify-center">
+                <div className="relative overflow-hidden bg-white h-48 sm:h-56 flex items-center justify-center border-b border-gray-50 group-hover:bg-gray-50/50 transition-colors duration-500">
                   <motion.img
                     src={vehicle.image}
                     alt={vehicle.name}
                     loading="lazy"
-                    className="max-h-40 w-auto object-contain transition duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover scale-[1.25] mix-blend-multiply transition duration-700 group-hover:scale-[1.35]"
                   />
                 </div>
 
@@ -222,19 +324,19 @@ export const FleetPreviewSection = () => {
               </div>
 
               {/* Mobile view: Horizontal card with Accordion */}
-              <div 
+              <div
                 className="md:hidden flex flex-col p-4 gap-4 bg-white rounded-2xl border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.05)] cursor-pointer hover:bg-slate-50 transition-colors"
                 onClick={() => setExpandedVehicleId(expandedVehicleId === vehicle.id ? null : vehicle.id)}
               >
                 <div className="flex items-center gap-4 w-full">
                   {/* Left: Image */}
-                  <div className="w-32 sm:w-36 flex-shrink-0">
-                    <img src={vehicle.image} alt={vehicle.name} className="w-full h-auto object-contain scale-110" />
+                  <div className="w-28 sm:w-36 h-20 sm:h-24 flex-shrink-0 flex items-center justify-center overflow-hidden rounded-xl bg-white">
+                    <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-contain scale-[1.15] mix-blend-multiply" />
                   </div>
 
                   {/* Center: Info */}
                   <div className="flex-grow min-w-0">
-                    <h3 className="text-lg font-bold text-slate-900 leading-tight">{vehicle.name}</h3>
+                    <h3 className="text-lg font-bold text-slate-900 leading-tight truncate">{vehicle.name}</h3>
                     <div className="flex items-center gap-4 my-1.5 text-slate-700">
                       <div className="flex items-center gap-1.5">
                         <Users className="w-4 h-4 text-[#487307]" strokeWidth={2.5} />
@@ -245,7 +347,7 @@ export const FleetPreviewSection = () => {
                         <span className="text-sm font-bold">{vehicle.id === 'business-van' ? '6' : '2'}</span>
                       </div>
                     </div>
-                    <p className="text-xs text-slate-500 font-medium">
+                    <p className="text-xs text-slate-500 font-medium truncate sm:whitespace-normal">
                       {vehicle.name.replace('\u00A0', ' ')} or similar
                     </p>
                   </div>
@@ -291,7 +393,7 @@ export const FleetPreviewSection = () => {
                   <SectionChip title={selectedVehicle.name} />
                 </div>
               </div>
-              
+
               {/* Content */}
               <div className="p-8 bg-white">
                 <DialogHeader className="mb-4">
@@ -299,7 +401,7 @@ export const FleetPreviewSection = () => {
                     {selectedVehicle.name} Overview
                   </DialogTitle>
                 </DialogHeader>
-                
+
                 <div className="space-y-4 text-gray-600 font-inter leading-relaxed text-sm md:text-base">
                   {selectedVehicle.longDescription}
                 </div>

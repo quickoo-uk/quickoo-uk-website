@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { SectionChip } from "./SectionChip";
 
 const FEATURES = [
-  "Real-time chauffeur tracking",
-  "Instant booking & modifications",
-  "Secure in-app payments",
-  "24/7 Concierge chat support",
+  "Online Reservations - Fast & Secure",
+  "Flexible Booking Changes",
+  "Real-Time Journey Updates & Notifications",
+  "24/7 Support",
 ];
 
 export const AppDownloadSection = () => {
@@ -46,7 +46,7 @@ export const AppDownloadSection = () => {
       </motion.svg>
 
       <div className="section-container relative">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
+        <div className="grid grid-cols-1 gap-12 lg:gap-16 lg:grid-cols-2 lg:items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -54,18 +54,17 @@ export const AppDownloadSection = () => {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <SectionChip title="Mobile Experience" />
+            <SectionChip title="Get the Mobile Experience" />
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark leading-tight">
-              Your entire journey,{" "}
+              Easy Travel Planning All you need,{" "}
               <span className="bg-gradient-to-r from-[#1a2e03] via-[#487307] to-[#6aa80b] bg-clip-text text-transparent">
-                in your pocket.
+                Right at Your Fingertips
               </span>
             </h2>
 
-            <p className="text-base sm:text-lg text-gray-600 font-inter max-w-xl">
-              Book rides, track your chauffeur, and manage your itinerary with
-              our award-winning mobile app. Designed for the modern traveler.
+            <p className="text-base sm:text-lg text-gray-600 font-inter max-w-xl leading-relaxed">
+              You can book and manage every aspect of luxury chauffeur travel. It covers airport pickups and transportation to special events in a simple manner.
             </p>
 
             <div className="space-y-4">

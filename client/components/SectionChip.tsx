@@ -17,7 +17,7 @@ export const SectionChip = ({
                 alt="Quickoo"
                 className="h-4 w-4 object-contain"
             />
-            <span className="text-sm tracking-[0.4em] uppercase text-slate-600 font-semibold">
+            <span className="text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.4em] text-left uppercase text-slate-600 font-semibold">
                 {title}
             </span>
         </div>

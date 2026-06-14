@@ -5,33 +5,33 @@ import { SectionChip } from "./SectionChip";
 const WHY_QUICKO_FEATURES = [
     {
         icon: Award,
-        title: "Executive Chauffeur",
-        description: "Professionally trained drivers who understand VIP protocol and hospitality excellence.",
+        title: "Professional chauffeurs",
+        description: "Our team of highly professional chauffeurs have experience in executive travel, knowledge of VIP protocol and a commitment to providing discreet service to our customers.",
     },
     {
         icon: Crown,
-        title: "Luxury Fleet & Immaculate Interiors",
-        description: "Premium vehicles maintained to the highest standards with pristine interiors.",
+        title: "Luxurious Fleet and Impeccable Interiors",
+        description: "We use premium Mercedes vehicles that are well maintained, clean and offer you a comfortable and refined environment for your journey.",
     },
     {
         icon: Shield,
-        title: "Absolute Privacy & Discretion",
-        description: "Your confidentiality is paramount. We ensure complete privacy on every journey.",
+        title: "Total Confidentiality and Discretion",
+        description: "You can be assured that your privacy is our main priority. All journeys are conducted with professionalism and respect for your confidentiality.",
     },
     {
         icon: Users,
-        title: "Concierge Coordination",
-        description: "Dedicated support team managing every detail of your travel experience.",
+        title: "Concierge Level Coordination",
+        description: "Our support staff will coordinate your travel, including schedules, airport pick-ups, waiting times and any special requests to ensure your travels are seamless.",
     },
     {
         icon: Clock,
-        title: "24/7 Customer Support",
-        description: "Round-the-clock assistance whenever you need us, wherever you are.",
+        title: "24/7 Customer Service",
+        description: "You can reach us anytime, 24/7, whether you are booking a trip, making changes to your itinerary or need immediate assistance while you are travelling.",
     },
     {
         icon: CheckCircle2,
         title: "Trusted by Business Travellers",
-        description: "The preferred choice for executives and professionals worldwide.",
+        description: "Executives, corporate teams and international travellers all choose us because we deliver on time, offer comfortable vehicles, and provide reliable service.",
     },
 ];
 
@@ -65,15 +65,15 @@ export const WhyQuickoSection = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16 space-y-4"
                 >
-                    <SectionChip title="Why Quickoo" />
+                    <SectionChip title="What Sets Us Apart?" />
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark max-w-4xl mx-auto leading-tight">
-                        More Than Just Transportation—
-                        <span className="text-[#487307]"> Travel In Style</span>
+                        More than Just Transportation—
+                        <span className="text-[#487307]"> Experience Your Travel in Style</span>
                     </h2>
 
                     <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-                        Discover what sets Quickoo apart as the premier choice for luxury chauffeur services.
+                        We provide a seamless luxury chauffeur service perfect for your travel needs for airport transfers to any of your special events.
                     </p>
                 </motion.div>
 
@@ -89,7 +89,7 @@ export const WhyQuickoSection = () => {
                         const Icon = feature.icon;
                         return (
                             <motion.div
-                                key={feature.title}
+                                key={idx}
                                 variants={item}
                                 className="group relative bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300"
                             >
@@ -126,25 +126,15 @@ export const WhyQuickoSection = () => {
                             <h3 className="text-2xl sm:text-3xl font-montserrat font-bold text-dark">
                                 Experience the <span className="text-[#487307]">Quickoo Difference</span>
                             </h3>
-                            <p className="text-base sm:text-lg font-inter text-gray-600">
-                                Join thousands of satisfied clients who trust Quickoo for their luxury transportation needs. Every journey is an opportunity to experience excellence.
+                            <p className="text-base sm:text-lg font-inter text-gray-700 font-medium">
+                                We are a full-service luxury chauffeur company that prides itself on providing comfort, reliability, and professionalism.
+                            </p>
+                            <p className="text-sm sm:text-base font-inter text-gray-600">
+                                Join thousands of satisfied clients from all over the world who use Quickoo for all of their executive travel needs, airport transfers, corporate transportation, and special events. Every trip with Quickoo is designed to provide you with a smooth, stylish and dependable chauffeur experience.
                             </p>
                         </div>
 
-                        <div className="flex flex-wrap justify-center gap-4">
-                            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-50 text-slate-700 border border-slate-100 text-sm font-semibold">
-                                <CheckCircle2 className="h-4 w-4 text-[#487307]" />
-                                Premium Service
-                            </div>
-                            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-50 text-slate-700 border border-slate-100 text-sm font-semibold">
-                                <Shield className="h-4 w-4 text-[#487307]" />
-                                Fully Insured
-                            </div>
-                            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-50 text-slate-700 border border-slate-100 text-sm font-semibold">
-                                <Award className="h-4 w-4 text-[#487307]" />
-                                Award Winning
-                            </div>
-                        </div>
+
                     </div>
                 </motion.div>
             </div>

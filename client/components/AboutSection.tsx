@@ -13,18 +13,18 @@ const STATS = [
 const TIMELINE = [
   {
     year: "2020",
-    title: "Founded in London",
-    detail: "Bespoke chauffeur studio crafted for C-suite travel planners.",
+    title: "Established in London",
+    detail: "Get the curated chauffeur service crafted for executive business professionals.",
   },
   {
     year: "2023",
-    title: "Global Expansion",
-    detail: "Added concierge-partner network across North America & EU.",
+    title: "Wide Expansion Globally",
+    detail: "Get the concierge support in North America & the EU.",
   },
   {
     year: "2025",
-    title: "Smart Mobility Suite",
-    detail: "Launched predictive dispatch and AI itinerary briefing.",
+    title: "Smart System",
+    detail: "Cutting Edge AI Itinerary Summary.",
   },
 ];
 
@@ -64,7 +64,7 @@ export const AboutSection = () => {
       </motion.svg>
 
       <div className="section-container relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -74,49 +74,38 @@ export const AboutSection = () => {
           >
             <div className="space-y-4">
               <SectionChip title="About Quickoo" />
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-                From personalized chauffeur service to a{" "}
-                <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                  world-class executive fleet.
-                </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark leading-tight">
+                An Outstanding <span className="text-[#487307]">Travel Experience</span>
               </h2>
-              <p className="text-base sm:text-lg text-gray-600 font-inter">
-                We are a collective of hospitality experts, logisticians, and
-                technologists committed to making ground travel feel like a
-                five-star ritual—no matter the route.
+              <p className="text-base sm:text-lg text-gray-600 font-inter leading-relaxed">
+                The purpose of Quickoo's founding was to create the best possible premium chauffeur service by offering customers luxury, reliability and high levels of service and care.
               </p>
             </div>
-
-
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="space-y-6 rounded-3xl border border-white/60 bg-white/80 p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur"
+              className="space-y-6 rounded-3xl border border-[#487307]/10 bg-white/90 p-6 md:p-8 shadow-[0_20px_70px_rgba(72,115,7,0.08)] backdrop-blur"
             >
-              <div className="flex items-center gap-3 text-dark">
-                <Sparkles className="h-5 w-5 text-[#487307]" />
-                <p className="font-montserrat text-lg font-semibold">
-                  Built on radical hospitality & real-time intelligence.
+              <div className="space-y-5">
+                <p className="text-base sm:text-lg leading-relaxed text-gray-700 font-inter font-medium">
+                  We offer one of the best chauffeur services in London and throughout the UK to business travellers, families, tourists, VIPs and corporate organisations.
+                </p>
+                <p className="text-base sm:text-lg leading-relaxed text-gray-600 font-inter">
+                  Our reputation is based on our professionalism, punctuality, and ability to consistently provide an outstanding travel experience.
                 </p>
               </div>
-              <p className="text-sm leading-relaxed text-gray-600 font-inter">
-                Each booking activates a concierge pod that syncs vehicle prep,
-                chauffeur briefings, city intelligence, and client preferences.
-                The result? Doors open exactly when you arrive—never earlier,
-                never late.
-              </p>
-              <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
-                <span className="rounded-full bg-dark/5 px-3 py-1 text-dark">
-                  Biometrics Cleared
+              <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-gray-500 pt-2 border-t border-gray-100">
+                <span className="flex items-center gap-1.5 mt-4">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#487307]"></span> Reliability
                 </span>
-                <span className="rounded-full bg-dark/5 px-3 py-1 text-dark">
-                  Concierge On-Call
+                <span className="flex items-center gap-1.5 mt-4">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#487307]"></span> Punctuality
                 </span>
-                <span className="rounded-full bg-dark/5 px-3 py-1 text-dark">
-                  Sustainability Pledge
+                <span className="flex items-center gap-1.5 mt-4">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#487307]"></span> Professionalism
                 </span>
               </div>
             </motion.div>
@@ -164,8 +153,8 @@ export const AboutSection = () => {
                     transition={{ delay: idx * 0.2, duration: 0.5 }}
                     className="flex gap-4"
                   >
-                    <div className="flex flex-col items-center">
-                      <span className="font-montserrat text-sm font-bold text-[#487307]">
+                    <div className="flex flex-col items-center shrink-0 min-w-[40px]">
+                      <span className="font-montserrat text-sm font-bold text-[#487307] whitespace-nowrap">
                         {item.year}
                       </span>
                       <span className="h-full w-px bg-gradient-to-b from-[#487307]/60 to-transparent" />
