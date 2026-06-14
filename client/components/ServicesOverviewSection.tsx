@@ -11,6 +11,7 @@ import {
   Zap,
   MapPin,
   ArrowRight,
+  ArrowDown,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { SectionChip } from "./SectionChip";
@@ -29,9 +30,8 @@ type Service = {
 const SERVICES: Service[] = [
   {
     icon: Plane,
-    name: "Airport Transfers",
-    description:
-      "Seamless airport pickups and drop-offs with flight tracking.",
+    name: "Airport transfers",
+    description: "Get on-time airport pickups and drop-offs with vigilance on flight tracking.",
     highlight: "Flight Monitoring",
     features: [
       "VIP meet & greet",
@@ -42,15 +42,13 @@ const SERVICES: Service[] = [
       "Audio Preference",
     ],
     accent: "from-sky-500/90 via-sky-400/80 to-sky-500/70",
-    image: "/home/Airport Transfers.png",
-    premium:
-      "Your schedule comes first: 1 hour complimentary wait time with advanced flight monitoring.",
+    image: "/new_images/airport.png",
+    premium: "Your schedule comes first: 1 hour complimentary wait time with advanced flight monitoring.",
   },
   {
     icon: Navigation2,
-    name: "Corporate Travel",
-    description:
-      "Comfortable long-distance journeys in executive sedans & SUVs.",
+    name: "Corporate Roadshows",
+    description: "Experience comfortable journeys in executive sedans and SUVs.",
     highlight: "Door-to-Door",
     features: [
       "Bottled water",
@@ -58,14 +56,13 @@ const SERVICES: Service[] = [
       "Audio Preference",
     ],
     accent: "from-indigo-500/90 via-blue-500/80 to-indigo-500/70",
-    image: "/home/Corporate Travel.png",
+    image: "/new_images/corporate.png",
   },
 
   {
     icon: Sparkles,
     name: "Special Events",
-    description:
-      "Transportation solutions for all types of events and celebrations.",
+    description: "Get the car for your upcoming special events and celebrations.",
     highlight: "Group Logistics",
     features: [
       "Shuttle coordination",
@@ -75,13 +72,13 @@ const SERVICES: Service[] = [
       "Audio Preference",
     ],
     accent: "from-fuchsia-500/90 via-purple-500/80 to-fuchsia-500/70",
-    image: "/home/Special Events.jpg",
+    image: "/new_images/special-event.png",
   },
 
   {
     icon: MapPin,
     name: "City Tours",
-    description: "Guided city tours with a knowledgeable, professional driver.",
+    description: "Get your guided city tours with the knowledgeable and professional chauffeurs.",
     highlight: "Curated Routes",
     features: [
       "Photo stops",
@@ -90,7 +87,7 @@ const SERVICES: Service[] = [
       "Audio Preference",
     ],
     accent: "from-emerald-500/90 via-green-500/80 to-emerald-500/70",
-    image: "/home/City Tours new.png",
+    image: "/new_images/city-tours.png",
   },
 ];
 
@@ -150,20 +147,54 @@ export const ServicesOverviewSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20 space-y-4"
+          className="text-center mb-8 space-y-4"
         >
           <SectionChip title="Premium Experiences" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-            Luxury Chauffeurs {" "}<br />
+            Executive chauffeur Service {" "}<br />
             <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-              Designed Around Your Travel Needs
+              for Business Professionals
             </span>
           </h2>
           <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-            Discover curated itineraries, white-glove service, and modern
-            vehicles tailored to airport runs, business travel, events, and
-            bespoke tours.
+            The Executive chauffeur Service provides business professionals with dependable means of transportation to anywhere in the greater London area or the rest of the United Kingdom. Our executive chauffeur service is relied upon by business people (including corporate teams and entrepreneurs) and international visitors alike for dependable transportation around London and across the UK.
           </p>
+          <div className="pt-6 pb-0 flex flex-col items-center w-full relative z-10">
+            <div className="relative group cursor-default">
+              {/* Premium Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#487307]/10 via-[#487307]/20 to-[#487307]/10 blur-xl rounded-2xl transition-all duration-500 group-hover:blur-2xl"></div>
+              
+              {/* Glassmorphic Badge */}
+              <div className="relative flex items-center gap-4 bg-white/80 backdrop-blur-xl border border-white/50 px-8 py-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-[#487307]/10 transition-transform duration-300 group-hover:-translate-y-1 z-20">
+                {/* Radar Ping Animation */}
+                <div className="flex h-3 w-3 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#487307] opacity-40"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-[#487307]"></span>
+                </div>
+                
+                <span className="text-[#2a4204] font-montserrat font-semibold text-sm sm:text-base tracking-wide">
+                  We provide all types of executive transportation, including:
+                </span>
+                
+                {/* Elegant Bouncing Arrow */}
+                <div className="ml-2 bg-gradient-to-b from-[#f4f9f1] to-white border border-[#487307]/10 rounded-full p-2 shadow-sm">
+                  <ArrowDown className="h-4 w-4 text-[#487307] animate-bounce" />
+                </div>
+              </div>
+            </div>
+
+            {/* Elegant Animated Connector */}
+            <div className="flex flex-col items-center w-full mt-2 opacity-80">
+              <div className="w-[2px] h-20 bg-gradient-to-b from-[#487307]/20 via-[#487307]/10 to-transparent relative overflow-hidden rounded-full">
+                {/* Moving light particle */}
+                <motion.div 
+                  className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-[#487307] to-transparent"
+                  animate={{ y: ["-100%", "200%"] }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                />
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         <motion.div
@@ -208,27 +239,20 @@ export const ServicesOverviewSection = () => {
                   </div>
                 )}
 
-                <Link
-                  to={`/services/${service.name.toLowerCase().replace(/ /g, "-")}`}
-                  className="flex flex-col h-full overflow-hidden rounded-2xl"
+                <div
+                  className="flex flex-col h-full overflow-hidden rounded-2xl cursor-default"
                 >
-                  {/* Badge Section */}
-                  <div className="relative bg-gradient-to-br from-[#f8faf5] to-white pt-4 pb-2">
-                    <div className="flex justify-center">
-
-                    </div>
-                  </div>
-
                   {/* Image Section */}
-                  <div className="relative overflow-hidden bg-gradient-to-br from-[#f8faf5] to-white px-6 pb-6">
-                    <div className="relative h-48 rounded-xl overflow-hidden">
+                  <div className="relative overflow-hidden p-4 pb-0">
+                    <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-500">
                       <motion.img
                         src={service.image}
                         alt={service.name}
                         loading="lazy"
-                        className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-transparent" />
+                      {/* Subtle bottom gradient only to ensure the icon is visible, leaving the rest of the image HD and bright */}
+                      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
 
                       {/* Icon Overlay */}
                       <div className="absolute bottom-4 left-4">
@@ -255,8 +279,6 @@ export const ServicesOverviewSection = () => {
                       {service.description}
                     </p>
 
-
-
                     {/* Features Tags */}
                     <div className="flex flex-wrap gap-2 mb-4">
                       {service.features.map((feature) => (
@@ -280,14 +302,14 @@ export const ServicesOverviewSection = () => {
                             Luxury Travel, Perfectly Managed.
                           </p>
                         </div>
-                        <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all group-hover:shadow-lg group-hover:scale-105">
+                        <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg hover:scale-105 cursor-pointer">
                           Reserve
                           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </div>
                       </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               </motion.div>
             );
           })}

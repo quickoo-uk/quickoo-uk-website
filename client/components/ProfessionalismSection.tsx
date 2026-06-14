@@ -6,27 +6,27 @@ const PROFESSIONAL_FEATURES = [
     {
         icon: Users,
         title: "Highly Trained Professional Chauffeurs",
-        description: "Every driver undergoes rigorous training in hospitality, safety, and VIP protocol.",
+        description: "Each chauffeur gets rigorous training in terms of safety, security, VIP protocol, and manners.",
     },
     {
         icon: Zap,
-        title: "Real-Time Route Intelligence",
-        description: "AI-powered navigation adapts to traffic, weather, and your schedule in real-time.",
+        title: "Real-Time Challenges in Route",
+        description: "Our chauffeurs monitor the traffic conditions in real-time. The AI-powered machine provides a real-time weather update.",
     },
     {
         icon: Award,
         title: "Premium Vehicle Quality",
-        description: "Immaculate interiors, latest models, and luxury amenities in every ride.",
+        description: "Get the best and advanced interior of the vehicles and luxury features while travelling.",
     },
     {
         icon: Clock,
-        title: "Zero-Delay Arrival Commitment",
-        description: "We guarantee punctuality with advanced scheduling and flight tracking.",
+        title: "Arrival On-Time",
+        description: "We ensure that your arrival will be perfectly on time without any further delays.",
     },
     {
         icon: Shield,
-        title: "Corporate-Grade Hospitality",
-        description: "Discretion, professionalism, and white-glove service at every touchpoint.",
+        title: "Premium Hospitality",
+        description: "Get discretion and professionalism at every minute since you receive the service.",
     },
 ];
 
@@ -90,13 +90,13 @@ export const ProfessionalismSection = () => {
                 >
                     <SectionChip title="Driven by Professionalism" />
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-                        Your Journey is Powered by{" "}
+                        Luxury Airport Transfers{" "}
                         <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                            Excellence Without Compromise
+                            Powered by Excellence
                         </span>
                     </h2>
                     <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-                        From door to destination, we deliver a seamless experience backed by cutting-edge technology and unmatched expertise.
+                        Our premium chauffeur services are here to facilitate seamless travel, no matter what time of day you are flying into London or flying out of London.
                     </p>
                 </motion.div>
 
@@ -111,7 +111,7 @@ export const ProfessionalismSection = () => {
                         const Icon = feature.icon;
                         return (
                             <motion.div
-                                key={feature.title}
+                                key={idx}
                                 variants={item}
                                 whileHover={{ y: -8, scale: 1.02 }}
                                 transition={{ duration: 0.3 }}
@@ -142,16 +142,7 @@ export const ProfessionalismSection = () => {
                     })}
                 </motion.div>
 
-                {/* Bottom tagline */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.6, duration: 0.8 }}
-                    className="mt-16 text-center"
-                >
-                    <SectionChip title="Excellence Without Compromise" icon={Sparkles} />
-                </motion.div>
+
             </div>
         </section>
     );

@@ -1,48 +1,71 @@
-import { Shield, DollarSign, Crown, Users, Award, Clock, Sparkles, PoundSterlingIcon } from "lucide-react";
+import { Shield, DollarSign, Crown, Users, Award, Clock, Sparkles, PoundSterlingIcon, Map, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { SectionChip } from "./SectionChip";
 
 const FEATURES = [
   {
-    icon: Shield,
-    title: "Safety First",
-    description:
-      "Vetted chauffeurs, biometric access controls, and real-time vehicle monitoring.",
-    badge: "ISO 39001",
+    icon: Award,
+    title: "Professional chauffeurs",
+    description: "We have hand-picked our chauffeurs for their professionalism, expertise in safe driving and dedication to the client.",
     accent: "from-emerald-500/90 via-green-400/90 to-emerald-500/80",
-    shadowColor: "rgba(16, 185, 129, 0.4)", // emerald-500
-    link: "/why-choose/safety-first",
+    shadowColor: "rgba(16, 185, 129, 0.4)",
+  },
+  {
+    icon: Clock,
+    title: "Timely Service",
+    description: "Time is of the essence. We keep a real-time check of traffic, flight schedules and route data. It helps the passengers with the arrival and departure.",
+    accent: "from-sky-500/90 via-indigo-500/80 to-sky-500/70",
+    shadowColor: "rgba(14, 165, 233, 0.4)",
+  },
+  {
+    icon: Crown,
+    title: "Luxurious Fleet",
+    description: "Our fleet of vehicles features luxury automobiles that are impeccably maintained and provide you with the latest in luxurious amenities to enhance your travelling experience.",
+    accent: "from-amber-500/90 via-orange-500/80 to-amber-500/70",
+    shadowColor: "rgba(245, 158, 11, 0.4)",
   },
   {
     icon: PoundSterlingIcon,
     title: "Transparent Pricing",
-    description:
-      "Smart routing + automated surge shielding keep every quote honest and upfront.",
-    badge: "Live Quotes",
-    accent: "from-sky-500/90 via-indigo-500/80 to-sky-500/70",
-    shadowColor: "rgba(14, 165, 233, 0.4)", // sky-500
-    link: "/why-choose/transparent-pricing",
+    description: "No hidden fees or surprise costs; you always know exactly what you are paying for.",
+    accent: "from-purple-500/90 via-fuchsia-500/80 to-purple-500/70",
+    shadowColor: "rgba(168, 85, 247, 0.4)",
   },
   {
-    icon: Crown,
-    title: "Tailored Luxury Fleet",
-    description:
-      "From Maybach sedans to V-Class lounges, each ride includes Wi-Fi, refreshments, and concierge extras.",
-    badge: "Curated Fleet",
-    accent: "from-amber-500/90 via-orange-500/80 to-amber-500/70",
-    shadowColor: "rgba(245, 158, 11, 0.4)", // amber-500
-    link: "/why-choose/luxury-fleet",
+    icon: Shield,
+    title: "Safety At All Times",
+    description: "Every trip is subject to tight standards of safety based on regular vehicle inspections and extensive professional training for our chauffeurs.",
+    accent: "from-rose-500/90 via-red-400/80 to-rose-500/70",
+    shadowColor: "rgba(244, 63, 94, 0.4)",
   },
   {
     icon: Users,
-    title: "Elite Chauffeurs",
-    description:
-      "Hospitality-trained chauffeurs fluent in multiple languages and versed in VIP protocol.",
-    badge: "1% Hired",
-    accent: "from-purple-500/90 via-fuchsia-500/80 to-purple-500/70",
-    shadowColor: "rgba(168, 85, 247, 0.4)", // purple-500
-    link: "/why-choose/elite-chauffeurs",
+    title: "Personalised Service",
+    description: "Each booking can be tailored to meet your specific needs, schedule and travel preferences.",
+    accent: "from-blue-500/90 via-cyan-400/80 to-blue-500/70",
+    shadowColor: "rgba(59, 130, 246, 0.4)",
+  },
+  {
+    icon: Sparkles,
+    title: "Vehicle Options",
+    description: "You can select from among a large number of luxury executive vehicles in our fleet, which allows you to have a choice in how you want to travel.",
+    accent: "from-emerald-500/90 via-teal-400/80 to-emerald-500/70",
+    shadowColor: "rgba(16, 185, 129, 0.4)",
+  },
+  {
+    icon: Map,
+    title: "Route Options",
+    description: "Whether you desire the quickest route or the most scenic, we adapt to your preferences.",
+    accent: "from-orange-500/90 via-yellow-400/80 to-orange-500/70",
+    shadowColor: "rgba(249, 115, 22, 0.4)",
+  },
+  {
+    icon: Settings,
+    title: "Experience Options",
+    description: "Every detail about your journey can be customised to your liking, from the climate control to refreshments and music to any other requirements you may have.",
+    accent: "from-fuchsia-500/90 via-pink-400/80 to-fuchsia-500/70",
+    shadowColor: "rgba(217, 70, 239, 0.4)",
   },
 ];
 
@@ -110,18 +133,15 @@ export const WhyChooseSection = () => {
             transition={{ duration: 0.8 }}
             className="space-y-6 text-center lg:text-left"
           >
-            <SectionChip title="Why Our Clients Trust Quickoo" />
+            <SectionChip title="Why Choose Quickoo?" />
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-              A luxury chauffeur partner defined by{" "}
+              A Refined Luxury Partner with{" "}
               <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                precision and perfection.
+                Precision and Perfection
               </span>
             </h2>
             <p className="text-base sm:text-lg font-inter text-gray-600">
-              We blend hospitality, logistics, and technology to deliver journeys
-              that feel effortless. Every itinerary is tracked in real time,
-              every chauffeur is briefed on your preferences, and every vehicle
-              is staged with signature amenities.
+              We are proud to offer you more than just a ride from one place to another, we offer you reliable, comfortable, professional services with peace of mind that every aspect of your trip will be taken care of.
             </p>
 
 
@@ -147,11 +167,11 @@ export const WhyChooseSection = () => {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 auto-rows-fr">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
           {FEATURES.map((feature) => {
             const Icon = feature.icon;
             return (
-              <Link key={feature.title} to={feature.link} className="flex">
+              <div key={feature.title} className="flex">
                 <motion.div
                   variants={item}
                   whileHover={{
@@ -159,7 +179,7 @@ export const WhyChooseSection = () => {
                     boxShadow: `0 30px 90px ${feature.shadowColor}`
                   }}
                   transition={{ duration: 0.3 }}
-                  className="group relative flex flex-col overflow-hidden rounded-[28px] bg-white/90 border border-white/60 p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] cursor-pointer w-full h-full"
+                  className="group relative flex flex-col overflow-hidden rounded-[28px] bg-white/90 border border-white/60 p-6 md:p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] w-full h-full"
                 >
                   {/* Glow Effect */}
                   <div
@@ -187,7 +207,7 @@ export const WhyChooseSection = () => {
                     </p>
                   </div>
                 </motion.div>
-              </Link>
+              </div>
             );
           })}
         </div>

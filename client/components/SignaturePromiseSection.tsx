@@ -6,32 +6,32 @@ const PROMISE_FEATURES = [
     {
         icon: Star,
         title: "Premium Comfort",
-        description: "Luxury vehicles with immaculate interiors and signature amenities.",
+        description: "Get a chance to travel in the luxury cars with premium comfort, advanced interiors, and prime amenities.",
     },
     {
         icon: CheckCircle2,
-        title: "Verified Chauffeurs",
-        description: "Background-checked and experienced professional chauffeurs.",
+        title: "Verified chauffeurs",
+        description: "Our chauffeurs are well-trained and have years of experience in providing premium hospitality and luxury.",
     },
     {
         icon: Clock,
         title: "Airport Assistance",
-        description: "Flight tracking, meet & greet, and luggage handling.",
+        description: "Once the service is booked, you will receive the meet & greet service, assistance with your luggage, and help navigating the terminal.",
     },
     {
         icon: Sparkles,
         title: "Immaculate Vehicles",
-        description: "Every ride followed by Deep-cleaned after every journey.",
+        description: "Each vehicle is deep-cleaned and maintained to provide you with a comfortable journey.",
     },
     {
         icon: Shield,
         title: "High Security",
-        description: "Real-time monitoring and secure payment systems.",
+        description: "Our chauffeurs would check the traffic conditions in real-time and would give you a secure environment.",
     },
     {
         icon: Award,
         title: "Seamless Experience",
-        description: "From booking to arrival, every detail is perfected.",
+        description: "We take special care of every detail from booking to arrival. You will receive a seamless experience throughout.",
     },
 ];
 
@@ -103,14 +103,14 @@ export const SignaturePromiseSection = () => {
                     className="text-center mb-16 space-y-4"
                 >
                     <SectionChip title="Quickoo Signature Promise" icon={Award} />
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-                        When You Choose Quickoo,{" "}
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark leading-tight">
+                        Select the Class You Deserve{" "}
                         <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                            You Choose Class
+                            with Quickoo
                         </span>
                     </h2>
                     <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-                        Our commitment to excellence is reflected in every aspect of your journey. Experience the Quickoo difference.
+                        We believe in providing the excellence that you deserve because you are choosing the class-apart chauffeur service. Our curation is evident in every aspect of the service we offer our customers.
                     </p>
                 </motion.div>
 
@@ -125,7 +125,7 @@ export const SignaturePromiseSection = () => {
                         const Icon = feature.icon;
                         return (
                             <motion.div
-                                key={feature.title}
+                                key={idx}
                                 variants={item}
                                 whileHover={{ y: -8, scale: 1.03 }}
                                 transition={{ duration: 0.3 }}

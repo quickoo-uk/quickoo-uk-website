@@ -52,32 +52,40 @@ export const Footer = () => {
             className="absolute inset-0 h-full w-full object-cover opacity-20"
             loading="lazy"
           />
-          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div className="w-full lg:w-[57%]">
-              <p className="text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gold">
-                Concierge 24 / 7
+          <div className="relative flex flex-col gap-8 xl:flex-row xl:items-center xl:justify-between">
+            <div className="w-full xl:max-w-[62%]">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[#d4ff59]">
+                24/7 Concierge Support
               </p>
               <h3 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold">
-                Planning your next journey? We’ll handle every detail.
+                Planning Your Next Journey?
               </h3>
-              <p className="mt-3 text-sm text-white/70">
-                Premium car service provider offering luxury transportation across the UK. Professional, reliable, and always on time.
+              <div className="mt-4 space-y-3">
+                <p className="text-sm sm:text-base text-white/80 leading-relaxed">
+                  Leave the details to us. Whether you require an airport transfer, executive chauffeur service, corporate travel, or luxury event transportation, Quickoo delivers a first-class experience across London and the UK.
+                </p>
+                <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+                  Our concierge team is available 24/7 to help you with every detail of your travel plans from the moment you book your reservation to the moment you arrive.
+                </p>
+              </div>
+              <p className="mt-5 text-sm sm:text-base font-semibold text-[#d4ff59] tracking-wide">
+                Professional. Reliable. Punctual. Luxury Travel, Redefined.
               </p>
             </div>
-            <div className="flex flex-col gap-3 sm:gap-4 sm:flex-row w-full lg:w-auto">
+            <div className="flex flex-col gap-3 sm:gap-4 sm:flex-row w-full xl:w-auto shrink-0">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-dark shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-gold hover:text-dark"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-dark shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-[#d4ff59] hover:text-dark whitespace-nowrap"
               >
                 Plan A Journey
-                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
               </Link>
               <a
                 href="tel:+442035761617"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-white transition hover:border-gold"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-white transition hover:border-[#d4ff59] hover:text-[#d4ff59] whitespace-nowrap"
               >
                 Call Concierge
-                <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
+                <Phone className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
               </a>
             </div>
           </div>

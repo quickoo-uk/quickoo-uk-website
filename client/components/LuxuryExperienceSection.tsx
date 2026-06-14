@@ -36,14 +36,14 @@ export const LuxuryExperienceSection = () => {
                     <SectionChip title="Luxury Chauffeur Experience" icon={Crown} />
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark max-w-4xl mx-auto leading-tight">
-                        Designed for Individuals Who Value{" "}
+                        Experience{" "}
                         <span className="text-[#487307]">
                             Privacy, Punctuality, and Sophistication
                         </span>
                     </h2>
 
                     <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-                        Quickoo provides premium chauffeur-driven travel for airport transfers, business trips, corporate visitors, VIP movements, and high-level executives.
+                        Get the service which is professionally driven for airport transfers, business trips, and other occasions.
                     </p>
                 </motion.div>
 
@@ -57,18 +57,18 @@ export const LuxuryExperienceSection = () => {
                 >
                     <motion.div
                         variants={item}
-                        className="group relative bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(72,115,7,0.1)] transition-all duration-300 border border-slate-100"
+                        className="group relative bg-white p-6 md:p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(72,115,7,0.1)] transition-all duration-300 border border-slate-100"
                     >
                         <div className="mb-6 inline-flex items-center justify-center h-14 w-14 rounded-full bg-[#f4f7f0] text-[#487307] group-hover:scale-110 transition-transform duration-300">
                             <Sparkles className="h-6 w-6" />
                         </div>
 
                         <h3 className="text-xl font-montserrat font-bold text-dark mb-4">
-                            Every Detail is Planned
+                            The Planned Service
                         </h3>
 
                         <p className="text-sm font-inter text-gray-600 leading-relaxed">
-                            From route optimization to vehicle preparation, every aspect of your journey is meticulously organized.
+                            The chauffeur service basically organises every part of the journey from booking to your arrival at the destination.
                         </p>
 
                         <div className="absolute bottom-0 left-0 w-full h-1 bg-[#487307] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -76,18 +76,18 @@ export const LuxuryExperienceSection = () => {
 
                     <motion.div
                         variants={item}
-                        className="group relative bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(72,115,7,0.1)] transition-all duration-300 border border-slate-100"
+                        className="group relative bg-white p-6 md:p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(72,115,7,0.1)] transition-all duration-300 border border-slate-100"
                     >
                         <div className="mb-6 inline-flex items-center justify-center h-14 w-14 rounded-full bg-[#f4f7f0] text-[#487307] group-hover:scale-110 transition-transform duration-300">
                             <Crown className="h-6 w-6" />
                         </div>
 
                         <h3 className="text-xl font-montserrat font-bold text-dark mb-4">
-                            Every Moment is Refined
+                            Moment You Can Create
                         </h3>
 
                         <p className="text-sm font-inter text-gray-600 leading-relaxed">
-                            Experience luxury at every touchpoint with premium amenities and white-glove service.
+                            You can create an amazing moment with premium amenities because our chauffeurs provide the best hospitality service.
                         </p>
 
                         <div className="absolute bottom-0 left-0 w-full h-1 bg-[#487307] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -95,18 +95,18 @@ export const LuxuryExperienceSection = () => {
 
                     <motion.div
                         variants={item}
-                        className="group relative bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(72,115,7,0.1)] transition-all duration-300 border border-slate-100"
+                        className="group relative bg-white p-6 md:p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(72,115,7,0.1)] transition-all duration-300 border border-slate-100"
                     >
                         <div className="mb-6 inline-flex items-center justify-center h-14 w-14 rounded-full bg-[#f4f7f0] text-[#487307] group-hover:scale-110 transition-transform duration-300">
                             <Lock className="h-6 w-6" />
                         </div>
 
                         <h3 className="text-xl font-montserrat font-bold text-dark mb-4">
-                            Every Ride Speaks Elegance
+                            Elegant Experience
                         </h3>
 
                         <p className="text-sm font-inter text-gray-600 leading-relaxed">
-                            Travel in style with our curated fleet of luxury vehicles and professional chauffeurs.
+                            Get your travel experience in absolute style with our special luxurious fleets.
                         </p>
 
                         <div className="absolute bottom-0 left-0 w-full h-1 bg-[#487307] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -128,9 +128,9 @@ export const LuxuryExperienceSection = () => {
                     </div>
 
                     <p className="text-2xl md:text-3xl font-montserrat font-medium text-dark leading-relaxed">
-                        "Because you deserve more than just transportation—you deserve{" "}
+                        "More than just a ride, our{" "}
                         <span className="relative inline-block font-bold text-[#487307]">
-                            Travel In Style
+                            luxury chauffeur service
                             <motion.span
                                 initial={{ scaleX: 0 }}
                                 whileInView={{ scaleX: 1 }}
@@ -139,7 +139,7 @@ export const LuxuryExperienceSection = () => {
                                 className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#487307] origin-left rounded-full"
                             />
                         </span>
-                        ."
+                        {" "}delivers stylish, comfortable, and reliable travel across London and the UK."
                     </p>
                 </motion.div>
             </div>

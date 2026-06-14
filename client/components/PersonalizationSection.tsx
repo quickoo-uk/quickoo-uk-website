@@ -5,20 +5,20 @@ import { SectionChip } from "./SectionChip";
 const PERSONALIZATION_FEATURES = [
     {
         icon: Car,
-        title: "Your Preferred Car",
-        description: "Choose from our curated fleet of luxury vehicles tailored to your style and comfort needs.",
+        title: "A Preferred Car",
+        description: "Get your preferred vehicle for your ride so that you can have the best style and comfort.",
         gradient: "from-sky-500/90 via-blue-500/80 to-sky-500/70",
     },
     {
         icon: Route,
-        title: "Your Preferred Route",
-        description: "We adapt to your preferred routes, scenic drives, or fastest paths—your choice, every time.",
+        title: "Your Chosen Route",
+        description: "You tell us the routes, and our chauffeur will adapt to those routes because we prioritise your choice first.",
         gradient: "from-emerald-500/90 via-green-500/80 to-emerald-500/70",
     },
     {
         icon: Armchair,
-        title: "Your Preferred Comfort Level",
-        description: "Temperature, music, refreshments, and ambiance—all personalized to your exact preferences.",
+        title: "Ultimate Comfort Level",
+        description: "Get the best temperature, music, refreshments, and ambience. All is customised to your needs.",
         gradient: "from-amber-500/90 via-orange-500/80 to-amber-500/70",
     },
 ];
@@ -84,15 +84,15 @@ export const PersonalizationSection = () => {
                         className="space-y-8"
                     >
                         <div className="space-y-4">
-                            <SectionChip title="Your Requirements" icon={Star} />
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-                                Every Trip is Personalized{" "}
+                            <SectionChip title="What’s Included in the Service?" icon={Star} />
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark leading-tight">
+                                The Trip You Book is{" "}
                                 <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-                                    According to Your Requirements
+                                    Customised As Per Your Preferences
                                 </span>
                             </h2>
                             <p className="text-base sm:text-lg font-inter text-gray-600">
-                                Our chauffeurs don't just drive—they curate your journey. Every detail is tailored to ensure your comfort and satisfaction.
+                                Our chauffeurs are more than service providers; rather, they must be known as service curators. They make sure that your journey is tailored to your special needs.
                             </p>
                         </div>
 
@@ -158,8 +158,8 @@ export const PersonalizationSection = () => {
                         <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#487307]/20 via-[#a5c9ff]/10 to-transparent blur-3xl" />
                         <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_90px_rgba(15,23,42,0.15)] border border-white/60">
                             <img
-                                src="/home/personalized-luxury-chauffeur-2.png"
-                                alt="Personalized luxury chauffeur service"
+                                src="/new_images/customisable-preference.png"
+                                alt="Customised preference chauffeur service"
                                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                                 loading="lazy"
                                 onError={(e) => {

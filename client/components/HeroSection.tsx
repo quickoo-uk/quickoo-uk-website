@@ -174,23 +174,31 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-montserrat font-bold leading-[1.1] text-white tracking-tight text-center lg:text-left w-full"
+              className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-montserrat font-bold leading-[1.2] text-white tracking-tight text-center lg:text-left w-full"
             >
-              Experience the
-              <br />
+              Luxury Chauffeur Service London&nbsp;–
+              <br className="hidden lg:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-green-200 to-white">
-                Art of Luxury Travel
+                Travel with Comfort, Style, and Confidence
               </span>
             </motion.h1>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="text-base sm:text-xl md:text-2xl text-gray-200 font-inter leading-relaxed max-w-xl font-light tracking-wide mx-auto lg:mx-0 text-center lg:text-left"
+              className="text-sm sm:text-base text-gray-300 font-inter leading-relaxed max-w-xl lg:max-w-2xl font-light tracking-wide mx-auto lg:mx-0 text-center lg:text-left space-y-3 lg:space-y-4"
             >
-              Elevate your journey with our elite chauffeur service. Where sophistication meets comfort, and every ride is a statement of elegance.
-            </motion.p>
+              <p>
+                Travel in London with a luxury chauffeur service that provides Comfortable, Stylish, AND Safe Services. Quickoo offers a variety of different types of trips, including Airport Transfers, Executive Business Travel, Event Transportation, and Private chauffeur, and tailors each trip to your needs.
+              </p>
+              <p>
+                All of our professional, uniformed chauffeurs use only luxurious vehicles, provide impeccable service, and pay close attention to detail, so we can guarantee a stress-free, on-time trip.
+              </p>
+              <p>
+                Use our website or contact our office today to book your trip.
+              </p>
+            </motion.div>
 
             {/* CTA Button */}
             <motion.div
