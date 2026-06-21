@@ -87,8 +87,13 @@ export const AppDownloadSection = () => {
 
             <div className="flex flex-wrap gap-4 pt-4">
               {/* App Store Button */}
-              <div className="group relative overflow-hidden rounded-xl bg-black text-white shadow-lg transition-all hover:scale-105 cursor-pointer">
-                <div className="flex items-center gap-3 px-6 py-3 transition-transform duration-300 group-hover:-translate-y-full">
+              <a
+                href="https://apps.apple.com/gb/app/quickoo/id6777176358"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-xl bg-black text-white shadow-lg transition-all hover:scale-105 cursor-pointer block"
+              >
+                <div className="flex items-center gap-3 px-6 py-3">
                   <Apple className="h-6 w-6" />
                   <div className="text-left">
                     <p className="text-[10px] font-medium uppercase opacity-80">
@@ -97,26 +102,7 @@ export const AppDownloadSection = () => {
                     <p className="text-sm font-bold">App Store</p>
                   </div>
                 </div>
-                <div className="absolute inset-0 flex items-center justify-center bg-[#487307] text-white transition-transform duration-300 translate-y-full group-hover:translate-y-0">
-                  <span className="text-sm font-bold">Coming Soon</span>
-                </div>
-              </div>
-
-              {/* Google Play Button */}
-              <div className="group relative overflow-hidden rounded-xl bg-white border border-gray-200 text-dark shadow-lg transition-all hover:scale-105 cursor-pointer">
-                <div className="flex items-center gap-3 px-6 py-3 transition-transform duration-300 group-hover:-translate-y-full">
-                  <Smartphone className="h-6 w-6" />
-                  <div className="text-left">
-                    <p className="text-[10px] font-medium uppercase opacity-60">
-                      Get it on
-                    </p>
-                    <p className="text-sm font-bold">Google Play</p>
-                  </div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center bg-[#487307] text-white transition-transform duration-300 translate-y-full group-hover:translate-y-0">
-                  <span className="text-sm font-bold">Coming Soon</span>
-                </div>
-              </div>
+              </a>
             </div>
 
 
@@ -133,35 +119,10 @@ export const AppDownloadSection = () => {
               <div className="absolute top-0 left-1/2 h-6 w-40 -translate-x-1/2 rounded-b-xl bg-dark" />
               <div className="h-full w-full overflow-hidden rounded-[2.5rem] bg-gray-50">
                 <img
-                  src="/home/appImage.png"
+                  src="/new_images/mobile_view.png"
                   alt="App Interface"
-                  className="h-full w-full object-cover rounded-[2.5rem] blur-sm"
+                  className="h-full w-full object-cover rounded-[2.5rem]"
                 />
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 rounded-[2.5rem]">
-                  <div className="rounded-full bg-[#487307]/90 px-6 py-2 backdrop-blur-md shadow-lg border border-white/20">
-                    <span className="text-white font-bold tracking-wider uppercase text-sm">Coming Soon</span>
-                  </div>
-                </div>
-                <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-8 left-6 right-6 text-white blur-[2px]">
-                  <p className="text-sm font-medium opacity-80">
-                    Arriving in 5 mins
-                  </p>
-                  <p className="text-xl font-bold">Mercedes-Benz S-Class</p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <img
-                        src="https://randomuser.me/api/portraits/men/32.jpg"
-                        alt="Driver"
-                        className="h-8 w-8 rounded-full border border-white"
-                      />
-                      <span className="text-sm font-medium">James D.</span>
-                    </div>
-                    <div className="rounded-full bg-white/20 px-3 py-1 text-xs backdrop-blur">
-                      4.9 ★
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 

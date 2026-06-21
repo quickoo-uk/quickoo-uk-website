@@ -42,7 +42,7 @@ const SERVICES: Service[] = [
       "Audio Preference",
     ],
     accent: "from-sky-500/90 via-sky-400/80 to-sky-500/70",
-    image: "/new_images/airport.png",
+    image: "/home/Airport Transfers.png",
     premium: "Your schedule comes first: 1 hour complimentary wait time with advanced flight monitoring.",
   },
   {
@@ -56,7 +56,7 @@ const SERVICES: Service[] = [
       "Audio Preference",
     ],
     accent: "from-indigo-500/90 via-blue-500/80 to-indigo-500/70",
-    image: "/new_images/corporate.png",
+    image: "/home/Corporate Travel.png",
   },
 
   {
@@ -72,7 +72,7 @@ const SERVICES: Service[] = [
       "Audio Preference",
     ],
     accent: "from-fuchsia-500/90 via-purple-500/80 to-fuchsia-500/70",
-    image: "/new_images/special-event.png",
+    image: "/home/Special Events.jpg",
   },
 
   {
@@ -87,7 +87,7 @@ const SERVICES: Service[] = [
       "Audio Preference",
     ],
     accent: "from-emerald-500/90 via-green-500/80 to-emerald-500/70",
-    image: "/new_images/city-tours.png",
+    image: "/home/City Tours new.png",
   },
 ];
 
@@ -163,7 +163,7 @@ export const ServicesOverviewSection = () => {
             <div className="relative group cursor-default">
               {/* Premium Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#487307]/10 via-[#487307]/20 to-[#487307]/10 blur-xl rounded-2xl transition-all duration-500 group-hover:blur-2xl"></div>
-              
+
               {/* Glassmorphic Badge */}
               <div className="relative flex items-center gap-4 bg-white/80 backdrop-blur-xl border border-white/50 px-8 py-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-[#487307]/10 transition-transform duration-300 group-hover:-translate-y-1 z-20">
                 {/* Radar Ping Animation */}
@@ -171,11 +171,11 @@ export const ServicesOverviewSection = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#487307] opacity-40"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-[#487307]"></span>
                 </div>
-                
+
                 <span className="text-[#2a4204] font-montserrat font-semibold text-sm sm:text-base tracking-wide">
                   We provide all types of executive transportation, including:
                 </span>
-                
+
                 {/* Elegant Bouncing Arrow */}
                 <div className="ml-2 bg-gradient-to-b from-[#f4f9f1] to-white border border-[#487307]/10 rounded-full p-2 shadow-sm">
                   <ArrowDown className="h-4 w-4 text-[#487307] animate-bounce" />
@@ -187,7 +187,7 @@ export const ServicesOverviewSection = () => {
             <div className="flex flex-col items-center w-full mt-2 opacity-80">
               <div className="w-[2px] h-20 bg-gradient-to-b from-[#487307]/20 via-[#487307]/10 to-transparent relative overflow-hidden rounded-full">
                 {/* Moving light particle */}
-                <motion.div 
+                <motion.div
                   className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-[#487307] to-transparent"
                   animate={{ y: ["-100%", "200%"] }}
                   transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
