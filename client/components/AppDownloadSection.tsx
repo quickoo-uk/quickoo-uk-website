@@ -103,6 +103,24 @@ export const AppDownloadSection = () => {
                   </div>
                 </div>
               </a>
+
+              {/* Google Play Button */}
+              <a
+                href="https://play.google.com/store/apps/details?id=com.quickoo.passenger"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-xl bg-black text-white shadow-lg transition-all hover:scale-105 cursor-pointer block"
+              >
+                <div className="flex items-center gap-3 px-6 py-3">
+                  <Smartphone className="h-6 w-6" />
+                  <div className="text-left">
+                    <p className="text-[10px] font-medium uppercase opacity-80">
+                      Get it on
+                    </p>
+                    <p className="text-sm font-bold">Google Play</p>
+                  </div>
+                </div>
+              </a>
             </div>
 
 
