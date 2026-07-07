@@ -1,72 +1,79 @@
-import { Shield, DollarSign, Crown, Users, Award, Clock, Sparkles, PoundSterlingIcon, Map, Settings } from "lucide-react";
+import { Shield, DollarSign, Crown, Users, Award, Clock, Sparkles, PoundSterlingIcon, Map, Settings, Briefcase, Calendar, Monitor } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { SectionChip } from "./SectionChip";
 
+const EXECUTIVE_FEATURES = [
+  {
+    icon: Briefcase,
+    title: "Dedicated Executive Travel",
+    description: "We are dedicated to providing executive transportation which is made specifically for formal business meetings, conferences, corporate appointments, etc."
+  },
+  {
+    icon: Calendar,
+    title: "Flexible Scheduling",
+    description: "We can quickly make changes to your scheduled travel so that your chauffeur service can still meet your changing business needs."
+  },
+  {
+    icon: Shield,
+    title: "Respectful of Your Privacy",
+    description: "Our chauffeurs respect your privacy and will provide complete discretion on all of your travels."
+  },
+  {
+    icon: Monitor,
+    title: "The Perfect Office On The Road",
+    description: "The executive interiors of our vehicles were designed as the perfect mobile office, where our executive travellers can make phone calls, answer emails, or prepare for meetings while travelling to and from their destination."
+  },
+  {
+    icon: Award,
+    title: "Delivering The Professional Experience",
+    description: "The professionalism of our drivers is expected by corporate clients and business professionals on every trip they take."
+  }
+];
+
 const FEATURES = [
   {
     icon: Award,
-    title: "Professional chauffeurs",
-    description: "We have hand-picked our chauffeurs for their professionalism, expertise in safe driving and dedication to the client.",
+    title: "Professional Chauffeurs",
+    description: "Our chauffeurs are experienced, courteous, professionally trained and committed to meeting your needs for outstanding service.",
     accent: "from-emerald-500/90 via-green-400/90 to-emerald-500/80",
     shadowColor: "rgba(16, 185, 129, 0.4)",
   },
   {
     icon: Clock,
-    title: "Timely Service",
-    description: "Time is of the essence. We keep a real-time check of traffic, flight schedules and route data. It helps the passengers with the arrival and departure.",
+    title: "Punctuality",
+    description: "We respect your time by being prompt and planning our routes to avoid delays whenever possible.",
     accent: "from-sky-500/90 via-indigo-500/80 to-sky-500/70",
     shadowColor: "rgba(14, 165, 233, 0.4)",
   },
   {
     icon: Crown,
-    title: "Luxurious Fleet",
-    description: "Our fleet of vehicles features luxury automobiles that are impeccably maintained and provide you with the latest in luxurious amenities to enhance your travelling experience.",
+    title: "Luxury Fleet",
+    description: "Our fleet of modern executive vehicles has been meticulously maintained for maximum safety, comfort and style.",
     accent: "from-amber-500/90 via-orange-500/80 to-amber-500/70",
     shadowColor: "rgba(245, 158, 11, 0.4)",
   },
   {
     icon: PoundSterlingIcon,
-    title: "Transparent Pricing",
-    description: "No hidden fees or surprise costs; you always know exactly what you are paying for.",
+    title: "Competitive Pricing",
+    description: "You will know exactly how much you will pay for your trip before you travel. There are no hidden charges.",
     accent: "from-purple-500/90 via-fuchsia-500/80 to-purple-500/70",
     shadowColor: "rgba(168, 85, 247, 0.4)",
   },
   {
-    icon: Shield,
-    title: "Safety At All Times",
-    description: "Every trip is subject to tight standards of safety based on regular vehicle inspections and extensive professional training for our chauffeurs.",
+    icon: Map,
+    title: "Nationwide Service",
+    description: "Our services cover major UK cities, airports, business districts, and events across the country.",
     accent: "from-rose-500/90 via-red-400/80 to-rose-500/70",
     shadowColor: "rgba(244, 63, 94, 0.4)",
   },
   {
     icon: Users,
-    title: "Personalised Service",
-    description: "Each booking can be tailored to meet your specific needs, schedule and travel preferences.",
+    title: "Personalized Service",
+    description: "Each reservation will be tailor-made to match your individual travel needs, preferences, and schedules.",
     accent: "from-blue-500/90 via-cyan-400/80 to-blue-500/70",
     shadowColor: "rgba(59, 130, 246, 0.4)",
-  },
-  {
-    icon: Sparkles,
-    title: "Vehicle Options",
-    description: "You can select from among a large number of luxury executive vehicles in our fleet, which allows you to have a choice in how you want to travel.",
-    accent: "from-emerald-500/90 via-teal-400/80 to-emerald-500/70",
-    shadowColor: "rgba(16, 185, 129, 0.4)",
-  },
-  {
-    icon: Map,
-    title: "Route Options",
-    description: "Whether you desire the quickest route or the most scenic, we adapt to your preferences.",
-    accent: "from-orange-500/90 via-yellow-400/80 to-orange-500/70",
-    shadowColor: "rgba(249, 115, 22, 0.4)",
-  },
-  {
-    icon: Settings,
-    title: "Experience Options",
-    description: "Every detail about your journey can be customised to your liking, from the climate control to refreshments and music to any other requirements you may have.",
-    accent: "from-fuchsia-500/90 via-pink-400/80 to-fuchsia-500/70",
-    shadowColor: "rgba(217, 70, 239, 0.4)",
-  },
+  }
 ];
 
 const METRICS = [
@@ -210,6 +217,54 @@ export const WhyChooseSection = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Executive Chauffeur Service Section */}
+        <div className="mt-32 rounded-[40px] bg-gradient-to-b from-[#f8fcf3] to-white relative overflow-hidden p-8 sm:p-12 lg:p-20 shadow-[0_20px_80px_rgba(72,115,7,0.08)] border border-[#487307]/10">
+          {/* Subtle Background Gradients */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#487307]/5 blur-[150px] rounded-full pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/10 blur-[150px] rounded-full pointer-events-none" />
+          
+          <div className="relative z-10 max-w-4xl mx-auto text-center mb-20 space-y-6">
+            <div className="inline-flex items-center justify-center rounded-full bg-[#487307]/10 px-4 py-1.5 border border-[#487307]/20 mb-2">
+              <span className="text-sm font-semibold tracking-wider text-[#487307] uppercase">
+                Corporate Standard
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-bold text-slate-900 leading-tight">
+              Executive Chauffeur Service for <br className="hidden sm:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307]">Business Professionals</span>
+            </h2>
+            <p className="text-base sm:text-lg font-inter text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              The professionals of today have less time in which to conduct business than ever before. Our Executive Chauffeur Service offers total luxury while still being extremely efficient, so you will be able to continue to work as you travel. Each trip will be a professionally managed experience, no matter where you are going.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6 relative z-10">
+            {EXECUTIVE_FEATURES.map((feature, idx) => {
+              const Icon = feature.icon;
+              return (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] p-8 rounded-3xl bg-white border border-[#487307]/10 hover:border-[#487307]/30 hover:-translate-y-1 transition-all duration-300 group shadow-[0_10px_40px_rgba(72,115,7,0.04)] hover:shadow-[0_20px_50px_rgba(72,115,7,0.1)]"
+                >
+                  <div className="bg-[#487307]/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#487307]/20 transition-all duration-300">
+                    <Icon className="text-[#487307] h-7 w-7" />
+                  </div>
+                  <h3 className="text-xl font-montserrat font-bold text-slate-900 mb-4 leading-snug group-hover:text-[#487307] transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-600 font-inter leading-relaxed text-sm">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

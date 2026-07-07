@@ -12,6 +12,7 @@ import {
   MapPin,
   ArrowRight,
   ArrowDown,
+  Check,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { SectionChip } from "./SectionChip";
@@ -147,19 +148,45 @@ export const ServicesOverviewSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-8 space-y-4"
+          className="text-center mb-8 space-y-4 flex flex-col items-center"
         >
           <SectionChip title="Premium Experiences" />
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">
-            Executive chauffeur Service {" "}<br />
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark leading-tight">
+            Luxury Airport Transfers{" "}<br className="hidden sm:block" />
             <span className="bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] bg-clip-text text-transparent">
-              for Business Professionals
+              Powered by Excellence
             </span>
           </h2>
-          <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-            The Executive chauffeur Service provides business professionals with dependable means of transportation to anywhere in the greater London area or the rest of the United Kingdom. Our executive chauffeur service is relied upon by business people (including corporate teams and entrepreneurs) and international visitors alike for dependable transportation around London and across the UK.
+          <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto mb-6">
+            Airport travel becomes an experience that is comfortable, reliable, and free from stress due to our chauffeur service. All details will be taken care of professionally from the time you leave home to when you arrive at your final destination.
           </p>
-          <div className="pt-6 pb-0 flex flex-col items-center w-full relative z-10">
+
+          <div className="max-w-4xl w-full mx-auto bg-white/70 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-[#487307]/10 shadow-[0_10px_40px_rgba(72,115,7,0.06)] text-left mt-6 mb-8">
+            <h3 className="text-lg sm:text-xl font-montserrat font-bold text-dark mb-5 flex items-center gap-3">
+              <div className="p-2 bg-[#487307]/10 rounded-lg">
+                <Sparkles className="h-5 w-5 text-[#487307]" />
+              </div>
+              What We Offer:
+            </h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                "Flight monitoring to provide timely collection with necessary adjustments.",
+                "Meet and greet service with a professional chauffeur's assistance.",
+                "Door-to-door transfers with the assistance of your luggage.",
+                "Comfortable executive vehicles for all individual/family/business travelers.",
+                "Reliable transfers to/from all major airports in the UK."
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3 group">
+                  <div className="mt-1 h-6 w-6 rounded-full bg-[#487307]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#487307] transition-colors duration-300">
+                    <Check className="h-3.5 w-3.5 text-[#487307] group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <span className="text-sm sm:text-base font-inter text-gray-600 leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="pt-2 pb-0 flex flex-col items-center w-full relative z-10">
             <div className="relative group cursor-default">
               {/* Premium Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#487307]/10 via-[#487307]/20 to-[#487307]/10 blur-xl rounded-2xl transition-all duration-500 group-hover:blur-2xl"></div>

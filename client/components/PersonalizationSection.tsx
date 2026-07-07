@@ -1,24 +1,24 @@
-import { Car, Route, Armchair, Sparkles, Star } from "lucide-react";
+import { Car, Route, Armchair, Sparkles, Star, Headset, Map } from "lucide-react";
 import { motion } from "framer-motion";
 import { SectionChip } from "./SectionChip";
 
 const PERSONALIZATION_FEATURES = [
     {
-        icon: Car,
-        title: "A Preferred Car",
-        description: "Get your preferred vehicle for your ride so that you can have the best style and comfort.",
+        icon: Map,
+        title: "Personal Journey Planning",
+        description: "Each booking will be arranged to meet your schedule & preferences.",
         gradient: "from-sky-500/90 via-blue-500/80 to-sky-500/70",
     },
     {
-        icon: Route,
-        title: "Your Chosen Route",
-        description: "You tell us the routes, and our chauffeur will adapt to those routes because we prioritise your choice first.",
+        icon: Star,
+        title: "Premium Executive Vehicles",
+        description: "Our vehicles are all spotless & the highest quality with the utmost comfort, convenience & relaxation.",
         gradient: "from-emerald-500/90 via-green-500/80 to-emerald-500/70",
     },
     {
-        icon: Armchair,
-        title: "Ultimate Comfort Level",
-        description: "Get the best temperature, music, refreshments, and ambience. All is customised to your needs.",
+        icon: Headset,
+        title: "Professional Customer Support",
+        description: "Our dedicated team is available at all times to assist you with your booking, itinerary changes and any other specific requests for travel.",
         gradient: "from-amber-500/90 via-orange-500/80 to-amber-500/70",
     },
 ];
