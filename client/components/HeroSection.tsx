@@ -174,12 +174,11 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-montserrat font-bold leading-[1.2] text-white tracking-tight text-center lg:text-left w-full"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold leading-[1.15] text-white tracking-tight text-center lg:text-left w-full lg:max-w-[15ch]"
             >
-              Luxury Chauffeur Service London&nbsp;–
-              <br className="hidden lg:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-green-200 to-white">
-                Travel with Comfort, Style, and Confidence
+              Luxury Chauffeur Service Across the UK
+              <span className="block mt-4 text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-green-200 to-white text-2xl sm:text-3xl lg:text-4xl leading-tight font-semibold lg:max-w-[20ch]">
+                Travel in Comfort. Arrive with Confidence.
               </span>
             </motion.h1>
 
@@ -190,13 +189,10 @@ export const HeroSection = () => {
               className="text-sm sm:text-base text-gray-300 font-inter leading-relaxed max-w-xl lg:max-w-2xl font-light tracking-wide mx-auto lg:mx-0 text-center lg:text-left space-y-3 lg:space-y-4"
             >
               <p>
-                Travel in London with a luxury chauffeur service that provides Comfortable, Stylish, AND Safe Services. Quickoo offers a variety of different types of trips, including Airport Transfers, Executive Business Travel, Event Transportation, and Private chauffeur, and tailors each trip to your needs.
+                Let Quickoo deliver premium chauffeur-driven mobility to your needs, schedule, and expectations while allowing you the convenience of arriving with confidence. Quickoo provides high-quality, chauffeur-driven transportation throughout all areas of the UK to corporate customers, airports, individuals, and those celebrating a special event. All trips are managed with care, professionalism, punctuality and attention to detail, giving you a seamless experience from booking the trip to arriving at your destination.
               </p>
               <p>
-                All of our professional, uniformed chauffeurs use only luxurious vehicles, provide impeccable service, and pay close attention to detail, so we can guarantee a stress-free, on-time trip.
-              </p>
-              <p>
-                Use our website or contact our office today to book your trip.
+                When you are travelling for business or pleasure, the experience of using Quickoo's experienced chauffeur network and high-end, executive-grade vehicles compared to the use of traditional transportation options will allow you to travel in an efficient, comfortable, and, most importantly, relaxed manner.
               </p>
             </motion.div>
 

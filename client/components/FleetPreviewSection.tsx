@@ -76,8 +76,7 @@ const FLEET_SERVICES = [
     image: "/new_images/Corporate-Travel.png",
     description: (
       <>
-        <p>Our corporate travel services are specifically designed for executives, business travellers and companies who appreciate the importance of punctuality and professionalism.</p>
-        <p className="mt-2">With our executive chauffeur service, you can be assured of a comfortable and productive journey while travelling.</p>
+        <p>Corporate travel requires all of the above attributes, as well as reliability and professionalism. Our corporate chauffeur service was designed specifically for executives, business teams, and clients from out of town who need transportation throughout the UK in a timely, professional, and flexible manner.</p>
       </>
     )
   },
@@ -94,12 +93,11 @@ const FLEET_SERVICES = [
   },
   {
     id: "private-chauffeur",
-    title: "Private chauffeur Services",
+    title: "Private Chauffeur Service",
     image: "/new_images/Private-Jet-Chauffeur.png",
     description: (
       <>
-        <p>From one hour to an entire day, there is always flexibility and privacy in using our private chauffeur service.</p>
-        <p className="mt-2">Let us handle all of the details, while you relax and enjoy your trip.</p>
+        <p>Shopping, sightseeing, family travel, or a private excursion – no matter what your plans are, our private chauffeur service provides the ultimate flexibility. Enjoy your trip without the headache of parking, traffic or directions with a dedicated chauffeur, luxury vehicles and door-to-door service.</p>
       </>
     )
   }
@@ -175,7 +173,8 @@ export const FleetPreviewSection = () => {
             </span>
           </h2>
           <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-            We will provide you with a stress-free airport transportation experience, whether you are coming or going from Heathrow, Gatwick, Stansted, Luton or London City Airports.
+            Our fleet was created to offer the maximum level of luxury, comfort, and modern technology possible for any type of travel. Each of our vehicles is kept to the highest possible standard for both comfort and reliability—so no matter if you need an executive saloon for meetings or a family-sized MPV, you will be able to enjoy all that our fleet has to offer in terms of comfort and reliability.
+
 
           </p>
         </motion.div>

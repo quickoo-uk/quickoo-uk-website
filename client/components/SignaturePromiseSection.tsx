@@ -4,34 +4,24 @@ import { SectionChip } from "./SectionChip";
 
 const PROMISE_FEATURES = [
     {
-        icon: Star,
-        title: "Premium Comfort",
-        description: "Get a chance to travel in the luxury cars with premium comfort, advanced interiors, and prime amenities.",
-    },
-    {
-        icon: CheckCircle2,
-        title: "Verified chauffeurs",
-        description: "Our chauffeurs are well-trained and have years of experience in providing premium hospitality and luxury.",
-    },
-    {
-        icon: Clock,
-        title: "Airport Assistance",
-        description: "Once the service is booked, you will receive the meet & greet service, assistance with your luggage, and help navigating the terminal.",
-    },
-    {
-        icon: Sparkles,
-        title: "Immaculate Vehicles",
-        description: "Each vehicle is deep-cleaned and maintained to provide you with a comfortable journey.",
+        icon: Award,
+        title: "Excellence in Every Journey",
+        description: "We have an ongoing commitment to excellence through the highest possible standard of luxury, professionalism and customer service.",
     },
     {
         icon: Shield,
-        title: "High Security",
-        description: "Our chauffeurs would check the traffic conditions in real-time and would give you a secure environment.",
+        title: "Safety Without Compromise",
+        description: "The safety & wellbeing of our clients is our top priority. All of our vehicles are regularly maintained by experienced drivers who work with us.",
     },
     {
-        icon: Award,
-        title: "Seamless Experience",
-        description: "We take special care of every detail from booking to arrival. You will receive a seamless experience throughout.",
+        icon: Sparkles,
+        title: "Service Tailored Around You",
+        description: "Each journey will be personalised for you based on your schedule, destination & expectations of travel.",
+    },
+    {
+        icon: CheckCircle2,
+        title: "A Chauffeur Experience You Can Count On",
+        description: "We have consistently proven through our history and have had many satisfied customers that we will keep our promises of dependability, comfort and providing a premium chauffeur experience.",
     },
 ];
 
@@ -119,7 +109,7 @@ export const SignaturePromiseSection = () => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto"
                 >
                     {PROMISE_FEATURES.map((feature, idx) => {
                         const Icon = feature.icon;

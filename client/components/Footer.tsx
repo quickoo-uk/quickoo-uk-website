@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Instagram,
   Facebook,
@@ -40,6 +40,9 @@ const PAGES = [
 ];
 
 export const Footer = () => {
+  const location = useLocation();
+  const isLuxuryFleetPage = location.pathname.includes('luxury-fleet');
+
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-[#0a1a02] via-[#152905] to-[#2a4204] text-white w-full max-w-full">
       <div className="absolute inset-0 opacity-70 bg-[radial-gradient(circle_at_top,_rgba(72,115,7,0.35),transparent_60%)] pointer-events-none" />
@@ -52,43 +55,61 @@ export const Footer = () => {
             className="absolute inset-0 h-full w-full object-cover opacity-20"
             loading="lazy"
           />
-          <div className="relative flex flex-col gap-8 xl:flex-row xl:items-center xl:justify-between">
-            <div className="w-full xl:max-w-[62%]">
-              <p className="text-xs font-bold uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[#d4ff59]">
-                24/7 Concierge Support
-              </p>
-              <h3 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold">
-                Planning Your Next Journey?
-              </h3>
-              <div className="mt-4 space-y-3">
-                <p className="text-sm sm:text-base text-white/80 leading-relaxed">
-                  Leave the details to us. Whether you require an airport transfer, executive chauffeur service, corporate travel, or luxury event transportation, Quickoo delivers a first-class experience across London and the UK.
+          {isLuxuryFleetPage ? (
+            <div className="relative flex flex-col xl:flex-row xl:items-center xl:justify-between">
+              <div className="w-full">
+                <h3 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold">
+                  Choose the Perfect Luxury Vehicle
+                </h3>
+                <div className="mt-4 space-y-4">
+                  <p className="text-sm sm:text-base text-white/90 leading-relaxed">
+                    Whether you're travelling alone, with colleagues, family or VIPs, we have an extensive range of luxury vehicles that can accommodate your travels in any way you need. From executive saloons to luxury SUVs to spacious MPVs, all vehicles are selected based on their superior comfort, style and reliability.
+                  </p>
+                  <p className="text-sm sm:text-base text-white/90 leading-relaxed">
+                    Book your next trip as an opportunity for you to see how great the difference between a premium luxury chauffeur service in London is. With our exceptional fleet of luxury vehicles, our experienced chauffeurs and a commitment to customer service, every trip that you take with us will be as close to a first-class experience as possible.
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="relative flex flex-col gap-8 xl:flex-row xl:items-center xl:justify-between">
+              <div className="w-full xl:max-w-[62%]">
+                <p className="text-xs font-bold uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[#d4ff59]">
+                  24/7 Concierge Support
                 </p>
-                <p className="text-sm sm:text-base text-white/70 leading-relaxed">
-                  Our concierge team is available 24/7 to help you with every detail of your travel plans from the moment you book your reservation to the moment you arrive.
+                <h3 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold">
+                  Planning Your Next Journey?
+                </h3>
+                <div className="mt-4 space-y-3">
+                  <p className="text-sm sm:text-base text-white/80 leading-relaxed">
+                    Leave the details to us. Whether you require an airport transfer, executive chauffeur service, corporate travel, or luxury event transportation, Quickoo delivers a first-class experience across London and the UK.
+                  </p>
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+                    Our concierge team is available 24/7 to help you with every detail of your travel plans from the moment you book your reservation to the moment you arrive.
+                  </p>
+                </div>
+                <p className="mt-5 text-sm sm:text-base font-semibold text-[#d4ff59] tracking-wide">
+                  Professional. Reliable. Punctual. Luxury Travel, Redefined.
                 </p>
               </div>
-              <p className="mt-5 text-sm sm:text-base font-semibold text-[#d4ff59] tracking-wide">
-                Professional. Reliable. Punctual. Luxury Travel, Redefined.
-              </p>
+              <div className="flex flex-col gap-3 sm:gap-4 sm:flex-row w-full xl:w-auto shrink-0">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-dark shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-[#d4ff59] hover:text-dark whitespace-nowrap"
+                >
+                  Plan A Journey
+                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
+                </Link>
+                <a
+                  href="tel:+442035761617"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-white transition hover:border-[#d4ff59] hover:text-[#d4ff59] whitespace-nowrap"
+                >
+                  Call Concierge
+                  <Phone className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
+                </a>
+              </div>
             </div>
-            <div className="flex flex-col gap-3 sm:gap-4 sm:flex-row w-full xl:w-auto shrink-0">
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-dark shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-[#d4ff59] hover:text-dark whitespace-nowrap"
-              >
-                Plan A Journey
-                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
-              </Link>
-              <a
-                href="tel:+442035761617"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-white transition hover:border-[#d4ff59] hover:text-[#d4ff59] whitespace-nowrap"
-              >
-                Call Concierge
-                <Phone className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
-              </a>
-            </div>
-          </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 gap-8 sm:gap-10 sm:grid-cols-2 lg:grid-cols-4 overflow-x-hidden">

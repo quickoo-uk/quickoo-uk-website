@@ -15,6 +15,7 @@ import {
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { SectionChip } from "@/components/SectionChip";
+import { Helmet } from "react-helmet";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -38,48 +39,36 @@ const stats = [
   { number: "25", label: "Cities Across the UK" },
 ];
 
-const values = [
+const features = [
   {
-    icon: Award,
-    title: "Excellence",
+    icon: Users,
+    title: "Professional Chauffeur",
     description:
-      "We never compromise on quality. Every detail matters, from the cleanliness of our vehicles to the professionalism of our chauffeurs.",
+      "When selecting a chauffeur, the key is finding strong drivers who act professionally and are committed to providing excellent service for our customers. Our chauffeurs are courteous, discreet, knowledgeable about the road network within the UK, and can take their clients on the most efficient routes and promise to deliver smooth journeys.",
   },
   {
-    icon: ShieldCheck,
-    title: "Trust",
+    icon: Star,
+    title: "Premium Vehicle Fleet",
     description:
-      "Building lasting relationships through transparency, reliability, and consistent delivery of our promises.",
+      "Our Luxury Vehicle Fleet can accommodate the needs of individual clients, families, corporate/business groups, and VIP members, including but not limited to executive saloon cars, executive SUVs, MPVs, and luxury car hire. All vehicles in our fleet are kept in pristine condition and maintained to the highest standards.",
+  },
+  {
+    icon: Globe,
+    title: "Airport Transfers",
+    description:
+      "We provide reliable airport transfers to/from all major airports in the UK, including Heathrow, Gatwick, Stansted, Luton, London City Airport, Birmingham, Manchester, Bristol/Southampton as well as many other regional and local airports. We help you by providing professional airport pick-up and tracking service, so that you arrive at your destination without any problems.",
   },
   {
     icon: TrendingUp,
-    title: "Innovation",
+    title: "Corporate Travel Solutions",
     description:
-      "Embracing technology and new ideas to enhance customer experience and stay ahead of industry trends.",
+      "Business travel requires absolute precision and reliability; we accommodate all your business needs by providing punctual chauffeur service. In addition, we help support the company's CEOs, executive support staff, and their business associates by providing luxury transportation options that will help the individual focus on their business instead of worrying about their transportation to and from business activities or business meetings.",
   },
   {
-    icon: Heart,
-    title: "Care",
+    icon: Zap,
+    title: "Travel Across the UK",
     description:
-      "Treating every customer with genuine care and attention, ensuring comfort and satisfaction in every journey.",
-  },
-  {
-    icon: Leaf,
-    title: "Sustainability",
-    description:
-      "Committed to reducing our environmental impact with eco-friendly vehicles and sustainable practices.",
-  },
-  {
-    icon: Users,
-    title: "Community",
-    description:
-      "Supporting local communities and creating opportunities for growth and development across the UK.",
-  },
-  {
-    icon: Lock,
-    title: "Privacy",
-    description:
-      "Guaranteed discretion and confidentiality. We protect your privacy with strict data protocols and rigorous information security.",
+      "If your trip includes travelling to another location within the UK, for example, travelling within the London area, or travelling out of London, for example, by travelling to another location in either England, Scotland, Wales or Northern Ireland, Quickoo provides long-distance private chauffeur travel.",
   },
 ];
 
@@ -190,6 +179,10 @@ const contactHighlights = [
 export default function AboutPage() {
   return (
     <div className="bg-gradient-to-b from-white via-[#fafbff] to-white text-slate-900 overflow-hidden">
+      <Helmet>
+        <title>About Quickoo | Luxury Chauffeur Service in the UK</title>
+        <meta name="description" content="Learn about Quickoo, a trusted luxury chauffeur service in the UK, offering executive travel, airport transfers, corporate transport, and premium private journeys." />
+      </Helmet>
       <motion.section
         className="relative overflow-hidden min-h-[70vh] flex items-center bg-gradient-to-br from-white via-[#f1f5ff] to-[#fdf2e9]"
         initial="hidden"
@@ -220,12 +213,10 @@ export default function AboutPage() {
               </div>
               <div className="space-y-6">
                 <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-slate-900">
-                  Luxury transportation elevated with purpose, precision, and care.
+                  Luxury Chauffeur Services Designed Around Your Journey
                 </h1>
                 <p className="text-lg text-slate-600 font-inter">
-                  Quickoo is the UK’s trusted premium chauffeur collective—engineered for discerning
-                  travelers who expect effortless reliability, transparent pricing, eco-conscious fleets,
-                  and concierge-grade experiences from booking to drop-off.
+                  Quickoo has a philosophy that goes beyond simply getting from point A to B in style with 'luxury' transport because travelling in style means arriving at your destination comfortably and with confidence - knowing you are getting an excellent standard of service that values your time as much as you do!
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link to="/#home-booking" className="luxury-button-gold px-7 py-3 text-base rounded-full inline-block">
@@ -353,41 +344,48 @@ export default function AboutPage() {
               </span>
             </h2>
             <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-              Our commitment to redefining luxury travel through precision, care, and unwavering excellence.
+              As a reputable provider of luxury chauffeur services throughout the UK, Quickoo provides an unparalleled travel experience for business individuals, international visitors, families and private clients who expect only the highest standards.
             </p>
           </motion.div>
 
           {/* Mission & Vision Cards */}
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="flex flex-col gap-10 max-w-5xl mx-auto">
             {/* Mission Card */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="group relative overflow-hidden rounded-3xl bg-white border border-slate-100 p-10 shadow-[0_20px_70px_rgba(15,23,42,0.05)] hover:shadow-[0_30px_90px_rgba(72,115,7,0.1)] transition-all duration-500"
+              className="group relative overflow-hidden rounded-3xl bg-white border border-slate-100 p-8 sm:p-12 shadow-[0_20px_70px_rgba(15,23,42,0.05)] hover:shadow-[0_30px_90px_rgba(72,115,7,0.1)] transition-all duration-500"
             >
               {/* Glow effect */}
               <div className="absolute -inset-4 bg-gradient-to-br from-[#487307]/20 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="relative space-y-6">
-                {/* Icon */}
-                <div className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] p-4 shadow-lg">
-                  <Award className="h-8 w-8 text-white" />
-                </div>
+              <div className="relative grid md:grid-cols-[1fr_2fr] gap-8 md:gap-12 items-start">
+                <div className="space-y-6">
+                  {/* Icon */}
+                  <div className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] p-4 shadow-lg">
+                    <Award className="h-8 w-8 text-white" />
+                  </div>
 
-                {/* Title */}
-                <div className="space-y-3">
-                  <h3 className="text-2xl sm:text-3xl font-montserrat font-bold text-dark leading-tight">
-                    Our Mission
-                  </h3>
-                  <div className="h-1 w-16 bg-gradient-to-r from-[#487307] to-transparent rounded-full" />
+                  {/* Title */}
+                  <div className="space-y-3">
+                    <h3 className="text-2xl sm:text-3xl font-montserrat font-bold text-dark leading-tight">
+                      Our Mission
+                    </h3>
+                    <div className="h-1 w-16 bg-gradient-to-r from-[#487307] to-transparent rounded-full" />
+                  </div>
                 </div>
 
                 {/* Content */}
-                <p className="text-base font-inter text-gray-600 leading-relaxed">
-                  To deliver reliable, safe, and memorable luxury journeys 24/7 with transparent pricing. Founded to redefine luxury travel across the United Kingdom, Quickoo delivers concierge-level precision at every touchpoint, pairing meticulously maintained fleets with professional chauffeurs trained for elevated service rituals.
-                </p>
+                <div className="space-y-4 text-base font-inter text-gray-600 leading-relaxed">
+                  <p>
+                    Our purpose is to deliver a luxurious, tranquil, dependable chauffeur experience by providing an outstanding level of customer service. We aim for perfection to provide the best in every booking. We want our clients to have peace of mind and satisfaction when they travel, wherever they are going.
+                  </p>
+                  <p>
+                    We are committed to enhancing our fleet, technology and customer support systems to ensure all of our journeys adhere to the most stringent quality standards. Simply providing a means of transportation for our passengers is not our goal; we want to provide the experience that passengers can always be confident in selecting for their future transportation needs.
+                  </p>
+                </div>
 
                 {/* Decorative line */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#487307]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -396,33 +394,43 @@ export default function AboutPage() {
 
             {/* Vision Card */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="group relative overflow-hidden rounded-3xl bg-white border border-slate-100 p-10 shadow-[0_20px_70px_rgba(15,23,42,0.05)] hover:shadow-[0_30px_90px_rgba(212,175,55,0.1)] transition-all duration-500"
+              className="group relative overflow-hidden rounded-3xl bg-white border border-slate-100 p-8 sm:p-12 shadow-[0_20px_70px_rgba(15,23,42,0.05)] hover:shadow-[0_30px_90px_rgba(212,175,55,0.1)] transition-all duration-500"
             >
               {/* Glow effect */}
               <div className="absolute -inset-4 bg-gradient-to-br from-gold/20 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="relative space-y-6">
-                {/* Icon */}
-                <div className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-gold via-[#f5d77e] to-gold p-4 shadow-lg">
-                  <Star className="h-8 w-8 text-[#0f1801]" />
-                </div>
+              <div className="relative grid md:grid-cols-[1fr_2fr] gap-8 md:gap-12 items-start">
+                <div className="space-y-6">
+                  {/* Icon */}
+                  <div className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-gold via-[#f5d77e] to-gold p-4 shadow-lg">
+                    <Star className="h-8 w-8 text-[#0f1801]" />
+                  </div>
 
-                {/* Title */}
-                <div className="space-y-3">
-                  <h3 className="text-2xl sm:text-3xl font-montserrat font-bold text-dark leading-tight">
-                    Our Vision
-                  </h3>
-                  <div className="h-1 w-16 bg-gradient-to-r from-gold to-transparent rounded-full" />
+                  {/* Title */}
+                  <div className="space-y-3">
+                    <h3 className="text-2xl sm:text-3xl font-montserrat font-bold text-dark leading-tight">
+                      Our Vision
+                    </h3>
+                    <div className="h-1 w-16 bg-gradient-to-r from-gold to-transparent rounded-full" />
+                  </div>
                 </div>
 
                 {/* Content */}
-                <p className="text-base font-inter text-gray-600 leading-relaxed">
-                  Our vision is to be regarded as a distinguished name in chauffeur-driven mobility, recognised for redefining travel as an elegant and personalised experience rather than a mere transfer. We aspire to set a lasting benchmark in refined service, where every journey becomes a quiet expression of sophistication, and every detail reflects an ethos of excellence without compromise.
-                </p>
+                <div className="space-y-4 text-base font-inter text-gray-600 leading-relaxed">
+                  <p>
+                    Quickoo's vision when it started was very clear: to reinvent the way people travel privately on the ground by pairing luxury vehicles and superior customer support. We saw that customers needed more than just a basic taxi/ride-share for transportation; they want a quality chauffeur experience to reflect the value of their trip.
+                  </p>
+                  <p>
+                    As we have grown from our original London location to multiple locations around the UK, we have continued to offer a personal touch to our service, which has helped us create great relationships with our customers. Whether it’s an individual airport transfer for someone, a corporate travel plan with several legs or a VIP event, we have built strong relationships with customers who appreciate reliability, professionalism and exceptional service levels.
+                  </p>
+                  <p>
+                    Quickoo provides transportation to domestic and international customers today, focusing on creating custom transportation solutions for all of your needs. Quickoo has a dedicated team with experience who ensures that every aspect of a journey is well planned to ensure that the journey is smooth, reliable and stress-free. You may require airport transfer or corporate transport, perhaps event transport, or even a fit for you during the day; you can rest assured that your every journey through Quickoo will be nothing but exceptional!
+                  </p>
+                </div>
 
                 {/* Decorative line */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -471,28 +479,70 @@ export default function AboutPage() {
         variants={stagger}
       >
         <div className="section-container space-y-12">
-          <div className="text-center space-y-3">
-            <p className="uppercase tracking-[0.4em] text-md text-slate-500">Core values</p>
+          <div className="text-center space-y-4 max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
-              Quickoo Promise
+              What Makes Quickoo Different?
             </h2>
+            <p className="text-base sm:text-lg text-slate-600 font-inter">
+              You should not have to worry about your travel in Luxury; that is why we design everything (our service) with three pillars: convenience, professionalism, and comfort.
+            </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {values.map(({ icon: Icon, title, description }) => (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {features.map(({ icon: Icon, title, description }) => (
               <motion.div
                 key={title}
-                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
+                className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] hover:shadow-[0_30px_90px_rgba(212,175,55,0.1)] transition-all duration-300"
                 variants={fadeInUp}
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="rounded-full bg-gold/15 p-3 text-gold">
-                    <Icon className="h-6 w-6" />
+                <div className="flex flex-col gap-4 mb-4">
+                  <div className="rounded-2xl bg-gold/15 p-4 text-gold w-fit">
+                    <Icon className="h-8 w-8" />
                   </div>
-                  <p className="text-lg font-semibold text-slate-900">{title}</p>
+                  <h3 className="text-xl font-montserrat font-semibold text-slate-900 leading-tight">{title}</h3>
                 </div>
-                <p className="text-sm text-slate-600">{description}</p>
+                <p className="text-sm sm:text-base text-slate-600 font-inter leading-relaxed">{description}</p>
               </motion.div>
             ))}
+          </div>
+
+        </div>
+      </motion.section>
+
+      {/* A Service Built Around You Section */}
+      <motion.section
+        className="pb-16 lg:pb-24 pt-4 sm:pt-8 bg-white relative"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={stagger}
+      >
+        <div className="section-container">
+          <div className="rounded-[40px] border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-8 sm:p-12 lg:p-16 shadow-[0_20px_80px_rgba(15,23,42,0.06)] relative overflow-hidden">
+            {/* Subtle background decoration */}
+            <div className="absolute -top-32 -right-32 w-96 h-96 bg-gold/5 rounded-full blur-[80px] pointer-events-none"></div>
+
+            <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
+              <div className="lg:col-span-5 space-y-6">
+                <div className="flex items-center gap-4">
+                  {/* <div className="w-12 h-1 bg-gold rounded-full"></div> */}
+                  {/* <span className="uppercase tracking-[0.3em] text-sm text-[#487307] font-bold">Your Needs First</span> */}
+                </div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-bold text-slate-900 leading-[1.15]">
+                  A Service Built Around You
+                </h2>
+              </div>
+
+              <div className="lg:col-span-7 space-y-8">
+                <p className="text-base sm:text-lg text-slate-800 font-inter leading-relaxed font-medium">
+                  Every client has individual requirements. We provide affordable chauffeur services to suit your schedule. Every client has different travel requirements, which is why we offer flexible chauffeur solutions that adapt to your schedule. Whether you are travelling for business, attending a wedding, hosting international guests, or planning a sightseeing tour, we work to provide a service that reflects your individual needs.
+                </p>
+                <div className="rounded-3xl bg-[#487307]/5 border border-[#487307]/15 p-6 sm:p-8">
+                  <p className="text-lg sm:text-xl font-semibold text-[#2a4204] italic leading-relaxed">
+                    "From the booking to the final drop-off, our team is focused on delivering a comfortable, efficient and worry-free experience."
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </motion.section>
@@ -508,57 +558,44 @@ export default function AboutPage() {
         <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-[radial-gradient(circle_at_top,#d9e6ff,transparent_60%)] opacity-60" />
         <div className="section-container relative grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <motion.div className="space-y-8" variants={fadeInUp}>
-            <p className="uppercase tracking-[0.4em] text-md text-slate-500">Tailored programs</p>
+            <p className="uppercase tracking-[0.4em] text-md text-slate-500">Service Standards</p>
             <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
-              Crafted for every journey profile
+              Our Commitment to Excellence
             </h2>
-            <p className="text-slate-600 font-inter">
-              Our concierge team designs routes and rituals around the traveler. From board meetings to
-              immersive escapes, each program layers service standards with adaptive technology, ensuring
-              every transfer feels tailored and intuitive.
-            </p>
+            <div className="space-y-4 text-slate-600 font-inter text-base sm:text-lg">
+              <p>
+                Our company's dedication to quality stems from our experience in transportation. Our clients value more than just transport - they want reliability, professionalism, and peace of mind.
+              </p>
+              <p>
+                To meet these expectations, we focus on:
+              </p>
+            </div>
 
+            <p className="inline-block rounded-2xl bg-white border border-slate-200 px-6 py-4 text-sm sm:text-base font-medium text-slate-700 shadow-sm mt-8">
+              We treat every client the same, whether it is a short city transfer or a full-day chauffeur hire.
+            </p>
           </motion.div>
-          <div className="space-y-6">
-            {programs.map((program) => (
+          <div className="space-y-4 mt-4 lg:mt-0">
+            {[
+              "Experienced & Licensed Chauffeurs",
+              "High Standards Of Maintenance On All Vehicles",
+              "Prompt Arrival & Dependability In Scheduling",
+              "Transparently Priced With No Hidden Fees",
+              "Professional Customer Support",
+              "Safe & Comfortable Travel",
+              "Personalised Travel Partnerships"
+            ].map((commitment) => (
               <motion.div
-                key={program.title}
-                className="relative rounded-[32px] border p-6 sm:p-7 bg-white shadow-[0_20px_70px_rgba(15,23,42,0.08)]"
+                key={commitment}
+                className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-[0_10px_40px_rgba(15,23,42,0.04)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)] hover:border-gold/30 transition-all duration-300"
                 variants={fadeInUp}
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 200, damping: 18 }}
-                style={{
-                  borderColor: program.accent,
-                  boxShadow: `0 20px 50px ${program.accent}33`,
-                }}
               >
-                <div className="flex items-center justify-between gap-6 mb-4">
-                  <p className="text-base uppercase tracking-[0.4em] text-slate-500">
-                    Concierge Program
-                  </p>
-                  <span
-                    className="rounded-full px-4 py-1 text-xs font-semibold text-slate-900"
-                    style={{ backgroundColor: program.accent }}
-                  >
-                    Signature
-                  </span>
+                <div className="flex-shrink-0 rounded-full bg-gold/10 p-2 text-gold">
+                  <ShieldCheck className="h-5 w-5" />
                 </div>
-                <div className="space-y-3">
-                  <p className="text-2xl font-montserrat font-semibold text-slate-900">
-                    {program.title}
-                  </p>
-                  <p className="text-sm text-slate-600">{program.description}</p>
-                </div>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  {program.highlights.map((highlight) => (
-                    <span
-                      key={highlight}
-                      className="rounded-full border border-slate-200 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-500 bg-slate-50"
-                    >
-                      {highlight}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-base font-semibold text-slate-800">
+                  {commitment}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -573,19 +610,106 @@ export default function AboutPage() {
         variants={stagger}
       >
         <div className="section-container space-y-12">
+          <div className="text-center space-y-4 max-w-3xl mx-auto">
+            <p className="uppercase tracking-[0.4em] text-md text-gold">Occasions</p>
+            <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
+              Serving Every Occasion
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 font-inter">
+              Quickoo offers chauffeur services for all different types of travel, including:
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mt-8">
+            {/* Corporate & Executive */}
+            <motion.div variants={fadeInUp} className="rounded-3xl border border-slate-100 bg-slate-50/50 p-6 sm:p-8 hover:bg-white hover:shadow-[0_20px_50px_rgba(72,115,7,0.08)] transition-all duration-300">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="rounded-xl bg-[#487307]/10 p-3 text-[#487307]">
+                  <TrendingUp className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-montserrat font-bold text-slate-900">Corporate & V.I.P</h3>
+              </div>
+              <ul className="space-y-4">
+                {["Business (Executive Travel)", "Corp. Events", "V.I.P."].map(item => (
+                  <li key={item} className="flex items-center gap-3 text-slate-700 font-medium">
+                    <div className="h-1.5 w-1.5 rounded-full bg-gold shrink-0"></div>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Travel & Transfers */}
+            <motion.div variants={fadeInUp} className="rounded-3xl border border-slate-100 bg-slate-50/50 p-6 sm:p-8 hover:bg-white hover:shadow-[0_20px_50px_rgba(72,115,7,0.08)] transition-all duration-300">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="rounded-xl bg-[#487307]/10 p-3 text-[#487307]">
+                  <Globe className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-montserrat font-bold text-slate-900">Transfers</h3>
+              </div>
+              <ul className="space-y-4">
+                {["Airport Transfers", "Hotel Transfers", "Cruise Ports", "Long Distance"].map(item => (
+                  <li key={item} className="flex items-center gap-3 text-slate-700 font-medium">
+                    <div className="h-1.5 w-1.5 rounded-full bg-gold shrink-0"></div>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Events & Leisure */}
+            <motion.div variants={fadeInUp} className="rounded-3xl border border-slate-100 bg-slate-50/50 p-6 sm:p-8 hover:bg-white hover:shadow-[0_20px_50px_rgba(72,115,7,0.08)] transition-all duration-300">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="rounded-xl bg-[#487307]/10 p-3 text-[#487307]">
+                  <Sparkles className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-montserrat font-bold text-slate-900">Events & Leisure</h3>
+              </div>
+              <ul className="space-y-4">
+                {["Weddings", "Private Events", "Sporting Events", "Concerts", "Site Tours", "Family Travel"].map(item => (
+                  <li key={item} className="flex items-center gap-3 text-slate-700 font-medium">
+                    <div className="h-1.5 w-1.5 rounded-full bg-gold shrink-0"></div>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="mt-10 text-center"
+          >
+            <p className="inline-block rounded-2xl bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-6 sm:px-8 py-5 text-sm sm:text-base font-medium text-white shadow-lg">
+              Whatever your occasion, our mission is the same: we want to ensure you have a travel experience that showcases the very best in Luxury & Professionalism.
+            </p>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        className="section-spacing bg-white"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={stagger}
+      >
+        <div className="section-container space-y-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div className="space-y-7" variants={fadeInUp}>
-              <p className="uppercase tracking-[0.4em] text-md text-slate-500">
-                Why travelers choose us
+              <p className="uppercase tracking-[0.4em] text-md text-[#487307] font-semibold">
+                Why Clients Choose Quickoo?
               </p>
               <h2 className="text-3xl sm:text-4xl font-montserrat font-semibold text-slate-900">
                 Luxury without compromise
               </h2>
-              <p className="text-slate-600 font-inter">
-                Inspired by Quickoo’s “Excellence in Every Journey” ethos, we obsess over the touchpoints
-                that matter—safety, sustainability, and sensorial comfort. Our team orchestrates the
-                journey like a five-star hotel stay on wheels.
-              </p>
+              <div className="space-y-4 text-slate-600 font-inter leading-relaxed">
+                <p>
+                  Clients select Quickoo as a remote service because they appreciate the professional approach we take to every customer we work with. The quality of service we offer is paramount to our continued success. If you want to feel secure, confidential and satisfy your client's needs, we take the utmost care and attention to detail in everything we do to ensure that every trip is well taken care of.
+                </p>
+                <p>
+                  Our commitment to exceeding expectations has enabled us to maintain ongoing partnerships with local companies and government agencies, including, but not limited to, airlines, universities, hotels, utility companies and international private travel agencies in the United Kingdom.
+                </p>
+              </div>
             </motion.div>
             <motion.div
               className="grid sm:grid-cols-2 gap-6"
@@ -594,11 +718,22 @@ export default function AboutPage() {
               {pillars.map(({ icon: Icon, title, text }) => (
                 <div
                   key={title}
-                  className="rounded-3xl border border-slate-200 bg-white p-6 space-y-3 shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
+                  className="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-[0_20px_50px_rgba(212,175,55,0.15)] shadow-[0_10px_30px_rgba(15,23,42,0.04)]"
                 >
-                  <Icon className="h-8 w-8 text-gold" />
-                  <p className="font-semibold text-slate-900">{title}</p>
-                  <p className="text-sm text-slate-600">{text}</p>
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#487307]/10 text-[#487307] group-hover:bg-[#487307] group-hover:text-white transition-all duration-300 shadow-sm">
+                    <Icon className="h-7 w-7" />
+                  </div>
+
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-montserrat font-semibold text-slate-900 leading-tight">
+                      {title}
+                    </h3>
+                    <p className="text-sm text-slate-600 font-inter leading-relaxed">
+                      {text}
+                    </p>
+                  </div>
                 </div>
               ))}
             </motion.div>
@@ -689,13 +824,26 @@ export default function AboutPage() {
           <div className="space-y-6">
             <p className="uppercase tracking-[0.4em] text-md text-gold">Premium Fleet Excellence</p>
             <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-dark">
-              Luxury vehicles, meticulously maintained
+              Experience Luxury Travel with Quickoo
             </h2>
-            <p className="text-gray-600 font-inter">
-              Our premium fleet features the finest luxury vehicles, each undergoing rigorous multi-point
-              detailing before every journey. Choose from our selection of hybrid and fully electric
-              options, delivering exceptional comfort while minimizing environmental impact.
-            </p>
+            <div className="space-y-4 text-gray-600 font-inter leading-relaxed">
+              <p>
+                Regardless of whether your trip is for business or leisure, we offer high-quality, safe, dependable, and luxurious chauffeur travel experiences that will exceed your expectations. We offer airport transfers, premier executive transportation, special occasion transportation, custom personal transportation and all other transportation arrangements you make with us. We will go above and beyond to make every trip enjoyable, dependable and a pleasant experience.
+              </p>
+              <div className="mt-8 flex items-start gap-4 rounded-2xl border border-[#487307]/10 bg-gradient-to-br from-[#487307]/5 to-transparent p-6 transition-all hover:shadow-[0_10px_30px_rgba(72,115,7,0.08)]">
+                <div className="flex-shrink-0 rounded-full bg-white p-3 text-gold shadow-sm border border-slate-100">
+                  <Sparkles className="h-6 w-6" />
+                </div>
+                <div>
+                  <p className="font-montserrat font-bold text-slate-900 text-lg">
+                    Book your next trip with Quickoo today!
+                  </p>
+                  <p className="text-slate-600 font-inter mt-1 leading-relaxed">
+                    See the difference a quality luxury chauffeur service can make for you.
+                  </p>
+                </div>
+              </div>
+            </div>
             <div className="grid sm:grid-cols-3 gap-4">
               {["Eco-Friendly", "Premium Comfort", "Latest Models"].map((feature) => (
                 <div key={feature} className="rounded-2xl bg-muted p-4 text-center font-semibold">
