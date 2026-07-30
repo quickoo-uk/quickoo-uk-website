@@ -43,6 +43,8 @@ import { ensureAdminSession } from "@/lib/adminAuth";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import BookFleet from "./pages/BookFleet";
 import LogistifieBookNow from "./pages/LogistifieBookNow";
+import GoogleAdsLanding from "./pages/landing/GoogleAdsLanding";
+import GoogleAdsBooking from "./pages/landing/GoogleAdsBooking";
 
 const queryClient = new QueryClient();
 
@@ -277,6 +279,16 @@ export default function App() {
               }
             />
             
+            {/* ------------------------------------------------------------------
+                Google Ads landing funnel.
+                Standalone on purpose: rendered WITHOUT <Layout>, so these pages
+                have no Navbar, no site menu and no Footer. They are not linked
+                from anywhere on the main site — traffic arrives from paid ads
+                only. The logo in the landing header links back to "/".
+            ------------------------------------------------------------------- */}
+            <Route path="/lp/chauffeur" element={<GoogleAdsLanding />} />
+            <Route path="/lp/chauffeur/book" element={<GoogleAdsBooking />} />
+
             <Route
               path="/admin-panel"
               element={<Navigate to="/admin-panel/login" replace />}
