@@ -1,5 +1,6 @@
 import { AboutSection } from "@/components/AboutSection";
 import { AppDownloadSection } from "@/components/AppDownloadSection";
+import { BookingSection } from "@/components/BookingSection";
 import { FleetPreviewSection } from "@/components/FleetPreviewSection";
 import { HeroSection } from "@/components/HeroSection";
 import { LuxuryExperienceSection } from "@/components/LuxuryExperienceSection";
@@ -18,6 +19,7 @@ export default function Index() {
     <div className="w-full bg-gradient-to-b from-white via-slate-50/50 to-white">
       <FestivalOfferModal />
       <HeroSection />
+      <BookingSection />
       {/* <AnimatedInfinityAccent /> */}
 
       <FleetPreviewSection />
