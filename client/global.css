@@ -350,6 +350,33 @@ body {
  booking-widget span.lf-text-xs{
  min-width: 32px !important;
 }
+
+/* Standalone booking form: the widget's own panel IS the card (no wrapper card
+   around it) and it drops the vendor's hard 510px width cap. */
+.booking_engine_flat {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  border-radius: 0 !important;
+}
+
+.booking_engine_flat booking-widget > div[class*="lf-max-w-[510px]"] {
+  max-width: 100% !important;
+  border-radius: 20px;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border) / 0.6);
+  box-shadow:
+    0 18px 50px hsl(var(--quickoo-violet) / 0.14),
+    0 2px 10px hsl(var(--quickoo-violet) / 0.06);
+  overflow: hidden;
+}
+
+/* Give the form breathing room now that it is the card itself */
+.booking_engine_flat booking-widget form .lf-px-4 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
 /* Inner container */
 .hero_booking_engine .lf-bg-white,
 .mobile-form .lf-bg-white {

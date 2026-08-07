@@ -46,6 +46,34 @@ const BookingWidgetLoader = ({
     };
   }, [scriptUrl]);
 
+  // The widget boots with a placeholder "Default Toast Message" toast. Hide only
+  // that one, so genuine validation toasts still reach the user.
+  useEffect(() => {
+    if (!loaded) return;
+
+    const syncToasts = () => {
+      document.querySelectorAll("booking-widget app-toast").forEach((toast) => {
+        const el = toast as HTMLElement;
+        if (el.textContent?.includes("Default Toast Message")) {
+          el.style.display = "none";
+        } else {
+          el.style.removeProperty("display");
+        }
+      });
+    };
+
+    syncToasts();
+
+    const observer = new MutationObserver(syncToasts);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
+
+    return () => observer.disconnect();
+  }, [loaded]);
+
   if (!loaded) return null;
 
   return <>{children}</>;

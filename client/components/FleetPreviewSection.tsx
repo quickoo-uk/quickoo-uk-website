@@ -15,6 +15,8 @@ const VEHICLE_CLASSES = [
     image: "/fleet/BusinessClass.png",
     guests: "Up to 4 guests",
     luggage: "2 carry-on bags, or 2 standard bags",
+    passengers: 4,
+    cases: 2,
     description: "Business Class vehicles are ideal for corporate transportation and airport transfers. A professional, comfortable and practical solution for business or other executive-style travel. Suitable for Corporate meetings, Airport Transfers and Professional appointments.",
     vehicles: ["Mercedes E-Class", "BMW 5 Series", "Or similar"],
     longDescription: (
@@ -35,6 +37,8 @@ const VEHICLE_CLASSES = [
     image: "/fleet/firstClass.png",
     guests: "Up to 3 guests",
     luggage: "2 carry-on bags or 2 standard bags",
+    passengers: 3,
+    cases: 2,
     description: "Enjoy exceptional luxury in premium chauffeur-driven vehicles. They provide an exceptional travel experience to executives, VIP guests and other persons who expect the highest levels of comfort and class. Suitable for Executive Transportation, VIP transportation and Corporate Roadshows.",
     vehicles: ["Mercedes S-Class", "BMW 7 Series", "Or similar luxury sedan"],
     longDescription: (
@@ -55,6 +59,8 @@ const VEHICLE_CLASSES = [
     image: "/fleet/BusinessVAN.png",
     guests: "Up to 6 guests",
     luggage: "6 carry-on bags, or 6 standard bags",
+    passengers: 6,
+    cases: 6,
     description: "Travelling with your entire family or a larger group of individuals. Business Class Luxury Vans provide ample room and comfort for multiple passengers and their luggage. Perfect for corporate group airport transfers, family transportation and event transportation.",
     vehicles: ["Mercedes Vito", "Or similar executive van"],
     longDescription: (
@@ -249,7 +255,7 @@ export const FleetPreviewSection = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3"
+          className="grid grid-cols-1 divide-y divide-gray-200 md:grid-cols-2 md:gap-4 md:divide-y-0 xl:grid-cols-3"
         >
           {VEHICLE_CLASSES.map((vehicle) => (
             <motion.div
@@ -257,7 +263,7 @@ export const FleetPreviewSection = () => {
               variants={item}
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}
-              className="group overflow-hidden rounded-2xl transition-all duration-500"
+              className="group pt-8 first:pt-0 transition-all duration-500 md:overflow-hidden md:rounded-2xl md:pt-0"
             >
               {/* Desktop view: Traditional vertical card */}
               <div className="hidden md:flex flex-col h-full bg-white border border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] rounded-2xl overflow-hidden transition-all duration-500 group-hover:-translate-y-1">
@@ -322,43 +328,64 @@ export const FleetPreviewSection = () => {
                 </div>
               </div>
 
-              {/* Mobile view: Horizontal card with Accordion */}
-              <div
-                className="md:hidden flex flex-col p-4 gap-4 bg-white rounded-2xl border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.05)] cursor-pointer hover:bg-slate-50 transition-colors"
-                onClick={() => setExpandedVehicleId(expandedVehicleId === vehicle.id ? null : vehicle.id)}
-              >
-                <div className="flex items-center gap-4 w-full">
-                  {/* Left: Image */}
-                  <div className="w-28 sm:w-36 h-20 sm:h-24 flex-shrink-0 flex items-center justify-center overflow-hidden rounded-xl bg-white">
-                    <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-contain scale-[1.15] mix-blend-multiply" />
-                  </div>
+              {/* Mobile view: Full-width stacked card (image on top, specs, price, CTA) */}
+              <div className="md:hidden flex flex-col pb-8">
+                {/* Image */}
+                <div className="w-full h-48 sm:h-64 flex items-center justify-center overflow-hidden bg-white">
+                  <img
+                    src={vehicle.image}
+                    alt={vehicle.name}
+                    loading="lazy"
+                    className="w-full h-full object-contain scale-[1.1] mix-blend-multiply"
+                  />
+                </div>
 
-                  {/* Center: Info */}
-                  <div className="flex-grow min-w-0">
-                    <h3 className="text-lg font-bold text-slate-900 leading-tight truncate">{vehicle.name}</h3>
-                    <div className="flex items-center gap-4 my-1.5 text-slate-700">
-                      <div className="flex items-center gap-1.5">
-                        <Users className="w-4 h-4 text-[#487307]" strokeWidth={2.5} />
-                        <span className="text-sm font-bold">{vehicle.id === 'business-van' ? '6' : (vehicle.id === 'first-class' ? '3' : '4')}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <Luggage className="w-4 h-4 text-[#487307]" strokeWidth={2.5} />
-                        <span className="text-sm font-bold">{vehicle.id === 'business-van' ? '6' : '2'}</span>
-                      </div>
-                    </div>
-                    <p className="text-xs text-slate-500 font-medium truncate sm:whitespace-normal">
-                      {vehicle.name.replace('\u00A0', ' ')} or similar
-                    </p>
-                  </div>
+                {/* Name */}
+                <h3 className="mt-4 text-[22px] font-montserrat font-bold text-slate-900 leading-tight">
+                  {vehicle.name.replace("\u00A0", " ")}
+                </h3>
 
-                  {/* Right: Icon (Chevron down/up) */}
-                  <div className="text-right flex-shrink-0 flex flex-col items-end gap-2">
-                    <img src="/images/q-icon.png" alt="Q" className="h-5 w-5 object-contain ml-auto" />
-                    <motion.div animate={{ rotate: expandedVehicleId === vehicle.id ? 180 : 0 }}>
-                      <ChevronDown className="h-5 w-5 text-gray-400" />
-                    </motion.div>
+                {/* Specs */}
+                <div className="mt-3 flex items-center gap-8 text-slate-700">
+                  <div className="flex items-center gap-2">
+                    <Users className="w-5 h-5 text-slate-500" strokeWidth={1.75} />
+                    <span className="text-[15px] font-inter">
+                      {vehicle.passengers} passengers
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Luggage className="w-5 h-5 text-slate-500" strokeWidth={1.75} />
+                    <span className="text-[15px] font-inter">
+                      {vehicle.cases} cases
+                    </span>
                   </div>
                 </div>
+
+                {/* CTA */}
+                <a
+                  href="/book-now"
+                  className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-6 py-4 text-[17px] font-montserrat font-semibold text-white shadow-lg shadow-[#2a4204]/35 transition-all hover:opacity-90 active:scale-[0.98]"
+                >
+                  Book Now
+                  <ArrowRight className="h-5 w-5" />
+                </a>
+
+                {/* Details toggle */}
+                <button
+                  type="button"
+                  onClick={() =>
+                    setExpandedVehicleId(expandedVehicleId === vehicle.id ? null : vehicle.id)
+                  }
+                  className="mt-3 flex items-center justify-center gap-1.5 text-sm font-semibold text-[#487307]"
+                >
+                  {expandedVehicleId === vehicle.id ? "Hide details" : "View details"}
+                  <motion.span
+                    animate={{ rotate: expandedVehicleId === vehicle.id ? 180 : 0 }}
+                    className="inline-flex"
+                  >
+                    <ChevronDown className="h-4 w-4" />
+                  </motion.span>
+                </button>
 
                 <AnimatePresence>
                   {expandedVehicleId === vehicle.id && (
@@ -368,7 +395,7 @@ export const FleetPreviewSection = () => {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden"
                     >
-                      <div className="pt-4 border-t border-gray-100 text-sm text-gray-600 font-inter leading-relaxed space-y-3">
+                      <div className="pt-4 text-sm text-gray-600 font-inter leading-relaxed space-y-3">
                         {vehicle.longDescription}
                       </div>
                     </motion.div>
