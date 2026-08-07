@@ -52,7 +52,7 @@ export const HeroSection = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="w-full text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold leading-[1.15] tracking-tight text-white lg:max-w-[15ch]"
               >
-                Luxury Chauffeur Service Across the UK
+                Luxury Chauffeur Service
                 <span className="block mt-4 text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-green-200 to-white text-2xl sm:text-3xl lg:text-4xl leading-tight font-semibold lg:max-w-[20ch]">
                   Travel in Comfort. Arrive with Confidence.
                 </span>
@@ -64,7 +64,7 @@ export const HeroSection = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="max-w-xl text-sm sm:text-base font-inter font-light leading-relaxed tracking-wide text-gray-300"
               >
-                Quickoo delivers premium chauffeur-driven travel across the UK for
+                Quickoo delivers premium chauffeur-driven travel for
                 corporate clients, airport transfers and special occasions. Every
                 journey is handled with professionalism, punctuality and attention
                 to detail.
