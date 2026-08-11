@@ -13,6 +13,7 @@ const VEHICLE_CLASSES = [
     priceMain: "From £60 / hr",
     priceNote: "(incl. VAT)",
     image: "/fleet/BusinessClass.png",
+    flipImage: "/fleet/business_class_flip.png",
     guests: "Up to 4 guests",
     luggage: "2 carry-on bags, or 2 standard bags",
     passengers: 4,
@@ -35,6 +36,7 @@ const VEHICLE_CLASSES = [
     priceMain: "From £75 / hr",
     priceNote: "(incl. VAT)",
     image: "/fleet/firstClass.png",
+    flipImage: "/fleet/first_class_flip.png",
     guests: "Up to 3 guests",
     luggage: "2 carry-on bags or 2 standard bags",
     passengers: 3,
@@ -57,6 +59,7 @@ const VEHICLE_CLASSES = [
     priceMain: "From £70 / hr",
     priceNote: "(incl. VAT)",
     image: "/fleet/BusinessVAN.png",
+    flipImage: "/fleet/business_van_flip.png",
     guests: "Up to 6 guests",
     luggage: "6 carry-on bags, or 6 standard bags",
     passengers: 6,
@@ -122,6 +125,49 @@ const container = {
 const item = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0 },
+};
+
+// Hover-to-flip (tap-to-flip on touch) vehicle image with a 3D card flip
+const FlipCardImage = ({
+  frontSrc,
+  backSrc,
+  alt,
+  imgClassName,
+}: {
+  frontSrc: string;
+  backSrc: string;
+  alt: string;
+  imgClassName: string;
+}) => {
+  const [flipped, setFlipped] = useState(false);
+
+  return (
+    <div
+      className="h-full w-full cursor-pointer [perspective:1600px]"
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
+      onClick={() => setFlipped((f) => !f)}
+    >
+      <motion.div
+        className="relative h-full w-full [transform-style:preserve-3d]"
+        animate={{ rotateY: flipped ? 180 : 0 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <img
+          src={frontSrc}
+          alt={alt}
+          loading="lazy"
+          className={`absolute inset-0 h-full w-full [backface-visibility:hidden] ${imgClassName}`}
+        />
+        <img
+          src={backSrc}
+          alt={alt}
+          loading="lazy"
+          className={`absolute inset-0 h-full w-full [backface-visibility:hidden] [transform:rotateY(180deg)] ${imgClassName}`}
+        />
+      </motion.div>
+    </div>
+  );
 };
 
 export const FleetPreviewSection = () => {
@@ -268,13 +314,30 @@ export const FleetPreviewSection = () => {
               {/* Desktop view: Traditional vertical card */}
               <div className="hidden md:flex flex-col h-full bg-white border border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] rounded-2xl overflow-hidden transition-all duration-500 group-hover:-translate-y-1">
                 {/* Image Section */}
-                <div className="relative overflow-hidden bg-white h-48 sm:h-56 flex items-center justify-center border-b border-gray-50 group-hover:bg-gray-50/50 transition-colors duration-500">
-                  <motion.img
-                    src={vehicle.image}
+                <div className="relative overflow-hidden bg-white h-48 sm:h-56 group-hover:bg-gray-50/50 transition-colors duration-500">
+                  <FlipCardImage
+                    frontSrc={vehicle.image}
+                    backSrc={vehicle.flipImage}
                     alt={vehicle.name}
-                    loading="lazy"
-                    className="w-full h-full object-cover scale-[1.25] mix-blend-multiply transition duration-700 group-hover:scale-[1.35]"
+                    imgClassName="object-cover scale-[1.25] mix-blend-multiply"
                   />
+                </div>
+
+                {/* Capacity strip */}
+                <div className="flex items-center justify-center gap-6 border-b border-gray-50 pb-4 pt-3">
+                  <div className="flex items-center gap-2">
+                    <div className="rounded-full bg-[#eaf7e8] p-1.5 flex items-center justify-center shrink-0">
+                      <Users className="h-3.5 w-3.5 text-[#487307]" />
+                    </div>
+                    <span className="text-sm font-semibold text-dark">{vehicle.passengers}</span>
+                  </div>
+                  <div className="h-4 w-px bg-gray-200" />
+                  <div className="flex items-center gap-2">
+                    <div className="rounded-full bg-[#eaf7e8] p-1.5 flex items-center justify-center shrink-0">
+                      <Luggage className="h-3.5 w-3.5 text-[#487307]" />
+                    </div>
+                    <span className="text-sm font-semibold text-dark">{vehicle.cases}</span>
+                  </div>
                 </div>
 
                 {/* Content Section */}
@@ -312,18 +375,27 @@ export const FleetPreviewSection = () => {
                     </div>
                   </div>
 
-                  {/* Premium Brand Badge & View Details */}
-                  <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-sm">
-                      <img src="/images/q-icon.png" alt="Q" className="h-4 w-4 object-contain" />
-                      <span className="text-gray-700 font-medium whitespace-nowrap">Premium chauffeur Car</span>
-                    </div>
-                    <button
-                      onClick={() => setSelectedVehicle(vehicle)}
-                      className="text-xs font-semibold text-[#487307] hover:text-[#2a4204] underline underline-offset-2 transition-colors whitespace-nowrap"
+                  {/* Book Now & View Details */}
+                  <div className="mt-auto space-y-4 pt-4 border-t border-gray-100">
+                    <a
+                      href="/book-now"
+                      className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-6 py-3 text-sm font-montserrat font-semibold text-white shadow-lg shadow-[#2a4204]/25 transition-all hover:opacity-90 active:scale-[0.98]"
                     >
-                      View Details
-                    </button>
+                      Book Now
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-sm">
+                        <img src="/images/q-icon.png" alt="Q" className="h-4 w-4 object-contain" />
+                        <span className="text-gray-700 font-medium whitespace-nowrap">Premium chauffeur Car</span>
+                      </div>
+                      <button
+                        onClick={() => setSelectedVehicle(vehicle)}
+                        className="text-xs font-semibold text-[#487307] hover:text-[#2a4204] underline underline-offset-2 transition-colors whitespace-nowrap"
+                      >
+                        View Details
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -331,33 +403,61 @@ export const FleetPreviewSection = () => {
               {/* Mobile view: Full-width stacked card (image on top, specs, price, CTA) */}
               <div className="md:hidden flex flex-col pb-8">
                 {/* Image */}
-                <div className="w-full h-48 sm:h-64 flex items-center justify-center overflow-hidden bg-white">
-                  <img
-                    src={vehicle.image}
+                <div className="relative w-full h-48 sm:h-64 overflow-hidden bg-white">
+                  <FlipCardImage
+                    frontSrc={vehicle.image}
+                    backSrc={vehicle.flipImage}
                     alt={vehicle.name}
-                    loading="lazy"
-                    className="w-full h-full object-contain scale-[1.1] mix-blend-multiply"
+                    imgClassName="object-contain scale-[1.1] mix-blend-multiply"
                   />
                 </div>
 
+                {/* Capacity strip */}
+                <div className="mt-3 flex items-center justify-center gap-8">
+                  <div className="flex items-center gap-2">
+                    <div className="rounded-full bg-[#eaf7e8] p-2 flex items-center justify-center shrink-0">
+                      <Users className="h-4 w-4 text-[#487307]" strokeWidth={2} />
+                    </div>
+                    <span className="text-[15px] font-semibold text-dark">{vehicle.passengers}</span>
+                  </div>
+                  <div className="h-5 w-px bg-gray-200" />
+                  <div className="flex items-center gap-2">
+                    <div className="rounded-full bg-[#eaf7e8] p-2 flex items-center justify-center shrink-0">
+                      <Luggage className="h-4 w-4 text-[#487307]" strokeWidth={2} />
+                    </div>
+                    <span className="text-[15px] font-semibold text-dark">{vehicle.cases}</span>
+                  </div>
+                </div>
+
                 {/* Name */}
-                <h3 className="mt-4 text-[22px] font-montserrat font-bold text-slate-900 leading-tight">
+                <h3 className="mt-3 text-[22px] font-montserrat font-bold text-slate-900 leading-tight">
                   {vehicle.name.replace("\u00A0", " ")}
                 </h3>
 
-                {/* Specs */}
-                <div className="mt-3 flex items-center gap-8 text-slate-700">
-                  <div className="flex items-center gap-2">
-                    <Users className="w-5 h-5 text-slate-500" strokeWidth={1.75} />
-                    <span className="text-[15px] font-inter">
-                      {vehicle.passengers} passengers
-                    </span>
+                {/* Description */}
+                <p className="mt-3 text-sm text-gray-600 font-inter leading-relaxed">
+                  {vehicle.description}
+                </p>
+
+                {/* Specifications */}
+                <div className="mt-4 space-y-3 pt-4 border-t border-gray-100">
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-full bg-[#eaf7e8] p-2 flex items-center justify-center shrink-0">
+                      <Users className="h-4 w-4 text-[#487307]" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Capacity</p>
+                      <p className="text-sm font-semibold text-dark">{vehicle.guests}</p>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Luggage className="w-5 h-5 text-slate-500" strokeWidth={1.75} />
-                    <span className="text-[15px] font-inter">
-                      {vehicle.cases} cases
-                    </span>
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-full bg-[#eaf7e8] p-2 flex items-center justify-center shrink-0">
+                      <Luggage className="h-4 w-4 text-[#487307]" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Luggage</p>
+                      <p className="text-sm font-semibold text-dark">{vehicle.luggage}</p>
+                    </div>
                   </div>
                 </div>
 

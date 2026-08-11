@@ -14,7 +14,17 @@ export const HeroSection = () => {
   return (
     <>
       {/* ================= Banner ================= */}
-      <section className="relative w-full overflow-hidden bg-black">
+      <section className="relative w-full overflow-hidden bg-black max-sm:flex max-sm:min-h-[58vh] max-sm:items-center">
+        {/* Mobile only: full-bleed background photo behind the compact hero */}
+        <div className="absolute inset-0 sm:hidden">
+          <img
+            src="/home/s-class-2026-hero-right.png"
+            alt="Mercedes-Benz S-Class chauffeur car"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/85" />
+        </div>
+
         {/* Desktop: car visual anchored to the right */}
         <div className="pointer-events-none absolute inset-y-0 right-0 hidden lg:block w-[62%]">
           <img
@@ -28,7 +38,7 @@ export const HeroSection = () => {
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-10 pt-28 pb-14 lg:grid-cols-2 lg:gap-16 lg:pt-36 lg:pb-32 lg:min-h-[42rem]">
+          <div className="grid items-center gap-10 pt-28 pb-14 lg:grid-cols-2 lg:gap-16 lg:pt-36 lg:pb-32 lg:min-h-[42rem] max-sm:gap-5 max-sm:pt-20 max-sm:pb-4">
             {/* Text content */}
             <div className="flex w-full flex-col items-center space-y-7 text-center lg:items-start lg:text-left">
               <motion.div
@@ -62,7 +72,7 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="max-w-xl text-sm sm:text-base font-inter font-light leading-relaxed tracking-wide text-gray-300"
+                className="max-w-xl text-sm sm:text-base font-inter font-light leading-relaxed tracking-wide text-gray-300 max-sm:line-clamp-3"
               >
                 Quickoo delivers premium chauffeur-driven travel for
                 corporate clients, airport transfers and special occasions. Every
@@ -90,7 +100,7 @@ export const HeroSection = () => {
                   whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => navigate("/why-choose/luxury-fleet")}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/30 bg-transparent px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/60 sm:w-auto"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/30 bg-transparent px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/60 sm:w-auto max-sm:hidden"
                 >
                   Explore Fleet
                   <Sparkles className="h-5 w-5" />
@@ -103,7 +113,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.3 }}
-              className="relative w-full lg:hidden"
+              className="relative hidden w-full sm:block lg:hidden"
             >
               <img
                 src="/home/s-class-2026-hero-right.png"

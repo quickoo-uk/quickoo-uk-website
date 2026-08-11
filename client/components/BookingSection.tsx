@@ -6,7 +6,7 @@ export const BookingSection = () => {
   return (
     <section
       id="home-booking"
-      className="relative w-full scroll-mt-24 py-12 sm:py-20"
+      className="relative w-full scroll-mt-24 py-12 sm:py-20 max-sm:pt-0 max-sm:pb-10"
     >
       <div className="section-container relative">
         {/* Section heading */}
@@ -15,7 +15,7 @@ export const BookingSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12 space-y-4"
+          className="text-center mb-12 space-y-4 max-sm:hidden"
         >
           <SectionChip title="Instant Booking" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark">

@@ -218,7 +218,7 @@ const Hero = () => (
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/85 lg:bg-gradient-to-r lg:from-black/90 lg:via-black/70 lg:to-black/50" />
     </div>
 
-    <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.05fr_minmax(0,0.95fr)] lg:gap-12 lg:px-8 lg:py-20">
+    <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.05fr_minmax(0,0.95fr)] lg:gap-12 lg:px-8 lg:py-20 max-sm:gap-5 max-sm:py-8">
       {/* Copy */}
       <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.6 }}>
         <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#a3e635] backdrop-blur">
@@ -231,13 +231,13 @@ const Hero = () => (
           <span className="text-[#a3e635]">fixed, all-inclusive prices</span>
         </h1>
 
-        <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-200 sm:text-lg">
+        <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-200 sm:text-lg max-sm:line-clamp-2">
           Airport transfers, corporate travel and hourly chauffeur hire across London and the UK.
           Professional vetted chauffeurs, immaculate premium vehicles, and a price that never
           changes after you book.
         </p>
 
-        <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+        <ul className="mt-7 grid gap-3 sm:grid-cols-2 max-sm:hidden">
           {[
             "Free flight tracking & meet and greet",
             "60 minutes free airport waiting time",
@@ -251,7 +251,7 @@ const Hero = () => (
           ))}
         </ul>
 
-        <div className="mt-8 flex flex-wrap items-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center gap-3 max-sm:mt-5">
           <a
             href={`tel:${LANDING_PHONE}`}
             onClick={() => trackAdsEvent("lp_call_click", { placement: "hero" })}
@@ -283,7 +283,7 @@ const Hero = () => (
         className="w-full"
       >
         <div className="overflow-hidden rounded-2xl border border-white/15 bg-white p-4 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:p-6">
-          <div className="mb-4 text-center">
+          <div className="mb-4 text-center max-sm:hidden">
             <h2 className="font-montserrat text-xl font-bold text-[#0a1a02] sm:text-2xl">
               Get your instant price
             </h2>
