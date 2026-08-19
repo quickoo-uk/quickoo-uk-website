@@ -43,7 +43,7 @@ const SERVICES: Service[] = [
       "Audio Preference",
     ],
     accent: "from-sky-500/90 via-sky-400/80 to-sky-500/70",
-    image: "/home/Airport Transfers.png",
+    image: "/banner_images/image-6.png",
     premium: "Your schedule comes first: 1 hour complimentary wait time with advanced flight monitoring.",
   },
   {
