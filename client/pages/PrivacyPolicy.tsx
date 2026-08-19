@@ -16,7 +16,7 @@ const policySections = [
       "Data Controller: Quickoo PVT LTD",
       "Registered Office: 450 bath road, Longford, London,Heathrow, UB70EB",
       "Data Protection Officer: privacy@quickoo.co.uk",
-      "Phone: +44 20 3576 1617"
+      "Phone: +44 7787 368748"
     ]
   },
   {
@@ -272,7 +272,7 @@ const policySections = [
       "You can unsubscribe from marketing communications:",
       "• Click \"unsubscribe\" links in emails",
       "• Reply \"STOP\" to SMS messages",
-      "• Contact customer service at +44 20 3576 1617",
+      "• Contact customer service at +44 7787 368748",
       "• Email preferences@quickoo.co.uk",
       "• Update preferences in your online account"
     ]
@@ -333,7 +333,7 @@ const policySections = [
       "London, Heathrow, UB70EB",
       "",
       "Email: privacy@quickoo.co.uk",
-      "Phone: +44 20 3576 1617",
+      "Phone: +44 7787 368748",
       "Response Time: Within 1 month",
       "",
       "Customer Service: support@quickoo.co.uk",

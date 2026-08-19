@@ -1,6 +1,7 @@
 import { AboutSection } from "@/components/AboutSection";
 import { AppDownloadSection } from "@/components/AppDownloadSection";
 import { BookingSection } from "@/components/BookingSection";
+import { GetQuotesSection } from "@/components/GetQuotesSection";
 import { FleetPreviewSection } from "@/components/FleetPreviewSection";
 import { HeroSection } from "@/components/HeroSection";
 import { LuxuryExperienceSection } from "@/components/LuxuryExperienceSection";
@@ -23,6 +24,7 @@ export default function Index() {
       {/* <AnimatedInfinityAccent /> */}
 
       <FleetPreviewSection />
+      <GetQuotesSection />
       <WhyChooseSection />
 
       <ServicesOverviewSection />

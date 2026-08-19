@@ -634,7 +634,7 @@ export default function CarTypePage() {
             </div>
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
               {[
-                { label: "Concierge desk", value: "+44 20 3576 1617" },
+                { label: "Concierge desk", value: "+44 7787 368748" },
                 { label: "Response time", value: "Within 2 hours" },
                 { label: "Availability", value: "24/7 support" },
               ].map((item) => (

@@ -15,6 +15,7 @@ export type AdsEventName =
   | "lp_call_click"
   | "lp_whatsapp_click"
   | "lp_quote_start"
+  | "lp_get_quotes_shown"
   | "lp_booking_page_view";
 
 /** Fire a GA4/Ads event. Safe to call when no tag is installed. */

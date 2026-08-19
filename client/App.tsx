@@ -43,6 +43,7 @@ import { ensureAdminSession } from "@/lib/adminAuth";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import BookFleet from "./pages/BookFleet";
 import LogistifieBookNow from "./pages/LogistifieBookNow";
+import GetQuotes from "./pages/GetQuotes";
 import GoogleAdsLanding from "./pages/landing/GoogleAdsLanding";
 import GoogleAdsBooking from "./pages/landing/GoogleAdsBooking";
 
@@ -131,6 +132,14 @@ export default function App() {
               element={
                 <Layout>
                   <PricingPage />
+                </Layout>
+              }
+            />
+            <Route
+              path="/get-quotes"
+              element={
+                <Layout>
+                  <GetQuotes />
                 </Layout>
               }
             />

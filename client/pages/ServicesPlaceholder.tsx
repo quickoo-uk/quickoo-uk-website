@@ -856,7 +856,7 @@ export default function ServicesPlaceholder() {
                   item === "Instant WhatsApp concierge" ? (
                     <a
                       key={item}
-                      href="https://wa.me/442035761617"
+                      href="https://wa.me/447787368748"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="rounded-2xl border border-dark/10 bg-white/80 px-4 py-3 text-sm font-semibold text-dark hover:border-gold hover:text-gold transition-colors cursor-pointer text-center block"
@@ -881,7 +881,7 @@ export default function ServicesPlaceholder() {
                 Reserve now
               </button>
               <a
-                href="https://wa.me/442035761617"
+                href="https://wa.me/447787368748"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full border border-dark/20 px-8 py-4 text-lg font-semibold text-dark hover:border-gold hover:text-gold transition inline-flex items-center justify-center"
@@ -897,7 +897,7 @@ export default function ServicesPlaceholder() {
                 <MapPin className="text-gold" />
                 450 Bath Road, Longford, London Heathrow, UB70EB
               </p>
-              <p className="text-lg font-montserrat">+44 20 3576 1617</p>
+              <p className="text-lg font-montserrat">+44 7787 368748</p>
               <p className="text-slate-600 font-inter">Direct line to our 24/7 experience Concierge desk.</p>
             </div>
 

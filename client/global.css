@@ -513,3 +513,31 @@ h5.lf-text-\[--primary-color\] {
   box-shadow:
     0 12px 24px hsl(var(--accent) / 0.3);
 }
+
+.get-quotes-submit {
+  display: flex;
+  width: 100%;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  border: 0;
+  border-radius: 9999px;
+  background: #2a4204 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(42, 66, 4, 0.35);
+}
+
+.get-quotes-submit:hover:not(:disabled) {
+  background: #487307 !important;
+}
+
+.get-quotes-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

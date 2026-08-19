@@ -1,5 +1,6 @@
 import { Phone } from "lucide-react";
 import { Helmet } from "react-helmet";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { trackAdsEvent } from "@/lib/adsConversion";
 import { cn } from "@/lib/utils";
 
@@ -11,9 +12,9 @@ import { cn } from "@/lib/utils";
  * pages Google Ads requires. Distraction-free = better Quality Score.
  */
 
-export const LANDING_PHONE = "+442035761617";
-export const LANDING_PHONE_DISPLAY = "+44 20 3576 1617";
-export const LANDING_WHATSAPP = "442035761617";
+export const LANDING_PHONE = "+447787368748";
+export const LANDING_PHONE_DISPLAY = "+44 7787 368748";
+export const LANDING_WHATSAPP = "447787368748";
 export const MAIN_SITE_URL = "/";
 
 const LOGO = "/images/logo-2.png";
@@ -49,6 +50,11 @@ export const LandingShell = ({
       <main className="flex-grow pt-16 sm:pt-20">{children}</main>
 
       <LandingFooter />
+
+      <WhatsAppButton
+        className="bottom-[5.75rem] sm:bottom-6"
+        onClick={() => trackAdsEvent("lp_whatsapp_click", { placement: "float" })}
+      />
 
       {/* Mobile sticky conversion bar */}
       <div className="fixed bottom-0 left-0 right-0 z-50 flex items-stretch gap-2 border-t border-slate-200 bg-white/95 p-3 backdrop-blur-lg shadow-[0_-8px_30px_rgba(10,26,2,0.12)] sm:hidden">

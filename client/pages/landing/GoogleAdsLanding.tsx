@@ -25,6 +25,8 @@ import {
   LANDING_WHATSAPP,
   LandingShell,
 } from "@/components/landing/LandingShell";
+import { FleetVehicleGrid } from "@/components/FleetVehicleGrid";
+import { GetQuotesSection } from "@/components/GetQuotesSection";
 import { trackAdsEvent } from "@/lib/adsConversion";
 
 const fadeUp = {
@@ -65,33 +67,6 @@ const BENEFITS = [
     title: "Immaculate premium fleet",
     description:
       "Mercedes E-Class and S-Class, BMW 5 & 7 Series, Range Rover and V-Class — all kept in pristine, showroom condition.",
-  },
-];
-
-const FLEET = [
-  {
-    name: "Executive",
-    cars: "Mercedes E-Class · BMW 5 Series · Audi A6",
-    seats: "3 passengers · 2 large cases",
-    image: "/fleet/Mercedes-benz-e-class.jpg",
-  },
-  {
-    name: "Luxury / VIP",
-    cars: "Mercedes S-Class · BMW 7 Series · Audi A8 L",
-    seats: "3 passengers · 2 large cases",
-    image: "/fleet/Mercedes-benz-s-class.png",
-  },
-  {
-    name: "Premium SUV",
-    cars: "Range Rover Autobiography · Range Rover Sport",
-    seats: "4 passengers · 3 large cases",
-    image: "/fleet/Range Rover Autobiography  Vogue.png",
-  },
-  {
-    name: "Business Van",
-    cars: "Mercedes V-Class",
-    seats: "7 passengers · 7 large cases",
-    image: "/fleet/Mercedes-Benz V-Class.png",
   },
 ];
 
@@ -194,6 +169,10 @@ export default function GoogleAdsLanding() {
       <TrustBar />
       <Benefits />
       <Fleet />
+      <GetQuotesSection
+        variant="landing"
+        onPricesShown={() => trackAdsEvent("lp_get_quotes_shown", { placement: "get_quotes" })}
+      />
       <HowItWorks />
       <Services />
       <Airports />
@@ -380,39 +359,16 @@ const Fleet = () => (
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeading
         eyebrow="The fleet"
-        title="Choose the car that fits the journey"
-        subtitle="From executive saloons to seven-seat business vans — every vehicle is late-model, fully insured and professionally valeted."
+        title="Choose the Perfect Vehicle for Your Journey"
+        subtitle="From an executive saloon to a luxury minibus, every vehicle is prepared for punctuality, comfort, and discretion."
       />
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {FLEET.map((vehicle, i) => (
-          <motion.div
-            key={vehicle.name}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-            variants={fadeUp}
-            transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_4px_30px_rgba(10,26,2,0.06)] transition hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(10,26,2,0.12)]"
-          >
-            <div className="aspect-[4/3] w-full overflow-hidden bg-slate-100">
-              <img
-                src={vehicle.image}
-                alt={`${vehicle.name} chauffeur vehicle`}
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <div className="p-5">
-              <h3 className="font-montserrat text-lg font-bold text-[#0a1a02]">{vehicle.name}</h3>
-              <p className="mt-1.5 text-sm text-slate-600">{vehicle.cars}</p>
-              <p className="mt-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[#487307]">
-                <Luggage className="h-4 w-4" />
-                {vehicle.seats}
-              </p>
-            </div>
-          </motion.div>
-        ))}
+      <div className="mt-12">
+        <FleetVehicleGrid
+          bookHref="#quote"
+          bookLabel="Check prices for this vehicle"
+          onBookClick={() => trackAdsEvent("lp_quote_start", { placement: "fleet_modal" })}
+        />
       </div>
 
       <div className="mt-10 text-center">

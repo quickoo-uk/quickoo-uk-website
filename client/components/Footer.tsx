@@ -101,7 +101,7 @@ export const Footer = () => {
                   <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
                 </Link>
                 <a
-                  href="tel:+442035761617"
+                  href="tel:+447787368748"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-white transition hover:border-[#d4ff59] hover:text-[#d4ff59] whitespace-nowrap"
                 >
                   Call Concierge
@@ -195,8 +195,8 @@ export const Footer = () => {
               <ul className="mt-6 space-y-4 text-sm text-white/80">
                 <li className="flex items-center gap-3">
                   <Phone className="h-4 w-4 text-gold" />
-                  <a href="tel:+442035761617" className="transition hover:text-white">
-                    +44 20 3576 1617
+                  <a href="tel:+447787368748" className="transition hover:text-white">
+                    +44 7787 368748
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
