@@ -6,7 +6,7 @@ const FLEET_SERVICES = [
   {
     id: "corporate-travel",
     title: "Corporate Travel",
-    image: "/new_images/Corporate-Travel.png",
+    image: "/banner_images/image-4.png",
     description: (
       <>
         <p>
@@ -18,7 +18,7 @@ const FLEET_SERVICES = [
   {
     id: "event-chauffeur",
     title: "Event chauffeur Services",
-    image: "/new_images/Event-Chauffeur.png",
+    image: "/banner_images/image-3.png",
     description: (
       <>
         <p>

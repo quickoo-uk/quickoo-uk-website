@@ -164,8 +164,8 @@ export const WhyChooseSection = () => {
             <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#f3d6ff]/30 via-[#9fd4ff]/20 to-transparent blur-3xl" />
             <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_90px_rgba(15,23,42,0.15)] border border-white/60">
               <img
-                src="/home/why-quickoo-chauffeur-service.png"
-                alt="Chauffeur opening car door"
+                src="/banner_images/image-5.png"
+                alt="Luxury chauffeur cabin"
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
