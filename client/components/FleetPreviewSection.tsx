@@ -33,7 +33,7 @@ const FLEET_SERVICES = [
   {
     id: "private-chauffeur",
     title: "Private Chauffeur Service",
-    image: "/new_images/Private-Jet-Chauffeur.png",
+    image: "/banner_images/image-2.png",
     description: (
       <>
         <p>
