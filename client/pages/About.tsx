@@ -172,7 +172,7 @@ const contactHighlights = [
     label: "Flagship Lounge",
     value: "450 Bath Road, Longford, London Heathrow, UB7 0EB",
   },
-  { label: "Concierge", value: "+44 7787 368748" },
+  { label: "Concierge", value: "020 3576 1617" },
   { label: "Availability", value: "24/7 seamless support" },
 ];
 

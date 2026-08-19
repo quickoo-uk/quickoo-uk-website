@@ -897,7 +897,7 @@ export default function ServicesPlaceholder() {
                 <MapPin className="text-gold" />
                 450 Bath Road, Longford, London Heathrow, UB70EB
               </p>
-              <p className="text-lg font-montserrat">+44 7787 368748</p>
+              <p className="text-lg font-montserrat">020 3576 1617</p>
               <p className="text-slate-600 font-inter">Direct line to our 24/7 experience Concierge desk.</p>
             </div>
 

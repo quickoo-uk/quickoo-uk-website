@@ -248,7 +248,7 @@ export default function CityTourDetail() {
                         <div className="mt-8 p-8 rounded-[32px] border border-slate-100 bg-white shadow-sm flex items-center justify-between">
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest mb-1">Talk to Concierge</p>
-                                <p className="font-montserrat font-bold">+44 7787 368748</p>
+                                <p className="font-montserrat font-bold">020 3576 1617</p>
                             </div>
                             <a
                                 href="https://wa.me/447787368748"

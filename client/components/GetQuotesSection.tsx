@@ -1,7 +1,7 @@
-import { useLayoutEffect, useRef, useState, type FormEvent } from "react";
-import { Loader2, Luggage, MapPin, Users } from "lucide-react";
+import { useRef, useState, type FormEvent } from "react";
+import { Loader2, Luggage, Users } from "lucide-react";
+import PlaceSearchInput from "@/components/PlaceSearchInput";
 import { SectionChip } from "@/components/SectionChip";
-import { bindPlacesAutocomplete, ensureGoogleMapsPlacesLoaded } from "@/lib/googlePlacesAutocomplete";
 import { displayPriceBreakdownDescription } from "@/lib/priceBreakdownDisplay";
 import { fetchGetQuotes, type VehicleQuote } from "@/lib/quotesApi";
 import { cn } from "@/lib/utils";
@@ -32,56 +32,8 @@ export const GetQuotesSection = ({
   const [distanceMiles, setDistanceMiles] = useState<number | null>(null);
   const [quotes, setQuotes] = useState<VehicleQuote[] | null>(null);
 
-  const fromInputRef = useRef<HTMLInputElement>(null);
-  const toInputRef = useRef<HTMLInputElement>(null);
   const fromCoordsRef = useRef<PlaceCoords | null>(null);
   const toCoordsRef = useRef<PlaceCoords | null>(null);
-
-  useLayoutEffect(() => {
-    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
-    if (!apiKey?.trim()) return;
-
-    let cancelled = false;
-    const cleanups: Array<() => void> = [];
-
-    ensureGoogleMapsPlacesLoaded(apiKey)
-      .then(() => {
-        if (cancelled) return;
-        const fromEl = fromInputRef.current;
-        const toEl = toInputRef.current;
-        if (fromEl) {
-          cleanups.push(
-            bindPlacesAutocomplete(fromEl, (place) => {
-              fromCoordsRef.current = {
-                latitude: place.latitude,
-                longitude: place.longitude,
-              };
-              setFromAddress(place.formattedAddress);
-              if (place.isAirport) setPickupType("airport");
-            }),
-          );
-        }
-        if (toEl) {
-          cleanups.push(
-            bindPlacesAutocomplete(toEl, (place) => {
-              toCoordsRef.current = {
-                latitude: place.latitude,
-                longitude: place.longitude,
-              };
-              setToAddress(place.formattedAddress);
-            }),
-          );
-        }
-      })
-      .catch(() => {
-        /* invalid key or network */
-      });
-
-    return () => {
-      cancelled = true;
-      cleanups.forEach((fn) => fn());
-    };
-  }, []);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -142,47 +94,50 @@ export const GetQuotesSection = ({
 
         <form
           onSubmit={handleSubmit}
-          className="mx-auto max-w-3xl rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_10px_36px_rgba(15,23,42,0.06)] sm:p-7"
+          className="mx-auto max-w-3xl overflow-visible rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_10px_36px_rgba(15,23,42,0.06)] sm:p-7"
         >
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className="block text-left">
+          <div className="grid gap-4 overflow-visible sm:grid-cols-2">
+            <label className="relative z-10 block text-left">
               <span className="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">
                 Pickup
               </span>
-              <span className="relative block">
-                <MapPin className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#487307]" />
-                <input
-                  ref={fromInputRef}
-                  value={fromAddress}
-                  onChange={(event) => {
-                    fromCoordsRef.current = null;
-                    setFromAddress(event.target.value);
-                  }}
-                  placeholder="Enter pickup location"
-                  autoComplete="off"
-                  className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50/70 pl-10 pr-3 text-sm text-dark outline-none ring-[#487307] placeholder:text-slate-400 focus:border-[#487307] focus:ring-2"
-                />
-              </span>
+              <PlaceSearchInput
+                value={fromAddress}
+                placeholder="Enter pickup location"
+                onValueChange={(next) => {
+                  fromCoordsRef.current = null;
+                  setFromAddress(next);
+                }}
+                onPlaceSelected={(place) => {
+                  fromCoordsRef.current = {
+                    latitude: place.latitude,
+                    longitude: place.longitude,
+                  };
+                  setFromAddress(place.formattedAddress);
+                  if (place.isAirport) setPickupType("airport");
+                }}
+              />
             </label>
 
-            <label className="block text-left">
+            <label className="relative z-10 block text-left">
               <span className="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">
                 Drop-off
               </span>
-              <span className="relative block">
-                <MapPin className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#487307]" />
-                <input
-                  ref={toInputRef}
-                  value={toAddress}
-                  onChange={(event) => {
-                    toCoordsRef.current = null;
-                    setToAddress(event.target.value);
-                  }}
-                  placeholder="Enter drop-off location"
-                  autoComplete="off"
-                  className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50/70 pl-10 pr-3 text-sm text-dark outline-none ring-[#487307] placeholder:text-slate-400 focus:border-[#487307] focus:ring-2"
-                />
-              </span>
+              <PlaceSearchInput
+                value={toAddress}
+                placeholder="Enter drop-off location"
+                onValueChange={(next) => {
+                  toCoordsRef.current = null;
+                  setToAddress(next);
+                }}
+                onPlaceSelected={(place) => {
+                  toCoordsRef.current = {
+                    latitude: place.latitude,
+                    longitude: place.longitude,
+                  };
+                  setToAddress(place.formattedAddress);
+                }}
+              />
             </label>
           </div>
 
@@ -256,7 +211,7 @@ export const GetQuotesSection = ({
                 No prices are available for this route yet. Try a different pickup type or location.
               </p>
             ) : (
-              <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 {quotes.map((quote) => (
                   <li
                     key={quote.vehicle_class_id}

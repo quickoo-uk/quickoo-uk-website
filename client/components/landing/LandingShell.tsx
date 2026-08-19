@@ -12,8 +12,8 @@ import { cn } from "@/lib/utils";
  * pages Google Ads requires. Distraction-free = better Quality Score.
  */
 
-export const LANDING_PHONE = "+447787368748";
-export const LANDING_PHONE_DISPLAY = "+44 7787 368748";
+export const LANDING_PHONE = "+442035761617";
+export const LANDING_PHONE_DISPLAY = "020 3576 1617";
 export const LANDING_WHATSAPP = "447787368748";
 export const MAIN_SITE_URL = "/";
 

@@ -1,4 +1,11 @@
-import { backendApiUrl } from "@/lib/backendApiUrl";
+const DEFAULT_PUBLIC_QUOTES_API_BASE_URL = "https://backend.quickoo.co.uk";
+
+function publicQuotesApiUrl(path: string): string {
+  const configuredBase = (import.meta.env.VITE_ADMIN_API_BASE_URL as string | undefined)?.trim();
+  const base = (configuredBase || DEFAULT_PUBLIC_QUOTES_API_BASE_URL).replace(/\/+$/, "");
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${base}${normalizedPath}`;
+}
 
 export type VehicleQuote = {
   vehicle_class_id: string;
@@ -51,7 +58,7 @@ function normalizeVehicleQuote(raw: Record<string, unknown>): VehicleQuote {
 }
 
 export async function fetchGetQuotes(body: GetQuotesRequestBody): Promise<GetQuotesResponse> {
-  const response = await fetch(backendApiUrl("/api/v1/quotes/get-quotes"), {
+  const response = await fetch(publicQuotesApiUrl("/api/v1/quotes/get-quotes"), {
     method: "POST",
     headers: {
       accept: "application/json",
