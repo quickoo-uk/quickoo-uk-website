@@ -4,7 +4,6 @@ import { BookingSection } from "@/components/BookingSection";
 import { FleetPreviewSection } from "@/components/FleetPreviewSection";
 import { HeroSection } from "@/components/HeroSection";
 import { LuxuryExperienceSection } from "@/components/LuxuryExperienceSection";
-import { PersonalizationSection } from "@/components/PersonalizationSection";
 import { ProfessionalismSection } from "@/components/ProfessionalismSection";
 import { ServicesOverviewSection } from "@/components/ServicesOverviewSection";
 import { SignaturePromiseSection } from "@/components/SignaturePromiseSection";
@@ -27,7 +26,6 @@ export default function Index() {
 
       <ServicesOverviewSection />
       <ProfessionalismSection />
-      <PersonalizationSection />
       <SignaturePromiseSection />
       <LuxuryExperienceSection />
       <WhyQuickoSection />
