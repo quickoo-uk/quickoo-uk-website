@@ -1,13 +1,13 @@
 import { AboutSection } from "@/components/AboutSection";
 import { AppDownloadSection } from "@/components/AppDownloadSection";
 import { BookingSection } from "@/components/BookingSection";
+import { ContactMessageSection } from "@/components/ContactMessageSection";
 import { FleetPreviewSection } from "@/components/FleetPreviewSection";
 import { HeroSection } from "@/components/HeroSection";
 import { LuxuryExperienceSection } from "@/components/LuxuryExperienceSection";
+import { PrivateJetChauffeurSection } from "@/components/PrivateJetChauffeurSection";
 import { ProfessionalismSection } from "@/components/ProfessionalismSection";
 import { ServicesOverviewSection } from "@/components/ServicesOverviewSection";
-import { SignaturePromiseSection } from "@/components/SignaturePromiseSection";
-import { TravelByStyleBanner } from "@/components/TravelByStyleBanner";
 import { WhyChooseSection } from "@/components/WhyChooseSection";
 import { WhyQuickoSection } from "@/components/WhyQuickoSection";
 
@@ -26,13 +26,17 @@ export default function Index() {
 
       <ServicesOverviewSection />
       <ProfessionalismSection />
-      <SignaturePromiseSection />
+      <PrivateJetChauffeurSection />
       <LuxuryExperienceSection />
       <WhyQuickoSection />
       <AboutSection />
       {/* <TestimonialsSection /> */}
       <AppDownloadSection />
-      <TravelByStyleBanner />
+      <section className="bg-gradient-to-b from-white via-[#f8fbff] to-[#fff8f0] py-12 sm:py-20">
+        <div className="section-container">
+          <ContactMessageSection />
+        </div>
+      </section>
     </div>
   );
 }

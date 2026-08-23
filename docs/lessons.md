@@ -21,3 +21,27 @@
 **Consulted sources:** The browser error, `backendApiUrl.ts`, `quotesApi.ts`, and a successful quote request to the production backend with localhost CORS.
 
 **Prevention guidance:** Public unauthenticated clients may use an explicit production service default when it is part of the product contract. Keep admin and state-changing clients fail-closed unless their target environment is configured.
+
+## 2026-08-22: Audi fleet card omitted its booking action
+
+**Root cause:** The shared vehicle-card template contained a name-based condition that excluded every vehicle whose name included `Audi ` from rendering the Book Now link.
+
+**Failure symptoms:** The Audi A6 card on the executive cars page showed the same vehicle details as adjacent cards but had no booking button.
+
+**Fix details:** The Audi-specific condition was removed. Every vehicle rendered by the available fleet now receives the same booking link.
+
+**Consulted sources:** The reported executive cars screenshot and the vehicle-card rendering logic in `client/pages/CarTypePage.tsx`.
+
+**Prevention guidance:** Shared collection cards should expose consistent primary actions unless the underlying item data explicitly declares a different capability.
+
+## 2026-08-23: Homepage contact button lost its background
+
+**Root cause:** The new homepage contact form relied on the shared `luxury-button-gold` class for both its white text and gradient background. In the homepage composition, the background style did not render while the white text remained, making the submit action appear as an empty white button.
+
+**Failure symptoms:** The Send Message control occupied the correct space and retained its shadow, but its label and button surface were not visible.
+
+**Fix details:** The form CTA now uses a dedicated `contact-message-submit` class with explicit `!important` background and text rules, including WebKit text fill, so page-level styles cannot leave white text on a white surface.
+
+**Consulted sources:** The reported homepage screenshot, `ContactMessageSection.tsx`, and the `luxury-button-gold` definition in `client/global.css`.
+
+**Prevention guidance:** A primary action should declare its essential visible states together when it is introduced inside a new page composition.

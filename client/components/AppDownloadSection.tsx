@@ -12,7 +12,7 @@ const FEATURES = [
 
 export const AppDownloadSection = () => {
   return (
-    <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#f1f5ff]">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#f1f5ff] pb-12 pt-8 sm:pb-32 sm:pt-10">
       {/* Background gradients */}
       <div className="absolute -right-20 top-20 h-72 w-72 rounded-full bg-[#487307]/5 blur-[100px]" />
       <div className="absolute -left-20 bottom-20 h-80 w-80 rounded-full bg-[#6aa80b]/10 blur-[120px]" />

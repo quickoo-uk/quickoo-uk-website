@@ -43,7 +43,7 @@ const SERVICES: Service[] = [
       "Audio Preference",
     ],
     accent: "from-sky-500/90 via-sky-400/80 to-sky-500/70",
-    image: "/banner_images/image-6.png",
+    image: "/banner_images/image-7.png",
     premium: "Your schedule comes first: 1 hour complimentary wait time with advanced flight monitoring.",
   },
   {
@@ -109,7 +109,7 @@ const item = {
 
 export const ServicesOverviewSection = () => {
   return (
-    <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#f1f5ff] to-white">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#f1f5ff] to-white pb-12 pt-8 sm:pb-32 sm:pt-12">
       {/* Background gradients */}
       <div className="absolute -right-16 -top-10 h-56 w-56 rounded-full bg-gold/15 blur-[120px]" />
       <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
@@ -270,8 +270,8 @@ export const ServicesOverviewSection = () => {
                   className="flex flex-col h-full overflow-hidden rounded-2xl cursor-default"
                 >
                   {/* Image Section */}
-                  <div className="relative overflow-hidden p-4 pb-0">
-                    <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-500">
+                  <div className="relative overflow-hidden p-3 pb-0">
+                    <div className="relative w-full aspect-[2/1] rounded-xl overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-500">
                       <motion.img
                         src={service.image}
                         alt={service.name}
@@ -279,39 +279,39 @@ export const ServicesOverviewSection = () => {
                         className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
                       />
                       {/* Subtle bottom gradient only to ensure the icon is visible, leaving the rest of the image HD and bright */}
-                      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/60 to-transparent" />
 
                       {/* Icon Overlay */}
-                      <div className="absolute bottom-4 left-4">
+                      <div className="absolute bottom-3 left-3">
                         <div
-                          className={`rounded-2xl bg-gradient-to-r ${service.accent} p-3 text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}
+                          className={`rounded-xl bg-gradient-to-r ${service.accent} p-2.5 text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}
                         >
-                          <Icon className="h-6 w-6" />
+                          <Icon className="h-5 w-5" />
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Content Section */}
-                  <div className="flex flex-1 flex-col p-6">
+                  <div className="flex flex-1 flex-col p-5">
                     {/* Title */}
-                    <div className="pb-3 border-b border-gray-100 mb-4">
-                      <h3 className="text-2xl font-montserrat font-bold text-dark leading-tight">
+                    <div className="mb-3 border-b border-gray-100 pb-2">
+                      <h3 className="font-montserrat text-xl font-bold leading-tight text-dark">
                         {service.name}
                       </h3>
                     </div>
 
                     {/* Description */}
-                    <p className="text-sm text-gray-600 font-inter leading-relaxed mb-4">
+                    <p className="mb-3 font-inter text-sm leading-relaxed text-gray-600">
                       {service.description}
                     </p>
 
                     {/* Features Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="mb-3 flex flex-wrap gap-1.5">
                       {service.features.map((feature) => (
                         <span
                           key={feature}
-                          className="inline-flex items-center rounded-full border border-gray-200/80 bg-white px-3 py-1.5 text-xs font-semibold text-gray-600 transition-colors group-hover:border-[#487307]/30 group-hover:bg-[#eaf7e8]/50"
+                          className="inline-flex items-center rounded-full border border-gray-200/80 bg-white px-2.5 py-1 text-xs font-semibold text-gray-600 transition-colors group-hover:border-[#487307]/30 group-hover:bg-[#eaf7e8]/50"
                         >
                           {feature}
                         </span>
@@ -319,17 +319,17 @@ export const ServicesOverviewSection = () => {
                     </div>
 
                     {/* CTA Section */}
-                    <div className="mt-auto pt-4 border-t border-gray-100">
+                    <div className="mt-auto border-t border-gray-100 pt-3">
                       <div className="flex items-center justify-between gap-4">
                         <div className="flex-1">
-                          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400 mb-1">
+                          <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-gray-400">
                             Learn More
                           </p>
                           <p className="text-sm font-montserrat font-semibold text-dark">
                             Luxury Travel, Perfectly Managed.
                           </p>
                         </div>
-                        <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg hover:scale-105 cursor-pointer">
+                        <div className="flex cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] px-4 py-2 text-sm font-semibold text-white shadow-md transition-all hover:scale-105 hover:shadow-lg">
                           Reserve
                           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </div>

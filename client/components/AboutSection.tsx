@@ -30,7 +30,7 @@ const TIMELINE = [
 
 export const AboutSection = () => {
   return (
-    <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#fff5ec]">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#fff5ec] pb-8 pt-8 sm:pb-10 sm:pt-10">
       {/* Background gradients */}
       <div className="absolute -right-16 -top-10 h-56 w-56 rounded-full bg-gold/15 blur-[120px]" />
       <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
@@ -130,7 +130,7 @@ export const AboutSection = () => {
               <img
                 src="/home/about-quickoo-chauffeur-service.jpeg"
                 alt="Chauffeur welcoming guests"
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                className="aspect-[3/2] w-full object-cover object-center transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
 

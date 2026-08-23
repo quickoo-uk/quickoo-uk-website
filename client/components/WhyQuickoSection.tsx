@@ -52,63 +52,11 @@ const item = {
 
 export const WhyQuickoSection = () => {
     return (
-        <section className="section-spacing relative overflow-hidden bg-white">
+        <section className="relative overflow-hidden bg-white pb-8 pt-6 sm:pb-10 sm:pt-8">
             {/* Minimal Background */}
             <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30" />
 
             <div className="section-container relative">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mb-16 space-y-4"
-                >
-                    <SectionChip title="What Sets Us Apart?" />
-
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-montserrat font-semibold text-dark max-w-4xl mx-auto leading-tight">
-                        More than Just Transportation—
-                        <span className="text-[#487307]"> Experience Your Travel in Style</span>
-                    </h2>
-
-                    <p className="text-base sm:text-lg font-inter text-gray-600 max-w-3xl mx-auto">
-                        We provide a seamless luxury chauffeur service perfect for your travel needs for airport transfers to any of your special events.
-                    </p>
-                </motion.div>
-
-                {/* Features Grid */}
-                <motion.div
-                    variants={container}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
-                >
-                    {WHY_QUICKO_FEATURES.map((feature, idx) => {
-                        const Icon = feature.icon;
-                        return (
-                            <motion.div
-                                key={idx}
-                                variants={item}
-                                className="group relative bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300"
-                            >
-                                <div className="mb-6 inline-flex items-center justify-center h-14 w-14 rounded-xl bg-slate-50 text-[#487307] group-hover:bg-[#487307] group-hover:text-white transition-colors duration-300">
-                                    <Icon className="h-7 w-7" />
-                                </div>
-
-                                <h3 className="text-xl font-montserrat font-bold text-dark mb-3">
-                                    {feature.title}
-                                </h3>
-
-                                <p className="text-sm font-inter text-gray-600 leading-relaxed">
-                                    {feature.description}
-                                </p>
-                            </motion.div>
-                        );
-                    })}
-                </motion.div>
-
                 {/* Bottom CTA Card */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

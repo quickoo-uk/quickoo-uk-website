@@ -29,13 +29,6 @@ import { cn } from "@/lib/utils";
 const inputBase =
   "w-full px-4 py-3 border border-slate-200 rounded-2xl bg-white focus:outline-none focus:ring-2 focus:ring-gold/40";
 
-const heroStats = [
-  { label: "Response Time", value: "< 2 hrs" },
-  { label: "Support Availability", value: "24 / 7" },
-  { label: "Average Rating", value: "4.9 / 5" },
-  { label: "Locations Covered", value: "25+ UK Cities" },
-];
-
 const contactChannels = [
   {
     icon: Phone,
@@ -290,13 +283,25 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-6 pt-4">
-                {heroStats.map((stat, i) => (
-                  <div key={i} className="flex flex-col">
-                    <span className="text-3xl font-montserrat font-bold text-slate-900">{stat.value}</span>
-                    <span className="text-xs uppercase tracking-widest text-slate-500 font-bold mt-1">{stat.label}</span>
-                  </div>
-                ))}
+              <div className="max-w-2xl rounded-[28px] border border-white/70 bg-white/80 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.07)] backdrop-blur">
+                <h2 className="font-montserrat text-xl font-semibold text-slate-900">
+                  Concierge support for every journey
+                </h2>
+                <p className="mt-3 font-inter leading-relaxed text-slate-600">
+                  Our Luxury Chauffeur Service team plans each detail around your schedule, preferences and destination with professionalism and discretion.
+                </p>
+                <ul className="mt-5 grid gap-3 font-inter text-sm text-slate-700">
+                  {[
+                    "Airport and private aviation coordination",
+                    "Corporate and multi-city itinerary planning",
+                    "Discreet amendments and special requests",
+                  ].map((service) => (
+                    <li key={service} className="flex items-center gap-3">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-[#487307]" />
+                      {service}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </motion.div>
 

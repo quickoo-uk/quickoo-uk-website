@@ -46,7 +46,7 @@ const FLEET_SERVICES = [
 
 export const FleetPreviewSection = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#fff5ec] pb-6 pt-10 sm:pb-32 sm:pt-16">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#fdfaff] to-[#fff5ec] pb-8 pt-10 sm:pb-12 sm:pt-16">
       <div className="absolute -right-16 -top-10 h-56 w-56 rounded-full bg-gold/15 blur-[120px]" />
       <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
 
@@ -93,7 +93,7 @@ export const FleetPreviewSection = () => {
           </p>
         </motion.div>
 
-        <div className="mx-auto mb-20 grid max-w-7xl grid-cols-1 gap-6 px-4 sm:mb-24 sm:grid-cols-2 sm:gap-8 sm:px-6 lg:grid-cols-3 lg:px-8">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 sm:gap-8 sm:px-6 lg:grid-cols-3 lg:px-8">
           {FLEET_SERVICES.map((service, index) => (
             <motion.article
               key={service.id}

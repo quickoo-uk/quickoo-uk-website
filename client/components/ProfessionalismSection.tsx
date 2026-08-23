@@ -47,7 +47,7 @@ const item = {
 
 export const ProfessionalismSection = () => {
     return (
-        <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#fff6ed] to-white">
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#fff6ed] to-white pb-12 pt-16 sm:pb-20 sm:pt-10">
             {/* Background gradients */}
             <div className="absolute -right-20 top-20 h-72 w-72 rounded-full bg-[#487307]/10 blur-[140px]" />
             <div className="absolute -left-16 bottom-10 h-64 w-64 rounded-full bg-gold/15 blur-[120px]" />
@@ -105,7 +105,7 @@ export const ProfessionalismSection = () => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5 lg:gap-4"
                 >
                     {PROFESSIONAL_FEATURES.map((feature, idx) => {
                         const Icon = feature.icon;
@@ -115,20 +115,20 @@ export const ProfessionalismSection = () => {
                                 variants={item}
                                 whileHover={{ y: -8, scale: 1.02 }}
                                 transition={{ duration: 0.3 }}
-                                className="group relative flex flex-col overflow-hidden rounded-3xl bg-white/90 border border-white/60 p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] hover:shadow-[0_30px_90px_rgba(72,115,7,0.15)] transition-all duration-500"
+                                className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] transition-all duration-500 hover:shadow-[0_30px_90px_rgba(72,115,7,0.15)] lg:p-5 xl:p-6"
                             >
                                 {/* Gradient accent on hover */}
                                 <div className="absolute inset-x-0 -top-20 h-40 rounded-full bg-gradient-to-b from-[#487307]/20 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                                 {/* Icon */}
                                 <div className="relative mb-6">
-                                    <div className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] p-4 text-white shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                                        <Icon className="h-7 w-7" />
+                                    <div className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307] p-3 text-white shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                                        <Icon className="h-6 w-6" />
                                     </div>
                                 </div>
 
                                 {/* Content */}
-                                <h3 className="text-xl font-montserrat font-bold text-dark mb-3 leading-tight">
+                                <h3 className="mb-3 font-montserrat text-lg font-bold leading-tight text-dark">
                                     {feature.title}
                                 </h3>
                                 <p className="text-sm font-inter leading-relaxed text-gray-600">

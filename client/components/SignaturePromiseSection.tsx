@@ -42,7 +42,7 @@ const item = {
 
 export const SignaturePromiseSection = () => {
     return (
-        <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#f1f5ff] to-white">
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#f1f5ff] to-white pb-12 pt-8 sm:pb-20 sm:pt-10">
             {/* Background gradients */}
             <div className="absolute -right-16 top-10 h-64 w-64 rounded-full bg-[#487307]/10 blur-[140px]" />
             <div className="absolute -left-20 bottom-20 h-72 w-72 rounded-full bg-gold/15 blur-[120px]" />

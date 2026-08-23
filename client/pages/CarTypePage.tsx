@@ -471,15 +471,13 @@ export default function CarTypePage() {
                         </li>
                       ))}
                     </ul>
-                    {
-                      !car.name?.includes('Audi ') && <Link
-                        to="/#home-booking"
-                        className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#0a1a02] via-[#2a4204] to-[#487307] text-white font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-[#2a4204]/30"
-                      >
-                        Book Now
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    }
+                    <Link
+                      to="/#home-booking"
+                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#0a1a02] via-[#2a4204] to-[#487307] text-white font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-[#2a4204]/30"
+                    >
+                      Book Now
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
 
                   </div>
                 </div>

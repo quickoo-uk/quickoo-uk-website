@@ -1,35 +1,8 @@
-import { Shield, DollarSign, Crown, Users, Award, Clock, Sparkles, PoundSterlingIcon, Map, Settings, Briefcase, Calendar, Monitor } from "lucide-react";
+import { Crown, Users, Award, Clock, PoundSterlingIcon, Map } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { CITY_ATTRACTIONS } from "@/lib/constants";
 import { SectionChip } from "./SectionChip";
-
-const EXECUTIVE_FEATURES = [
-  {
-    icon: Briefcase,
-    title: "Dedicated Executive Travel",
-    description: "We are dedicated to providing executive transportation which is made specifically for formal business meetings, conferences, corporate appointments, etc."
-  },
-  {
-    icon: Calendar,
-    title: "Flexible Scheduling",
-    description: "We can quickly make changes to your scheduled travel so that your chauffeur service can still meet your changing business needs."
-  },
-  {
-    icon: Shield,
-    title: "Respectful of Your Privacy",
-    description: "Our chauffeurs respect your privacy and will provide complete discretion on all of your travels."
-  },
-  {
-    icon: Monitor,
-    title: "The Perfect Office On The Road",
-    description: "The executive interiors of our vehicles were designed as the perfect mobile office, where our executive travellers can make phone calls, answer emails, or prepare for meetings while travelling to and from their destination."
-  },
-  {
-    icon: Award,
-    title: "Delivering The Professional Experience",
-    description: "The professionalism of our drivers is expected by corporate clients and business professionals on every trip they take."
-  }
-];
 
 const FEATURES = [
   {
@@ -76,21 +49,6 @@ const FEATURES = [
   }
 ];
 
-const METRICS = [
-  { label: "Avg. response", value: "42 sec", icon: Clock },
-  { label: "Customer NPS", value: "92", icon: Award },
-];
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
 const item = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 },
@@ -98,7 +56,7 @@ const item = {
 
 export const WhyChooseSection = () => {
   return (
-    <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#f1f5ff] to-white">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#f1f5ff] to-white pb-8 pt-10 sm:pb-12 sm:pt-12">
       {/* Background gradients */}
       <div className="absolute -right-16 -top-10 h-56 w-56 rounded-full bg-gold/15 blur-[120px]" />
       <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#a5c9ff]/20 blur-[140px]" />
@@ -174,96 +132,91 @@ export const WhyChooseSection = () => {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6 lg:gap-4">
           {FEATURES.map((feature) => {
             const Icon = feature.icon;
             return (
-              <div key={feature.title} className="flex">
-                <motion.div
+              <div key={feature.title} className="min-w-0 [perspective:1000px]">
+                <motion.button
+                  type="button"
+                  aria-label={`Show details for ${feature.title}`}
                   variants={item}
-                  whileHover={{
-                    y: -10,
-                    boxShadow: `0 30px 90px ${feature.shadowColor}`
-                  }}
+                  whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
-                  className="group relative flex flex-col overflow-hidden rounded-[28px] bg-white/90 border border-white/60 p-6 md:p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] w-full h-full"
+                  className="group relative h-56 w-full rounded-2xl text-left outline-none focus-visible:ring-2 focus-visible:ring-[#487307] focus-visible:ring-offset-2 sm:h-60"
                 >
-                  {/* Glow Effect */}
-                  <div
-                    className={`absolute inset-x-10 -top-16 h-32 rounded-full blur-3xl bg-gradient-to-r ${feature.accent} opacity-70`}
-                  />
+                  <span className="relative block h-full w-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus:[transform:rotateY(180deg)]">
+                    <span className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/70 bg-white/90 p-4 text-center shadow-[0_14px_45px_rgba(15,23,42,0.08)] [backface-visibility:hidden]">
+                      <span
+                        className={`absolute inset-x-5 -top-14 h-28 rounded-full bg-gradient-to-r ${feature.accent} opacity-65 blur-3xl`}
+                      />
+                      <span
+                        className={`relative mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r ${feature.accent} text-white shadow-lg`}
+                      >
+                        <Icon className="h-5 w-5" aria-hidden />
+                      </span>
+                      <span className="relative font-montserrat text-base font-bold leading-snug text-dark">
+                        {feature.title}
+                      </span>
+                    </span>
 
-                  {/* Icon Section */}
-                  <div className="relative flex items-center justify-center mb-6">
-                    <div
-                      className={`rounded-2xl bg-gradient-to-r ${feature.accent} p-4 text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}
+                    <span
+                      className={`absolute inset-0 flex flex-col items-center justify-center rounded-2xl bg-gradient-to-br ${feature.accent} p-4 text-center text-white [backface-visibility:hidden] [transform:rotateY(180deg)]`}
+                      style={{ boxShadow: `0 18px 55px ${feature.shadowColor}` }}
                     >
-                      <Icon className="h-6 w-6" />
-                    </div>
-                  </div>
-
-                  {/* Title - Fixed height */}
-                  <h3 className="text-2xl font-montserrat font-bold text-dark mb-4 text-center min-h-[64px] flex items-center justify-center">
-                    {feature.title}
-                  </h3>
-
-                  {/* Description - Fixed min-height for alignment */}
-                  <div className="min-h-[96px] flex items-start justify-center">
-                    <p className="text-sm font-inter leading-relaxed text-gray-600 text-center">
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.div>
+                      <span className="font-montserrat text-sm font-bold leading-snug">
+                        {feature.title}
+                      </span>
+                      <span className="mt-3 font-inter text-xs leading-relaxed text-white/95">
+                        {feature.description}
+                      </span>
+                    </span>
+                  </span>
+                </motion.button>
               </div>
             );
           })}
         </div>
 
-        {/* Executive Chauffeur Service Section */}
-        <div className="mt-32 rounded-[40px] bg-gradient-to-b from-[#f8fcf3] to-white relative overflow-hidden p-8 sm:p-12 lg:p-20 shadow-[0_20px_80px_rgba(72,115,7,0.08)] border border-[#487307]/10">
-          {/* Subtle Background Gradients */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#487307]/5 blur-[150px] rounded-full pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/10 blur-[150px] rounded-full pointer-events-none" />
-          
-          <div className="relative z-10 max-w-4xl mx-auto text-center mb-20 space-y-6">
-            <div className="inline-flex items-center justify-center rounded-full bg-[#487307]/10 px-4 py-1.5 border border-[#487307]/20 mb-2">
-              <span className="text-sm font-semibold tracking-wider text-[#487307] uppercase">
-                Corporate Standard
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-bold text-slate-900 leading-tight">
-              Executive Chauffeur Service for <br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0f1801] via-[#2a4204] to-[#487307]">Business Professionals</span>
+        <div className="relative mt-20 overflow-hidden rounded-[40px] border border-[#487307]/10 bg-gradient-to-b from-[#f8fcf3] to-white p-6 shadow-[0_20px_80px_rgba(72,115,7,0.08)] sm:mt-24 sm:p-10 lg:p-12">
+          <div className="pointer-events-none absolute -right-20 top-0 h-80 w-80 rounded-full bg-[#487307]/5 blur-[120px]" />
+
+          <div className="relative z-10 mx-auto mb-10 max-w-3xl space-y-4 text-center sm:mb-12">
+            <SectionChip title="Exclusive City Tours" />
+            <h2 className="font-montserrat text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
+              Discover London in Chauffeured Comfort
             </h2>
-            <p className="text-base sm:text-lg font-inter text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              The professionals of today have less time in which to conduct business than ever before. Our Executive Chauffeur Service offers total luxury while still being extremely efficient, so you will be able to continue to work as you travel. Each trip will be a professionally managed experience, no matter where you are going.
+            <p className="mx-auto max-w-2xl font-inter text-base leading-relaxed text-gray-600">
+              Explore iconic London landmarks with a professional chauffeur and a route arranged around your interests.
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 relative z-10">
-            {EXECUTIVE_FEATURES.map((feature, idx) => {
-              const Icon = feature.icon;
-              return (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] p-8 rounded-3xl bg-white border border-[#487307]/10 hover:border-[#487307]/30 hover:-translate-y-1 transition-all duration-300 group shadow-[0_10px_40px_rgba(72,115,7,0.04)] hover:shadow-[0_20px_50px_rgba(72,115,7,0.1)]"
+          <div className="relative z-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6 lg:gap-4">
+            {CITY_ATTRACTIONS.slice(0, 6).map((attraction, index) => (
+              <motion.div
+                key={attraction.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+              >
+                <Link
+                  to={`/services/city-tours/${attraction.id}`}
+                  className="group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-slate-900 shadow-[0_14px_40px_rgba(15,23,42,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#487307] focus-visible:ring-offset-2"
                 >
-                  <div className="bg-[#487307]/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#487307]/20 transition-all duration-300">
-                    <Icon className="text-[#487307] h-7 w-7" />
-                  </div>
-                  <h3 className="text-xl font-montserrat font-bold text-slate-900 mb-4 leading-snug group-hover:text-[#487307] transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 font-inter leading-relaxed text-sm">
-                    {feature.description}
-                  </p>
-                </motion.div>
-              );
-            })}
+                  <img
+                    src={attraction.image}
+                    alt={attraction.name}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <span className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                  <span className="absolute inset-x-3 bottom-3 text-center font-montserrat text-sm font-bold leading-snug text-white">
+                    {attraction.name}
+                  </span>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

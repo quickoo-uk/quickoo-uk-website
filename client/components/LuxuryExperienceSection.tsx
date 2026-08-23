@@ -19,7 +19,7 @@ const item = {
 
 export const LuxuryExperienceSection = () => {
     return (
-        <section className="section-spacing relative overflow-hidden bg-gradient-to-b from-white via-[#fcfefb] to-white">
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#fcfefb] to-white pb-8 pt-12 sm:pb-10 sm:pt-32">
             {/* Subtle Background Elements */}
             <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-[#487307]/5 blur-[100px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-gold/5 blur-[80px] rounded-full pointer-events-none" />
