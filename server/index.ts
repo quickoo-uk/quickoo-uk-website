@@ -1,34 +1,34 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import { handleDemo } from "./routes/demo";
-import { notifyAdminBooking } from "./routes/booking-notify";
-import { notifyAdminContact } from "./routes/contact-notify";
+import { handleDemo } from "./routes/demo.js";
+import { notifyAdminBooking } from "./routes/booking-notify.js";
+import { notifyAdminContact } from "./routes/contact-notify.js";
 import {
   establishWidgetConfig,
   validateDiscount,
   getQuotes,
   finalizeBooking,
   requestPayment
-} from "./routes/cds";
-import { adminLoginProxy, adminRefreshTokenProxy } from "./routes/admin-auth-proxy";
-import { adminFileUploadProxy } from "./routes/admin-file-upload-proxy";
+} from "./routes/cds.js";
+import { adminLoginProxy, adminRefreshTokenProxy } from "./routes/admin-auth-proxy.js";
+import { adminFileUploadProxy } from "./routes/admin-file-upload-proxy.js";
 import {
   createVehicleClassProxy,
   deleteVehicleClassProxy,
   getVehicleClassesProxy,
   updateVehicleClassProxy,
-} from "./routes/vehicle-class-proxy";
+} from "./routes/vehicle-class-proxy.js";
 import {
   createExtraPickupTypeProxy,
   deleteExtraPickupTypeProxy,
   getExtraPickupTypesProxy,
   updateExtraPickupTypeProxy,
-} from "./routes/extra-pickup-types-proxy";
-import { postGetQuotesProxy } from "./routes/quotes-proxy";
-import { createStripePaymentIntentProxy } from "./routes/stripe-payment-proxy";
-import { createOrderProxy } from "./routes/orders-proxy";
-import { adminCreateOrderProxy, adminUpdateOrderProxy, getOrdersProxy } from "./routes/admin-orders-proxy";
+} from "./routes/extra-pickup-types-proxy.js";
+import { postGetQuotesProxy } from "./routes/quotes-proxy.js";
+import { createStripePaymentIntentProxy } from "./routes/stripe-payment-proxy.js";
+import { createOrderProxy } from "./routes/orders-proxy.js";
+import { adminCreateOrderProxy, adminUpdateOrderProxy, getOrdersProxy } from "./routes/admin-orders-proxy.js";
 
 export function createServer() {
   const app = express();
