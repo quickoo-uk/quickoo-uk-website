@@ -18,6 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { ContactMessageSection } from "@/components/ContactMessageSection";
 import LandingBookingWidget from "@/components/landing/LandingBookingWidget";
 import {
   LANDING_PHONE,
@@ -177,6 +178,11 @@ export default function GoogleAdsLanding() {
       <Services />
       <Airports />
       <Faq />
+      <section className="bg-gradient-to-b from-white via-[#f8fbff] to-[#fff8f0] py-12 sm:py-20">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ContactMessageSection />
+        </div>
+      </section>
       <FinalCta />
     </LandingShell>
   );

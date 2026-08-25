@@ -13,7 +13,6 @@ import {
   Loader2,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -24,6 +23,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { sendContactMessage } from "@/lib/contactApi";
 import { cn } from "@/lib/utils";
 
 const inputBase =
@@ -216,21 +216,15 @@ export default function ContactPage() {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      const templateParams = {
+      await sendContactMessage({
         name: data.name,
         phone: `${selectedCountry.code} ${data.phone}`,
         email: data.email,
         subject: data.subject,
-        service: data.serviceType,
+        serviceType: data.serviceType,
         message: data.message,
-      };
-
-      await emailjs.send(
-        "service_sinng3w",
-        "template_s10flct",
-        templateParams,
-        "f2mEVklY9RlV91XcR"
-      );
+        newsletterOptIn,
+      });
 
       setShowSuccessModal(true);
       reset();

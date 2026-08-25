@@ -45,3 +45,15 @@
 **Consulted sources:** The reported homepage screenshot, `ContactMessageSection.tsx`, and the `luxury-button-gold` definition in `client/global.css`.
 
 **Prevention guidance:** A primary action should declare its essential visible states together when it is introduced inside a new page composition.
+
+## 2026-08-25: Contact enquiries failed at the browser email provider
+
+**Root cause:** Both contact forms sent enquiries directly from the browser through hardcoded EmailJS service, template, and public-key identifiers. The production provider rejected the request, while the form reduced every provider failure to the same generic modal.
+
+**Failure symptoms:** Valid form details passed client validation, but submission always opened the Submission Error dialog and no enquiry was delivered.
+
+**Fix details:** Contact forms now post validated data to `/api/contact/notify`. The Express route validates the payload and sends plain-text email through the existing server-side SMTP configuration. The obsolete EmailJS browser dependency and identifiers were removed.
+
+**Consulted sources:** The production failure screenshot, both contact form submission functions, the existing SMTP booking notification route, and the Vercel deployment configuration.
+
+**Prevention guidance:** Send operational email through a server-owned endpoint. Keep SMTP credentials outside the browser and return a useful server error when delivery fails.

@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { notifyAdminBooking } from "./routes/booking-notify";
+import { notifyAdminContact } from "./routes/contact-notify";
 import {
   establishWidgetConfig,
   validateDiscount,
@@ -69,6 +70,7 @@ export function createServer() {
   app.post("/api/admin/orders", adminCreateOrderProxy);
   app.put("/api/admin/orders/:id", adminUpdateOrderProxy);
   app.post("/api/booking/notify-admin", notifyAdminBooking);
+  app.post("/api/contact/notify", notifyAdminContact);
 
   return app;
 }

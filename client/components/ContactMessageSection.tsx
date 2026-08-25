@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import emailjs from "@emailjs/browser";
 import { AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -11,6 +10,7 @@ import {
   DialogDescription,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { sendContactMessage } from "@/lib/contactApi";
 import { cn } from "@/lib/utils";
 
 const INPUT_BASE =
@@ -159,19 +159,15 @@ export const ContactMessageSection = () => {
   const submitMessage = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      await emailjs.send(
-        "service_sinng3w",
-        "template_s10flct",
-        {
-          name: data.name,
-          phone: `${selectedCountry.code} ${data.phone}`,
-          email: data.email,
-          subject: data.subject,
-          service: data.serviceType,
-          message: data.message,
-        },
-        "f2mEVklY9RlV91XcR",
-      );
+      await sendContactMessage({
+        name: data.name,
+        phone: `${selectedCountry.code} ${data.phone}`,
+        email: data.email,
+        subject: data.subject,
+        serviceType: data.serviceType,
+        message: data.message,
+        newsletterOptIn,
+      });
 
       setShowSuccessModal(true);
       reset();
