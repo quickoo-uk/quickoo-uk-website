@@ -18,8 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ContactMessageSection } from "@/components/ContactMessageSection";
-import LandingBookingWidget from "@/components/landing/LandingBookingWidget";
+import { LandingInquiryForm } from "@/components/landing/LandingInquiryForm";
 import {
   LANDING_PHONE,
   LANDING_PHONE_DISPLAY,
@@ -27,7 +26,6 @@ import {
   LandingShell,
 } from "@/components/landing/LandingShell";
 import { FleetVehicleGrid } from "@/components/FleetVehicleGrid";
-import { GetQuotesSection } from "@/components/GetQuotesSection";
 import { trackAdsEvent } from "@/lib/adsConversion";
 
 const fadeUp = {
@@ -40,7 +38,7 @@ const viewport = { once: true, amount: 0.2 } as const;
 const TRUST_POINTS = [
   { icon: CreditCard, label: "Fixed price, no surge" },
   { icon: PlaneLanding, label: "Free flight tracking" },
-  { icon: Clock, label: "24/7 booking & support" },
+  { icon: Clock, label: "24/7 concierge support" },
   { icon: ShieldCheck, label: "Licensed & fully insured" },
 ];
 
@@ -49,7 +47,7 @@ const BENEFITS = [
     icon: CreditCard,
     title: "All-inclusive fixed pricing",
     description:
-      "The price you see when you book is the price you pay. Meet & greet, parking, tolls and waiting time are included — no surge pricing, ever.",
+      "Your confirmed fare includes meet & greet, parking, tolls and waiting time — no surge pricing or hidden extras.",
   },
   {
     icon: PlaneLanding,
@@ -74,15 +72,15 @@ const BENEFITS = [
 const STEPS = [
   {
     number: "01",
-    title: "Get your instant price",
+    title: "Send your journey details",
     description:
-      "Enter your pickup and destination. Your all-inclusive fare appears in seconds — no waiting for a callback.",
+      "Tell us your pickup, destination, travel date and any special requirements.",
   },
   {
     number: "02",
-    title: "Choose your vehicle",
+    title: "We confirm the arrangements",
     description:
-      "Pick the class that suits the journey, add any extras, and confirm securely online in under two minutes.",
+      "Our concierge team reviews your request, confirms availability and shares the journey details with you.",
   },
   {
     number: "03",
@@ -133,15 +131,15 @@ const SERVICES = [
 const FAQS = [
   {
     q: "How much does a chauffeur cost?",
-    a: "Every journey is quoted as a fixed, all-inclusive fare based on your exact route and vehicle class. Enter your pickup and destination above to see your price instantly — meet & greet, parking, tolls and waiting time are already included.",
+    a: "Every journey has a fixed, all-inclusive fare based on your route and vehicle class. Send your journey details and our team will reply with the arrangements.",
   },
   {
     q: "What happens if my flight is delayed?",
     a: "We track your flight in real time and adjust the pickup automatically at no extra cost. You get 60 minutes of free waiting time on airport arrivals, starting after your flight lands.",
   },
   {
-    q: "How far in advance should I book?",
-    a: "We recommend booking at least 12 hours ahead so we can allocate the right vehicle and chauffeur. Same-day and short-notice bookings are usually possible — call us on " +
+    q: "How far in advance should I contact you?",
+    a: "We recommend contacting us at least 12 hours ahead so we can allocate the right vehicle and chauffeur. Same-day and short-notice journeys are usually possible — call us on " +
       LANDING_PHONE_DISPLAY +
       " and we will confirm availability straight away.",
   },
@@ -150,8 +148,8 @@ const FAQS = [
     a: "Yes. Your chauffeur waits in the arrivals hall with a name board, helps with luggage and walks you to the vehicle. You will receive their name and contact details before pickup.",
   },
   {
-    q: "Can I book a return or multi-stop journey?",
-    a: "Yes. Return trips, additional stops and full-day hourly hire can all be added during booking, or arranged by phone with our 24/7 team.",
+    q: "Can I request a return or multi-stop journey?",
+    a: "Yes. Add return trips, extra stops or full-day hourly hire to your inquiry, or arrange them by phone with our 24/7 team.",
   },
   {
     q: "Which payment methods do you accept?",
@@ -163,26 +161,18 @@ export default function GoogleAdsLanding() {
   return (
     <LandingShell
       title="Luxury Chauffeur Hire London | Fixed Price Airport Transfers | Quickoo"
-      description="Book a professional chauffeur in London and across the UK. Fixed all-inclusive prices, free flight tracking, meet & greet and 24/7 support. Get your instant quote."
-      quoteAnchor="#quote"
+      description="Request a professional chauffeur in London and across the UK. Fixed all-inclusive prices, free flight tracking, meet & greet and 24/7 support."
+      primaryAnchor="#inquiry"
+      primaryLabel="Send inquiry"
     >
       <Hero />
       <TrustBar />
       <Benefits />
       <Fleet />
-      <GetQuotesSection
-        variant="landing"
-        onPricesShown={() => trackAdsEvent("lp_get_quotes_shown", { placement: "get_quotes" })}
-      />
       <HowItWorks />
       <Services />
       <Airports />
       <Faq />
-      <section className="bg-gradient-to-b from-white via-[#f8fbff] to-[#fff8f0] py-12 sm:py-20">
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ContactMessageSection />
-        </div>
-      </section>
       <FinalCta />
     </LandingShell>
   );
@@ -191,7 +181,7 @@ export default function GoogleAdsLanding() {
 /* ---------------------------------- Hero --------------------------------- */
 
 const Hero = () => (
-  <section id="quote" className="relative w-full overflow-hidden bg-[#0a1a02] scroll-mt-20">
+  <section id="inquiry" className="relative w-full overflow-hidden bg-[#0a1a02] scroll-mt-20">
     <div className="absolute inset-0 z-0">
       <img
         src="/home/hero-premium-travel-1.png"
@@ -219,7 +209,7 @@ const Hero = () => (
         <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-200 sm:text-lg max-sm:line-clamp-2">
           Airport transfers, corporate travel and hourly chauffeur hire across London and the UK.
           Professional vetted chauffeurs, immaculate premium vehicles, and a price that never
-          changes after you book.
+          changes after it is confirmed.
         </p>
 
         <ul className="mt-7 grid gap-3 sm:grid-cols-2 max-sm:hidden">
@@ -227,7 +217,7 @@ const Hero = () => (
             "Free flight tracking & meet and greet",
             "60 minutes free airport waiting time",
             "Fixed fares — no surge, no hidden extras",
-            "24/7 UK-based booking & support team",
+            "24/7 UK-based concierge support team",
           ].map((item) => (
             <li key={item} className="flex items-start gap-2.5 text-sm text-slate-100">
               <BadgeCheck className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#a3e635]" />
@@ -247,7 +237,7 @@ const Hero = () => (
           </a>
           <a
             href={`https://wa.me/${LANDING_WHATSAPP}?text=${encodeURIComponent(
-              "Hi Quickoo, I'd like a quote for a chauffeur booking.",
+              "Hi Quickoo, I'd like to inquire about a chauffeur journey.",
             )}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -259,7 +249,7 @@ const Hero = () => (
         </div>
       </motion.div>
 
-      {/* Quote widget */}
+      {/* Inquiry form */}
       <motion.div
         initial="hidden"
         animate="visible"
@@ -267,17 +257,7 @@ const Hero = () => (
         transition={{ duration: 0.6, delay: 0.15 }}
         className="w-full"
       >
-        <div className="overflow-hidden rounded-2xl border border-white/15 bg-white p-4 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:p-6">
-          <div className="mb-4 text-center max-sm:hidden">
-            <h2 className="font-montserrat text-xl font-bold text-[#0a1a02] sm:text-2xl">
-              Get your instant price
-            </h2>
-            <p className="mt-1 text-sm text-slate-500">
-              Takes under 60 seconds · No account needed
-            </p>
-          </div>
-          <LandingBookingWidget />
-        </div>
+        <LandingInquiryForm />
       </motion.div>
     </div>
   </section>
@@ -371,19 +351,19 @@ const Fleet = () => (
 
       <div className="mt-12">
         <FleetVehicleGrid
-          bookHref="#quote"
-          bookLabel="Check prices for this vehicle"
-          onBookClick={() => trackAdsEvent("lp_quote_start", { placement: "fleet_modal" })}
+          bookHref="#inquiry"
+          bookLabel="Ask about this vehicle"
+          onBookClick={() => trackAdsEvent("lp_inquiry_start", { placement: "fleet_modal" })}
         />
       </div>
 
       <div className="mt-10 text-center">
         <a
-          href="#quote"
-          onClick={() => trackAdsEvent("lp_quote_start", { placement: "fleet" })}
+          href="#inquiry"
+          onClick={() => trackAdsEvent("lp_inquiry_start", { placement: "fleet" })}
           className="inline-flex items-center justify-center rounded-full bg-[#487307] px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-[#3a5d06]"
         >
-          Check prices for my journey
+          Send a journey inquiry
         </a>
       </div>
     </div>
@@ -395,7 +375,7 @@ const Fleet = () => (
 const HowItWorks = () => (
   <section className="bg-white py-16 sm:py-20">
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-      <SectionHeading eyebrow="How it works" title="Booked in three simple steps" />
+      <SectionHeading eyebrow="How it works" title="Your journey in three simple steps" />
 
       <div className="mt-12 grid gap-6 lg:grid-cols-3">
         {STEPS.map((step, i) => (
@@ -486,7 +466,7 @@ const Airports = () => (
 const Faq = () => (
   <section className="bg-slate-50 py-16 sm:py-20">
     <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
-      <SectionHeading eyebrow="FAQ" title="Questions before you book" />
+      <SectionHeading eyebrow="FAQ" title="Questions before you travel" />
 
       <Accordion type="single" collapsible className="mt-10 w-full space-y-3">
         {FAQS.map((faq, i) => (
@@ -527,17 +507,17 @@ const FinalCta = () => (
         Ready to travel in comfort?
       </h2>
       <p className="mx-auto mt-4 max-w-xl text-base text-white/90">
-        Get your fixed, all-inclusive price in under a minute — or speak to our 24/7 team and we
-        will arrange everything for you.
+        Send your journey details or speak to our 24/7 team. We will review your request and
+        arrange everything with you.
       </p>
 
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
         <a
-          href="#quote"
-          onClick={() => trackAdsEvent("lp_quote_start", { placement: "final_cta" })}
+          href="#inquiry"
+          onClick={() => trackAdsEvent("lp_inquiry_start", { placement: "final_cta" })}
           className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-[#0a1a02] transition hover:bg-[#0a1a02] hover:text-white"
         >
-          Get my instant price
+          Send inquiry
         </a>
         <a
           href={`tel:${LANDING_PHONE}`}

@@ -14,9 +14,8 @@ declare global {
 export type AdsEventName =
   | "lp_call_click"
   | "lp_whatsapp_click"
-  | "lp_quote_start"
-  | "lp_get_quotes_shown"
-  | "lp_booking_page_view";
+  | "lp_inquiry_start"
+  | "lp_inquiry_submit";
 
 /** Fire a GA4/Ads event. Safe to call when no tag is installed. */
 export const trackAdsEvent = (

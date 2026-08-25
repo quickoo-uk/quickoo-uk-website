@@ -23,8 +23,9 @@ type Props = {
   children: React.ReactNode;
   title: string;
   description: string;
-  /** Anchor the header CTA scrolls to. */
-  quoteAnchor?: string;
+  primaryAnchor?: string;
+  primaryLabel?: string;
+  showPrimaryActions?: boolean;
   className?: string;
 };
 
@@ -32,7 +33,9 @@ export const LandingShell = ({
   children,
   title,
   description,
-  quoteAnchor = "#quote",
+  primaryAnchor = "#inquiry",
+  primaryLabel = "Send inquiry",
+  showPrimaryActions = true,
   className,
 }: Props) => {
   return (
@@ -45,7 +48,11 @@ export const LandingShell = ({
         <meta name="robots" content="noindex, follow" />
       </Helmet>
 
-      <LandingHeader quoteAnchor={quoteAnchor} />
+      <LandingHeader
+        primaryAnchor={primaryAnchor}
+        primaryLabel={primaryLabel}
+        showPrimaryAction={showPrimaryActions}
+      />
 
       <main className="flex-grow pt-16 sm:pt-20">{children}</main>
 
@@ -56,30 +63,43 @@ export const LandingShell = ({
         onClick={() => trackAdsEvent("lp_whatsapp_click", { placement: "float" })}
       />
 
-      {/* Mobile sticky conversion bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 flex items-stretch gap-2 border-t border-slate-200 bg-white/95 p-3 backdrop-blur-lg shadow-[0_-8px_30px_rgba(10,26,2,0.12)] sm:hidden">
-        <a
-          href={`tel:${LANDING_PHONE}`}
-          onClick={() => trackAdsEvent("lp_call_click", { placement: "sticky_bar" })}
-          className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-[#487307]/30 bg-white px-4 py-3 text-sm font-semibold text-[#487307]"
-        >
-          <Phone className="h-4 w-4" />
-          Call now
-        </a>
-        <a
-          href={quoteAnchor}
-          onClick={() => trackAdsEvent("lp_quote_start", { placement: "sticky_bar" })}
-          className="flex flex-[1.3] items-center justify-center rounded-xl bg-[#487307] px-4 py-3 text-sm font-semibold text-white"
-        >
-          Get instant price
-        </a>
-      </div>
-      <div className="h-[76px] sm:hidden" aria-hidden />
+      {showPrimaryActions && (
+        <>
+          <div className="fixed bottom-0 left-0 right-0 z-50 flex items-stretch gap-2 border-t border-slate-200 bg-white/95 p-3 backdrop-blur-lg shadow-[0_-8px_30px_rgba(10,26,2,0.12)] sm:hidden">
+            <a
+              href={`tel:${LANDING_PHONE}`}
+              onClick={() => trackAdsEvent("lp_call_click", { placement: "sticky_bar" })}
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-[#487307]/30 bg-white px-4 py-3 text-sm font-semibold text-[#487307]"
+            >
+              <Phone className="h-4 w-4" />
+              Call now
+            </a>
+            <a
+              href={primaryAnchor}
+              onClick={() => trackAdsEvent("lp_inquiry_start", { placement: "sticky_bar" })}
+              className="flex flex-[1.3] items-center justify-center rounded-xl bg-[#487307] px-4 py-3 text-sm font-semibold text-white"
+            >
+              {primaryLabel}
+            </a>
+          </div>
+          <div className="h-[76px] sm:hidden" aria-hidden />
+        </>
+      )}
     </div>
   );
 };
 
-const LandingHeader = ({ quoteAnchor }: { quoteAnchor: string }) => (
+type LandingHeaderProps = {
+  primaryAnchor: string;
+  primaryLabel: string;
+  showPrimaryAction: boolean;
+};
+
+const LandingHeader = ({
+  primaryAnchor,
+  primaryLabel,
+  showPrimaryAction,
+}: LandingHeaderProps) => (
   <header className="fixed left-0 right-0 top-0 z-50 w-full border-b border-[#efe9ff]/80 bg-white/95 backdrop-blur-lg shadow-[0_10px_40px_rgba(18,8,40,0.08)]">
     <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
       {/* Logo is the only route back to the main website */}
@@ -97,13 +117,15 @@ const LandingHeader = ({ quoteAnchor }: { quoteAnchor: string }) => (
           <span className="hidden sm:inline">{LANDING_PHONE_DISPLAY}</span>
           <span className="sm:hidden">Call</span>
         </a>
-        <a
-          href={quoteAnchor}
-          onClick={() => trackAdsEvent("lp_quote_start", { placement: "header" })}
-          className="hidden rounded-full bg-[#487307] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#3a5d06] sm:inline-flex"
-        >
-          Get instant price
-        </a>
+        {showPrimaryAction && (
+          <a
+            href={primaryAnchor}
+            onClick={() => trackAdsEvent("lp_inquiry_start", { placement: "header" })}
+            className="hidden rounded-full bg-[#487307] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#3a5d06] sm:inline-flex"
+          >
+            {primaryLabel}
+          </a>
+        )}
       </div>
     </div>
   </header>

@@ -45,7 +45,7 @@ import BookFleet from "./pages/BookFleet";
 import LogistifieBookNow from "./pages/LogistifieBookNow";
 import GetQuotes from "./pages/GetQuotes";
 import GoogleAdsLanding from "./pages/landing/GoogleAdsLanding";
-import GoogleAdsBooking from "./pages/landing/GoogleAdsBooking";
+import GoogleAdsThankYou from "./pages/landing/GoogleAdsThankYou";
 
 const queryClient = new QueryClient();
 
@@ -296,7 +296,7 @@ export default function App() {
                 only. The logo in the landing header links back to "/".
             ------------------------------------------------------------------- */}
             <Route path="/lp/chauffeur" element={<GoogleAdsLanding />} />
-            <Route path="/lp/chauffeur/book" element={<GoogleAdsBooking />} />
+            <Route path="/lp/chauffeur/thank-you" element={<GoogleAdsThankYou />} />
 
             <Route
               path="/admin-panel"
