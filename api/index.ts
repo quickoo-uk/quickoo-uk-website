@@ -1,4 +1,5 @@
-import serverless from "serverless-http";
 import { createServer } from "../server/index.js";
 
-export default serverless(createServer());
+// An Express app is itself a (req, res) handler, which is exactly what
+// @vercel/node invokes. No Lambda adapter needed here.
+export default createServer();
