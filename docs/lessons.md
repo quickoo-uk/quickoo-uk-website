@@ -57,3 +57,16 @@
 **Consulted sources:** The production failure screenshot, both contact form submission functions, the existing SMTP booking notification route, and the Vercel deployment configuration.
 
 **Prevention guidance:** Send operational email through a server-owned endpoint. Keep SMTP credentials outside the browser and return a useful server error when delivery fails.
+
+## 2026-08-25: Production SMTP failed because Vercel env was incomplete
+
+**Root cause:** The Hostinger SMTP credentials lived in the local `.env` file, but the Quickoo Vercel project did not have the same runtime variables on preview or development, and production was missing `BOOKING_ADMIN_EMAIL`. `SMTP_FROM` was also stored with wrapping quotes in `.env`, which Vercel can keep as part of the value and then reject as an invalid From address.
+
+**Failure symptoms:** Contact and booking notification routes ran on Vercel without a complete SMTP configuration, so enquiry and booking emails were not delivered.
+
+**Fix details:** The Quickoo Vercel project (`quickoo/quickoo-uk-website`) received the local SMTP and admin mailbox values for production, preview, and development. The last working production deployment was rebuilt so those variables are present at runtime. A contact notification request to `https://www.quickoo.co.uk/api/contact/notify` then returned HTTP 200 `{"success":true}`.
+
+**Consulted sources:** Local `.env`, `vercel env ls` on the Quickoo profile, Hostinger SMTP `verify()`, production `/api/ping` and `/api/contact/notify`, and Vercel deployment inspect output.
+
+**Prevention guidance:** After changing Vercel environment variables, rebuild the target deployment. Do not copy `.env` quotes into Vercel values. Confirm serverless mail with a server-owned notify route, not only a local `.env` file.
+

@@ -12,6 +12,14 @@ const contactMessageSchema = z.object({
   newsletterOptIn: z.boolean(),
 });
 
+function readEnvValue(name: string): string {
+  const raw = process.env[name];
+  if (!raw) {
+    return "";
+  }
+  return raw.trim().replace(/^["']|["']$/g, "");
+}
+
 export const notifyAdminContact: RequestHandler = async (req, res) => {
   const parsedMessage = contactMessageSchema.safeParse(req.body);
   if (!parsedMessage.success) {
@@ -19,18 +27,18 @@ export const notifyAdminContact: RequestHandler = async (req, res) => {
     return;
   }
 
-  const host = process.env.SMTP_HOST;
-  const port = Number(process.env.SMTP_PORT || 587);
-  const secure = String(process.env.SMTP_SECURE || "false") === "true";
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const from = process.env.SMTP_FROM || user || "noreply@quickoo.co.uk";
+  const host = readEnvValue("SMTP_HOST");
+  const port = Number(readEnvValue("SMTP_PORT") || "587");
+  const secure = readEnvValue("SMTP_SECURE").toLowerCase() === "true";
+  const user = readEnvValue("SMTP_USER");
+  const pass = readEnvValue("SMTP_PASS");
+  const from = readEnvValue("SMTP_FROM") || user || "noreply@quickoo.co.uk";
   const adminTo =
-    process.env.CONTACT_ADMIN_EMAIL ||
-    process.env.BOOKING_ADMIN_EMAIL ||
+    readEnvValue("CONTACT_ADMIN_EMAIL") ||
+    readEnvValue("BOOKING_ADMIN_EMAIL") ||
     "inquiry@quickoo.co.uk";
 
-  if (!host || !port || !user || !pass) {
+  if (!host || !Number.isFinite(port) || port <= 0 || !user || !pass) {
     res.status(500).json({ message: "Contact email delivery is not configured." });
     return;
   }
@@ -58,6 +66,11 @@ export const notifyAdminContact: RequestHandler = async (req, res) => {
       port,
       secure,
       auth: { user, pass },
+      family: 4,
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
+      tls: { servername: host },
     });
 
     await transporter.sendMail({
