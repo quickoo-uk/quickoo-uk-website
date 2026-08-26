@@ -49,6 +49,19 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
+  <!-- Google tag (gtag.js) - Google Ads AW-18358544243.
+       Same rule as Clarity below: this is the SPA shell for every route, so this
+       single tag covers both the main website landing page and the /lp/chauffeur
+       Google Ads landing funnel. Do not duplicate it into the landing pages. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18358544243"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18358544243');
+  </script>
+
   <!-- Microsoft Clarity.
        This is the SPA shell for every route, so this single tag covers the main
        site and the /lp/chauffeur Google Ads landing funnel. Do not duplicate it
