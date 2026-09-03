@@ -40,12 +40,12 @@ const PRIVATE_JET_AIRPORTS = [
   },
   {
     icon: Clock3,
-    name: "Signature Aviation LTN",
+    name: "Luton Signature Aviation",
     description: "Flexible chauffeur collections from a major private aviation hub serving London Luton.",
   },
   {
     icon: MapPin,
-    name: "Harrods Aviation",
+    name: "Stansted Harrods Aviation",
     description: "Coordinated arrivals and departures for business aviation passengers travelling through London.",
   },
   {

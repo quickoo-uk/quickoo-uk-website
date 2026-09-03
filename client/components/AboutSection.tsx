@@ -130,45 +130,12 @@ export const AboutSection = () => {
               <img
                 src="/home/about-quickoo-chauffeur-service.jpeg"
                 alt="Chauffeur welcoming guests"
-                className="aspect-[3/2] w-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                className="aspect-[4/5] w-full object-cover object-center transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
 
             </div>
 
-            <div className="rounded-3xl border border-white/60 bg-white/90 p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur">
-              <div className="flex items-center gap-3 mb-4">
-                <Compass className="h-6 w-6 text-[#487307]" />
-                <p className="font-montserrat text-lg font-semibold text-dark">
-                  Our journey highlights
-                </p>
-              </div>
-              <div className="space-y-5">
-                {TIMELINE.map((item, idx) => (
-                  <motion.div
-                    key={item.year}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.2, duration: 0.5 }}
-                    className="flex gap-4"
-                  >
-                    <div className="flex flex-col items-center shrink-0 min-w-[40px]">
-                      <span className="font-montserrat text-sm font-bold text-[#487307] whitespace-nowrap">
-                        {item.year}
-                      </span>
-                      <span className="h-full w-px bg-gradient-to-b from-[#487307]/60 to-transparent" />
-                    </div>
-                    <div>
-                      <p className="font-montserrat font-semibold text-dark">
-                        {item.title}
-                      </p>
-                      <p className="text-sm text-gray-600 font-inter">{item.detail}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>
