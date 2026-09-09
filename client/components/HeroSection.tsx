@@ -75,7 +75,7 @@ export const HeroSection = () => {
                 className="max-w-xl text-sm sm:text-base font-inter font-light leading-relaxed tracking-wide text-gray-300 max-sm:line-clamp-3"
               >
                 Quickoo delivers premium chauffeur-driven travel for
-                corporate clients, airport transfers and special occasions. Every
+                corporate clients, airport transfer and special occasions. Every
                 journey is handled with professionalism, punctuality and attention
                 to detail.
               </motion.p>
