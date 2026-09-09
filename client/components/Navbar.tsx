@@ -5,13 +5,15 @@ import { cn } from "@/lib/utils";
 const logo = "/images/logo-2.png";
 import { FLEET_TYPES } from "@shared/fleet";
 
+// The label and the route are deliberately separate: the displayed name can be
+// reworded without moving the page, which would break inbound and indexed links.
 const SERVICES = [
-  "Airport Transfers",
-  "Corporate travel",
-  "Special events",
-  "City Tours",
-  "Private Jet Chauffeur",
-  "London Cruise Transfer",
+  { name: "Airport Transfer", path: "/services/airport-transfers" },
+  { name: "Corporate travel", path: "/services/corporate-travel" },
+  { name: "Special events", path: "/services/special-events" },
+  { name: "City Tours", path: "/services/city-tours" },
+  { name: "Private Jet Chauffeur", path: "/services/private-jet-chauffeur" },
+  { name: "London Cruise Transfer", path: "/services/london-cruise-transfer" },
 ];
 
 const WHY_CHOOSE_LINKS = [
@@ -106,11 +108,11 @@ export const Navbar = () => {
                 <div className="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl ring-1 ring-[#e5defc] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   {SERVICES.map((service) => (
                     <Link
-                      key={service}
-                      to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
+                      key={service.path}
+                      to={service.path}
                       className="block px-4 py-3 text-sm text-dark hover:bg-brand-soft hover:text-gold rounded-xl mx-1 my-0.5"
                     >
-                      {service}
+                      {service.name}
                     </Link>
                   ))}
                 </div>
@@ -322,12 +324,12 @@ export const Navbar = () => {
                 <div className="space-y-1 border-l-2 border-[#487307]/30 ml-2 pl-3">
                   {SERVICES.map((service) => (
                     <Link
-                      key={service}
-                      to={`/services/${service.toLowerCase().replace(/ /g, "-")}`}
+                      key={service.path}
+                      to={service.path}
                       onClick={handleNavClick}
                       className="block px-4 py-2.5 text-sm text-white/80 rounded-lg hover:bg-[#487307]/20 hover:text-white transition-all duration-300 hover:translate-x-1"
                     >
-                      {service}
+                      {service.name}
                     </Link>
                   ))}
                 </div>
