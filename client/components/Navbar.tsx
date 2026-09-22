@@ -193,6 +193,17 @@ export const Navbar = () => {
               >
                 Contact
               </Link>
+              <Link
+                to="/blog"
+                className={cn(
+                  "font-inter text-sm transition-colors",
+                  isScrolled
+                    ? "text-dark hover:text-gold"
+                    : "text-[#2a1b4d] hover:text-gold",
+                )}
+              >
+                Journal
+              </Link>
               {/* <Link
                 to="/book-now"
                 className={cn(
@@ -426,6 +437,14 @@ export const Navbar = () => {
               className="block px-5 py-3.5 text-white font-medium rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 border border-transparent hover:border-[#487307]/30"
             >
               Contact
+            </Link>
+
+            <Link
+              to="/blog"
+              onClick={handleNavClick}
+              className="block px-5 py-3.5 text-white font-medium rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 border border-transparent hover:border-[#487307]/30"
+            >
+              Journal
             </Link>
 
             <a

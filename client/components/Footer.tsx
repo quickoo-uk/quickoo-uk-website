@@ -35,6 +35,7 @@ const SERVICES = [
 
 const PAGES = [
   // { label: "About", href: "/about" },
+  { label: "Journal", href: "/blog" },
   { label: "Contact", href: "/contact" },
   { label: "FAQ", href: "/faq" },
 ];

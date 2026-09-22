@@ -29,6 +29,7 @@ import { postGetQuotesProxy } from "./routes/quotes-proxy.js";
 import { createStripePaymentIntentProxy } from "./routes/stripe-payment-proxy.js";
 import { createOrderProxy } from "./routes/orders-proxy.js";
 import { adminCreateOrderProxy, adminUpdateOrderProxy, getOrdersProxy } from "./routes/admin-orders-proxy.js";
+import { getUpliftBlog, listUpliftBlogs } from "./routes/uplift-blogs.js";
 
 export function createServer() {
   const app = express();
@@ -71,6 +72,8 @@ export function createServer() {
   app.put("/api/admin/orders/:id", adminUpdateOrderProxy);
   app.post("/api/booking/notify-admin", notifyAdminBooking);
   app.post("/api/contact/notify", notifyAdminContact);
+  app.get("/api/blogs", listUpliftBlogs);
+  app.get("/api/blogs/:slug", getUpliftBlog);
 
   return app;
 }

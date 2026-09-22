@@ -46,6 +46,8 @@ import LogistifieBookNow from "./pages/LogistifieBookNow";
 import GetQuotes from "./pages/GetQuotes";
 import GoogleAdsLanding from "./pages/landing/GoogleAdsLanding";
 import GoogleAdsThankYou from "./pages/landing/GoogleAdsThankYou";
+import BlogPage from "./pages/Blog";
+import BlogDetailPage from "./pages/BlogDetail";
 
 const queryClient = new QueryClient();
 
@@ -156,6 +158,22 @@ export default function App() {
               element={
                 <Layout>
                   <ContactPage />
+                </Layout>
+              }
+            />
+            <Route
+              path="/blog"
+              element={
+                <Layout>
+                  <BlogPage />
+                </Layout>
+              }
+            />
+            <Route
+              path="/blog/:slug"
+              element={
+                <Layout>
+                  <BlogDetailPage />
                 </Layout>
               }
             />

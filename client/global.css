@@ -188,6 +188,120 @@ body {
 }
 
 @layer components {
+    .blog-content {
+        color: #475569;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.0625rem;
+        line-height: 1.85;
+    }
+
+    .blog-content > *:first-child {
+        margin-top: 0;
+    }
+
+    .blog-content > *:last-child {
+        margin-bottom: 0;
+    }
+
+    .blog-content h2,
+    .blog-content h3,
+    .blog-content h4,
+    .blog-content h5,
+    .blog-content h6 {
+        color: #0a1a02;
+        line-height: 1.3;
+        margin-bottom: 0.8em;
+        margin-top: 1.8em;
+    }
+
+    .blog-content h2 { font-size: clamp(1.75rem, 4vw, 2.25rem); }
+    .blog-content h3 { font-size: clamp(1.4rem, 3vw, 1.75rem); }
+    .blog-content h4 { font-size: 1.25rem; }
+
+    .blog-content p,
+    .blog-content ul,
+    .blog-content ol,
+    .blog-content blockquote,
+    .blog-content figure,
+    .blog-content pre,
+    .blog-content table {
+        margin: 1.25rem 0;
+    }
+
+    .blog-content ul,
+    .blog-content ol {
+        padding-left: 1.5rem;
+    }
+
+    .blog-content ul { list-style: disc; }
+    .blog-content ol { list-style: decimal; }
+    .blog-content li { margin: 0.45rem 0; padding-left: 0.3rem; }
+
+    .blog-content a {
+        color: #487307;
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-color: rgba(72, 115, 7, 0.35);
+        text-underline-offset: 0.2em;
+    }
+
+    .blog-content blockquote {
+        border-left: 4px solid #6aa80b;
+        border-radius: 0 1rem 1rem 0;
+        background: #f4fbe9;
+        color: #355904;
+        font-size: 1.12em;
+        font-style: italic;
+        padding: 1.25rem 1.5rem;
+    }
+
+    .blog-content img {
+        border-radius: 1.25rem;
+        height: auto;
+        margin: 2rem auto;
+        max-width: 100%;
+    }
+
+    .blog-content pre {
+        background: #0a1a02;
+        border-radius: 1rem;
+        color: #f7fee7;
+        overflow-x: auto;
+        padding: 1.25rem;
+    }
+
+    .blog-content code {
+        background: #eff8df;
+        border-radius: 0.3rem;
+        color: #355904;
+        padding: 0.15rem 0.35rem;
+    }
+
+    .blog-content pre code {
+        background: transparent;
+        color: inherit;
+        padding: 0;
+    }
+
+    .blog-content table {
+        border-collapse: collapse;
+        display: block;
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    .blog-content th,
+    .blog-content td {
+        border: 1px solid #dcebc9;
+        padding: 0.75rem 1rem;
+        text-align: left;
+    }
+
+    .blog-content th {
+        background: #f4fbe9;
+        color: #0a1a02;
+    }
+
     .luxury-button-gold {
         padding: 0.75rem 2rem;
         border-radius: 0.5rem;
